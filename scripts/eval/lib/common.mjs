@@ -185,12 +185,12 @@ export const skillEvidence = ({ transcript, skillDir, toolUses, base }) => {
   }
 }
 
-/** 공개 기록에서 로컬 경로를 지운다 */
+/** 공개 기록에서 로컬 경로를 지운다. URL 안의 경로(`…/ko/home/`)는 로컬 경로가 아니므로 남긴다 */
 export const scrub = (text) =>
   typeof text === 'string'
     ? text
-        .replace(/\/(?:private\/)?(?:tmp|var\/folders)\/[^\s"'`)\]]*/g, '<tmp>')
-        .replace(/\/(?:Users|home)\/[^\s"'`)\]]*/g, '<home>')
+        .replace(/(?<![\w.-])\/(?:private\/)?(?:tmp|var\/folders)\/[^\s"'`)\]]*/g, '<tmp>')
+        .replace(/(?<![\w.-])\/(?:Users|home)\/[^\s"'`)\]]*/g, '<home>')
     : text
 
 export const usageOf = (result) => {

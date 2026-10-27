@@ -1,0 +1,28 @@
+{
+  "name": "2026-10-27-regress-dev-r1",
+  "conditions": {
+    "C1": {
+      "attempts": 38,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 38,
+      "referenceReads": 18,
+      "meaning": {
+        "judged": 38,
+        "pass": 37,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 7865.5,
+        "medianInput": 21710,
+        "medianOutput": 462.5,
+        "costUsd": 2.1588767000000004
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 38
+}
