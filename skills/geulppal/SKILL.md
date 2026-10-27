@@ -2,10 +2,12 @@
 name: geulppal
 description: >-
   한국어·영어 문서와 글을 작성하거나 다듬을 때 과장, 반복, 번역투, 형식적인 도입·결론을 줄이고 사실과 작성자의 말투를 보존한다.
-  README, 기술 설명, PR 본문, 기획서, 블로그, 소개글, 이메일 작성·수정이나 'AI slop 줄여줘', 'AI 티 빼줘', '자연스럽게 써줘' 요청에 사용한다.
+  README, 기술 설명, PR 본문, 기획서, 블로그, 소개글, 이메일 작성·수정이나 'AI slop 줄여줘', 'AI 티 빼줘', '자연스럽게 써줘' 요청과
+  writing, rewriting, polishing, tightening or proofreading a README, docs, PR description, release notes, proposal, blog post or email,
+  remove AI slop, make it less AI-sounding or promotional 작업에 사용한다.
   문장 편집이 없는 코드·UI 구현, 단순 정보 조회, AI 작성 여부 판별에는 사용하지 않는다.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # 글빨
