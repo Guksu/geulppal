@@ -1,0 +1,5057 @@
+{
+  "format": "geulppal-eval-records/1",
+  "run": "2026-10-27-human-d1",
+  "count": 37,
+  "records": {
+    "judge/meaning/D1/doc24-review-2021-deslop-r1": {
+      "id": "doc24-review-2021-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "문서24",
+          "정부24",
+          "홈택스",
+          "인감증명서",
+          "본인서명사실확인서"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:18:30.917Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "문서24로 신청할 수 없는 세 경우",
+              "status": "kept",
+              "evidence": "1) 문서 처리 수수료가 발생하는 경우 2) 별도의 업무 처리 시스템이 존재하는 경우 3) 행정기관 방문과 본인 확인이 필수적인 민원"
+            },
+            {
+              "item": "별도 업무 처리 시스템의 뜻",
+              "status": "kept",
+              "evidence": "별도의 업무 처리 시스템은 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다."
+            },
+            {
+              "item": "본인 확인 필수 민원을 막은 것이 합리적이라는 필자의 생각",
+              "status": "kept",
+              "evidence": "인감증명서나 본인서명사실확인서처럼 본인 확인이 반드시 필요한 민원을 문서24로 처리하지 못하게 한 것은 충분히 합리적인 기준이라고 생각합니다."
+            },
+            {
+              "item": "개인/법인·단체 가입, 개인은 카카오·네이버 가입 가능",
+              "status": "kept",
+              "evidence": "개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버 계정으로도 가입할 수 있어 한결 간편합니다."
+            },
+            {
+              "item": "작성·기관 선택·제출 절차와 이용이 어렵지 않았다는 경험",
+              "status": "kept",
+              "evidence": "홈페이지 구성이 직관적이어서 이용하는 데 어려움이 없었습니다. 절차도 단순합니다. 제출할 공문서의 내용을 작성하고, 받는 기관을 선택해 제출하면 끝입니다."
+            },
+            {
+              "item": "수신기관 한 곳만 선택 가능",
+              "status": "kept",
+              "evidence": "공문서를 작성할 때 수신기관을 한 곳만 선택할 수 있다는 점은 조금 불편합니다."
+            },
+            {
+              "item": "예전엔 여러 곳 선택 가능, 광고·홍보성 문서 증가로 바뀐 것 같다는 추측",
+              "status": "kept",
+              "evidence": "과거에는 여러 곳을 선택할 수 있었는데, 광고성·홍보성 문서가 늘어나면서 지금처럼 바뀐 것으로 보입니다."
+            },
+            {
+              "item": "재작성 메뉴",
+              "status": "kept",
+              "evidence": "기존 문서를 그대로 다시 작성할 수 있는 재작성 메뉴를 쓰면 수고를 크게 덜 수 있습니다."
+            },
+            {
+              "item": "7일 동안만 확인, 별도 저장",
+              "status": "kept",
+              "evidence": "작성한 문서는 7일 동안만 다시 확인할 수 있습니다. 나중에 다시 볼 일이 있다면 반드시 별도로 저장해 두세요."
+            },
+            {
+              "item": "접수 시 카카오톡 알림",
+              "status": "kept",
+              "evidence": "접수 처리되면 문서24가 카카오톡으로 알려 주기 때문에, 접수 여부를 확인하러 따로 들어갈 필요가 없습니다."
+            },
+            {
+              "item": "2020년 10월 모바일 문서24 개통",
+              "status": "kept",
+              "evidence": "2020년 10월부터는 모바일 문서24가 개통되어 휴대폰으로도 공문서 처리 내용을 확인할 수 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "추측을 사실로 바꾸기",
+              "status": "ok",
+              "evidence": "지금처럼 바뀐 것으로 보입니다."
+            },
+            {
+              "item": "세 경우 빼기·합치기·새로 만들기",
+              "status": "ok",
+              "evidence": "세 항목이 원문 그대로 유지됨"
+            },
+            {
+              "item": "7일, 2020년 10월 변경",
+              "status": "ok",
+              "evidence": "작성한 문서는 7일 동안만 / 2020년 10월부터는"
+            },
+            {
+              "item": "필자의 생각을 일반 사실로 바꾸거나 지우기",
+              "status": "ok",
+              "evidence": "충분히 합리적인 기준이라고 생각합니다."
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가 추가",
+              "status": "ok",
+              "evidence": "추가된 내용 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "원문에 없는 사실이나 평가가 추가되지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 핵심 정보가 모두 유지됨"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "7일, 2020년 10월, 한 곳 모두 유지"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "바뀐 것으로 보입니다 / 합리적인 기준이라고 생각합니다 등 확실성 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "아래 세 가지 중 하나라도 해당하면 문서24로 신청할 수 없습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "문서24, 홈택스, 정부24, 카카오톡 등 고유 이름 유지"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "후기 전체를 덜 꾸민 문체로 다시 씀"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15939,
+            "wallMs": 17036,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3529,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2067,
+              "thinkingTokens": 144
+            },
+            "costUsd": 0.070076,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/doc24-review-2021-deslop-r2": {
+      "id": "doc24-review-2021-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "문서24",
+          "정부24",
+          "홈택스",
+          "인감증명서",
+          "본인서명사실확인서"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:18:31.769Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "신청할 수 없는 세 경우",
+              "status": "kept",
+              "evidence": "1) 문서 처리 수수료가 발생하는 경우 2) 별도의 업무 처리 시스템이 존재하는 경우 3) 행정기관 방문과 본인 확인이 필수적인 민원"
+            },
+            {
+              "item": "별도 업무 처리 시스템의 뜻",
+              "status": "kept",
+              "evidence": "여기서 별도의 업무 처리 시스템이란 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다."
+            },
+            {
+              "item": "본인 확인 필수 민원을 막은 것이 합리적이라는 필자의 생각",
+              "status": "kept",
+              "evidence": "인감증명서나 본인서명사실확인서처럼 본인 확인이 반드시 필요한 민원을 문서24로 처리하지 못하게 한 것은 충분히 합리적인 기준이라고 생각합니다."
+            },
+            {
+              "item": "가입 유형과 개인의 카카오·네이버 가입",
+              "status": "kept",
+              "evidence": "개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버 계정으로도 가입할 수 있어 간편합니다."
+            },
+            {
+              "item": "제출 절차와 이용이 어렵지 않았다는 경험",
+              "status": "kept",
+              "evidence": "홈페이지는 구성이 매우 직관적이어서 이용하는 데 어려움이 없었습니다. 절차도 단순합니다. 제출할 공문서의 내용을 작성하고, 받는 기관을 선택해 제출하면 끝입니다."
+            },
+            {
+              "item": "수신기관 한 곳만 선택 제약",
+              "status": "kept",
+              "evidence": "공문서를 작성할 때 수신기관을 한 곳만 선택할 수 있습니다."
+            },
+            {
+              "item": "과거 복수 선택 가능, 광고·홍보성 문서 증가로 바뀐 것 같다는 추측",
+              "status": "kept",
+              "evidence": "과거에는 여러 곳을 선택할 수 있었는데, 광고성·홍보성 문서가 늘어나면서 지금처럼 바뀐 것으로 보입니다."
+            },
+            {
+              "item": "재작성 메뉴",
+              "status": "kept",
+              "evidence": "다행히 기존 문서를 그대로 다시 작성할 수 있는 재작성 메뉴가 있어서, 이를 활용하면 번거로움을 크게 덜 수 있습니다."
+            },
+            {
+              "item": "7일 동안만 확인 가능, 별도 저장",
+              "status": "kept",
+              "evidence": "작성한 문서는 7일 동안만 다시 확인할 수 있습니다. 나중에 다시 볼 일이 있다면 반드시 별도로 저장해 두세요."
+            },
+            {
+              "item": "접수 시 카카오톡 알림",
+              "status": "kept",
+              "evidence": "제출한 공문이 접수 처리되면 카카오톡으로 알려 주기 때문에, 접수 여부를 따로 확인하러 들어갈 필요가 없습니다."
+            },
+            {
+              "item": "2020년 10월 모바일 문서24 개통",
+              "status": "kept",
+              "evidence": "2020년 10월부터는 모바일 문서24가 개통되어 휴대폰으로 언제 어디서든 공문서 처리 현황을 확인할 수 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "추측을 사실로 바꾸기",
+              "status": "ok",
+              "evidence": "지금처럼 바뀐 것으로 보입니다."
+            },
+            {
+              "item": "세 경우 변경",
+              "status": "ok",
+              "evidence": "세 항목 그대로 유지됨"
+            },
+            {
+              "item": "7일, 2020년 10월 변경",
+              "status": "ok",
+              "evidence": "작성한 문서는 7일 동안만 / 2020년 10월부터는"
+            },
+            {
+              "item": "필자의 생각을 사실로 바꾸거나 지우기",
+              "status": "ok",
+              "evidence": "충분히 합리적인 기준이라고 생각합니다."
+            },
+            {
+              "item": "새 사실·감상 추가",
+              "status": "ok",
+              "evidence": "추가된 사실 없음. '다행히'는 원문의 해결책 제시 맥락 안의 연결어임"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "원문에 없는 사실·수치·경험이 들어가지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "모든 핵심 정보 유지, 소제목 수식어만 줄임"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "7일, 2020년 10월 유지"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "바뀐 것으로 보입니다 / 합리적인 기준이라고 생각합니다"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "아래 세 가지 중 하나라도 해당하면 문서24로 신청할 수 없습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "문서24, 홈택스, 정부24, 인감증명서, 본인서명사실확인서, 카카오톡 유지"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "글 전체를 후기체로 다듬어 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16590,
+            "wallMs": 17881,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3554,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2113,
+              "thinkingTokens": 202
+            },
+            "costUsd": 0.07119600000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/doc24-review-2021-polish-r1": {
+      "id": "doc24-review-2021-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "문서24",
+          "정부24",
+          "홈택스",
+          "인감증명서",
+          "본인서명사실확인서"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:18:50.622Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "문서24로 신청할 수 없는 세 경우",
+              "status": "kept",
+              "evidence": "1) 문서 처리 수수료가 발생하는 민원, 2) 별도 업무 처리 시스템이 있는 민원, 3) 행정기관 방문과 본인 확인이 필수인 민원은 문서24로 신청할 수 없습니다."
+            },
+            {
+              "item": "별도 업무 처리 시스템의 뜻",
+              "status": "kept",
+              "evidence": "참고로 별도 업무 처리 시스템은 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다."
+            },
+            {
+              "item": "본인 확인 필수 경우를 막은 것이 합리적이라는 필자의 생각",
+              "status": "kept",
+              "evidence": "또 인감증명서나 본인서명사실확인서처럼 본인 확인이 필수인 민원을 문서24로 처리하지 못하게 한 것은 합리적이라고 생각합니다."
+            },
+            {
+              "item": "개인 또는 법인/단체 가입, 개인은 카카오·네이버 가입 가능",
+              "status": "kept",
+              "evidence": "문서24를 처음 사용하려면 먼저 개인 사용자나 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버로도 가입할 수 있어서 더 간편한데요."
+            },
+            {
+              "item": "작성 후 기관 선택·제출 절차와 이용이 어렵지 않았다는 경험",
+              "status": "kept",
+              "evidence": "문서24 홈페이지는 매우 직관적으로 되어 있어서 이용하기 어렵지 않았습니다. 먼저 제출할 공문서의 내용을 작성하고, 그다음 받는 기관을 선택해서 제출하면 되는 간단한 절차였습니다."
+            },
+            {
+              "item": "수신기관 한 곳만 선택 가능",
+              "status": "kept",
+              "evidence": "공문서를 작성할 때 수신기관을 한 곳만 선택할 수 있다는 것인데요."
+            },
+            {
+              "item": "예전엔 여러 곳 선택 가능, 광고·홍보성 문서로 바뀐 것 같다는 추측",
+              "status": "kept",
+              "evidence": "과거에는 여러 곳을 선택할 수 있었는데 광고와 홍보성 문서가 많아져서 바뀐 것 같습니다."
+            },
+            {
+              "item": "재작성 메뉴",
+              "status": "kept",
+              "evidence": "문서24에는 기존 문서와 똑같이 작성할 수 있는 재작성 메뉴가 있으니 활용하면 좋습니다."
+            },
+            {
+              "item": "7일 동안만 확인 가능, 별도 저장 필요",
+              "status": "kept",
+              "evidence": "한 가지 유의할 점은 작성한 문서를 7일 동안만 다시 확인할 수 있다는 것입니다. 나중에 다시 보려면 별도로 저장해 두어야 합니다."
+            },
+            {
+              "item": "접수 시 카카오톡 알림",
+              "status": "kept",
+              "evidence": "문서24는 제출한 공문이 접수 처리되면 카카오톡으로 알려 주기 때문에 문서가 접수되었는지 따로 확인할 필요가 없습니다."
+            },
+            {
+              "item": "2020년 10월 모바일 문서24 개통",
+              "status": "kept",
+              "evidence": "또한 2020년 10월부터는 모바일 문서24가 개통되어 핸드폰으로도 공문서 처리 내용을 확인할 수 있어 더욱 편리해졌습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "추측을 확인된 사실로 바꾸기",
+              "status": "ok",
+              "evidence": "광고와 홍보성 문서가 많아져서 바뀐 것 같습니다."
+            },
+            {
+              "item": "세 경우 빼기·합치기·새로 만들기",
+              "status": "ok",
+              "evidence": "1) 문서 처리 수수료가 발생하는 민원, 2) 별도 업무 처리 시스템이 있는 민원, 3) 행정기관 방문과 본인 확인이 필수인 민원"
+            },
+            {
+              "item": "7일, 2020년 10월 변경",
+              "status": "ok",
+              "evidence": "7일 동안만 다시 확인할 수 있다는 것입니다. / 2020년 10월부터는 모바일 문서24가 개통되어"
+            },
+            {
+              "item": "필자의 생각을 사실로 바꾸거나 지우기",
+              "status": "ok",
+              "evidence": "합리적이라고 생각합니다."
+            },
+            {
+              "item": "원문에 없는 사실 등 추가",
+              "status": "ok",
+              "evidence": "결과 전체가 원문 내용만 다시 다듬었고 새 사실·수치·경험이 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "원문에 없는 사실·수치·평가가 추가되지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "모든 문단의 핵심 정보가 유지됨"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "7일 동안만 다시 확인할 수 있다는 것입니다. / 2020년 10월부터는"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "바뀐 것 같습니다. / 합리적이라고 생각합니다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "물론 여러 곳에 같은 문서를 보내야 하면 조금 불편하기는 해도"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "문서24, 홈택스, 정부24, 인감증명서, 본인서명사실확인서, 카카오톡 등 고유 이름 유지"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "어색한 표현만 다듬은 전체 본문을 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 18562,
+            "wallMs": 19697,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3305,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2297,
+              "thinkingTokens": 170
+            },
+            "costUsd": 0.072884,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/doc24-review-2021-polish-r2": {
+      "id": "doc24-review-2021-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "문서24",
+          "정부24",
+          "홈택스",
+          "인감증명서",
+          "본인서명사실확인서"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:18:50.629Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "문서24로 신청할 수 없는 세 경우",
+              "status": "kept",
+              "evidence": "1) 문서 처리 수수료가 발생하는 경우, 2) 별도 업무 처리 시스템이 있는 경우, 3) 행정기관 방문과 본인 확인이 필수인 경우에는 문서24로 신청할 수 없습니다."
+            },
+            {
+              "item": "별도 업무 처리 시스템의 뜻",
+              "status": "kept",
+              "evidence": "참고로 별도 업무 처리 시스템이란 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다."
+            },
+            {
+              "item": "본인 확인 필수 경우를 막은 것이 합리적이라는 필자의 생각",
+              "status": "kept",
+              "evidence": "인감증명서나 본인서명사실확인서처럼 본인 확인이 필수인 민원을 문서24로 처리하지 못하게 한 것은 합리적이라고 생각합니다."
+            },
+            {
+              "item": "개인 또는 법인/단체 가입, 개인은 카카오·네이버 가입 가능",
+              "status": "kept",
+              "evidence": "개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버로도 가입할 수 있어 더 간편한데요."
+            },
+            {
+              "item": "작성 후 기관 선택·제출 절차와 이용이 어렵지 않았다는 경험",
+              "status": "kept",
+              "evidence": "문서24 홈페이지는 매우 직관적으로 되어 있어서 이용하기 어렵지 않았습니다. 먼저 제출할 공문서 내용을 작성하고, 그다음 받는 기관을 선택해 제출하면 되는 간편한 절차였습니다."
+            },
+            {
+              "item": "수신기관 한 곳만 선택 가능",
+              "status": "kept",
+              "evidence": "공문서를 작성할 때 수신기관을 단 한 곳만 선택할 수 있다는 것인데요."
+            },
+            {
+              "item": "예전엔 여러 곳 선택 가능, 광고·홍보성 문서로 바뀐 것 같다는 추측",
+              "status": "kept",
+              "evidence": "예전에는 여러 곳을 선택할 수 있었는데 광고와 홍보성 문서가 많아지면서 바뀐 것 같습니다."
+            },
+            {
+              "item": "재작성 메뉴",
+              "status": "kept",
+              "evidence": "문서24에는 기존 문서와 똑같은 문서를 작성할 수 있는 재작성 메뉴가 있으니 활용하면 좋습니다."
+            },
+            {
+              "item": "7일 동안만 확인 가능, 따로 저장 필요",
+              "status": "kept",
+              "evidence": "작성한 문서는 7일 동안만 다시 확인할 수 있어서 나중에 다시 보려면 따로 저장해 두어야 합니다."
+            },
+            {
+              "item": "접수 시 카카오톡 알림",
+              "status": "kept",
+              "evidence": "문서24는 제출한 공문이 접수되면 카카오톡으로 알려 주기 때문에 접수 여부를 따로 확인할 필요가 없습니다."
+            },
+            {
+              "item": "2020년 10월 모바일 문서24 개통",
+              "status": "kept",
+              "evidence": "또한 2020년 10월에 모바일 문서24가 개통되면서 핸드폰으로도 공문서 처리 내용을 확인할 수 있어 더욱 편리해졌습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "추측을 사실로 바꾸기",
+              "status": "ok",
+              "evidence": "광고와 홍보성 문서가 많아지면서 바뀐 것 같습니다."
+            },
+            {
+              "item": "세 경우 중 빼거나 합치거나 새로 만들기",
+              "status": "ok",
+              "evidence": "1) 문서 처리 수수료가 발생하는 경우, 2) 별도 업무 처리 시스템이 있는 경우, 3) 행정기관 방문과 본인 확인이 필수인 경우"
+            },
+            {
+              "item": "7일, 2020년 10월 바꾸기",
+              "status": "ok",
+              "evidence": "7일 동안만 다시 확인할 수 있어서 / 2020년 10월에 모바일 문서24가 개통되면서"
+            },
+            {
+              "item": "필자의 생각을 사실로 바꾸거나 지우기",
+              "status": "ok",
+              "evidence": "합리적이라고 생각합니다."
+            },
+            {
+              "item": "원문에 없는 사실 등 추가",
+              "status": "ok",
+              "evidence": "결과 전체가 원문 내용을 다시 다듬은 것이며 새 내용이 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "새로운 사실·수치·평가가 추가되지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "모든 문단의 핵심 정보가 유지됨"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "작성한 문서는 7일 동안만 다시 확인할 수 있어서"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "바뀐 것 같습니다 / 합리적이라고 생각합니다 — 추측과 의견 표시 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "여러 곳에 같은 문서를 보내야 할 때는 조금 불편하지만"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "홈택스나 정부24, 인감증명서나 본인서명사실확인서, 카카오톡 등 고유 이름 유지"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "어색한 표현만 다듬은 본문을 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 17695,
+            "wallMs": 18856,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3295,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2318,
+              "thinkingTokens": 279
+            },
+            "costUsd": 0.07322400000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/hangang-water-2018-polish-r1": {
+      "id": "hangang-water-2018-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "물이용부담금",
+          "물길따라 한강愛"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:19:08.826Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "한강물이 약 2,600만 수도권 시민에게 물을 제공한다는 수치와 대상",
+              "status": "kept",
+              "evidence": "약 2,600만 수도권 시민에게 물을 공급하는 한강물이"
+            },
+            {
+              "item": "한강물이 깨끗한 이유가 상류에서 물을 깨끗하게 관리했기 때문이라는 설명",
+              "status": "kept",
+              "evidence": "한강물이 깨끗한 이유는 상류에서 물을 깨끗하게 관리했기 때문입니다."
+            },
+            {
+              "item": "상류지역 주민들이 공장을 함부로 세우지 못하고 관광을 위한 개발도 할 수 없다는 제약",
+              "status": "kept",
+              "evidence": "공장도 함부로 세우지 못하고 관광을 위한 개발도 할 수 없습니다."
+            },
+            {
+              "item": "물이용부담금이 상류 주민의 희생을 해소하려고 생겼다는 설명",
+              "status": "kept",
+              "evidence": "그 지역 주민들의 희생을 덜어 주기 위해 생긴 것이 ‘물이용부담금’입니다."
+            },
+            {
+              "item": "유동길 주무관의 말: 1톤당 170원, 4인 가족 한 달 평균 4,500원, 주민 지원사업",
+              "status": "kept",
+              "evidence": "“한강 하류의 주민들이 물을 사용할 때마다 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다. 이 자금으로 주민 지원사업을 진행하고 또 여러 지원을 하고 있습니다.”라고 했습니다."
+            },
+            {
+              "item": "‘물길따라 한강愛’ 트레킹의 또 다른 목적이 주무관의 말로 남는 것",
+              "status": "kept",
+              "evidence": "또한 ‘물길따라 한강愛’ 트레킹의 또 다른 중요한 목적은 이런 상류지역 주민들의 고통을 알리고, 한강에 사는 상하류지역 주민들이 서로 만나도록 연결해 주는 것이라고 했습니다."
+            },
+            {
+              "item": "필자가 희생을 처음 알았다는 경험과 알아주고 감사해야 한다는 생각",
+              "status": "kept",
+              "evidence": "저는 깨끗한 수돗물을 마시는 데 누군가의 희생과 어려움이 따랐다는 사실을 처음 알았습니다. ... 그 희생을 알아주어야 한다고 생각합니다. 그리고 그분들에게 감사하는 마음도 가져야 한다고 생각합니다."
+            },
+            {
+              "item": "필자의 쓰레기 줄이기·일회용품 사용 줄이기 실천",
+              "status": "kept",
+              "evidence": "저는 쓰레기를 적게 만들고 1회용품 사용을 줄이는 등 노력하고 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "수치나 그 대상 변경",
+              "status": "ok",
+              "evidence": "약 2,600만 수도권 시민에게 / 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도"
+            },
+            {
+              "item": "전해 들은 말을 필자의 단정으로 바꾸기",
+              "status": "ok",
+              "evidence": "우리나라 수돗물은 매우 깨끗하다고 합니다. / 많은 희생을 하고 있다고 합니다. / 연결해 주는 것이라고 했습니다."
+            },
+            {
+              "item": "필자의 생각을 일반 사실이나 지시로 바꾸기",
+              "status": "ok",
+              "evidence": "그 희생을 알아주어야 한다고 생각합니다."
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·인물 발언 추가",
+              "status": "ok",
+              "evidence": "추가된 내용 없음. 문장 다듬기만 이루어짐."
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "새 사실이나 수치가 추가되지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문 다섯 문단의 내용이 모두 남아 있음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "‘~다고 합니다’, ‘~라고 했습니다’, ‘~라고 생각합니다’가 모두 유지됨"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "누군가 우리를 위해 원하지 않는 희생을 하고 있다면 그 희생을 알아주어야 한다고 생각합니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "인용문 안쪽과 ‘물길따라 한강愛’, 한강유역환경청 유동길 주무관이 그대로 유지됨"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "어색한 문장만 다듬고 말투(~습니다체)와 의견을 유지했으며 본문만 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 17062,
+            "wallMs": 18198,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 2995,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2233,
+              "thinkingTokens": 344
+            },
+            "costUsd": 0.069124,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/hangang-water-2018-polish-r2": {
+      "id": "hangang-water-2018-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "물이용부담금",
+          "물길따라 한강愛"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:19:07.417Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "한강물이 약 2,600만 수도권 시민에게 물을 제공한다는 수치와 대상",
+              "status": "kept",
+              "evidence": "약 2,600만 수도권 시민에게 물을 공급하는 한강물이"
+            },
+            {
+              "item": "한강물이 깨끗한 이유가 상류에서 물을 깨끗하게 관리했기 때문이라는 설명",
+              "status": "kept",
+              "evidence": "한강물이 깨끗한 이유는 한강 상류에서 물을 깨끗하게 관리했기 때문입니다."
+            },
+            {
+              "item": "상류지역 주민들이 공장을 함부로 세우지 못하고 관광을 위한 개발도 할 수 없다는 제약",
+              "status": "kept",
+              "evidence": "공장도 함부로 세우지 못하고 관광을 위한 개발도 할 수 없습니다."
+            },
+            {
+              "item": "물이용부담금이 상류 주민의 희생을 해소하려고 생겼다는 설명",
+              "status": "kept",
+              "evidence": "이 주민들의 희생을 덜어 주기 위해 생긴 것이 ‘물이용부담금’입니다."
+            },
+            {
+              "item": "유동길 주무관의 말: 1톤당 170원, 4인 가족 월 평균 4,500원, 주민 지원사업",
+              "status": "kept",
+              "evidence": "“한강 하류의 주민들이 물을 사용할 때마다 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다. 이 자금으로 주민 지원사업을 진행하고 또 여러 지원을 하고 있습니다.”라고 했습니다."
+            },
+            {
+              "item": "‘물길따라 한강愛’ 트레킹의 또 다른 목적이 주무관이 한 말로 남는 것",
+              "status": "kept",
+              "evidence": "또한 ‘물길따라 한강愛’ 트레킹의 또 다른 중요한 목적은 이런 상류지역 주민들의 고통을 알리고, 한강에 사는 상·하류지역 주민들의 만남을 이어 주는 것이라고 했습니다."
+            },
+            {
+              "item": "필자가 희생을 처음 알았다는 경험과 알아주고 감사해야 한다는 생각",
+              "status": "kept",
+              "evidence": "누군가의 희생과 어려움이 따랐다는 사실을 처음 알았습니다. ... 그 희생을 알아주어야 한다고 생각합니다. 그리고 그분들에게 감사하는 마음도 가져야 한다고 생각합니다."
+            },
+            {
+              "item": "필자가 쓰레기를 적게 만들고 일회용품 사용을 줄이려고 노력한다는 개인 실천",
+              "status": "kept",
+              "evidence": "저는 쓰레기를 적게 만들려고 노력하고, 1회용품 사용을 줄이는 등의 실천을 하고 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "수치(2,600만, 1톤당 170원, 4,500원)나 그 대상을 바꾸기",
+              "status": "ok",
+              "evidence": "약 2,600만 수도권 시민에게 ... 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도"
+            },
+            {
+              "item": "전해 들은 말을 필자가 직접 확인한 사실이나 단정으로 바꾸기",
+              "status": "ok",
+              "evidence": "우리나라 수돗물은 매우 깨끗하다고 합니다. / 많은 희생을 하고 있다고 합니다. / ~것이라고 했습니다."
+            },
+            {
+              "item": "필자의 생각을 일반적인 사실이나 독자에게 하는 지시로 바꾸기",
+              "status": "ok",
+              "evidence": "그 희생을 알아주어야 한다고 생각합니다."
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·인물 발언 추가",
+              "status": "ok",
+              "evidence": "결과 전체가 원문 문장을 다듬은 수준이며 새로운 내용 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "원문에 없는 사실·수치·발언이 추가되지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "다섯 문단 모두 원문 내용 그대로 유지"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "‘~다고 합니다’, ‘~라고 했습니다’, ‘~다고 생각합니다’ 표시 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "누군가 우리를 위해서 자신이 원하지 않는 희생을 하고 있다면 그 희생을 알아주어야 한다고 생각합니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "인용문 안쪽 문장과 ‘물길따라 한강愛’, 한강유역환경청 유동길 주무관 그대로"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "어색한 문장만 다듬고 말투(~합니다체)와 의견 유지, 본문만 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15527,
+            "wallMs": 16783,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3015,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2139,
+              "thinkingTokens": 214
+            },
+            "costUsd": 0.067404,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/olympics-home-2022-deslop-r1": {
+      "id": "olympics-home-2022-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": false,
+      "exact": {
+        "checked": [
+          "https://2022teamkoreahouse.com/ko/home/"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:19:32.772Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "오미크론 대확산으로 고비를 맞았고, 이를 막는 가장 좋은 방법이 집콕이 아닐까 한다는 필자의 생각(추측 어조)",
+              "status": "kept",
+              "evidence": "이럴 때 가장 확실한 방어책은 아무래도 '집콕'이 아닐까 싶다."
+            },
+            {
+              "item": "2022 베이징동계올림픽 개막에 대한 필자의 들뜬 마음",
+              "status": "kept",
+              "evidence": "그래서인지 개막이 더 설렌다."
+            },
+            {
+              "item": "쇼트트랙은 기록이 아니라 결승선 통과 순위로 메달 색깔이 정해진다는 설명",
+              "status": "kept",
+              "evidence": "기록이 아니라 결승선을 통과하는 순위에 따라 메달의 색이 갈리니"
+            },
+            {
+              "item": "온라인 코리아하우스를 문화체육관광부와 대한체육회가 마련했다는 점과 그 주소",
+              "status": "kept",
+              "evidence": "문화체육관광부와 대한체육회가 연 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다."
+            },
+            {
+              "item": "온라인 코리아하우스가 지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 열었고 스포츠 외교의 장이자 대한민국 홍보관 역할을 했다는 점",
+              "status": "kept",
+              "evidence": "지난해 도쿄올림픽 때 코로나19 대유행을 고려해 문을 연 곳으로, 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며"
+            },
+            {
+              "item": "2월 한 달간 온라인 코리아하우스에서 응원 메시지를 보내고 경기 일정과 관련 이슈를 볼 수 있다는 점",
+              "status": "kept",
+              "evidence": "올해도 2월 한 달 동안 온라인 코리아하우스에서 선수들을 향한 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 볼 수 있다고 한다."
+            },
+            {
+              "item": "올림픽 기간 네이버 특집 페이지에서 특집 영상, 일러스트 선수 소개, 동계올림픽 역사, 종목별 경기 일정을 볼 수 있다고 해서 필자가 접속해 봤다는 점",
+              "status": "distorted",
+              "evidence": "본문은 '네이버 특집 페이지에서도 ... 모두 볼 수 있다기에 직접 접속해 봤다'로 유지했으나, 제목은 '집에서 보는 베이징동계올림픽, 온라인 코리아하우스에 들어가 봤다'로 필자가 접속한 곳을 온라인 코리아하우스로 바꿔 놓았다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "필자의 추측·느낌을 단정으로 바꾸기",
+              "status": "ok",
+              "evidence": "'아닐까 싶다', '길잡이가 될 듯하다', '볼 수 있다고 한다'가 그대로 남아 있다."
+            },
+            {
+              "item": "기관 이름이나 서비스 범위를 바꾸기",
+              "status": "violated",
+              "evidence": "제목 '온라인 코리아하우스에 들어가 봤다' — 원문에서 필자는 네이버 특집 페이지 내용을 보고 '직접 접속해 봤다'고 했는데, 제목은 접속한 대상을 온라인 코리아하우스로 바꿨다."
+            },
+            {
+              "item": "원문에 없는 경기 결과·선수·일정·기능 추가",
+              "status": "ok",
+              "evidence": "경기 결과·선수·일정·기능은 추가되지 않았다."
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·인물 발언 추가",
+              "status": "violated",
+              "evidence": "'온라인 코리아하우스에 들어가 봤다' — 원문에 없는 방문 경험을 제목에 새로 넣었다."
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "problem",
+              "evidence": "제목 '집에서 보는 베이징동계올림픽, 온라인 코리아하우스에 들어가 봤다'는 원문에 없는 '온라인 코리아하우스 방문' 경험을 단정한다."
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문 문단의 핵심 정보가 모두 본문에 남아 있다."
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "'2월 한 달 동안', '지난해 도쿄올림픽', '2022 베이징동계올림픽'이 그대로 남아 있다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "'아닐까 싶다', '될 듯하다', '볼 수 있다고 한다'의 확실성 정도가 그대로다. '뜨거운 관심'→'많은 관심'은 근거 없는 수식어를 덜어낸 것이다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "'올림픽 기간에는 네이버 특집 페이지에서도', '2월 한 달 동안'이라는 조건이 그대로 남아 있다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "(https://2022teamkoreahouse.com/ko/home/), 문화체육관광부, 대한체육회, 네이버가 그대로 남아 있다."
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "블로그 글로 고친 본문을 돌려주었고, 수정 내용은 메모로 따로 알렸다."
+            }
+          ],
+          "verdict": "fail",
+          "fail_reasons": [
+            "새 제목 '온라인 코리아하우스에 들어가 봤다'는 원문에 없는 방문 경험을 넣었고, 필자가 접속한 곳(원문 맥락상 네이버 특집 페이지)을 온라인 코리아하우스로 바꿔 서비스 범위를 왜곡했다."
+          ]
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 24448,
+            "wallMs": 25350,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3122,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 3040,
+              "thinkingTokens": 878
+            },
+            "costUsd": 0.08628000000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/olympics-home-2022-deslop-r2": {
+      "id": "olympics-home-2022-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "https://2022teamkoreahouse.com/ko/home/"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:19:25.508Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "오미크론 대확산으로 고비, 집콕이 가장 좋은 방법이 아닐까 한다는 추측 어조",
+              "status": "kept",
+              "evidence": "코로나19 오미크론 변이가 빠르게 번지면서 방역이 최대 고비를 맞았다. 이럴 때 가장 확실한 방어책은 아무래도 '집콕'이 아닐까 싶다."
+            },
+            {
+              "item": "베이징동계올림픽 개막에 대한 들뜬 마음",
+              "status": "kept",
+              "evidence": "그만큼 개막이 더 설렌다."
+            },
+            {
+              "item": "쇼트트랙은 기록이 아니라 순위로 메달 색이 정해짐",
+              "status": "kept",
+              "evidence": "기록이 아니라 결승선을 통과하는 순위로 메달 색이 갈리니, 동계스포츠 가운데서도 손꼽히게 짜릿하다."
+            },
+            {
+              "item": "문체부·대한체육회가 마련한 온라인 코리아하우스와 주소",
+              "status": "kept",
+              "evidence": "문화체육관광부와 대한체육회가 마련한 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다."
+            },
+            {
+              "item": "도쿄올림픽 때 대유행 고려해 개설, 스포츠 외교의 장이자 홍보관 역할",
+              "status": "kept",
+              "evidence": "지난해 도쿄올림픽 때도 코로나19 대유행을 고려해 문을 열었고, 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 관심을 받았다."
+            },
+            {
+              "item": "2월 한 달간 응원 메시지, 경기 일정과 관련 이슈",
+              "status": "kept",
+              "evidence": "올해도 2월 한 달 동안 온라인 코리아하우스에서 선수들을 향한 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 볼 수 있다고 한다."
+            },
+            {
+              "item": "네이버 특집 페이지 내용과 필자가 접속해 봤다는 점",
+              "status": "kept",
+              "evidence": "올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, 일러스트로 만나는 대한민국 선수 소개, 동계올림픽의 역사, 종목별 경기 일정을 모두 즐길 수 있다기에 직접 접속해 봤다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "추측·느낌을 단정으로 바꾸기",
+              "status": "ok",
+              "evidence": "'집콕'이 아닐까 싶다. / 요긴한 길잡이가 될 듯하다. / 볼 수 있다고 한다."
+            },
+            {
+              "item": "기관 이름이나 서비스 범위 바꾸기",
+              "status": "ok",
+              "evidence": "네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, 일러스트로 만나는 대한민국 선수 소개, 동계올림픽의 역사, 종목별 경기 일정을"
+            },
+            {
+              "item": "원문에 없는 경기 결과·선수·일정·기능 추가",
+              "status": "ok",
+              "evidence": "추가된 경기 결과·선수·기능 없음"
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·발언 추가",
+              "status": "ok",
+              "evidence": "본문은 원문 내용을 다듬기만 했고 새 사실 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "집에 있어도 세계인과 함께 즐길 수 있는 대회가 다시 막을 올린다. — 원문 내용 범위 내"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "'뜨거운' 수식어만 덜었고 핵심 정보는 모두 남음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "2022 베이징동계올림픽 / 2월 한 달 동안"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "한눈에 볼 수 있다고 한다. 집콕 중인 올림픽 팬에게 요긴한 길잡이가 될 듯하다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "올림픽 기간에는 네이버 특집 페이지에서도"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "(https://2022teamkoreahouse.com/ko/home/)"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "블로그 글로 다시 쓴 본문과 짧은 메모를 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15699,
+            "wallMs": 16678,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3154,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2054,
+              "thinkingTokens": 340
+            },
+            "costUsd": 0.066816,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/olympics-home-2022-polish-r1": {
+      "id": "olympics-home-2022-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "https://2022teamkoreahouse.com/ko/home/"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:19:42.739Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "오미크론 대확산으로 고비, 집콕이 가장 좋은 방법이 아닐까 한다는 추측",
+              "status": "kept",
+              "evidence": "최근 코로나19 신종 변이인 오미크론이 크게 퍼지면서 최대 고비를 맞고 있다. 이를 막는 가장 좋은 방법은 집콕이 아닐까 싶다."
+            },
+            {
+              "item": "베이징동계올림픽 개막에 대한 들뜬 마음",
+              "status": "kept",
+              "evidence": "막상 개막하니 들뜬 마음을 감출 수가 없다."
+            },
+            {
+              "item": "쇼트트랙은 기록이 아니라 결승선 통과 순위로 메달 색깔 결정",
+              "status": "kept",
+              "evidence": "기록에 도전하는 것이 아니라 결승선 통과 순위에 따라 메달 색깔이 결정되기 때문에 동계스포츠 중 가장 짜릿한 종목이기도 하다."
+            },
+            {
+              "item": "문화체육관광부와 대한체육회가 마련, 주소",
+              "status": "kept",
+              "evidence": "문화체육관광부와 대한체육회가 만든 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다."
+            },
+            {
+              "item": "도쿄올림픽 때 대유행 고려해 개설, 스포츠 외교의 장·홍보관 역할",
+              "status": "kept",
+              "evidence": "지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 해 세계인의 뜨거운 관심을 받기도 했다."
+            },
+            {
+              "item": "2월 한 달간 응원 메시지, 경기 일정·관련 이슈",
+              "status": "kept",
+              "evidence": "올해도 2월 한 달간 온라인 코리아하우스에서 선수들에게 응원 메시지를 보내는 것은 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다니 요긴하게 활용할 수 있을 것 같다."
+            },
+            {
+              "item": "네이버 특집 페이지 내용과 필자의 접속",
+              "status": "kept",
+              "evidence": "올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상을 비롯해 일러스트로 보는 대한민국 선수 소개, 동계올림픽 역사, 종목별 경기 일정까지 즐길 수 있다고 해 접속해봤다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "추측·느낌을 단정으로 바꾸기",
+              "status": "ok",
+              "evidence": "집콕이 아닐까 싶다. / 요긴하게 활용할 수 있을 것 같다."
+            },
+            {
+              "item": "기관 이름이나 서비스 범위 바꾸기",
+              "status": "ok",
+              "evidence": "올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상을 비롯해 ..."
+            },
+            {
+              "item": "원문에 없는 경기 결과·선수·일정·기능 추가",
+              "status": "ok",
+              "evidence": "추가된 경기 결과·선수·일정·기능 없음"
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·발언 추가",
+              "status": "ok",
+              "evidence": "특히 쇼트트랙은 스피드를 대리만족하며 즐길 수 있는 종목이다. (원문 내용을 문장으로 나눈 것)"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "새로운 사실 없음. \"이번 대회가 열리기까지 코로나19로 어려움도 많았지만\""
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "\"한눈에 즐길\"에서 '한눈에'가 빠졌지만 핵심 정보는 아님: \"종목별 경기 일정까지 즐길 수 있다고 해 접속해봤다.\""
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "\"2월 한 달간\", \"2022 베이징동계올림픽\" 유지"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "\"마련됐다고 해 눈길을 끈다\", \"즐길 수 있다고 해\" 같은 전언 표시 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "\"올림픽 기간에는 네이버 특집 페이지에서도\" 기간 조건 유지"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "\"(https://2022teamkoreahouse.com/ko/home/)\" 주소 동일, 기관명 동일"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "블로그 글 전체를 말투를 유지한 채 다듬어 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16354,
+            "wallMs": 17225,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 2917,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2145,
+              "thinkingTokens": 328
+            },
+            "costUsd": 0.06674000000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/olympics-home-2022-polish-r2": {
+      "id": "olympics-home-2022-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "https://2022teamkoreahouse.com/ko/home/"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:19:56.610Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "오미크론 대확산으로 고비를 맞았고, 이를 막는 가장 좋은 방법이 집콕이 아닐까 한다는 필자의 생각(추측 어조)",
+              "status": "kept",
+              "evidence": "최근 코로나19 신종 변이인 오미크론이 대확산하면서 최대 고비를 맞고 있다. 이를 막는 가장 좋은 방법은 집콕이 아닐까 싶다."
+            },
+            {
+              "item": "2022 베이징동계올림픽 개막에 대한 필자의 들뜬 마음",
+              "status": "kept",
+              "evidence": "개최되기까지 코로나19로 어려움이 많았지만, 막상 동계올림픽이 개막하니 들뜬 마음을 감출 수 없다."
+            },
+            {
+              "item": "쇼트트랙은 기록이 아니라 결승선 통과 순위로 메달 색깔이 정해진다는 설명",
+              "status": "kept",
+              "evidence": "쇼트트랙은 기록에 도전하는 종목이 아니라 결승선 통과 순위로 메달 색깔이 가려져"
+            },
+            {
+              "item": "온라인 코리아하우스를 문화체육관광부와 대한체육회가 마련했다는 점과 그 주소",
+              "status": "kept",
+              "evidence": "문화체육관광부와 대한체육회가 연 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다."
+            },
+            {
+              "item": "온라인 코리아하우스가 지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 열었고 스포츠 외교의 장이자 대한민국 홍보관 역할을 했다는 점",
+              "status": "kept",
+              "evidence": "지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 뜨거운 관심을 받기도 했다."
+            },
+            {
+              "item": "2월 한 달간 온라인 코리아하우스에서 응원 메시지를 보내고 경기 일정과 관련 이슈를 볼 수 있다는 점",
+              "status": "kept",
+              "evidence": "올해도 2월 한 달간 온라인 코리아하우스에서 선수들에게 응원 메시지를 보내는 것은 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다니"
+            },
+            {
+              "item": "올림픽 기간 네이버 특집 페이지에서 특집 영상, 일러스트 선수 소개, 동계올림픽 역사, 종목별 경기 일정을 볼 수 있다고 해서 필자가 접속해 봤다는 점",
+              "status": "kept",
+              "evidence": "올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, 일러스트로 만나는 대한민국 선수 소개, 동계올림픽 역사, 종목별 경기 일정을 즐길 수 있다고 해 접속해봤다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "필자의 추측·느낌(‘~아닐까 싶다’, ‘~것 같다’)을 단정으로 바꾸기",
+              "status": "ok",
+              "evidence": "이를 막는 가장 좋은 방법은 집콕이 아닐까 싶다. / 요긴하게 활용할 수 있을 것 같다."
+            },
+            {
+              "item": "기관 이름이나 서비스 범위를 바꾸기(네이버 특집 페이지의 내용을 다른 곳의 기능처럼 쓰기 등)",
+              "status": "ok",
+              "evidence": "올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, ... 즐길 수 있다고 해 접속해봤다."
+            },
+            {
+              "item": "원문에 없는 경기 결과·선수·일정·기능 추가",
+              "status": "ok",
+              "evidence": "추가된 경기 결과·선수·일정·기능 없음"
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·인물 발언 추가",
+              "status": "ok",
+              "evidence": "추가된 사실·수치·경험·감상·평가·발언 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "원문 내용 범위 안에서 표현만 다듬음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 모든 문단과 핵심 정보가 결과에 남아 있음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "2022, 2월 한 달간 등 수치와 기간이 그대로임"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "'~아닐까 싶다', '~것 같다', '~다고 해' 등 추측과 전해 들은 말의 표시가 유지됨"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "쇼트트랙은 기록에 도전하는 종목이 아니라 결승선 통과 순위로 메달 색깔이 가려져"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "요청대로 블로그 글 전체를 자연스럽게 다듬은 본문을 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 22941,
+            "wallMs": 23834,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 2901,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 3003,
+              "thinkingTokens": 555
+            },
+            "costUsd": 0.08377200000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/relief-fund-2020-deslop-r1": {
+      "id": "relief-fund-2020-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": false,
+      "exact": {
+        "checked": [
+          "대구서부고용복지플러스센터"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:20:24.749Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "신청 기간이 6월 1일부터 7월 20일까지라는 점",
+              "status": "kept",
+              "evidence": "6월 1일부터 7월 20일까지 신청을 받고 있습니다."
+            },
+            {
+              "item": "온라인 신청은 6월 1일부터, 현장 신청 첫 2주(6월 22일~7월 3일)는 출생연도에 따른 5부제, 7월 6일부터는 누구나 현장 접수 가능",
+              "status": "distorted",
+              "evidence": "6월 1일부터는 온라인으로만 신청을 받았고, 현장 접수를 시작한 6월 22일부터 7월 3일까지 2주간은 출생연도에 따른 5부제로 운영했습니다. — 원문에 없는 '만'이 추가되어 온라인 접수가 유일한 방식이었거나 현장 접수로 대체된 것처럼 읽힐 수 있음"
+            },
+            {
+              "item": "대구시는 고용복지센터 각 지점에서 접수할 수 있다고 한다는 전언",
+              "status": "kept",
+              "evidence": "제가 사는 대구시에서는 고용복지센터 각 지점에서 접수가 가능하다고 합니다."
+            },
+            {
+              "item": "특수고용·프리랜서의 비교 기준: 지난 연소득 평균 또는 3~4월, 12월~올해 1월 중 유리한 것을 골라 올해 3, 4월과 비교",
+              "status": "kept",
+              "evidence": "지난해 연소득 평균, 3~4월, 12월~올해 1월 중 유리한 기간을 골라 올해 3, 4월 소득과 비교합니다."
+            },
+            {
+              "item": "요건: 월 평균 25만원 이상 또는 2개월 합산 소득 50만원 초과, 그리고 올해 3, 4월 소득이 25퍼센트 이상 감소",
+              "status": "kept",
+              "evidence": "비교 기간의 소득이 월 평균 25만원 이상이거나 2개월 합산 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 기간보다 25퍼센트 이상 줄었을 때 신청할 수 있습니다."
+            },
+            {
+              "item": "무급휴직자는 3~5월 일정 기간 이상 무급휴직이 입증되면 신청 가능",
+              "status": "kept",
+              "evidence": "무급휴직자는 3∼5월에 일정 기간 이상 무급휴직을 한 사실을 입증하면 신청할 수 있습니다."
+            },
+            {
+              "item": "필자는 전시관이 문을 닫아 3, 4월 수입이 없었고 작년 12월과 올해 1월 수입을 입증해야 했다는 사정",
+              "status": "kept",
+              "evidence": "저는 올해 초 일하던 전시관이 문을 닫아 3, 4월 수입이 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다."
+            },
+            {
+              "item": "50만원이 넘으면 한 달치만, 그 이하면 두 달을 합산해 첨부한다는 조건",
+              "status": "kept",
+              "evidence": "한 달 소득이 50만원을 넘으면 한 달치만 첨부하면 되지만, 그 이하라면 두 달을 합산해야 합니다."
+            },
+            {
+              "item": "위탁업체가 바뀌어 소득 증빙이 어려웠고 통장사본·위촉장 등으로 증빙 서류를 챙겼다는 경험",
+              "status": "kept",
+              "evidence": "공교롭게도 근무지 위탁업체가 바뀌는 바람에 소득 증빙이 쉽지 않았습니다. 고민 끝에 통장 사본과 위촉장 등으로 서류를 챙겨"
+            },
+            {
+              "item": "센터의 층별 구분(1층 무급휴직자, 7층 특수고용·프리랜서, 8층 영세자영업자)과 오전 9시 반쯤 바로 신청했다는 경험",
+              "status": "kept",
+              "evidence": "1층은 무급휴직자, 7층은 특수고용·프리랜서, 8층은 영세자영업자 접수처였습니다. 오전 9시 반쯤 도착했습니다. 긴 줄을 예상했는데 기다리지 않고 바로 신청할 수 있었습니다."
+            },
+            {
+              "item": "신청 접수를 끝내고 심사 결과를 기다리는 상태이며, 통과하지 못하면 이의신청을 낼 수 있다는 점",
+              "status": "kept",
+              "evidence": "이제 심사 결과를 기다립니다. 심사를 통과하지 못해도 이의신청을 낼 수 있습니다."
+            },
+            {
+              "item": "최대 150만원이고 지역에서 받은 비슷한 지원금을 제외하고 지급된다고 한다는 전언",
+              "status": "kept",
+              "evidence": "지원금은 최대 150만원이고, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다."
+            },
+            {
+              "item": "신청 마감이 7월 20일이라는 점",
+              "status": "kept",
+              "evidence": "마감은 7월 20일입니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "날짜·금액·비율·층을 바꾸기",
+              "status": "ok",
+              "evidence": "6월 22일부터 7월 3일까지 2주간 / 최대 150만원 / 25퍼센트 이상 / 1층·7층·8층 모두 원문과 같음"
+            },
+            {
+              "item": "‘이상’, ‘넘어야’, ‘혹은’으로 정한 요건의 경계나 관계를 바꾸기",
+              "status": "ok",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 50만원을 넘어야 하고, ... 25퍼센트 이상 줄었을 때"
+            },
+            {
+              "item": "심사를 통과했거나 지원금을 받는 것처럼 쓰기",
+              "status": "ok",
+              "evidence": "이제 심사 결과를 기다립니다."
+            },
+            {
+              "item": "‘최대 150만원’을 확정 지급액처럼 쓰기",
+              "status": "ok",
+              "evidence": "지원금은 최대 150만원이고"
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·인물 발언 추가",
+              "status": "violated",
+              "evidence": "6월 1일부터는 온라인으로만 신청을 받았고 — 원문에 없는 '온라인만'이라는 제한을 본문에 넣음(메모에서 작성자 스스로 불확실하다고 밝힘)"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "problem",
+              "evidence": "6월 1일부터는 온라인으로만 신청을 받았고 — 원문은 '6월 1일부터는 온라인으로 신청을 받았습니다'로, 유일한 방식이라는 정보가 없음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "핵심 정보(기간, 요건, 증빙, 층별 접수처, 심사·이의신청, 최대 금액, 마감)가 모두 남아 있음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "비교 기간의 소득이 월 평균 25만원 이상이거나 2개월 합산 50만원을 넘어야 하고"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "이제 심사 결과를 기다립니다. / 지급된다고 합니다."
+            },
+            {
+              "check": "conditions",
+              "status": "problem",
+              "evidence": "6월 1일부터는 온라인으로만 신청을 받았고 — '만'이 추가되어 접수 방식의 조건이 좁아짐(현장 접수 시작 후 온라인 접수가 없어진 것처럼 읽힐 수 있음)"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "대구서부고용복지플러스센터, 코로나19 긴급고용안정지원금 등 고유 이름 유지"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "후기 본문 전체를 다듬어 돌려주고 메모를 덧붙임"
+            }
+          ],
+          "verdict": "fail",
+          "fail_reasons": [
+            "본문에 '6월 1일부터는 온라인으로만 신청을 받았고'라고 원문에 없는 '만'을 넣어 접수 방식에 제한을 추가했습니다. 메모에서 불확실하다고 밝혔지만 본문에 남아 있어 문제입니다(new_facts, conditions, 보존 항목 2 왜곡, 금지 변경 5 위반)."
+          ]
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 41149,
+            "wallMs": 42006,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 4151,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 5096,
+              "thinkingTokens": 1488
+            },
+            "costUsd": 0.13563199999999997,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/relief-fund-2020-deslop-r2": {
+      "id": "relief-fund-2020-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "대구서부고용복지플러스센터"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:20:18.729Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "신청 기간 6월 1일~7월 20일",
+              "status": "kept",
+              "evidence": "6월 1일부터 7월 20일까지 신청을 받고 있습니다."
+            },
+            {
+              "item": "온라인 6/1부터, 6/22~7/3 5부제, 7/6부터 누구나 현장 접수",
+              "status": "kept",
+              "evidence": "6월 1일부터는 온라인으로만 받았고, 현장 접수를 시작한 6월 22일부터 7월 3일까지 2주간은 출생연도에 따른 5부제로 운영했습니다. 7월 6일부터는 누구나 현장에서 접수할 수 있습니다."
+            },
+            {
+              "item": "대구시 고용복지센터 각 지점 접수 전언",
+              "status": "kept",
+              "evidence": "제가 사는 대구시에서는 고용복지센터 각 지점에서 접수할 수 있다고 합니다."
+            },
+            {
+              "item": "비교 기준",
+              "status": "kept",
+              "evidence": "지난 연소득 평균 혹은 3~4월, 12월~올해 1월 중 유리한 기간을 골라 올해 3, 4월 소득과 비교합니다."
+            },
+            {
+              "item": "요건: 월 평균 25만원 이상 또는 2개월 합산 50만원 초과, 25% 이상 감소",
+              "status": "kept",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 기간보다 25퍼센트 이상 줄었을 때 신청할 수 있습니다."
+            },
+            {
+              "item": "무급휴직자 요건",
+              "status": "kept",
+              "evidence": "**무급휴직자**는 3∼5월 일정 기간 이상 무급휴직을 한 사실이 입증되면 신청할 수 있습니다."
+            },
+            {
+              "item": "필자의 사정",
+              "status": "kept",
+              "evidence": "저는 올해 초 일하던 전시관이 문을 닫아 3, 4월에 수입이 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다."
+            },
+            {
+              "item": "50만원 기준 첨부 조건",
+              "status": "kept",
+              "evidence": "한 달 소득이 50만원을 넘으면 한 달치만 첨부하면 되지만, 그 이하라면 두 달을 합산해야 합니다."
+            },
+            {
+              "item": "위탁업체 변경과 통장사본·위촉장 증빙",
+              "status": "kept",
+              "evidence": "공교롭게도 근무지 위탁업체가 바뀌면서 소득 증빙이 쉽지 않았습니다. 고민 끝에 통장사본과 위촉장 등으로 서류를 챙겨"
+            },
+            {
+              "item": "층별 구분과 9시 반쯤 바로 신청",
+              "status": "kept",
+              "evidence": "1층은 무급휴직자, 7층은 특수고용·프리랜서, 8층은 영세자영업자 접수처였습니다. 오전 9시 반쯤 도착했는데, 긴 줄을 예상했던 것과 달리 기다리지 않고 바로 신청할 수 있었습니다."
+            },
+            {
+              "item": "접수 완료·심사 대기·이의신청",
+              "status": "kept",
+              "evidence": "접수는 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하더라도 이의신청을 낼 수 있습니다."
+            },
+            {
+              "item": "최대 150만원, 지역 지원금 제외 전언",
+              "status": "kept",
+              "evidence": "지원금은 최대 150만원까지이며, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다."
+            },
+            {
+              "item": "마감 7월 20일",
+              "status": "kept",
+              "evidence": "신청 마감은 7월 20일입니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "날짜·금액·비율·층 변경",
+              "status": "ok",
+              "evidence": "모든 날짜·금액·비율·층이 원문과 같음"
+            },
+            {
+              "item": "요건 경계·관계 변경",
+              "status": "ok",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고"
+            },
+            {
+              "item": "심사 통과·수령처럼 쓰기",
+              "status": "ok",
+              "evidence": "이제 심사 결과를 기다리면 됩니다."
+            },
+            {
+              "item": "최대 150만원을 확정액처럼 쓰기",
+              "status": "ok",
+              "evidence": "지원금은 최대 150만원까지이며"
+            },
+            {
+              "item": "원문에 없는 내용 추가",
+              "status": "ok",
+              "evidence": "본문에 새 사실·수치·감상 없음. '온라인으로만'은 현장 접수가 6월 22일 시작이라는 원문에서 바로 나오는 내용임"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "본문은 원문 내용만 담고 있음. '지금은 10월이라'는 메모에만 있음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "'작은 버팀목이 될 제도'라는 평가성 수식어만 빠짐"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "25퍼센트 이상 줄었을 때"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "접수는 마쳤습니다. 이제 심사 결과를 기다리면 됩니다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "그 이하라면 두 달을 합산해야 합니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "대구서부고용복지플러스센터"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "후기 본문을 다듬어 돌려줬고, 확인할 점은 메모로 따로 적음"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 21147,
+            "wallMs": 22112,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 4334,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2682,
+              "thinkingTokens": 575
+            },
+            "costUsd": 0.088816,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/relief-fund-2020-polish-r1": {
+      "id": "relief-fund-2020-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "대구서부고용복지플러스센터"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:20:39.368Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "신청 기간 6월 1일~7월 20일",
+              "status": "kept",
+              "evidence": "6월 1일부터 7월 20일까지 코로나19 긴급고용안정지원금 신청을 받고 있습니다."
+            },
+            {
+              "item": "온라인 6월 1일부터, 현장 첫 2주 5부제, 7월 6일부터 누구나 현장 접수",
+              "status": "kept",
+              "evidence": "6월 1일부터 온라인으로 신청을 받았고, 현장 신청을 받은 6월 22일부터 7월 3일까지 2주간은 출생연도에 따른 5부제를 실시했습니다. 7월 6일부터는 누구나 현장 접수가 가능합니다."
+            },
+            {
+              "item": "대구시 고용복지센터 각 지점 접수 전언",
+              "status": "kept",
+              "evidence": "제가 사는 대구시는 고용복지센터 각 지점에서 접수할 수 있다고 합니다."
+            },
+            {
+              "item": "특수고용·프리랜서 비교 기준",
+              "status": "kept",
+              "evidence": "특수고용, 프리랜서는 지난 연소득 평균이나 3~4월, 12월~올해 1월 중 유리한 것을 골라 올해 3, 4월과 비교합니다."
+            },
+            {
+              "item": "요건: 월 평균 25만원 이상 또는 2개월 합산 50만원 초과, 25퍼센트 이상 감소",
+              "status": "kept",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 대상보다 25퍼센트 이상 줄었어야 신청할 수 있습니다."
+            },
+            {
+              "item": "무급휴직자 3~5월 입증 시 신청 가능",
+              "status": "kept",
+              "evidence": "무급휴직자는 3∼5월 일정 기간 이상 무급휴직을 했다는 사실을 입증하면 신청할 수 있습니다."
+            },
+            {
+              "item": "필자의 3, 4월 무수입과 12월·1월 수입 입증 필요",
+              "status": "kept",
+              "evidence": "저는 올해 초 일하던 전시관이 문을 닫아서 3, 4월 수입이 전혀 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다."
+            },
+            {
+              "item": "50만원 초과 시 한 달치, 이하면 두 달 합산",
+              "status": "kept",
+              "evidence": "50만원이 넘으면 한 달치만 첨부하면 되고, 그 이하면 두 달을 합산해야 합니다."
+            },
+            {
+              "item": "위탁업체 변경으로 증빙 어려움, 통장사본·위촉장",
+              "status": "kept",
+              "evidence": "공교롭게도 근무지 위탁업체가 바뀌는 바람에 소득 증빙이 좀 어려웠습니다. 통장 사본과 위촉장 등 증빙 서류를 챙겨 집 근처 대구서부고용복지플러스센터로 갔습니다."
+            },
+            {
+              "item": "층별 구분과 오전 9시 반쯤 바로 신청",
+              "status": "kept",
+              "evidence": "센터는 1층에서 무급휴직자, 7층에서 특수고용·프리랜서, 8층에서 영세자영업자 신청을 받고 있었습니다. 오전 9시 반쯤 도착했는데, 길게 줄을 서리라는 예상과 달리 바로 신청할 수 있었습니다."
+            },
+            {
+              "item": "접수 완료·심사 대기, 미통과 시 이의신청",
+              "status": "kept",
+              "evidence": "이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하면 이의신청을 낼 수도 있습니다."
+            },
+            {
+              "item": "최대 150만원, 지역 지원금 제외 지급 전언",
+              "status": "kept",
+              "evidence": "최대 150만원까지 지원되며, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다."
+            },
+            {
+              "item": "마감 7월 20일",
+              "status": "kept",
+              "evidence": "신청은 7월 20일까지입니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "날짜·금액·비율·층 변경",
+              "status": "ok",
+              "evidence": "모든 날짜·금액·25퍼센트·1/7/8층이 원문과 같음"
+            },
+            {
+              "item": "요건 경계·관계 변경",
+              "status": "ok",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고"
+            },
+            {
+              "item": "심사 통과·지원금 수령처럼 쓰기",
+              "status": "ok",
+              "evidence": "이제 심사 결과를 기다리면 됩니다."
+            },
+            {
+              "item": "최대 150만원을 확정 지급액처럼 쓰기",
+              "status": "ok",
+              "evidence": "최대 150만원까지 지원되며"
+            },
+            {
+              "item": "원문에 없는 사실 등 추가",
+              "status": "ok",
+              "evidence": "오전 9시 반쯤 도착했는데 — 원문의 방문 시각을 풀어 쓴 정도로 새 사실이 아님"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "오전 9시 반쯤 도착했는데, 길게 줄을 서리라는 예상과 달리 바로 신청할 수 있었습니다."
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "모든 문단 내용이 결과에 남아 있음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "올해 3, 4월 소득이 비교 대상보다 25퍼센트 이상 줄었어야 신청할 수 있습니다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "접수할 수 있다고 합니다 / 지급된다고 합니다 — 전언 표시 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "심사를 통과하지 못하면 이의신청을 낼 수도 있습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "대구서부고용복지플러스센터"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "전체 글을 다듬어 돌려줌"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 19508,
+            "wallMs": 20632,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3448,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2679,
+              "thinkingTokens": 429
+            },
+            "costUsd": 0.081668,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/relief-fund-2020-polish-r2": {
+      "id": "relief-fund-2020-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "대구서부고용복지플러스센터"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:20:49.639Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "신청 기간 6월 1일~7월 20일",
+              "status": "kept",
+              "evidence": "6월 1일부터 7월 20일까지 코로나19 긴급고용안정지원금 신청을 받고 있습니다."
+            },
+            {
+              "item": "온라인 6월 1일부터, 현장 첫 2주 5부제, 7월 6일부터 누구나 현장 접수",
+              "status": "kept",
+              "evidence": "온라인 신청은 6월 1일부터 받았고, 현장 신청은 6월 22일부터 7월 3일까지 2주간 출생연도에 따른 5부제로 운영했습니다. 7월 6일부터는 누구나 현장에서 접수할 수 있습니다."
+            },
+            {
+              "item": "대구시 고용복지센터 각 지점 접수 전언",
+              "status": "kept",
+              "evidence": "제가 사는 대구시는 고용복지센터 각 지점에서 접수할 수 있다고 합니다."
+            },
+            {
+              "item": "특수고용·프리랜서 비교 기준",
+              "status": "kept",
+              "evidence": "특수고용, 프리랜서는 지난해 연소득 평균, 3~4월, 12월~올해 1월 중 유리한 것을 골라 올해 3, 4월과 비교합니다."
+            },
+            {
+              "item": "요건: 25만원 이상 또는 50만원 초과, 25퍼센트 이상 감소",
+              "status": "kept",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 25퍼센트 이상 줄었을 때 신청할 수 있습니다."
+            },
+            {
+              "item": "무급휴직자 요건",
+              "status": "kept",
+              "evidence": "무급휴직자는 3∼5월 중 일정 기간 이상 무급휴직을 했다는 사실을 입증하면 신청할 수 있습니다."
+            },
+            {
+              "item": "필자 사정: 전시관 폐쇄, 3·4월 수입 없음, 12월·1월 수입 입증",
+              "status": "kept",
+              "evidence": "저는 올해 초 일하던 전시관이 문을 닫아 3, 4월 수입이 전혀 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다."
+            },
+            {
+              "item": "50만원 초과 시 한 달치, 이하면 두 달 합산",
+              "status": "kept",
+              "evidence": "50만원이 넘으면 한 달치만 첨부하면 되고, 그 이하면 두 달을 합산해야 합니다."
+            },
+            {
+              "item": "위탁업체 변경으로 증빙 어려움, 통장사본·위촉장",
+              "status": "kept",
+              "evidence": "공교롭게도 근무지 위탁업체가 바뀌어서 소득 증빙에 좀 어려움이 있었습니다. 통장 사본과 위촉장 등으로 증빙 서류를 챙겨"
+            },
+            {
+              "item": "층별 구분과 9시 반쯤 바로 신청",
+              "status": "kept",
+              "evidence": "센터는 1층에서 무급휴직자, 7층에서 특수고용·프리랜서, 8층에서 영세자영업자를 나눠 받고 있었습니다. 오전 9시 반쯤 도착했는데, 길게 줄을 서리라는 예상과 달리 바로 신청할 수 있었습니다."
+            },
+            {
+              "item": "접수 완료, 심사 대기, 이의신청 가능",
+              "status": "kept",
+              "evidence": "어쨌든 접수를 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하면 이의신청을 낼 수도 있습니다."
+            },
+            {
+              "item": "최대 150만원, 지역 지원금 제외 전언",
+              "status": "kept",
+              "evidence": "지원금은 최대 150만원이고, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다."
+            },
+            {
+              "item": "마감 7월 20일",
+              "status": "kept",
+              "evidence": "신청은 7월 20일까지입니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "날짜·금액·비율·층 변경",
+              "status": "ok",
+              "evidence": "날짜, 25만원·50만원·150만원, 25퍼센트, 1·7·8층 모두 원문과 같음"
+            },
+            {
+              "item": "요건 경계·관계 변경",
+              "status": "ok",
+              "evidence": "월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고"
+            },
+            {
+              "item": "심사 통과·수령처럼 쓰기",
+              "status": "ok",
+              "evidence": "이제 심사 결과를 기다리면 됩니다."
+            },
+            {
+              "item": "최대 150만원을 확정액처럼",
+              "status": "ok",
+              "evidence": "지원금은 최대 150만원이고"
+            },
+            {
+              "item": "원문에 없는 사실 추가",
+              "status": "ok",
+              "evidence": "\"지난해 연소득 평균\"은 원문 \"지난 연소득 평균\"을 풀어 쓴 것이고 메모에서 밝힘. 새로운 사실은 없음"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "오전 9시 반쯤 도착했는데 — 원문 '오전 9시 반쯤이었고'의 자연스러운 풀이로, 새 사실 아님"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 모든 문단 내용이 결과에 남아 있음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "올해 3, 4월 소득이 25퍼센트 이상 줄었을 때 신청할 수 있습니다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "접수할 수 있다고 합니다 / 지급된다고 합니다 — 전언 표시 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "50만원이 넘으면 한 달치만 첨부하면 되고, 그 이하면 두 달을 합산해야 합니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "집 근처 대구서부고용복지플러스센터로 갔습니다."
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "본문 전체를 다듬어 돌려주고, 수정 사항은 별도 메모로 밝힘"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 23960,
+            "wallMs": 24885,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3548,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 3222,
+              "thinkingTokens": 939
+            },
+            "costUsd": 0.093328,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/scholarship-news-2021-deslop-r1": {
+      "id": "scholarship-news-2021-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "www.kosaf.go.kr"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:21:00.797Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "서민·중산층 확대 및 다자녀 가구 학자금지원구간 산정 제도 개선",
+              "status": "kept",
+              "evidence": "내년부터 국가장학금 혜택이 서민층은 물론 중산층까지 확대된다. 다자녀 가구는 자녀 수에 따라 달라지는 경제적 부담이 반영되도록 학자금지원구간 산정 제도도 개선된다."
+            },
+            {
+              "item": "신청 기간 24일 오전 9시~12월 30일 오후 6시",
+              "status": "kept",
+              "evidence": "오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다."
+            },
+            {
+              "item": "국가장학금 정의",
+              "status": "kept",
+              "evidence": "국가장학금은 대학생의 등록금 부담을 덜어 주기 위한 소득연계형 장학금이다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하이면서 성적 기준 등을 충족한 대학생에게 국가가 지원한다."
+            },
+            {
+              "item": "신청 대상 다섯 부류",
+              "status": "kept",
+              "evidence": "신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생이다."
+            },
+            {
+              "item": "누리집·앱 24시간 신청, 마감일 오후 6시까지",
+              "status": "kept",
+              "evidence": "누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다. 다만 마감일인 12월 30일에는 오후 6시까지만 접수한다."
+            },
+            {
+              "item": "12월 10일 오후 6시 이전 우선 감면 조건",
+              "status": "kept",
+              "evidence": "국가장학금으로 등록금을 우선 감면받으려면 12월 10일 오후 6시 전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다."
+            },
+            {
+              "item": "마감일 접속 혼잡, 미리 신청 권장",
+              "status": "kept",
+              "evidence": "마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하는 것이 좋다."
+            },
+            {
+              "item": "정부안 기준 지원 단가 5~6구간 390만 원, 7~8구간 350만 원",
+              "status": "kept",
+              "evidence": "정부안 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 오른다."
+            },
+            {
+              "item": "기초·차상위 첫째 700만 원, 둘째 이상 전액, 8구간 이하 다자녀 셋째 이상 전액",
+              "status": "kept",
+              "evidence": "기초·차상위 가구의 첫째에게는 연 700만 원을, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하 다자녀 가구의 셋째 이상 자녀도 등록금 전액을 지원받는다."
+            },
+            {
+              "item": "성적 기준 B학점 이상, 기초·차상위 C학점 이상",
+              "status": "kept",
+              "evidence": "직전 학기 성적이 B학점 이상이어야 한다. 다만 학업 환경을 고려해 기초·차상위 계층은 C학점 이상이면 신청할 수 있다."
+            },
+            {
+              "item": "성적 기준 예외 및 1~3구간 2회 제한",
+              "status": "kept",
+              "evidence": "신입생·편입생·재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않는다. 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "'정부안을 기준으로' 삭제",
+              "status": "ok",
+              "evidence": "정부안 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는..."
+            },
+            {
+              "item": "마감 시각·12월 10일 조건 변경·누락",
+              "status": "ok",
+              "evidence": "12월 10일 오후 6시 전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다."
+            },
+            {
+              "item": "구간·금액·학점 기준 대상 변경",
+              "status": "ok",
+              "evidence": "8구간 이하 다자녀 가구의 셋째 이상 자녀도 등록금 전액을 지원받는다."
+            },
+            {
+              "item": "성적 기준 예외나 2회 제한 누락",
+              "status": "ok",
+              "evidence": "1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다."
+            },
+            {
+              "item": "원문에 없는 신청 방법·서류·연락처 추가",
+              "status": "ok",
+              "evidence": "신청 경로는 원문과 같은 누리집과 앱뿐이다: 누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'"
+            },
+            {
+              "item": "원문에 없는 사실·수치·평가·발언 추가",
+              "status": "ok",
+              "evidence": "새로운 내용은 없고 '폭넓게', '실질적으로', '여유를 두고', '예외도 있다.' 같은 표현만 빠졌다."
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "저소득층과 다자녀 가구 지원도 늘어난다. — 원문 '두터워진다'를 바꿔 쓴 것이며 새 사실은 없다."
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "모든 핵심 정보가 남아 있다: 교육부와 한국장학재단은 개선된 2022학년도 1학기 1차 국가장학금 신청을..."
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 오른다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "정부안 기준으로 내년부터 ... 오른다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "다만 마감일인 12월 30일에는 오후 6시까지만 접수한다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "원문 구조를 유지하며 수식어와 소제목만 담백하게 다듬은 본문을 돌려줬다: **달라지는 점**"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 20299,
+            "wallMs": 21422,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3700,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2640,
+              "thinkingTokens": 223
+            },
+            "costUsd": 0.082904,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/scholarship-news-2021-deslop-r2": {
+      "id": "scholarship-news-2021-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "www.kosaf.go.kr"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:21:08.982Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "서민·중산층 확대와 다자녀 가구 학자금지원구간 산정 제도 개선",
+              "status": "kept",
+              "evidence": "내년부터 국가장학금 지원 대상이 서민층에서 중산층까지 넓어진다. 다자녀 가구는 자녀 수에 따른 경제적 부담이 반영되도록 학자금지원구간 산정 제도도 개선된다."
+            },
+            {
+              "item": "신청 기간 24일 오전 9시~12월 30일 오후 6시",
+              "status": "kept",
+              "evidence": "개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다."
+            },
+            {
+              "item": "국가장학금 정의",
+              "status": "kept",
+              "evidence": "대학생의 등록금 부담을 덜어 주기 위한 소득연계형 장학금이다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하이고 성적 기준 등을 충족한 대학생에게 국가가 지원한다."
+            },
+            {
+              "item": "신청 대상 다섯 부류",
+              "status": "kept",
+              "evidence": "신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생이다."
+            },
+            {
+              "item": "누리집·앱 24시간 신청, 마감일 오후 6시까지",
+              "status": "kept",
+              "evidence": "한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다. 다만 마감일인 12월 30일에는 오후 6시까지만 접수한다."
+            },
+            {
+              "item": "12월 10일 오후 6시 이전 우선 감면 조건",
+              "status": "kept",
+              "evidence": "오는 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다."
+            },
+            {
+              "item": "마감일 접속 혼잡, 미리 신청 권장",
+              "status": "kept",
+              "evidence": "마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하는 것이 좋다."
+            },
+            {
+              "item": "정부안 기준 5~6구간 390만 원, 7~8구간 350만 원",
+              "status": "kept",
+              "evidence": "정부안을 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 높아진다."
+            },
+            {
+              "item": "기초·차상위 첫째 700만 원, 둘째 이상 전액, 8구간 이하 다자녀 셋째 이상 전액",
+              "status": "kept",
+              "evidence": "기초·차상위 가구의 첫째에게는 연 700만 원을, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하 다자녀 가구의 셋째 이상 자녀도 등록금 전액을 지원받는다."
+            },
+            {
+              "item": "성적 기준 B학점, 기초·차상위 C학점",
+              "status": "kept",
+              "evidence": "직전 학기 성적이 B학점 이상이어야 한다. 다만 기초·차상위 계층은 학업 환경을 고려해 C학점 이상이면 신청할 수 있다."
+            },
+            {
+              "item": "성적 기준 예외와 1~3구간 2회 제한",
+              "status": "kept",
+              "evidence": "신입생·편입생·재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않는다. 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "'정부안을 기준으로' 삭제",
+              "status": "ok",
+              "evidence": "정부안을 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는"
+            },
+            {
+              "item": "마감 시각·12월 10일 조건 변경/누락",
+              "status": "ok",
+              "evidence": "오는 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다."
+            },
+            {
+              "item": "구간·금액·학점 기준 적용 대상 변경",
+              "status": "ok",
+              "evidence": "8구간 이하 다자녀 가구의 셋째 이상 자녀도 등록금 전액을 지원받는다."
+            },
+            {
+              "item": "성적 기준 예외나 2회 제한 누락",
+              "status": "ok",
+              "evidence": "재학 기간 중 2회까지 신청할 수 있다."
+            },
+            {
+              "item": "원문에 없는 신청 방법·서류·연락처 추가",
+              "status": "ok",
+              "evidence": "누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다."
+            },
+            {
+              "item": "원문에 없는 사실·수치·감상 추가",
+              "status": "ok",
+              "evidence": "저소득층과 다자녀 가구 지원도 늘어난다."
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "원문에 없는 내용 추가 없음. \"저소득층과 다자녀 가구 지원도 늘어난다.\""
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "모든 섹션과 조건이 유지됨. \"예외도 있다.\""
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "\"5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원\""
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "\"정부안을 기준으로\" 유지, \"접속이 원활하지 않을 수 있으니\" 가능성 표현 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "\"다만 마감일인 12월 30일에는 오후 6시까지만 접수한다.\""
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "\"누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'\""
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "공지 전문을 담백하게 다듬어 돌려줌. \"**달라지는 점**\""
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 18462,
+            "wallMs": 19336,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3700,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2491,
+              "thinkingTokens": 169
+            },
+            "costUsd": 0.07992400000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/scholarship-news-2021-polish-r1": {
+      "id": "scholarship-news-2021-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "www.kosaf.go.kr"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:21:24.618Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "내년부터 서민·중산층까지 지원 확대 및 다자녀 가구 자녀 수 반영 학자금지원구간 산정 제도 개선",
+              "status": "kept",
+              "evidence": "내년부터 서민·중산층까지 지원이 확대되고, 다자녀 가구의 자녀 수에 따른 경제적 차이가 반영되도록 학자금지원구간 산정 제도가 개선됩니다."
+            },
+            {
+              "item": "신청 기간: 24일 오전 9시부터 12월 30일 오후 6시까지",
+              "status": "kept",
+              "evidence": "24일 오전 9시부터 12월 30일 오후 6시까지"
+            },
+            {
+              "item": "국가장학금의 정의",
+              "status": "kept",
+              "evidence": "소득과 재산이 일정 수준(학자금지원 8구간) 이하인 대학생 중 성적 기준 등을 충족한 학생에게 국가가 지원하는 소득연계형 장학금입니다."
+            },
+            {
+              "item": "신청 대상 다섯 부류",
+              "status": "kept",
+              "evidence": "재학생, 신입생(고3·재수생 등 입학예정자), 편입생, 재입학생, 복학생"
+            },
+            {
+              "item": "누리집·모바일 앱 24시간 신청, 마감일은 오후 6시까지",
+              "status": "kept",
+              "evidence": "한국장학재단 누리집(www.kosaf.go.kr) 또는 모바일 앱 '한국장학재단'에서 24시간 신청할 수 있습니다. 다만 마감일인 12월 30일에는 오후 6시까지만 신청할 수 있습니다."
+            },
+            {
+              "item": "12월 10일 오후 6시 이전 우선 감면 조건",
+              "status": "kept",
+              "evidence": "국가장학금으로 등록금을 우선 감면받으려면 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 합니다."
+            },
+            {
+              "item": "마감일 접속 혼잡, 미리 신청 권장",
+              "status": "kept",
+              "evidence": "신청 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하기를 권장합니다."
+            },
+            {
+              "item": "정부안 기준 5~6구간 연 390만 원, 7~8구간 연 350만 원",
+              "status": "kept",
+              "evidence": "**내년부터 달라지는 지원 (정부안 기준)** - 학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가를 높입니다."
+            },
+            {
+              "item": "기초·차상위 첫째 700만 원, 둘째 이상 전액, 8구간 이하 다자녀 셋째 이상 전액",
+              "status": "kept",
+              "evidence": "기초·차상위 가구의 첫째에게는 연 700만 원, 둘째 이상에게는 등록금 전액을 지원합니다. / 8구간 이하인 다자녀 가구의 셋째 이상 자녀에게도 등록금 전액을 지원합니다."
+            },
+            {
+              "item": "성적 기준 B학점 이상, 기초·차상위 C학점 이상",
+              "status": "kept",
+              "evidence": "직전 학기 성적이 B학점 이상이어야 합니다. 기초·차상위 계층은 학업환경을 고려해 C학점 이상이면 신청할 수 있습니다."
+            },
+            {
+              "item": "성적 기준 예외 및 1~3구간 2회 제한",
+              "status": "kept",
+              "evidence": "신입생·편입생, 재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않습니다. / 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "'정부안을 기준으로'를 빼서 확정처럼 쓰기",
+              "status": "ok",
+              "evidence": "**내년부터 달라지는 지원 (정부안 기준)**"
+            },
+            {
+              "item": "마감 시각이나 12월 10일 우선 감면 조건 변경·누락",
+              "status": "ok",
+              "evidence": "12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 합니다."
+            },
+            {
+              "item": "구간·금액·학점 기준 적용 대상 변경",
+              "status": "ok",
+              "evidence": "학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가를 높입니다."
+            },
+            {
+              "item": "성적 기준 예외나 2회 제한 누락",
+              "status": "ok",
+              "evidence": "1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있습니다."
+            },
+            {
+              "item": "원문에 없는 신청 방법·서류·연락처 추가",
+              "status": "ok",
+              "evidence": "한국장학재단 누리집(www.kosaf.go.kr) 또는 모바일 앱 '한국장학재단'에서 24시간 신청할 수 있습니다."
+            },
+            {
+              "item": "원문에 없는 사실·수치·경험·감상·평가·인물 발언 추가",
+              "status": "ok",
+              "evidence": "본문에 원문에 없는 사실이나 수치가 없음. 월·연도 확인 요청은 본문 밖 메모에만 있음."
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "**2022학년도 1학기 1차 국가장학금 신청 안내** — 제목·소제목 외에 새 사실 없음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 모든 문단 내용이 소제목별로 옮겨져 있음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "기초·차상위 가구의 첫째에게는 연 700만 원, 둘째 이상에게는 등록금 전액을 지원합니다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "**내년부터 달라지는 지원 (정부안 기준)**"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "다만 마감일인 12월 30일에는 오후 6시까지만 신청할 수 있습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "한국장학재단 누리집(www.kosaf.go.kr) 또는 모바일 앱 '한국장학재단'"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "공지용으로 다듬은 본문을 돌려주고, 확인할 점은 본문과 분리된 메모로 둠"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 22889,
+            "wallMs": 23816,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3519,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 3018,
+              "thinkingTokens": 214
+            },
+            "costUsd": 0.089016,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/D1/scholarship-news-2021-polish-r2": {
+      "id": "scholarship-news-2021-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "www.kosaf.go.kr"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+        "at": "2026-10-27T16:21:30.190Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "내년부터 서민·중산층까지 지원 확대, 다자녀 가구 자녀 수 반영 구간 산정 제도 개선",
+              "status": "kept",
+              "evidence": "내년부터 서민·중산층까지 지원이 확대되고, 다자녀 가구의 자녀 수에 따른 경제적 차이가 반영되도록 학자금지원구간 산정 제도가 개선됩니다."
+            },
+            {
+              "item": "신청 기간 24일 오전 9시 ~ 12월 30일 오후 6시",
+              "status": "kept",
+              "evidence": "신청 기간: 24일 오전 9시 ~ 12월 30일 오후 6시"
+            },
+            {
+              "item": "국가장학금의 정의",
+              "status": "kept",
+              "evidence": "대학생의 등록금 부담을 덜기 위한 소득연계형 장학금입니다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하인 대학생 중 성적 기준 등을 충족한 학생에게 국가가 지원합니다."
+            },
+            {
+              "item": "신청 대상 다섯 부류",
+              "status": "kept",
+              "evidence": "대상: 재학생, 신입생(고3·재수생 등 입학예정자), 편입생, 재입학생, 복학생"
+            },
+            {
+              "item": "누리집·앱 24시간 신청, 마감일 오후 6시까지",
+              "status": "kept",
+              "evidence": "24시간 신청할 수 있습니다. 다만 마감일인 12월 30일에는 오후 6시까지만 신청할 수 있습니다."
+            },
+            {
+              "item": "12월 10일 오후 6시 이전 우선 감면 조건",
+              "status": "kept",
+              "evidence": "등록금 우선 감면 기한: 12월 10일 오후 6시 전까지 장학금 신청, 가구원 정보제공 동의, 서류제출을 모두 마쳐야 합니다."
+            },
+            {
+              "item": "마감일 접속 혼잡, 미리 신청 권장",
+              "status": "kept",
+              "evidence": "마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하시기 바랍니다."
+            },
+            {
+              "item": "정부안 기준 5~6구간 390만 원, 7~8구간 350만 원",
+              "status": "kept",
+              "evidence": "정부안 기준입니다. - 학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가가 오릅니다."
+            },
+            {
+              "item": "기초·차상위 첫째 700만 원, 둘째 이상 전액, 8구간 이하 다자녀 셋째 이상 전액",
+              "status": "kept",
+              "evidence": "기초·차상위 가구는 첫째에게 연 700만 원, 둘째 이상에게 등록금 전액을 지원합니다. / 8구간 이하 다자녀 가구는 셋째 이상 자녀에게 등록금 전액을 지원합니다."
+            },
+            {
+              "item": "성적 기준 B학점 이상, 기초·차상위 C학점 이상",
+              "status": "kept",
+              "evidence": "직전 학기 성적이 B학점 이상이어야 합니다. / 기초·차상위 계층은 학업환경을 고려해 C학점 이상이면 신청할 수 있습니다."
+            },
+            {
+              "item": "성적 기준 예외 및 1~3구간 2회 제한",
+              "status": "kept",
+              "evidence": "신·편입생과 재입학생의 첫 학기, 장애학생에게는 성적 기준을 적용하지 않습니다. / 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "'정부안을 기준으로' 삭제",
+              "status": "ok",
+              "evidence": "정부안 기준입니다."
+            },
+            {
+              "item": "마감 시각·12월 10일 조건 변경/누락",
+              "status": "ok",
+              "evidence": "12월 10일 오후 6시 전까지 장학금 신청, 가구원 정보제공 동의, 서류제출을 모두 마쳐야 합니다."
+            },
+            {
+              "item": "구간·금액·학점 기준 대상 변경",
+              "status": "ok",
+              "evidence": "8구간 이하 다자녀 가구는 셋째 이상 자녀에게 등록금 전액을 지원합니다."
+            },
+            {
+              "item": "성적 기준 예외나 2회 제한 누락",
+              "status": "ok",
+              "evidence": "재학 기간 중 2회까지 신청할 수 있습니다."
+            },
+            {
+              "item": "원문에 없는 신청 방법·서류·연락처 추가",
+              "status": "ok",
+              "evidence": "방법: 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr) 또는 모바일 애플리케이션 '한국장학재단'"
+            },
+            {
+              "item": "원문에 없는 사실·수치·평가 등 추가",
+              "status": "ok",
+              "evidence": "이번 신청부터 개선된 내용이 적용됩니다. (원문 '이 같은 내용으로 개선된 ... 신청'을 풀어 쓴 것)"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "본문에 원문에 없는 사실·수치 없음. 메모의 '월을 넣어 주세요'는 제안일 뿐 본문에 들어가지 않음."
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 모든 정보가 소제목별로 옮겨짐."
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "정부안 기준입니다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "다만 마감일인 12월 30일에는 오후 6시까지만 신청할 수 있습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "누리집(www.kosaf.go.kr) 또는 모바일 애플리케이션 '한국장학재단'"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "공지용으로 다듬은 본문을 돌려주고, 확인할 점은 따로 메모로 붙임."
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 20263,
+            "wallMs": 21202,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3561,
+              "cacheReadInputTokens": 2480,
+              "outputTokens": 2729,
+              "thinkingTokens": 483
+            },
+            "costUsd": 0.08357200000000001,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "manifest/D1": {
+      "condition": "D1",
+      "skill": {
+        "path": "evals/snapshots/v0.3.1-r1/geulppal",
+        "treeSha256": "561cd5f0f02660802252e15e436612ce5405f7d83ab45767ee016a2f59c927e3",
+        "skillMdSha256": "733b49c355a1c785855e57a196aa01cdfc87479d217b72c2430574a403370486"
+      },
+      "invocation": "요청 앞에 \"/geulppal \" (프로젝트 스킬 .claude/skills/geulppal)",
+      "model": "claude-sonnet-5-5",
+      "effort": "high",
+      "cli": "2.1.311 (Claude Code)",
+      "args": [
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--model",
+        "claude-sonnet-5-5",
+        "--effort",
+        "high",
+        "--session-id",
+        "<새 UUID>",
+        "--setting-sources",
+        "project",
+        "--strict-mcp-config",
+        "--permission-mode",
+        "dontAsk",
+        "--tools",
+        "Read,Glob,Grep,Skill",
+        "--allowedTools",
+        "Read Glob Grep Skill",
+        "-p",
+        "<프롬프트>"
+      ],
+      "tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill"
+      ],
+      "casesFile": "evals/human/cases.json",
+      "casesSha256": "25853764f74dea4f00ad0fe0f2caa48d1a1d7ab8784ba43bc297e3981341d3a5",
+      "updated": "2026-10-27T16:14:58.118Z"
+    },
+    "runs/D1/doc24-review-2021-deslop-r1-a1": {
+      "id": "doc24-review-2021-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:16:16.547Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md",
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal AI가 쓴 것처럼 읽혀. 사람이 쓴 후기처럼 고쳐 줘.\n\n# 문서24, 시작하기 전에 알아두면 좋은 것들\n\n문서24를 이용하기 전에 먼저 짚고 넘어갈 것이 있습니다. 바로 문서24로는 처리할 수 없는 경우입니다. 아래 세 가지 중 하나라도 해당하면 문서24로 신청할 수 없습니다.\n\n1) 문서 처리 수수료가 발생하는 경우\n2) 별도의 업무 처리 시스템이 존재하는 경우\n3) 행정기관 방문과 본인 확인이 필수적인 민원\n\n여기서 별도의 업무 처리 시스템이란 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다. 또 인감증명서나 본인서명사실확인서처럼 본인 확인이 반드시 필요한 민원을 문서24로 처리하지 못하게 한 것은 충분히 합리적인 기준이라고 생각합니다.\n\n## 가입부터 제출까지, 어렵지 않은 첫걸음\n\n문서24를 처음 사용하려면 먼저 개인 사용자 또는 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버 계정으로도 가입할 수 있어 한결 간편합니다.\n\n문서24 홈페이지는 구성이 매우 직관적이어서 이용하는 데 어려움이 없었습니다. 절차도 단순합니다. 제출할 공문서의 내용을 작성하고, 받는 기관을 선택해 제출하면 끝입니다.\n\n## 아쉬운 점과 똑똑한 해결법\n\n다만 조금 불편한 점도 있습니다. 공문서를 작성할 때 수신기관을 단 한 곳만 선택할 수 있다는 것입니다. 과거에는 여러 곳을 선택할 수 있었는데, 광고성·홍보성 문서가 늘어나면서 지금처럼 바뀐 것으로 보입니다.\n\n같은 문서를 여러 기관에 보내야 한다면 번거롭게 느껴질 수 있습니다. 하지만 문서24에는 기존 문서를 그대로 다시 작성할 수 있는 재작성 메뉴가 마련되어 있으니, 이를 활용하면 번거로움을 크게 덜 수 있습니다.\n\n## 놓치기 쉬운 주의사항\n\n꼭 기억해 둘 점이 하나 있습니다. 작성한 문서는 7일 동안만 다시 확인할 수 있습니다. 나중에 다시 볼 일이 있다면 반드시 별도로 저장해 두세요.\n\n## 제출 이후까지 챙겨 주는 알림 서비스\n\n공문을 제출하면 해당 기관이 접수한 뒤 처리를 진행합니다. 문서24는 제출한 공문이 접수 처리되면 카카오톡으로 알려 주기 때문에, 접수 여부를 따로 확인하러 들어갈 필요가 없습니다.\n\n2020년 10월부터는 모바일 문서24가 개통되어 휴대폰으로도 공문서 처리 내용을 확인할 수 있게 되었습니다. 언제 어디서든 처리 현황을 확인할 수 있어 한층 더 편리해졌습니다.",
+      "output": "# 문서24, 시작하기 전에 알아두면 좋은 것들\n\n문서24로 처리할 수 없는 경우부터 확인해야 합니다. 아래 세 가지 중 하나라도 해당하면 문서24로 신청할 수 없습니다.\n\n1) 문서 처리 수수료가 발생하는 경우\n2) 별도의 업무 처리 시스템이 존재하는 경우\n3) 행정기관 방문과 본인 확인이 필수적인 민원\n\n별도의 업무 처리 시스템은 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다. 인감증명서나 본인서명사실확인서처럼 본인 확인이 반드시 필요한 민원을 문서24로 처리하지 못하게 한 것은 충분히 합리적인 기준이라고 생각합니다.\n\n## 가입과 제출\n\n처음 사용하려면 개인 사용자 또는 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버 계정으로도 가입할 수 있어 한결 간편합니다.\n\n홈페이지 구성이 직관적이어서 이용하는 데 어려움이 없었습니다. 절차도 단순합니다. 제출할 공문서의 내용을 작성하고, 받는 기관을 선택해 제출하면 끝입니다.\n\n## 불편한 점\n\n공문서를 작성할 때 수신기관을 한 곳만 선택할 수 있다는 점은 조금 불편합니다. 과거에는 여러 곳을 선택할 수 있었는데, 광고성·홍보성 문서가 늘어나면서 지금처럼 바뀐 것으로 보입니다.\n\n같은 문서를 여러 기관에 보내야 하면 번거로울 수 있습니다. 이럴 때는 기존 문서를 그대로 다시 작성할 수 있는 재작성 메뉴를 쓰면 수고를 크게 덜 수 있습니다.\n\n## 주의할 점\n\n작성한 문서는 7일 동안만 다시 확인할 수 있습니다. 나중에 다시 볼 일이 있다면 반드시 별도로 저장해 두세요.\n\n## 제출 이후\n\n공문을 제출하면 해당 기관이 접수한 뒤 처리를 진행합니다. 접수 처리되면 문서24가 카카오톡으로 알려 주기 때문에, 접수 여부를 확인하러 따로 들어갈 필요가 없습니다.\n\n2020년 10월부터는 모바일 문서24가 개통되어 휴대폰으로도 공문서 처리 내용을 확인할 수 있습니다. 언제 어디서든 처리 현황을 볼 수 있어 편해졌습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 17472,
+      "wallMs": 18361,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18595,
+        "cacheReadInputTokens": 20051,
+        "outputTokens": 2412,
+        "thinkingTokens": 1260
+      },
+      "costUsd": 0.1005131,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/doc24-review-2021-deslop-r2-a1": {
+      "id": "doc24-review-2021-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:16:34.917Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md",
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal AI가 쓴 것처럼 읽혀. 사람이 쓴 후기처럼 고쳐 줘.\n\n# 문서24, 시작하기 전에 알아두면 좋은 것들\n\n문서24를 이용하기 전에 먼저 짚고 넘어갈 것이 있습니다. 바로 문서24로는 처리할 수 없는 경우입니다. 아래 세 가지 중 하나라도 해당하면 문서24로 신청할 수 없습니다.\n\n1) 문서 처리 수수료가 발생하는 경우\n2) 별도의 업무 처리 시스템이 존재하는 경우\n3) 행정기관 방문과 본인 확인이 필수적인 민원\n\n여기서 별도의 업무 처리 시스템이란 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다. 또 인감증명서나 본인서명사실확인서처럼 본인 확인이 반드시 필요한 민원을 문서24로 처리하지 못하게 한 것은 충분히 합리적인 기준이라고 생각합니다.\n\n## 가입부터 제출까지, 어렵지 않은 첫걸음\n\n문서24를 처음 사용하려면 먼저 개인 사용자 또는 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버 계정으로도 가입할 수 있어 한결 간편합니다.\n\n문서24 홈페이지는 구성이 매우 직관적이어서 이용하는 데 어려움이 없었습니다. 절차도 단순합니다. 제출할 공문서의 내용을 작성하고, 받는 기관을 선택해 제출하면 끝입니다.\n\n## 아쉬운 점과 똑똑한 해결법\n\n다만 조금 불편한 점도 있습니다. 공문서를 작성할 때 수신기관을 단 한 곳만 선택할 수 있다는 것입니다. 과거에는 여러 곳을 선택할 수 있었는데, 광고성·홍보성 문서가 늘어나면서 지금처럼 바뀐 것으로 보입니다.\n\n같은 문서를 여러 기관에 보내야 한다면 번거롭게 느껴질 수 있습니다. 하지만 문서24에는 기존 문서를 그대로 다시 작성할 수 있는 재작성 메뉴가 마련되어 있으니, 이를 활용하면 번거로움을 크게 덜 수 있습니다.\n\n## 놓치기 쉬운 주의사항\n\n꼭 기억해 둘 점이 하나 있습니다. 작성한 문서는 7일 동안만 다시 확인할 수 있습니다. 나중에 다시 볼 일이 있다면 반드시 별도로 저장해 두세요.\n\n## 제출 이후까지 챙겨 주는 알림 서비스\n\n공문을 제출하면 해당 기관이 접수한 뒤 처리를 진행합니다. 문서24는 제출한 공문이 접수 처리되면 카카오톡으로 알려 주기 때문에, 접수 여부를 따로 확인하러 들어갈 필요가 없습니다.\n\n2020년 10월부터는 모바일 문서24가 개통되어 휴대폰으로도 공문서 처리 내용을 확인할 수 있게 되었습니다. 언제 어디서든 처리 현황을 확인할 수 있어 한층 더 편리해졌습니다.",
+      "output": "# 문서24, 시작하기 전에 알아두면 좋은 것들\n\n문서24로 처리할 수 없는 경우부터 짚고 가겠습니다. 아래 세 가지 중 하나라도 해당하면 문서24로 신청할 수 없습니다.\n\n1) 문서 처리 수수료가 발생하는 경우\n2) 별도의 업무 처리 시스템이 존재하는 경우\n3) 행정기관 방문과 본인 확인이 필수적인 민원\n\n여기서 별도의 업무 처리 시스템이란 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다. 인감증명서나 본인서명사실확인서처럼 본인 확인이 반드시 필요한 민원을 문서24로 처리하지 못하게 한 것은 충분히 합리적인 기준이라고 생각합니다.\n\n## 가입과 제출\n\n문서24를 처음 사용하려면 개인 사용자 또는 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버 계정으로도 가입할 수 있어 간편합니다.\n\n홈페이지는 구성이 매우 직관적이어서 이용하는 데 어려움이 없었습니다. 절차도 단순합니다. 제출할 공문서의 내용을 작성하고, 받는 기관을 선택해 제출하면 끝입니다.\n\n## 아쉬운 점\n\n조금 불편한 점도 있습니다. 공문서를 작성할 때 수신기관을 한 곳만 선택할 수 있습니다. 과거에는 여러 곳을 선택할 수 있었는데, 광고성·홍보성 문서가 늘어나면서 지금처럼 바뀐 것으로 보입니다.\n\n같은 문서를 여러 기관에 보내야 하면 번거롭게 느껴질 수 있습니다. 다행히 기존 문서를 그대로 다시 작성할 수 있는 재작성 메뉴가 있어서, 이를 활용하면 번거로움을 크게 덜 수 있습니다.\n\n## 주의사항\n\n작성한 문서는 7일 동안만 다시 확인할 수 있습니다. 나중에 다시 볼 일이 있다면 반드시 별도로 저장해 두세요.\n\n## 제출 이후\n\n공문을 제출하면 해당 기관이 접수한 뒤 처리를 진행합니다. 제출한 공문이 접수 처리되면 카카오톡으로 알려 주기 때문에, 접수 여부를 따로 확인하러 들어갈 필요가 없습니다.\n\n2020년 10월부터는 모바일 문서24가 개통되어 휴대폰으로 언제 어디서든 공문서 처리 현황을 확인할 수 있습니다. 그만큼 더 편리해졌습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 21385,
+      "wallMs": 22237,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18586,
+        "cacheReadInputTokens": 20043,
+        "outputTokens": 2860,
+        "thinkingTokens": 1685
+      },
+      "costUsd": 0.1049563,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/doc24-review-2021-polish-r1-a1": {
+      "id": "doc24-review-2021-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:15:49.368Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/editing-examples.md",
+          "references/document-types.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 문서24 써 본 후기야. 블로그에 다시 올리려고 하는데 어색한 표현을 고쳐 줘.\n\n이 문서24 서비스를 활용하기 전에 먼저 알고 넘어가야 할 사항이 있습니다. 바로 문서24 활용이 불가능한 경우인데요. 1) 문서 처리 수수료가 발생하거나 2) 별도 업무 처리 시스템이 존재하는 경우 3) 행정기관 방문과 본인 확인이 필수적인 민원은 문서24로 신청이 불가능합니다. 참고로 별도 업무 처리 시스템이란 홈택스나 정부24처럼 온라인 시스템을 통한 민원 처리가 가능한 시스템을 얘기합니다. 또 인감증명서나 본인서명사실확인서처럼 본인 확인이 필수적인 경우에 문서24를 통한 처리가 불가능하게 한 것은 합리적이라고 생각됩니다.\n\n문서24를 처음 사용하기 위해서는 우선 개인 사용자 혹은 법인/단체 사용자로 회원가입을 해야 합니다. 개인의 경우 법인/단체 사용자와는 다르게 카카오나 네이버로도 가입이 가능하기 때문에 보다 간편한데요. 문서24 홈페이지는 매우 직관적으로 되어있어서 이용하기 어렵지 않았습니다. 먼저 제출할 공문서의 내용을 작성하고, 그 다음 받는 기관을 선택해서 제출하면 되는 간편한 절차였습니다.\n\n다만 약간 불편하다고 할 수 있는 것이 공문서 작성 시 문서 수신기관을 단 한 곳만 선택할 수 있다는 점인데요. 과거에 여러 곳을 선택할 수 있게 해 놨었는데 광고와 홍보성 문서가 많아져서 변경된 것 같습니다. 물론 여러 곳에 같은 문서를 보내야 하는 경우 조금 불편하기는 해도 문서24에는 기존 문서를 똑같이 작성할 수 있는 재작성 메뉴가 있으니 이를 활용하면 좋습니다.\n\n한 가지 유의할 점이 있는데, 작성한 문서는 7일 동안만 다시 확인이 가능하기 때문에 추후 작성한 문서를 다시 보기 위해서는 별도로 저장을 해 놔야 합니다.\n\n이렇게 작성한 공문을 제출하게 되면 기관에서 접수 후 처리하게 되는데요. 문서24는 제출한 공문이 접수 처리가 되면 카카오톡을 통해 알려주기 때문에 따로 문서가 접수되었는지 다시 확인할 필요가 없습니다. 또한 2020년 10월부터는 모바일 문서24가 개통되어 핸드폰으로도 공문서 처리 내용을 확인할 수 있어 더욱 편리해졌습니다.",
+      "output": "이 문서24 서비스를 이용하기 전에 알아 둘 점이 있습니다. 바로 문서24로 신청할 수 없는 경우인데요. 1) 문서 처리 수수료가 발생하는 민원, 2) 별도 업무 처리 시스템이 있는 민원, 3) 행정기관 방문과 본인 확인이 필수인 민원은 문서24로 신청할 수 없습니다. 참고로 별도 업무 처리 시스템은 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다. 또 인감증명서나 본인서명사실확인서처럼 본인 확인이 필수인 민원을 문서24로 처리하지 못하게 한 것은 합리적이라고 생각합니다.\n\n문서24를 처음 사용하려면 먼저 개인 사용자나 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버로도 가입할 수 있어서 더 간편한데요. 문서24 홈페이지는 매우 직관적으로 되어 있어서 이용하기 어렵지 않았습니다. 먼저 제출할 공문서의 내용을 작성하고, 그다음 받는 기관을 선택해서 제출하면 되는 간단한 절차였습니다.\n\n다만 약간 불편한 점은 공문서를 작성할 때 수신기관을 한 곳만 선택할 수 있다는 것인데요. 과거에는 여러 곳을 선택할 수 있었는데 광고와 홍보성 문서가 많아져서 바뀐 것 같습니다. 물론 여러 곳에 같은 문서를 보내야 하면 조금 불편하기는 해도, 문서24에는 기존 문서와 똑같이 작성할 수 있는 재작성 메뉴가 있으니 활용하면 좋습니다.\n\n한 가지 유의할 점은 작성한 문서를 7일 동안만 다시 확인할 수 있다는 것입니다. 나중에 다시 보려면 별도로 저장해 두어야 합니다.\n\n이렇게 작성한 공문을 제출하면 기관에서 접수한 뒤 처리하는데요. 문서24는 제출한 공문이 접수 처리되면 카카오톡으로 알려 주기 때문에 문서가 접수되었는지 따로 확인할 필요가 없습니다. 또한 2020년 10월부터는 모바일 문서24가 개통되어 핸드폰으로도 공문서 처리 내용을 확인할 수 있어 더욱 편리해졌습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 26214,
+      "wallMs": 27168,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18265,
+        "cacheReadInputTokens": 19718,
+        "outputTokens": 3744,
+        "thinkingTokens": 2647
+      },
+      "costUsd": 0.11247979999999999,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/doc24-review-2021-polish-r2-a1": {
+      "id": "doc24-review-2021-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:16:05.070Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/editing-examples.md",
+          "references/document-types.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 문서24 써 본 후기야. 블로그에 다시 올리려고 하는데 어색한 표현을 고쳐 줘.\n\n이 문서24 서비스를 활용하기 전에 먼저 알고 넘어가야 할 사항이 있습니다. 바로 문서24 활용이 불가능한 경우인데요. 1) 문서 처리 수수료가 발생하거나 2) 별도 업무 처리 시스템이 존재하는 경우 3) 행정기관 방문과 본인 확인이 필수적인 민원은 문서24로 신청이 불가능합니다. 참고로 별도 업무 처리 시스템이란 홈택스나 정부24처럼 온라인 시스템을 통한 민원 처리가 가능한 시스템을 얘기합니다. 또 인감증명서나 본인서명사실확인서처럼 본인 확인이 필수적인 경우에 문서24를 통한 처리가 불가능하게 한 것은 합리적이라고 생각됩니다.\n\n문서24를 처음 사용하기 위해서는 우선 개인 사용자 혹은 법인/단체 사용자로 회원가입을 해야 합니다. 개인의 경우 법인/단체 사용자와는 다르게 카카오나 네이버로도 가입이 가능하기 때문에 보다 간편한데요. 문서24 홈페이지는 매우 직관적으로 되어있어서 이용하기 어렵지 않았습니다. 먼저 제출할 공문서의 내용을 작성하고, 그 다음 받는 기관을 선택해서 제출하면 되는 간편한 절차였습니다.\n\n다만 약간 불편하다고 할 수 있는 것이 공문서 작성 시 문서 수신기관을 단 한 곳만 선택할 수 있다는 점인데요. 과거에 여러 곳을 선택할 수 있게 해 놨었는데 광고와 홍보성 문서가 많아져서 변경된 것 같습니다. 물론 여러 곳에 같은 문서를 보내야 하는 경우 조금 불편하기는 해도 문서24에는 기존 문서를 똑같이 작성할 수 있는 재작성 메뉴가 있으니 이를 활용하면 좋습니다.\n\n한 가지 유의할 점이 있는데, 작성한 문서는 7일 동안만 다시 확인이 가능하기 때문에 추후 작성한 문서를 다시 보기 위해서는 별도로 저장을 해 놔야 합니다.\n\n이렇게 작성한 공문을 제출하게 되면 기관에서 접수 후 처리하게 되는데요. 문서24는 제출한 공문이 접수 처리가 되면 카카오톡을 통해 알려주기 때문에 따로 문서가 접수되었는지 다시 확인할 필요가 없습니다. 또한 2020년 10월부터는 모바일 문서24가 개통되어 핸드폰으로도 공문서 처리 내용을 확인할 수 있어 더욱 편리해졌습니다.",
+      "output": "문서24를 쓰기 전에 알아 둘 것이 있습니다. 바로 문서24로 처리할 수 없는 경우인데요. 1) 문서 처리 수수료가 발생하는 경우, 2) 별도 업무 처리 시스템이 있는 경우, 3) 행정기관 방문과 본인 확인이 필수인 경우에는 문서24로 신청할 수 없습니다. 참고로 별도 업무 처리 시스템이란 홈택스나 정부24처럼 온라인으로 민원을 처리할 수 있는 시스템을 말합니다. 인감증명서나 본인서명사실확인서처럼 본인 확인이 필수인 민원을 문서24로 처리하지 못하게 한 것은 합리적이라고 생각합니다.\n\n문서24를 처음 쓰려면 먼저 개인 사용자 또는 법인/단체 사용자로 회원가입을 해야 합니다. 개인 사용자는 법인/단체 사용자와 달리 카카오나 네이버로도 가입할 수 있어 더 간편한데요. 문서24 홈페이지는 매우 직관적으로 되어 있어서 이용하기 어렵지 않았습니다. 먼저 제출할 공문서 내용을 작성하고, 그다음 받는 기관을 선택해 제출하면 되는 간편한 절차였습니다.\n\n다만 약간 불편한 점은 공문서를 작성할 때 수신기관을 단 한 곳만 선택할 수 있다는 것인데요. 예전에는 여러 곳을 선택할 수 있었는데 광고와 홍보성 문서가 많아지면서 바뀐 것 같습니다. 물론 여러 곳에 같은 문서를 보내야 할 때는 조금 불편하지만, 문서24에는 기존 문서와 똑같은 문서를 작성할 수 있는 재작성 메뉴가 있으니 활용하면 좋습니다.\n\n한 가지 유의할 점이 있는데, 작성한 문서는 7일 동안만 다시 확인할 수 있어서 나중에 다시 보려면 따로 저장해 두어야 합니다.\n\n이렇게 작성한 공문을 제출하면 기관에서 접수한 뒤 처리하는데요. 문서24는 제출한 공문이 접수되면 카카오톡으로 알려 주기 때문에 접수 여부를 따로 확인할 필요가 없습니다. 또한 2020년 10월에 모바일 문서24가 개통되면서 핸드폰으로도 공문서 처리 내용을 확인할 수 있어 더욱 편리해졌습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 30171,
+      "wallMs": 31079,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18324,
+        "cacheReadInputTokens": 19722,
+        "outputTokens": 4302,
+        "thinkingTokens": 3214
+      },
+      "costUsd": 0.11829619999999999,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/hangang-water-2018-polish-r1-a1": {
+      "id": "hangang-water-2018-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:14:58.122Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 예전에 블로그에 올렸던 체험기 일부야. 어색한 문장만 다듬어 줘. 내 말투랑 생각은 그대로 두고.\n\n우리나라 수돗물은 매우 깨끗하다고 합니다. 약 2,600만 수도권 시민들의 물을 제공해주는 한강물이 깨끗한 이유는 한강의 상류에서 물을 깨끗하게 관리했기 때문입니다. 그런데 이 물을 깨끗하게 하는 데에는 상류지역 주민들의 희생이 더해졌다는 것을 알고 계셨나요?\n\n상류지역 주민들은 물을 깨끗하게 유지하기 위해서 공장도 함부로 세우지 못하고 관광을 위해 개발을 할 수도 없습니다. 이처럼 상류지역 주민들은 수도권 전체 시민들에게 깨끗한 물을 제공하기 위해 많은 희생을 하고 있다고 합니다.\n\n그 지역 주민들의 희생을 해소하기 위해 생긴 것이 ‘물이용부담금’입니다. 한강유역환경청 유동길 주무관은 “한강 하류의 주민들이 물을 사용할 때마다 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다. 이 자금으로 주민 지원사업을 진행하고 또 여러 지원을 하고 있습니다.”라고 했습니다. 또한 ‘물길따라 한강愛’ 트레킹의 또 다른 중요한 목적도 이런 상류지역 주민들의 고통을 알리고 한강에 사는 상하류지역 주민들의 만남도 연결해주는 것이라고 했습니다.\n\n저는 우리가 깨끗한 수돗물을 마시기 위해 누군가의 희생과 어려움이 더해졌다는 사실을 처음 알았습니다. 우리가 좋은 환경을 만들기 위해서는 모두가 노력해야겠지만 누군가 우리를 위해서 자신이 원하지 않는 희생을 하고 있다면 우리는 그 희생을 알아주어야한다고 생각합니다. 그리고 그 분들에게 감사하는 마음도 가져야한다고 생각합니다.\n\n다른 사람들의 희생만 바랄 게 아니라 물을 깨끗하게 만들기 위해 뭔가 한 가지씩이라도 실천했으면 좋겠습니다. 저는 쓰레기를 적게 만들기 위해 노력하고 1회용품의 사용을 줄이는 등의 노력을 하고 있습니다.",
+      "output": "우리나라 수돗물은 매우 깨끗하다고 합니다. 약 2,600만 수도권 시민에게 물을 공급하는 한강물이 깨끗한 이유는 상류에서 물을 깨끗하게 관리했기 때문입니다. 그런데 이 물을 깨끗하게 지키는 데 상류지역 주민들의 희생이 따랐다는 것을 알고 계셨나요?\n\n상류지역 주민들은 물을 깨끗하게 유지하기 위해서 공장도 함부로 세우지 못하고 관광을 위한 개발도 할 수 없습니다. 이처럼 상류지역 주민들은 수도권 전체 시민들에게 깨끗한 물을 제공하기 위해 많은 희생을 하고 있다고 합니다.\n\n그 지역 주민들의 희생을 덜어 주기 위해 생긴 것이 ‘물이용부담금’입니다. 한강유역환경청 유동길 주무관은 “한강 하류의 주민들이 물을 사용할 때마다 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다. 이 자금으로 주민 지원사업을 진행하고 또 여러 지원을 하고 있습니다.”라고 했습니다. 또한 ‘물길따라 한강愛’ 트레킹의 또 다른 중요한 목적은 이런 상류지역 주민들의 고통을 알리고, 한강에 사는 상하류지역 주민들이 서로 만나도록 연결해 주는 것이라고 했습니다.\n\n저는 깨끗한 수돗물을 마시는 데 누군가의 희생과 어려움이 따랐다는 사실을 처음 알았습니다. 좋은 환경을 만들려면 모두가 노력해야겠지만, 누군가 우리를 위해 원하지 않는 희생을 하고 있다면 그 희생을 알아주어야 한다고 생각합니다. 그리고 그분들에게 감사하는 마음도 가져야 한다고 생각합니다.\n\n다른 사람들의 희생만 바랄 게 아니라 물을 깨끗하게 만들기 위해 뭔가 한 가지씩이라도 실천했으면 좋겠습니다. 저는 쓰레기를 적게 만들고 1회용품 사용을 줄이는 등 노력하고 있습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 24880,
+      "wallMs": 26341,
+      "numTurns": 2,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 15621,
+        "cacheReadInputTokens": 19478,
+        "outputTokens": 2326,
+        "thinkingTokens": 1396
+      },
+      "costUsd": 0.0876998,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/hangang-water-2018-polish-r2-a1": {
+      "id": "hangang-water-2018-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:14:58.127Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 예전에 블로그에 올렸던 체험기 일부야. 어색한 문장만 다듬어 줘. 내 말투랑 생각은 그대로 두고.\n\n우리나라 수돗물은 매우 깨끗하다고 합니다. 약 2,600만 수도권 시민들의 물을 제공해주는 한강물이 깨끗한 이유는 한강의 상류에서 물을 깨끗하게 관리했기 때문입니다. 그런데 이 물을 깨끗하게 하는 데에는 상류지역 주민들의 희생이 더해졌다는 것을 알고 계셨나요?\n\n상류지역 주민들은 물을 깨끗하게 유지하기 위해서 공장도 함부로 세우지 못하고 관광을 위해 개발을 할 수도 없습니다. 이처럼 상류지역 주민들은 수도권 전체 시민들에게 깨끗한 물을 제공하기 위해 많은 희생을 하고 있다고 합니다.\n\n그 지역 주민들의 희생을 해소하기 위해 생긴 것이 ‘물이용부담금’입니다. 한강유역환경청 유동길 주무관은 “한강 하류의 주민들이 물을 사용할 때마다 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다. 이 자금으로 주민 지원사업을 진행하고 또 여러 지원을 하고 있습니다.”라고 했습니다. 또한 ‘물길따라 한강愛’ 트레킹의 또 다른 중요한 목적도 이런 상류지역 주민들의 고통을 알리고 한강에 사는 상하류지역 주민들의 만남도 연결해주는 것이라고 했습니다.\n\n저는 우리가 깨끗한 수돗물을 마시기 위해 누군가의 희생과 어려움이 더해졌다는 사실을 처음 알았습니다. 우리가 좋은 환경을 만들기 위해서는 모두가 노력해야겠지만 누군가 우리를 위해서 자신이 원하지 않는 희생을 하고 있다면 우리는 그 희생을 알아주어야한다고 생각합니다. 그리고 그 분들에게 감사하는 마음도 가져야한다고 생각합니다.\n\n다른 사람들의 희생만 바랄 게 아니라 물을 깨끗하게 만들기 위해 뭔가 한 가지씩이라도 실천했으면 좋겠습니다. 저는 쓰레기를 적게 만들기 위해 노력하고 1회용품의 사용을 줄이는 등의 노력을 하고 있습니다.",
+      "output": "우리나라 수돗물은 매우 깨끗하다고 합니다. 약 2,600만 수도권 시민에게 물을 공급하는 한강물이 깨끗한 이유는 한강 상류에서 물을 깨끗하게 관리했기 때문입니다. 그런데 이 물을 깨끗하게 지키는 데에는 상류지역 주민들의 희생이 있었다는 것을 알고 계셨나요?\n\n상류지역 주민들은 물을 깨끗하게 유지하기 위해서 공장도 함부로 세우지 못하고 관광을 위한 개발도 할 수 없습니다. 이처럼 상류지역 주민들은 수도권 전체 시민들에게 깨끗한 물을 제공하기 위해 많은 희생을 하고 있다고 합니다.\n\n이 주민들의 희생을 덜어 주기 위해 생긴 것이 ‘물이용부담금’입니다. 한강유역환경청 유동길 주무관은 “한강 하류의 주민들이 물을 사용할 때마다 1톤당 170원씩, 4인가족 한 달 평균 4,500원 정도를 물이용부담금으로 냅니다. 이 자금으로 주민 지원사업을 진행하고 또 여러 지원을 하고 있습니다.”라고 했습니다. 또한 ‘물길따라 한강愛’ 트레킹의 또 다른 중요한 목적은 이런 상류지역 주민들의 고통을 알리고, 한강에 사는 상·하류지역 주민들의 만남을 이어 주는 것이라고 했습니다.\n\n저는 우리가 깨끗한 수돗물을 마시는 데 누군가의 희생과 어려움이 따랐다는 사실을 처음 알았습니다. 좋은 환경을 만들기 위해서는 모두가 노력해야겠지만, 누군가 우리를 위해서 자신이 원하지 않는 희생을 하고 있다면 그 희생을 알아주어야 한다고 생각합니다. 그리고 그분들에게 감사하는 마음도 가져야 한다고 생각합니다.\n\n다른 사람들의 희생만 바랄 게 아니라 물을 깨끗하게 만들기 위해 뭔가 한 가지씩이라도 실천했으면 좋겠습니다. 저는 쓰레기를 적게 만들려고 노력하고, 1회용품 사용을 줄이는 등의 실천을 하고 있습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 18307,
+      "wallMs": 19761,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 11782,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2597,
+        "thinkingTokens": 1732
+      },
+      "costUsd": 0.0734866,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/olympics-home-2022-deslop-r1-a1": {
+      "id": "olympics-home-2022-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:16:57.163Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/editing-examples.md",
+          "references/document-types.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 너무 홍보 문구 같고 AI가 쓴 티가 나. 블로그 글답게 고쳐 줘.\n\n**집콕의 계절, 베이징에서 온 설원의 축제**\n\n코로나19 신종 변이 오미크론이 빠르게 번지며 방역은 지금 최대 고비를 맞고 있다. 이럴 때 가장 확실한 방어책은 아무래도 '집콕'이 아닐까 싶다. 그런데 집에 머물면서도 세계인과 함께 즐길 수 있는 축제가 다시 막을 올린다. 바로 2022 베이징동계올림픽이다.\n\n이번 대회는 개최되기까지 코로나19로 어려움이 적지 않았다. 그만큼 개막을 맞는 마음은 더욱 설렌다.\n\n동계올림픽이 기다려지는 이유는 분명하다. 눈과 얼음 위에서 펼쳐지는 경기마다 숨 막히는 승부가 이어지기 때문이다. 그중에서도 쇼트트랙은 속도감을 대리 체험하는 즐거움이 남다른 종목이다. 기록과 싸우는 경기가 아니라 결승선을 통과하는 순위에 따라 메달의 색이 갈리는 만큼, 동계스포츠 가운데서도 손꼽히는 짜릿함을 선사한다.\n\n한편 코로나19 시국에 올림픽 무대에 서는 선수들의 마음은 또 얼마나 무거울까. 집에서도 대한민국 선수들에게 용기와 격려를 전할 수 있는 소통 창구가 마련됐다는 소식이 눈길을 끈다. 문화체육관광부와 대한체육회가 마련한 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다. 지난해 도쿄올림픽 당시 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 뜨거운 관심을 받았다.\n\n올해도 2월 한 달 동안 온라인 코리아하우스에서 선수들을 향한 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다고 한다. 집콕 중인 올림픽 팬에게는 요긴한 길잡이가 될 듯하다. 올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상을 비롯해 일러스트로 만나는 대한민국 선수 소개, 동계올림픽의 역사, 종목별 경기 일정까지 모두 즐길 수 있다기에 직접 접속해 봤다.",
+      "output": "**집에서 보는 베이징동계올림픽, 온라인 코리아하우스에 들어가 봤다**\n\n코로나19 신종 변이 오미크론이 빠르게 번지며 방역은 지금 최대 고비를 맞고 있다. 이럴 때 가장 확실한 방어책은 아무래도 '집콕'이 아닐까 싶다. 다행히 집에 있으면서 세계인과 함께 볼 수 있는 대회가 다시 열린다. 2022 베이징동계올림픽이다.\n\n이번 대회는 코로나19 때문에 열리기까지 어려움이 적지 않았다. 그래서인지 개막이 더 설렌다.\n\n동계올림픽은 눈과 얼음 위에서 숨 막히는 승부가 계속되어 기다려진다. 그중에서도 쇼트트랙은 속도감을 대리 체험하는 재미가 남다르다. 기록이 아니라 결승선을 통과하는 순위에 따라 메달의 색이 갈리니, 동계스포츠 가운데서도 손꼽히게 짜릿한 종목이다.\n\n한편 코로나19 시국에 올림픽 무대에 서는 선수들의 마음은 또 얼마나 무거울까. 집에서도 선수들에게 용기와 격려를 전할 수 있는 창구가 생겼다는 소식이 눈길을 끈다. 문화체육관광부와 대한체육회가 연 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다. 지난해 도쿄올림픽 때 코로나19 대유행을 고려해 문을 연 곳으로, 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 많은 관심을 받았다.\n\n올해도 2월 한 달 동안 온라인 코리아하우스에서 선수들을 향한 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 볼 수 있다고 한다. 집콕 중인 올림픽 팬에게 요긴한 길잡이가 될 듯하다. 올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, 일러스트로 보는 대한민국 선수 소개, 동계올림픽의 역사, 종목별 경기 일정을 모두 볼 수 있다기에 직접 접속해 봤다.\n\n원문의 \"세계인의 뜨거운 관심\"은 근거가 글 안에 없어 \"많은 관심\"으로 낮췄습니다. 지난해 온라인 코리아하우스 반응을 확인하신 적이 있다면 그에 맞게 조정해 주세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 24201,
+      "wallMs": 25068,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18113,
+        "cacheReadInputTokens": 19568,
+        "outputTokens": 3131,
+        "thinkingTokens": 2015
+      },
+      "costUsd": 0.1057268,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/olympics-home-2022-deslop-r2-a1": {
+      "id": "olympics-home-2022-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:17:08.928Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/editing-examples.md",
+          "references/document-types.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 너무 홍보 문구 같고 AI가 쓴 티가 나. 블로그 글답게 고쳐 줘.\n\n**집콕의 계절, 베이징에서 온 설원의 축제**\n\n코로나19 신종 변이 오미크론이 빠르게 번지며 방역은 지금 최대 고비를 맞고 있다. 이럴 때 가장 확실한 방어책은 아무래도 '집콕'이 아닐까 싶다. 그런데 집에 머물면서도 세계인과 함께 즐길 수 있는 축제가 다시 막을 올린다. 바로 2022 베이징동계올림픽이다.\n\n이번 대회는 개최되기까지 코로나19로 어려움이 적지 않았다. 그만큼 개막을 맞는 마음은 더욱 설렌다.\n\n동계올림픽이 기다려지는 이유는 분명하다. 눈과 얼음 위에서 펼쳐지는 경기마다 숨 막히는 승부가 이어지기 때문이다. 그중에서도 쇼트트랙은 속도감을 대리 체험하는 즐거움이 남다른 종목이다. 기록과 싸우는 경기가 아니라 결승선을 통과하는 순위에 따라 메달의 색이 갈리는 만큼, 동계스포츠 가운데서도 손꼽히는 짜릿함을 선사한다.\n\n한편 코로나19 시국에 올림픽 무대에 서는 선수들의 마음은 또 얼마나 무거울까. 집에서도 대한민국 선수들에게 용기와 격려를 전할 수 있는 소통 창구가 마련됐다는 소식이 눈길을 끈다. 문화체육관광부와 대한체육회가 마련한 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다. 지난해 도쿄올림픽 당시 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 뜨거운 관심을 받았다.\n\n올해도 2월 한 달 동안 온라인 코리아하우스에서 선수들을 향한 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다고 한다. 집콕 중인 올림픽 팬에게는 요긴한 길잡이가 될 듯하다. 올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상을 비롯해 일러스트로 만나는 대한민국 선수 소개, 동계올림픽의 역사, 종목별 경기 일정까지 모두 즐길 수 있다기에 직접 접속해 봤다.",
+      "output": "**집에서 보는 베이징 동계올림픽**\n\n코로나19 오미크론 변이가 빠르게 번지면서 방역이 최대 고비를 맞았다. 이럴 때 가장 확실한 방어책은 아무래도 '집콕'이 아닐까 싶다. 마침 집에 있어도 세계인과 함께 즐길 수 있는 대회가 다시 막을 올린다. 2022 베이징동계올림픽이다.\n\n이번 대회는 개최되기까지 코로나19로 어려움이 적지 않았다. 그만큼 개막이 더 설렌다.\n\n동계올림픽이 기다려지는 건 눈과 얼음 위에서 경기마다 숨 막히는 승부가 이어지기 때문이다. 그중 쇼트트랙은 속도감을 대리 체험하는 맛이 남다르다. 기록이 아니라 결승선을 통과하는 순위로 메달 색이 갈리니, 동계스포츠 가운데서도 손꼽히게 짜릿하다.\n\n한편 코로나19 시국에 올림픽 무대에 서는 선수들의 마음은 또 얼마나 무거울까. 집에서도 대한민국 선수들에게 용기와 격려를 전할 수 있는 창구가 마련됐다는 소식이 눈길을 끈다. 문화체육관광부와 대한체육회가 마련한 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다. 지난해 도쿄올림픽 때도 코로나19 대유행을 고려해 문을 열었고, 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 관심을 받았다.\n\n올해도 2월 한 달 동안 온라인 코리아하우스에서 선수들을 향한 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 볼 수 있다고 한다. 집콕 중인 올림픽 팬에게 요긴한 길잡이가 될 듯하다. 올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, 일러스트로 만나는 대한민국 선수 소개, 동계올림픽의 역사, 종목별 경기 일정을 모두 즐길 수 있다기에 직접 접속해 봤다.\n\n---\n\n- 제목은 홍보 문구처럼 읽혀서 내용 그대로 바꿨습니다.\n- 도쿄올림픽 때 온라인 코리아하우스가 \"세계인의 관심을 받았다\"는 부분은 글만으로는 근거를 확인할 수 없습니다. 수식(`뜨거운`)만 덜고 주장은 남겼으니, 출처가 있는지 확인해 보세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 20961,
+      "wallMs": 21760,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18177,
+        "cacheReadInputTokens": 19564,
+        "outputTokens": 3334,
+        "thinkingTokens": 2189
+      },
+      "costUsd": 0.10801240000000001,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/olympics-home-2022-polish-r1-a1": {
+      "id": "olympics-home-2022-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:16:36.160Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 블로그 글인데 좀 더 자연스럽게 다듬어 줘.\n\n최근 코로나19 신종 변이인 오미크론 대확산으로 최대 고비를 맞고 있다. 이를 방어하기 위한 가장 좋은 방법은 집콕이 아닐까 싶다. 그래도 집콕하며 즐길 수 있는 세계인의 축제가 다시 시작된다. 2022 베이징동계올림픽이다.\n\n이번 베이징동계올림픽이 개최되기까지 코로나19로 여러 어려움도 많았지만 동계올림픽이 개막하면서 들뜬 마음을 감출 수가 없다.\n\n동계올림픽이 기대되는 이유는 매 경기마다 눈과 얼음 속에서 박진감 넘치는 승부가 펼쳐지기 때문이다. 특히 스피드를 대리만족하며 즐길 수 있는 쇼트트랙은 기록에 도전하는 것이 아니라 결승선 통과 순위에 따라 메달의 색깔이 결정되기 때문에 동계스포츠 중 가장 짜릿함을 선사하는 종목이기도 하다.\n\n코로나19 시국에 올림픽에 참가하는 선수들 마음은 얼마나 무거울까. 집콕하며 대한민국 선수들에게 용기와 격려의 메시지를 보낼 수 있는 소통의 창구가 마련됐다고 해 눈길을 끈다. 바로 문화체육관광부와 대한체육회가 마련한 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)가 그것이다. 지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 해 세계인의 뜨거운 관심을 받기도 했다.\n\n올해도 2월 한 달 간 집콕하며 온라인 코리아하우스로 선수들에게 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다니 요긴하게 활용할 수 있을 것 같다. 올림픽 기간 중에 네이버 특집 페이지를 통해 온라인 코리아하우스 특집 영상을 비롯해 일러스트를 통한 대한민국 선수 소개, 동계올림픽 역사와 종목별 경기 일정까지 한눈에 즐길 수 있다고 해 접속해봤다.",
+      "output": "최근 코로나19 신종 변이인 오미크론이 크게 퍼지면서 최대 고비를 맞고 있다. 이를 막는 가장 좋은 방법은 집콕이 아닐까 싶다. 그래도 집에서 즐길 수 있는 세계인의 축제가 다시 시작된다. 2022 베이징동계올림픽이다.\n\n이번 대회가 열리기까지 코로나19로 어려움도 많았지만, 막상 개막하니 들뜬 마음을 감출 수가 없다.\n\n동계올림픽이 기대되는 이유는 매 경기 눈과 얼음 속에서 박진감 넘치는 승부가 펼쳐지기 때문이다. 특히 쇼트트랙은 스피드를 대리만족하며 즐길 수 있는 종목이다. 기록에 도전하는 것이 아니라 결승선 통과 순위에 따라 메달 색깔이 결정되기 때문에 동계스포츠 중 가장 짜릿한 종목이기도 하다.\n\n코로나19 시국에 올림픽에 나서는 선수들의 마음은 얼마나 무거울까. 집에서 대한민국 선수들에게 용기와 격려의 메시지를 보낼 수 있는 소통 창구가 마련됐다고 해 눈길을 끈다. 문화체육관광부와 대한체육회가 만든 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다. 지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 해 세계인의 뜨거운 관심을 받기도 했다.\n\n올해도 2월 한 달간 온라인 코리아하우스에서 선수들에게 응원 메시지를 보내는 것은 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다니 요긴하게 활용할 수 있을 것 같다. 올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상을 비롯해 일러스트로 보는 대한민국 선수 소개, 동계올림픽 역사, 종목별 경기 일정까지 즐길 수 있다고 해 접속해봤다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 14311,
+      "wallMs": 15440,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 11722,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2291,
+        "thinkingTokens": 1458
+      },
+      "costUsd": 0.0701866,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/olympics-home-2022-polish-r2-a1": {
+      "id": "olympics-home-2022-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:16:51.619Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 블로그 글인데 좀 더 자연스럽게 다듬어 줘.\n\n최근 코로나19 신종 변이인 오미크론 대확산으로 최대 고비를 맞고 있다. 이를 방어하기 위한 가장 좋은 방법은 집콕이 아닐까 싶다. 그래도 집콕하며 즐길 수 있는 세계인의 축제가 다시 시작된다. 2022 베이징동계올림픽이다.\n\n이번 베이징동계올림픽이 개최되기까지 코로나19로 여러 어려움도 많았지만 동계올림픽이 개막하면서 들뜬 마음을 감출 수가 없다.\n\n동계올림픽이 기대되는 이유는 매 경기마다 눈과 얼음 속에서 박진감 넘치는 승부가 펼쳐지기 때문이다. 특히 스피드를 대리만족하며 즐길 수 있는 쇼트트랙은 기록에 도전하는 것이 아니라 결승선 통과 순위에 따라 메달의 색깔이 결정되기 때문에 동계스포츠 중 가장 짜릿함을 선사하는 종목이기도 하다.\n\n코로나19 시국에 올림픽에 참가하는 선수들 마음은 얼마나 무거울까. 집콕하며 대한민국 선수들에게 용기와 격려의 메시지를 보낼 수 있는 소통의 창구가 마련됐다고 해 눈길을 끈다. 바로 문화체육관광부와 대한체육회가 마련한 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)가 그것이다. 지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 해 세계인의 뜨거운 관심을 받기도 했다.\n\n올해도 2월 한 달 간 집콕하며 온라인 코리아하우스로 선수들에게 응원 메시지는 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다니 요긴하게 활용할 수 있을 것 같다. 올림픽 기간 중에 네이버 특집 페이지를 통해 온라인 코리아하우스 특집 영상을 비롯해 일러스트를 통한 대한민국 선수 소개, 동계올림픽 역사와 종목별 경기 일정까지 한눈에 즐길 수 있다고 해 접속해봤다.",
+      "output": "최근 코로나19 신종 변이인 오미크론이 대확산하면서 최대 고비를 맞고 있다. 이를 막는 가장 좋은 방법은 집콕이 아닐까 싶다. 그래도 집콕하며 즐길 수 있는 세계인의 축제가 다시 시작된다. 2022 베이징동계올림픽이다.\n\n개최되기까지 코로나19로 어려움이 많았지만, 막상 동계올림픽이 개막하니 들뜬 마음을 감출 수 없다.\n\n동계올림픽이 기대되는 이유는 경기마다 눈과 얼음 위에서 박진감 넘치는 승부가 펼쳐지기 때문이다. 특히 스피드를 대리만족하며 즐길 수 있는 쇼트트랙은 기록에 도전하는 종목이 아니라 결승선 통과 순위로 메달 색깔이 가려져, 동계스포츠 중 가장 짜릿한 종목이기도 하다.\n\n코로나19 시국에 올림픽에 나서는 선수들의 마음은 얼마나 무거울까. 집콕하며 대한민국 선수들에게 용기와 격려의 메시지를 보낼 수 있는 소통 창구가 마련됐다고 해 눈길을 끈다. 문화체육관광부와 대한체육회가 연 온라인 코리아하우스(https://2022teamkoreahouse.com/ko/home/)다. 지난해 도쿄올림픽 때 코로나19 대유행 상황을 고려해 문을 연 온라인 코리아하우스는 스포츠 외교의 장이자 대한민국 홍보관 역할을 하며 세계인의 뜨거운 관심을 받기도 했다.\n\n올해도 2월 한 달간 온라인 코리아하우스에서 선수들에게 응원 메시지를 보내는 것은 물론 경기 일정과 관련 이슈까지 한눈에 살펴볼 수 있다니 요긴하게 활용할 수 있을 것 같다. 올림픽 기간에는 네이버 특집 페이지에서도 온라인 코리아하우스 특집 영상, 일러스트로 만나는 대한민국 선수 소개, 동계올림픽 역사, 종목별 경기 일정을 즐길 수 있다고 해 접속해봤다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 16392,
+      "wallMs": 17299,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 11714,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2753,
+        "thinkingTokens": 1935
+      },
+      "costUsd": 0.0747746,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/relief-fund-2020-deslop-r1-a1": {
+      "id": "relief-fund-2020-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:15:34.068Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 이 후기 AI 티 좀 빼 줘.\n\n# 특수고용·프리랜서라면 포기하지 마세요: 코로나19 긴급고용안정지원금, 직접 신청하고 왔습니다\n\n코로나19로 일감이 끊긴 특수고용·프리랜서 노동자에게 작은 버팀목이 될 제도가 있습니다. 바로 코로나19 긴급고용안정지원금입니다. 6월 1일부터 7월 20일까지 신청을 받고 있습니다.\n\n접수 방식은 시기에 따라 달랐습니다. 6월 1일부터는 온라인으로 신청을 받았습니다. 현장 접수를 시작한 6월 22일부터 7월 3일까지 2주 간은 출생연도에 따른 5부제로 운영했고, 7월 6일부터는 누구나 현장에서 접수할 수 있습니다. 제가 살고 있는 대구시에서는 고용복지센터 각 지점에서 접수가 가능하다고 합니다.\n\n## 누가 신청할 수 있을까\n\n먼저 신청 조건을 짚어 보겠습니다.\n\n**특수고용·프리랜서**는 지난 연소득 평균 혹은 3~4월, 12월~올해 1월 중 유리한 기간을 선택해 올해 3, 4월 소득과 비교합니다. 월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 기간보다 25퍼센트 이상 감소했을 때 신청할 수 있습니다.\n\n**무급휴직자**는 3∼5월 일정 기간 이상 무급휴직을 한 사실이 입증되면 신청할 수 있습니다.\n\n## 증빙의 벽 앞에서\n\n저는 올해 초 일하던 전시관이 문을 닫으면서 3, 4월 수입이 전무했습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다. 한 달 소득이 50만원을 넘으면 한 달치만 첨부하면 되지만, 그 이하라면 두 달을 합산해야 합니다.\n\n문제는 공교롭게도 근무지 위탁업체가 바뀌면서 소득 증빙이 쉽지 않았다는 점입니다. 고민 끝에 통장사본과 위촉장 등으로 증빙 서류를 챙겨 집 근처 대구서부고용복지플러스센터로 향했습니다.\n\n## 현장 풍경: 예상보다 훨씬 수월했습니다\n\n센터는 신청 유형별로 층이 나뉘어 있었습니다. 1층은 무급휴직자, 7층은 특수고용·프리랜서, 8층은 영세자영업자를 위한 접수처였습니다.\n\n오전 9시 반쯤 도착했는데, 길게 늘어선 줄을 예상했던 것과 달리 기다리지 않고 바로 신청할 수 있었습니다.\n\n## 이제는 결과를 기다릴 차례\n\n서류를 준비하는 과정은 녹록지 않았지만, 어쨌든 접수를 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하더라도 이의신청을 낼 수 있습니다.\n\n지원금은 최대 150만원까지이며, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다.\n\n## 마지막으로 드리고 싶은 말\n\n특수고용·프리랜서는 자신의 근무와 소득을 입증하기가 쉽지 않습니다. 저 역시 그랬습니다. 그래도 포기하지 말고 현장을 찾아가 꼭 신청해 보시기 바랍니다. 신청 마감은 7월 20일입니다.",
+      "output": "# 특수고용·프리랜서라면 포기하지 마세요: 코로나19 긴급고용안정지원금, 직접 신청하고 왔습니다\n\n코로나19로 일감이 끊긴 특수고용·프리랜서 노동자를 위한 코로나19 긴급고용안정지원금이 있습니다. 6월 1일부터 7월 20일까지 신청을 받고 있습니다.\n\n접수 방식은 시기에 따라 달랐습니다. 6월 1일부터는 온라인으로만 신청을 받았고, 현장 접수를 시작한 6월 22일부터 7월 3일까지 2주간은 출생연도에 따른 5부제로 운영했습니다. 7월 6일부터는 누구나 현장에서 접수할 수 있습니다. 제가 사는 대구시에서는 고용복지센터 각 지점에서 접수가 가능하다고 합니다.\n\n## 신청 조건\n\n**특수고용·프리랜서**는 지난해 연소득 평균, 3~4월, 12월~올해 1월 중 유리한 기간을 골라 올해 3, 4월 소득과 비교합니다. 비교 기간의 소득이 월 평균 25만원 이상이거나 2개월 합산 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 기간보다 25퍼센트 이상 줄었을 때 신청할 수 있습니다.\n\n**무급휴직자**는 3∼5월에 일정 기간 이상 무급휴직을 한 사실을 입증하면 신청할 수 있습니다.\n\n## 소득 증빙\n\n저는 올해 초 일하던 전시관이 문을 닫아 3, 4월 수입이 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다. 한 달 소득이 50만원을 넘으면 한 달치만 첨부하면 되지만, 그 이하라면 두 달을 합산해야 합니다.\n\n공교롭게도 근무지 위탁업체가 바뀌는 바람에 소득 증빙이 쉽지 않았습니다. 고민 끝에 통장 사본과 위촉장 등으로 서류를 챙겨 집 근처 대구서부고용복지플러스센터에 갔습니다.\n\n## 현장 접수\n\n센터는 신청 유형별로 층이 나뉘어 있었습니다. 1층은 무급휴직자, 7층은 특수고용·프리랜서, 8층은 영세자영업자 접수처였습니다.\n\n오전 9시 반쯤 도착했습니다. 긴 줄을 예상했는데 기다리지 않고 바로 신청할 수 있었습니다.\n\n## 접수 이후\n\n서류 준비는 쉽지 않았지만 접수는 마쳤습니다. 이제 심사 결과를 기다립니다. 심사를 통과하지 못해도 이의신청을 낼 수 있습니다.\n\n지원금은 최대 150만원이고, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다.\n\n## 신청을 망설이는 분들께\n\n특수고용·프리랜서는 자신의 근무와 소득을 입증하기가 쉽지 않습니다. 저도 그랬습니다. 그래도 포기하지 말고 센터를 찾아가 꼭 신청해 보세요. 마감은 7월 20일입니다.\n\n---\n- 원문의 \"지난 연소득 평균\"은 \"지난해 연소득 평균\"으로 읽어 고쳤습니다. 다르게 의도하셨다면 되돌려 주세요.\n- 원문의 \"6월 1일부터는 온라인으로 신청을 받았습니다\"는 뒤 문장과의 대비를 살리려고 \"온라인으로만\"으로 썼습니다. 이 기간에도 다른 접수 방법이 있었다면 \"만\"을 빼 주세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 14485,
+      "wallMs": 15292,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 12610,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2354,
+        "thinkingTokens": 992
+      },
+      "costUsd": 0.0743686,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/relief-fund-2020-deslop-r2-a1": {
+      "id": "relief-fund-2020-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:15:41.838Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md",
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 이 후기 AI 티 좀 빼 줘.\n\n# 특수고용·프리랜서라면 포기하지 마세요: 코로나19 긴급고용안정지원금, 직접 신청하고 왔습니다\n\n코로나19로 일감이 끊긴 특수고용·프리랜서 노동자에게 작은 버팀목이 될 제도가 있습니다. 바로 코로나19 긴급고용안정지원금입니다. 6월 1일부터 7월 20일까지 신청을 받고 있습니다.\n\n접수 방식은 시기에 따라 달랐습니다. 6월 1일부터는 온라인으로 신청을 받았습니다. 현장 접수를 시작한 6월 22일부터 7월 3일까지 2주 간은 출생연도에 따른 5부제로 운영했고, 7월 6일부터는 누구나 현장에서 접수할 수 있습니다. 제가 살고 있는 대구시에서는 고용복지센터 각 지점에서 접수가 가능하다고 합니다.\n\n## 누가 신청할 수 있을까\n\n먼저 신청 조건을 짚어 보겠습니다.\n\n**특수고용·프리랜서**는 지난 연소득 평균 혹은 3~4월, 12월~올해 1월 중 유리한 기간을 선택해 올해 3, 4월 소득과 비교합니다. 월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 기간보다 25퍼센트 이상 감소했을 때 신청할 수 있습니다.\n\n**무급휴직자**는 3∼5월 일정 기간 이상 무급휴직을 한 사실이 입증되면 신청할 수 있습니다.\n\n## 증빙의 벽 앞에서\n\n저는 올해 초 일하던 전시관이 문을 닫으면서 3, 4월 수입이 전무했습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다. 한 달 소득이 50만원을 넘으면 한 달치만 첨부하면 되지만, 그 이하라면 두 달을 합산해야 합니다.\n\n문제는 공교롭게도 근무지 위탁업체가 바뀌면서 소득 증빙이 쉽지 않았다는 점입니다. 고민 끝에 통장사본과 위촉장 등으로 증빙 서류를 챙겨 집 근처 대구서부고용복지플러스센터로 향했습니다.\n\n## 현장 풍경: 예상보다 훨씬 수월했습니다\n\n센터는 신청 유형별로 층이 나뉘어 있었습니다. 1층은 무급휴직자, 7층은 특수고용·프리랜서, 8층은 영세자영업자를 위한 접수처였습니다.\n\n오전 9시 반쯤 도착했는데, 길게 늘어선 줄을 예상했던 것과 달리 기다리지 않고 바로 신청할 수 있었습니다.\n\n## 이제는 결과를 기다릴 차례\n\n서류를 준비하는 과정은 녹록지 않았지만, 어쨌든 접수를 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하더라도 이의신청을 낼 수 있습니다.\n\n지원금은 최대 150만원까지이며, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다.\n\n## 마지막으로 드리고 싶은 말\n\n특수고용·프리랜서는 자신의 근무와 소득을 입증하기가 쉽지 않습니다. 저 역시 그랬습니다. 그래도 포기하지 말고 현장을 찾아가 꼭 신청해 보시기 바랍니다. 신청 마감은 7월 20일입니다.",
+      "output": "# 특수고용·프리랜서라면 포기하지 마세요: 코로나19 긴급고용안정지원금, 직접 신청하고 왔습니다\n\n코로나19로 일감이 끊긴 특수고용·프리랜서 노동자가 신청할 수 있는 코로나19 긴급고용안정지원금이 있습니다. 6월 1일부터 7월 20일까지 신청을 받고 있습니다.\n\n접수 방식은 시기에 따라 달랐습니다. 6월 1일부터는 온라인으로만 받았고, 현장 접수를 시작한 6월 22일부터 7월 3일까지 2주간은 출생연도에 따른 5부제로 운영했습니다. 7월 6일부터는 누구나 현장에서 접수할 수 있습니다. 제가 사는 대구시에서는 고용복지센터 각 지점에서 접수할 수 있다고 합니다.\n\n## 누가 신청할 수 있을까\n\n**특수고용·프리랜서**는 지난 연소득 평균 혹은 3~4월, 12월~올해 1월 중 유리한 기간을 골라 올해 3, 4월 소득과 비교합니다. 월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 기간보다 25퍼센트 이상 줄었을 때 신청할 수 있습니다.\n\n**무급휴직자**는 3∼5월 일정 기간 이상 무급휴직을 한 사실이 입증되면 신청할 수 있습니다.\n\n## 증빙이 문제였습니다\n\n저는 올해 초 일하던 전시관이 문을 닫아 3, 4월에 수입이 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다. 한 달 소득이 50만원을 넘으면 한 달치만 첨부하면 되지만, 그 이하라면 두 달을 합산해야 합니다.\n\n공교롭게도 근무지 위탁업체가 바뀌면서 소득 증빙이 쉽지 않았습니다. 고민 끝에 통장사본과 위촉장 등으로 서류를 챙겨 집 근처 대구서부고용복지플러스센터로 갔습니다.\n\n## 현장은 예상보다 수월했습니다\n\n센터는 신청 유형별로 층이 나뉘어 있었습니다. 1층은 무급휴직자, 7층은 특수고용·프리랜서, 8층은 영세자영업자 접수처였습니다.\n\n오전 9시 반쯤 도착했는데, 긴 줄을 예상했던 것과 달리 기다리지 않고 바로 신청할 수 있었습니다.\n\n## 이제 결과를 기다립니다\n\n서류를 준비하는 과정은 녹록지 않았지만 접수는 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하더라도 이의신청을 낼 수 있습니다.\n\n지원금은 최대 150만원까지이며, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다.\n\n## 포기하지 마세요\n\n특수고용·프리랜서는 자신의 근무와 소득을 입증하기가 쉽지 않습니다. 저도 그랬습니다. 그래도 포기하지 말고 현장을 찾아가 꼭 신청해 보시기 바랍니다. 신청 마감은 7월 20일입니다.\n\n---\n\n원문에서 확인이 필요한 부분이 있습니다.\n- 조건에는 \"월 평균 25만원 이상 또는 2개월 합산 50만원 초과\"라고 쓰여 있습니다. 증빙 부분에서는 \"한 달 소득이 50만원을 넘으면 한 달치만 첨부\"한다고 했습니다. 두 기준이 같은 규칙인지 확인하지 못해 원문대로 두었습니다. 공식 안내와 맞는지 한번 확인해 보세요.\n- \"3~4월\"이 지난해 3~4월인지도 원문만으로는 알 수 없어 그대로 두었습니다.\n- 6월 1일부터 7월 20일까지 \"신청을 받고 있습니다\"라는 현재형은 글을 올리는 시점과 맞는지 보세요. 지금은 10월이라 이미 마감된 기간입니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 22261,
+      "wallMs": 23216,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18889,
+        "cacheReadInputTokens": 20302,
+        "outputTokens": 3087,
+        "thinkingTokens": 1377
+      },
+      "costUsd": 0.10846420000000001,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/relief-fund-2020-polish-r1-a1": {
+      "id": "relief-fund-2020-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:15:17.901Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 지원금 신청 후기 글이야. 읽기 편하게 다듬어 줘.\n\n6월 1일부터 7월 20일까지 코로나19 긴급고용안정지원금 신청을 받고 있습니다. 6월 1일부터 온라인으로 신청을 받았고, 현장 신청을 받은 6월 22일부터 7월 3일까지 2주 간은 출생연도에 따른 5부제를 실시했습니다. 7월 6일부터는 누구나 현장 접수가 가능합니다. 제가 살고 있는 대구시의 경우, 고용복지센터 각 지점에서 접수가 가능하다고 합니다.\n\n특수고용, 프리랜서의 경우 지난 연소득 평균 혹은 3~4월, 12월~올해 1월 중 유리한 것을 선택해 올해 3, 4월과 비교합니다. 월 평균 25만원 이상 혹은 2개월 합산 소득이 50만원을 넘어야 하며 올해 3, 4월 소득과 비교해 25퍼센트 이상 감소한 경우 가능합니다. 무급휴직자는 3∼5월 일정 기간 이상 무급휴직을 한 것이 입증되면 신청 가능합니다.\n\n저는 올해 초 일하는 전시관이 문을 닫았기 때문에 3, 4월 수입이 전무했습니다. 작년 12월과 올해 1월 수입을 입증해야 합니다. 50만원이 넘으면 한 달치만 첨부하면 되지만, 그 이하면 두 달을 합산해야 합니다. 공교롭게도 일하던 근무지 위탁업체가 바뀌는 바람에 소득 증빙을 하는데 좀 어려움이 있었습니다. 통장사본 및 위촉장 등으로 증빙 서류를 챙겨 집 근처에 있는 대구서부고용복지플러스센터로 향했습니다.\n\n1층은 무급휴직자, 7층은 특수고용, 프리랜서, 8층은 영세자영업자로 나뉘어 신청을 받고 있었습니다. 오전 9시 반쯤이었고, 길게 줄을 섰으리란 예상과 달리 바로 신청 가능했습니다.\n\n관련 증빙 서류 등을 준비하는 과정이 녹록지 않았지만 어쨌든 신청 접수를 끝냈습니다. 이제 심사 결과를 기다리면 됩니다. 만약 심사에 통과가 되지 않으면 이의신청을 낼 수도 있습니다.\n\n최대 150만원까지 지원되며, 지역에서 받은 비슷한 지원금을 제외하고 지급된다고 합니다. 특수고용, 프리랜서는 자신의 근무나 소득을 입증하기가 쉽지 않지만 포기하지 말고 현장으로 가서 꼭 신청하시기 바랍니다. 신청은 7월 20일까지입니다.",
+      "output": "6월 1일부터 7월 20일까지 코로나19 긴급고용안정지원금 신청을 받고 있습니다. 6월 1일부터 온라인으로 신청을 받았고, 현장 신청을 받은 6월 22일부터 7월 3일까지 2주간은 출생연도에 따른 5부제를 실시했습니다. 7월 6일부터는 누구나 현장 접수가 가능합니다. 제가 사는 대구시는 고용복지센터 각 지점에서 접수할 수 있다고 합니다.\n\n특수고용, 프리랜서는 지난 연소득 평균이나 3~4월, 12월~올해 1월 중 유리한 것을 골라 올해 3, 4월과 비교합니다. 월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 비교 대상보다 25퍼센트 이상 줄었어야 신청할 수 있습니다. 무급휴직자는 3∼5월 일정 기간 이상 무급휴직을 했다는 사실을 입증하면 신청할 수 있습니다.\n\n저는 올해 초 일하던 전시관이 문을 닫아서 3, 4월 수입이 전혀 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다. 50만원이 넘으면 한 달치만 첨부하면 되고, 그 이하면 두 달을 합산해야 합니다. 공교롭게도 근무지 위탁업체가 바뀌는 바람에 소득 증빙이 좀 어려웠습니다. 통장 사본과 위촉장 등 증빙 서류를 챙겨 집 근처 대구서부고용복지플러스센터로 갔습니다.\n\n센터는 1층에서 무급휴직자, 7층에서 특수고용·프리랜서, 8층에서 영세자영업자 신청을 받고 있었습니다. 오전 9시 반쯤 도착했는데, 길게 줄을 서리라는 예상과 달리 바로 신청할 수 있었습니다.\n\n증빙 서류를 준비하는 과정은 녹록지 않았지만 어쨌든 접수를 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하면 이의신청을 낼 수도 있습니다.\n\n최대 150만원까지 지원되며, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다. 특수고용, 프리랜서는 근무나 소득을 입증하기가 쉽지 않지만, 포기하지 말고 현장에 가서 꼭 신청하시기 바랍니다. 신청은 7월 20일까지입니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 15385,
+      "wallMs": 16155,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 11982,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2426,
+        "thinkingTokens": 1452
+      },
+      "costUsd": 0.0725766,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/relief-fund-2020-polish-r2-a1": {
+      "id": "relief-fund-2020-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:15:24.478Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 지원금 신청 후기 글이야. 읽기 편하게 다듬어 줘.\n\n6월 1일부터 7월 20일까지 코로나19 긴급고용안정지원금 신청을 받고 있습니다. 6월 1일부터 온라인으로 신청을 받았고, 현장 신청을 받은 6월 22일부터 7월 3일까지 2주 간은 출생연도에 따른 5부제를 실시했습니다. 7월 6일부터는 누구나 현장 접수가 가능합니다. 제가 살고 있는 대구시의 경우, 고용복지센터 각 지점에서 접수가 가능하다고 합니다.\n\n특수고용, 프리랜서의 경우 지난 연소득 평균 혹은 3~4월, 12월~올해 1월 중 유리한 것을 선택해 올해 3, 4월과 비교합니다. 월 평균 25만원 이상 혹은 2개월 합산 소득이 50만원을 넘어야 하며 올해 3, 4월 소득과 비교해 25퍼센트 이상 감소한 경우 가능합니다. 무급휴직자는 3∼5월 일정 기간 이상 무급휴직을 한 것이 입증되면 신청 가능합니다.\n\n저는 올해 초 일하는 전시관이 문을 닫았기 때문에 3, 4월 수입이 전무했습니다. 작년 12월과 올해 1월 수입을 입증해야 합니다. 50만원이 넘으면 한 달치만 첨부하면 되지만, 그 이하면 두 달을 합산해야 합니다. 공교롭게도 일하던 근무지 위탁업체가 바뀌는 바람에 소득 증빙을 하는데 좀 어려움이 있었습니다. 통장사본 및 위촉장 등으로 증빙 서류를 챙겨 집 근처에 있는 대구서부고용복지플러스센터로 향했습니다.\n\n1층은 무급휴직자, 7층은 특수고용, 프리랜서, 8층은 영세자영업자로 나뉘어 신청을 받고 있었습니다. 오전 9시 반쯤이었고, 길게 줄을 섰으리란 예상과 달리 바로 신청 가능했습니다.\n\n관련 증빙 서류 등을 준비하는 과정이 녹록지 않았지만 어쨌든 신청 접수를 끝냈습니다. 이제 심사 결과를 기다리면 됩니다. 만약 심사에 통과가 되지 않으면 이의신청을 낼 수도 있습니다.\n\n최대 150만원까지 지원되며, 지역에서 받은 비슷한 지원금을 제외하고 지급된다고 합니다. 특수고용, 프리랜서는 자신의 근무나 소득을 입증하기가 쉽지 않지만 포기하지 말고 현장으로 가서 꼭 신청하시기 바랍니다. 신청은 7월 20일까지입니다.",
+      "output": "6월 1일부터 7월 20일까지 코로나19 긴급고용안정지원금 신청을 받고 있습니다. 온라인 신청은 6월 1일부터 받았고, 현장 신청은 6월 22일부터 7월 3일까지 2주간 출생연도에 따른 5부제로 운영했습니다. 7월 6일부터는 누구나 현장에서 접수할 수 있습니다. 제가 사는 대구시는 고용복지센터 각 지점에서 접수할 수 있다고 합니다.\n\n특수고용, 프리랜서는 지난해 연소득 평균, 3~4월, 12월~올해 1월 중 유리한 것을 골라 올해 3, 4월과 비교합니다. 월 평균 25만원 이상이거나 2개월 합산 소득이 50만원을 넘어야 하고, 올해 3, 4월 소득이 25퍼센트 이상 줄었을 때 신청할 수 있습니다. 무급휴직자는 3∼5월 중 일정 기간 이상 무급휴직을 했다는 사실을 입증하면 신청할 수 있습니다.\n\n저는 올해 초 일하던 전시관이 문을 닫아 3, 4월 수입이 전혀 없었습니다. 그래서 작년 12월과 올해 1월 수입을 입증해야 했습니다. 50만원이 넘으면 한 달치만 첨부하면 되고, 그 이하면 두 달을 합산해야 합니다. 공교롭게도 근무지 위탁업체가 바뀌어서 소득 증빙에 좀 어려움이 있었습니다. 통장 사본과 위촉장 등으로 증빙 서류를 챙겨 집 근처 대구서부고용복지플러스센터로 갔습니다.\n\n센터는 1층에서 무급휴직자, 7층에서 특수고용·프리랜서, 8층에서 영세자영업자를 나눠 받고 있었습니다. 오전 9시 반쯤 도착했는데, 길게 줄을 서리라는 예상과 달리 바로 신청할 수 있었습니다.\n\n서류를 준비하는 과정은 녹록지 않았지만 어쨌든 접수를 마쳤습니다. 이제 심사 결과를 기다리면 됩니다. 심사를 통과하지 못하면 이의신청을 낼 수도 있습니다.\n\n지원금은 최대 150만원이고, 지역에서 받은 비슷한 지원금은 제외하고 지급된다고 합니다. 특수고용과 프리랜서는 근무나 소득을 입증하기 쉽지 않지만, 포기하지 말고 현장에 가서 꼭 신청하시기 바랍니다. 신청은 7월 20일까지입니다.\n\n---\n원문의 \"지난 연소득 평균\"은 \"지난해 연소득 평균\"으로 고쳤습니다. \"3~4월\"과 \"12월~올해 1월\"이 어느 해인지는 원문에 없어서 그대로 뒀으니, 필요하면 연도를 확인해 넣어 주세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 16463,
+      "wallMs": 17351,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 11978,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2378,
+        "thinkingTokens": 1304
+      },
+      "costUsd": 0.0720806,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/scholarship-news-2021-deslop-r1-a1": {
+      "id": "scholarship-news-2021-deslop",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:17:42.514Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 공지로 쓰려고 AI한테 다듬어 달랬더니 AI 티가 너무 나. 담백하게 고쳐 줘.\n\n**내년부터 국가장학금 문턱 낮아진다…서민·중산층까지 확대, 다자녀 가구 부담은 더 가볍게**\n\n내년부터 국가장학금의 혜택이 서민층은 물론 중산층까지 폭넓게 확대된다. 다자녀 가구의 경우 자녀 수에 따라 달라지는 경제적 부담이 실질적으로 반영되도록 학자금지원구간 산정 제도도 개선된다.\n\n교육부와 한국장학재단은 이러한 내용을 담아 개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다.\n\n**국가장학금이란?**\n\n국가장학금은 대학생의 등록금 부담을 덜어 주기 위해 마련된 소득연계형 장학금이다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하이면서 성적 기준 등을 충족한 대학생에게 국가가 지원한다.\n\n**누가, 어떻게 신청하나**\n\n신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생이다. 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다. 다만 신청 마감일인 12월 30일에는 오후 6시까지만 접수한다.\n\n**등록금 감면을 먼저 받으려면 12월 10일이 기준**\n\n국가장학금으로 등록금을 우선 감면받으려면 오는 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다. 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니, 여유를 두고 미리 신청하는 것이 좋다.\n\n**무엇이 달라지나: 지원 단가 상향과 다자녀 지원 강화**\n\n정부안을 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 높아진다.\n\n저소득층과 다자녀 가구에 대한 지원도 두터워진다. 기초·차상위 가구의 첫째에게는 연 700만 원을, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하 다자녀 가구의 셋째 이상 자녀 역시 등록금 전액을 지원받는다.\n\n**성적 기준은 이렇게 적용된다**\n\n국가장학금을 받으려면 직전 학기 성적이 B학점 이상이어야 한다. 다만 학업 환경을 고려해 기초·차상위 계층은 C학점 이상이면 신청할 수 있다.\n\n예외도 있다. 신입생·편입생·재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않는다. 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다.",
+      "output": "**내년부터 국가장학금 문턱 낮아진다…서민·중산층까지 확대, 다자녀 가구 부담은 더 가볍게**\n\n내년부터 국가장학금 혜택이 서민층은 물론 중산층까지 확대된다. 다자녀 가구는 자녀 수에 따라 달라지는 경제적 부담이 반영되도록 학자금지원구간 산정 제도도 개선된다.\n\n교육부와 한국장학재단은 개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다.\n\n**국가장학금이란**\n\n국가장학금은 대학생의 등록금 부담을 덜어 주기 위한 소득연계형 장학금이다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하이면서 성적 기준 등을 충족한 대학생에게 국가가 지원한다.\n\n**신청 방법**\n\n신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생이다. 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다. 다만 마감일인 12월 30일에는 오후 6시까지만 접수한다.\n\n**등록금 우선 감면은 12월 10일까지**\n\n국가장학금으로 등록금을 우선 감면받으려면 12월 10일 오후 6시 전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다. 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하는 것이 좋다.\n\n**달라지는 점**\n\n정부안 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 오른다.\n\n저소득층과 다자녀 가구 지원도 늘어난다. 기초·차상위 가구의 첫째에게는 연 700만 원을, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하 다자녀 가구의 셋째 이상 자녀도 등록금 전액을 지원받는다.\n\n**성적 기준**\n\n국가장학금을 받으려면 직전 학기 성적이 B학점 이상이어야 한다. 다만 학업 환경을 고려해 기초·차상위 계층은 C학점 이상이면 신청할 수 있다.\n\n신입생·편입생·재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않는다. 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 12482,
+      "wallMs": 13603,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 12296,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 1935,
+        "thinkingTokens": 906
+      },
+      "costUsd": 0.0689226,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/scholarship-news-2021-deslop-r2-a1": {
+      "id": "scholarship-news-2021-deslop",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:17:56.129Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 공지로 쓰려고 AI한테 다듬어 달랬더니 AI 티가 너무 나. 담백하게 고쳐 줘.\n\n**내년부터 국가장학금 문턱 낮아진다…서민·중산층까지 확대, 다자녀 가구 부담은 더 가볍게**\n\n내년부터 국가장학금의 혜택이 서민층은 물론 중산층까지 폭넓게 확대된다. 다자녀 가구의 경우 자녀 수에 따라 달라지는 경제적 부담이 실질적으로 반영되도록 학자금지원구간 산정 제도도 개선된다.\n\n교육부와 한국장학재단은 이러한 내용을 담아 개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다.\n\n**국가장학금이란?**\n\n국가장학금은 대학생의 등록금 부담을 덜어 주기 위해 마련된 소득연계형 장학금이다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하이면서 성적 기준 등을 충족한 대학생에게 국가가 지원한다.\n\n**누가, 어떻게 신청하나**\n\n신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생이다. 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다. 다만 신청 마감일인 12월 30일에는 오후 6시까지만 접수한다.\n\n**등록금 감면을 먼저 받으려면 12월 10일이 기준**\n\n국가장학금으로 등록금을 우선 감면받으려면 오는 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다. 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니, 여유를 두고 미리 신청하는 것이 좋다.\n\n**무엇이 달라지나: 지원 단가 상향과 다자녀 지원 강화**\n\n정부안을 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 높아진다.\n\n저소득층과 다자녀 가구에 대한 지원도 두터워진다. 기초·차상위 가구의 첫째에게는 연 700만 원을, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하 다자녀 가구의 셋째 이상 자녀 역시 등록금 전액을 지원받는다.\n\n**성적 기준은 이렇게 적용된다**\n\n국가장학금을 받으려면 직전 학기 성적이 B학점 이상이어야 한다. 다만 학업 환경을 고려해 기초·차상위 계층은 C학점 이상이면 신청할 수 있다.\n\n예외도 있다. 신입생·편입생·재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않는다. 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다.",
+      "output": "**내년부터 국가장학금 지원 대상 확대…서민·중산층까지, 다자녀 가구는 부담 완화**\n\n내년부터 국가장학금 지원 대상이 서민층에서 중산층까지 넓어진다. 다자녀 가구는 자녀 수에 따른 경제적 부담이 반영되도록 학자금지원구간 산정 제도도 개선된다.\n\n교육부와 한국장학재단은 개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다.\n\n**국가장학금이란?**\n\n대학생의 등록금 부담을 덜어 주기 위한 소득연계형 장학금이다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하이고 성적 기준 등을 충족한 대학생에게 국가가 지원한다.\n\n**신청 대상과 방법**\n\n신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생이다. 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 모바일 애플리케이션 '한국장학재단'에서 24시간 신청할 수 있다. 다만 마감일인 12월 30일에는 오후 6시까지만 접수한다.\n\n**등록금 우선 감면은 12월 10일까지**\n\n국가장학금으로 등록금을 우선 감면받으려면 오는 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 한다. 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하는 것이 좋다.\n\n**달라지는 점**\n\n정부안을 기준으로 내년부터 학자금지원 5~6구간의 지원 단가는 연 390만 원, 7~8구간은 연 350만 원으로 높아진다.\n\n저소득층과 다자녀 가구 지원도 늘어난다. 기초·차상위 가구의 첫째에게는 연 700만 원을, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하 다자녀 가구의 셋째 이상 자녀도 등록금 전액을 지원받는다.\n\n**성적 기준**\n\n국가장학금을 받으려면 직전 학기 성적이 B학점 이상이어야 한다. 다만 기초·차상위 계층은 학업 환경을 고려해 C학점 이상이면 신청할 수 있다.\n\n예외도 있다. 신입생·편입생·재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않는다. 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 16649,
+      "wallMs": 17637,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 12304,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 2358,
+        "thinkingTokens": 1330
+      },
+      "costUsd": 0.0731846,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/D1/scholarship-news-2021-polish-r1-a1": {
+      "id": "scholarship-news-2021-polish",
+      "condition": "D1",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:17:22.241Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md",
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 학과 홈페이지 공지로 옮겨 실을 거야. 학생들이 읽기 쉽게 다듬어 줘.\n\n내년부터 서민·중산층까지 국가장학금 지원이 확대되고, 다자녀 가구의 자녀수에 따른 경제적 차이가 반영되도록 학자금지원구간 산정 제도가 개선된다.\n\n교육부와 한국장학재단은 이 같은 내용으로 개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다.\n\n국가장학금은 대학생의 등록금 부담 완화를 위해 소득과 재산이 일정 수준(학자금지원 8구간) 이하인 대학생 중 성적 기준 등을 충족한 학생에게 국가가 지원하는 소득연계형 장학금이다.\n\n신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생으로 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 이동통신 응용프로그램(모바일 애플리케이션 ‘한국장학재단’)을 활용해 24시간 신청 가능하다. 단, 신청 마감일 12월 30일에는 오후 6시까지만 신청할 수 있다.\n\n특히 국가장학금으로 등록금을 우선 감면받기 위해서는 오는 12월 10일 오후 6시 이전에 장학금 신청과 가구원 정보제공 동의·서류제출이 완료돼야 한다. 신청 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하는 것을 권장한다.\n\n먼저 정부안을 기준으로 내년부터 학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가를 높인다.\n\n또 기초·차상위 가구의 첫째에게는 연 700만 원, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하인 다자녀 가구의 셋째 이상 자녀에게도 등록금 전액을 지원한다.\n\n아울러 국가장학금을 받기 위해서는 직전 학기 성적이 B학점 이상 돼야 하며, 학업환경을 고려해 기초·차상위 계층은 C학점 이상이면 신청 가능하다.\n\n신·편입생, 재입학생의 첫 학기 및 장애학생은 성적기준을 적용하지 않고 1~3구간 학생은 C학점을 받더라도 재학기간 중 2회까지 신청할 수 있다.",
+      "output": "**2022학년도 1학기 1차 국가장학금 신청 안내**\n\n교육부와 한국장학재단이 개선된 2022학년도 1학기 1차 국가장학금 신청을 받습니다. 내년부터 서민·중산층까지 지원이 확대되고, 다자녀 가구의 자녀 수에 따른 경제적 차이가 반영되도록 학자금지원구간 산정 제도가 개선됩니다.\n\n**신청 기간**\n- 24일 오전 9시부터 12월 30일 오후 6시까지\n- 국가장학금으로 등록금을 우선 감면받으려면 12월 10일 오후 6시 이전에 장학금 신청, 가구원 정보제공 동의, 서류 제출을 모두 마쳐야 합니다.\n- 신청 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하기를 권장합니다.\n\n**신청 대상**\n재학생, 신입생(고3·재수생 등 입학예정자), 편입생, 재입학생, 복학생\n\n**신청 방법**\n한국장학재단 누리집(www.kosaf.go.kr) 또는 모바일 앱 '한국장학재단'에서 24시간 신청할 수 있습니다. 다만 마감일인 12월 30일에는 오후 6시까지만 신청할 수 있습니다.\n\n**국가장학금이란**\n대학생의 등록금 부담을 덜기 위해, 소득과 재산이 일정 수준(학자금지원 8구간) 이하인 대학생 중 성적 기준 등을 충족한 학생에게 국가가 지원하는 소득연계형 장학금입니다.\n\n**내년부터 달라지는 지원 (정부안 기준)**\n- 학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가를 높입니다.\n- 기초·차상위 가구의 첫째에게는 연 700만 원, 둘째 이상에게는 등록금 전액을 지원합니다.\n- 8구간 이하인 다자녀 가구의 셋째 이상 자녀에게도 등록금 전액을 지원합니다.\n\n**성적 기준**\n- 직전 학기 성적이 B학점 이상이어야 합니다. 기초·차상위 계층은 학업환경을 고려해 C학점 이상이면 신청할 수 있습니다.\n- 신입생·편입생, 재입학생의 첫 학기와 장애학생에게는 성적 기준을 적용하지 않습니다.\n- 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있습니다.\n\n---\n\n게시 전에 두 가지를 확인해 주세요.\n- 원문에 \"오는 24일\"이라고만 되어 있어 월을 쓰지 못했습니다. 신청 시작일의 월을 넣어 주세요.\n- \"내년부터\"는 원문 기사 기준의 표현입니다. 게시 시점에 맞는 연도로 바꿀지 확인해 주세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 19324,
+      "wallMs": 20265,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18054,
+        "cacheReadInputTokens": 19550,
+        "outputTokens": 2687,
+        "thinkingTokens": 1447
+      },
+      "costUsd": 0.101049,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/D1/scholarship-news-2021-polish-r2-a1": {
+      "id": "scholarship-news-2021-polish",
+      "condition": "D1",
+      "rep": 2,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T16:17:30.696Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md",
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 학과 홈페이지 공지로 옮겨 실을 거야. 학생들이 읽기 쉽게 다듬어 줘.\n\n내년부터 서민·중산층까지 국가장학금 지원이 확대되고, 다자녀 가구의 자녀수에 따른 경제적 차이가 반영되도록 학자금지원구간 산정 제도가 개선된다.\n\n교육부와 한국장학재단은 이 같은 내용으로 개선된 2022학년도 1학기 1차 국가장학금 신청을 오는 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔다.\n\n국가장학금은 대학생의 등록금 부담 완화를 위해 소득과 재산이 일정 수준(학자금지원 8구간) 이하인 대학생 중 성적 기준 등을 충족한 학생에게 국가가 지원하는 소득연계형 장학금이다.\n\n신청 대상은 ▲재학생 ▲신입생(고3·재수생 등 입학예정자) ▲편입생 ▲재입학생 ▲복학생으로 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr)과 이동통신 응용프로그램(모바일 애플리케이션 ‘한국장학재단’)을 활용해 24시간 신청 가능하다. 단, 신청 마감일 12월 30일에는 오후 6시까지만 신청할 수 있다.\n\n특히 국가장학금으로 등록금을 우선 감면받기 위해서는 오는 12월 10일 오후 6시 이전에 장학금 신청과 가구원 정보제공 동의·서류제출이 완료돼야 한다. 신청 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하는 것을 권장한다.\n\n먼저 정부안을 기준으로 내년부터 학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가를 높인다.\n\n또 기초·차상위 가구의 첫째에게는 연 700만 원, 둘째 이상에게는 등록금 전액을 지원한다. 8구간 이하인 다자녀 가구의 셋째 이상 자녀에게도 등록금 전액을 지원한다.\n\n아울러 국가장학금을 받기 위해서는 직전 학기 성적이 B학점 이상 돼야 하며, 학업환경을 고려해 기초·차상위 계층은 C학점 이상이면 신청 가능하다.\n\n신·편입생, 재입학생의 첫 학기 및 장애학생은 성적기준을 적용하지 않고 1~3구간 학생은 C학점을 받더라도 재학기간 중 2회까지 신청할 수 있다.",
+      "output": "교육부와 한국장학재단이 2022학년도 1학기 1차 국가장학금 신청을 24일 오전 9시부터 12월 30일 오후 6시까지 받는다고 밝혔습니다. 내년부터 서민·중산층까지 지원이 확대되고, 다자녀 가구의 자녀 수에 따른 경제적 차이가 반영되도록 학자금지원구간 산정 제도가 개선됩니다. 이번 신청부터 개선된 내용이 적용됩니다.\n\n**국가장학금이란**\n\n대학생의 등록금 부담을 덜기 위한 소득연계형 장학금입니다. 소득과 재산이 일정 수준(학자금지원 8구간) 이하인 대학생 중 성적 기준 등을 충족한 학생에게 국가가 지원합니다.\n\n**신청 일정**\n\n- 신청 기간: 24일 오전 9시 ~ 12월 30일 오후 6시\n- 등록금 우선 감면 기한: 12월 10일 오후 6시 전까지 장학금 신청, 가구원 정보제공 동의, 서류제출을 모두 마쳐야 합니다.\n- 마감일에는 신청자가 몰려 접속이 원활하지 않을 수 있으니 미리 신청하시기 바랍니다.\n\n**신청 대상과 방법**\n\n- 대상: 재학생, 신입생(고3·재수생 등 입학예정자), 편입생, 재입학생, 복학생\n- 방법: 한국장학재단(이하 재단) 누리집(www.kosaf.go.kr) 또는 모바일 애플리케이션 '한국장학재단'\n- 24시간 신청할 수 있습니다. 다만 마감일인 12월 30일에는 오후 6시까지만 신청할 수 있습니다.\n\n**내년부터 달라지는 지원 내용**\n\n정부안 기준입니다.\n\n- 학자금지원 5~6구간은 연 390만 원, 7~8구간은 연 350만 원으로 지원 단가가 오릅니다.\n- 기초·차상위 가구는 첫째에게 연 700만 원, 둘째 이상에게 등록금 전액을 지원합니다.\n- 8구간 이하 다자녀 가구는 셋째 이상 자녀에게 등록금 전액을 지원합니다.\n\n**성적 기준**\n\n- 직전 학기 성적이 B학점 이상이어야 합니다.\n- 기초·차상위 계층은 학업환경을 고려해 C학점 이상이면 신청할 수 있습니다.\n- 신·편입생과 재입학생의 첫 학기, 장애학생에게는 성적 기준을 적용하지 않습니다.\n- 1~3구간 학생은 C학점을 받더라도 재학 기간 중 2회까지 신청할 수 있습니다.\n\n게시 전에 확인해 주세요.\n- 원문에 월 표기가 없는 \"오는 24일\"은 \"24일\"로만 옮겼습니다. 게시할 때 월을 넣어 주세요.\n- \"내년부터\"와 \"정부안 기준\"도 원문 그대로입니다. 게시 시점에 맞게 연도를 적거나 확정 여부를 확인해 주세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 27236,
+      "wallMs": 28231,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 18056,
+        "cacheReadInputTokens": 19550,
+        "outputTokens": 3495,
+        "thinkingTokens": 2213
+      },
+      "costUsd": 0.109137,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    }
+  }
+}
