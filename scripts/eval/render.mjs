@@ -6,6 +6,8 @@
  *     --conds A=2026-10-27-holdout,B0=2026-10-27-holdout,B2=2026-10-27-holdout \
  *     --pairs 2026-10-27-holdout/A-vs-B2,2026-10-27-holdout/B0-vs-B2,2026-10-27-holdout/A-vs-B0
  *
+ * --split dev|test: 사람이 쓴 글 사례(evals/human/cases.json)에서 한쪽만 그린다.
+ *
  * evals/results/cases/<name>/README.md(목록)와 <사례 id>.md를 쓴다. 실행·판정 기록(evals/results/<실행>/records.json)만 읽고 모델은 부르지 않는다.
  */
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
@@ -15,18 +17,18 @@ import { openRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {})
 if (!options.name || !options.cases || !options.conds) {
-  console.error('사용법: render.mjs --name <이름> --title <제목> --cases <사례 파일> --conds A=<실행>,B0=<실행> [--pairs <실행>/<왼쪽>-vs-<오른쪽>,…] [--intro <설명>]')
+  console.error('사용법: render.mjs --name <이름> --title <제목> --cases <사례 파일> --conds A=<실행>,B0=<실행> [--pairs <실행>/<왼쪽>-vs-<오른쪽>,…] [--split dev|test] [--intro <설명>]')
   process.exit(1)
 }
 
-const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0' }
+const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', H: '사람 원문' }
 const TASKS = { rewrite: '수정', draft: '새 글 작성', diagnose: '진단만', summarize: '요약', 'noop-check': '고칠 게 없으면 그대로' }
 const LANGUAGES = { ko: '한국어', en: '영어', 'ko-en': '한영 혼용' }
 const label = (condition) => LABELS[condition] ?? condition
-const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0' }
+const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', H: '사람' }
 const short = (condition) => SHORT[condition] ?? condition
 
-const cases = readJson(join(ROOT, options.cases))
+const cases = readJson(join(ROOT, options.cases)).filter((item) => !options.split || item.split === options.split)
 const conds = String(options.conds).split(',').map((pair) => {
   const [condition, run] = pair.split('=')
   return { condition, run }

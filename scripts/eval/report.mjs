@@ -53,6 +53,12 @@ for (const condition of conditions) {
     if (!latest.has(key) || latest.get(key).attempt < record.attempt) latest.set(key, record)
   }
   latestByCondition[condition] = [...latest.values()]
+  // 사람 원문처럼 실행하지 않은 기준 조건(human.mjs reference)은 실행 지표가 없다
+  if (manifest.conditions[condition].model === null) {
+    lines.push(`| ${condition} | 실행 안 함(기준 원문 ${latest.size}건) | - | - | - | - | - | - | - |`)
+    summary.conditions[condition] = { reference: true, records: latest.size }
+    continue
+  }
   const failures = all.filter((r) => r.status !== 'ok')
   const failureKinds = failures.reduce((acc, r) => ({ ...acc, [r.status]: (acc[r.status] ?? 0) + 1 }), {})
   const withSkill = Boolean(manifest.conditions[condition].skill)
@@ -160,7 +166,7 @@ for (const pairDir of pairDirs) {
 
 // 시간·비용
 lines.push('## 시간·토큰·비용', '', 'CLI가 보고한 값이다. 비용은 `total_cost_usd`(API 정가 기준 추정치)이며 구독 사용량과 다를 수 있다. 입력 토큰은 캐시 생성·캐시 읽기를 포함한 합이다.', '', '| 조건 | 실행 | 시간 중앙값(초) | 입력 토큰 중앙값 | 출력 토큰 중앙값 | 턴 중앙값 | 비용 합(USD) |', '|---|---|---|---|---|---|---|')
-for (const condition of conditions) {
+for (const condition of conditions.filter((c) => manifest.conditions[c].model !== null)) {
   const all = listJson(`runs/${condition}`)
   const inputs = all.map((r) => (r.usage.inputTokens === null ? null : r.usage.inputTokens + (r.usage.cacheCreationInputTokens ?? 0) + (r.usage.cacheReadInputTokens ?? 0)))
   const costs = all.map((r) => r.costUsd)

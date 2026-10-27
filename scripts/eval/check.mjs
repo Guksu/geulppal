@@ -79,12 +79,30 @@ const walk = (dir) => (existsSync(dir) ? readdirSync(dir).flatMap((name) => (sta
 // 평가 자료
 checkCases('evals/cases.json')
 checkCases('evals/holdout/cases.json')
+checkCases('evals/human/cases.json')
+// 사람이 쓴 글 사례 — 원문 출처와 이용 조건, polish 입력이 원문 그대로인지, 개인 연락처가 없는지
+{
+  const sources = readJson(join(ROOT, 'evals/human/sources.json'))
+  const textOf = Object.fromEntries(sources.map((source) => [source.id, source.text]))
+  for (const source of sources) {
+    for (const key of ['url', 'license', 'attribution', 'published', 'text']) if (!source[key]) errors.push(`evals/human/sources.json ${source.id}: ${key} 없음`)
+    if (source.license !== '공공누리 제1유형(출처표시)') errors.push(`evals/human/sources.json ${source.id}: 공공누리 제1유형이 아님`)
+    if (!(source.published < '2024')) errors.push(`evals/human/sources.json ${source.id}: 2024년 이전 글이 아님`)
+    if (/[\w.]+@[\w-]+\.[\w.]+/.test(source.text)) errors.push(`evals/human/sources.json ${source.id}: 전자우편 주소가 있음`)
+  }
+  const humanCases = existsSync(join(ROOT, 'evals/human/cases.json')) ? readJson(join(ROOT, 'evals/human/cases.json')) : []
+  for (const item of humanCases) {
+    if (!textOf[item.source]) errors.push(`evals/human/cases.json ${item.id}: 원문 ${item.source} 없음`)
+    if (item.variant === 'polish' && item.input !== textOf[item.source]) errors.push(`evals/human/cases.json ${item.id}: polish 입력이 원문과 다름`)
+    if (!['dev', 'test'].includes(item.split)) errors.push(`evals/human/cases.json ${item.id}: split은 dev·test 중 하나`)
+  }
+}
 const trigger = readJson(join(ROOT, 'evals/trigger/queries.json'))
 const triggerIds = [...trigger.should, ...trigger.should_not].map((q) => q.id)
 if (new Set(triggerIds).size !== triggerIds.length) errors.push('evals/trigger/queries.json: id 중복')
 if (trigger.should.length < 8 || trigger.should_not.length < 6) errors.push('evals/trigger/queries.json: should 8개·should_not 6개 이상 필요')
 for (const query of [...trigger.should, ...trigger.should_not]) if (/\/geulppal|geulppal|글빨/.test(query.prompt)) errors.push(`트리거 요청 ${query.id}: 스킬 이름을 직접 언급함`)
-for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
+for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
 
 // 스킬과 스냅샷
 checkSkill(join(ROOT, 'skills/geulppal'))
@@ -101,7 +119,7 @@ const matching = Object.entries(hashes).filter(([, value]) => value.treeSha256 =
 notes.push(`skills/geulppal 해시 ${current.slice(0, 12)} — 같은 스냅샷: ${matching.join(', ') || '없음'}`)
 
 // 문서 링크
-for (const file of ['README.md', 'README.ko.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'research/findings.md']) {
+for (const file of ['README.md', 'README.ko.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'evals/human/README.md', 'research/findings.md', 'research/korean-sources.md']) {
   if (existsSync(join(ROOT, file))) checkLinks(file)
 }
 for (const file of walk(join(ROOT, 'evals/results')).filter((f) => f.endsWith('.md'))) checkLinks(relative(ROOT, file))
@@ -119,8 +137,8 @@ for (const name of existsSync(join(ROOT, 'evals/results')) ? readdirSync(join(RO
   if (stray.length) errors.push(`evals/results/${name}: 묶지 않은 기록 폴더 ${stray.join(', ')}(records.mjs pack으로 묶는다)`)
 }
 
-// 공개 결과의 로컬 경로·인증 정보
-const LEAK = [/\/Users\/[A-Za-z]/, /\/home\/[a-z]+\//, /\/tmp\/run-/, /sk-ant-[A-Za-z0-9]/, /CLAUDE_CODE_OAUTH_TOKEN=/, /ANTHROPIC_API_KEY=/]
+// 공개 결과의 로컬 경로·인증 정보·계정 사용량 정보
+const LEAK = [/\/Users\/[A-Za-z]/, /\/home\/[a-z]+\//, /\/tmp\/run-/, /sk-ant-[A-Za-z0-9]/, /CLAUDE_CODE_OAUTH_TOKEN=/, /ANTHROPIC_API_KEY=/, /hit your (?:session|usage|weekly) limit/i, /rate_limit_info/]
 for (const file of walk(join(ROOT, 'evals/results'))) {
   const text = readFileSync(file, 'utf8')
   for (const pattern of LEAK) if (pattern.test(text)) errors.push(`${relative(ROOT, file)}: 공개하면 안 되는 문자열(${pattern})`)

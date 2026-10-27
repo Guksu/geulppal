@@ -228,7 +228,9 @@ if (mode === 'pair') {
       out.put(summaryKey, { ...base, judged: false, reason: '두 결과가 모두 의미 보존을 통과하지 않아 품질 비교에서 제외' })
       continue
     }
-    if (previous?.judged && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
+    // 판정 호출이 실패해(사용량 제한 등) 판정이 비어 있으면 다시 한다
+    const complete = previous?.judged && previous.judgments?.every((judgment) => judgment.verdict)
+    if (complete && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
     jobs.push(async () => {
       const item = cases[rightRecord.id]
       const leftText = outputOf(leftFrom, leftRecord)
