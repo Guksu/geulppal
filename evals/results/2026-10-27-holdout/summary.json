@@ -1,0 +1,134 @@
+{
+  "name": "2026-10-27-holdout",
+  "conditions": {
+    "A": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 24,
+        "pass": 12,
+        "fail": 12,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "meaningPass2": {
+        "judgedTwice": 24,
+        "agree": 21,
+        "strict": 10
+      },
+      "time": {
+        "medianMs": 9981.5,
+        "medianInput": 9062,
+        "medianOutput": 1251,
+        "costUsd": 0.8838464000000001
+      }
+    },
+    "B0": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 24,
+      "referenceReads": 10,
+      "meaning": {
+        "judged": 24,
+        "pass": 19,
+        "fail": 5,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "meaningPass2": {
+        "judgedTwice": 24,
+        "agree": 23,
+        "strict": 18
+      },
+      "time": {
+        "medianMs": 15255.5,
+        "medianInput": 13865,
+        "medianOutput": 1899,
+        "costUsd": 1.6536054
+      }
+    },
+    "B2": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 24,
+      "referenceReads": 11,
+      "meaning": {
+        "judged": 24,
+        "pass": 18,
+        "fail": 6,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "meaningPass2": {
+        "judgedTwice": 24,
+        "agree": 24,
+        "strict": 18
+      },
+      "time": {
+        "medianMs": 14117.5,
+        "medianInput": 14593,
+        "medianOutput": 1891.5,
+        "costUsd": 1.6936816999999995
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-B0": {
+      "total": 24,
+      "judged": 11,
+      "excluded": 13,
+      "leftWins": 2,
+      "rightWins": 2,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 6,
+      "cases": {
+        "A": 1,
+        "B0": 1,
+        "mixed": 1,
+        "none": 9
+      }
+    },
+    "A-vs-B2": {
+      "total": 24,
+      "judged": 12,
+      "excluded": 12,
+      "leftWins": 1,
+      "rightWins": 3,
+      "tie": 2,
+      "bothInadequate": 0,
+      "inconsistent": 6,
+      "cases": {
+        "A": 1,
+        "B2": 3,
+        "mixed": 0,
+        "none": 8
+      }
+    },
+    "B0-vs-B2": {
+      "total": 24,
+      "judged": 17,
+      "excluded": 7,
+      "leftWins": 3,
+      "rightWins": 3,
+      "tie": 5,
+      "bothInadequate": 0,
+      "inconsistent": 6,
+      "cases": {
+        "B0": 3,
+        "B2": 3,
+        "mixed": 0,
+        "none": 6
+      }
+    }
+  },
+  "judgeCalls": 152
+}

@@ -1,0 +1,2557 @@
+{
+  "format": "geulppal-eval-records/1",
+  "run": "2026-10-27-pilot",
+  "count": 22,
+  "records": {
+    "judge/meaning/A/personal-blog-voice-r1": {
+      "id": "personal-blog-voice",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "18분",
+          "11분"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:17.272Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "반말 1인칭 말투",
+              "status": "kept",
+              "evidence": "솔직히 말하면 나는 모노레포가 싫다."
+            },
+            {
+              "item": "싫다에서 싫었다로 고쳐 말하는 유머",
+              "status": "kept",
+              "evidence": "솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다."
+            },
+            {
+              "item": "도입 때 반대표",
+              "status": "kept",
+              "evidence": "처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다."
+            },
+            {
+              "item": "첫 달 CI 평균 18분",
+              "status": "kept",
+              "evidence": "실제로 첫 달에는 CI가 평균 18분까지 늘어났다."
+            },
+            {
+              "item": "세 달쯤 지나 생긴 변화",
+              "status": "kept",
+              "evidence": "그런데 세 달쯤 지나자 이상한 일이 생겼다."
+            },
+            {
+              "item": "공통 컴포넌트 수정 시 쓰는 쪽 테스트가 깨져 배포 전에 문제를 앎",
+              "status": "kept",
+              "evidence": "공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다."
+            },
+            {
+              "item": "배포 후 발견되는 문제가 줄었다는 작성자의 관찰",
+              "status": "kept",
+              "evidence": "배포 후 장애가 줄었다는 것은 정말 큰 변화였다."
+            },
+            {
+              "item": "캐시 설정 변경 후 약 11분",
+              "status": "kept",
+              "evidence": "캐시 설정을 바꿔서 지금은 11분 정도인데"
+            },
+            {
+              "item": "다음 글 예고와 '아마도'의 여운",
+              "status": "kept",
+              "evidence": "이건 다음 글에서 이야기하겠다. 아마도."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "합니다체 등 다른 말투로 변경",
+              "status": "ok",
+              "evidence": "본문은 \"그것이 모노레포의 진짜 장점이었다.\" 등 원문 말투를 그대로 유지했다."
+            },
+            {
+              "item": "유머·여운 삭제",
+              "status": "ok",
+              "evidence": "\"아니, 싫었다.\", \"거봐, 내 말이 맞지\", \"아마도.\"가 모두 남아 있다."
+            },
+            {
+              "item": "장애 감소를 수치나 일반적인 효과로 확대",
+              "status": "ok",
+              "evidence": "배포 후 장애가 줄었다는 것은 정말 큰 변화였다."
+            },
+            {
+              "item": "모노레포 일반론 추가",
+              "status": "ok",
+              "evidence": "본문에 새로 추가된 문장이 없다."
+            },
+            {
+              "item": "18분·11분 수치 변경",
+              "status": "ok",
+              "evidence": "그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "본문에 원문에 없는 사실이나 평가가 추가되지 않았다."
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 \"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\"를 삭제했지만, 같은 내용이 \"배포 후 장애가 줄었다는 것은 정말 큰 변화였다.\"에 남아 있다."
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "실제로 첫 달에는 CI가 평균 18분까지 늘어났다. / 지금은 11분 정도인데"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "이건 다음 글에서 이야기하겠다. 아마도."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "\"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다."
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "반복된 부분이 있는 두 번째 문단만 줄였고 나머지 문단은 원문 그대로 두었다. 결과의 앞뒤에 붙은 설명은 본문 밖에 따로 적혀 있다."
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 13880,
+            "wallMs": 15687,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 4300,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 1825,
+              "thinkingTokens": 199
+            },
+            "costUsd": 0.070908,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/A/pr-technical-literals-r1": {
+      "id": "pr-technical-literals",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "retryCount",
+          "npm test -- retry.test.ts",
+          "(docs/retry.md#retry-count)"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:14.997Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "retryCount",
+              "status": "kept",
+              "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+            },
+            {
+              "item": "0일 때 재시도하지 않음",
+              "status": "kept",
+              "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+            },
+            {
+              "item": "코드 블록 전체",
+              "status": "kept",
+              "evidence": "```sh\nnpm test -- retry.test.ts\n```"
+            },
+            {
+              "item": "8개 통과",
+              "status": "kept",
+              "evidence": "위 테스트 8개가 모두 통과했습니다."
+            },
+            {
+              "item": "전체 테스트 미실행",
+              "status": "kept",
+              "evidence": "전체 테스트 스위트는 실행하지 않았습니다."
+            },
+            {
+              "item": "docs/retry.md#retry-count",
+              "status": "kept",
+              "evidence": "자세한 내용은 [설명](docs/retry.md#retry-count)을 참고해 주세요."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "전체 테스트 통과로 확대",
+              "status": "ok",
+              "evidence": "전체 테스트 스위트는 실행하지 않았습니다."
+            },
+            {
+              "item": "명령 변경",
+              "status": "ok",
+              "evidence": "npm test -- retry.test.ts"
+            },
+            {
+              "item": "링크 대상 변경",
+              "status": "ok",
+              "evidence": "[설명](docs/retry.md#retry-count)"
+            },
+            {
+              "item": "새 홍보성 서명 추가",
+              "status": "ok",
+              "evidence": "본문에 홍보성 문구나 서명이 추가되지 않았고 \"매우 혁신적입니다\"는 삭제됨"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "\"불필요한 재시도 제거\"는 변경 사항 설명 안에 예시로 제안된 것이고 본문에는 들어가지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "근거 없는 자평 \"이번 개선은 매우 혁신적입니다\"만 삭제했고 핵심 정보는 모두 남음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "위 테스트 8개가 모두 통과했습니다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "위 테스트 8개가 모두 통과했습니다. 전체 테스트 스위트는 실행하지 않았습니다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "`retryCount`, npm test -- retry.test.ts, docs/retry.md#retry-count 모두 그대로"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "다듬은 PR 본문을 구분선으로 나눠 돌려줬고, 코드와 링크는 유지됨. 변경 사항 설명은 본문 밖에 따로 붙임"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 12207,
+            "wallMs": 13409,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3588,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 1457,
+              "thinkingTokens": 317
+            },
+            "costUsd": 0.057852,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/A/proposal-cost-exceptions-r1": {
+      "id": "proposal-cost-exceptions",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": false,
+      "exact": {
+        "checked": [],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:29.079Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "도입은 검토 단계",
+              "status": "distorted",
+              "evidence": "\"반복적인 배송 조회 문의를 챗봇으로 분리해 상담원이 다른 문의에 집중할 수 있도록 챗봇 도입을 추진하고자 함\" — 원문의 '검토하고 있습니다'가 '추진하고자 함'으로 바뀌었고, 수정 포인트에서 해당 표현을 뺐다고 밝힘"
+            },
+            {
+              "item": "3개월(7~9월) 문의 4,812건 중 배송 조회 1,930건(약 40%)",
+              "status": "kept",
+              "evidence": "\"최근 3개월(7~9월) 접수 문의 4,812건 중 배송 조회 문의가 1,930건(약 40%)을 차지함\""
+            },
+            {
+              "item": "송장 번호가 등록된 주문의 배송 조회만 처리",
+              "status": "kept",
+              "evidence": "\"챗봇 처리 대상: 송장 번호가 등록된 주문의 배송 조회\""
+            },
+            {
+              "item": "반품·교환은 상담원 처리",
+              "status": "kept",
+              "evidence": "\"상담원 처리 유지: 반품·교환 등 그 외 문의\""
+            },
+            {
+              "item": "월 120만 원·사용자 수 무관·VAT 별도",
+              "status": "kept",
+              "evidence": "\"비용: 월 120만 원(연 1,440만 원 환산, VAT 별도, 사용자 수 무관)\""
+            },
+            {
+              "item": "비용은 A사 견적 기준",
+              "status": "kept",
+              "evidence": "\"※ A사 견적 기준\""
+            },
+            {
+              "item": "업체 미결정과 B사 견적 다음 주 예정",
+              "status": "kept",
+              "evidence": "\"솔루션 업체: A사·B사 중 선정 예정. B사 견적은 다음 주 수령 예정이며\""
+            },
+            {
+              "item": "초기 연동 약 3주 예상",
+              "status": "kept",
+              "evidence": "\"기간: 초기 연동 개발 약 3주\" — '예상'은 빠졌지만 '약'으로 추정치라는 점은 남아 있음"
+            },
+            {
+              "item": "업무 부담 감소는 기대이며 시범 운영 후 측정 계획",
+              "status": "kept",
+              "evidence": "\"도입 효과: 상담원 업무 부담 감소가 기대되나, 감소 폭은 시범 운영 후 측정할 계획임\""
+            }
+          ],
+          "must_not": [
+            {
+              "item": "도입 확정으로 변경",
+              "status": "ok",
+              "evidence": "\"챗봇 도입을 추진하고자 함\" — 상태가 검토에서 추진 제안으로 올라갔지만 확정으로 쓰지는 않음(보존 항목에서 distorted로 처리)"
+            },
+            {
+              "item": "업무 부담 감소를 확정 효과나 새 수치로 쓰기",
+              "status": "ok",
+              "evidence": "\"상담원 업무 부담 감소가 기대되나, 감소 폭은 시범 운영 후 측정할 계획임\""
+            },
+            {
+              "item": "40%를 자동화율이나 처리율로 바꾸기",
+              "status": "ok",
+              "evidence": "\"배송 조회 문의가 1,930건(약 40%)을 차지함\""
+            },
+            {
+              "item": "VAT 별도·A사 기준 삭제",
+              "status": "ok",
+              "evidence": "\"VAT 별도, 사용자 수 무관) ※ A사 견적 기준\""
+            },
+            {
+              "item": "3주를 확정 일정으로 단정",
+              "status": "ok",
+              "evidence": "\"기간: 초기 연동 개발 약 3주\""
+            },
+            {
+              "item": "새 수치 추가",
+              "status": "violated",
+              "evidence": "\"비용: 월 120만 원(연 1,440만 원 환산, ...)\" — 원문에 없는 연 환산 금액을 추가함"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "problem",
+              "evidence": "\"연 1,440만 원 환산\", \"수령 후 비용과 기능을 비교해 최종 확정함\", \"상담원이 다른 문의에 집중할 수 있도록\" — 원문에 없는 수치, 선정 절차, 도입 목적을 추가함"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 '고객 만족도 향상' 언급은 근거 없는 수식이라 뺐다고 밝혔고, 이 외에 빠진 핵심 정보는 없음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "\"4,812건 중 배송 조회 문의가 1,930건(약 40%)\", \"월 120만 원\" — 수치의 대상, 단위, 기준이 그대로임"
+            },
+            {
+              "check": "status_certainty",
+              "status": "problem",
+              "evidence": "\"챗봇 도입을 추진하고자 함\" — 원문 '도입을 적극적으로 검토하고 있습니다'의 검토 단계가 추진 단계로 바뀜"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "\"송장 번호가 등록된 주문의 배송 조회\", \"VAT 별도, 사용자 수 무관\", \"A사 견적 기준\" — 조건이 유지됨"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "A사·B사 등 고유 이름이 그대로임"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "요청한 대로 결재용으로 다듬은 글을 돌려줌"
+            }
+          ],
+          "verdict": "fail",
+          "fail_reasons": [
+            "새 수치 추가 금지 위반: 원문에 없는 '연 1,440만 원 환산'을 넣음",
+            "상태 변경: '도입을 검토하고 있습니다'가 '도입을 추진하고자 함'으로 바뀌어 검토 단계라는 상태가 흐려짐",
+            "새 사실 추가: '비용과 기능을 비교해 최종 확정함'이라는 선정 절차와 '상담원이 다른 문의에 집중'이라는 도입 목적을 만들어 넣음"
+          ]
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 25692,
+            "wallMs": 27490,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 4813,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 2961,
+              "thinkingTokens": 809
+            },
+            "costUsd": 0.097732,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/A/review-only-r1": {
+      "id": "review-only",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:13.683Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "진단만 요청한 범위",
+              "status": "kept",
+              "evidence": "결과는 문제점 1~7만 나열하고 \"수정문은 요청하실 때 작성하겠습니다.\"로 끝나며 고쳐 쓴 문장이 없음"
+            }
+          ],
+          "must_not": [
+            {
+              "item": "완성문이나 고쳐 쓴 문장을 제시",
+              "status": "ok",
+              "evidence": "\"수정문은 요청하실 때 작성하겠습니다.\" — 수정 예문이 없음"
+            },
+            {
+              "item": "AI 작성 확률 제시",
+              "status": "ok",
+              "evidence": "AI 작성 여부나 확률을 언급한 부분이 없음"
+            },
+            {
+              "item": "미제공 기능으로 대체",
+              "status": "ok",
+              "evidence": "요청한 진단을 그대로 수행함: \"**문제점** 1. **근거 없는 주장**: ...\""
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "\"첫 문장의 \"혁신적\"이 세 번째 문장에서 \"매우 혁신적\"으로 다시 나옵니다.\" — 원문 내용에 맞는 지적이며 서비스 A에 대한 새 사실을 만들지 않음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "근거 부족, 반복, 구체성 부족, 과장 등 핵심 문제를 모두 짚음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "\"정보량은 한 문장 분량인데 세 문장으로 늘어나 있습니다.\" — 원문 문장 수 3과 일치"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "원문 주장을 확정하거나 약하게 바꾼 부분이 없음"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "원문에 조건·예외가 없고 진단에서 바꾼 것도 없음"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "\"\"혁신적\", \"강력한\", \"놀라운\"\" — 원문 표현을 정확히 인용함"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "\"수정문은 요청하실 때 작성하겠습니다.\" — 진단만 하고 수정문은 쓰지 않음"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 10044,
+            "wallMs": 12085,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3731,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 1063,
+              "thinkingTokens": 133
+            },
+            "costUsd": 0.051115999999999995,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/B0/personal-blog-voice-r1": {
+      "id": "personal-blog-voice",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "18분",
+          "11분"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:16.286Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "반말 1인칭 말투",
+              "status": "kept",
+              "evidence": "솔직히 말하면 나는 모노레포가 싫다."
+            },
+            {
+              "item": "싫다에서 싫었다로 고쳐 말하는 유머",
+              "status": "kept",
+              "evidence": "솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다."
+            },
+            {
+              "item": "도입 때 반대표",
+              "status": "kept",
+              "evidence": "처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다."
+            },
+            {
+              "item": "첫 달 CI 평균 18분",
+              "status": "kept",
+              "evidence": "실제로 첫 달에는 CI가 평균 18분까지 늘어났다."
+            },
+            {
+              "item": "세 달쯤 지나 생긴 변화",
+              "status": "kept",
+              "evidence": "그런데 세 달쯤 지나자 이상한 일이 생겼다."
+            },
+            {
+              "item": "공통 컴포넌트 수정 시 쓰는 쪽 테스트가 깨져 배포 전에 문제를 앎",
+              "status": "kept",
+              "evidence": "공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 배포 전에 문제를 알게 됐다."
+            },
+            {
+              "item": "배포 후 발견되는 문제가 줄었다는 작성자의 관찰",
+              "status": "kept",
+              "evidence": "배포 후에 발견되는 문제가 줄었다는 것은 정말 큰 변화였다."
+            },
+            {
+              "item": "캐시 설정 변경 후 약 11분",
+              "status": "kept",
+              "evidence": "캐시 설정을 바꿔서 지금은 11분 정도인데"
+            },
+            {
+              "item": "다음 글 예고와 '아마도'의 여운",
+              "status": "kept",
+              "evidence": "이건 다음 글에서 이야기하겠다. 아마도."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "합니다체 등 다른 말투로 변경",
+              "status": "ok",
+              "evidence": "그래도 CI 18분은 여전히 싫다."
+            },
+            {
+              "item": "유머·여운 삭제",
+              "status": "ok",
+              "evidence": "그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다. / 아마도."
+            },
+            {
+              "item": "장애 감소를 수치나 일반적인 효과로 확대",
+              "status": "ok",
+              "evidence": "배포 후에 발견되는 문제가 줄었다는 것은 정말 큰 변화였다."
+            },
+            {
+              "item": "모노레포 일반론 추가",
+              "status": "ok",
+              "evidence": "배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다. (원문 그대로, 추가 없음)"
+            },
+            {
+              "item": "18분·11분 수치 변경",
+              "status": "ok",
+              "evidence": "CI가 평균 18분까지 늘어났다 / 지금은 11분 정도인데"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "배포 후에 발견되는 문제가 줄었다는 것은 정말 큰 변화였다. — 원문 두 문장을 합친 것으로 새 내용 없음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "반복 문장 '결과적으로 배포 후에 발견되는 문제가 줄어들었다.'만 합쳐졌고 핵심 정보는 모두 남음"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "CI가 평균 18분까지 늘어났다 / 지금은 11분 정도인데"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "배포 후에 발견되는 문제가 줄었다는 것은 정말 큰 변화였다. — 개인 관찰 그대로 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서 — 조건 유지"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "\"거봐, 내 말이 맞지\" 인용문 그대로"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "반복되는 부분만 줄이고 말투와 나머지 문장은 그대로 둠"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 12957,
+            "wallMs": 14699,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 4028,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 1730,
+              "thinkingTokens": 149
+            },
+            "costUsd": 0.066832,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/B0/pr-technical-literals-r1": {
+      "id": "pr-technical-literals",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [
+          "retryCount",
+          "npm test -- retry.test.ts",
+          "(docs/retry.md#retry-count)"
+        ],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:16.017Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "retryCount",
+              "status": "kept",
+              "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+            },
+            {
+              "item": "0일 때 재시도하지 않음",
+              "status": "kept",
+              "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+            },
+            {
+              "item": "코드 블록 전체",
+              "status": "kept",
+              "evidence": "```sh\nnpm test -- retry.test.ts\n```"
+            },
+            {
+              "item": "8개 통과",
+              "status": "kept",
+              "evidence": "위 테스트 8개가 통과했습니다."
+            },
+            {
+              "item": "전체 테스트 미실행",
+              "status": "kept",
+              "evidence": "전체 테스트는 실행하지 않았습니다."
+            },
+            {
+              "item": "docs/retry.md#retry-count",
+              "status": "kept",
+              "evidence": "자세한 설명은 [docs/retry.md](docs/retry.md#retry-count)에 있습니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "전체 테스트 통과로 확대",
+              "status": "ok",
+              "evidence": "위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다."
+            },
+            {
+              "item": "명령 변경",
+              "status": "ok",
+              "evidence": "npm test -- retry.test.ts"
+            },
+            {
+              "item": "링크 대상 변경",
+              "status": "ok",
+              "evidence": "[docs/retry.md](docs/retry.md#retry-count) — 링크 텍스트만 '설명'에서 바뀌었고 대상은 같음"
+            },
+            {
+              "item": "새 홍보성 서명 추가",
+              "status": "ok",
+              "evidence": "홍보성 문구 없음. \"매우 혁신적입니다\"는 근거 없는 수식이어서 뺐습니다."
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "\"변경 전에 `retryCount`가 0일 때 어떻게 동작했는지는 원문에 없어서 추가하지 않았습니다.\" — 새 사실을 만들지 않았다고 밝힐 뿐 새 사실은 없음"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "원문의 핵심 정보(수정 내용, 명령, 8개 통과, 전체 미실행, 링크)가 모두 남아 있음. 삭제된 것은 근거 없는 수식 \"매우 혁신적입니다\"뿐"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "위 테스트 8개가 통과했습니다."
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다."
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "`retryCount`, `npm test -- retry.test.ts`, docs/retry.md#retry-count 모두 그대로임"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "본문을 다듬어 돌려줌. 끝에 붙은 편집 설명 문단(\"링크 대상과 코드 블록은 그대로 두었습니다.\")은 요청에 본문만 내라는 조건이 없어 위반으로 보지 않음"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 12712,
+            "wallMs": 14424,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3412,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 1509,
+              "thinkingTokens": 238
+            },
+            "costUsd": 0.057484,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/B0/proposal-cost-exceptions-r1": {
+      "id": "proposal-cost-exceptions",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:19.669Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "도입은 검토 단계",
+              "status": "kept",
+              "evidence": "이에 배송 조회 문의에 대응할 챗봇 도입을 검토하고 있습니다."
+            },
+            {
+              "item": "3개월(7~9월) 문의 4,812건 중 배송 조회 1,930건(약 40%)",
+              "status": "kept",
+              "evidence": "지난 3개월(7~9월) 동안 접수된 문의 4,812건 중 1,930건(약 40%)이 배송 조회 문의였습니다."
+            },
+            {
+              "item": "송장 번호가 등록된 주문의 배송 조회만 처리",
+              "status": "kept",
+              "evidence": "챗봇은 송장 번호가 등록된 주문의 배송 조회만 처리합니다."
+            },
+            {
+              "item": "반품·교환은 상담원 처리",
+              "status": "kept",
+              "evidence": "반품·교환 문의는 기존처럼 상담원이 처리합니다."
+            },
+            {
+              "item": "월 120만 원·사용자 수 무관·VAT 별도",
+              "status": "kept",
+              "evidence": "월 120만 원(사용자 수 무관, VAT 별도)"
+            },
+            {
+              "item": "비용은 A사 견적 기준",
+              "status": "kept",
+              "evidence": "비용은 A사 견적 기준으로 월 120만 원"
+            },
+            {
+              "item": "업체 미결정과 B사 견적 다음 주 예정",
+              "status": "kept",
+              "evidence": "솔루션 업체는 두 곳 중 아직 정하지 않았습니다. B사 견적은 다음 주에 받을 예정입니다."
+            },
+            {
+              "item": "초기 연동 약 3주 예상",
+              "status": "kept",
+              "evidence": "초기 연동 개발에는 약 3주가 걸릴 것으로 예상합니다."
+            },
+            {
+              "item": "업무 부담 감소는 기대이며 시범 운영 후 측정 계획",
+              "status": "kept",
+              "evidence": "챗봇 도입으로 상담원의 업무 부담이 줄 것으로 기대합니다. 실제 감소 폭은 시범 운영 후 측정할 계획입니다."
+            }
+          ],
+          "must_not": [
+            {
+              "item": "도입 확정으로 변경",
+              "status": "ok",
+              "evidence": "챗봇 도입을 검토하고 있습니다."
+            },
+            {
+              "item": "업무 부담 감소를 확정 효과나 새 수치로 쓰기",
+              "status": "ok",
+              "evidence": "줄 것으로 기대합니다. 실제 감소 폭은 시범 운영 후 측정할 계획입니다."
+            },
+            {
+              "item": "40%를 자동화율이나 처리율로 바꾸기",
+              "status": "ok",
+              "evidence": "1,930건(약 40%)이 배송 조회 문의였습니다."
+            },
+            {
+              "item": "VAT 별도·A사 기준 삭제",
+              "status": "ok",
+              "evidence": "비용은 A사 견적 기준으로 월 120만 원(사용자 수 무관, VAT 별도)"
+            },
+            {
+              "item": "3주를 확정 일정으로 단정",
+              "status": "ok",
+              "evidence": "약 3주가 걸릴 것으로 예상합니다."
+            },
+            {
+              "item": "새 수치 추가",
+              "status": "ok",
+              "evidence": "본문에 새 수치 없음. 메모의 \"11월 ○일 수령 예정\"은 날짜 표기를 바꾸라는 권고 예시이며 본문에 넣은 사실이 아님"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "\"이에 배송 조회 문의에 대응할 챗봇 도입을 검토하고 있습니다.\" — 원문 내용만 재배열함"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "근거 없는 평가 문장 \"고객 만족도 향상에 있어 매우 중요한 의미\"만 덜어냈고, 메모에 그 사실을 밝힘"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "지난 3개월(7~9월) 동안 접수된 문의 4,812건 중 1,930건(약 40%)"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "\"검토하고 있습니다\", \"예상합니다\", \"기대합니다\", \"측정할 계획입니다\" 유지"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "\"송장 번호가 등록된 주문의 배송 조회만\", \"VAT 별도\", \"A사 견적 기준\" 유지"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "A사, B사, 7~9월 표기 그대로 남음"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "다듬은 본문을 돌려주고 변경 사항을 메모로 따로 적음"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16585,
+            "wallMs": 18073,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 4365,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 2034,
+              "thinkingTokens": 315
+            },
+            "costUsd": 0.075608,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/meaning/B0/review-only-r1": {
+      "id": "review-only",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "runStatus": "ok",
+      "judged": true,
+      "pass": true,
+      "exact": {
+        "checked": [],
+        "missing": [],
+        "applicable": true,
+        "pass": true
+      },
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:20:18.583Z",
+        "answer": {
+          "preserve": [
+            {
+              "item": "진단만 요청한 범위",
+              "status": "kept",
+              "evidence": "결과는 '## 문제점' 아래 다섯 가지 진단과 '이 정보를 주시면 수정문을 쓰겠습니다.'로 끝나고, 고쳐 쓴 문장은 내놓지 않음"
+            }
+          ],
+          "must_not": [
+            {
+              "item": "완성문이나 고쳐 쓴 문장을 제시",
+              "status": "ok",
+              "evidence": "'근거가 없으면 수식을 빼고 서비스 설명만 남기는 방향이 됩니다.' — 수정 방향만 말했고 수정문은 없음"
+            },
+            {
+              "item": "AI 작성 확률 제시",
+              "status": "ok",
+              "evidence": "'짧은 평서문 세 개가 같은 방식으로 이어져 기계적으로 읽힙니다.' — 문체를 지적한 것이고 확률 수치는 없음"
+            },
+            {
+              "item": "미제공 기능으로 대체",
+              "status": "ok",
+              "evidence": "'사용자가 얻는 구체적인 결과(시간 절감, 비용, 기능 등)' — 사용자에게 받아야 할 정보의 예시이고 서비스 기능을 지어낸 것은 아님"
+            }
+          ],
+          "general": [
+            {
+              "check": "new_facts",
+              "status": "ok",
+              "evidence": "'원문에는 고칠 사실이 없습니다. 수정할 때 내용을 지어내지 않으려면 아래 정보가 필요합니다.'"
+            },
+            {
+              "check": "omission",
+              "status": "ok",
+              "evidence": "'세 번째 문장은 앞 문장의 되풀이입니다.' 등으로 원문 세 문장을 모두 진단함"
+            },
+            {
+              "check": "number_scope",
+              "status": "ok",
+              "evidence": "원문과 결과 모두 수치가 없음"
+            },
+            {
+              "check": "status_certainty",
+              "status": "ok",
+              "evidence": "'이 정보를 주시면 수정문을 쓰겠습니다.' — 조건부로 남겨 둠"
+            },
+            {
+              "check": "conditions",
+              "status": "ok",
+              "evidence": "원문에 조건·예외 표현이 없고, 결과도 새로 만들지 않음"
+            },
+            {
+              "check": "literals",
+              "status": "ok",
+              "evidence": "'\"그 가치는 매우 혁신적입니다\"는 새 정보가 없습니다.' — 원문을 정확히 인용함"
+            },
+            {
+              "check": "scope",
+              "status": "ok",
+              "evidence": "'아래 글의 문제점만 짚어줘. 수정문은 아직 쓰지 마.'라는 요청대로 문제점과 필요한 정보만 적음"
+            }
+          ],
+          "verdict": "pass",
+          "fail_reasons": []
+        },
+        "attempts": [
+          {
+            "attempt": 1,
+            "ok": true,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15101,
+            "wallMs": 16980,
+            "usage": {
+              "inputTokens": 2,
+              "cacheCreationInputTokens": 3893,
+              "cacheReadInputTokens": 0,
+              "outputTokens": 1199,
+              "thinkingTokens": 193
+            },
+            "costUsd": 0.055132,
+            "models": [
+              "claude-opus-5-5"
+            ],
+            "error": null
+          }
+        ]
+      }
+    },
+    "judge/pair/A-vs-B0/personal-blog-voice-r1": {
+      "id": "personal-blog-voice",
+      "rep": 1,
+      "left": {
+        "condition": "A",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "right": {
+        "condition": "B0",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "reusedBaseline": false,
+      "judged": true,
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:21:05.901Z"
+      },
+      "judgments": [
+        {
+          "order": "o1",
+          "X": "A",
+          "Y": "B0",
+          "verdict": "Y",
+          "winner": "B0",
+          "answer": {
+            "criteria": [
+              {
+                "criterion": "findability",
+                "better": "X",
+                "evidence": "X는 변경 목록을 따로 붙였다. \"'결과적으로 배포 후에 발견되는 문제가 줄어들었다'를 뺐어요\"처럼 무엇을 왜 바꿨는지 바로 확인할 수 있다. Y는 본문만 있어서 사용자가 원문과 직접 대조해야 한다."
+              },
+              {
+                "criterion": "inflation_repetition",
+                "better": "same",
+                "evidence": "두 결과 모두 \"결과적으로 배포 후에 발견되는 문제가 줄어들었다\"와 \"배포 후 장애가 줄었다\"의 중복을 없앴다. X는 \"예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다\"로 앞 두 문장까지 합쳐 조금 더 줄였다. 그래도 두 결과 모두 마지막 \"배포 전에 문제를 알 수 있다는 것\"을 남겨서 남은 반복의 양은 비슷하다."
+              },
+              {
+                "criterion": "flow",
+                "better": "same",
+                "evidence": "X의 합친 문장 \"…테스트가 같이 깨져서, 예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다\"는 자연스럽게 읽힌다. Y의 \"배포 후에 발견되는 문제가 줄었다는 것은 정말 큰 변화였다\"도 앞 문장과 끊기지 않고 이어진다."
+              },
+              {
+                "criterion": "fit_voice",
+                "better": "Y",
+                "evidence": "Y는 원문의 끊어 치는 문장인 \"배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다.\"를 그대로 살렸다. X는 이 두 문장을 하나로 합쳐 원작자 특유의 리듬이 조금 약해졌다. 또 X의 안내문은 \"그런데 두 번째 문단에서…\"처럼 '그런데'로 시작해 앞 내용이 없는데도 이어지는 말처럼 읽혀 어색하다."
+              },
+              {
+                "criterion": "restraint",
+                "better": "Y",
+                "evidence": "Y는 한 문장을 빼고 다음 문장의 주어만 \"배포 후에 발견되는 문제가 줄었다는 것은\"으로 고쳤다. 요청 범위 안에서 가장 적게 손댄 것이다. X는 문장 구조를 하나 더 바꿨고 앞뒤로 안내문까지 덧붙였다."
+              }
+            ],
+            "verdict": "Y",
+            "reason": "Y가 조금 낫습니다. 두 결과 모두 \"배포 후 문제가 줄었다\"를 두 번 말한 중복을 없앴습니다. 다만 사용자가 말투를 건드리지 말라고 했는데, Y는 문장 하나만 빼고 주어를 조금 고쳐서 원문의 짧게 끊는 리듬을 그대로 지켰습니다. X는 두 문장을 하나로 합쳐 리듬이 약간 달라졌습니다. X의 변경 설명은 쓸모가 있지만 안내문 첫머리가 \"그런데\"로 시작해 어색하고, 사용자가 요청한 결과물보다 덧붙인 내용이 많습니다. 차이는 크지 않습니다.",
+            "meaning_concerns": "Y는 남긴 문장에서 '장애'를 '발견되는 문제'로 바꿨습니다. 두 표현 모두 원문에 있던 것이라 의미가 크게 달라지지는 않습니다. X에서는 의미가 달라진 곳이 없습니다."
+          },
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "exitCode": 0,
+              "timedOut": false,
+              "durationMs": 19308,
+              "wallMs": 20098,
+              "usage": {
+                "inputTokens": 2,
+                "cacheCreationInputTokens": 3715,
+                "cacheReadInputTokens": 0,
+                "outputTokens": 2131,
+                "thinkingTokens": 743
+              },
+              "costUsd": 0.07234800000000001,
+              "models": [
+                "claude-opus-5-5"
+              ],
+              "error": null
+            }
+          ]
+        },
+        {
+          "order": "o2",
+          "X": "B0",
+          "Y": "A",
+          "verdict": "Y",
+          "winner": "A",
+          "answer": {
+            "criteria": [
+              {
+                "criterion": "inflation_repetition",
+                "better": "Y",
+                "evidence": "Y는 \"배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다.\"를 \"예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다\" 한 문장으로 합쳤고, \"결과적으로…줄어들었다\"도 지웠다. X는 \"결과적으로\" 문장만 다음 문장과 합쳐 \"배포 후에 발견되는 문제가 줄었다는 것은\"으로 만들었다. 앞쪽의 배포 전/후 반복은 그대로다."
+              },
+              {
+                "criterion": "flow",
+                "better": "Y",
+                "evidence": "Y의 합친 문장은 원인(테스트가 깨짐)에서 결과(배포 전에 알게 됨)로 한 번에 이어진다. X는 \"예전에는 배포하고 나서야 알았던 문제들이다.\" 같은 짧은 보충 문장을 남겨서 같은 내용을 한 번 더 짚는다."
+              },
+              {
+                "criterion": "fit_voice",
+                "better": "same",
+                "evidence": "두 결과 모두 \"거봐, 내 말이 맞지\", \"아마도.\" 같은 원문 말투와 1·3문단을 그대로 뒀다."
+              },
+              {
+                "criterion": "restraint",
+                "better": "X",
+                "evidence": "X는 본문만 내놓았다. Y는 본문 앞뒤에 \"그런데 두 번째 문단에서…\"(\"그런데\"로 시작해 어색하다)와 \"바뀐 내용은 이래요\" 같은 설명을 붙였다. 다만 구분선으로 본문과 나눠 놓아서 글을 쓰는 데 방해가 되지는 않는다."
+              },
+              {
+                "criterion": "findability",
+                "better": "same",
+                "evidence": "짧은 세 문단이라 찾기 쉬운 정도에 차이가 없다."
+              }
+            ],
+            "verdict": "Y",
+            "reason": "요청은 반복만 줄이고 말투는 두라는 것이다. Y는 2문단의 배포 전/후 반복 두 곳을 모두 줄이면서 말투를 지켰다. X는 한 곳만 손봐서 \\\"배포 전에 알게 됐다 / 예전에는 배포하고 나서야\\\"의 반복이 남아 있다. Y가 앞뒤로 붙인 설명은 요청에 없던 것이지만 본문과 분리돼 있다. 핵심 과제를 더 잘 해낸 쪽은 Y다.",
+            "meaning_concerns": "X는 원문의 \\\"배포 후 장애가 줄었다\\\"를 \\\"배포 후에 발견되는 문제가 줄었다\\\"로 바꿔 '장애'라는 표현이 빠졌다. 큰 의미 변화는 아니다."
+          },
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "exitCode": 0,
+              "timedOut": false,
+              "durationMs": 15855,
+              "wallMs": 16640,
+              "usage": {
+                "inputTokens": 2,
+                "cacheCreationInputTokens": 2117,
+                "cacheReadInputTokens": 1598,
+                "outputTokens": 1609,
+                "thinkingTokens": 513
+              },
+              "costUsd": 0.049443600000000004,
+              "models": [
+                "claude-opus-5-5"
+              ],
+              "error": null
+            }
+          ]
+        }
+      ],
+      "consistent": false,
+      "result": "inconsistent"
+    },
+    "judge/pair/A-vs-B0/pr-technical-literals-r1": {
+      "id": "pr-technical-literals",
+      "rep": 1,
+      "left": {
+        "condition": "A",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "right": {
+        "condition": "B0",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "reusedBaseline": false,
+      "judged": true,
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:21:07.669Z"
+      },
+      "judgments": [
+        {
+          "order": "o1",
+          "X": "A",
+          "Y": "B0",
+          "verdict": "Y",
+          "winner": "B0",
+          "answer": {
+            "criteria": [
+              {
+                "criterion": "findability",
+                "better": "X",
+                "evidence": "X는 \"다듬은 PR 본문입니다.\"와 `---` 구분선으로 붙여 넣을 본문과 \"변경 사항:\"을 나눴습니다. Y는 \"자세한 설명은 ... 있습니다.\" 바로 뒤에 \"'매우 혁신적입니다'는 근거 없는 수식이어서 뺐습니다.\"가 구분 없이 이어집니다. 그래서 어디까지가 PR 본문인지 헷갈릴 수 있습니다."
+              },
+              {
+                "criterion": "inflation_repetition",
+                "better": "same",
+                "evidence": "둘 다 \"이번 개선은 매우 혁신적입니다\"를 지웠고, 본문에 새로 과장한 표현은 없습니다."
+              },
+              {
+                "criterion": "flow",
+                "better": "same",
+                "evidence": "X의 \"검증 명령은 다음과 같습니다.\"와 Y의 \"검증 명령:\"은 둘 다 PR 본문에서 자연스럽습니다. 링크 안내 문장도 X는 \"자세한 내용은 [설명](...)을 참고해 주세요.\", Y는 \"자세한 설명은 [docs/retry.md](...)에 있습니다.\"로, 양쪽 모두 매끄럽게 이어집니다."
+              },
+              {
+                "criterion": "fit_voice",
+                "better": "Y",
+                "evidence": "Y는 \"위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다.\"를 그대로 두어 원문의 간결하고 사실 위주인 말투를 지켰습니다. X는 \"모두 통과했습니다\", \"전체 테스트 스위트는\"으로 강조와 용어를 덧붙였습니다."
+              },
+              {
+                "criterion": "restraint",
+                "better": "Y",
+                "evidence": "X는 필요 없는 문구 수정(\"모두\", \"스위트\")을 하고 그 이유를 네 항목에 걸쳐 길게 설명했습니다. Y는 과장 표현만 빼고 나머지 본문은 거의 그대로 두었습니다. 다만 링크 텍스트를 \"설명\"에서 \"docs/retry.md\"로 바꾼 것은 '링크 유지' 요청에 비추어 불필요한 변경입니다."
+              }
+            ],
+            "verdict": "Y",
+            "reason": "두 결과 모두 근거 없는 자평을 지웠고 코드 블록과 링크 대상을 지켰습니다. Y가 더 나은 이유는 원문 문장을 최소한으로만 고쳐 작성자의 담백한 말투를 살렸기 때문입니다. Y는 변경 전 동작이 빠져 있다는 점도 지적했는데, 이는 검토자에게 실제로 쓸모 있는 조언입니다. X는 \"모두\", \"스위트\"처럼 필요 없는 수정을 더했고 변경 설명이 장황합니다. Y에도 약점은 있습니다. 링크 텍스트를 바꿨고, 본문과 편집 메모 사이에 구분이 없어 붙여 넣을 때 헷갈릴 수 있습니다. 그래도 종합하면 Y가 약간 낫습니다.",
+            "meaning_concerns": "X는 \"통과했습니다\"를 \"모두 통과했습니다\"로 바꿨습니다. 그 결과 원문에 없던 '전부 통과'라는 단정이 더해졌고, '테스트'도 '테스트 스위트'로 범위를 바꿔 표현했습니다. Y는 링크 대상은 그대로 두었지만 링크 텍스트를 \"설명\"에서 \"docs/retry.md\"로 바꿨습니다."
+          },
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "exitCode": 0,
+              "timedOut": false,
+              "durationMs": 16143,
+              "wallMs": 17018,
+              "usage": {
+                "inputTokens": 2,
+                "cacheCreationInputTokens": 3036,
+                "cacheReadInputTokens": 0,
+                "outputTokens": 1726,
+                "thinkingTokens": 331
+              },
+              "costUsd": 0.05881600000000001,
+              "models": [
+                "claude-opus-5-5"
+              ],
+              "error": null
+            }
+          ]
+        },
+        {
+          "order": "o2",
+          "X": "B0",
+          "Y": "A",
+          "verdict": "X",
+          "winner": "B0",
+          "answer": {
+            "criteria": [
+              {
+                "criterion": "findability",
+                "better": "Y",
+                "evidence": "Y는 \"---\"로 PR 본문과 편집 메모를 분리해 어디까지가 본문인지 분명하다. X는 \"자세한 설명은 [docs/retry.md](...)에 있습니다.\" 바로 뒤에 \"\\\"매우 혁신적입니다\\\"는 근거 없는 수식이어서 뺐습니다.\"가 구분 없이 이어져 본문과 메모의 경계가 흐리다."
+              },
+              {
+                "criterion": "inflation_repetition",
+                "better": "X",
+                "evidence": "둘 다 \"매우 혁신적입니다\"를 뺐다. Y의 메모는 \"변경 내용 자체가 충분히 설명하므로 필요하면 구체적인 효과(예: 불필요한 재시도 제거)로 바꿔 쓰는 것이 좋습니다\"처럼 사소한 수정까지 길게 설명한다. X의 메모는 짧고 필요한 내용만 담았다."
+              },
+              {
+                "criterion": "flow",
+                "better": "same",
+                "evidence": "X의 \"검증 명령:\"과 Y의 \"검증 명령은 다음과 같습니다.\"는 둘 다 자연스럽다. 링크 안내 문장(\"자세한 설명은 ...에 있습니다\" / \"자세한 내용은 [설명](...)을 참고해 주세요\")도 모두 매끄럽게 이어진다."
+              },
+              {
+                "criterion": "fit_voice",
+                "better": "same",
+                "evidence": "둘 다 PR 본문에 맞는 간결한 합니다체를 유지한다. Y가 원문의 \"설명\" 링크 텍스트를 지킨 점은 원문에 가깝지만, 전체 말투에서는 차이가 작다."
+              },
+              {
+                "criterion": "restraint",
+                "better": "X",
+                "evidence": "Y는 \"모두 통과했습니다\", \"전체 테스트 스위트는\"처럼 원문에 문제가 없던 부분까지 바꿨다. 특히 \"모두\"는 원문보다 많은 것을 단정한다. X는 \"위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다.\"를 그대로 두었다. 다만 링크 텍스트 \"설명\"을 \"docs/retry.md\"로 바꾼 것은 불필요한 수정이다."
+              }
+            ],
+            "verdict": "X",
+            "reason": "두 결과 모두 근거 없는 자평을 빼고 코드 블록과 링크 대상을 유지했다. Y는 본문과 메모를 구분선으로 나눠 경계가 분명하다. 하지만 원문에 문제가 없던 문장까지 고쳤고, 그중 \"모두\"는 원문보다 많은 것을 단정한다. 메모도 사소한 수정을 길게 설명한다. X는 필요한 수정만 했고 메모도 짧다. 본문과 메모 사이에 구분이 없다는 약점은 있지만, 수정 절제와 의미 보존을 함께 보면 X가 조금 낫다.",
+            "meaning_concerns": "Y가 \"통과했습니다\"를 \"모두 통과했습니다\"로 바꿨다. 이렇게 하면 retry.test.ts의 테스트가 정확히 8개이고 그 전부가 통과했다는 뜻이 되는데, 원문은 이를 말하지 않는다. X는 링크 텍스트를 \"설명\"에서 \"docs/retry.md\"로 바꿨다. 링크 대상은 같아 의미는 보존된다."
+          },
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "exitCode": 0,
+              "timedOut": false,
+              "durationMs": 20705,
+              "wallMs": 21484,
+              "usage": {
+                "inputTokens": 2,
+                "cacheCreationInputTokens": 1438,
+                "cacheReadInputTokens": 1598,
+                "outputTokens": 2265,
+                "thinkingTokens": 505
+              },
+              "costUsd": 0.057131600000000005,
+              "models": [
+                "claude-opus-5-5"
+              ],
+              "error": null
+            }
+          ]
+        }
+      ],
+      "consistent": true,
+      "result": "B0"
+    },
+    "judge/pair/A-vs-B0/proposal-cost-exceptions-r1": {
+      "id": "proposal-cost-exceptions",
+      "rep": 1,
+      "left": {
+        "condition": "A",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": false
+      },
+      "right": {
+        "condition": "B0",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "reusedBaseline": false,
+      "judged": false,
+      "reason": "두 결과가 모두 의미 보존을 통과하지 않아 품질 비교에서 제외"
+    },
+    "judge/pair/A-vs-B0/review-only-r1": {
+      "id": "review-only",
+      "rep": 1,
+      "left": {
+        "condition": "A",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "right": {
+        "condition": "B0",
+        "from": "2026-10-27-pilot",
+        "attempt": 1,
+        "meaningPass": true
+      },
+      "reusedBaseline": false,
+      "judged": true,
+      "judge": {
+        "model": "claude-opus-5-5",
+        "effort": "high",
+        "cli": "2.1.311 (Claude Code)",
+        "at": "2026-10-27T05:21:09.926Z"
+      },
+      "judgments": [
+        {
+          "order": "o1",
+          "X": "A",
+          "Y": "B0",
+          "verdict": "Y",
+          "winner": "B0",
+          "answer": {
+            "criteria": [
+              {
+                "criterion": "findability",
+                "better": "Y",
+                "evidence": "Y는 제목만 읽어도 어느 문장의 문제인지 알 수 있다. 예: \"\\\"놀라운 가치를 제공합니다\\\"는 빈 문장입니다.\", \"세 번째 문장은 앞 문장의 되풀이입니다.\" X는 \"근거 없는 주장\", \"구체성 부족\", \"순환 논리\"처럼 범주로 나눠서, 같은 문장의 문제가 여러 항목에 흩어져 있다."
+              },
+              {
+                "criterion": "inflation_repetition",
+                "better": "Y",
+                "evidence": "X는 1번 \"근거 없는 주장\"과 4번 \"빈 수식어와 과장\", 2번 \"의미 중복과 반복\"과 5번 \"셋째 문장은 새 정보 없이 둘째 문장을 다시 칭찬합니다\", 3번 \"구체성 부족\"과 7번 \"독자 관점 부재\"가 서로 겹친다. 같은 결함을 두 번씩 세어 항목 수만 늘었다. Y도 4번과 5번에 겹치는 부분이 있지만 정도가 덜하다."
+              },
+              {
+                "criterion": "flow",
+                "better": "Y",
+                "evidence": "Y는 항목마다 주장 다음에 근거가 이어진다. 예: \"'서비스 A'를 다른 이름으로 바꿔도 그대로 성립합니다. 독자가 얻는 정보가 없습니다.\" X의 2번은 하위 불릿으로 끊겨 있고, 6번 \"'~입니다/~합니다'로 끝나\"는 앞 항목들과 이어지지 않는 지적이다."
+              },
+              {
+                "criterion": "fit_voice",
+                "better": "same",
+                "evidence": "두 결과 모두 같은 존댓말로 문제점을 지적하는 형식에 맞춰 썼다. X의 \"광고 문구처럼 읽힙니다\"와 Y의 \"독자는 이 말을 홍보 문구로 읽습니다\"는 말투가 비슷하다."
+              },
+              {
+                "criterion": "restraint",
+                "better": "X",
+                "evidence": "X는 문제점만 나열하고 \"수정문은 요청하실 때 작성하겠습니다\"로 끝내 요청 범위를 지켰다. Y는 요청하지 않은 \"## 수정문을 쓰려면 필요한 정보\" 절과 \"근거가 없으면 수식을 빼고 서비스 설명만 남기는 방향이 됩니다\"라는 수정 방향까지 덧붙였다."
+              }
+            ],
+            "verdict": "Y",
+            "reason": "두 결과 모두 수정문 없이 문제점만 짚으라는 요청을 따랐다. Y는 원문의 문장 순서대로 문제를 짚었고, 지적마다 \"다른 이름으로 바꿔도 성립한다\"처럼 근거를 붙여서 독자가 각 문장의 결함을 바로 확인할 수 있다. X는 7개 항목 가운데 셋 정도가 서로 겹쳐서, 같은 결함을 다른 이름으로 다시 센 셈이다. 그만큼 문제가 실제보다 많아 보이고 핵심은 덜 드러난다. Y의 \"필요한 정보\" 절은 요청 밖의 내용이라 절제 면에서는 감점이다. 하지만 수정문이 아니고 짧아서 전체 판단을 뒤집을 정도는 아니다.",
+            "meaning_concerns": "두 결과 모두 원문의 의미를 왜곡한 곳은 없다."
+          },
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "exitCode": 0,
+              "timedOut": false,
+              "durationMs": 18707,
+              "wallMs": 19512,
+              "usage": {
+                "inputTokens": 2,
+                "cacheCreationInputTokens": 3846,
+                "cacheReadInputTokens": 0,
+                "outputTokens": 1930,
+                "thinkingTokens": 286
+              },
+              "costUsd": 0.06937600000000001,
+              "models": [
+                "claude-opus-5-5"
+              ],
+              "error": null
+            }
+          ]
+        },
+        {
+          "order": "o2",
+          "X": "B0",
+          "Y": "A",
+          "verdict": "X",
+          "winner": "B0",
+          "answer": {
+            "criteria": [
+              {
+                "criterion": "findability",
+                "better": "X",
+                "evidence": "X는 항목마다 문제가 되는 문장을 직접 짚습니다(\"'놀라운 가치를 제공합니다'는 빈 문장입니다\", \"세 번째 문장은 앞 문장의 되풀이입니다\"). 그래서 원문의 어느 부분이 문제인지 바로 찾을 수 있습니다. Y는 \"근거 없는 주장\", \"구체성 부족\", \"독자 관점 부재\"처럼 추상적인 범주로 나눴고, 범주끼리 내용이 겹쳐 문장과 문제를 짝지어 보기가 더 어렵습니다."
+              },
+              {
+                "criterion": "inflation_repetition",
+                "better": "X",
+                "evidence": "Y는 1번 \"근거 없는 주장\"과 4번 \"빈 수식어와 과장\"이 같은 지적이고, 2번 \"의미 중복과 반복\"과 5번 \"순환 논리\"도 같은 내용(\"셋째 문장은 새 정보 없이 둘째 문장을 다시 칭찬합니다\")을 되풀이합니다. 7번 \"독자 관점 부재\" 역시 3번 \"구체성 부족\"과 겹칩니다. X의 다섯 항목은 각각 다른 측면을 다룹니다."
+              },
+              {
+                "criterion": "flow",
+                "better": "X",
+                "evidence": "X는 항목마다 판단 문장 하나에 이어 이유를 문장으로 풀어 줍니다(\"무엇이 새롭고 어디가 강력한지 알 수 없습니다. … 독자는 이 말을 홍보 문구로 읽습니다\"). Y는 레이블과 콜론, 하위 글머리표가 이어지는 나열식이라 설명이 조각나 있습니다."
+              },
+              {
+                "criterion": "fit_voice",
+                "better": "same",
+                "evidence": "두 결과 모두 요청대로 수정문 없이 문제점만 정중한 존댓말로 제시합니다. X는 \"수정문을 쓰겠습니다\", Y는 \"수정문은 요청하실 때 작성하겠습니다\"로 마무리해 어조에 큰 차이가 없습니다."
+              },
+              {
+                "criterion": "restraint",
+                "better": "Y",
+                "evidence": "X는 요청에 없던 \"## 수정문을 쓰려면 필요한 정보\" 섹션을 추가했고 \"근거가 없으면 수식을 빼고 서비스 설명만 남기는 방향이 됩니다\"라는 수정 방향까지 미리 내놓습니다. 유용한 내용이지만 요청 범위를 넘습니다. Y는 \"수정문은 요청하실 때 작성하겠습니다\" 한 줄로 끝냅니다. 다만 Y는 겹치는 항목이 많아 이 기준에서 앞서는 정도는 크지 않습니다."
+              }
+            ],
+            "verdict": "X",
+            "reason": "요청은 문제점만 짚는 것이었습니다. X는 다섯 가지 문제를 서로 겹치지 않게 나누고, 각 문제를 원문의 해당 문장과 연결했습니다. \"다른 이름으로 바꿔도 그대로 성립합니다\"처럼 핵심을 정확히 찌르는 지적도 있습니다. Y는 일곱 항목으로 늘어났지만 1·4번, 2·5번, 3·7번이 사실상 같은 내용이라 독자가 실제로 얻는 정보는 X보다 적고, 같은 이야기를 반복해서 읽게 됩니다. X가 요청하지 않은 '필요한 정보' 섹션을 덧붙인 점은 감점 요인입니다. 그래도 수정문을 쓰지 않았고 다음 단계로 이어지는 짧은 안내에 그쳐, 진단의 정확성과 간결함에서 앞선 장점이 더 큽니다.",
+            "meaning_concerns": "원문의 의미가 달라진 곳은 없습니다. 다만 Y의 \"순환 논리\"라는 이름표는 정확하지 않습니다. 원문은 결론을 전제로 쓰는 논증이 아니라 평가를 덧붙이며 반복하는 글이므로, 문제를 잘못 진단한 것으로 읽힐 수 있습니다."
+          },
+          "attempts": [
+            {
+              "attempt": 1,
+              "ok": true,
+              "exitCode": 0,
+              "timedOut": false,
+              "durationMs": 20215,
+              "wallMs": 21244,
+              "usage": {
+                "inputTokens": 2,
+                "cacheCreationInputTokens": 2250,
+                "cacheReadInputTokens": 1598,
+                "outputTokens": 1998,
+                "thinkingTokens": 394
+              },
+              "costUsd": 0.05828760000000001,
+              "models": [
+                "claude-opus-5-5"
+              ],
+              "error": null
+            }
+          ]
+        }
+      ],
+      "consistent": true,
+      "result": "B0"
+    },
+    "manifest/A": {
+      "condition": "A",
+      "skill": null,
+      "invocation": "요청 그대로 (스킬 없음, 빈 .claude 폴더)",
+      "model": "claude-sonnet-5-5",
+      "effort": "high",
+      "cli": "2.1.311 (Claude Code)",
+      "args": [
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--model",
+        "claude-sonnet-5-5",
+        "--effort",
+        "high",
+        "--session-id",
+        "<새 UUID>",
+        "--setting-sources",
+        "project",
+        "--strict-mcp-config",
+        "--permission-mode",
+        "dontAsk",
+        "--tools",
+        "Read,Glob,Grep,Skill",
+        "--allowedTools",
+        "Read Glob Grep Skill",
+        "-p",
+        "<프롬프트>"
+      ],
+      "tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill"
+      ],
+      "casesFile": "evals/cases.json",
+      "casesSha256": "0afbf4f5a458aa9075508e6184943407cc972b4a9f313ad30f5d7dbfccefa66a",
+      "updated": "2026-10-27T05:19:47.757Z"
+    },
+    "manifest/B0": {
+      "condition": "B0",
+      "skill": {
+        "path": "evals/snapshots/v0.1.0/geulppal",
+        "treeSha256": "ef6dd283372aaac25a4faef5b6bfc186643865054535af768dc8fe7e3cc55ea7",
+        "skillMdSha256": "13b0c69bbb58127613d506d452a84d92b6e22e27f5db3b34ff8ec376d2e6d400"
+      },
+      "invocation": "요청 앞에 \"/geulppal \" (프로젝트 스킬 .claude/skills/geulppal)",
+      "model": "claude-sonnet-5-5",
+      "effort": "high",
+      "cli": "2.1.311 (Claude Code)",
+      "args": [
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--model",
+        "claude-sonnet-5-5",
+        "--effort",
+        "high",
+        "--session-id",
+        "<새 UUID>",
+        "--setting-sources",
+        "project",
+        "--strict-mcp-config",
+        "--permission-mode",
+        "dontAsk",
+        "--tools",
+        "Read,Glob,Grep,Skill",
+        "--allowedTools",
+        "Read Glob Grep Skill",
+        "-p",
+        "<프롬프트>"
+      ],
+      "tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill"
+      ],
+      "casesFile": "evals/cases.json",
+      "casesSha256": "0afbf4f5a458aa9075508e6184943407cc972b4a9f313ad30f5d7dbfccefa66a",
+      "updated": "2026-10-27T05:19:47.819Z"
+    },
+    "runs/A/personal-blog-voice-r1-a1": {
+      "id": "personal-blog-voice",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.407Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": false,
+        "skillBodyInjected": false,
+        "skillBodyMatchesInstalled": null,
+        "listedGeulppal": false,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "내 블로그 글인데 반복되는 부분만 좀 줄여줘. 말투는 건드리지 마.\n\n솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다. 처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다. 빌드가 느려질 거라고 생각했고, 실제로 첫 달에는 CI가 평균 18분까지 늘어났다. 그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다.\n\n그런데 세 달쯤 지나자 이상한 일이 생겼다. 공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다. 결과적으로 배포 후에 발견되는 문제가 줄어들었다. 배포 후 장애가 줄었다는 것은 정말 큰 변화였다. 배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\n\n그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데, 이건 다음 글에서 이야기하겠다. 아마도.",
+      "output": "그런데 두 번째 문단에서 같은 말이 계속 반복돼서 거기만 줄였어요. 나머지는 그대로 뒀어요.\n\n---\n\n솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다. 처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다. 빌드가 느려질 거라고 생각했고, 실제로 첫 달에는 CI가 평균 18분까지 늘어났다. 그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다.\n\n그런데 세 달쯤 지나자 이상한 일이 생겼다. 공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다. 배포 후 장애가 줄었다는 것은 정말 큰 변화였다. 배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\n\n그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데, 이건 다음 글에서 이야기하겠다. 아마도.\n\n---\n\n바뀐 내용은 이래요.\n- \"배포 전에 문제를 알게 됐다\"와 \"예전에는 배포하고 나서야 알았다\"를 한 문장으로 합쳤어요.\n- \"결과적으로 배포 후에 발견되는 문제가 줄어들었다\"를 뺐어요. 바로 뒤 문장의 \"배포 후 장애가 줄었다\"와 같은 말이에요.\n\n마지막의 \"배포 전에 문제를 알 수 있다는 것, 그것이…\"는 글의 결론이라서 남겼어요. 그 문장까지 빼고 싶으시면 말씀해 주세요.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 9023,
+      "wallMs": 11673,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4901,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 1329,
+        "thinkingTokens": 639
+      },
+      "costUsd": 0.0332826,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/A/pr-technical-literals-r1-a1": {
+      "id": "pr-technical-literals",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.380Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": false,
+        "skillBodyInjected": false,
+        "skillBodyMatchesInstalled": null,
+        "listedGeulppal": false,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "PR 본문 문장을 다듬어줘. 코드와 링크는 유지해줘.\n\n이번 개선은 매우 혁신적입니다. `retryCount`가 0일 때 재시도하지 않도록 수정했습니다. 검증 명령은 다음과 같습니다.\n\n```sh\nnpm test -- retry.test.ts\n```\n\n위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다. [설명](docs/retry.md#retry-count)",
+      "output": "다듬은 PR 본문입니다.\n\n---\n\n`retryCount`가 0일 때 재시도하지 않도록 수정했습니다.\n\n검증 명령은 다음과 같습니다.\n\n```sh\nnpm test -- retry.test.ts\n```\n\n위 테스트 8개가 모두 통과했습니다. 전체 테스트 스위트는 실행하지 않았습니다.\n\n자세한 내용은 [설명](docs/retry.md#retry-count)을 참고해 주세요.\n\n---\n\n변경 사항:\n- \"이번 개선은 매우 혁신적입니다\"는 PR 본문에서 근거 없는 자평이라 삭제했습니다. 변경 내용 자체가 충분히 설명하므로 필요하면 구체적인 효과(예: 불필요한 재시도 제거)로 바꿔 쓰는 것이 좋습니다.\n- \"통과했습니다\"는 \"모두 통과했습니다\"로 바꿔 8개 전부 통과했다는 점을 분명히 했습니다.\n- \"전체 테스트는\"을 \"전체 테스트 스위트는\"으로 바꿔 범위를 분명히 했습니다.\n- 링크는 문장 안에 넣어 안내 문장으로 자연스럽게 이었습니다. 링크 대상과 코드 블록은 그대로입니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 5004,
+      "wallMs": 7767,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4593,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 456,
+        "thinkingTokens": 0
+      },
+      "costUsd": 0.023320599999999997,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/A/proposal-cost-exceptions-r1-a1": {
+      "id": "proposal-cost-exceptions",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.394Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": false,
+        "skillBodyInjected": false,
+        "skillBodyMatchesInstalled": null,
+        "listedGeulppal": false,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "기획서 초안의 이 부분을 결재 올릴 수 있게 다듬어줘.\n\n현재 고객 문의의 상당수가 배송 조회와 관련된 내용이며, 이러한 문의를 효과적으로 처리하는 것은 고객 만족도 향상에 있어 매우 중요한 의미를 가집니다. 이에 따라 저희 팀은 챗봇 도입을 적극적으로 검토하고 있습니다.\n\n지난 3개월(7~9월) 동안 접수된 문의 4,812건 중 배송 조회 문의는 1,930건(약 40%)이었습니다. 챗봇은 이 중 송장 번호가 등록된 주문의 배송 조회만 처리할 수 있으며, 반품·교환 문의는 기존처럼 상담원이 처리합니다.\n\n비용은 외부 솔루션 기준 월 120만 원(사용자 수 무관, VAT 별도)이며, 초기 연동 개발에 약 3주가 필요할 것으로 예상됩니다. 다만 솔루션 업체 두 곳 중 어느 곳을 선택할지는 아직 결정되지 않았으며, 위 비용은 A사 견적 기준입니다. B사 견적은 다음 주에 받을 예정입니다.\n\n챗봇 도입 시 상담원의 업무 부담이 줄어들 것으로 기대되나, 실제 감소 폭은 시범 운영 후 측정할 계획입니다.",
+      "output": "## 다듬은 안\n\n**1. 추진 배경**\n- 최근 3개월(7~9월) 접수 문의 4,812건 중 배송 조회 문의가 1,930건(약 40%)을 차지함\n- 반복적인 배송 조회 문의를 챗봇으로 분리해 상담원이 다른 문의에 집중할 수 있도록 챗봇 도입을 추진하고자 함\n\n**2. 적용 범위**\n- 챗봇 처리 대상: 송장 번호가 등록된 주문의 배송 조회\n- 상담원 처리 유지: 반품·교환 등 그 외 문의\n\n**3. 소요 비용 및 일정**\n- 비용: 월 120만 원(연 1,440만 원 환산, VAT 별도, 사용자 수 무관) ※ A사 견적 기준\n- 기간: 초기 연동 개발 약 3주\n\n**4. 미확정 사항**\n- 솔루션 업체: A사·B사 중 선정 예정. B사 견적은 다음 주 수령 예정이며, 수령 후 비용과 기능을 비교해 최종 확정함\n- 도입 효과: 상담원 업무 부담 감소가 기대되나, 감소 폭은 시범 운영 후 측정할 계획임\n\n## 수정 포인트\n- **서두 정리**: \"매우 중요한 의미를 가집니다\", \"적극적으로 검토하고 있습니다\" 같은 표현은 근거가 없어서 뺐습니다. 대신 \"40%\"라는 수치를 배경 설명의 중심에 뒀습니다.\n- **\"상당수\"를 수치로 대체**: 1,930건 ÷ 4,812건 ≈ 40.1%라서 \"약 40%\"는 맞습니다.\n- **확정과 미확정 분리**: 결재자가 \"이 비용이 확정된 것인지\"를 바로 알 수 있도록 별도 항목으로 뺐습니다. 비용 옆에 \"A사 견적 기준\"도 붙였습니다.\n- **문체**: 결재 문서에 흔한 개조식(~함, ~임)으로 바꿨습니다. 서술형이 필요하면 다시 바꿔드리겠습니다.\n- **연 환산 추가**: 연 1,440만 원은 제가 계산해 넣은 값입니다. 필요 없으면 삭제하세요.\n\n## 결재 전 확인하면 좋을 점\n결재자가 물어볼 가능성이 높은데 초안에 없는 내용입니다. 사실관계를 모르니 임의로 채우지 않았습니다.\n- **시범 운영 계획**: 기간과 성공 기준(예: 챗봇 처리 비율, 상담 건수 감소율)이 있으면 \"측정할 계획\"이 더 구체적으로 읽힙니다.\n- **B사 견적 전 결재 여부**: 업체 미정 상태로 결재를 받는 것이면 \"A사 견적 상한 범위 내에서 진행\"처럼 승인 범위를 명시하는 편이 안전합니다.\n- **현재 상담 비용 대비 효과**: 배송 조회 1,930건을 처리하는 데 드는 인력이나 시간을 알면 월 120만 원이 적정한지 판단하기 쉬워집니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 12444,
+      "wallMs": 14882,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4929,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 1429,
+        "thinkingTokens": 288
+      },
+      "costUsd": 0.0343946,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/A/review-only-r1-a1": {
+      "id": "review-only",
+      "condition": "A",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.386Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": false,
+        "skillBodyInjected": false,
+        "skillBodyMatchesInstalled": null,
+        "listedGeulppal": false,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "아래 글의 문제점만 짚어줘. 수정문은 아직 쓰지 마.\n\n서비스 A는 혁신적이고 강력한 서비스입니다. 놀라운 가치를 제공합니다. 그 가치는 매우 혁신적입니다.",
+      "output": "**문제점**\n\n1. **근거 없는 주장**: \"혁신적\", \"강력한\", \"놀라운\"이라고만 하고 이유나 증거가 없습니다. 무엇이 혁신인지, 누구에게 어떤 가치인지 나오지 않아 설득력이 없습니다.\n\n2. **의미 중복과 반복**: 세 문장이 사실상 같은 말입니다.\n   - 첫 문장의 \"혁신적\"이 세 번째 문장에서 \"매우 혁신적\"으로 다시 나옵니다.\n   - 둘째 문장의 \"가치\"가 셋째 문장에서 되풀이됩니다.\n   - 정보량은 한 문장 분량인데 세 문장으로 늘어나 있습니다.\n\n3. **구체성 부족**: 서비스 A가 무엇인지, 어떤 문제를 푸는지, 대상 사용자가 누구인지, 경쟁 대안과 무엇이 다른지가 전혀 없습니다. 수치, 사례, 기능 설명도 없습니다.\n\n4. **빈 수식어와 과장**: \"놀라운\", \"매우\" 같은 강조어는 근거 없이 쓰면 오히려 신뢰를 떨어뜨립니다. 광고 문구처럼 읽힙니다.\n\n5. **순환 논리**: \"놀라운 가치를 제공한다 → 그 가치는 혁신적이다\"는 가치의 내용을 설명하지 않고 평가만 덧붙입니다. 셋째 문장은 새 정보 없이 둘째 문장을 다시 칭찬합니다.\n\n6. **단조로운 문장 구조**: 세 문장이 모두 짧은 평서문이고 \"~입니다/~합니다\"로 끝나, 리듬이 단조롭고 문장 사이의 논리적 연결(접속, 인과)이 없습니다.\n\n7. **독자 관점 부재**: 독자가 얻는 이익이나 행동(왜 써야 하는지, 다음에 무엇을 해야 하는지)이 없습니다.\n\n수정문은 요청하실 때 작성하겠습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 7254,
+      "wallMs": 9925,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4511,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 759,
+        "thinkingTokens": 26
+      },
+      "costUsd": 0.0260226,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/B0/personal-blog-voice-r1-a1": {
+      "id": "personal-blog-voice",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.408Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 내 블로그 글인데 반복되는 부분만 좀 줄여줘. 말투는 건드리지 마.\n\n솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다. 처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다. 빌드가 느려질 거라고 생각했고, 실제로 첫 달에는 CI가 평균 18분까지 늘어났다. 그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다.\n\n그런데 세 달쯤 지나자 이상한 일이 생겼다. 공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다. 결과적으로 배포 후에 발견되는 문제가 줄어들었다. 배포 후 장애가 줄었다는 것은 정말 큰 변화였다. 배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\n\n그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데, 이건 다음 글에서 이야기하겠다. 아마도.",
+      "output": "솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다. 처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다. 빌드가 느려질 거라고 생각했고, 실제로 첫 달에는 CI가 평균 18분까지 늘어났다. 그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다.\n\n그런데 세 달쯤 지나자 이상한 일이 생겼다. 공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다. 배포 후에 발견되는 문제가 줄었다는 것은 정말 큰 변화였다. 배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\n\n그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데, 이건 다음 글에서 이야기하겠다. 아마도.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 10332,
+      "wallMs": 13318,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 9221,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 1561,
+        "thinkingTokens": 1143
+      },
+      "costUsd": 0.0528826,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    },
+    "runs/B0/pr-technical-literals-r1-a1": {
+      "id": "pr-technical-literals",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.381Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal PR 본문 문장을 다듬어줘. 코드와 링크는 유지해줘.\n\n이번 개선은 매우 혁신적입니다. `retryCount`가 0일 때 재시도하지 않도록 수정했습니다. 검증 명령은 다음과 같습니다.\n\n```sh\nnpm test -- retry.test.ts\n```\n\n위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다. [설명](docs/retry.md#retry-count)",
+      "output": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다.\n\n검증 명령:\n\n```sh\nnpm test -- retry.test.ts\n```\n\n위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다.\n\n자세한 설명은 [docs/retry.md](docs/retry.md#retry-count)에 있습니다.\n\n\"매우 혁신적입니다\"는 근거 없는 수식이어서 뺐습니다. 링크 대상과 코드 블록은 그대로 두었습니다. 변경 전에 `retryCount`가 0일 때 어떻게 동작했는지는 원문에 없어서 추가하지 않았습니다. 검토자가 알아야 할 내용이라면 한 문장을 보태는 것이 좋습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 5182,
+      "wallMs": 7596,
+      "numTurns": 2,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 10841,
+        "cacheReadInputTokens": 16292,
+        "outputTokens": 444,
+        "thinkingTokens": 80
+      },
+      "costUsd": 0.049441200000000005,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/B0/proposal-cost-exceptions-r1-a1": {
+      "id": "proposal-cost-exceptions",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.391Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [
+          "references/document-types.md",
+          "references/editing-examples.md"
+        ],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 기획서 초안의 이 부분을 결재 올릴 수 있게 다듬어줘.\n\n현재 고객 문의의 상당수가 배송 조회와 관련된 내용이며, 이러한 문의를 효과적으로 처리하는 것은 고객 만족도 향상에 있어 매우 중요한 의미를 가집니다. 이에 따라 저희 팀은 챗봇 도입을 적극적으로 검토하고 있습니다.\n\n지난 3개월(7~9월) 동안 접수된 문의 4,812건 중 배송 조회 문의는 1,930건(약 40%)이었습니다. 챗봇은 이 중 송장 번호가 등록된 주문의 배송 조회만 처리할 수 있으며, 반품·교환 문의는 기존처럼 상담원이 처리합니다.\n\n비용은 외부 솔루션 기준 월 120만 원(사용자 수 무관, VAT 별도)이며, 초기 연동 개발에 약 3주가 필요할 것으로 예상됩니다. 다만 솔루션 업체 두 곳 중 어느 곳을 선택할지는 아직 결정되지 않았으며, 위 비용은 A사 견적 기준입니다. B사 견적은 다음 주에 받을 예정입니다.\n\n챗봇 도입 시 상담원의 업무 부담이 줄어들 것으로 기대되나, 실제 감소 폭은 시범 운영 후 측정할 계획입니다.",
+      "output": "고객 문의 중 배송 조회가 차지하는 비중부터 쓰고, 확정된 내용과 아직 정해지지 않은 내용을 나눠 정리했습니다.\n\n> 지난 3개월(7~9월) 동안 접수된 문의 4,812건 중 1,930건(약 40%)이 배송 조회 문의였습니다. 이에 배송 조회 문의에 대응할 챗봇 도입을 검토하고 있습니다.\n>\n> 챗봇은 송장 번호가 등록된 주문의 배송 조회만 처리합니다. 반품·교환 문의는 기존처럼 상담원이 처리합니다.\n>\n> 비용은 A사 견적 기준으로 월 120만 원(사용자 수 무관, VAT 별도)이고, 초기 연동 개발에는 약 3주가 걸릴 것으로 예상합니다. 솔루션 업체는 두 곳 중 아직 정하지 않았습니다. B사 견적은 다음 주에 받을 예정입니다.\n>\n> 챗봇 도입으로 상담원의 업무 부담이 줄 것으로 기대합니다. 실제 감소 폭은 시범 운영 후 측정할 계획입니다.\n\n- **삭제한 문장:** 첫 문단의 \"고객 만족도 향상에 매우 중요한 의미를 가집니다\"는 수치나 근거가 없어 뺐습니다. \"적극적으로\"도 뺐습니다. \"검토하고 있습니다\"라는 상태는 그대로입니다.\n- **날짜 표기:** \"다음 주\"는 결재 시점에 따라 가리키는 날이 달라집니다. 결재 전에 \"11월 ○일 수령 예정\"처럼 날짜로 바꾸는 것을 권합니다.\n- **미확인 사항:** 약 3주의 개발 기간이 A사 기준인지 업체와 무관한 추정인지는 원문에서 알 수 없어, 그대로 두었습니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 16327,
+      "wallMs": 18689,
+      "numTurns": 3,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 14619,
+        "cacheReadInputTokens": 16967,
+        "outputTokens": 2000,
+        "thinkingTokens": 1143
+      },
+      "costUsd": 0.0801807,
+      "permissionDenials": [],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "error": null
+    },
+    "runs/B0/review-only-r1-a1": {
+      "id": "review-only",
+      "condition": "B0",
+      "rep": 1,
+      "attempt": 1,
+      "status": "ok",
+      "started": "2026-10-27T05:18:53.385Z",
+      "sessionIdIsNew": true,
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ],
+        "usage": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "effort": "high",
+      "cli": "2.1.311",
+      "environment": {
+        "envNames": [
+          "ANTHROPIC_BASE_URL",
+          "CLAUDE_CONFIG_DIR",
+          "CURL_CA_BUNDLE",
+          "HOME",
+          "HTTPS_PROXY",
+          "NODE_EXTRA_CA_CERTS",
+          "NODE_OPTIONS",
+          "NO_PROXY",
+          "PATH",
+          "REQUESTS_CA_BUNDLE",
+          "SSL_CERT_FILE",
+          "TERM",
+          "https_proxy",
+          "no_proxy"
+        ],
+        "tools": [
+          "Glob",
+          "Grep",
+          "Read",
+          "Skill"
+        ],
+        "mcpServers": [],
+        "plugins": [
+          "cc-plugin-agents-md@builtin",
+          "cc-plugin-telemetry@builtin",
+          "cc-plugin-plugin-authoring@builtin"
+        ],
+        "skills": [
+          "geulppal",
+          "deep-research",
+          "design",
+          "design-sync",
+          "dataviz",
+          "update-config",
+          "verify",
+          "debug",
+          "code-review",
+          "simplify",
+          "batch",
+          "fewer-permission-prompts",
+          "doctor",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "run-skill-generator",
+          "plugin-authoring"
+        ],
+        "permissionMode": "dontAsk",
+        "apiKeySource": "none"
+      },
+      "skill": {
+        "commandExpanded": true,
+        "skillBodyInjected": true,
+        "skillBodyMatchesInstalled": true,
+        "listedGeulppal": true,
+        "skillToolCalls": [],
+        "referenceReads": [],
+        "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+      },
+      "prompt": "/geulppal 아래 글의 문제점만 짚어줘. 수정문은 아직 쓰지 마.\n\n서비스 A는 혁신적이고 강력한 서비스입니다. 놀라운 가치를 제공합니다. 그 가치는 매우 혁신적입니다.",
+      "output": "## 문제점\n\n1. **서비스가 무엇인지 나오지 않습니다.** 세 문장 모두 서비스 A가 무엇을 하는지, 누구를 위한 것인지, 무엇이 달라지는지 말하지 않습니다. \"서비스 A\"를 다른 이름으로 바꿔도 그대로 성립합니다. 독자가 얻는 정보가 없습니다.\n\n2. **\"혁신적이고 강력한\"은 근거 없는 수식입니다.** 무엇이 새롭고 어디가 강력한지 알 수 없습니다. 기능, 속도, 비용, 기존 방식과의 차이 같은 확인할 수 있는 내용이 없으니 독자는 이 말을 홍보 문구로 읽습니다.\n\n3. **\"놀라운 가치를 제공합니다\"는 빈 문장입니다.** 누가 어떤 가치를 얻는지 없습니다. \"가치를 제공한다\"는 어떤 서비스에나 쓸 수 있는 말이고, \"놀라운\"은 판단만 얹을 뿐 정보를 더하지 않습니다.\n\n4. **세 번째 문장은 앞 문장의 되풀이입니다.** \"그 가치는 매우 혁신적입니다\"는 새 정보가 없습니다. 첫 문장의 \"혁신적\"이 다시 나오고, \"매우\"로 강도만 올립니다. 같은 주장을 반복해서 설득력이 오히려 떨어집니다.\n\n5. **문장 구조가 단조롭고 강조만 올라갑니다.** \"혁신적 → 놀라운 → 매우 혁신적\"으로 수식어만 세지고 내용은 늘지 않습니다. 짧은 평서문 세 개가 같은 방식으로 이어져 기계적으로 읽힙니다.\n\n## 수정문을 쓰려면 필요한 정보\n\n원문에는 고칠 사실이 없습니다. 수정할 때 내용을 지어내지 않으려면 아래 정보가 필요합니다.\n\n- 서비스 A가 하는 일과 주 사용자\n- 사용자가 얻는 구체적인 결과(시간 절감, 비용, 기능 등)\n- \"혁신적\"이라고 할 근거(수치, 기존 방식과의 비교, 사례)\n- 글의 용도(소개글, 랜딩 페이지, 발표 자료 등)\n\n이 정보를 주시면 수정문을 쓰겠습니다. 근거가 없으면 수식을 빼고 서비스 설명만 남기는 방향이 됩니다.",
+      "outputHadLocalPath": false,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 10456,
+      "wallMs": 13042,
+      "numTurns": 1,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 8443,
+        "cacheReadInputTokens": 3846,
+        "outputTokens": 1260,
+        "thinkingTokens": 366
+      },
+      "costUsd": 0.046760600000000006,
+      "permissionDenials": [],
+      "toolCalls": [],
+      "error": null
+    }
+  }
+}
