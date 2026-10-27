@@ -80,3 +80,7 @@ The skill instructions and evaluation materials are written in Korean.
 ## Feedback
 
 If geulppal leaves an awkward sentence or changes the meaning of your text, please [open an issue](https://github.com/Guksu/geulppal/issues) with the original, your request and the result. Reports like these can be added as evaluation cases.
+
+## License
+
+[MIT](LICENSE) © 2026 Guksu

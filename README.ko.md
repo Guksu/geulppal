@@ -80,3 +80,7 @@ cd geulppal/skills && zip -r geulppal.zip geulppal
 ## 피드백
 
 글빨을 써도 어색하게 남은 문장이나 의미가 바뀐 결과가 있으면 [이슈](https://github.com/Guksu/geulppal/issues)로 알려 주세요. 원문과 요청, 결과를 함께 적어 주시면 평가 사례에 반영할 수 있습니다.
+
+## 라이선스
+
+[MIT](LICENSE) © 2026 Guksu
