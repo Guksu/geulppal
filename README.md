@@ -41,7 +41,8 @@ Claude 웹·데스크톱에 올릴 때는 `skills/geulppal/` 폴더를 ZIP으로
 - [문장 예시](skills/geulppal/references/editing-examples.md): 고칠 문장과 유지할 문장
 - [조사 기록](research/findings.md): 기존 README 수정, 공개 스킬과 글쓰기 자료에서 채택한 기준
 - [평가 방법](evals/README.md): 개발 사례 19개, 처음 보는 사례 12개, 자동 선택 요청 22개와 실행 스크립트
-- [평가 보고서](evals/results/REPORT.md): 실행 결과, 실패 분석, 개선 과정
+- [벤치마크 결과](evals/results/README.md): 결과 요약과 사례별 원문·결과 비교
+- [평가 보고서](evals/results/REPORT.md): 실패 분석과 개선 과정
 
 2026-10-27에 Claude Code CLI 2.1.311에서 글빨을 쓰지 않는 조건과 비교했습니다. 작성 모델은 `claude-sonnet-5-5`, 판정은 다른 모델인 `claude-opus-5-5`가 했고 사람의 평가는 하지 않았습니다.
 

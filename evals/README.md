@@ -1,6 +1,6 @@
 # 평가
 
-글빨을 쓰지 않는 Claude Code(A)와 글빨을 쓰는 Claude Code(B)에 같은 요청을 주고 결과를 비교한다. 정확성(의미 보존), 글의 품질, 자동 선택, 시간·비용을 따로 잰다. 결과 해석은 [평가 보고서](results/REPORT.md)에 있다.
+글빨을 쓰지 않는 Claude Code(A)와 글빨을 쓰는 Claude Code(B)에 같은 요청을 주고 결과를 비교한다. 정확성(의미 보존), 글의 품질, 자동 선택, 시간·비용을 따로 잰다. 결과 요약과 사례별 결과는 [벤치마크 결과](results/README.md), 실패 분석과 개선 과정은 [평가 보고서](results/REPORT.md)에 있다.
 
 ## 자료
 
@@ -65,6 +65,11 @@ node scripts/eval/judge.mjs pair --out <이름> --left A --right B0
 # 판정 지침을 고친 뒤 다시 판정: meaning ... --force / 문자열 검사만 다시 계산: rescore --out <이름> --condition A
 
 node scripts/eval/report.mjs --out <이름>                     # 집계 → evals/results/<이름>/report.md
+
+# 사람이 읽는 사례별 페이지 → evals/results/cases/<이름>/ (모델 호출 없음)
+node scripts/eval/render.mjs --name holdout --title "처음 보는 사례" --cases evals/holdout/cases.json \
+  --conds A=2026-10-27-holdout,B0=2026-10-27-holdout,B2=2026-10-27-holdout \
+  --pairs 2026-10-27-holdout/A-vs-B2,2026-10-27-holdout/B0-vs-B2,2026-10-27-holdout/A-vs-B0
 
 # 자동 선택
 node scripts/eval/trigger.mjs --out <이름> --label <이름표> --skill skills/geulppal --reps 2

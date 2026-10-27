@@ -66,7 +66,8 @@ const checkSkill = (dir) => {
 
 const checkLinks = (file) => {
   const text = readFileSync(join(ROOT, file), 'utf8').replace(/```[\s\S]*?```/g, '')
-  for (const match of text.matchAll(/\]\(([^)\s]+)\)/g)) {
+  // 역슬래시로 막은 링크(\[텍스트](대상))는 링크가 아니므로 건너뛴다
+  for (const match of text.matchAll(/(?<!\\)\[[^\]\n]*\]\(([^)\s]+)\)/g)) {
     const target = match[1].split('#')[0]
     if (!target || /^[a-z]+:/i.test(match[1])) continue
     if (!existsSync(resolve(dirname(join(ROOT, file)), target))) errors.push(`${file}: 링크 대상 없음 ${match[1]}`)
