@@ -78,6 +78,14 @@ node scripts/eval/trigger.mjs --out <이름> --label <이름표> --skill skills/
 node scripts/eval/holdout.mjs --out evals/holdout/cases.json
 ```
 
-사례 일부만 돌리려면 `--ids a,b`, 다른 사례 파일은 `--cases <파일>`을 준다. 공개 기록은 `evals/results/<이름>/`, 원본 로그(스트림·대화 기록·stderr)는 `evals/runs/<이름>/`에 쓴다. `evals/runs/`는 커밋하지 않는다.
+사례 일부만 돌리려면 `--ids a,b`, 다른 사례 파일은 `--cases <파일>`을 준다.
+
+기록은 이렇게 남는다.
+
+- `evals/results/<이름>/records.json`: 실행 기록(`runs/`), 판정 근거(`judge/`), 조건 명세(`manifest/`), 자동 선택 기록(`trigger/`)을 한 파일에 묶은 공개 기록이다. 키는 `runs/A/readme-rewrite-r1-a1`처럼 원래의 파일 경로다.
+- `evals/results/<이름>/report.md`, `summary.json`: 집계
+- `evals/runs/<이름>/`: 원본 로그(스트림·대화 기록·stderr)와 작업 중 기록(`records/`). 커밋하지 않는다.
+
+명령은 작업 중 기록을 `evals/runs/<이름>/records/`에 하나씩 쓰고, 끝날 때 `records.json`에 합친다. 읽을 때는 `records.json` 위에 작업 중 기록을 덮어 읽는다. 그래서 새로 받은 저장소에서도 `records.json`만으로 집계·페이지 생성·추가 판정을 할 수 있다. 기록을 파일 단위로 보려면 `node scripts/eval/records.mjs unpack --out <이름>`으로 푼다.
 
 로컬에서 임시 `HOME`을 쓰면 키체인 로그인을 찾지 못할 수 있다. 그때는 `claude setup-token`으로 만든 토큰을 `CLAUDE_CODE_OAUTH_TOKEN`에, 또는 API 키를 `ANTHROPIC_API_KEY`에 넣고 실행한다. 실행기는 이 두 변수의 값을 기록하지 않는다.

@@ -7,15 +7,17 @@
  *
  * 작성 모델에는 request와 input만 준다. 스킬 조건은 작업 폴더의 .claude/skills/geulppal에 스킬을 두고
  * 요청 앞에 /geulppal을 붙인다. 두 조건의 차이는 이 두 가지뿐이다.
- * 공개 기록은 evals/results/<이름>/runs/, 원본 로그(스트림·대화 기록·stderr)는 evals/runs/<이름>/에 쓴다(커밋 제외).
+ * 공개 기록은 evals/results/<이름>/records.json의 runs/·manifest/ 항목으로 묶인다(lib/records.mjs).
+ * 원본 로그(스트림·대화 기록·stderr)는 evals/runs/<이름>/에 쓴다(커밋 제외).
  * 같은 사례·회차의 기록이 있으면 건너뛴다. --retry-failed를 주면 실패한 회차를 새 시도(a2, a3…)로 다시 돌린다.
  */
-import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
 import {
   ROOT, cliVersion, fileHash, findTranscript, installSkill, makeSandbox, newSessionId, parseArgs, parseStream, pool,
-  readJson, readTranscript, runClaude, scrub, skillEvidence, treeHash, usageOf, writeJson,
+  readJson, readTranscript, runClaude, scrub, skillEvidence, treeHash, usageOf,
 } from './lib/common.mjs'
+import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
   cases: 'evals/cases.json',
@@ -42,7 +44,7 @@ if (ids && cases.length !== ids.length) {
   console.error(`없는 사례: ${ids.filter((id) => !allCases.some((c) => c.id === id)).join(', ')}`)
   process.exit(1)
 }
-const resultsDir = join(ROOT, 'evals/results', options.out)
+const records = openRecords(options.out)
 const rawDir = join(ROOT, 'evals/runs', options.out)
 const reps = Number(options.reps)
 const repStart = Number(options['rep-start'])
@@ -62,8 +64,8 @@ const baseArgs = (sessionId) => [
   '--allowedTools', WRITER_TOOLS.join(' '),
 ]
 
-// 조건 명세 — 실행 기록과 함께 남긴다. 조건마다 파일을 따로 써서 동시에 돌려도 서로 덮어쓰지 않는다
-writeJson(join(resultsDir, 'manifest', `${options.condition}.json`), {
+// 조건 명세 — 실행 기록과 함께 남긴다. 조건마다 따로 써서 동시에 돌려도 서로 덮어쓰지 않는다
+records.put(`manifest/${options.condition}`, {
   condition: options.condition,
   skill: skillDir ? { path: relative(ROOT, skillDir), treeSha256: treeHash(skillDir), skillMdSha256: fileHash(join(skillDir, 'SKILL.md')) } : null,
   invocation: skillDir ? '요청 앞에 "/geulppal " (프로젝트 스킬 .claude/skills/geulppal)' : '요청 그대로 (스킬 없음, 빈 .claude 폴더)',
@@ -77,14 +79,12 @@ writeJson(join(resultsDir, 'manifest', `${options.condition}.json`), {
   updated: new Date().toISOString(),
 })
 
-const attemptsOf = (condition, id, rep) => {
-  const folder = join(resultsDir, 'runs', condition)
-  if (!existsSync(folder)) return []
-  return readdirSync(folder)
-    .filter((name) => name.startsWith(`${id}-r${rep}-a`) && name.endsWith('.json'))
-    .map((name) => readJson(join(folder, name)))
+const attemptsOf = (condition, id, rep) =>
+  records
+    .names(`runs/${condition}`)
+    .filter((name) => name.startsWith(`${id}-r${rep}-a`))
+    .map((name) => records.get(`runs/${condition}/${name}`))
     .sort((a, b) => a.attempt - b.attempt)
-}
 
 const runOne = async (item, rep, attempt) => {
   const box = makeSandbox()
@@ -152,7 +152,7 @@ const runOne = async (item, rep, attempt) => {
     toolCalls: stream.toolUses.map((use) => ({ name: use.name, input: scrub(JSON.stringify(use.input ?? {})).slice(0, 300) })),
     error: status === 'ok' ? null : scrub((stream.result?.result && stream.result.is_error ? String(stream.result.result) : run.stderr).slice(-1500)),
   }
-  writeJson(join(resultsDir, 'runs', options.condition, `${item.id}-r${rep}-a${attempt}.json`), record)
+  records.put(`runs/${options.condition}/${item.id}-r${rep}-a${attempt}`, record)
   box.cleanup()
   const cost = record.costUsd === null ? '' : ` $${record.costUsd.toFixed(3)}`
   console.log(`${options.condition} ${item.id} r${rep} a${attempt} — ${status}, ${Math.round(run.wallMs / 1000)}초${cost}${skillDir ? `, 스킬 ${evidence.skillBodyInjected ? '읽음' : '안 읽음'}` : ''}`)
@@ -169,6 +169,7 @@ for (const item of cases) {
   }
 }
 console.log(`${options.condition}: ${jobs.length}회 실행 (사례 ${cases.length}개, 회차 ${repStart}~${repStart + reps - 1}, 모델 ${options.model}, ${version})`)
-const records = await pool(jobs, Number(options.concurrency))
-const tally = records.reduce((acc, record) => ({ ...acc, [record.status]: (acc[record.status] ?? 0) + 1 }), {})
+const done = await pool(jobs, Number(options.concurrency))
+packRecords(options.out)
+const tally = done.reduce((acc, record) => ({ ...acc, [record.status]: (acc[record.status] ?? 0) + 1 }), {})
 console.log(`끝: ${JSON.stringify(tally)}`)

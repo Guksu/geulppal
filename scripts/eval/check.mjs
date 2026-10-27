@@ -106,6 +106,19 @@ for (const file of ['README.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/re
 }
 for (const file of walk(join(ROOT, 'evals/results')).filter((f) => f.endsWith('.md'))) checkLinks(relative(ROOT, file))
 
+// 실행 결과 묶음
+for (const name of existsSync(join(ROOT, 'evals/results')) ? readdirSync(join(ROOT, 'evals/results')).filter((n) => statSync(join(ROOT, 'evals/results', n)).isDirectory() && n !== 'cases') : []) {
+  const file = join(ROOT, 'evals/results', name, 'records.json')
+  if (!existsSync(file)) {
+    errors.push(`evals/results/${name}: records.json 없음`)
+    continue
+  }
+  const bundle = readJson(file)
+  if (bundle.format !== 'geulppal-eval-records/1' || bundle.count !== Object.keys(bundle.records ?? {}).length) errors.push(`evals/results/${name}/records.json: 형식이나 기록 수가 맞지 않음`)
+  const stray = readdirSync(join(ROOT, 'evals/results', name)).filter((n) => statSync(join(ROOT, 'evals/results', name, n)).isDirectory())
+  if (stray.length) errors.push(`evals/results/${name}: 묶지 않은 기록 폴더 ${stray.join(', ')}(records.mjs pack으로 묶는다)`)
+}
+
 // 공개 결과의 로컬 경로·인증 정보
 const LEAK = [/\/Users\/[A-Za-z]/, /\/home\/[a-z]+\//, /\/tmp\/run-/, /sk-ant-[A-Za-z0-9]/, /CLAUDE_CODE_OAUTH_TOKEN=/, /ANTHROPIC_API_KEY=/]
 for (const file of walk(join(ROOT, 'evals/results'))) {

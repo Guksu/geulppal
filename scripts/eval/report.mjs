@@ -7,9 +7,10 @@
  * evals/results/<이름>/report.md와 summary.json을 쓴다. 같은 사례의 반복 실행과 순서를 바꾼 판정은 새 사례로 세지 않는다.
  * 사례 단위 결과는 회차별 쌍 결과를 모은 것이다.
  */
-import { existsSync, readdirSync, writeFileSync } from 'node:fs'
+import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ROOT, parseArgs, readJson, writeJson } from './lib/common.mjs'
+import { ROOT, parseArgs, writeJson } from './lib/common.mjs'
+import { openRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {})
 if (!options.out) {
@@ -17,7 +18,8 @@ if (!options.out) {
   process.exit(1)
 }
 const dir = join(ROOT, 'evals/results', options.out)
-const listJson = (folder) => (existsSync(folder) ? readdirSync(folder).filter((f) => f.endsWith('.json')).sort().map((f) => readJson(join(folder, f))) : [])
+const records = openRecords(options.out)
+const listJson = (folder) => records.list(folder)
 const median = (values) => {
   const sorted = values.filter((v) => typeof v === 'number').sort((a, b) => a - b)
   if (sorted.length === 0) return null
@@ -27,8 +29,8 @@ const median = (values) => {
 const sum = (values) => (values.some((v) => typeof v !== 'number') ? null : values.reduce((a, b) => a + b, 0))
 const fmt = (value, digits = 0) => (value === null || value === undefined ? '알 수 없음' : Number(value).toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: digits }))
 
-const manifest = { conditions: Object.fromEntries(listJson(join(dir, 'manifest')).map((spec) => [spec.condition, spec])) }
-const conditions = Object.keys(manifest.conditions).filter((condition) => existsSync(join(dir, 'runs', condition))).sort()
+const manifest = { conditions: Object.fromEntries(listJson('manifest').map((spec) => [spec.condition, spec])) }
+const conditions = Object.keys(manifest.conditions).filter((condition) => records.names(`runs/${condition}`).length > 0).sort()
 const summary = { name: options.out, conditions: {}, pairs: {} }
 const lines = [`# 결과: ${options.out}`, '', '자동 생성 파일이다(`node scripts/eval/report.mjs --out ' + options.out + '`). 해석은 따로 쓴 보고서에 있다.', '']
 
@@ -44,7 +46,7 @@ lines.push('')
 lines.push('## 실행', '', '모든 시도를 센다. 재시도는 원래 시도와 따로 센다.', '', '| 조건 | 시도 | 성공 | 실패 유형 | 재시도 | 스킬 본문 주입 확인 | 참조 문서를 읽은 실행 | 권한 거절 | 새 세션 |', '|---|---|---|---|---|---|---|---|---|')
 const latestByCondition = {}
 for (const condition of conditions) {
-  const all = listJson(join(dir, 'runs', condition))
+  const all = listJson(`runs/${condition}`)
   const latest = new Map()
   for (const record of all) {
     const key = `${record.id}-r${record.rep}`
@@ -68,7 +70,7 @@ lines.push('', `시스템 프롬프트(실행 폴더 경로를 지운 것)의 �
 const meaningByCondition = {}
 lines.push('## 정확성: 의미 보존', '', '판정 모델의 의미 보존 검사와 문자열 검사(`exact`)를 모두 통과해야 통과다. 분모는 성공한 실행 중 판정한 실행이다.', '', '| 조건 | 판정한 실행 | 통과 | 실패 | 그중 문자열 누락 | 판정 못 함 | 실행 실패로 제외 |', '|---|---|---|---|---|---|---|')
 for (const condition of conditions) {
-  const judged = listJson(join(dir, 'judge/meaning', condition))
+  const judged = listJson(`judge/meaning/${condition}`)
   meaningByCondition[condition] = Object.fromEntries(judged.map((m) => [`${m.id}-r${m.rep}`, m]))
   const done = judged.filter((m) => m.judged)
   const pass = done.filter((m) => m.pass).length
@@ -79,11 +81,10 @@ for (const condition of conditions) {
   summary.conditions[condition].meaning = { judged: done.length, pass, fail: done.length - pass, exactMissing: exactMiss, notJudged, excluded }
 }
 // 같은 결과를 두 번 판정했으면 일치도와 엄격 기준(둘 중 하나라도 실패면 실패)을 함께 적는다
-const pass2Root = join(dir, 'judge/meaning-pass2')
-if (existsSync(pass2Root)) {
+if (records.dirs('judge/meaning-pass2').length > 0) {
   lines.push('', '같은 결과를 판정 모델로 한 번 더 판정했다(2차). 품질 비교 대상은 1차 판정으로 정했다.', '', '| 조건 | 두 번 판정한 실행 | 판정 일치 | 1차 통과 | 2차 통과 | 둘 다 통과(엄격) |', '|---|---|---|---|---|---|')
   for (const condition of conditions) {
-    const second = Object.fromEntries(listJson(join(pass2Root, condition)).map((m) => [`${m.id}-r${m.rep}`, m]))
+    const second = Object.fromEntries(listJson(`judge/meaning-pass2/${condition}`).map((m) => [`${m.id}-r${m.rep}`, m]))
     const both = Object.entries(meaningByCondition[condition]).filter(([key, m]) => m.judged && second[key]?.judged)
     const agree = both.filter(([key, m]) => m.pass === second[key].pass).length
     const strict = both.filter(([key, m]) => m.pass && second[key].pass).length
@@ -124,11 +125,10 @@ if (!anyFail) lines.push('- 없음')
 lines.push('')
 
 // 품질
-const pairRoot = join(dir, 'judge/pair')
-const pairDirs = existsSync(pairRoot) ? readdirSync(pairRoot).sort() : []
+const pairDirs = records.dirs('judge/pair')
 if (pairDirs.length) lines.push('## 글의 품질: 쌍 비교', '', '두 결과가 모두 의미 보존을 통과한 쌍만 비교했다. 한 쌍을 순서를 바꿔 두 번 판정하고, 두 판정이 같을 때만 그 결과로 센다. 다르면 "순서 불일치"다.', '')
 for (const pairDir of pairDirs) {
-  const pairs = listJson(join(pairRoot, pairDir))
+  const pairs = listJson(`judge/pair/${pairDir}`)
   const [left, right] = pairDir.split('-vs-')
   const judged = pairs.filter((p) => p.judged)
   const count = (value) => judged.filter((p) => p.result === value).length
@@ -161,15 +161,15 @@ for (const pairDir of pairDirs) {
 // 시간·비용
 lines.push('## 시간·토큰·비용', '', 'CLI가 보고한 값이다. 비용은 `total_cost_usd`(API 정가 기준 추정치)이며 구독 사용량과 다를 수 있다. 입력 토큰은 캐시 생성·캐시 읽기를 포함한 합이다.', '', '| 조건 | 실행 | 시간 중앙값(초) | 입력 토큰 중앙값 | 출력 토큰 중앙값 | 턴 중앙값 | 비용 합(USD) |', '|---|---|---|---|---|---|---|')
 for (const condition of conditions) {
-  const all = listJson(join(dir, 'runs', condition))
+  const all = listJson(`runs/${condition}`)
   const inputs = all.map((r) => (r.usage.inputTokens === null ? null : r.usage.inputTokens + (r.usage.cacheCreationInputTokens ?? 0) + (r.usage.cacheReadInputTokens ?? 0)))
   const costs = all.map((r) => r.costUsd)
   lines.push(`| ${condition} | ${all.length} | ${fmt(median(all.map((r) => r.durationMs)) / 1000, 1)} | ${fmt(median(inputs))} | ${fmt(median(all.map((r) => r.usage.outputTokens)))} | ${fmt(median(all.map((r) => r.numTurns)))} | ${fmt(sum(costs.filter((c) => c !== null)), 3)}${costs.some((c) => c === null) ? ` (${costs.filter((c) => c === null).length}건 알 수 없음)` : ''} |`)
   summary.conditions[condition].time = { medianMs: median(all.map((r) => r.durationMs)), medianInput: median(inputs), medianOutput: median(all.map((r) => r.usage.outputTokens)), costUsd: sum(costs.filter((c) => c !== null)) }
 }
 const judgeCalls = [
-  ...conditions.flatMap((c) => listJson(join(dir, 'judge/meaning', c)).flatMap((m) => m.judge?.attempts ?? [])),
-  ...pairDirs.flatMap((d) => listJson(join(pairRoot, d)).flatMap((p) => (p.judgments ?? []).flatMap((j) => j.attempts ?? []))),
+  ...conditions.flatMap((c) => listJson(`judge/meaning/${c}`).flatMap((m) => m.judge?.attempts ?? [])),
+  ...pairDirs.flatMap((d) => listJson(`judge/pair/${d}`).flatMap((p) => (p.judgments ?? []).flatMap((j) => j.attempts ?? []))),
 ]
 lines.push('', `판정 호출: ${judgeCalls.length}회(재시도 포함), 비용 합 ${fmt(sum(judgeCalls.map((a) => a.costUsd).filter((c) => c !== null)), 3)} USD.`, '')
 summary.judgeCalls = judgeCalls.length

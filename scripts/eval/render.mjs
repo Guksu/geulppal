@@ -6,11 +6,12 @@
  *     --conds A=2026-10-27-holdout,B0=2026-10-27-holdout,B2=2026-10-27-holdout \
  *     --pairs 2026-10-27-holdout/A-vs-B2,2026-10-27-holdout/B0-vs-B2,2026-10-27-holdout/A-vs-B0
  *
- * evals/results/cases/<name>/README.md(목록)와 <사례 id>.md를 쓴다. 실행·판정 기록(evals/results/<실행>/)만 읽고 모델은 부르지 않는다.
+ * evals/results/cases/<name>/README.md(목록)와 <사례 id>.md를 쓴다. 실행·판정 기록(evals/results/<실행>/records.json)만 읽고 모델은 부르지 않는다.
  */
-import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { ROOT, parseArgs, readJson } from './lib/common.mjs'
+import { openRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {})
 if (!options.name || !options.cases || !options.conds) {
@@ -41,22 +42,22 @@ const outDir = join(ROOT, 'evals/results/cases', options.name)
 rmSync(outDir, { recursive: true, force: true })
 mkdirSync(outDir, { recursive: true })
 
-const resultsDir = (run) => join(ROOT, 'evals/results', run)
-const latestRun = (run, condition, id, rep) => {
-  const folder = join(resultsDir(run), 'runs', condition)
-  if (!existsSync(folder)) return null
-  return readdirSync(folder)
-    .filter((name) => name.startsWith(`${id}-r${rep}-a`) && name.endsWith('.json'))
-    .map((name) => readJson(join(folder, name)))
-    .sort((a, b) => b.attempt - a.attempt)[0] ?? null
+const opened = new Map()
+const recordsOf = (run) => {
+  if (!opened.has(run)) opened.set(run, openRecords(run))
+  return opened.get(run)
 }
-const readIf = (file) => (existsSync(file) ? readJson(file) : null)
-const meaningOf = (run, condition, id, rep) => readIf(join(resultsDir(run), 'judge/meaning', condition, `${id}-r${rep}.json`))
-const pairOf = (pair, id, rep) => readIf(join(resultsDir(pair.run), 'judge/pair', pair.name, `${id}-r${rep}.json`))
+const latestRun = (run, condition, id, rep) =>
+  recordsOf(run)
+    .names(`runs/${condition}`)
+    .filter((name) => name.startsWith(`${id}-r${rep}-a`))
+    .map((name) => recordsOf(run).get(`runs/${condition}/${name}`))
+    .sort((a, b) => b.attempt - a.attempt)[0] ?? null
+const meaningOf = (run, condition, id, rep) => recordsOf(run).get(`judge/meaning/${condition}/${id}-r${rep}`)
+const pairOf = (pair, id, rep) => recordsOf(pair.run).get(`judge/pair/${pair.name}/${id}-r${rep}`)
 const repsOf = (id) => [...new Set(conds.flatMap(({ run, condition }) => {
-  const folder = join(resultsDir(run), 'runs', condition)
-  const pattern = new RegExp(`^${id}-r(\\d+)-a\\d+\\.json$`)
-  return existsSync(folder) ? readdirSync(folder).map((name) => name.match(pattern)).filter(Boolean).map((match) => Number(match[1])) : []
+  const pattern = new RegExp(`^${id}-r(\\d+)-a\\d+$`)
+  return recordsOf(run).names(`runs/${condition}`).map((name) => name.match(pattern)).filter(Boolean).map((match) => Number(match[1]))
 }))].sort((a, b) => a - b)
 
 // 원문·결과는 인용 블록으로 보여 준다 — 코드 블록과 달리 긴 줄이 화면 폭에서 줄바꿈된다.

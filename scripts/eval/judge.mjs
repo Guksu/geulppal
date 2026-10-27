@@ -9,12 +9,14 @@
  * 판정자는 별도의 새 세션이다. 도구 없이(--tools "") 원문·요청·익명 결과만 받는다. 스킬 이름, 조건, 원하는 승자는 알려 주지 않는다.
  * 의미 보존 검사는 평가 기준(must_preserve·must_not)을 함께 받는다. 문자열 검사(exact)는 판정 모델 없이 따로 한다.
  * 품질 비교는 두 결과가 모두 의미 보존 검사와 문자열 검사를 통과한 쌍만 한다.
+ * 판정 기록은 records.json의 judge/meaning/·judge/pair/ 항목으로 묶인다(lib/records.mjs).
  * --pass 2: 같은 결과를 한 번 더 판정해 judge/meaning-pass2/에 쓴다(판정자 일치도 확인용). 품질 비교 대상은 1차 판정으로 정한다.
  * --left-from: 왼쪽 조건의 결과를 다른 결과 폴더에서 가져온다(입력·모델·환경·설정이 같은 기준선을 재사용할 때). 재사용 사실은 판정 기록에 남는다.
  */
-import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ROOT, cliVersion, makeSandbox, parseArgs, parseStream, pool, readJson, runClaude, scrub, sha256, usageOf, writeJson } from './lib/common.mjs'
+import { ROOT, cliVersion, makeSandbox, parseArgs, parseStream, pool, readJson, runClaude, scrub, sha256, usageOf } from './lib/common.mjs'
+import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
   model: 'claude-opus-5-5',
@@ -30,10 +32,14 @@ if (!['meaning', 'pair', 'rescore'].includes(mode) || !options.out) {
   process.exit(1)
 }
 
-const resultsDir = (name) => join(ROOT, 'evals/results', name)
 const rawDir = (name) => join(ROOT, 'evals/runs', name)
-const outDir = resultsDir(options.out)
-const manifestOf = (name, condition) => readJson(join(resultsDir(name), 'manifest', `${condition}.json`))
+const opened = new Map()
+const recordsOf = (name) => {
+  if (!opened.has(name)) opened.set(name, openRecords(name))
+  return opened.get(name)
+}
+const out = recordsOf(options.out)
+const manifestOf = (name, condition) => recordsOf(name).get(`manifest/${condition}`)
 const casesFileOf = (name, condition) => join(ROOT, options.cases ?? manifestOf(name, condition).casesFile)
 const casesById = (file) => Object.fromEntries(readJson(file).map((item) => [item.id, item]))
 const ids = options.ids ? String(options.ids).split(',') : null
@@ -41,11 +47,8 @@ const version = cliVersion(options.claude)
 
 /** 조건의 회차별 마지막 시도 */
 const latestRuns = (name, condition) => {
-  const folder = join(resultsDir(name), 'runs', condition)
-  if (!existsSync(folder)) return []
   const byKey = new Map()
-  for (const file of readdirSync(folder).filter((f) => f.endsWith('.json'))) {
-    const record = readJson(join(folder, file))
+  for (const record of recordsOf(name).list(`runs/${condition}`)) {
     const key = `${record.id}-r${record.rep}`
     if (!byKey.has(key) || byKey.get(key).attempt < record.attempt) byKey.set(key, record)
   }
@@ -163,12 +166,13 @@ if (mode === 'meaning') {
   const rubric = readFileSync(join(ROOT, 'evals/judge/meaning.md'), 'utf8')
   const cases = casesById(casesFileOf(options.out, condition))
   const jobs = latestRuns(options.out, condition).map((record) => async () => {
-    const file = join(outDir, options.pass === '2' ? 'judge/meaning-pass2' : 'judge/meaning', condition, `${record.id}-r${record.rep}.json`)
+    const key = `${options.pass === '2' ? 'judge/meaning-pass2' : 'judge/meaning'}/${condition}/${record.id}-r${record.rep}`
+    const previous = out.get(key)
     // --force: 판정 지침을 고친 뒤 같은 결과를 다시 판정할 때
-    if (!options.force && existsSync(file) && readJson(file).attempt === record.attempt && readJson(file).judge?.answer) return null
+    if (!options.force && previous?.attempt === record.attempt && previous?.judge?.answer) return null
     const item = cases[record.id]
     if (record.status !== 'ok') {
-      writeJson(file, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: false })
+      out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: false })
       console.log(`의미 ${condition} ${record.id} r${record.rep} — 실행 상태 ${record.status}, 판정 안 함`)
       return null
     }
@@ -184,12 +188,13 @@ if (mode === 'meaning') {
     ].filter(Boolean).join('\n\n')
     const judged = await callJudge({ prompt, rubric, schema: MEANING_SCHEMA })
     const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass : null
-    writeJson(file, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(rubric), answer: judged.answer, attempts: judged.attempts } })
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(rubric), answer: judged.answer, attempts: judged.attempts } })
     console.log(`의미 ${condition} ${record.id} r${record.rep} — ${judged.answer ? judged.answer.verdict : '판정 실패'}${exact.pass ? '' : `, 문자열 누락 ${exact.missing.length}`}`)
     return null
   })
   console.log(`의미 보존 판정: ${condition} ${jobs.length}건 (판정 모델 ${options.model})`)
   await pool(jobs, Number(options.concurrency))
+  packRecords(options.out)
 }
 
 if (mode === 'pair') {
@@ -199,17 +204,15 @@ if (mode === 'pair') {
   const rightFrom = options['right-from'] ?? options.out
   const rubric = readFileSync(join(ROOT, 'evals/judge/quality.md'), 'utf8')
   const cases = casesById(casesFileOf(rightFrom, right))
-  const meaningOf = (name, condition, record) => {
-    const file = join(resultsDir(name), 'judge/meaning', condition, `${record.id}-r${record.rep}.json`)
-    return existsSync(file) ? readJson(file) : null
-  }
+  const meaningOf = (name, condition, record) => recordsOf(name).get(`judge/meaning/${condition}/${record.id}-r${record.rep}`)
   const leftRuns = Object.fromEntries(latestRuns(leftFrom, left).map((record) => [`${record.id}-r${record.rep}`, record]))
-  const pairDir = join(outDir, 'judge/pair', `${left}-vs-${right}`)
+  const pairDir = `judge/pair/${left}-vs-${right}`
   const jobs = []
   for (const rightRecord of latestRuns(rightFrom, right)) {
     const key = `${rightRecord.id}-r${rightRecord.rep}`
     const leftRecord = leftRuns[key]
-    const summaryFile = join(pairDir, `${key}.json`)
+    const summaryKey = `${pairDir}/${key}`
+    const previous = out.get(summaryKey)
     if (!leftRecord) continue
     const leftMeaning = meaningOf(leftFrom, left, leftRecord)
     const rightMeaning = meaningOf(rightFrom, right, rightRecord)
@@ -222,10 +225,10 @@ if (mode === 'pair') {
       reusedBaseline: leftFrom !== options.out || rightFrom !== options.out,
     }
     if (!eligible) {
-      writeJson(summaryFile, { ...base, judged: false, reason: '두 결과가 모두 의미 보존을 통과하지 않아 품질 비교에서 제외' })
+      out.put(summaryKey, { ...base, judged: false, reason: '두 결과가 모두 의미 보존을 통과하지 않아 품질 비교에서 제외' })
       continue
     }
-    if (existsSync(summaryFile) && readJson(summaryFile).judged && readJson(summaryFile).left.attempt === leftRecord.attempt && readJson(summaryFile).right.attempt === rightRecord.attempt) continue
+    if (previous?.judged && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
     jobs.push(async () => {
       const item = cases[rightRecord.id]
       const leftText = outputOf(leftFrom, leftRecord)
@@ -245,12 +248,13 @@ if (mode === 'pair') {
       }
       const winners = judgments.map((j) => j.winner)
       const consistent = winners[0] !== null && winners[0] === winners[1]
-      writeJson(summaryFile, { ...base, judged: true, judge: judgeMeta(rubric), judgments, consistent, result: consistent ? winners[0] : 'inconsistent' })
+      out.put(summaryKey, { ...base, judged: true, judge: judgeMeta(rubric), judgments, consistent, result: consistent ? winners[0] : 'inconsistent' })
       console.log(`쌍 ${left}-vs-${right} ${key} — ${winners.join(' / ')}${consistent ? '' : ' (순서에 따라 바뀜)'}`)
     })
   }
   console.log(`품질 쌍 비교: ${left}(${leftFrom}) vs ${right}(${rightFrom}) ${jobs.length}쌍 × 순서 2 (판정 모델 ${options.model})`)
   await pool(jobs, Number(options.concurrency))
+  packRecords(options.out)
 }
 
 if (mode === 'rescore') {
@@ -258,16 +262,15 @@ if (mode === 'rescore') {
   const cases = casesById(casesFileOf(options.out, condition))
   const runs = Object.fromEntries(latestRuns(options.out, condition).map((record) => [`${record.id}-r${record.rep}`, record]))
   for (const folder of ['judge/meaning', 'judge/meaning-pass2']) {
-    const dir = join(outDir, folder, condition)
-    if (!existsSync(dir)) continue
-    for (const name of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
-      const file = join(dir, name)
-      const judged = readJson(file)
+    for (const name of out.names(`${folder}/${condition}`)) {
+      const key = `${folder}/${condition}/${name}`
+      const judged = out.get(key)
       if (!judged.judged) continue
       const exact = exactCheck(cases[judged.id], outputOf(options.out, runs[`${judged.id}-r${judged.rep}`]))
       const pass = judged.judge.answer.verdict === 'pass' && exact.pass
       if (pass !== judged.pass) console.log(`다시 계산 ${folder} ${condition} ${judged.id} r${judged.rep}: ${judged.pass} → ${pass}`)
-      writeJson(file, { ...judged, exact, pass, ...(pass !== judged.pass ? { rescored: { from: judged.pass, reason: '문자열 검사 적용 범위 수정' } } : {}) })
+      out.put(key, { ...judged, exact, pass, ...(pass !== judged.pass ? { rescored: { from: judged.pass, reason: '문자열 검사 적용 범위 수정' } } : {}) })
     }
   }
+  packRecords(options.out)
 }

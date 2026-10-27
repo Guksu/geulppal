@@ -1,6 +1,6 @@
 # 스킬 스냅샷
 
-평가에 쓴 스킬 버전을 그대로 보관한다. 실행 기록의 `manifest/<조건>.json`에 어떤 스냅샷을 썼는지와 해시가 남는다. 해시는 폴더 안 파일의 상대 경로와 내용으로 만든 SHA-256이다(`scripts/eval/lib/common.mjs`의 `treeHash`). 값은 [`hashes.json`](hashes.json)에 있다.
+평가에 쓴 스킬 버전을 그대로 보관한다. 실행 기록(`results/<실행>/records.json`)의 `manifest/<조건>` 항목에 어떤 스냅샷을 썼는지와 해시가 남는다. 해시는 폴더 안 파일의 상대 경로와 내용으로 만든 SHA-256이다(`scripts/eval/lib/common.mjs`의 `treeHash`). 값은 [`hashes.json`](hashes.json)에 있다.
 
 | 버전 | 조건 이름 | 내용 |
 |---|---|---|

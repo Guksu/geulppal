@@ -7,14 +7,16 @@
  * 선택으로 세는 것: Skill 도구로 geulppal을 부르거나 Read로 geulppal의 SKILL.md를 연 경우. 명시적 호출은 이 평가에 없다.
  * 같은 요청에 대해 단어 겹침 대리 지표(lib/lexical.mjs)도 계산해 실제 선택과 나란히 남긴다. 대리 지표는 실제 선택이 아니다.
  * 작성 평가와 달리 파일 편집(Edit·Write)을 허용한다. 셸은 주지 않는다.
+ * 기록은 records.json의 trigger/·manifest/ 항목으로 묶인다(lib/records.mjs).
  */
-import { mkdirSync, writeFileSync, existsSync, readdirSync, copyFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import {
   ROOT, cliVersion, fileHash, findTranscript, installSkill, makeSandbox, newSessionId, parseArgs, parseStream, pool, readJson,
-  readTranscript, runClaude, scrub, treeHash, usageOf, writeJson,
+  readTranscript, runClaude, scrub, treeHash, usageOf,
 } from './lib/common.mjs'
 import { createRanker, parseListing } from './lib/lexical.mjs'
+import { openRecords, packRecords, resultsDir as resultsDirOf } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
   queries: 'evals/trigger/queries.json',
@@ -35,12 +37,13 @@ const skillDir = resolve(options.skill)
 const queriesFile = resolve(options.queries)
 const spec = readJson(queriesFile)
 const queries = [...spec.should.map((q) => ({ ...q, expect: true })), ...spec.should_not.map((q) => ({ ...q, expect: false }))]
-const resultsDir = join(ROOT, 'evals/results', options.out)
+const resultsDir = resultsDirOf(options.out)
+const store = openRecords(options.out)
 const rawDir = join(ROOT, 'evals/runs', options.out)
 const version = cliVersion(options.claude)
 const reps = Number(options.reps)
 
-writeJson(join(resultsDir, 'manifest', `trigger-${options.label}.json`), {
+store.put(`manifest/trigger-${options.label}`, {
   condition: `trigger-${options.label}`,
   kind: 'trigger',
   skill: { path: relative(ROOT, skillDir), treeSha256: treeHash(skillDir), skillMdSha256: fileHash(join(skillDir, 'SKILL.md')) },
@@ -70,8 +73,8 @@ const args = (prompt, sessionId) => [
 ]
 
 const runOne = async (query, rep) => {
-  const file = join(resultsDir, 'trigger', options.label, `${query.id}-r${rep}.json`)
-  if (existsSync(file)) return readJson(file)
+  const key = `trigger/${options.label}/${query.id}-r${rep}`
+  if (store.has(key)) return store.get(key)
   const box = makeSandbox()
   installSkill(box.work, skillDir)
   for (const [name, content] of Object.entries(query.files ?? {})) {
@@ -121,7 +124,7 @@ const runOne = async (query, rep) => {
     costUsd: stream.result?.total_cost_usd ?? null,
     error: status === 'ok' ? null : scrub((stream.result?.result ?? run.stderr ?? '').slice(-800)),
   }
-  writeJson(file, record)
+  store.put(key, record)
   box.cleanup()
   console.log(`트리거 ${options.label} ${query.id} r${rep} — ${status}, ${query.expect ? '써야 함' : '쓰지 말아야 함'}, 선택 ${selected ? '예' : '아니오'}, 대리 지표 ${proxySelected ? '예' : '아니오'}`)
   return record
@@ -132,7 +135,8 @@ console.log(`트리거 평가 ${options.label}: 요청 ${queries.length}개 × $
 await pool(jobs, Number(options.concurrency))
 
 // 집계
-const records = readdirSync(join(resultsDir, 'trigger', options.label)).filter((f) => f.endsWith('.json')).map((f) => readJson(join(resultsDir, 'trigger', options.label, f)))
+packRecords(options.out)
+const records = store.list(`trigger/${options.label}`)
 const okRecords = records.filter((r) => r.status === 'ok')
 const byQuery = {}
 for (const r of okRecords) (byQuery[r.id] ??= []).push(r)
