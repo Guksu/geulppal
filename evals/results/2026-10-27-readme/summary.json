@@ -1,0 +1,131 @@
+{
+  "name": "2026-10-27-readme",
+  "conditions": {
+    "A": {
+      "attempts": 32,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 32,
+        "pass": 20,
+        "fail": 12,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 12192,
+        "medianInput": 9447,
+        "medianOutput": 1405.5,
+        "costUsd": 1.1824614
+      }
+    },
+    "B": {
+      "attempts": 32,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 32,
+      "referenceReads": 32,
+      "meaning": {
+        "judged": 32,
+        "pass": 30,
+        "fail": 2,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 18988.5,
+        "medianInput": 34127,
+        "medianOutput": 2161.5,
+        "costUsd": 2.8705961
+      }
+    },
+    "C": {
+      "attempts": 32,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 32,
+      "referenceReads": 31,
+      "meaning": {
+        "judged": 32,
+        "pass": 31,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 19298,
+        "medianInput": 36880,
+        "medianOutput": 2300.5,
+        "costUsd": 3.0146168
+      }
+    },
+    "H": {
+      "reference": true,
+      "records": 32,
+      "meaning": {
+        "judged": 32,
+        "pass": 32,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-C": {
+      "total": 32,
+      "judged": 20,
+      "excluded": 12,
+      "leftWins": 2,
+      "rightWins": 16,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 2,
+      "cases": {
+        "A": 0,
+        "C": 9,
+        "mixed": 2,
+        "none": 5
+      }
+    },
+    "B-vs-C": {
+      "total": 32,
+      "judged": 29,
+      "excluded": 3,
+      "leftWins": 3,
+      "rightWins": 8,
+      "tie": 10,
+      "bothInadequate": 0,
+      "inconsistent": 8,
+      "cases": {
+        "B": 0,
+        "C": 5,
+        "mixed": 3,
+        "none": 8
+      }
+    },
+    "H-vs-C": {
+      "total": 32,
+      "judged": 31,
+      "excluded": 1,
+      "leftWins": 0,
+      "rightWins": 29,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 2,
+      "cases": {
+        "H": 0,
+        "C": 16,
+        "mixed": 0,
+        "none": 0
+      }
+    }
+  },
+  "judgeCalls": 288
+}

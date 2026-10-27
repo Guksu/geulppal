@@ -24,6 +24,22 @@
     }
   },
   "pairs": {
+    "A-vs-C2": {
+      "total": 18,
+      "judged": 6,
+      "excluded": 12,
+      "leftWins": 2,
+      "rightWins": 4,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 0,
+      "cases": {
+        "A": 2,
+        "C2": 3,
+        "mixed": 0,
+        "none": 4
+      }
+    },
     "B-vs-C2": {
       "total": 18,
       "judged": 14,
@@ -57,5 +73,5 @@
       }
     }
   },
-  "judgeCalls": 74
+  "judgeCalls": 86
 }
