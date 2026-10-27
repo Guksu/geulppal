@@ -4,7 +4,7 @@ A Claude skill that cuts hype, repetition and translationese from documents whil
 
 I built it because every time I edited a README, I had to strip out the same modifiers and filler again.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation report](evals/results/REPORT.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation report](evals/results/REPORT.md) · [Second report](evals/results/REPORT-human.md)
 
 > **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
 >
@@ -14,17 +14,18 @@ This is an illustrative example, not a benchmark result. The skill keeps numbers
 
 ## Benchmark
 
-Claude Code was run with and without geulppal on the same requests, model and settings. After the skill was frozen, a separate session wrote 12 unseen cases, and each case ran twice per condition. A different model from the writer judged the results.
+Claude Code was run with and without geulppal on the same requests, model and settings. Each version was frozen before it was checked on unseen cases, and each case ran twice per condition. A different model from the writer judged the results.
 
-| | Without geulppal | geulppal 0.2 |
-|---|---|---|
-| Results that kept facts, conditions and status | 12/24 | 18/24 |
-| Median time per run | 10.0 s | 14.1 s |
+| Results that kept facts, conditions and status | Without geulppal | geulppal 0.2 | geulppal 0.3 |
+|---|---|---|---|
+| 9 human-written cases (public posts from 2018–2022) | 8/18 | 16/18 | 16/18 |
+| 12 model-written documents | 12/24 | 18/24 | (not used as unseen cases) |
 
-- Without geulppal, Claude often added promises or converted figures that were not in the original. It also often turned an offered condition into a settled one.
-- Whether the text reads better could not be confirmed: few pairs were comparable and the judgments often flipped when the order was swapped.
-- With geulppal, Claude still sometimes widened a condition: `해외에 계셔서` ("because you are abroad") became `해외 체류 등으로` ("because you are abroad or similar"). In one diagnosis-only request, it also suggested replacement wording.
-- geulppal roughly doubled the cost per run.
+- Without geulppal, Claude often added promises or experiences that were not in the original. It also often turned hearsay ("it is said to be possible") into a plain statement ("it is possible").
+- Version 0.3 was revised using Korean writing guides and human-written texts. On the human-written cases it did no better than 0.2. The condition-widening error seen in 0.2 (`해외에 계셔서` "because you are abroad" → `해외 체류 등으로` "because you are abroad or similar") did not appear with 0.3, but 0.3 was revised after seeing that case.
+- 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online").
+- Whether the text reads better could not be confirmed. The judge model almost always preferred an edited version over the human-written original.
+- With geulppal 0.3, a run cost about 2.2 times as much as without it (human-written cases).
 
 These are model judgments on a small sample, not human evaluation. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 
@@ -48,7 +49,7 @@ cd geulppal/skills && zip -r geulppal.zip geulppal
 
 [Where Claude Code looks for skills](https://code.claude.com/docs/en/skills) · [Creating a skill zip](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 
-Only the three files in `skills/geulppal/` (about 21 KB) are installed. The evaluation data and scripts are not.
+Only the three files in `skills/geulppal/` (about 25 KB) are installed. The evaluation data and scripts are not.
 
 ## Try it
 
@@ -73,6 +74,7 @@ Claude can also pick the skill without `/geulppal`, for requests like "polish th
 - [Document types](skills/geulppal/references/document-types.md): READMEs, PRs, proposals, introductions and emails
 - [Editing examples](skills/geulppal/references/editing-examples.md): sentences to change and sentences to keep
 - [Research notes](research/findings.md): past README edits, public skills and writing guides behind the rules
+- [Korean sources](research/korean-sources.md): rules drawn from National Institute of Korean Language articles on translationese, and the human-written evaluation texts
 - [Evaluation](evals/README.md): cases, judging criteria, scripts and how to rerun them
 
 The skill instructions and evaluation materials are written in Korean.

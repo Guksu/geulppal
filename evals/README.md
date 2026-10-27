@@ -8,12 +8,14 @@
 |---|---|---|
 | [`cases.json`](cases.json) | 사례 19개(초기 12개 + 보충 7개) | 개발·회귀용. 9개는 스킬 예문과 같은 상황을 다루고, 모두 스킬을 읽은 사람이 썼다 |
 | [`holdout/cases.json`](holdout/cases.json) | 사례 12개 | 최종 후보를 고정한 뒤 별도 세션이 만들었다. 만드는 쪽에는 문서 종류와 평가할 능력만 알려 줬다([생성 기록](holdout/generation.json)) |
+| [`human/`](human/README.md) | 2024년 이전에 사람이 쓴 공개 글 10편으로 만든 사례 18개(개발용 9개, 확인용 9개) | 원문은 공공누리 제1유형 정책브리핑 기사. 다듬기(polish)와 AI 티 빼기(deslop) 두 종류 |
 | [`trigger/queries.json`](trigger/queries.json) | 써야 하는 요청 12개, 쓰지 말아야 하는 요청 10개 | 자동 선택 평가용. 스킬 설명을 읽은 사람이 썼다 |
 | [`judge/meaning.md`](judge/meaning.md), [`judge/quality.md`](judge/quality.md) | 판정 지침 | 판정 모델의 시스템 프롬프트로 그대로 쓴다 |
+| [`judge/slop-check.md`](judge/slop-check.md) | 부풀린 글 검수 지침 | deslop 입력이 원문의 사실을 그대로 담았는지 확인한다 |
 | [`CHANGELOG.md`](CHANGELOG.md) | 사례·기준 변경 이력 | |
 | [`snapshots/`](snapshots/) | 평가한 스킬 버전의 사본과 해시 | |
 
-사례의 필드: `request`·`input`은 작성 모델에 주는 것, `must_preserve`·`must_not`은 의미 보존 판정에만 쓰는 것, `exact`는 결과에 글자 그대로 남아야 하는 원문 문자열이다. 모든 제품·수치·사례는 평가용 가상 자료다.
+사례의 필드: `request`·`input`은 작성 모델에 주는 것, `must_preserve`·`must_not`은 의미 보존 판정에만 쓰는 것, `exact`는 결과에 글자 그대로 남아야 하는 원문 문자열이다. `human/` 밖의 제품·수치·사례는 평가용 가상 자료다.
 
 ## 실행 조건
 
@@ -76,9 +78,19 @@ node scripts/eval/trigger.mjs --out <이름> --label <이름표> --skill skills/
 
 # 처음 보는 자료 만들기(이미 있으면 --force가 필요하다)
 node scripts/eval/holdout.mjs --out evals/holdout/cases.json
+
+# 사람이 쓴 글 사례: 부풀린 글 만들기·검수 → 사례 만들기 → 사람 원문을 기준 조건 H로 넣기
+node scripts/eval/human.mjs slop
+node scripts/eval/human.mjs build
+node scripts/eval/run.mjs --out <이름> --condition A --skill none --cases evals/human/cases.json --reps 2
+node scripts/eval/human.mjs reference --out <이름>
+node scripts/eval/judge.mjs pair --out <이름> --left H --right A
+
+# 경로 지우기 규칙을 고친 뒤 공개 기록의 output을 원본 로그로 다시 만들기
+node scripts/eval/records.mjs rescrub --out <이름>
 ```
 
-사례 일부만 돌리려면 `--ids a,b`, 다른 사례 파일은 `--cases <파일>`을 준다.
+사례 일부만 돌리려면 `--ids a,b`, 다른 사례 파일은 `--cases <파일>`을 준다. 판정 호출이 사용량 제한 등으로 실패해 비어 있는 품질 판정은 같은 명령을 다시 실행하면 다시 판정한다.
 
 기록은 이렇게 남는다.
 
