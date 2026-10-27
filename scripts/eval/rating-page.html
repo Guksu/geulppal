@@ -1,0 +1,262 @@
+<title>글빨 블라인드 비교</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* 교정지 책상: 원문 한 장 위에 교정본 두 장을 나란히 놓고 고르는 화면 */
+:root {
+  --paper: #f3f5f2;
+  --sheet: #fbfcfa;
+  --ink: #1c2320;
+  --muted: #5b6661;
+  --rule: #d5dbd6;
+  --pencil: #2e5c4f;
+  --pencil-soft: #dde9e3;
+  --insert: #e2eee7;
+  --warn: #8a4b14;
+  --warn-soft: #f6eadb;
+  --serif: "Gowun Batang", "Nanum Myeongjo", "AppleMyungjo", serif;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131715; --sheet: #1a1f1d; --ink: #e4eae6; --muted: #9aa6a0; --rule: #2d3632;
+    --pencil: #86c6b0; --pencil-soft: #21352e; --insert: #1f3a31; --warn: #e2a56b; --warn-soft: #3a2a1b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131715; --sheet: #1a1f1d; --ink: #e4eae6; --muted: #9aa6a0; --rule: #2d3632;
+  --pencil: #86c6b0; --pencil-soft: #21352e; --insert: #1f3a31; --warn: #e2a56b; --warn-soft: #3a2a1b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font: 15px/1.6 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 20px; }
+header { display: grid; gap: 10px; }
+h1 { font: 700 26px/1.25 var(--serif); margin: 0; text-wrap: balance; }
+.lede { margin: 0; color: var(--muted); max-width: 68ch; }
+.status { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 13px; color: var(--muted); }
+.meter { flex: 1 1 200px; height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; min-width: 120px; }
+.meter > span { display: block; height: 100%; background: var(--pencil); width: 0; transition: width .2s; }
+.banner { padding: 10px 12px; border-radius: 6px; background: var(--warn-soft); color: var(--warn); font-size: 14px; }
+nav.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 500 13px/1 var(--sans); font-variant-numeric: tabular-nums; padding: 7px 9px; border-radius: 4px;
+  border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); cursor: pointer;
+}
+.chip.done { background: var(--pencil-soft); border-color: transparent; color: var(--pencil); }
+.chip.current { outline: 2px solid var(--pencil); outline-offset: 1px; }
+.chip:focus-visible, button:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--pencil); outline-offset: 2px; }
+section.pair { display: grid; gap: 16px; }
+.label { font: 600 12px/1 var(--sans); letter-spacing: .06em; color: var(--muted); }
+.request { margin: 6px 0 0; font: 400 17px/1.6 var(--serif); }
+details.source { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; }
+details.source summary { cursor: pointer; font: 600 13px/1.4 var(--sans); color: var(--muted); }
+.text { white-space: pre-wrap; overflow-wrap: anywhere; font: 400 16px/1.8 var(--serif); margin: 10px 0 0; max-width: 72ch; }
+.sheets { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 860px) { .sheets { grid-template-columns: 1fr; } }
+.sheet { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; min-width: 0; }
+.sheet.chosen { border-color: var(--pencil); box-shadow: 0 0 0 1px var(--pencil); }
+.sheet header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.sheet h2 { font: 700 18px/1.2 var(--serif); margin: 0; }
+.count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+mark.ins { background: var(--insert); color: inherit; border-radius: 2px; }
+.tools { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; font-size: 14px; color: var(--muted); }
+.tools label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.decide { display: grid; gap: 10px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choices button {
+  font: 600 15px/1 var(--sans); padding: 11px 16px; border-radius: 5px; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--paper); color: var(--ink);
+}
+.choices button[aria-pressed="true"] { background: var(--pencil); border-color: var(--pencil); color: var(--sheet); }
+.choices kbd { font: 500 11px/1 var(--sans); opacity: .7; margin-left: 6px; }
+textarea { width: 100%; min-height: 64px; resize: vertical; font: 15px/1.5 var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 5px; padding: 8px 10px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+.nav button, .copy { font: 500 14px/1 var(--sans); padding: 9px 12px; border-radius: 5px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.saved { color: var(--pencil); }
+.err { color: var(--warn); }
+@media (prefers-reduced-motion: reduce) { .meter > span { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>글빨 블라인드 비교</h1>
+    <p class="lede">같은 요청을 받은 두 결과를 읽고, 요청한 사람이 그대로 쓸 글로 어느 쪽이 나은지 골라 주세요. 사실과 조건은 판정 모델이 이미 확인했으니 읽기 좋은지, 요청과 말투에 맞는지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 원문인지는 알려 드리지 않습니다.</p>
+    <div class="status"><span id="progressText">0 / 0</span><div class="meter" aria-hidden="true"><span id="meter"></span></div><span id="store">저장소 연결 중</span></div>
+    <div class="banner" id="banner" hidden></div>
+  </header>
+  <nav class="chips" id="chips" aria-label="비교 쌍"></nav>
+  <section class="pair" id="pair" aria-live="polite"></section>
+  <div class="row">
+    <span>단축키: 1·2 고르기, 3 비슷함, 4 둘 다 별로, ←·→ 이동</span>
+    <button class="copy" id="copy" type="button">평가 결과 복사</button>
+  </div>
+</div>
+
+<script>
+const PAIRS = /*PAIRS*/[];
+const CHOICES = [
+  { key: 'x', label: '결과 1이 낫다', kbd: '1' },
+  { key: 'y', label: '결과 2가 낫다', kbd: '2' },
+  { key: 'same', label: '비슷하다', kbd: '3' },
+  { key: 'neither', label: '둘 다 별로다', kbd: '4' },
+];
+const state = { ratings: {}, index: 0, diff: true, db: null, uid: null, saving: false };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const safeId = (s) => String(s).replace(/[^A-Za-z0-9_.~:@+-]/g, '_').slice(0, 120) || 'anon';
+const docId = (pairId) => `${pairId}~${safeId(state.uid || 'anon')}`;
+
+const readLocal = () => { try { return JSON.parse(localStorage.getItem('geulppal-blind') || '{}'); } catch { return {}; } };
+const writeLocal = () => { try { localStorage.setItem('geulppal-blind', JSON.stringify(state.ratings)); } catch {} };
+
+// 원문에 없는 낱말을 표시한다(낱말 단위 최장 공통 부분열)
+const tokens = (s) => s.split(/(\s+)/).filter((t) => t !== '');
+function marked(input, text) {
+  const a = tokens(input).filter((t) => !/^\s+$/.test(t));
+  const bAll = tokens(text);
+  const b = bAll.map((t, i) => ({ t, i })).filter((x) => !/^\s+$/.test(x.t));
+  const n = a.length, m = b.length;
+  if (n * m > 4e6) return esc(text);
+  const dp = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) dp[i][j] = a[i] === b[j].t ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const kept = new Set();
+  let i = 0, j = 0;
+  while (i < n && j < m) {
+    if (a[i] === b[j].t) { kept.add(b[j].i); i++; j++; }
+    else if (dp[i + 1][j] >= dp[i][j + 1]) i++;
+    else j++;
+  }
+  return bAll.map((t, k) => (/^\s+$/.test(t) || kept.has(k) ? esc(t) : `<mark class="ins">${esc(t)}</mark>`)).join('');
+}
+
+function renderChips() {
+  $('chips').innerHTML = PAIRS.map((p, i) => {
+    const done = state.ratings[p.id]?.choice;
+    return `<button type="button" class="chip${done ? ' done' : ''}${i === state.index ? ' current' : ''}" data-i="${i}" aria-label="${i + 1}번 쌍${done ? ', 평가함' : ''}">${i + 1}</button>`;
+  }).join('');
+  const doneCount = PAIRS.filter((p) => state.ratings[p.id]?.choice).length;
+  $('progressText').textContent = `${doneCount} / ${PAIRS.length} 평가함`;
+  $('meter').style.width = PAIRS.length ? `${(doneCount / PAIRS.length) * 100}%` : '0';
+}
+
+function render() {
+  const p = PAIRS[state.index];
+  if (!p) { $('pair').innerHTML = '<p>비교할 쌍이 없습니다.</p>'; return; }
+  const r = state.ratings[p.id] || {};
+  const sheet = (n, text) => `
+    <article class="sheet${(r.choice === 'x' && n === 1) || (r.choice === 'y' && n === 2) ? ' chosen' : ''}">
+      <header><h2>결과 ${n}</h2><span class="count">${text.length.toLocaleString()}자</span></header>
+      <div class="text">${state.diff ? marked(p.input, text) : esc(text)}</div>
+    </article>`;
+  $('pair').innerHTML = `
+    <div><span class="label">${state.index + 1}번 쌍 · 요청</span><p class="request">${esc(p.request)}</p></div>
+    <details class="source" ${state.index === 0 && !r.choice ? 'open' : ''}><summary>원문 보기 (${p.input.length.toLocaleString()}자)</summary><div class="text">${esc(p.input)}</div></details>
+    <div class="tools"><label><input type="checkbox" id="diff" ${state.diff ? 'checked' : ''}> 원문에 없는 낱말 표시</label></div>
+    <div class="sheets">${sheet(1, p.texts[0])}${sheet(2, p.texts[1])}</div>
+    <div class="decide">
+      <span class="label">어느 쪽이 나은가요</span>
+      <div class="choices">${CHOICES.map((c) => `<button type="button" data-choice="${c.key}" aria-pressed="${r.choice === c.key}">${c.label}<kbd>${c.kbd}</kbd></button>`).join('')}</div>
+      <label for="note" class="label">이유 (선택)</label>
+      <textarea id="note" placeholder="예: 2는 소제목이 많아 안내문처럼 읽힌다">${esc(r.note || '')}</textarea>
+      <div class="row nav">
+        <button type="button" id="prev" ${state.index === 0 ? 'disabled' : ''}>← 이전</button>
+        <span id="saveState">${r.choice ? '<span class="saved">저장됨</span>' : '아직 고르지 않음'}</span>
+        <button type="button" id="next" ${state.index === PAIRS.length - 1 ? 'disabled' : ''}>다음 →</button>
+      </div>
+    </div>`;
+  renderChips();
+}
+
+function go(i) {
+  state.index = Math.max(0, Math.min(PAIRS.length - 1, i));
+  try { history.replaceState(null, '', `#${PAIRS[state.index].id}`); } catch {}
+  render();
+  window.scrollTo({ top: 0 });
+}
+
+async function choose(choice) {
+  const p = PAIRS[state.index];
+  const note = $('note')?.value.trim() || '';
+  state.ratings[p.id] = { choice, note, at: new Date().toISOString() };
+  writeLocal();
+  render();
+  if (!state.db) return;
+  if (state.saving) return;
+  state.saving = true;
+  $('saveState').textContent = '저장 중';
+  try {
+    await state.db.collection('ratings').doc(docId(p.id)).set({ pair: p.id, choice, note, rater: state.uid || 'anon', at: state.ratings[p.id].at });
+    if (PAIRS[state.index]?.id === p.id) $('saveState').innerHTML = '<span class="saved">저장됨</span>';
+    const next = PAIRS.findIndex((q, i) => i > state.index && !state.ratings[q.id]?.choice);
+    if (next !== -1) setTimeout(() => go(next), 350);
+  } catch (e) {
+    $('saveState').innerHTML = `<span class="err">저장하지 못했습니다(${esc(e?.code || '오류')}). 이 브라우저에는 남아 있습니다.</span>`;
+  } finally {
+    state.saving = false;
+  }
+}
+
+document.addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (chip) return go(Number(chip.dataset.i));
+  const btn = e.target.closest('[data-choice]');
+  if (btn) return choose(btn.dataset.choice);
+  if (e.target.id === 'prev') return go(state.index - 1);
+  if (e.target.id === 'next') return go(state.index + 1);
+});
+document.addEventListener('change', (e) => {
+  if (e.target.id === 'diff') { state.diff = e.target.checked; render(); }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.target.matches('textarea, input')) return;
+  const c = CHOICES.find((x) => x.kbd === e.key);
+  if (c) return choose(c.key);
+  if (e.key === 'ArrowRight') go(state.index + 1);
+  if (e.key === 'ArrowLeft') go(state.index - 1);
+});
+$('copy').addEventListener('click', async () => {
+  const out = JSON.stringify(PAIRS.filter((p) => state.ratings[p.id]?.choice).map((p) => ({ pair: p.id, ...state.ratings[p.id] })), null, 1);
+  try { await navigator.clipboard.writeText(out); $('copy').textContent = '복사했습니다'; }
+  catch { $('banner').hidden = false; $('banner').textContent = out; }
+});
+
+// 처음 화면: 이 브라우저에 남은 평가로 그린다. 저장소가 연결되면 저장소 기록으로 바꾼다
+state.ratings = readLocal();
+const fromHash = PAIRS.findIndex((p) => `#${p.id}` === location.hash);
+state.index = fromHash !== -1 ? fromHash : Math.max(0, PAIRS.findIndex((p) => !state.ratings[p.id]?.choice));
+render();
+
+(async () => {
+  const [db, user] = await Promise.all([window.claude?.use?.('db') ?? null, window.claude?.use?.('user') ?? null]);
+  if (!db) {
+    $('store').textContent = '저장소 없음';
+    $('banner').hidden = false;
+    $('banner').textContent = '이 화면에서는 평가를 저장소에 저장할 수 없습니다. 고른 결과는 이 브라우저에만 남으니, 끝나면 "평가 결과 복사"로 복사해 전달해 주세요.';
+    return;
+  }
+  state.db = db;
+  try { state.uid = user ? await user.id() : null; } catch { state.uid = null; }
+  $('store').textContent = '저장소에 저장됨';
+  db.collection('ratings').where('rater', '==', state.uid || 'anon').onSnapshot((snap) => {
+    for (const d of snap.docs) {
+      const v = d.data();
+      if (v && v.pair) state.ratings[v.pair] = { choice: v.choice, note: v.note || '', at: v.at };
+    }
+    writeLocal();
+    if (!document.activeElement || document.activeElement.id !== 'note') render(); else renderChips();
+  }, (e) => {
+    $('store').textContent = '저장소 연결 끊김';
+    $('banner').hidden = false;
+    $('banner').textContent = `저장소와 연결이 끊겼습니다(${e?.code || '오류'}). 새로 고치거나, "평가 결과 복사"로 결과를 전달해 주세요.`;
+  });
+})();
+</script>
