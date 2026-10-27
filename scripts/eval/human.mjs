@@ -5,6 +5,7 @@
  *   node scripts/eval/human.mjs slop [--ids a,b] [--force]      # 부풀린 글 만들기와 사실 검수
  *   node scripts/eval/human.mjs build                          # evals/human/cases.json 만들기
  *   node scripts/eval/human.mjs reference --out <이름>          # 사람 원문을 조건 H의 실행 기록으로 넣기
+ *   --dir evals/human-readme                                   # 다른 자료 묶음(README 등)에 같은 명령을 쓸 때
  *
  * 원문 하나로 사례 두 개를 만든다.
  * - polish: 사람이 쓴 원문을 그대로 주고 다듬어 달라고 한다. 필요 없는 수정과 말투 손상을 본다.
@@ -25,7 +26,8 @@ const options = parseArgs(process.argv.slice(2), {
   claude: 'claude',
 })
 const mode = options._[0]
-const HUMAN = join(ROOT, 'evals/human')
+const SET = options.dir ?? 'evals/human'
+const HUMAN = join(ROOT, SET)
 const sources = readJson(join(HUMAN, 'sources.json'))
 const spec = readJson(join(HUMAN, 'spec.json'))
 const slopFile = join(HUMAN, 'slop.json')
@@ -98,7 +100,7 @@ const callIsolated = async ({ prompt, model, systemPrompt, schema }) => {
 if (mode === 'slop') {
   const rubric = readFileSync(join(ROOT, 'evals/judge/slop-check.md'), 'utf8')
   const store = existsSync(slopFile) ? readJson(slopFile) : { about: '', request: SLOP_REQUEST, items: {} }
-  store.about = 'deslop 사례의 입력. 사람이 쓴 원문을 스킬 없는 별도 세션이 고친 글과, 판정 모델이 원문과 대조한 검수 결과. scripts/eval/human.mjs slop으로 만든다.'
+  store.about = `deslop 사례의 입력. 사람이 쓴 원문을 스킬 없는 별도 세션이 고친 글과, 판정 모델이 원문과 대조한 검수 결과. scripts/eval/human.mjs slop${SET === 'evals/human' ? '' : ` --dir ${SET}`}으로 만든다.`
   store.request = SLOP_REQUEST
   store.cli = cliVersion(options.claude)
   const targets = sources.filter((source) => (!ids || ids.includes(source.id)) && (options.force || store.items[source.id]?.status !== 'ok'))
@@ -141,7 +143,7 @@ if (mode === 'build') {
     const item = specOf(source.id)
     if (!item) throw new Error(`spec.json에 ${source.id}가 없다`)
     const base = {
-      genre: source.id.includes('news') || source.id.includes('qa') ? '공공기관 안내문' : '블로그 체험기',
+      genre: spec.genre ?? (source.id.includes('news') || source.id.includes('qa') ? '공공기관 안내문' : '블로그 체험기'),
       language: 'ko',
       split: source.split,
       source: source.id,
@@ -183,7 +185,7 @@ if (mode === 'build') {
     })
   }
   writeJson(casesFile, cases)
-  console.log(`사례 ${cases.length}개 → evals/human/cases.json (dev ${cases.filter((c) => c.split === 'dev').length}, test ${cases.filter((c) => c.split === 'test').length})`)
+  console.log(`사례 ${cases.length}개 → ${SET}/cases.json (dev ${cases.filter((c) => c.split === 'dev').length}, test ${cases.filter((c) => c.split === 'test').length})`)
 }
 
 if (mode === 'reference') {
@@ -202,7 +204,7 @@ if (mode === 'reference') {
     model: null,
     effort: null,
     cli: null,
-    casesFile: 'evals/human/cases.json',
+    casesFile: `${SET}/cases.json`,
     casesSha256: sha256(readFileSync(casesFile)),
     updated: new Date().toISOString(),
   })

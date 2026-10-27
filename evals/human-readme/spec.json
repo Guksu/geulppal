@@ -1,0 +1,169 @@
+{
+  "about": "사람이 쓴 README 사례의 요청과 판정 기준. 원문 하나로 polish(원문 그대로 다듬기)와 deslop(다른 모델이 부풀린 글에서 AI 티 빼기) 두 사례를 만든다. 원문은 sources.json에 있다.",
+  "genre": "README",
+  "common_must_not": [
+    "원문에 없는 기능·수치·지원 범위·사용 경험·평가 추가",
+    "코드 블록·명령·패키지 이름·설정값·링크 대상 바꾸기"
+  ],
+  "notes": {
+    "polish": "ChatGPT 공개(2022-11-30) 전에 사람이 쓴 오픈소스 README의 발췌다. 필요한 곳만 고치고 기술 표기, 수치와 측정 조건, 한계와 고지, 작성자의 판단 표시를 유지하는지 본다.",
+    "deslop": "사람이 쓴 README를 다른 모델이 '더 전문적이고 매력적으로' 고친 글이다. 덧붙은 과장·반복·형식을 덜어내면서 기술 표기와 사실을 지키는지 본다."
+  },
+  "cases": [
+    {
+      "source": "khaiii-performance",
+      "polish_request": "형태소분석기 README의 성능 부분이야. 읽기 좋게 다듬어 줘.",
+      "deslop_request": "README 성능 섹션을 AI로 정리했더니 홍보 문구 같아. 원래 기술 문서처럼 담백하게 고쳐 줘.",
+      "must_preserve": [
+        "v0.3에서 win 값 {2, 3, 4, 5, 7, 10}과 emb 값 {20, 30, 40, 50, 70, 100, 150, 200, 300, 500}의 조합 60가지를 실험했고 지표는 정확률과 재현율의 조화 평균인 F-Score라는 점",
+        "win은 3 혹은 4에서 가장 좋고 그 이상에서는 오히려 떨어지며, emb는 150까지 성능이 높아지다 그 이상에서는 별 차이가 없다는 관찰",
+        "상위 5위 중 비교적 작은 win=3, emb=150 모델(F-Score 97.11)을 large 모델로 부른다는 점",
+        "v0.4는 띄어쓰기 실험(링크)으로 개선해 띄어쓰기가 잘 안 된 입력에서 더 좋지만 세종 코퍼스에서는 정확도가 다소 떨어진다는 점과, 그래서 파라미터를 바꿨다는 점",
+        "v0.4 파라미터: base win=4, emb=35, F-Score 94.96 / large win=4, emb=180, F-Score 96.71",
+        "v0.3 base 모델은 F-Score 95 이상이면서 작은 win=3, emb=30(F-Score 95.30)으로 골랐다는 점",
+        "속도 측정 조건(1만 문장, 총 903KB, 문장 평균 91)과 v0.3 결과(base 약 10.5초, large 약 78.8초)",
+        "v0.4에서 다시 측정해 다소 느려졌다는 점과 수치(base 10.8 -> 14.4, large 87.3 -> 165)"
+      ],
+      "must_not": [
+        "v0.3과 v0.4의 수치를 섞거나, v0.3 측정값(10.5초, 78.8초)과 v0.4 재측정의 이전 값(10.8, 87.3)을 하나로 맞추기",
+        "v0.4가 모든 입력에서 더 정확하다거나 더 빠르다고 쓰기",
+        "측정 조건(1만 문장, 903KB)을 빼서 속도를 일반적인 성능처럼 쓰기"
+      ],
+      "exact": ["https://github.com/kakao/khaiii/wiki/%EB%9D%84%EC%96%B4%EC%93%B0%EA%B8%B0-%EC%98%A4%EB%A5%98%EC%97%90-%EA%B0%95%EA%B1%B4%ED%95%9C-%EB%AA%A8%EB%8D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%8B%A4%ED%97%98"]
+    },
+    {
+      "source": "py-hanspell-intro",
+      "polish_request": "오래된 README라 문장을 좀 다듬고 싶어. 설치 명령은 그대로 둬.",
+      "deslop_request": "README를 AI로 다듬었더니 너무 거창해졌어. 원래처럼 간결하게 고쳐 줘.",
+      "must_preserve": [
+        "네이버 맞춤법 검사기를 이용한 파이썬용 한글 맞춤법 검사 라이브러리라는 점",
+        "파이썬 2.7 및 3.4와 호환된다는 점",
+        "설치 방법 두 가지(pip 설치, 저장소를 받아 setup.py로 설치하거나 hanspell 폴더를 프로젝트에 포함)",
+        "필요한 라이브러리가 requests라는 점",
+        "모든 결과와 데이터의 저작권과 책임은 네이버 주식회사에 있다는 점",
+        "상업적·불법적 용도로 쓴 부분에 대해 개발자는 책임지지 않는다는 고지",
+        "변경내역: 1.1은 list 타입으로 주고받는 기능과 처리속도 향상, 1.0은 첫 릴리즈"
+      ],
+      "must_not": [
+        "지원 버전을 넓히기(파이썬 3 전체, 최신 버전 등)",
+        "책임 고지를 약하게 바꾸거나 지우기",
+        "네이버와의 관계를 공식 제휴나 공식 API처럼 쓰기"
+      ],
+      "exact": ["pip install py-hanspell", "python setup.py install", "requests"]
+    },
+    {
+      "source": "kcbert-updates",
+      "polish_request": "README 맨 위 업데이트 내역이야. 읽기 쉽게 정리해 줘.",
+      "deslop_request": "업데이트 내역을 AI로 다듬었더니 보도자료처럼 됐어. 담백하게 고쳐 줘.",
+      "must_preserve": [
+        "2022.11.07: KcELECTRA v2022 학습에 쓴 확장 데이터셋(v2022.3Q) 공개와 릴리스 링크",
+        "2022.11.07: 11GB에서 45GB로, 0.9억 건에서 3.4억 건으로 v1 대비 약 4배라는 수치",
+        "2022.10.08: KcELECTRA-base-v2022(구 dev)로 이름이 바뀌었고, KcELECTRA-base(v2021) 대비 대부분의 downstream task에서 ~1%p 수준 향상",
+        "2022.09.14: emoji v2.0.0 업데이트로 전처리 코드 일부 변경",
+        "2021.04.07: KcELECTRA 릴리즈, 더 많은 데이터와 더 큰 General vocab으로 KcBERT 대비 모든 태스크에서 더 높은 성능을 보인다는 작성자의 설명, KcELECTRA 링크",
+        "2021.03.14: 논문 인용 표기(bibtex)와 finetune 성능 점수 추가",
+        "날짜별로 어떤 변경이 있었는지 구분"
+      ],
+      "must_not": [
+        "날짜·수치·이름을 바꾸거나 다른 날짜의 변경과 섞기",
+        "'대부분의 downstream task'를 '모든 태스크'로, '~1%p 수준'을 확정 수치로 바꾸기",
+        "링크 대상 바꾸기"
+      ],
+      "exact": ["https://github.com/Beomi/KcBERT/releases/tag/v2022.3Q", "https://github.com/Beomi/KcELECTRA", "KcELECTRA-base-v2022", "v2022.3Q"]
+    },
+    {
+      "source": "toss-ky",
+      "polish_request": "패키지 README 다듬어 줘.",
+      "deslop_request": "README에서 AI 쓴 티가 나. 개발자 문서답게 고쳐 줘.",
+      "must_preserve": [
+        "ky 라이브러리를 CJS와 ESM 모두에서 쓸 수 있게 만든 라이브러리라는 점",
+        "사용 방법은 ky 문서를 참고하라는 안내와 링크",
+        "require와 import가 모두 가능하다는 예시 코드",
+        "ky의 문제 두 가지: ESM 전용이라 CJS에서 require하면 오류가 나고, SSR에는 ky-universal이 필요하다",
+        "개선 두 가지: ESBuild로 한 차례 빌드해 CJS와 ESM 모두에서 쓰게 하고, 서버에서 ky-universal과 ky를 구분하지 않고 @toss/ky만 쓰게 한다",
+        "빌드 결과물을 소스에 넣은 이유: 넣지 않으면 frontend-libraries 안에서 Jest 등을 실행할 때 require('ky')가 실행돼 ERR_REQUIRE_ESM 오류가 난다",
+        "빌드 결과물을 업데이트하려면 ky 디렉토리에서 yarn build를 실행하고 변경사항을 커밋한다"
+      ],
+      "must_not": [
+        "문제나 개선 항목을 빼거나 새로 만들기",
+        "원문에 없는 성능·호환 범위(브라우저 지원 범위 등) 추가"
+      ],
+      "exact": ["@toss/ky", "require(\"@toss/ky\")", "await import(\"@toss/ky\")", "ky-universal", "ERR_REQUIRE_ESM", "yarn build", "https://github.com/sindresorhus/ky"]
+    },
+    {
+      "source": "open-korean-text-intro",
+      "polish_request": "README 한국어 소개 부분이야. 다듬어 줘. 기능 예시는 그대로 둬.",
+      "deslop_request": "AI로 다듬은 소개글인데 과장이 심해. 담백하게 고쳐 줘.",
+      "must_preserve": [
+        "스칼라로 쓰인 한국어 처리기이며 현재 텍스트 정규화, 형태소 분석, 스테밍을 지원한다는 점",
+        "짧은 트윗과 긴 글을 모두 처리할 수 있다는 점",
+        "개발에 참여하려면 Google Forum에 가입하라는 안내와 링크, 초보부터 코드 기여자까지 환영한다는 말",
+        "설치 및 수정 방법 안내 문서 링크",
+        "목표는 빅데이터 등에서 간단한 한국어 처리로 색인어를 추출하는 것이며, 완전한 수준의 형태소 분석을 지향하지 않는다는 점",
+        "지원 기능 네 가지(정규화, 토큰화, 어근화, 어구 추출)와 각 예시의 입력·출력"
+      ],
+      "must_not": [
+        "'완전한 수준의 형태소 분석을 지향하지 않는다'를 빼거나 반대로 쓰기",
+        "기능 예시의 입력이나 출력을 바꾸기"
+      ],
+      "exact": ["https://groups.google.com/forum/#!forum/open-korean-text", "docs/contribution-guide.md", "한국어Noun, 를Josa, 처리Noun, 하는Verb, 예시Noun, 입니다Adjective(이다), ㅋㅋKoreanParticle", "한국어, 처리, 예시, 처리하는 예시"]
+    },
+    {
+      "source": "korpora-intro",
+      "polish_request": "프로젝트 소개 README야. 다듬어 줘.",
+      "deslop_request": "README를 AI로 다듬었더니 홍보 글 같아졌어. 원래 톤으로 고쳐 줘.",
+      "must_preserve": [
+        "데이터를 무료로 공개하는 추세지만 곳곳에 흩어져 존재가 잘 알려지지 않고, 포맷이 달라 쓰기 어렵고, 사용자가 다운로드·전처리 코드를 그때그때 만들어야 한다는 문제",
+        "Korpora는 이 불편을 덜려고 만든 오픈소스 파이썬 패키지라는 점",
+        "이름이 corpus의 복수형 corpora에서 왔고 Korean Corpora의 준말이라는 점",
+        "한국어 데이터셋이 더 많이 공개되고 한국어 자연어 처리 수준이 높아지기를 바란다는 작성자의 희망",
+        "안내 페이지가 한글과 영어로 되어 있다는 점과 영어 번역자 두 사람에 대한 감사, 안내 페이지 링크",
+        "핵심 기능은 빠른 사용법을, 주의점과 옵션은 안내 페이지를 보라는 안내",
+        "설치 방법 두 가지(소스에서, pip로)와 명령"
+      ],
+      "must_not": [
+        "작성자의 희망을 이미 이룬 효과처럼 쓰기",
+        "감사 대상의 이름이나 계정을 빼거나 바꾸기"
+      ],
+      "exact": ["git clone https://github.com/ko-nlp/Korpora", "python setup.py install", "pip install Korpora", "https://ko-nlp.github.io/Korpora", "@hank110", "@warnikchow"]
+    },
+    {
+      "source": "koelectra-data",
+      "polish_request": "README 모델 설명 부분이야. 자연스럽게 다듬어 줘.",
+      "deslop_request": "README를 AI로 정리했더니 과장된 표현이 많아. 담백하게 고쳐 줘.",
+      "must_preserve": [
+        "ELECTRA는 Replaced Token Detection으로 학습하며, 모든 input token에 대해 학습할 수 있고 BERT 등과 비교해 더 좋은 성능을 보였다는 설명(ELECTRA에 대한 설명)",
+        "KoELECTRA는 34GB의 한국어 텍스트로 학습해 Base와 Small 두 모델을 배포했다는 점",
+        "Wordpiece 사용과 모델 s3 업로드로 OS 상관없이 Transformers만 설치하면 바로 쓸 수 있다는 점",
+        "Transformers만으로 바로 쓰게 하는 것이 가장 큰 목적이어서 Sentencepiece·Mecab 대신 Wordpiece를 썼다는 점과 문서 링크",
+        "어휘 표: v1·v2 32200, v3 35000, do_lower_case 모두 False",
+        "데이터: v1·v2는 약 14G 코퍼스(2.6B tokens, 뉴스·위키·나무위키), v3는 약 20G의 모두의 말뭉치를 추가(신문·문어·구어·메신저·웹)",
+        "사전학습 표의 모든 값(Batch Size, Train Steps, LR, Max Seq Len, Generator Size, Train Time)",
+        "Small은 원 논문의 ELECTRA-Small++와 같은 옵션이고 공식 Small과 설정이 같으며, Base와 달리 Generator와 Discriminator 크기가 같다는 점",
+        "Batch size와 Train steps를 빼면 원 논문 하이퍼파라미터와 같고, 다른 값도 시도했지만 원 논문 값이 가장 좋았다는 점",
+        "TPU v3-8로 학습했고 TPU 사용법 문서 링크"
+      ],
+      "must_not": [
+        "ELECTRA 논문의 결과(BERT보다 좋은 성능)를 KoELECTRA의 측정 결과처럼 쓰기",
+        "v1·v2와 v3의 데이터 구성을 섞거나 34GB를 다른 버전에 붙이기",
+        "표의 수치를 바꾸거나 빼기"
+      ],
+      "exact": ["https://openreview.net/pdf?id=r1xMH1BtvB", "./docs/wordpiece_vocab.md", "./docs/tpu_training.md", "ELECTRA-Small++", "generator_hidden_size"]
+    },
+    {
+      "source": "toss-storage",
+      "polish_request": "패키지 README 첫 부분이야. 다듬어 줘.",
+      "deslop_request": "AI가 쓴 것 같은 README야. 담백하게 고쳐 줘.",
+      "must_preserve": [
+        "시크릿 모드나 테스트 환경처럼 Web Storage를 쓸 수 없는 환경에서 localStorage나 sessionStorage에 접근하면 에러가 난다는 문제",
+        "@toss/storage는 그런 환경에서도 에러 없이 Web Storage를 쓰도록 돕는다는 점",
+        "@toss/storage/typed를 쓰면 타입 안전하게 값을 다룰 수 있다는 점"
+      ],
+      "must_not": [
+        "모든 환경에서 동작을 보장한다고 쓰기",
+        "원문에 없는 기능(암호화, 만료, 동기화 등) 추가"
+      ],
+      "exact": ["@toss/storage", "@toss/storage/typed", "localStorage", "sessionStorage"]
+    }
+  ]
+}
