@@ -101,7 +101,7 @@ const matching = Object.entries(hashes).filter(([, value]) => value.treeSha256 =
 notes.push(`skills/geulppal 해시 ${current.slice(0, 12)} — 같은 스냅샷: ${matching.join(', ') || '없음'}`)
 
 // 문서 링크
-for (const file of ['README.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'research/findings.md']) {
+for (const file of ['README.md', 'README.ko.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'research/findings.md']) {
   if (existsSync(join(ROOT, file))) checkLinks(file)
 }
 for (const file of walk(join(ROOT, 'evals/results')).filter((f) => f.endsWith('.md'))) checkLinks(relative(ROOT, file))

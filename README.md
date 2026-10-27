@@ -1,55 +1,82 @@
-# 글빨 · geulppal
+# geulppal · 글빨
 
-Claude가 문서와 글을 쓸 때 과장, 반복, 번역투를 줄이도록 돕는 스킬입니다. 한국어를 중심으로 README, 기술 설명, PR 본문, 기획서, 소개글을 다룹니다. 영어 글에도 사용할 수 있습니다.
+A Claude skill that cuts hype, repetition and translationese from documents while keeping facts, numbers, conditions and the author's voice. It focuses on Korean writing such as READMEs, PR descriptions, proposals, introductions and emails, and also works on English text.
 
-README를 고칠 때마다 비슷한 수식어와 불필요한 설명을 다시 걷어내야 해서 만들었습니다. 기존 글을 다듬거나 새 글을 작성할 때 사용할 수 있습니다.
+I built it because every time I edited a README, I had to strip out the same modifiers and filler again.
 
-## 편집 예시
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation report](evals/results/REPORT.md)
 
-아래는 동작을 설명하기 위해 만든 예시입니다. 실제 모델 평가 결과는 아닙니다.
+> **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
+>
+> **After** NoteBox lets users find notes by tag.
 
-**원문**
+This is an illustrative example, not a benchmark result. The skill keeps numbers, conditions and known limitations. It does not turn "under review" into "done", and it does not invent features or results to make text sound specific. Sentences that are already accurate stay as they are. It does not detect AI-written text or promise to pass AI detectors.
 
-> 노트함은 단순한 메모 도구를 넘어 업무 생산성을 혁신하는 강력한 솔루션입니다. 메모에 태그를 붙이고 태그로 검색할 수 있습니다.
+## Benchmark
 
-**수정안**
+Claude Code was run with and without geulppal on the same requests, model and settings. After the skill was frozen, a separate session wrote 12 unseen cases, and each case ran twice per condition. A different model from the writer judged the results.
 
-> 노트함은 메모에 태그를 붙이고 태그로 검색하는 도구입니다.
+| | Without geulppal | geulppal 0.2 |
+|---|---|---|
+| Results that kept facts, conditions and status | 12/24 | 18/24 |
+| Median time per run | 10.0 s | 14.1 s |
 
-수치와 조건, 알려진 한계는 남깁니다. `검토 중`을 `완료`로 바꾸거나, 구체적으로 보이게 하려고 기능과 성과를 지어내지 않습니다. 이미 정확한 문장은 그대로 둘 수 있습니다.
+- Without geulppal, Claude often added promises or converted figures that were not in the original. It also often turned an offered condition into a settled one.
+- Whether the text reads better could not be confirmed: few pairs were comparable and the judgments often flipped when the order was swapped.
+- With geulppal, Claude still sometimes widened a condition: `해외에 계셔서` ("because you are abroad") became `해외 체류 등으로` ("because you are abroad or similar"). In one diagnosis-only request, it also suggested replacement wording.
+- geulppal roughly doubled the cost per run.
 
-## 설치와 사용
+These are model judgments on a small sample, not human evaluation. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 
-Claude Code에서는 [스킬 폴더](skills/geulppal)를 `~/.claude/skills/geulppal/`에 복사합니다. 특정 프로젝트에서만 쓰려면 해당 프로젝트의 `.claude/skills/geulppal/`에 둡니다. 같은 이름의 스킬이 있다면 먼저 내용을 비교하세요.
+## Installation
 
-설치한 다음 다음처럼 요청할 수 있습니다.
+**Claude Code**: copy the skill folder. To use it in every project, put it in your personal skills folder. To use it in one project, put it in that project's `.claude/skills/`.
 
-```text
-/geulppal README.md의 AI slop을 줄여줘. 설치 명령과 실험 조건은 유지해줘.
+```bash
+git clone https://github.com/Guksu/geulppal.git
+mkdir -p ~/.claude/skills
+cp -r geulppal/skills/geulppal ~/.claude/skills/geulppal
 ```
 
-```text
-/geulppal 아래 사실을 바탕으로 소개글을 써줘. 만든 이유를 먼저 설명해줘.
+If you already have a skill with the same name, compare them first.
+
+**Claude web and desktop**: zip the `skills/geulppal/` folder and upload it. The zip must contain `geulppal/SKILL.md`.
+
+```bash
+cd geulppal/skills && zip -r geulppal.zip geulppal
 ```
 
-Claude 웹·데스크톱에 올릴 때는 `skills/geulppal/` 폴더를 ZIP으로 묶어 업로드합니다. ZIP을 열었을 때 `geulppal/SKILL.md`가 있어야 합니다. [Claude 설치 위치 안내](https://code.claude.com/docs/en/skills) · [ZIP 작성 안내](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
+[Where Claude Code looks for skills](https://code.claude.com/docs/en/skills) · [Creating a skill zip](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 
-## 구성과 검증 상태
+Only the three files in `skills/geulppal/` (about 21 KB) are installed. The evaluation data and scripts are not.
 
-- [SKILL.md](skills/geulppal/SKILL.md): 의미 보존, 편집 판단, 한국어·영어 문체와 출력 방식
-- [문서별 판단](skills/geulppal/references/document-types.md): README·PR·기획서·소개글·이메일 기준
-- [문장 예시](skills/geulppal/references/editing-examples.md): 고칠 문장과 유지할 문장
-- [조사 기록](research/findings.md): 기존 README 수정, 공개 스킬과 글쓰기 자료에서 채택한 기준
-- [평가 방법](evals/README.md): 개발 사례 19개, 처음 보는 사례 12개, 자동 선택 요청 22개와 실행 스크립트
-- [벤치마크 결과](evals/results/README.md): 결과 요약과 사례별 원문·결과 비교
-- [평가 보고서](evals/results/REPORT.md): 실패 분석과 개선 과정
+## Try it
 
-2026-10-27에 Claude Code CLI 2.1.311에서 글빨을 쓰지 않는 조건과 비교했습니다. 작성 모델은 `claude-sonnet-5-5`, 판정은 다른 모델인 `claude-opus-5-5`가 했고 사람의 평가는 하지 않았습니다.
+After installing, ask Claude:
 
-- **의미 보존**: 스킬 버전을 고정한 뒤 만든 처음 보는 사례 12개(각 2회)에서, 판정을 통과한 결과는 글빨이 없을 때 12/24, 글빨 0.2.0에서 18/24였습니다. 글빨이 없을 때는 원문에 없는 약속이나 환산값을 넣거나, 제안받은 조건을 확정처럼 쓰는 경우가 많았습니다.
-- **글의 품질**: 처음 보는 사례에서 비교할 수 있는 쌍이 적고 판정이 자주 엇갈려 차이를 확인하지 못했습니다.
-- **알려진 실패**: 적용 조건을 넓혀 쓰는 오류(`해외에 계셔서` → `해외 체류 등으로`)와, 진단만 요청했는데 대체 문구를 내는 경우가 남아 있습니다.
-- **자동 선택**: `/geulppal` 없이 요청하면 글쓰기 요청 24회 중 21회 스킬을 골랐습니다. 코드·조회·AI 작성 판별 요청 20회에서는 고르지 않았습니다. 놓친 3회는 모두 영어 요청이었습니다.
-- **시간과 비용**: 실행당 비용은 약 2배, 시간은 약 1.3~1.5배 늘었습니다.
+> /geulppal Tighten README.md. Keep the install commands and the known limitations.
 
-표본이 작은 모델 평가이므로 일반적인 효과로 해석하지 마세요. AI 작성 여부를 판별하거나 탐지기 통과율을 보장하는 기능은 없습니다.
+> /geulppal Write a short project introduction from the facts below. Start with why I built it.
+
+When you ask for text to paste, it returns only the finished text. It adds a short note only when something needs your input, such as a fact that was missing from the original.
+
+Claude can also pick the skill without `/geulppal`, for requests like "polish this README" or "make it sound less like AI". The skill description was revised after seeing these requests, so this is not an independent result. [Selection results](evals/results/2026-10-27-trigger/trigger-v0.2.1.md) (in Korean)
+
+| Requests | Runs where Claude picked the skill |
+|---|---|
+| Writing requests | 23 of 24 |
+| Code, lookup and AI-detection requests | 0 of 20 |
+
+## What's inside
+
+- [SKILL.md](skills/geulppal/SKILL.md): meaning preservation, editing decisions, Korean and English style, output format
+- [Document types](skills/geulppal/references/document-types.md): READMEs, PRs, proposals, introductions and emails
+- [Editing examples](skills/geulppal/references/editing-examples.md): sentences to change and sentences to keep
+- [Research notes](research/findings.md): past README edits, public skills and writing guides behind the rules
+- [Evaluation](evals/README.md): cases, judging criteria, scripts and how to rerun them
+
+The skill instructions and evaluation materials are written in Korean.
+
+## Feedback
+
+If geulppal leaves an awkward sentence or changes the meaning of your text, please [open an issue](https://github.com/Guksu/geulppal/issues) with the original, your request and the result. Reports like these can be added as evaluation cases.
