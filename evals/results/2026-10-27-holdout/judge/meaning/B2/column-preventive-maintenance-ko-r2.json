@@ -1,0 +1,154 @@
+{
+  "id": "column-preventive-maintenance-ko",
+  "condition": "B2",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:56:16.244Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "기존 사후 정비 방식의 특징(고장 전에는 손이 덜 가지만 고장 나면 라인 전체가 멈춤)",
+          "status": "kept",
+          "evidence": "고장이 나기 전까지는 손이 덜 가지만, 고장이 나면 라인 전체가 멈춥니다."
+        },
+        {
+          "item": "2025년 프레스 라인 3대 비계획 정지 212시간",
+          "status": "kept",
+          "evidence": "2025년 한 해 동안 프레스 라인 3대에서 발생한 비계획 정지 시간은 212시간이었습니다."
+        },
+        {
+          "item": "2026년 1월부터 프레스 라인 3대에서 진동·온도 센서 기반 예방정비를 시범 운영 중이라는 점",
+          "status": "kept",
+          "evidence": "올해 1월부터는 프레스 라인 3대에 진동·온도 센서를 붙이고, 이상 신호가 나오면 부품을 미리 교체하는 예방정비를 시범 운영하고 있습니다."
+        },
+        {
+          "item": "센서 설치비 1대당 450만 원, 합계 1,350만 원",
+          "status": "kept",
+          "evidence": "센서 설치비는 1대당 450만 원, 3대 합계 1,350만 원이 들었습니다."
+        },
+        {
+          "item": "2026년 1~6월 비계획 정지 74시간",
+          "status": "kept",
+          "evidence": "2026년 1월부터 6월까지 비계획 정지 시간은 74시간이었습니다."
+        },
+        {
+          "item": "두 수치를 그대로 비교하기 어렵다는 단서(12개월과 6개월, 계절 요인)와 연말 재비교 계획",
+          "status": "kept",
+          "evidence": "다만 이 수치를 그대로 비교하기는 어렵습니다. 2025년은 12개월, 2026년은 6개월 기록이고, 상반기에는 계절적으로 고장이 적었던 해도 있었습니다. 하반기 기록까지 모아 연말에 다시 비교할 예정입니다."
+        },
+        {
+          "item": "야간 긴급 출동 올해 상반기 5회, 작년 상반기 14회",
+          "status": "kept",
+          "evidence": "올해 상반기 야간 긴급 출동은 5회로, 작년 상반기 14회보다 적었습니다."
+        },
+        {
+          "item": "도장 라인 확대는 검토 단계이고, 방폭 구역이라 방폭 인증 센서의 가격·공급 일정을 먼저 확인해야 한다는 조건",
+          "status": "kept",
+          "evidence": "내년에는 도장 라인까지 센서 설치를 넓히는 방안을 검토하고 있습니다. 다만 도장 라인은 방폭 구역이라 일반 센서를 쓸 수 없어, 방폭 인증 센서의 가격과 공급 일정을 먼저 확인해야 합니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "212시간과 74시간을 같은 기간처럼 비교해 감소율이나 절감액을 새로 계산해 넣기",
+          "status": "ok",
+          "evidence": "감소율·절감액 계산 없음. \"다만 이 수치를 그대로 비교하기는 어렵습니다.\" 유지"
+        },
+        {
+          "item": "비교의 한계와 연말 재비교 계획 삭제",
+          "status": "ok",
+          "evidence": "하반기 기록까지 모아 연말에 다시 비교할 예정입니다."
+        },
+        {
+          "item": "예방정비의 비용 절감 효과를 원문보다 강하게 단정하기",
+          "status": "ok",
+          "evidence": "예방정비가 비용을 줄일 것으로 기대합니다."
+        },
+        {
+          "item": "도장 라인 확대를 결정된 일처럼 쓰기",
+          "status": "ok",
+          "evidence": "넓히는 방안을 검토하고 있습니다."
+        },
+        {
+          "item": "원문에 없는 수치, 일정, 인물 발언 추가",
+          "status": "ok",
+          "evidence": "본문의 수치는 212시간, 450만 원, 1,350만 원, 74시간, 5회, 14회로 모두 원문에 있음"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "같은 기간끼리 비교할 수 있는 수치도 있습니다. — 원문의 상반기 대 상반기 비교를 설명한 것일 뿐 새 사실이 아님"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "지운 것은 일반론 도입부(\"급변하는 경영 환경…\")와 구호성 결론, 반복되는 결론 문장뿐이고 핵심 정보는 모두 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "2025년 한 해 동안 프레스 라인 3대에서 발생한 비계획 정지 시간은 212시간이었습니다. — 대상·기간 유지"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "예방정비가 비용을 줄일 것으로 기대합니다. — 원문의 근거 없는 단정('분명합니다')을 원문 스스로 밝힌 한계에 맞게 낮췄고, 메모에서도 그 이유를 밝힘. 시범 운영·검토 단계 표현은 유지"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "다만 도장 라인은 방폭 구역이라 일반 센서를 쓸 수 없어 — 조건과 비교 한계 유지"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "제목 \"설비 관리, 이제는 바뀌어야 할 때\"와 고유 표기를 그대로 둠"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요청대로 다듬은 본문을 돌려주고, 손본 내용은 구분선 아래 메모로 따로 적음"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 19363,
+        "wallMs": 21845,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 3136,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 2416,
+          "thinkingTokens": 305
+        },
+        "costUsd": 0.073912,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

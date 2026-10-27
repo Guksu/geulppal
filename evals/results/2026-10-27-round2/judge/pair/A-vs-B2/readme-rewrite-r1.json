@@ -1,0 +1,151 @@
+{
+  "id": "readme-rewrite",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:43:16.699Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 제약 사항인 \"메모는 기기에만 저장됩니다. 기기 간 동기화는 지원하지 않습니다.\"를 별도 문단으로 떼어 놓았습니다. 그래서 독자가 동기화가 안 된다는 조건을 기능 설명과 구분해 바로 찾을 수 있습니다. Y는 두 문장이 한 덩어리로 이어지지만 글이 짧아서 찾기 어렵지는 않습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 원문의 과장된 도입부를 지웠습니다. X는 \"노트함은 메모 앱입니다.\"로, Y는 \"노트함은 … 메모 도구입니다.\"로 사실만 적었습니다. Y의 \"메모에 태그를 붙여 … 메모 도구\"에서 '메모'가 두 번 나오지만 읽는 데 거슬릴 정도는 아닙니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y의 \"메모는 기기에만 저장되며, 기기 간 동기화는 지원하지 않습니다.\"는 원문의 연결을 살려 자연스럽게 이어집니다. X는 이 부분을 \"메모는 기기에만 저장됩니다. 기기 간 동기화는 지원하지 않습니다.\" 두 단문으로 나눠 약간 끊겨 읽힙니다. 반면 X의 \"태그를 붙여 두면 나중에 태그로 검색할 수 있고, 필요하면 CSV 파일로 내보낼 수도 있습니다\"는 부드럽게 읽힙니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 README 소개에 맞는 담백한 합니다체입니다. X의 \"메모 앱입니다\"는 다소 밋밋하지만 어색하지는 않습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "Y는 과장된 문장만 지우고 나머지 정보를 한 문장으로 합쳤습니다. 원문의 \"저장되며 … 지원하지 않습니다\"도 그대로 두어 꼭 필요한 만큼만 고쳤습니다. X는 \"나중에\", \"필요하면\", \"파일로\" 같은 말을 덧붙이고 문단도 나눠서, 원문에서 잘 되어 있던 마지막 문장까지 손을 댔습니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 과장된 도입부를 없애고 기능과 제약을 그대로 전달합니다. Y는 원문의 짧은 문장 나열을 한 문장으로 묶었고, 원래 자연스럽던 마지막 문장은 손대지 않아 덜 고치고도 매끄럽게 읽힙니다. X는 제약을 별도 문단으로 떼어 찾기 쉽다는 장점이 있습니다. 하지만 꾸미는 말을 덧붙였고, 원래 잘 이어지던 문장을 두 단문으로 쪼개 오히려 흐름이 조금 끊겼습니다. 차이는 작아서 Y가 약간 우세하다고 판단했습니다.",
+        "meaning_concerns": "의미가 달라진 곳은 없습니다. X의 \\\"메모 앱\\\"은 원문의 '메모 도구'를 구체화한 표현으로, 의미 차이는 거의 없습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19276,
+          "wallMs": 20223,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 887,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1868,
+            "thinkingTokens": 358
+          },
+          "costUsd": 0.04478360000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "X는 한 문장 \"태그를 붙여 검색하고, CSV로 내보낼 수 있는 메모 도구입니다\"로 기능을 모았고, 제약은 다음 문장에 따로 두었다. Y는 \"메모는 기기에만 저장됩니다.\"를 별도 문단으로 떼어 제약이 조금 더 눈에 띈다. 글이 짧아서 어느 쪽이든 독자가 정보를 찾는 데 차이는 거의 없다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "둘 다 \"생산성의 새로운 기준을 제시합니다\"를 지웠다. Y는 \"나중에 태그로 검색할 수 있고\"처럼 앞에 나온 '태그'를 다시 쓰고, \"필요하면\", \"수도\" 같은 덧말을 붙였다. X는 그런 군더더기 없이 정보만 남겼다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 원문의 끊긴 단문들을 \"검색하고, CSV로 내보낼 수 있는\"으로 자연스럽게 이었다. Y는 \"노트함은 메모 앱입니다.\"로 시작하고 \"메모는 기기에만 저장됩니다. 기기 간 동기화는 지원하지 않습니다.\"로 단문을 다시 늘어놓아 앞뒤가 조금 끊긴다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 README 소개에 맞는 담백한 합니다체를 쓴다. 원문의 '메모 도구'를 X는 그대로 두었고, Y는 \"메모 앱\"으로 바꿨는데 의미상 큰 차이는 없다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 원문 표현을 거의 그대로 살리고 문장만 합쳤다. Y는 \"나중에\", \"필요하면\", \"CSV 파일로\"처럼 원문에 없던 표현을 넣었고, 문단도 나눴다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 원문의 과장된 도입부를 지웠고 기능과 제약을 모두 남겼습니다. X가 조금 더 낫습니다. X는 원문의 끊긴 단문들을 한 문장으로 자연스럽게 묶으면서 표현을 최소한만 바꿨습니다. Y는 \"나중에\", \"필요하면\" 같은 덧말을 넣었고, 첫 문장과 마지막 두 문장을 짧게 끊어 쓰는 바람에 원문의 단문 나열이 일부 남았습니다. 다만 Y처럼 제약을 별도 문단으로 떼어 놓으면 눈에 조금 더 잘 띄는 장점은 있어서, 차이가 아주 크지는 않습니다.",
+        "meaning_concerns": "없음. 두 결과 모두 태그 검색, CSV 내보내기, 기기에만 저장된다는 점, 동기화를 지원하지 않는다는 점을 그대로 유지했습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14012,
+          "wallMs": 14845,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 888,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1378,
+            "thinkingTokens": 153
+          },
+          "costUsd": 0.034991600000000005,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

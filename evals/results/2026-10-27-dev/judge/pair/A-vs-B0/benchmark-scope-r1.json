@@ -1,0 +1,150 @@
+{
+  "id": "benchmark-scope",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:26:52.868Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "X는 \"조건별로 화면 12개를 1회씩 생성해 비교했습니다\"로 방법을 앞에 두어 수치를 읽기 쉽다. Y는 \"A는 axe 위반이 6건으로 B의 24건보다 적었습니다\"로 결과를 먼저 보여 준다. 둘 다 필요한 정보를 바로 찾을 수 있다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"압도적으로 뛰어났습니다\"를 뺐다. X는 \"A 6건, B 24건으로 A가 적었고\", Y는 \"6건으로 B의 24건보다 적었습니다\"처럼 사실만 남겼다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"axe 위반은 A 6건, B 24건으로 A가 적었고, 생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다\"와 Y의 \"생성 시간 중앙값은 A가 65초, B가 40초로 B가 더 빨랐습니다\"는 둘 다 자연스럽게 읽힌다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "요청은 '간결하게'다. Y는 다듬은 문단과 두세 문장의 짧은 설명으로 끝난다. X는 \"**다듬은 문장**\", \"**바꾼 점**\" 같은 소제목과 인용 블록까지 써서 보고서 문장 하나를 다듬는 일치고 형식이 무겁다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X는 바꾼 점 세 항목에 더해 \"결론을 한 줄로 넣고 싶다면 이렇게 쓸 수 있습니다\"라는 요청하지 않은 대안까지 붙였다. Y는 \"'압도적으로 뛰어났습니다'는 뺐습니다\"라는 핵심 이유만 짧게 적었다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 과장을 빼고 수치 순서를 맞췄다는 핵심은 같다. 다만 간결하게 다듬어 달라는 요청에 Y가 더 맞는다. X는 소제목, 바꾼 점 목록, 결론 문장 예시를 덧붙여 원문보다 훨씬 길어졌다. 방법을 앞에 둔 X의 배치도 장점이지만 이 차이를 뒤집을 정도는 아니다.",
+        "meaning_concerns": "두 결과 모두 원문 사실을 보존했다. X의 '4배 적었지만'(24/6)도 계산이 맞다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15737,
+          "wallMs": 16946,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1393,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1688,
+            "thinkingTokens": 300
+          },
+          "costUsd": 0.045231600000000004,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "X는 \"A는 axe 위반이 6건으로 B의 24건보다 적었습니다\"로 결과를 먼저 보여 주고, Y는 \"조건별로 화면 12개를 1회씩 생성해 비교했습니다\"로 방법을 먼저 밝힙니다. 순서는 달라도 수치와 한계는 둘 다 쉽게 찾을 수 있습니다. Y는 다듬은 문장 뒤에 설명 블록이 길게 붙어 있지만, 본문이 인용 블록으로 따로 떨어져 있어 찾기는 어렵지 않습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "두 결과 모두 \"압도적으로 뛰어났습니다\"를 뺐습니다. 다만 Y는 덧붙인 결론 예시에서 \"접근성 위반이 4배 적었지만\"이라고 써서 원문에 없는 배수 표현으로 차이를 다시 부각합니다. 바꾼 점 설명에서도 \"압도적\"이 왜 강한지를 길게 반복합니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y는 \"조건별로 화면 12개를 1회씩 생성해 비교했습니다. axe 위반은 A 6건, B 24건으로 A가 적었고, 생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다\"처럼 방법에서 결과로 넘어가고, A·B 순서도 맞춰 매끄럽게 읽힙니다. X는 방법과 조건을 마지막 문장인 \"조건별로 한 번씩 실행해 화면 12개를 만들었으며\"에 몰아 두어 연결이 조금 덜 자연스럽습니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "요청은 보고서 문장을 간결하게 다듬는 것입니다. X는 원문처럼 평이한 서술 문단을 유지했습니다. Y는 \"**다듬은 문장**\", \"**바꾼 점**\" 같은 제목과 굵은 글씨 목록을 붙여 보고서 문장보다 첨삭 메모처럼 보입니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 세 문장으로 다듬은 뒤 짧은 설명만 붙였습니다. Y는 요청하지 않은 바꾼 점 목록과 \"결론을 한 줄로 넣고 싶다면\"이라는 대안 문장까지 더했고, 그 문장에는 원문에 없는 \"4배\"라는 계산이 들어 있습니다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "X가 낫습니다. 두 결과 모두 과장된 \\\"압도적으로 뛰어났습니다\\\"를 빼고 수치와 한계를 정확히 남겼습니다. Y의 본문은 방법을 먼저 밝히고 A·B 순서를 맞춰 흐름이 조금 더 좋습니다. 그래도 요청은 간결하게 다듬는 것인데, Y는 제목, 굵은 글씨 목록, 대안 결론 문장까지 덧붙였습니다. 그 결론 문장에는 원문에 없는 \\\"4배\\\"라는 해석도 들어 있습니다. X는 같은 개선을 평이한 보고서 문단으로 짧게 해냈고 덧붙인 설명도 최소한입니다.",
+        "meaning_concerns": "두 결과 모두 원문의 \\\"axe 위반 합계\\\"에서 \\\"합계\\\"를 빼서, 6건과 24건이 화면 12개 전체를 더한 값이라는 점이 흐려졌습니다. X의 \\\"조건별로 한 번씩 실행해 화면 12개를 만들었으며\\\"는 화면 12개가 조건마다인지 전체인지 조금 모호합니다. Y의 \\\"4배 적었지만\\\"은 원문에 없는 계산이지만 수치상 틀리지는 않습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19475,
+          "wallMs": 20222,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1393,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2013,
+            "thinkingTokens": 471
+          },
+          "costUsd": 0.05173160000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

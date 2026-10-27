@@ -1,0 +1,99 @@
+{
+  "id": "polite-email-noop",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "status": "timeout",
+  "started": "2026-10-27T05:21:28.121Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [],
+    "usage": []
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": false,
+    "skillBodyInjected": false,
+    "skillBodyMatchesInstalled": null,
+    "listedGeulppal": false,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "이 이메일이 괜찮으면 그대로 두고, 어색한 곳만 고쳐줘.\n\n안녕하세요, 수정한 제안서를 첨부합니다. 금요일까지 검토 의견을 보내 주시면 다음 버전에 반영하겠습니다. 감사합니다.",
+  "output": "",
+  "outputHadLocalPath": false,
+  "exitCode": 143,
+  "signal": null,
+  "timedOut": true,
+  "durationMs": null,
+  "wallMs": 2414,
+  "numTurns": null,
+  "usage": {
+    "inputTokens": null,
+    "cacheCreationInputTokens": null,
+    "cacheReadInputTokens": null,
+    "outputTokens": null,
+    "thinkingTokens": null
+  },
+  "costUsd": null,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": ""
+}

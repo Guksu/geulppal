@@ -1,0 +1,151 @@
+{
+  "id": "summarize-music-festival-minutes-ko",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:04:00.340Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both use the same bold labels for the five items: X has \"**일정**\", \"**예산**\" and so on, and Y has \"**일정**\", \"**예산**\", \"**자원봉사자**\". The items are in the same order, so a reader finds each topic equally fast in either one."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Neither adds exaggeration or repetition. X compresses slightly more, for example \"후원사 2곳(약 1,500만 원)과는 협의 중이고 계약은 아직이에요\", but the difference is small."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "Y's sentence \"이 중 시 보조금 4천만 원은 12월 둘째 주에 선정 결과가 나오기 전까지 미정이고, 탈락하면...\" packs several facts together and reads a little tangled. X splits the same content into separate sentences: \"4천만 원은 시 보조금으로 충당할 계획이에요. 선정 결과는 12월 둘째 주에 나와요.\" That reads more naturally."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X's casual-polite tone (\"결정했어요\", \"재논의해요\") suits a group-chat share. Y's formal tone (\"결정했습니다\") is not wrong, but it is a bit stiff for a group chat."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "The request was for five lines or fewer. X adds a title line, \"**제3차 강변음악축제 운영위 요약 (10/21)**\", which makes six lines and breaks the length limit. Y stays at exactly five numbered lines. Y also keeps the original's weekday notation, \"5월 22일(토)~23일(일)\"."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "The two summaries have almost the same content and structure. X is a little better on tone and flow for a group chat: its casual-polite style and shorter sentences read easily. However, X's extra title line makes it six lines and breaks the explicit \"five lines or fewer\" condition. Y fits exactly within the limit and keeps the key conditions intact, so I judge Y slightly better. Both have long items, so how short they are per line is similar.",
+        "meaning_concerns": "X's \"무대 1개, 10팀 내외로\" leaves out the subject 공연팀, so it is slightly vague. In Y's \"시 보조금 4천만 원은 ... 미정이고\", the original nuance that the 4천만 원 was planned to be covered by the subsidy (\"충당할 계획\") is weakened. Both drop the comparison baselines from the original (\"무대 2개\", \"16팀\"). None of these is a serious distortion."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 16034,
+          "wallMs": 16843,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2187,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1583,
+            "thinkingTokens": 497
+          },
+          "costUsd": 0.0494836,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 '**일정**', '**예산**' 같은 굵은 항목 이름으로 시작해 항목을 찾기 쉽습니다. Y는 '제3차 강변음악축제 운영위 요약 (10/21)'이라는 제목이 있어 어느 회의인지 알기 쉽습니다. 다만 Y는 '10팀 내외로 축소'에서 '공연팀'을 빼 의미가 약간 흐려졌고, X는 '무대 1개·공연팀 10팀 내외'라고 분명히 적었습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 과장이나 반복이 없습니다. X의 '계약 전입니다'와 Y의 '계약은 아직이에요'는 같은 내용을 같은 밀도로 전합니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X는 '이 중 시 보조금 4천만 원은 12월 둘째 주에 선정 결과가 나오기 전까지 미정이고, 탈락하면…'처럼 한 문장 안에서 흐름이 이어집니다. Y는 '선정 결과는 12월 둘째 주에 나와요. 탈락하면…'처럼 짧은 문장으로 끊었지만 읽기에는 자연스럽습니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y의 '잠정 결정했어요', '재논의해요' 같은 해요체가 단톡방 공유에 잘 맞습니다. X의 '잠정 결정했습니다', '보고합니다'는 공지문처럼 다소 딱딱합니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 다섯 항목만으로 '5줄 이내'를 지켰습니다. Y는 요청하지 않은 제목 '**제3차 강변음악축제 운영위 요약 (10/21)**'을 더해 6줄이 되었습니다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 원문의 결정 사항, 미정 사항, 조건을 다섯 항목에 충실히 담았습니다. Y는 말투와 제목 덕분에 단톡방에 더 잘 맞지만, 제목 때문에 5줄 제한을 넘기고 '공연팀'이 빠져 조금 모호합니다. X는 5줄을 정확히 지키고 표현이 더 분명하지만 말투가 딱딱합니다. 기준별 우열이 엇갈려 어느 쪽도 분명히 낫지 않으므로 무승부로 판정합니다.",
+        "meaning_concerns": "Y의 '탈락하면 무대 1개, 10팀 내외로 축소'는 '공연팀'이 빠져 무엇이 10팀인지 약간 모호합니다. Y의 '지정석 유료화'는 원문의 '일부 좌석 유료화(지정석만)'를 압축한 표현으로 의미는 유지됩니다. Y는 개최일의 요일 '(토)~(일)'을 생략했습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 20116,
+          "wallMs": 21052,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2187,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2055,
+            "thinkingTokens": 500
+          },
+          "costUsd": 0.058923600000000007,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

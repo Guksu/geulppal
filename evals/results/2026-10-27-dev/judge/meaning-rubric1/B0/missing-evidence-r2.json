@@ -1,0 +1,124 @@
+{
+  "id": "missing-evidence",
+  "condition": "B0",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "쪽지함"
+    ],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:24:32.972Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "쪽지함",
+          "status": "kept",
+          "evidence": "**쪽지함에 CSV 내보내기가 추가되었습니다**"
+        },
+        {
+          "item": "CSV 내보내기",
+          "status": "kept",
+          "evidence": "이제 쪽지함의 내용을 CSV 파일로 내보낼 수 있습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "성능 수치 창작",
+          "status": "ok",
+          "evidence": "다만 측정한 수치는 아직 없어서 이번 글에는 싣지 않았습니다."
+        },
+        {
+          "item": "특정 캐시·알고리즘 도입 창작",
+          "status": "ok",
+          "evidence": "성능 개선 방식에 대한 언급이 없다. 성능 관련 문장은 \"이번 버전은 성능도 크게 좋아졌다는 설명을 받았습니다.\"뿐이다."
+        },
+        {
+          "item": "측정 완료를 암시",
+          "status": "ok",
+          "evidence": "다만 측정한 수치는 아직 없어서 이번 글에는 싣지 않았습니다."
+        },
+        {
+          "item": "성능 개선을 측정으로 확인된 사실처럼 단정",
+          "status": "ok",
+          "evidence": "이번 버전은 성능도 크게 좋아졌다는 설명을 받았습니다."
+        },
+        {
+          "item": "무관한 질문으로 모든 작성 중단",
+          "status": "ok",
+          "evidence": "본문을 먼저 쓰고 마지막에 \"이 중 알려 주시는 내용이 있으면 한두 문장씩 더할 수 있습니다.\"라고 덧붙였을 뿐이다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "\"측정이 끝나면 결과를 따로 알리겠습니다.\"는 원문에 없는 약속이다. 하지만 결과가 직접 \"마지막 문장의 \\\"결과를 따로 알리겠습니다\\\"는 제가 넣은 약속입니다. 실제로 공개할 계획이 없으면 빼 주세요.\"라고 밝혀서 사실처럼 숨겨 넣은 것은 아니다. 그 밖에 새로 만든 기능·수치는 없다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문 정보(쪽지함, CSV 내보내기, 성능 측정 자료 없음)와 요청 정보(성능이 크게 좋아졌다는 설명)가 모두 결과에 있다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "결과에 수치가 없다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"성능도 크게 좋아졌다는 설명을 받았습니다\"는 전해 들은 내용이라는 성격을 유지한다. 측정 미완료 상태도 \"측정한 수치는 아직 없어서\"로 그대로 전한다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"측정한 수치는 아직 없어서 이번 글에는 싣지 않았습니다.\"로 한계를 유지한다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "고유 이름 '쪽지함'과 'CSV'가 그대로 있다."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "짧은 출시 소개글을 쓰고 빠진 정보를 메모로 덧붙였다. 요청한 \"짧게 쓸 수 있는 범위까지만\"을 지켰다."
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 18298,
+        "wallMs": 19075,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1153,
+          "cacheReadInputTokens": 2340,
+          "outputTokens": 1992,
+          "thinkingTokens": 665
+        },
+        "costUsd": 0.04954,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

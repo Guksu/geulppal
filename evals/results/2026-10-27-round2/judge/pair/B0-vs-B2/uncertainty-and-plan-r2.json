@@ -1,0 +1,151 @@
+{
+  "id": "uncertainty-and-plan",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:45:32.184Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "두 결과의 본문은 사실상 같다. X는 본문 뒤에 \"원문은 이미 대부분 명확해서 조금만 고쳤습니다...\"라는 설명을 붙여서, 기획서에 넣을 문장이 어디서 끝나는지 독자가 한 번 더 가려내야 한다. Y는 고친 문장만 내놓았다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "X의 설명 문단은 본문에서 이미 보이는 변경(\"`도입 검토를 진행하고 있습니다`를 `도입을 검토하고 있습니다`로 바꿨고\")과 보존한 내용(\"미측정이라는 한계도 남겼습니다\")을 한 번 더 설명한다. Y에는 이런 반복이 없다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "두 결과 모두 \"팀 공유 기능은 도입을 검토하고 있습니다.\", \"~수 있지만, 아직 측정하지 않았습니다.\"로 똑같이 고쳤다. 연결이 자연스럽고 차이가 없다. Y의 \"줄 수 있지만\"과 X의 \"줄어들 수 있지만\" 사이에도 흐름 차이는 거의 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 기획서에 맞는 합니다체를 유지했고, 원문의 담담한 어조를 그대로 살렸다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "요청은 문장을 고쳐 달라는 것뿐이었는데 X는 수정 이유를 설명하는 문단을 덧붙였다. Y는 꼭 필요한 수정만 하고 따로 덧붙이지 않았다. Y는 \"줄어들 수\"를 \"줄 수\"로 한 번 더 바꿨지만 의미 차이가 없는 사소한 축약이다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "X와 Y는 본문 수정이 거의 같아서 문장 품질에는 차이가 없습니다. 둘 다 \"다음 달에\", \"도입을 검토하고 있습니다\", \"수 있지만,\"으로 고쳤습니다. 차이는 X가 덧붙인 수정 설명 문단뿐입니다. 이 문단은 요청에 없던 내용이고, 본문에서 이미 보이는 변경을 다시 설명합니다. 그래서 기획서에 바로 옮겨 쓸 문장을 찾기도 조금 번거로워집니다. 그러니 절제와 찾기 쉬움에서 Y가 조금 낫습니다. 차이가 크지는 않지만 한쪽으로 분명히 기웁니다.",
+        "meaning_concerns": "특별한 의미 변화는 없습니다. Y의 \"줄어들 수\"→\"줄 수\"는 같은 뜻의 축약입니다. 두 결과 모두 '지원 예정'과 '도입 검토'의 차이, 그리고 '아직 측정하지 않았다'는 한계를 그대로 남겼습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14378,
+          "wallMs": 15224,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 990,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1397,
+            "thinkingTokens": 175
+          },
+          "costUsd": 0.0361876,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 본문이 \"CSV 내보내기는 다음 달에 지원할 예정입니다. 팀 공유 기능은 도입을 검토하고 있습니다.\"로 같아서 지원 예정, 검토 중, 미측정이라는 세 상태를 찾기 쉽다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "Y는 본문 뒤에 \"원문은 이미 대부분 명확해서 조금만 고쳤습니다…\"라는 설명을 붙였다. 이 설명은 본문이 이미 보여 주는 내용을 다시 말한다. X는 고친 문장만 남겼다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"문의가 줄 수 있지만, 아직 측정하지 않았습니다\"와 Y의 \"문의가 줄어들 수 있지만, 아직 측정하지 않았습니다\"는 둘 다 자연스럽다. 앞 두 문장은 같다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "요청은 기획서 문장을 고치는 것이다. X는 그대로 기획서에 넣을 수 있다. Y는 편집 메모가 섞여 있어서 쓰려면 메모를 따로 지워야 한다. 본문의 격식은 두 결과가 같다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X도 원문의 \"줄어들\"을 \"줄\"로 바꿔 꼭 필요하지 않은 수정을 하나 했다. 그래도 Y가 요청하지 않은 설명 문단을 덧붙인 것이 더 큰 추가다. 게다가 Y의 설명은 \"으나\"를 \"지만\"으로 바꾼 것과 \"에 대한\"을 뺀 것을 빠짐없이 적지 않았다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "고친 본문은 X와 Y가 거의 같습니다. 둘 다 \"도입 검토를 진행하고 있습니다\"를 \"도입을 검토하고 있습니다\"로 줄였고, \"다음 달\"에 조사 \"에\"를 붙였으며, \"으나\"를 \"지만\"으로 바꿨습니다. 본문에서 다른 곳은 X가 \"줄어들\"을 \"줄\"로 바꾼 한 군데뿐이고, 이는 사소한 차이입니다.\n\n갈린 지점은 Y가 덧붙인 편집 설명 문단입니다. 사용자는 기획서 문장을 고쳐 달라고만 했습니다. 이 설명은 요청 범위를 벗어난 추가이고, 바뀐 곳을 다 적지도 않았습니다. 기획서에 바로 넣기에는 X가 더 알맞아서 X를 조금 더 낫다고 봤습니다.",
+        "meaning_concerns": "X와 Y 모두 의미가 바뀐 곳은 없습니다. \"지원 예정\", \"검토 중\", \"줄 수 있음/미측정\"의 구분이 둘 다 유지됩니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15145,
+          "wallMs": 15939,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 992,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1468,
+            "thinkingTokens": 264
+          },
+          "costUsd": 0.0376236,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

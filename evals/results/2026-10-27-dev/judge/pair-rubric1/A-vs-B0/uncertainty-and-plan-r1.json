@@ -1,0 +1,150 @@
+{
+  "id": "uncertainty-and-plan",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:29:31.173Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 고친 문장만 바로 내놓아 기획서에 그대로 옮겨 쓸 수 있다. X는 같은 수준의 수정문을 \"**수정안**\" 인용 블록에 넣고 그 뒤에 변경 목록과 확인 요청을 덧붙여서, 독자가 쓸 문장을 따로 골라내야 한다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 수정문 모두 \"도입 검토를 진행하고 있습니다\"를 \"도입을 검토하고 있습니다\"로 바꿔 명사화된 군더더기를 덜어냈다. 본문에 과장이나 반복은 없다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"문의가 줄어들 수 있지만, 아직 효과를 측정하지는 않았습니다\"와 Y의 \"문의가 줄어들 수 있지만, 효과는 아직 측정하지 않았습니다\"는 둘 다 자연스럽다. X의 '-지는'은 대조 뉘앙스를 조금 더하지만 흐름에는 문제가 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "두 결과 모두 원문의 기획서 존댓말 문체(\"~할 예정입니다\", \"~하고 있습니다\")를 그대로 유지했다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "요청은 문장을 고쳐 달라는 것뿐이었는데, X는 \"**바꾼 점**\" 설명 목록을 따로 덧붙였다. 다만 X의 \"'이 변경'이 CSV 내보내기를 가리키는지, 팀 공유 기능을 가리키는지… 불분명합니다\"라는 지적은 원문에 실제로 있는 모호함을 짚은 것이라 쓸모가 있다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과의 수정문은 거의 같고, 어순과 '-지는' 한 곳만 다르다. Y는 요청 범위만 지켜 수정문을 바로 쓸 수 있게 했다. X는 요청하지 않은 변경 설명을 붙였지만, 원문에서 '이 변경'이 무엇을 가리키는지 불분명하다는 실제 문제를 짚었다. 절제 면의 Y 장점과 모호함 지적이라는 X 장점이 서로 상쇄되어, 어느 쪽이 분명히 낫다고 보기 어렵다.",
+        "meaning_concerns": "두 결과 모두 원문에 없던 '효과'를 넣어 측정 대상을 좁혔다. 의미가 크게 달라지지는 않는다. X는 '측정하지는 않았습니다'로 써서 대조 뉘앙스가 조금 생겼다. 두 결과 모두 '이 변경'의 지시 대상이 모호한 점은 그대로 남겼고, X만 이 점을 따로 지적했다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15867,
+          "wallMs": 16639,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1267,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1564,
+            "thinkingTokens": 386
+          },
+          "costUsd": 0.041743600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 고친 기획서 문장만 내놓아 바로 쓸 수 있다. Y는 같은 수준의 수정안을 \"**수정안**\", \"**바꾼 점**\", \"**확인이 필요한 부분**\" 아래에 두어, 정작 기획서에 넣을 문장을 인용 블록에서 따로 찾아야 한다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "본문은 둘 다 \"팀 공유 기능은 도입을 검토하고 있습니다\"처럼 원문의 \"도입 검토를 진행하고\"를 동사로 풀어 군더더기를 줄였다. 과장이나 반복은 어느 쪽에도 없다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X는 \"줄어들 수 있지만, 효과는 아직 측정하지 않았습니다\", Y는 \"줄어들 수 있지만, 아직 효과를 측정하지는 않았습니다\"이다. 두 문장 모두 자연스럽게 이어지고 차이는 어순 정도다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 원문의 '-습니다'체 기획서 격식을 지켰고, 바꾼 범위도 \"다음 달에\", \"있지만,\"으로 같다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "요청은 문장을 읽기 쉽게 고쳐 달라는 것뿐이었다. Y는 수정 내역을 설명하는 목록과 \"어느 쪽인지 알려주시면 그에 맞춰 다시 다듬겠습니다\"라는 질문까지 붙여 세 문장짜리 결과를 몇 배로 늘렸다. X는 필요한 수정만 했다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "기획서 본문 수정은 두 결과가 거의 같아서 품질 차이가 없습니다. 둘 다 조사를 보충했고, 명사화된 표현을 동사로 풀었으며, '효과'를 넣어 무엇을 측정하지 않았는지 밝혔습니다. 차이는 Y가 붙인 수정 설명과 확인 질문에서 납니다. \"이 변경\"이 무엇을 가리키는지 애매하다는 지적은 일리가 있습니다. 하지만 요청은 문장을 다듬어 달라는 것이었고, 덧붙인 내용 때문에 바로 쓸 결과물이 눈에 덜 띄며 요청하지 않은 형식이 늘었습니다. 그래서 같은 품질의 수정을 군더더기 없이 내놓은 X가 조금 낫습니다.",
+        "meaning_concerns": "두 결과 모두 원문에 없던 '효과'를 넣었습니다. 원문의 '측정하지 않았다'는 문의 감소 효과를 가리킨다고 읽히므로 무리한 보충은 아닙니다. Y의 \"측정하지는\"에서 '는'이 대조의 뉘앙스를 살짝 더하지만 의미가 바뀌지는 않습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15290,
+          "wallMs": 16132,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1267,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1415,
+            "thinkingTokens": 196
+          },
+          "costUsd": 0.038763599999999995,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

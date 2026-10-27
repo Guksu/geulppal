@@ -1,0 +1,103 @@
+{
+  "id": "english-readme-slop",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:22:42.921Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": false,
+    "skillBodyInjected": false,
+    "skillBodyMatchesInstalled": null,
+    "listedGeulppal": false,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "Tighten this README section. Keep the commands and the limitations.\n\n## Getting Started\n\nIn today's fast-paced development landscape, managing environment variables can be a daunting challenge. That's where envsync comes in — a powerful, seamless solution that empowers teams to effortlessly keep their .env files in sync.\n\nenvsync compares your local `.env` with `.env.example` and lists keys that are missing or unused. It does not read or upload secret values; only key names are compared.\n\nTo get started, simply run:\n\n```bash\nnpx envsync check\n```\n\nUse `--fix` to append missing keys with empty values. Note that `--fix` never removes keys, and it currently ignores files other than `.env` and `.env.example`.\n\nWhether you're a solo developer or part of a large team, envsync is the perfect tool to streamline your workflow and supercharge your productivity!",
+  "output": "## Getting Started\n\nenvsync compares your local `.env` with `.env.example` and lists keys that are missing or unused. It never reads or uploads secret values; only key names are compared.\n\n```bash\nnpx envsync check\n```\n\nUse `--fix` to append missing keys with empty values. `--fix` never removes keys, and it currently ignores files other than `.env` and `.env.example`.\n\nI cut the marketing intro and closing paragraphs, since they didn't say anything the rest of the section doesn't. I also dropped \"To get started, simply run:\" because the code block makes it clear. I tightened \"does not read or upload\" to \"never reads or uploads\", which keeps the meaning.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 2537,
+  "wallMs": 3486,
+  "numTurns": 1,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 4690,
+    "cacheReadInputTokens": 3846,
+    "outputTokens": 218,
+    "thinkingTokens": 0
+  },
+  "costUsd": 0.0213286,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": null
+}

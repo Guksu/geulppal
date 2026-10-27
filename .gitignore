@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 dist/
+# 원본 실행 로그(스트림·대화 기록·stderr) — 로컬에만 보존
+evals/runs/

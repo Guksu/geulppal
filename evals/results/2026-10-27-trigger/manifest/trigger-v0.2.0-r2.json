@@ -1,0 +1,25 @@
+{
+  "condition": "trigger-v0.2.0-r2",
+  "kind": "trigger",
+  "skill": {
+    "path": "evals/snapshots/v0.2.0-r2/geulppal",
+    "treeSha256": "c823da79c2509f6a41fee29aab740d43710fb2a653a9732023e7ed2b0d017426",
+    "skillMdSha256": "ac4219cf65056e8874d41ca08515eb23f0fe38607db557689505a35df952a787"
+  },
+  "invocation": "자연어 요청 그대로(/geulppal 없음), 프로젝트 스킬 .claude/skills/geulppal",
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "cli": "2.1.311 (Claude Code)",
+  "tools": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Skill",
+    "Edit",
+    "Write"
+  ],
+  "maxBudgetUsd": 1,
+  "queriesFile": "evals/trigger/queries.json",
+  "queriesSha256": "48b21fc9abcdfc324d74828ba09cd8985d1720f670c7d7b493a002a9cec7749d",
+  "updated": "2026-10-27T05:55:59.277Z"
+}

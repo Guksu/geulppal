@@ -1,0 +1,152 @@
+{
+  "id": "pr-body-mixed-terms",
+  "condition": "B0",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "SearchInput",
+      "AbortController",
+      "useSearch",
+      "pnpm test src/search"
+    ],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:24:54.955Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "SearchInput에 debounce 300ms 적용",
+          "status": "kept",
+          "evidence": "`SearchInput`에 300ms debounce를 적용했습니다."
+        },
+        {
+          "item": "타이핑 중 불필요한 API 요청 문제",
+          "status": "kept",
+          "evidence": "타이핑하는 동안 불필요한 API 요청이 나가던 문제를 해결합니다."
+        },
+        {
+          "item": "늦게 도착한 이전 응답이 최신 결과를 덮어쓰는 race condition을 AbortController로 이전 요청 취소해 수정",
+          "status": "kept",
+          "evidence": "이전 요청의 응답이 늦게 도착해 최신 검색 결과를 덮어쓰는 race condition을 고쳤습니다. 새 요청을 보낼 때 `AbortController`로 이전 요청을 취소합니다."
+        },
+        {
+          "item": "useSearch hook 리팩터링",
+          "status": "kept",
+          "evidence": "`useSearch` hook을 리팩토링했습니다."
+        },
+        {
+          "item": "pnpm test src/search 12개 통과",
+          "status": "kept",
+          "evidence": "`pnpm test src/search`: 12개 테스트 모두 통과"
+        },
+        {
+          "item": "E2E 미실행과 그 이유(flaky)",
+          "status": "kept",
+          "evidence": "E2E: flaky한 이슈가 있어 이번에는 실행하지 않았습니다."
+        },
+        {
+          "item": "Safari 미확인",
+          "status": "kept",
+          "evidence": "Safari: 아직 확인하지 못했습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "E2E 통과로 확대",
+          "status": "ok",
+          "evidence": "E2E: flaky한 이슈가 있어 이번에는 실행하지 않았습니다."
+        },
+        {
+          "item": "Safari 확인으로 변경",
+          "status": "ok",
+          "evidence": "Safari: 아직 확인하지 못했습니다."
+        },
+        {
+          "item": "300ms 값 변경",
+          "status": "ok",
+          "evidence": "`SearchInput`에 300ms debounce를 적용했습니다."
+        },
+        {
+          "item": "debounce·race condition·AbortController·hook을 부정확한 말로 바꾸거나 이름 변경",
+          "status": "ok",
+          "evidence": "race condition을 고쳤습니다. 새 요청을 보낼 때 `AbortController`로 이전 요청을 취소합니다. / `useSearch` hook을 리팩토링했습니다."
+        },
+        {
+          "item": "사용자 경험 개선 효과를 측정된 사실로 단정",
+          "status": "ok",
+          "evidence": "\"획기적으로 개선\"이라는 개요와 \"쾌적한 검색 경험\" 기대 문구는 변경 내용을 알려 주지 않아 뺐습니다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "새 요청을 보낼 때 `AbortController`로 이전 요청을 취소합니다. — 원문의 '이전 요청을 취소하는 방식'에 함축된 내용으로, 새 사실이 아니다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 개요·기타는 근거 없는 효과 주장이라 뺐고, 변경·테스트 항목은 모두 남아 있다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "`pnpm test src/search`: 12개 테스트 모두 통과 / 300ms debounce"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "E2E: flaky한 이슈가 있어 이번에는 실행하지 않았습니다. / Safari: 아직 확인하지 못했습니다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "미실행·미확인 한계가 그대로 남아 있다: \"테스트 항목의 실행 범위와 미실행·미확인 내용은 그대로 두었습니다.\""
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "`SearchInput`, `AbortController`, `useSearch`, `pnpm test src/search`가 원문과 같다."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "PR 본문을 고쳐 돌려주었고, 편집 설명은 '---' 아래에 따로 붙였다."
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 17903,
+        "wallMs": 18749,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1727,
+          "cacheReadInputTokens": 2340,
+          "outputTokens": 1870,
+          "thinkingTokens": 312
+        },
+        "costUsd": 0.051692,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

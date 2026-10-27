@@ -1,0 +1,129 @@
+{
+  "id": "uncertainty-and-plan",
+  "condition": "B0",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:29:46.668Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "CSV 다음 달 지원 예정",
+          "status": "kept",
+          "evidence": "CSV 내보내기는 다음 달에 지원할 예정입니다."
+        },
+        {
+          "item": "팀 공유 도입 검토",
+          "status": "kept",
+          "evidence": "팀 공유 기능은 도입을 검토하고 있습니다."
+        },
+        {
+          "item": "문의 감소 가능성",
+          "status": "kept",
+          "evidence": "이 변경으로 문의가 줄어들 수 있지만,"
+        },
+        {
+          "item": "미측정",
+          "status": "kept",
+          "evidence": "효과는 아직 측정하지 않았습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "예정을 완료로 변경",
+          "status": "ok",
+          "evidence": "CSV 내보내기는 다음 달에 지원할 예정입니다."
+        },
+        {
+          "item": "팀 공유 도입 확정",
+          "status": "ok",
+          "evidence": "팀 공유 기능은 도입을 검토하고 있습니다."
+        },
+        {
+          "item": "문의 감소 효과 확정",
+          "status": "ok",
+          "evidence": "이 변경으로 문의가 줄어들 수 있지만, 효과는 아직 측정하지 않았습니다."
+        },
+        {
+          "item": "모든 계획을 검토로 약화",
+          "status": "ok",
+          "evidence": "CSV 내보내기는 다음 달에 지원할 예정입니다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "효과는 아직 측정하지 않았습니다. — 측정하지 않은 대상이 문의 감소 효과라는 원문의 뜻을 밝혀 쓴 것이고, 새 사실은 없음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 세 문장이 모두 결과에 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "수치 없음. 시점 '다음 달'은 그대로 유지됨"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "지원할 예정입니다 / 검토하고 있습니다 / 줄어들 수 있지만 — 예정·검토·가능성 상태가 그대로 유지됨"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "효과는 아직 측정하지 않았습니다. — 한계가 유지됨"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "CSV 내보내기 — 고유 표기가 그대로 유지됨"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요청대로 문장만 읽기 쉽게 고쳐서 돌려줌"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 8966,
+        "wallMs": 9760,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 822,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1106,
+          "thinkingTokens": 101
+        },
+        "costUsd": 0.029200000000000004,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

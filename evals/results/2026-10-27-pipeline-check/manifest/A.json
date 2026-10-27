@@ -1,0 +1,39 @@
+{
+  "condition": "A",
+  "skill": null,
+  "invocation": "요청 그대로 (스킬 없음, 빈 .claude 폴더)",
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "cli": "2.1.311 (Claude Code)",
+  "args": [
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--model",
+    "claude-sonnet-5-5",
+    "--effort",
+    "high",
+    "--session-id",
+    "<새 UUID>",
+    "--setting-sources",
+    "project",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "dontAsk",
+    "--tools",
+    "Read,Glob,Grep,Skill",
+    "--allowedTools",
+    "Read Glob Grep Skill",
+    "-p",
+    "<프롬프트>"
+  ],
+  "tools": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Skill"
+  ],
+  "casesFile": "evals/cases.json",
+  "casesSha256": "0afbf4f5a458aa9075508e6184943407cc972b4a9f313ad30f5d7dbfccefa66a",
+  "updated": "2026-10-27T05:21:34.980Z"
+}

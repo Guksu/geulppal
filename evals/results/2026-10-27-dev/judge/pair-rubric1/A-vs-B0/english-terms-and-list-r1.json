@@ -1,0 +1,150 @@
+{
+  "id": "english-terms-and-list",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:27:13.800Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the same three-sentence order: \"The export contains three files...\", \"The leverage field may be empty\" / \"The `leverage` field may be empty\", then the 20 MB limit. The reader finds the files, the field caveat and the size limit in the same places in both."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove the only filler phrase, \"It is important to note that\". Nothing inflated or repeated is left in either paragraph."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Both read as three short factual sentences that fit together. X's \"Imports larger than 20 MB are untested.\" and Y's \"We have not tested imports larger than 20 MB.\" both flow fine."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y keeps the author's first-person \"We have not tested imports larger than 20 MB.\" X changes it to the impersonal passive \"Imports larger than 20 MB are untested\", which changes the author's voice and drops who did the testing."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X rewrites a sentence that had no filler, and its note says \"I only cut...\" even though it also \"reworded the last sentence\", so the note contradicts itself. It then offers an alternative nobody asked for. Y changes only the filler phrase. Its backticks around `leverage` and its note explaining why it kept the word are small additions nobody asked for, but they leave the meaning alone."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "The request was to remove filler without changing meaning. Both results remove \"It is important to note that\". X goes further and rewrites the last sentence, which had no filler, into the passive \"are untested\". That drops the first-person voice and changes who is said to have done the testing. X's own note says it \"only cut\" the phrase, which isn't true. Y keeps the wording exactly as it was apart from the filler. Its only extras are backticks and a short, unnecessary note. On balance, Y follows the request more faithfully.",
+        "meaning_concerns": "In X, \"We have not tested imports larger than 20 MB\" becomes \"Imports larger than 20 MB are untested\". This drops the agent (\"we\"), so the sentence no longer says who did the testing, and it reads as a more general claim than \"we have not tested\". The change is small, but the request said not to change meaning. Y's backticks change only the formatting, not the meaning."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 12118,
+          "wallMs": 12927,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 814,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1208,
+            "thinkingTokens": 288
+          },
+          "costUsd": 0.030999600000000002,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both list the same three facts in the same order: \"The export contains three files…\", the possibly empty field and the 20 MB limit."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove only \"It is important to note that\" and add no emphasis or repetition."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X's \"We have not tested imports larger than 20 MB.\" and Y's \"Imports larger than 20 MB are untested.\" both read naturally."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X keeps the author's active, first-person \"We have not tested…\". Y's \"Imports larger than 20 MB are untested\" removes who is responsible."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "Y rewrote a sentence that had no filler (\"reworded the last sentence to be shorter\") and offered a fallback (\"If you'd rather keep the active voice…\"). X's only extra change is backticks around `leverage`, a minor format change."
+          }
+        ],
+        "verdict": "X",
+        "reason": "Both cut the actual filler, \"It is important to note that.\" Y also rewrote the last sentence, which had no filler. That change goes beyond the request and loses the author's \"We.\" X keeps the original wording apart from small backticks, so X is slightly better.",
+        "meaning_concerns": "Y's \"Imports larger than 20 MB are untested\" can read as \"nobody has tested them.\" The original says only that we have not tested them, a small but real difference. X has no meaning change."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14920,
+          "wallMs": 15685,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 814,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1469,
+            "thinkingTokens": 266
+          },
+          "costUsd": 0.036219600000000005,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

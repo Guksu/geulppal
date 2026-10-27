@@ -1,0 +1,191 @@
+{
+  "id": "readme-pgsnap-ko",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "pip install pgsnap==0.8.2",
+      "pgsnap --version",
+      "pgsnap.yaml",
+      "--config",
+      "target_dir",
+      "./backups",
+      "retention_days",
+      "compression",
+      "zstd",
+      "gzip",
+      "https://github.com/example/pgsnap/issues"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:58:02.343Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "Python 3.10 이상이 필요하다는 조건",
+          "status": "kept",
+          "evidence": "Python 3.10 이상에서 아래 명령으로 설치합니다."
+        },
+        {
+          "item": "설치 명령과 설치 확인 명령",
+          "status": "kept",
+          "evidence": "pip install pgsnap==0.8.2 / 설치 후 `pgsnap --version`으로 정상 설치 여부를 확인할 수 있습니다."
+        },
+        {
+          "item": "기본 설정 파일이 현재 디렉터리의 pgsnap.yaml이고 --config로 다른 경로를 지정할 수 있다는 점",
+          "status": "kept",
+          "evidence": "pgsnap은 기본적으로 현재 디렉터리의 `pgsnap.yaml`을 읽습니다. 다른 위치의 파일을 쓰려면 `--config` 옵션으로 경로를 지정하세요."
+        },
+        {
+          "item": "설정 키 세 개와 각각의 기본값",
+          "status": "kept",
+          "evidence": "`target_dir`: ... 기본값은 `./backups`입니다. / `retention_days`: ... 기본값은 `7`이며 / `compression`: ... 기본값은 `zstd`입니다."
+        },
+        {
+          "item": "retention_days 0 예외",
+          "status": "kept",
+          "evidence": "`0`으로 설정하면 오래된 백업을 삭제하지 않습니다."
+        },
+        {
+          "item": "compression 선택지 zstd, gzip, none",
+          "status": "kept",
+          "evidence": "`zstd`, `gzip`, `none` 중 하나를 선택할 수 있으며"
+        },
+        {
+          "item": "증분 백업이 아니라 전체 백업만 지원한다는 한계",
+          "status": "kept",
+          "evidence": "**전체 백업만 지원합니다.** 증분 백업은 지원하지 않으므로 데이터베이스가 크면 백업에 시간이 오래 걸릴 수 있습니다."
+        },
+        {
+          "item": "50GB 약 40분 수치의 측정 조건",
+          "status": "kept",
+          "evidence": "내부 테스트에서는 약 50GB 데이터베이스를 `zstd`로 백업하는 데 약 40분이 걸렸습니다(8코어, NVMe SSD)."
+        },
+        {
+          "item": "Windows 공식 미지원·미테스트",
+          "status": "kept",
+          "evidence": "**Windows는 공식 지원하지 않으며** 테스트도 하지 않았습니다."
+        },
+        {
+          "item": "증분 백업 1.0 검토 중, 일정 미정",
+          "status": "kept",
+          "evidence": "증분 백업은 1.0 버전에서 추가를 검토 중이며, 일정은 정해지지 않았습니다."
+        },
+        {
+          "item": "문의처 이슈 링크",
+          "status": "kept",
+          "evidence": "https://github.com/example/pgsnap/issues 에 남겨 주세요."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "증분 백업 지원 또는 1.0 확정처럼 쓰기",
+          "status": "ok",
+          "evidence": "증분 백업은 1.0 버전에서 추가를 검토 중이며, 일정은 정해지지 않았습니다."
+        },
+        {
+          "item": "40분 측정값에서 측정 환경 제거",
+          "status": "ok",
+          "evidence": "내부 테스트에서는 ... 약 40분이 걸렸습니다(8코어, NVMe SSD)."
+        },
+        {
+          "item": "Windows 동작/지원 예정이라고 쓰기",
+          "status": "ok",
+          "evidence": "**Windows는 공식 지원하지 않으며** 테스트도 하지 않았습니다."
+        },
+        {
+          "item": "기본값·버전·선택지·설정 키 변경",
+          "status": "ok",
+          "evidence": "설정 키 세 개와 기본값, `pip install pgsnap==0.8.2` 모두 원문과 동일"
+        },
+        {
+          "item": "전체/증분 대조 삭제",
+          "status": "ok",
+          "evidence": "**전체 백업만 지원합니다.** 증분 백업은 지원하지 않으므로"
+        },
+        {
+          "item": "명령·설정 키·경로·링크 표기 변경",
+          "status": "ok",
+          "evidence": "`pgsnap --version`, `--config`, `pgsnap.yaml`, `./backups`, https://github.com/example/pgsnap/issues 모두 동일"
+        },
+        {
+          "item": "원문에 없는 기능·성능 주장·홍보 문구 추가",
+          "status": "ok",
+          "evidence": "pgsnap은 PostgreSQL 데이터베이스 백업을 자동화하는 도구입니다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "pgsnap은 PostgreSQL 데이터베이스 백업을 자동화하는 도구입니다. — 원문의 자동화 설명 범위 안"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "삭제된 것은 홍보성 도입·마무리 문구뿐이며 메모에 \"'마치며'는 정보가 없는 홍보 문구여서 지우고\"라고 밝힘"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "약 50GB 데이터베이스를 `zstd`로 백업하는 데 약 40분이 걸렸습니다(8코어, NVMe SSD)."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "증분 백업은 1.0 버전에서 추가를 검토 중이며, 일정은 정해지지 않았습니다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "`0`으로 설정하면 오래된 백업을 삭제하지 않습니다. / 데이터베이스가 크면 백업에 시간이 오래 걸릴 수 있습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "```bash\npip install pgsnap==0.8.2\n``` 및 설정 키·링크 표기가 원문과 동일"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "README 전체를 다듬어 돌려주고 변경 사항 메모를 따로 붙임"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 18275,
+        "wallMs": 19220,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 3435,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 2364,
+          "thinkingTokens": 203
+        },
+        "costUsd": 0.07526400000000001,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

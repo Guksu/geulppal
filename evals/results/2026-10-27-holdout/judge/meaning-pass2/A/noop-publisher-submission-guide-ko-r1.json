@@ -1,0 +1,171 @@
+{
+  "id": "noop-publisher-submission-guide-ko",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "submit@bomnalbooks.kr",
+      "[투고] 작품 제목_이름",
+      "봄날책방"
+    ],
+    "missing": [
+      "submit@bomnalbooks.kr",
+      "[투고] 작품 제목_이름",
+      "봄날책방"
+    ],
+    "applicable": false,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:59:53.339Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "소설과 에세이를 받고 등단·출간 경험은 따지지 않는다는 점",
+          "status": "kept",
+          "evidence": "\"전반적으로 잘 쓰여 있어서 고치지 않고 그대로 두셔도 됩니다.\" — 원문을 수정 없이 유지하라고 함"
+        },
+        {
+          "item": "'원고 전체가 아니라' 세 가지만 보내 달라는 대조와 그 이유",
+          "status": "kept",
+          "evidence": "\"고치지 않고 그대로 두셔도 됩니다.\" — 대조 문장을 바꾸자는 제안 없음"
+        },
+        {
+          "item": "제출물 세 가지(A4 한 장 이내 시놉시스, 원고 앞부분 30쪽, 간단한 약력)",
+          "status": "kept",
+          "evidence": "\"요청하는 것, 보낼 곳, 기간, 받지 않는 분야가 모두 분명하고\" — 목록 유지"
+        },
+        {
+          "item": "이메일 주소, 파일 형식(PDF, HWP), 메일 제목 형식",
+          "status": "kept",
+          "evidence": "\"고치지 않고 그대로 두셔도 됩니다.\""
+        },
+        {
+          "item": "보통 8주, 몰리는 시기에는 더 걸릴 수 있다는 점",
+          "status": "kept",
+          "evidence": "\"투고자는 8주가 지난 뒤에도 연락이 없을 때\" — 원문의 8주 기준을 그대로 언급하고 본문 수정 없음"
+        },
+        {
+          "item": "함께하고 싶은 원고에만 먼저 연락하고 모두에게 회신하지 못한다는 점과 양해 문구",
+          "status": "kept",
+          "evidence": "\"\"함께하고 싶은 원고에는 먼저 연락드립니다\"와 \"모든 분께 회신을 드리지 못합니다\"를 합치면\" — 원문 문장 유지, 삭제 제안 없음"
+        },
+        {
+          "item": "다른 출판사 동시 투고 가능",
+          "status": "kept",
+          "evidence": "\"고치지 않고 그대로 두셔도 됩니다.\""
+        },
+        {
+          "item": "시집과 아동서는 지금 받지 않고 재개 시 이 페이지에서 알린다는 점",
+          "status": "kept",
+          "evidence": "\"받지 않는 분야가 모두 분명하고\""
+        },
+        {
+          "item": "원고는 검토에만 쓰고 검토 후 삭제",
+          "status": "kept",
+          "evidence": "\"고치지 않고 그대로 두셔도 됩니다.\""
+        }
+      ],
+      "must_not": [
+        {
+          "item": "'원고 전체가 아니라' 대조를 지우기",
+          "status": "ok",
+          "evidence": "\"고치지 않고 그대로 두셔도 됩니다.\""
+        },
+        {
+          "item": "세 항목 목록을 합치거나 항목을 늘리고 줄이기",
+          "status": "ok",
+          "evidence": "목록 수정 제안 없음"
+        },
+        {
+          "item": "양해 문구 등 공손한 표현을 삭제하기",
+          "status": "ok",
+          "evidence": "\"어조도 일관됩니다.\" — 양해 문구 삭제 없음"
+        },
+        {
+          "item": "검토 기간, 제출 분량, 받지 않는 분야 같은 조건 바꾸기",
+          "status": "ok",
+          "evidence": "본문 그대로 유지"
+        },
+        {
+          "item": "원고료, 계약 조건, 회신 기한 등 원문에 없는 정보 추가",
+          "status": "ok",
+          "evidence": "\"필요하면 \"투고 후 3개월이 지나도 연락이 없으면 ...\" 같은 문장을 한 줄 넣어 보세요.\" — 메모에서 선택 제안만 하고 본문에 넣지 않았으며 \"넣지 않아도 안내문에는 문제가 없습니다\"라고 밝힘"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "\"3개월\"은 메모 속 선택 제안이며 본문에 넣지 않았음: \"이 문장을 넣을지는 출판사 방침에 달린 문제라서\""
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "\"고치지 않고 그대로 두셔도 됩니다.\""
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"투고자는 8주가 지난 뒤에도\" — 원문 8주 그대로"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"다만 선택 사항으로 한 가지만 말씀드립니다.\" — 제안을 제안으로 표시"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "본문 조건 변경 없음"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "이메일·제목 형식 등 변경 없음"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "\"전반적으로 잘 쓰여 있어서 고치지 않고 그대로 두셔도 됩니다.\" — 요청('고칠 데 없으면 그대로 둬도 돼')에 맞게 처리"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 17273,
+        "wallMs": 18101,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 329,
+          "cacheReadInputTokens": 4279,
+          "outputTokens": 2067,
+          "thinkingTokens": 214
+        },
+        "costUsd": 0.044835799999999995,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  },
+  "rescored": {
+    "from": false,
+    "reason": "문자열 검사 적용 범위 수정"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "diagnose-youth-rent-press-release-ko",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:54:56.609Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": false,
+    "skillBodyInjected": false,
+    "skillBodyMatchesInstalled": null,
+    "listedGeulppal": false,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "구청 보도자료 초안이야. 문제 있는 부분만 짚어 줘. 고친 문장이나 수정본은 쓰지 마. 고치는 건 내가 할게.\n\n푸른구, 청년 월세 지원으로 청년 주거 문제 획기적 해결 나선다\n\n푸른구(구청장 ○○○)는 청년들의 주거 안정을 위하여 '푸른 청년 월세 지원 사업'을 시행한다고 밝혔다. 이번 사업은 청년 주거 문제를 획기적으로 해결할 수 있는 전환점이 될 것으로 기대된다.\n\n지원 대상은 푸른구에 주민등록을 둔 만 19세~34세 무주택 청년 가운데 기준 중위소득 60% 이하인 1인 가구이다. 선정된 청년에게는 월 최대 20만 원을 최대 12개월간 지원한다. 지원금은 청년에게 현금으로 지급하는 것이 아니라 임대인 계좌로 직접 지급된다. 단, 임대보증금이 5천만 원을 넘거나 월세가 60만 원을 넘는 주택에 사는 경우는 지원 대상에서 제외된다.\n\n신청 기간은 11월 3일부터 11월 28일까지이며, 구청 누리집을 통하여 온라인으로 신청할 수 있다. 선정 인원은 약 300명으로 예정되어 있으며, 신청자가 이를 초과할 경우 소득이 낮은 순서로 선정할 계획이다.\n\n구 관계자는 \"이번 사업을 통하여 청년들이 주거비 부담에서 벗어나 꿈을 향해 나아갈 수 있기를 바란다\"라고 밝혔다. 이번 사업은 청년 주거 문제를 근본적으로 해결하는 데 있어서 크게 기여할 것이며, 청년들의 삶의 질 향상에 획기적인 변화를 가져올 것이다.\n\n자세한 사항은 구청 누리집 공고문을 참고하거나 청년정책과(02-000-1234)로 문의하면 된다. 신청은 11월 30일까지 받는다.",
+  "output": "**사실관계 오류**\n- **신청 마감일이 서로 다릅니다.** 3문단은 11월 28일까지, 마지막 문장은 11월 30일까지입니다. 어느 쪽이 맞는지 확인이 필요합니다. 11월 28일은 토요일이니, 마감 시각도 따로 적어야 하는지 보세요.\n\n**과장과 근거 없는 단정**\n- **\"획기적\"이 제목, 1문단, 마지막 문단에 반복됩니다.** \"근본적으로 해결\", \"크게 기여\", \"삶의 질 향상에 획기적인 변화\"도 같은 종류입니다. 월 최대 20만 원, 300명 규모 사업으로 주거 문제가 해결된다는 주장은 근거가 없습니다. 보도자료에서 가장 먼저 걸러지는 표현입니다.\n- **마지막 문단의 두 번째 문장은 인용문 바로 뒤에 붙어 있습니다.** 따옴표 밖의 지문인데도 구의 자체 평가를 \"~할 것이다\"로 단정합니다. 1문단의 \"기대된다\"와도 내용이 겹칩니다.\n\n**구성과 문장**\n- **제외 조건이 지급 방식 문장 뒤에 \"단,\"으로 붙어 있습니다.** 지급 방식에 대한 단서처럼 읽혀서, 대상 요건이 두 곳으로 갈라집니다.\n- **\"지급하는 것이 아니라 … 지급된다\"는 능동과 피동이 섞여 호응이 어색합니다.**\n- **지원 대상 문장에서 \"청년\"과 \"1인 가구\"가 한 문장에 섞여 있습니다.** 청년 개인이 대상인지 가구가 대상인지 모호합니다.\n- **\"약 300명\"과 \"예정\"이 겹쳐 이중으로 불확실합니다.** 확정 인원인지 계획 인원인지 정해서 쓰세요.\n- **\"통하여\"가 반복되고, \"신청\"이 3문단과 마지막 문단에서 중복됩니다.**\n\n**독자가 바로 물을 정보의 누락**\n- **연령과 소득의 기준 시점이 없습니다.** 만 19~34세를 언제 기준으로 보는지, 주민등록은 얼마나 유지해야 하는지, 소득은 무엇으로 산정하는지(건강보험료 등)가 빠져 있습니다.\n- **\"월 최대 20만 원\"이 정액인지 실비인지 불분명합니다.** 월세가 20만 원보다 낮으면 어떻게 되는지 알 수 없습니다.\n- **초과 신청 시 선정 기준이 소득순뿐입니다.** 동점이나 동순위 처리가 없습니다.\n- **선정 발표일과 첫 지급 시기가 없습니다.**\n- **오프라인 접수 여부가 없습니다.** 온라인 신청만 가능한 건지 알 수 없습니다.\n- **다른 월세 지원 사업과의 중복 수혜 가능 여부가 없습니다.** 국가나 광역 단위 청년 월세 지원과 겹치는지 문의가 많을 부분입니다.\n\n**인용문**\n- **\"구 관계자\"라는 익명 인용입니다.** 1문단에 구청장 직함이 이미 나오는데 인용 주체가 익명입니다. 구청장이나 부서장 등 직함을 밝힌 인용이 일반적입니다.\n- **인용 내용이 사업 소개 이상의 정보를 주지 않습니다.**\n\n**마무리 확인**\n- **구청장 이름(○○○)과 연락처(02-000-1234)가 자리표시자 상태입니다.** 배포 전에 채웠는지 확인하세요.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 24643,
+  "wallMs": 25390,
+  "numTurns": 1,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 5171,
+    "cacheReadInputTokens": 3846,
+    "outputTokens": 2947,
+    "thinkingTokens": 1627
+  },
+  "costUsd": 0.0505426,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": null
+}

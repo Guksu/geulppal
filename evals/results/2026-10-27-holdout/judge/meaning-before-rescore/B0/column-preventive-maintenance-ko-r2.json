@@ -1,0 +1,153 @@
+{
+  "id": "column-preventive-maintenance-ko",
+  "condition": "B0",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:56:16.213Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "기존 사후 정비 방식의 특징",
+          "status": "kept",
+          "evidence": "고장이 나기 전까지는 손이 덜 가지만, 고장이 나면 라인 전체가 멈춥니다."
+        },
+        {
+          "item": "2025년 프레스 라인 3대 비계획 정지 212시간",
+          "status": "kept",
+          "evidence": "2025년 한 해 동안 프레스 라인 3대에서 발생한 비계획 정지 시간은 모두 212시간이었습니다."
+        },
+        {
+          "item": "2026년 1월부터 센서 기반 예방정비 시범 운영 중",
+          "status": "kept",
+          "evidence": "올해 1월부터 프레스 라인 3대에 진동·온도 센서를 붙이고, 이상 신호가 나오면 미리 부품을 교체하는 예방정비를 시범 운영하고 있습니다."
+        },
+        {
+          "item": "센서 설치비 1대당 450만 원, 합계 1,350만 원",
+          "status": "kept",
+          "evidence": "센서 설치비는 1대당 450만 원, 3대 합계 1,350만 원이 들었습니다."
+        },
+        {
+          "item": "2026년 1~6월 비계획 정지 74시간",
+          "status": "kept",
+          "evidence": "2026년 1월부터 6월까지 비계획 정지 시간은 74시간이었습니다."
+        },
+        {
+          "item": "비교 한계 단서와 연말 재비교 계획",
+          "status": "kept",
+          "evidence": "다만 정지 시간 수치는 그대로 비교하기 어렵습니다. 2025년은 12개월, 2026년은 6개월 기록이고, 상반기는 계절적으로 고장이 적었던 해도 있었습니다. 하반기 기록까지 모아 연말에 다시 비교할 예정입니다."
+        },
+        {
+          "item": "야간 긴급 출동 5회 대 14회",
+          "status": "kept",
+          "evidence": "실제로 올해 상반기 야간 긴급 출동은 5회로, 작년 상반기 14회보다 적었습니다."
+        },
+        {
+          "item": "도장 라인 확대 검토 단계 및 방폭 조건",
+          "status": "kept",
+          "evidence": "내년에는 도장 라인까지 센서 설치를 넓히는 방안을 검토하고 있습니다. 다만 도장 라인은 방폭 구역이라 일반 센서를 쓸 수 없어, 방폭 인증 센서의 가격과 공급 일정을 먼저 확인해야 합니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "212시간과 74시간을 같은 기간처럼 비교해 감소율·절감액 계산",
+          "status": "ok",
+          "evidence": "본문에 감소율이나 절감액 계산이 없음. \"2026년 1월부터 6월까지 비계획 정지 시간은 74시간이었습니다.\""
+        },
+        {
+          "item": "비교 한계와 연말 재비교 계획 삭제",
+          "status": "ok",
+          "evidence": "하반기 기록까지 모아 연말에 다시 비교할 예정입니다."
+        },
+        {
+          "item": "비용 절감 효과를 원문보다 강하게 단정",
+          "status": "ok",
+          "evidence": "본문에서 비용 절감 단정 문장은 모두 빠졌고, 메모에 \"'비용을 줄인다'는 단정은 뺐습니다\"라고 밝힘."
+        },
+        {
+          "item": "도장 라인 확대를 결정된 일처럼 쓰기",
+          "status": "ok",
+          "evidence": "내년에는 도장 라인까지 센서 설치를 넓히는 방안을 검토하고 있습니다."
+        },
+        {
+          "item": "원문에 없는 수치·일정·인물 발언 추가",
+          "status": "ok",
+          "evidence": "본문의 수치는 212시간, 450만 원, 1,350만 원, 74시간, 5회, 14회로 모두 원문에 있는 것임."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "본문에 새 사실이 없음. 메모의 \"이 수치는 계절 영향을 덜 받지만\"은 메모 안의 설명이고 본문에는 들어가지 않음."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "뺀 것은 일반론 도입, 구호성 마무리, 반복된 비용 절감 결론뿐이고 사실 정보는 모두 남음."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "실제로 올해 상반기 야간 긴급 출동은 5회로, 작년 상반기 14회보다 적었습니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "원문에서 근거 없이 단정한 '비용 절감 효과는 분명하다'를 뺐고, 메모에서 그 이유를 밝힘. 근거 없는 평가를 덜어낸 것이라 손상으로 보지 않음. 시범 운영·검토 단계 표현은 그대로 유지됨."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "다만 도장 라인은 방폭 구역이라 일반 센서를 쓸 수 없어, 방폭 인증 센서의 가격과 공급 일정을 먼저 확인해야 합니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "제목 \"설비 관리, 이제는 바뀌어야 할 때\"와 고유 표기가 그대로 유지됨."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요청대로 늘어진 부분을 다듬은 본문을 돌려주었고, 바꾼 내용은 본문과 분리된 메모로 설명함."
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 19503,
+        "wallMs": 21810,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 3377,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 2369,
+          "thinkingTokens": 336
+        },
+        "costUsd": 0.0749,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

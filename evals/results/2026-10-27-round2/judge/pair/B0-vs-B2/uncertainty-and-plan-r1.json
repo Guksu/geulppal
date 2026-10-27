@@ -1,0 +1,151 @@
+{
+  "id": "uncertainty-and-plan",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:45:21.802Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X의 \"효과는 아직 측정하지 않았습니다\"는 무엇을 측정하지 않았는지 밝혀 준다. Y의 \"아직 측정하지 않았습니다\"는 측정 대상이 빠져 있어 독자가 추론해야 한다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 \"팀 공유 기능에 대한 도입 검토를 진행하고 있습니다\"를 \"팀 공유 기능은 도입을 검토하고 있습니다\"로 똑같이 줄였고, 과장이나 반복을 새로 넣지 않았다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X의 \"줄어들 수 있지만, 효과는 아직 측정하지 않았습니다\"는 앞 절과 뒤 절이 자연스럽게 이어진다. Y의 \"줄어들 수 있지만, 아직 측정하지 않았습니다\"는 목적어가 없어 연결이 조금 어색하다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "두 결과 모두 기획서에 맞는 격식체 \"-습니다\"를 지키고 원문의 담백한 어조를 유지한다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "Y는 원문에 없던 말을 넣지 않았다. X는 \"효과는\"을 넣었지만 원문의 뜻을 드러낸 수준이어서 불필요한 추가로 보기는 어렵다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과는 마지막 문장만 다르다. X는 측정 대상을 \"효과는\"으로 밝혀 원문과 Y에 남아 있던 모호함을 없앴고, 그래서 문장이 더 잘 읽힌다. Y가 원문을 덜 바꾸긴 했지만, 읽기 쉽게 고쳐 달라는 요청에는 X가 더 잘 맞는다.",
+        "meaning_concerns": "없음. X가 넣은 \"효과는\"은 원문이 뜻한 측정 대상, 곧 문의 감소 효과를 밝힌 것이어서 의미가 달라지지 않는다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 18213,
+          "wallMs": 18984,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 833,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2040,
+            "thinkingTokens": 248
+          },
+          "costUsd": 0.047791600000000004,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 \"CSV 내보내기는 다음 달에 지원할 예정입니다\" / \"팀 공유 기능은 도입을 검토하고 있습니다\"로 같은 구조이고, 항목별 상태를 똑같이 쉽게 찾을 수 있다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 원문의 \"도입 검토를 진행하고 있습니다\"를 \"도입을 검토하고 있습니다\"로 줄였다. 과장이나 반복은 어느 쪽에도 없다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Y의 \"효과는 아직 측정하지 않았습니다\"는 뒤 절에 주어를 넣어 무엇을 측정하지 않았는지 조금 더 분명하다. 하지만 X의 \"줄어들 수 있지만, 아직 측정하지 않았습니다\"도 문맥상 충분히 자연스럽게 읽힌다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 기획서에 맞는 \"~습니다\" 격식체를 유지하고, 원문의 말투도 그대로 살렸다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "X는 원문의 정보를 더하지 않고 문장만 다듬었다. Y는 \"효과는\"을 더했지만 원문이 암시한 대상을 드러냈을 뿐이라 과도한 추가로 보기 어렵다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과는 Y가 마지막 절에 \"효과는\"을 넣었다는 점만 다르고 나머지는 같습니다. Y는 측정하지 않은 대상을 조금 더 분명하게 밝혔고, X는 원문에 덜 손을 댔습니다. 다만 차이가 사소해서 어느 쪽이 독자에게 분명히 더 낫다고 보기는 어렵습니다. 두 결과 모두 \"다음 달에\"처럼 조사를 보충했고, \"팀 공유 기능은 도입을 검토하고 있습니다\"처럼 명사화된 표현을 풀어 쓰는 등 같은 개선을 했습니다.",
+        "meaning_concerns": "Y의 \"효과는\"은 원문이 암시한 대상(문의 감소 효과)을 드러낸 것이라 의미가 달라지지 않습니다. X에서도 의미가 달라진 곳은 찾지 못했습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 11429,
+          "wallMs": 12367,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 834,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1196,
+            "thinkingTokens": 192
+          },
+          "costUsd": 0.030919600000000002,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

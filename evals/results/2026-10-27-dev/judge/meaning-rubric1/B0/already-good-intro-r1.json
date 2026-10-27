@@ -1,0 +1,137 @@
+{
+  "id": "already-good-intro",
+  "condition": "B0",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:23:53.006Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "퇴근길 지하철에서 읽은 책 기록",
+          "status": "kept",
+          "evidence": "퇴근길 지하철에서 읽은 책을 짧게 기록하는 블로그입니다."
+        },
+        {
+          "item": "다 읽지 못해도 밑줄 그은 문장과 생각을 적음",
+          "status": "kept",
+          "evidence": "한 권을 다 읽지 못해도 그날 밑줄 그은 문장 하나와 떠오른 생각을 적습니다."
+        },
+        {
+          "item": "서평과 일기 사이라는 대조",
+          "status": "kept",
+          "evidence": "서평이라고 하기엔 짧고, 일기라고 하기엔 책 이야기가 많습니다."
+        },
+        {
+          "item": "2024년 3월부터",
+          "status": "kept",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "item": "일주일에 두세 번",
+          "status": "kept",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "item": "작성자의 말투",
+          "status": "kept",
+          "evidence": "결과가 원문과 완전히 같아서 '~습니다' 말투가 그대로 남아 있다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "필요 없는 대규모 재작성",
+          "status": "ok",
+          "evidence": "결과가 원문과 똑같다."
+        },
+        {
+          "item": "새 경험·감상·독자 수 추가",
+          "status": "ok",
+          "evidence": "원문에 없던 문장이 하나도 추가되지 않았다."
+        },
+        {
+          "item": "서평·일기 대조 삭제",
+          "status": "ok",
+          "evidence": "서평이라고 하기엔 짧고, 일기라고 하기엔 책 이야기가 많습니다."
+        },
+        {
+          "item": "홍보 문구 추가",
+          "status": "ok",
+          "evidence": "홍보 문구가 추가되지 않았다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "결과가 원문과 같아서 새로 생긴 사실이 없다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 네 문장이 모두 그대로 남아 있다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "한 권을 다 읽지 못해도 그날 밑줄 그은 문장 하나와 떠오른 생각을 적습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "인용문·코드·고유 이름이 없고, 바뀐 표기도 없다."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요청은 고칠 게 없으면 그대로 돌려달라는 것이었고, 결과는 원문을 바꾸지 않고 돌려주었다."
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 8996,
+        "wallMs": 10272,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1030,
+          "cacheReadInputTokens": 2340,
+          "outputTokens": 1156,
+          "thinkingTokens": 0
+        },
+        "costUsd": 0.031836,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

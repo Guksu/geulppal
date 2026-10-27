@@ -1,0 +1,60 @@
+{
+  "id": "explain-sql",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": false,
+  "prompt": "이 쿼리가 느린 이유 설명해줘: SELECT * FROM orders WHERE YEAR(created_at) = 2025;",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": false,
+  "selectedBy": null,
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": false,
+    "top3": [
+      "code-review:18.2",
+      "schedule:5.6",
+      "update-config:5.6"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [],
+  "permissionDenials": [],
+  "durationMs": 9014,
+  "wallMs": 10111,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 4712,
+    "cacheReadInputTokens": 4430,
+    "outputTokens": 1187,
+    "thinkingTokens": 53
+  },
+  "costUsd": 0.031164999999999998,
+  "error": null
+}

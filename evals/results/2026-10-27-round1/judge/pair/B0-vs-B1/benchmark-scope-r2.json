@@ -1,0 +1,151 @@
+{
+  "id": "benchmark-scope",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B1",
+    "from": "2026-10-27-round1",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:34:58.216Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B1",
+      "verdict": "Y",
+      "winner": "B1",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 첫 문장 \"A는 axe 위반이 적었지만 생성은 더 오래 걸렸습니다.\"로 비교 결론을 바로 보여 줍니다. X는 \"A가 압도적으로 뛰어났습니다\"를 빼고 대체 문장을 넣지 않았습니다. 그래서 본문이 \"각 조건에서 화면 12개를 만들었습니다.\"로 시작하고, 독자는 결론을 직접 끌어내야 합니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "둘 다 근거 없는 \"압도적으로\"를 없앴습니다. 다만 X의 편집 설명은 \"접근성 위반만 A가 적고, 생성 시간은 B가 짧습니다\"와 \"접근성 위반은 A가 적었고, 생성 시간은 B가 짧았습니다\"처럼 같은 내용을 되풀이합니다. Y의 설명은 두 문장으로 짧습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X는 \"각 조건에서 화면 12개를 만들었습니다. axe 위반 합계는 A가 6건, B가 24건이었습니다.\"처럼 짧은 문장을 나열합니다. Y는 \"각 조건에서 화면 12개를 만들었고, axe 위반 합계는 A 6건, B 24건이었습니다.\"로 이어서 결론, 근거, 한계 순으로 자연스럽게 읽힙니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "비교 보고서에는 결론 문장이 있어야 합니다. Y는 원문처럼 결론을 먼저 쓰는 구조를 유지하면서 정확하게 고쳤습니다. X는 \"결론 문장이 필요하면 ... 쓰는 편이 정확합니다\"라고 제안만 하고 본문에는 반영하지 않았습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X는 원문의 결론 문장을 고치지 않고 통째로 지워서 지나치게 줄였습니다. Y는 \"한 번씩만\"에 '만'을 더하고 \"반복 실행이 더 필요합니다\"라는 조언을 붙였습니다. 다만 이것은 원문에 있던 한계를 강조한 정도라 부담이 적습니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "요청은 문장을 간결하게 다듬는 것이었고, 핵심 문제는 근거 없는 \\\"압도적으로 뛰어났습니다\\\"였습니다. Y는 이 문장을 수치가 받쳐 주는 결론(\\\"A는 axe 위반이 적었지만 생성은 더 오래 걸렸습니다\\\")으로 바꿔 맨 앞에 두었습니다. 덕분에 독자가 결론을 바로 찾을 수 있고, 나머지 문장도 자연스럽게 이어집니다. X는 과장을 없앴지만 결론을 대체하지 않아 보고서에 결론이 사라졌습니다. 또 X는 올바른 결론 문장을 설명에서 제안만 하고, 정작 본문에는 넣지 않았습니다. 짧은 문장을 나열한 탓에 흐름도 끊깁니다.",
+        "meaning_concerns": "Y는 '한 번씩만'이라고 써서 원문보다 한계를 조금 더 강조합니다. 큰 왜곡은 아닙니다. X는 원문의 종합 판단 문장을 삭제했으므로, 보고서가 내리던 결론 자체가 빠졌습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 17324,
+          "wallMs": 18602,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1267,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1892,
+            "thinkingTokens": 382
+          },
+          "costUsd": 0.0483036,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B1",
+      "Y": "B0",
+      "verdict": "X",
+      "winner": "B1",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 첫 문장 \"A는 axe 위반이 적었지만 생성은 더 오래 걸렸습니다.\"로 결론을 먼저 보여 준다. Y는 \"각 조건에서 화면 12개를 만들었습니다.\"로 시작해 독자가 수치를 직접 비교해야 결론을 알 수 있고, 제안한 결론 문장은 본문이 아닌 메모에만 있다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "둘 다 \"압도적으로\"를 없앴다. Y의 메모는 \"이 수치로는 접근성 위반만 A가 적고…\", \"그래서 '전반적으로 A가 우수하다'는 결론은 자료와 맞지 않습니다\", \"'접근성 위반은 A가 적었고, 생성 시간은 B가 짧았습니다'처럼…\"으로 같은 내용을 세 번 되풀이한다. X의 메모는 두 문장으로 끝난다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 \"각 조건에서 화면 12개를 만들었고, axe 위반 합계는…\"처럼 관련 문장을 이어 써서 자연스럽게 읽힌다. Y는 \"각 조건에서 화면 12개를 만들었습니다. axe 위반 합계는…\"처럼 짧은 문장이 나열된다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "둘 다 원문의 존댓말 보고체를 유지했다. 보고서에는 결론 문장이 있어야 하는데, X는 이를 유지했고 Y는 없앴다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 본문을 거의 그대로 두었고 \"한 번씩만\"의 '만' 정도만 덧붙였다. Y는 필요한 결론 문장을 지웠고 요청하지 않은 긴 설명을 덧붙였다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 근거 없는 과장인 \\\"압도적으로 뛰어났습니다\\\"를 처리했다. X는 이 문장을 수치가 뒷받침하는 결론으로 바꿔 보고서 맨 앞에 두었다. Y는 결론 문장을 빼고 대안 문장을 메모에서 제안하는 데 그쳐, 보고서 본문에 비교 결과를 요약하는 문장이 없다. 설명 메모도 X가 더 짧다.",
+        "meaning_concerns": "수치는 둘 다 정확하게 옮겼다. Y는 결론 문장을 지워 보고서 본문에 결론이 없다. X는 \\\"한 번씩만\\\"이라고 써서 원문보다 한계를 조금 더 강조하지만 의미가 바뀐 정도는 아니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19637,
+          "wallMs": 20405,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1268,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2357,
+            "thinkingTokens": 170
+          },
+          "costUsd": 0.057611600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B1"
+}

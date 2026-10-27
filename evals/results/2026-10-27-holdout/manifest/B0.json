@@ -1,0 +1,43 @@
+{
+  "condition": "B0",
+  "skill": {
+    "path": "evals/snapshots/v0.1.0/geulppal",
+    "treeSha256": "ef6dd283372aaac25a4faef5b6bfc186643865054535af768dc8fe7e3cc55ea7",
+    "skillMdSha256": "13b0c69bbb58127613d506d452a84d92b6e22e27f5db3b34ff8ec376d2e6d400"
+  },
+  "invocation": "요청 앞에 \"/geulppal \" (프로젝트 스킬 .claude/skills/geulppal)",
+  "model": "claude-sonnet-5-5",
+  "effort": "high",
+  "cli": "2.1.311 (Claude Code)",
+  "args": [
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--model",
+    "claude-sonnet-5-5",
+    "--effort",
+    "high",
+    "--session-id",
+    "<새 UUID>",
+    "--setting-sources",
+    "project",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "dontAsk",
+    "--tools",
+    "Read,Glob,Grep,Skill",
+    "--allowedTools",
+    "Read Glob Grep Skill",
+    "-p",
+    "<프롬프트>"
+  ],
+  "tools": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Skill"
+  ],
+  "casesFile": "evals/holdout/cases.json",
+  "casesSha256": "2a5b7a025ab0121142290f4610918f3e5efb49e7a783420022e2a175c412c417",
+  "updated": "2026-10-27T05:53:53.304Z"
+}

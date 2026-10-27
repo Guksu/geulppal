@@ -1,0 +1,166 @@
+{
+  "id": "proposal-cost-exceptions",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:29:30.338Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "도입은 검토 단계",
+          "status": "kept",
+          "evidence": "이를 효율적으로 처리하기 위해 챗봇 도입을 검토하고자 합니다."
+        },
+        {
+          "item": "3개월(7~9월) 문의 4,812건 중 배송 조회 1,930건(약 40%)",
+          "status": "kept",
+          "evidence": "지난 3개월(7~9월) 접수된 문의 4,812건 중 배송 조회 문의는 1,930건(약 40%)입니다."
+        },
+        {
+          "item": "송장 번호가 등록된 주문의 배송 조회만 처리",
+          "status": "kept",
+          "evidence": "**챗봇 처리:** 송장 번호가 등록된 주문의 배송 조회"
+        },
+        {
+          "item": "반품·교환은 상담원 처리",
+          "status": "kept",
+          "evidence": "**상담원 처리 유지:** 반품·교환 문의"
+        },
+        {
+          "item": "월 120만 원·사용자 수 무관·VAT 별도",
+          "status": "kept",
+          "evidence": "**비용:** 월 120만 원 (사용자 수 무관, VAT 별도), A사 견적 기준"
+        },
+        {
+          "item": "비용은 A사 견적 기준",
+          "status": "kept",
+          "evidence": "월 120만 원 (사용자 수 무관, VAT 별도), A사 견적 기준"
+        },
+        {
+          "item": "업체 미결정과 B사 견적 다음 주 예정",
+          "status": "kept",
+          "evidence": "A사와 B사를 비교 중입니다. B사 견적은 다음 주에 수령할 예정이며"
+        },
+        {
+          "item": "초기 연동 약 3주 예상",
+          "status": "kept",
+          "evidence": "**초기 연동 개발:** 약 3주"
+        },
+        {
+          "item": "업무 부담 감소는 기대이며 시범 운영 후 측정 계획",
+          "status": "kept",
+          "evidence": "상담원의 업무 부담이 줄어들 것으로 기대합니다. 실제 감소 폭은 시범 운영 후 측정하여 보고하겠습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "도입 확정으로 변경",
+          "status": "ok",
+          "evidence": "챗봇 도입을 검토하고자 합니다."
+        },
+        {
+          "item": "업무 부담 감소를 확정 효과나 새 수치로 쓰기",
+          "status": "ok",
+          "evidence": "상담원의 업무 부담이 줄어들 것으로 기대합니다."
+        },
+        {
+          "item": "40%를 자동화율이나 처리율로 바꾸기",
+          "status": "ok",
+          "evidence": "배송 조회 문의는 1,930건(약 40%)입니다."
+        },
+        {
+          "item": "VAT 별도·A사 기준 삭제",
+          "status": "ok",
+          "evidence": "월 120만 원 (사용자 수 무관, VAT 별도), A사 견적 기준"
+        },
+        {
+          "item": "3주를 확정 일정으로 단정",
+          "status": "ok",
+          "evidence": "**초기 연동 개발:** 약 3주"
+        },
+        {
+          "item": "새 수치 추가",
+          "status": "ok",
+          "evidence": "본문에는 새 수치가 없음. 연간 1,440만 원 환산은 메모에서 제안만 함: \"원하시면 반영하겠습니다.\""
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "problem",
+          "evidence": "\"B사 견적은 다음 주에 수령할 예정이며, 수령 후 비교하여 업체와 최종 비용을 확정하겠습니다.\" — 원문은 업체가 미정이라고만 했고, B사 견적을 받은 뒤 비교해 업체와 최종 비용을 확정한다는 계획·약속은 없다. \"측정하여 보고하겠습니다\"의 '보고' 약속도 원문에 없다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "배경, 적용 범위, 비용·일정, 미정 사항, 기대 효과가 모두 남아 있음."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "지난 3개월(7~9월) 접수된 문의 4,812건 중 배송 조회 문의는 1,930건(약 40%)입니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"검토하고자 합니다\", \"줄어들 것으로 기대합니다\", \"약 3주\" — 검토·기대·추정이 그대로 유지됨."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"송장 번호가 등록된 주문의 배송 조회\", \"사용자 수 무관, VAT 별도\", \"A사 견적 기준\" 유지."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "A사·B사 등 고유 이름과 수치가 손상되지 않음."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "결재용으로 다듬은 본문을 돌려주고, 확인할 점은 메모로 따로 적음."
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "new_facts: 본문에 원문에 없는 계획·약속이 들어감. \"수령 후 비교하여 업체와 최종 비용을 확정하겠습니다\"는 업체 선정 절차와 시점을 새로 정했고, \"측정하여 보고하겠습니다\"는 보고 약속을 새로 넣음."
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 25627,
+        "wallMs": 26492,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 2579,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 3015,
+          "thinkingTokens": 1115
+        },
+        "costUsd": 0.08143600000000001,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

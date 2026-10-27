@@ -1,0 +1,124 @@
+{
+  "id": "polite-email-noop",
+  "condition": "B2",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:39:38.693Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "제안서 첨부",
+          "status": "kept",
+          "evidence": "수정한 제안서를 첨부합니다."
+        },
+        {
+          "item": "금요일까지 의견 요청",
+          "status": "kept",
+          "evidence": "금요일까지 검토 의견을 보내 주시면"
+        },
+        {
+          "item": "다음 버전 반영",
+          "status": "kept",
+          "evidence": "다음 버전에 반영하겠습니다."
+        },
+        {
+          "item": "상대에 대한 공손함",
+          "status": "kept",
+          "evidence": "안녕하세요, ... 감사합니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "반말로 변경",
+          "status": "ok",
+          "evidence": "안녕하세요, 수정한 제안서를 첨부합니다. 금요일까지 검토 의견을 보내 주시면 다음 버전에 반영하겠습니다. 감사합니다."
+        },
+        {
+          "item": "새 배경이나 구호 추가",
+          "status": "ok",
+          "evidence": "안녕하세요, 수정한 제안서를 첨부합니다. 금요일까지 검토 의견을 보내 주시면 다음 버전에 반영하겠습니다. 감사합니다."
+        },
+        {
+          "item": "기한 삭제",
+          "status": "ok",
+          "evidence": "금요일까지 검토 의견을 보내 주시면"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "안녕하세요, 수정한 제안서를 첨부합니다. 금요일까지 검토 의견을 보내 주시면 다음 버전에 반영하겠습니다. 감사합니다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문과 결과 본문이 같다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "금요일까지"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "보내 주시면 다음 버전에 반영하겠습니다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "금요일까지 검토 의견을 보내 주시면"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "인용문·코드·고유 이름이 없고 본문이 원문과 같다."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "고칠 곳이 없어 그대로 둡니다."
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 7349,
+        "wallMs": 8192,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 779,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 888,
+          "thinkingTokens": 0
+        },
+        "costUsd": 0.024496000000000004,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

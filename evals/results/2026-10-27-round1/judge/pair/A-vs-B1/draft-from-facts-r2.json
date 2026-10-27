@@ -1,0 +1,151 @@
+{
+  "id": "draft-from-facts",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B1",
+    "from": "2026-10-27-round1",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:35:14.634Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B1",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 같은 순서(만든 이유 → 기능 → 계획)로 짧게 세 덩어리로 나뉘어 있어 찾기 쉽다. X \"흩어진 메모 때문에… 시작한 프로젝트입니다\", Y \"여기저기 흩어진 메모를 찾느라 불편해서 만들었습니다\"."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 과장이 거의 없다. X의 \"계속 고쳐 나갈 계획입니다\"에서 \"계속\"이 조금 덧붙었고, Y는 \"불편한 점이 보이면 고쳐 나갈 예정입니다\"로 원문에 더 가깝지만 차이는 작다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y의 \"불편해서 만들었습니다\"는 바로 읽힌다. X의 \"찾기 어려웠던 불편함에서 시작한 프로젝트입니다\"는 명사구가 겹쳐 조금 무겁다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 개인 프로젝트 소개에 맞는 담백한 존댓말이다. X \"제가 직접 사용하면서\", Y \"직접 쓰면서\" 모두 자연스럽다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "Y는 소개글 뒤에 \"출시 시점, 사용자 수, 저장 방식은 제공받지 않아 넣지 않았습니다. 필요하면 알려 주세요.\"라는 요청하지 않은 메모를 붙였다. X는 소개글만 남겼다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 원문 사실만으로 만든 이유, 기능, 업데이트 계획을 짧게 담았고 제공되지 않은 정보를 지어내지 않았다. Y는 본문이 조금 더 직접적이고 자연스럽지만 요청하지 않은 메모를 덧붙였다. X는 소개글만 깔끔하게 남겼지만 첫 문장이 조금 무겁다. 장단점이 상쇄돼 어느 쪽도 분명히 낫지 않다.",
+        "meaning_concerns": "의미가 달라진 곳은 없다. X의 \"계속 고쳐 나갈\"에서 \"계속\"은 원문 \"수정할 예정\"보다 조금 강하다. Y의 \"메모에 태그를 달아\"는 태그를 다는 방식을 추론해 넣은 표현이다. 둘 다 사소하다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 16095,
+          "wallMs": 16923,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1042,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1796,
+            "thinkingTokens": 313
+          },
+          "costUsd": 0.0445836,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B1",
+      "Y": "A",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "둘 다 이름 → 만든 이유와 기능 → 업데이트 계획 순서다. X는 \"앞으로 직접 쓰면서 불편한 점이 보이면 고쳐 나갈 예정입니다\", Y는 \"앞으로는 제가 직접 사용하면서 불편한 점을 찾아 계속 고쳐 나갈 계획입니다\"로 계획을 따로 한 문단에 두어 찾기 쉽다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 과장이 없다. Y의 \"계속 고쳐 나갈\"은 원문에 없는 '계속'을 붙였지만 과장이라고 할 정도는 아니다. X도 \"여기저기 흩어진\"으로 조금 보탰을 뿐이다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X의 \"여기저기 흩어진 메모를 찾느라 불편해서 만들었습니다\"는 만든 이유를 바로 말한다. Y의 \"흩어진 메모 때문에 필요한 내용을 찾기 어려웠던 불편함에서 시작한 프로젝트입니다\"는 수식이 길게 겹쳐 조금 늘어진다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 짧은 프로젝트 소개글에 맞는 1인 제작자의 담백한 존댓말이다. Y의 \"제가 직접 사용하면서\"는 개인 프로젝트라는 느낌을 조금 더 준다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X는 구분선 아래에 \"출시 시점, 사용자 수, 저장 방식은 제공받지 않아 넣지 않았습니다. 필요하면 알려 주세요.\"라는 요청하지 않은 메모를 덧붙였다. Y는 소개글만 내놓아 바로 쓸 수 있다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "본문만 보면 X가 만든 이유를 더 직접적이고 자연스럽게 말한다. Y는 요청하지 않은 메모 없이 바로 쓸 수 있는 소개글만 내놓았다. X의 메모는 구분선으로 본문과 분리되어 있고 사용자에게 쓸모 있는 안내여서 큰 흠은 아니다. 기준별 우열이 엇갈리고 차이도 작아 어느 쪽도 분명히 낫지 않다.",
+        "meaning_concerns": "큰 의미 변화는 없다. Y의 \"계속 고쳐 나갈\"과 X의 \"태그를 달아\"는 원문에 없는 표현이지만 원문 범위 안에서 자연스럽게 나온 말이다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19460,
+          "wallMs": 20257,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1041,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2078,
+            "thinkingTokens": 574
+          },
+          "costUsd": 0.050215600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "tie"
+}

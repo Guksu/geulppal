@@ -1,0 +1,19 @@
+{
+  "id": "email-conference-speakers-ko",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": false
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": false
+  },
+  "reusedBaseline": false,
+  "judged": false,
+  "reason": "두 결과가 모두 의미 보존을 통과하지 않아 품질 비교에서 제외"
+}

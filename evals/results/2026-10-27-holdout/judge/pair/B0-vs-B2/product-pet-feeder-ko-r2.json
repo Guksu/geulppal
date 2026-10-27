@@ -1,0 +1,151 @@
+{
+  "id": "product-pet-feeder-ko",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:04:18.879Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 \"**정전 시**\", \"**사료 걸림 방지**\", \"**가격과 혜택**\" 소제목으로 정보를 나눠, 스크롤하며 훑어보는 상세페이지 독자가 원하는 정보를 바로 찾을 수 있다. Y는 같은 내용을 소제목 없이 문단으로만 이어 붙였다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "둘 다 과장 문구를 뺐다. 다만 Y는 도입부에서 \"전용 앱으로 급식 시간과 양을 예약하는 자동급식기입니다\"라고 한 뒤 다음 문단에서 \"급식 시간과 양은 전용 앱(iOS, Android)에서 하루 최대 8회까지 설정할 수 있습니다\"로 같은 기능을 다시 설명한다. X는 첫 문장에 \"4L 사료통을 갖춘\"을 넣어 이 반복을 피했다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y는 \"정전이 되어도 예약 급식은 이어집니다\"로 정전 대응을 소개하고 세부 조건으로 넘어가서 자연스럽게 읽힌다. X의 \"걸림 방지 회전판 설계를 적용했습니다\"는 그 기능이 고객에게 무엇이 좋은지를 말하지 않아 조금 끊기는 느낌이 든다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y는 \"사료가 막히는 일을 줄였습니다\", \"정전이 되어도 예약 급식은 이어집니다\"처럼 고객이 얻는 이점을 담은 판매 문구의 말투를 유지했다. X는 \"정전이 되어도 걱정 없습니다\" 같은 연결 문장까지 빼서 설명서처럼 다소 건조해졌다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "X는 소제목을 새로 넣었지만 상세페이지에서는 그럴 만한 형식이다. Y는 제목에 \"대용량\"을 덧붙였지만 4L라는 수치가 뒷받침해 과장으로 보기는 어렵다. X의 메모는 뺀 홍보 문구를 빠짐없이 적고 표시·광고 위험을 짚었고, Y의 메모는 더 짧지만 핵심을 담았다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 근거 없는 과장을 빼고 수치와 조건을 그대로 지켰다. X는 소제목으로 정보를 나눠 상세페이지에서 찾기 쉽고, Y처럼 도입부와 다음 문단에서 앱 예약 기능을 두 번 설명하는 중복이 없다. Y는 판매 문구다운 말투와 흐름이 더 자연스럽지만, 이 장점이 중복을 상쇄할 만큼 크지는 않다. 그래서 X가 근소하게 낫다고 판정한다.",
+        "meaning_concerns": "큰 문제는 없다. 원문 \"사료가 막히는 일이 없습니다\"는 바로 뒤의 12mm 제한과 맞지 않는데, X는 이를 \"걸림 방지 설계를 적용했다\"로, Y는 \"막히는 일을 줄였다\"로 고쳤다. 두 결과 모두 메모에서 바꾼 이유를 밝혔고, 어느 쪽도 사실을 바꾸지 않았다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 27194,
+          "wallMs": 28215,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2801,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 3179,
+            "thinkingTokens": 540
+          },
+          "costUsd": 0.08631559999999999,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 \"**정전 시**\", \"**사료 걸림 방지**\", \"**가격과 혜택**\" 소제목으로 나눠 구매자가 정전 대응·크기 제한·할인 조건을 바로 찾을 수 있다. X는 같은 내용을 소제목 없는 문단으로 이어 놓았다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "둘 다 과장 문구를 뺐다. X는 첫 문장 \"전용 앱으로 급식 시간과 양을 예약하는 자동급식기입니다\"와 둘째 문단 \"급식 시간과 양은 전용 앱(iOS, Android)에서…\"가 같은 내용을 반복한다. Y는 \"4L 사료통을 갖춘 고양이 자동급식기입니다\"로 시작해 반복 없이 바로 이어진다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X의 \"정전이 되어도 예약 급식은 이어집니다.\" 같은 도입 문장이 문단을 자연스럽게 연다. Y는 \"**정전 시**\" 소제목 뒤에 \"정전 시 최대 72시간\"이 다시 나온다. \"걸림 방지 회전판 설계를 적용했습니다\"만 있어 구매자에게 어떤 도움이 되는지 연결이 약하다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "X는 원문의 소개하는 말투를 더 살렸고, Y는 소제목 구조가 상세페이지에서 훑어보기에 잘 맞는다. 둘 다 쇼핑몰 독자에게 적절해 장단점이 비긴다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 원문 문단 구조를 유지하고 메모도 짧다. Y는 소제목을 새로 넣었고, 메모에 \"수치와 조건(4L, 60g, …)은 모두 원문 그대로입니다\" 같은 요청하지 않은 확인 목록을 덧붙였다. 다만 X의 메모는 '업계 최고의 기술력', '완벽한 솔루션' 등을 뺀 사실은 알리지 않았다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 근거 없는 과장을 걷어내고 조건과 단서는 보존했다. 상세페이지 독자는 정전 대응, 사료 크기 제한, 할인 조건을 빠르게 찾아야 한다. Y는 소제목으로 이 정보를 나눴고 X에 있는 앱 설명 반복도 없앴다. X는 흐름이 더 자연스럽고 수정 폭도 작지만, '막히는 일을 줄였습니다'처럼 원문에 없던 개선 주장을 넣었다. 기준별로 엇갈려 차이가 크지 않으며, Y가 근소하게 앞선다.",
+        "meaning_concerns": "X의 '사료가 막히는 일을 줄였습니다'는 원문에 없던 개선 주장('줄였다')을 새로 넣은 것으로, 이 역시 근거가 필요하다. Y의 '걸림 방지 회전판 설계를 적용했습니다'는 사실만 적어 원문에서 벗어나지 않는다. 수치와 조건은 양쪽 모두 원문 그대로 보존했다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 28855,
+          "wallMs": 29782,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2801,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 3261,
+            "thinkingTokens": 608
+          },
+          "costUsd": 0.0879556,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

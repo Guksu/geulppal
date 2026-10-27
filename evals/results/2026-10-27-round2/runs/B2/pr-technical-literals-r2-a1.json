@@ -1,0 +1,111 @@
+{
+  "id": "pr-technical-literals",
+  "condition": "B2",
+  "rep": 2,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:38:14.601Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "geulppal",
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": true,
+    "skillBodyInjected": true,
+    "skillBodyMatchesInstalled": true,
+    "listedGeulppal": true,
+    "skillToolCalls": [],
+    "referenceReads": [
+      "references/document-types.md"
+    ],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "/geulppal PR 본문 문장을 다듬어줘. 코드와 링크는 유지해줘.\n\n이번 개선은 매우 혁신적입니다. `retryCount`가 0일 때 재시도하지 않도록 수정했습니다. 검증 명령은 다음과 같습니다.\n\n```sh\nnpm test -- retry.test.ts\n```\n\n위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다. [설명](docs/retry.md#retry-count)",
+  "output": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다. 자세한 설명은 [설명](docs/retry.md#retry-count)에 있습니다.\n\n검증 명령은 다음과 같습니다.\n\n```sh\nnpm test -- retry.test.ts\n```\n\n위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다.\n\n---\n\n- 원문의 \"매우 혁신적입니다\"는 근거가 없어서 뺐습니다. 이전 동작과 달라진 점(예: 0일 때도 한 번 재시도했는지)을 아시면 한 문장 덧붙이면 좋습니다.\n- 링크 문구는 원문대로 `설명`으로 두었습니다. 위치는 \"자세한 설명은\" 뒤로 옮겼습니다.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 4973,
+  "wallMs": 5888,
+  "numTurns": 2,
+  "usage": {
+    "inputTokens": 4,
+    "cacheCreationInputTokens": 11254,
+    "cacheReadInputTokens": 16712,
+    "outputTokens": 447,
+    "thinkingTokens": 73
+  },
+  "costUsd": 0.0511652,
+  "permissionDenials": [],
+  "toolCalls": [
+    {
+      "name": "Read",
+      "input": "{\"file_path\":\"<tmp>\"}"
+    }
+  ],
+  "error": null
+}

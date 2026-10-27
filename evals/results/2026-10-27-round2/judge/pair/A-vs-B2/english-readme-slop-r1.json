@@ -1,0 +1,151 @@
+{
+  "id": "english-readme-slop",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:41:42.520Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "README 본문은 두 결과가 똑같다. 다만 X는 섹션 끝에 \"**What I cut:** the opening and closing marketing paragraphs...\"를 붙였다. README 독자에게는 필요 없는 내용이 `--fix` 제약 바로 뒤에 놓인다. Y는 \"...other than `.env` and `.env.example`.\"에서 섹션이 끝난다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "두 결과 모두 \"In today's fast-paced development landscape...\"와 \"supercharge your productivity!\"를 지웠다. 그런데 X의 메모는 \"The command, the key-names-only guarantee, and both `--fix` limitations are unchanged.\"라고 본문 내용을 한 번 더 요약한다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "설명, 명령, `--fix` 제약으로 이어지는 순서와 문장이 같다. 둘 다 \"Use `--fix` to append missing keys with empty values. `--fix` never removes keys...\"로 자연스럽게 이어진다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "X의 \"What I cut:\" 문단은 편집자가 1인칭으로 남긴 메모다. README의 문서체와 맞지 않는다. Y는 처음부터 끝까지 README 문체를 지킨다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "요청은 \"Tighten this README section\"뿐이었다. X는 요청받지 않은 변경 설명을 결과 본문 안에 따로 구분하지도 않고 넣었다. 그대로 붙여 넣으면 README에 섞여 들어간다. Y는 다듬은 섹션만 내놓았다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "README 본문은 X와 Y가 글자 하나까지 같아서 차이는 X에만 있는 메모 하나뿐이다. 두 결과 모두 마케팅 문구를 빼고, 명령과 키 이름만 비교한다는 보장, `--fix`의 두 가지 제약을 그대로 남겼다. X는 여기에 \"**What I cut:**\" 문단을 덧붙였는데, 결과 본문과 구분되지 않는다. 그래서 그대로 붙여 넣으면 README에 편집 메모가 섞인다. 요청받지 않은 추가이고 문서의 문체와도 맞지 않는다. 그래서 군더더기 없이 다듬은 섹션만 내놓은 Y가 낫다.",
+        "meaning_concerns": "없음. 두 결과 모두 명령(`npx envsync check`), 키 이름만 비교한다는 보장, `--fix`의 두 가지 제약(키를 지우지 않는다, `.env`와 `.env.example` 외의 파일은 무시한다)을 그대로 지켰다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 12954,
+          "wallMs": 13764,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1161,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1277,
+            "thinkingTokens": 139
+          },
+          "costUsd": 0.0351556,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "README 본문은 두 결과가 같다. 다만 Y는 섹션 끝에 \"**What I cut:** the opening and closing marketing paragraphs...\"를 붙였다. 이 문단이 README 안에 있으면 사용자가 문서 내용과 편집 메모를 가려내야 한다. X는 \"`--fix` never removes keys...\"에서 끝나서 명령과 제약만 남는다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "두 결과 모두 \"In today's fast-paced development landscape...\"와 \"supercharge your productivity!\"를 지웠다. 그런데 Y의 메모는 \"The command, the key-names-only guarantee, and both `--fix` limitations are unchanged\"라고 본문 내용을 다시 설명해서 반복이 생겼다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "본문 흐름은 같다. Y는 \"`.env.example`.\" 다음에 1인칭 메모 \"What I cut:\"가 바로 이어져서 README의 흐름이 끊긴다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "README는 사용자에게 보여 주는 문서인데 Y의 \"I also dropped 'To get started, simply run:'\"은 편집자가 요청자에게 하는 말투다. 장르에 맞지 않는다. X는 원문의 건조한 기술 문서 말투를 그대로 유지했다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "요청은 섹션을 줄여 달라는 것이었고 변경 설명을 요구하지 않았다. Y는 요청하지 않은 설명 문단을 결과물 안에 넣었다. X는 필요한 삭제(\"Note that\", 마케팅 문단)만 했다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "X가 낫습니다. 두 결과의 README 본문은 한 글자도 다르지 않습니다. 둘 다 마케팅 문단, \"To get started, simply run:\", \"Note that\"를 지웠고, 명령과 두 가지 `--fix` 제약은 남겼습니다. 차이는 Y가 섹션 끝에 붙인 \"What I cut:\" 메모 하나뿐입니다. 이 메모는 README 독자에게 필요 없는 1인칭 편집 설명이어서 그대로 붙여 넣으면 문서를 오염시킵니다. 요청하지 않은 내용을 더한 것이기도 합니다.",
+        "meaning_concerns": "의미가 달라진 곳은 없습니다. 두 결과 모두 명령, \"only key names are compared\" 보장, `--fix`의 두 제약(키를 지우지 않음, `.env`와 `.env.example` 외 파일은 무시)을 그대로 지켰습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 13802,
+          "wallMs": 14624,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1162,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1208,
+            "thinkingTokens": 101
+          },
+          "costUsd": 0.033783600000000004,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

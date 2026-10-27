@@ -1,0 +1,150 @@
+{
+  "id": "english-terms-and-list",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:27:09.572Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both edited paragraphs are word-for-word identical: \"The export contains three files: orders.csv, refunds.csv, and totals.csv. The leverage field may be empty. We have not tested imports larger than 20 MB.\" The file list, the empty-field condition, and the 20 MB limit are equally easy to find in each."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both cut only the filler opener \"It is important to note that\" and add no hype or repetition."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Both keep the same three-sentence order with no awkward breaks."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Both keep the original's plain technical tone and its \"We have not tested...\" voice."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Both edits change only the opener. The notes differ a little. X says \"The other sentences had no filler, so I left them as they were.\" Y says \"I kept `leverage` because it names a field.\" Y explains why it kept a word that might look like a buzzword, which is slightly more useful, but both notes are one short sentence and neither adds unrequested content."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "The edited paragraphs are identical. Each removes only the filler \"It is important to note that\" and leaves the rest of the original alone. The only difference is the one-sentence note after the edit. Y's note (\"names a field\") says a bit more about why \"leverage\" stayed, but that has little effect on what the reader gets, so neither result is clearly better.",
+        "meaning_concerns": "None. Neither result changes the meaning."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 8486,
+          "wallMs": 9311,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 777,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 813,
+            "thinkingTokens": 154
+          },
+          "costUsd": 0.0228036,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both edited paragraphs are identical: \"The export contains three files: orders.csv, refunds.csv, and totals.csv. The leverage field may be empty. We have not tested imports larger than 20 MB.\""
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both removed the same filler phrase, \"It is important to note that\", and added nothing new to the paragraph."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "The body text is word-for-word the same in both, so the flow is the same."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Both keep the original's plain technical voice unchanged, including \"We have not tested imports larger than 20 MB.\""
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Both made only the one necessary edit. The notes are each a line long: X says \"I kept `leverage` because it names a field\" and Y says \"The other sentences had no filler, so I left them as they were\". X explains why a word that is often treated as filler stayed, which helps a little, but the difference is minor."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "The edited paragraphs are identical, and both cut only the filler phrase. The only difference is the explanatory note after the edit. X's note says why \"leverage\" was kept, which is slightly more informative, but neither note changes the quality of the edit for the reader.",
+        "meaning_concerns": "None. Both keep the three file names, the note that the field may be empty, and the 20 MB untested limit."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 7509,
+          "wallMs": 8260,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 777,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 740,
+            "thinkingTokens": 123
+          },
+          "costUsd": 0.0213436,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "tie"
+}

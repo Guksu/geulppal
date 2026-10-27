@@ -1,0 +1,151 @@
+{
+  "id": "benchmark-scope",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:41:32.363Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B2",
+      "verdict": "X",
+      "winner": "A",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 방법을 앞에 두었습니다(\"조건별로 화면 12개를 1회씩 생성해 비교했습니다\"). 지표마다 A와 B의 순서도 통일했습니다(\"A 6건, B 24건\", \"A 65초, B 40초\"). 그래서 수치를 한눈에 비교할 수 있습니다. Y는 원문의 B, A 순서를 그대로 두었습니다(\"B가 24건, A가 6건\"). 실행 횟수도 끝에 나와(\"조건별로 한 번씩만 실행했고\") 수치를 읽은 뒤에야 맥락을 알게 됩니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "과장은 둘 다 없앴습니다. Y는 \"A는 axe 위반이 적었습니다\"라고 쓴 뒤 바로 \"위반 합계는 B가 24건, A가 6건\"을 덧붙여 같은 내용을 두 번 말합니다. X는 \"A 6건, B 24건으로 A가 적었고\"처럼 수치와 해석을 한 문장에 담아 반복이 없습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 \"~A가 적었고, ~B가 빨랐습니다\"처럼 두 지표의 대비가 한 문장에서 자연스럽게 이어집니다. Y는 \"A는 axe 위반이 적었습니다. 각 조건에서 화면 12개를 만들었고…\"에서 결론 다음에 갑자기 방법으로 돌아가 흐름이 한 번 끊깁니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 원문의 보고서체 존댓말(\"~했습니다\")을 유지합니다. 비교 보고서에 맞는 담담한 어조라는 점도 같습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X는 굵은 제목과 바꾼 점 세 줄을 붙였고, 요청하지 않은 결론 문장 예시(\"A는 접근성 위반이 4배 적었지만…\")까지 더해 부가 내용이 많습니다. Y는 원문의 구조를 대부분 살렸고 설명도 한 문단(\"첫 문장의 '압도적으로 뛰어났습니다'는 근거가 받치는 범위로 좁혔습니다…\")으로 짧습니다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "과장을 없앤 점은 같습니다. 그러나 X가 다듬은 본문은 순서를 통일했고, 방법을 앞에 두었으며, 수치와 해석을 한 문장에 묶었습니다. 그래서 더 간결하고 비교하기 쉽습니다. Y는 더 절제했지만 첫 문장과 수치 문장이 겹치고, B, A 순서도 그대로입니다. 그만큼 '간결하게'라는 요청을 덜 충족합니다. X의 부가 설명과 결론 예시는 요청 이상이지만 본문과 분리되어 있어 큰 흠은 아닙니다.",
+        "meaning_concerns": "의미가 달라진 곳은 거의 없습니다. X의 선택 문장에 나오는 \"4배 적었지만\"은 6건과 24건에서 계산한 값이라 맞습니다. Y의 \"한 번씩만\"에서 \"만\"은 한계를 원문보다 조금 더 강조하지만 사실은 그대로입니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 18630,
+          "wallMs": 20089,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1423,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1793,
+            "thinkingTokens": 345
+          },
+          "costUsd": 0.047571600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "A",
+      "verdict": "Y",
+      "winner": "A",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 \"조건별로 화면 12개를 1회씩 생성해 비교했습니다\"로 방법을 앞에 모으고 \"A 6건, B 24건\", \"A 65초, B 40초\"로 순서를 통일해 수치 비교가 쉽다. X는 \"B가 24건, A가 6건\", \"B 40초, A 65초\"로 원문 순서를 유지했다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"압도적으로 뛰어났습니다\"를 제거했다. X는 \"A는 axe 위반이 적었습니다\"와 \"위반 합계는…\"이 일부 겹치고, Y는 본문 밖에 선택 결론 문장을 추가했다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y의 \"axe 위반은 A 6건, B 24건으로 A가 적었고, 생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다\"는 대비 구조가 매끄럽다. X는 결론 문장 뒤에 같은 수치를 다시 풀어 연결이 약간 중복된다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 원문의 합니다체 보고 어조를 유지했다(\"평가하지 않았습니다\")."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 원문 문장 구조를 거의 그대로 두고 짧은 설명 한 문단만 붙였다. Y는 \"**다듬은 문장**\", \"**바꾼 점**\" 제목과 글머리 세 개, 추가 결론 문장 제안까지 넣어 형식이 과하다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "둘 다 과장된 첫 문장을 바로잡았다. 하지만 요청의 핵심인 다듬은 본문은 Y가 더 간결하고 구조적이다. 방법을 앞에 모았고 A·B 순서를 통일해 비교 보고서 독자가 수치를 바로 대응시킬 수 있다. X는 수정을 절제했지만 B·A 순서가 남았고, 결론 문장과 수치 문장이 일부 겹친다. Y의 메타 설명과 형식은 과하지만 본문과 분리되어 있어 본문의 품질을 해치지 않는다.",
+        "meaning_concerns": "두 결과 모두 의미 왜곡은 없다. Y의 선택 결론 문장 \"4배 적었지만\"은 6건과 24건에서 계산한 정확한 값이지만 원문에 없는 해석이다. 본문이 아닌 제안에만 들어 있다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 22162,
+          "wallMs": 23113,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1423,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2312,
+            "thinkingTokens": 569
+          },
+          "costUsd": 0.0579516,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "A"
+}

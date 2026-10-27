@@ -1,0 +1,151 @@
+{
+  "id": "en-docs-tile-seeding",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:03:20.703Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B2",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 명령어, 옵션 설명, 워커와 메모리, --force, Limitations 순서를 원문대로 유지한다. X는 \"`--force` overwrites them, but it only re-renders tiles inside the bounding box\"로, Y는 \"Pass `--force` to overwrite them.\"으로 썼다. 찾기 쉬운 정도는 같다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 \"It is important to note that seeding is a crucial step...\", \"In other words, seeding means...\", \"In conclusion, seeding is a powerful feature...\"를 지웠다. Y는 이용자에게 주는 이점을 \"and users don't wait for tiles to load\" 한 구절로만 남겼고, 과장은 없다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 \"`geotile seed` uses 4 worker processes by default; change this with `--workers`.\"와 \"roughly 600 MB of memory, measured on our reference setup\"처럼 문장을 이어 붙였다. Y는 \"...by default. Change this with `--workers`. Each worker uses roughly 600 MB of memory. We measured this on...\"로 짧은 문장이 이어진다. Y의 첫 문장 \"so they are served from the cache... and users don't wait\"는 연결이 조금 어색하다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 간결한 기술 문서 말투이고 원문의 \"we\"나 \"yet\" 같은 뉘앙스를 살렸다. Y는 \"We measured this on our reference setup\"으로 원문의 1인칭을 유지했다. X는 \"measured on our reference setup\"으로 썼다. 둘 다 장르에 맞다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Y는 문서만 내놓고 \"Seeding vector layers above zoom 16 is not supported.\"나 \"If the process stops\" 같은 원문 표현을 더 많이 남겼다. X는 \"Vector layers cannot be seeded above zoom 16.\"처럼 조금 더 고쳐 썼고 앞뒤에 설명을 덧붙였다. 다만 그 메모(\"I kept \\\"yet\\\" on the resume limitation...\")는 요청자에게 쓸모 있는 확인 사항이라 과하지 않다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 군더더기 도입부, 반복된 정의, 상투적인 결론을 지웠고 기술 정보는 모두 지켰다. X는 문장 연결이 조금 더 매끄럽고 쓸모 있는 확인 메모를 붙였다. Y는 붙여 넣기 쉬운 문서만 내놓았고 원문 표현을 더 많이 살렸지만, 첫 문장의 연결이 다소 어색하다. 장단점이 엇갈리고 차이가 작아 어느 쪽도 분명히 낫지 않다.",
+        "meaning_concerns": "특별한 의미 변화는 없다. X는 \\\"If the process stops\\\"를 빼고 \\\"Run it again;\\\"으로 줄였는데, 앞 문장이 interruption을 이미 말하고 있어 의미는 유지된다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 23127,
+          "wallMs": 23910,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2296,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2181,
+            "thinkingTokens": 472
+          },
+          "costUsd": 0.06231560000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "A",
+      "verdict": "Y",
+      "winner": "A",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the same heading structure, command block, option explanations and Limitations list. X: \"`--zoom` takes a range of zoom levels.\" Y: \"`--zoom` takes a range of zoom levels.\" Readers find things equally easily."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove \"It is important to note that seeding is a crucial step…\", \"In other words, seeding means rendering tiles before users request them\" and the \"In conclusion… blazing-fast\" ending. X keeps a short benefit clause (\"and users don't wait for tiles to load\"), but it isn't inflated."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X splits ideas into short sentences: \"Change this with `--workers`. Each worker uses roughly 600 MB of memory. We measured this on our reference setup…\". Y joins them: \"uses 4 worker processes by default; change this with `--workers`. Each worker uses roughly 600 MB of memory, measured on our reference setup…\". Y's \"`--force` overwrites them, but it only re-renders tiles inside the bounding box\" also connects the ideas more naturally. X's first sentence, \"…rendered on demand, and users don't wait for tiles to load\", is clumsy."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Both use a concise, direct technical-docs tone and keep the original's \"we\"/\"our reference setup\" voice."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X returns only the edited doc. Y adds a preface (\"Here's a tightened version…\"), a code fence and closing notes (\"Two small wording choices to check\"). These are useful, but they weren't requested. Y also rewrites a sentence that was already fine: \"Seeding vector layers above zoom 16 is not supported\" → \"Vector layers cannot be seeded above zoom 16\"."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "Both versions cut the filler, repetition and conclusion the same way and keep all technical details. Y reads better because it joins related facts in single sentences where X lists short separate ones, and its first sentence is cleaner. Y's added preface and notes sit outside the doc and help the user check the edit, so they cost little on restraint. Overall Y is somewhat better.",
+        "meaning_concerns": "Y removes the user benefit (not waiting for tiles to load); it is only implied. Y changes \"is not supported\" to \"cannot be seeded\", which isn't exactly the same meaning. Y shortens \"If the process stops, run it again\" to \"Run it again\", which is fine in context."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19743,
+          "wallMs": 20541,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2297,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1938,
+            "thinkingTokens": 499
+          },
+          "costUsd": 0.057463600000000004,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

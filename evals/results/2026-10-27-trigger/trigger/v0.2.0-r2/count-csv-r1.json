@@ -1,0 +1,65 @@
+{
+  "id": "count-csv",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": false,
+  "prompt": "data.csv에서 email이 중복된 행이 몇 개인지 세줘",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": false,
+  "selectedBy": null,
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": false,
+    "top3": [
+      "dataviz:7.1",
+      "claude-api:0.0",
+      "code-review:0.0"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [
+    {
+      "name": "Read",
+      "input": "{\"file_path\":\"<tmp>\",\"limit\":20}"
+    }
+  ],
+  "permissionDenials": [],
+  "durationMs": 3983,
+  "wallMs": 4913,
+  "usage": {
+    "inputTokens": 4,
+    "cacheCreationInputTokens": 4877,
+    "cacheReadInputTokens": 13548,
+    "outputTokens": 334,
+    "thinkingTokens": 68
+  },
+  "costUsd": 0.0242108,
+  "error": null
+}

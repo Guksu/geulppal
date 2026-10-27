@@ -1,0 +1,151 @@
+{
+  "id": "english-terms-and-list",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:41:52.573Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the same three facts in the same order: \"The export contains three files: orders.csv, refunds.csv, and totals.csv. The leverage field may be empty.\" A reader finds the file list, the empty-field caveat and the size limit equally easily in either."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove the only real filler, \"It is important to note that\". Neither adds hype or repeats anything in the paragraph itself."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "The three short sentences read naturally in both. X's \"Imports larger than 20 MB are untested.\" and Y's \"We have not tested imports larger than 20 MB.\" flow equally well."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y keeps the author's first-person, active voice: \"We have not tested imports larger than 20 MB.\" X turns it into the impersonal \"are untested\". That drops the author's voice and the explicit point that the author's team did the testing. The original sentence had no filler to justify the change."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "Y removes only the filler and leaves the good sentences alone. X rewords a sentence that had no filler and adds an unrequested note to the user: \"I only cut 'It is important to note that' and reworded the last sentence...\" X even offers the original wording back as an alternative, which shows the edit wasn't needed."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "Y is better. The request was to remove filler without changing meaning, and Y does exactly that: it drops \"It is important to note that\" and leaves the rest as written. X also rewrites the last sentence, which had no filler, into a passive form that drops who did the testing. It then adds an unrequested note explaining its edits and offering the original sentence as an alternative. That shows less restraint and a slight drift in voice and meaning.",
+        "meaning_concerns": "X changes \"We have not tested imports larger than 20 MB\" to \"Imports larger than 20 MB are untested.\" The new version no longer says who didn't test. It also reads as a broader claim that nobody has tested such imports, not that the author's team hasn't."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 9570,
+          "wallMs": 10337,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 780,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 938,
+            "thinkingTokens": 98
+          },
+          "costUsd": 0.0253276,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the same three facts in the same order: \"The export contains three files...\", \"The leverage field may be empty.\", and the 20 MB limit. A reader finds the information equally easily in either."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both delete the only filler, \"It is important to note that\". Neither adds overstatement to the paragraph itself."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X's \"We have not tested imports larger than 20 MB.\" and Y's \"Imports larger than 20 MB are untested.\" both read naturally after the earlier sentences."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X keeps the author's first-person voice in \"We have not tested...\". Y changes it to the impersonal \"are untested\", so the paragraph no longer sounds the way the author wrote it."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X makes only the requested cut. Y also rewrites a sentence that had no filler (\"reworded the last sentence to be shorter\") and appends unrequested commentary (\"I only cut... If you'd rather keep the active voice...\"), which the user would have to delete before pasting the paragraph."
+          }
+        ],
+        "verdict": "X",
+        "reason": "The request was to remove filler without changing meaning. X does exactly that: it drops the one filler phrase and leaves everything else alone. Y makes the same cut but also rewrites a sentence that didn't need it and adds meta-commentary nobody asked for. Both extras hurt restraint, and the rewrite also changes the author's voice. X is the better result.",
+        "meaning_concerns": "Y changed \"We have not tested imports larger than 20 MB\" to \"Imports larger than 20 MB are untested\". The original says the authors themselves have not tested large imports. The new version could be read as saying nobody has tested them, so the attribution is lost. The difference is small, but the user explicitly asked for the meaning to stay unchanged."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 8919,
+          "wallMs": 9859,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 780,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 917,
+            "thinkingTokens": 138
+          },
+          "costUsd": 0.0249076,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

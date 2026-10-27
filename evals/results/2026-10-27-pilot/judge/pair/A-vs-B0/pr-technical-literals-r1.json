@@ -1,0 +1,150 @@
+{
+  "id": "pr-technical-literals",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-pilot",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-pilot",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:21:07.669Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 \"다듬은 PR 본문입니다.\"와 `---` 구분선으로 붙여 넣을 본문과 \"변경 사항:\"을 나눴습니다. Y는 \"자세한 설명은 ... 있습니다.\" 바로 뒤에 \"'매우 혁신적입니다'는 근거 없는 수식이어서 뺐습니다.\"가 구분 없이 이어집니다. 그래서 어디까지가 PR 본문인지 헷갈릴 수 있습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"이번 개선은 매우 혁신적입니다\"를 지웠고, 본문에 새로 과장한 표현은 없습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"검증 명령은 다음과 같습니다.\"와 Y의 \"검증 명령:\"은 둘 다 PR 본문에서 자연스럽습니다. 링크 안내 문장도 X는 \"자세한 내용은 [설명](...)을 참고해 주세요.\", Y는 \"자세한 설명은 [docs/retry.md](...)에 있습니다.\"로, 양쪽 모두 매끄럽게 이어집니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y는 \"위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다.\"를 그대로 두어 원문의 간결하고 사실 위주인 말투를 지켰습니다. X는 \"모두 통과했습니다\", \"전체 테스트 스위트는\"으로 강조와 용어를 덧붙였습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X는 필요 없는 문구 수정(\"모두\", \"스위트\")을 하고 그 이유를 네 항목에 걸쳐 길게 설명했습니다. Y는 과장 표현만 빼고 나머지 본문은 거의 그대로 두었습니다. 다만 링크 텍스트를 \"설명\"에서 \"docs/retry.md\"로 바꾼 것은 '링크 유지' 요청에 비추어 불필요한 변경입니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 근거 없는 자평을 지웠고 코드 블록과 링크 대상을 지켰습니다. Y가 더 나은 이유는 원문 문장을 최소한으로만 고쳐 작성자의 담백한 말투를 살렸기 때문입니다. Y는 변경 전 동작이 빠져 있다는 점도 지적했는데, 이는 검토자에게 실제로 쓸모 있는 조언입니다. X는 \"모두\", \"스위트\"처럼 필요 없는 수정을 더했고 변경 설명이 장황합니다. Y에도 약점은 있습니다. 링크 텍스트를 바꿨고, 본문과 편집 메모 사이에 구분이 없어 붙여 넣을 때 헷갈릴 수 있습니다. 그래도 종합하면 Y가 약간 낫습니다.",
+        "meaning_concerns": "X는 \"통과했습니다\"를 \"모두 통과했습니다\"로 바꿨습니다. 그 결과 원문에 없던 '전부 통과'라는 단정이 더해졌고, '테스트'도 '테스트 스위트'로 범위를 바꿔 표현했습니다. Y는 링크 대상은 그대로 두었지만 링크 텍스트를 \"설명\"에서 \"docs/retry.md\"로 바꿨습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 16143,
+          "wallMs": 17018,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3036,
+            "cacheReadInputTokens": 0,
+            "outputTokens": 1726,
+            "thinkingTokens": 331
+          },
+          "costUsd": 0.05881600000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 \"---\"로 PR 본문과 편집 메모를 분리해 어디까지가 본문인지 분명하다. X는 \"자세한 설명은 [docs/retry.md](...)에 있습니다.\" 바로 뒤에 \"\\\"매우 혁신적입니다\\\"는 근거 없는 수식이어서 뺐습니다.\"가 구분 없이 이어져 본문과 메모의 경계가 흐리다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "둘 다 \"매우 혁신적입니다\"를 뺐다. Y의 메모는 \"변경 내용 자체가 충분히 설명하므로 필요하면 구체적인 효과(예: 불필요한 재시도 제거)로 바꿔 쓰는 것이 좋습니다\"처럼 사소한 수정까지 길게 설명한다. X의 메모는 짧고 필요한 내용만 담았다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"검증 명령:\"과 Y의 \"검증 명령은 다음과 같습니다.\"는 둘 다 자연스럽다. 링크 안내 문장(\"자세한 설명은 ...에 있습니다\" / \"자세한 내용은 [설명](...)을 참고해 주세요\")도 모두 매끄럽게 이어진다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 PR 본문에 맞는 간결한 합니다체를 유지한다. Y가 원문의 \"설명\" 링크 텍스트를 지킨 점은 원문에 가깝지만, 전체 말투에서는 차이가 작다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "Y는 \"모두 통과했습니다\", \"전체 테스트 스위트는\"처럼 원문에 문제가 없던 부분까지 바꿨다. 특히 \"모두\"는 원문보다 많은 것을 단정한다. X는 \"위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다.\"를 그대로 두었다. 다만 링크 텍스트 \"설명\"을 \"docs/retry.md\"로 바꾼 것은 불필요한 수정이다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 근거 없는 자평을 빼고 코드 블록과 링크 대상을 유지했다. Y는 본문과 메모를 구분선으로 나눠 경계가 분명하다. 하지만 원문에 문제가 없던 문장까지 고쳤고, 그중 \"모두\"는 원문보다 많은 것을 단정한다. 메모도 사소한 수정을 길게 설명한다. X는 필요한 수정만 했고 메모도 짧다. 본문과 메모 사이에 구분이 없다는 약점은 있지만, 수정 절제와 의미 보존을 함께 보면 X가 조금 낫다.",
+        "meaning_concerns": "Y가 \"통과했습니다\"를 \"모두 통과했습니다\"로 바꿨다. 이렇게 하면 retry.test.ts의 테스트가 정확히 8개이고 그 전부가 통과했다는 뜻이 되는데, 원문은 이를 말하지 않는다. X는 링크 텍스트를 \"설명\"에서 \"docs/retry.md\"로 바꿨다. 링크 대상은 같아 의미는 보존된다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 20705,
+          "wallMs": 21484,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1438,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2265,
+            "thinkingTokens": 505
+          },
+          "costUsd": 0.057131600000000005,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

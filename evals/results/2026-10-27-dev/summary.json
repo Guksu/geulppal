@@ -1,0 +1,66 @@
+{
+  "name": "2026-10-27-dev",
+  "conditions": {
+    "A": {
+      "attempts": 38,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 38,
+        "pass": 28,
+        "fail": 10,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 3754.5,
+        "medianInput": 8428.5,
+        "medianOutput": 383,
+        "costUsd": 0.9279147999999999
+      }
+    },
+    "B0": {
+      "attempts": 38,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 38,
+      "referenceReads": 18,
+      "meaning": {
+        "judged": 38,
+        "pass": 37,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 4928.5,
+        "medianInput": 19469,
+        "medianOutput": 554.5,
+        "costUsd": 1.9213712
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-B0": {
+      "total": 38,
+      "judged": 27,
+      "excluded": 11,
+      "leftWins": 3,
+      "rightWins": 12,
+      "tie": 8,
+      "bothInadequate": 0,
+      "inconsistent": 4,
+      "cases": {
+        "A": 0,
+        "B0": 6,
+        "mixed": 3,
+        "none": 10
+      }
+    }
+  },
+  "judgeCalls": 130
+}

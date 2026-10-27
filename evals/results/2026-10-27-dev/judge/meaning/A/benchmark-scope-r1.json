@@ -1,0 +1,141 @@
+{
+  "id": "benchmark-scope",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "axe"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:27:39.948Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "조건별 화면 12개",
+          "status": "kept",
+          "evidence": "조건별로 화면 12개를 1회씩 생성해 비교했습니다."
+        },
+        {
+          "item": "axe 위반 합계 B 24건·A 6건",
+          "status": "kept",
+          "evidence": "axe 위반은 A 6건, B 24건으로 A가 적었고"
+        },
+        {
+          "item": "생성 시간 중앙값 B 40초·A 65초",
+          "status": "kept",
+          "evidence": "생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다."
+        },
+        {
+          "item": "조건별 1회",
+          "status": "kept",
+          "evidence": "조건별로 화면 12개를 1회씩 생성해 비교했습니다."
+        },
+        {
+          "item": "시각적 품질 미평가",
+          "status": "kept",
+          "evidence": "시각적 품질은 평가하지 않았습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "품질 4배 향상",
+          "status": "ok",
+          "evidence": "메모의 선택 문장 \"A는 접근성 위반이 4배 적었지만(6건 vs 24건)\"은 위반 건수 비율(24/6)이며 품질 향상을 주장하지 않음"
+        },
+        {
+          "item": "접근성 완벽 보장",
+          "status": "ok",
+          "evidence": "\"axe 위반은 A 6건, B 24건으로 A가 적었고\" — 완벽 보장 주장 없음"
+        },
+        {
+          "item": "생성 시간을 빌드 시간으로 변경",
+          "status": "ok",
+          "evidence": "\"생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다.\""
+        },
+        {
+          "item": "느려진 시간 삭제",
+          "status": "ok",
+          "evidence": "\"생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다.\""
+        },
+        {
+          "item": "A가 모든 지표에서 앞섰다는 식으로 주장 범위 넓히기",
+          "status": "ok",
+          "evidence": "\"A는 접근성 위반이 적지만 생성 시간은 더 길어서, 전반적으로 우세하다고 보기 어렵습니다.\""
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "본문 \"조건별로 화면 12개를 1회씩 생성해 비교했습니다. axe 위반은 A 6건, B 24건으로 A가 적었고, 생성 시간 중앙값은 A 65초, B 40초로 B가 빨랐습니다.\" — 원문 수치에서 바로 나오는 비교만 있음. '4배'는 메모의 선택 문장이고 6건과 24건에서 계산한 값임"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 \"A가 압도적으로 뛰어났습니다\"는 근거보다 강한 평가여서 뺐고, 메모에 그 이유를 밝힘. 나머지 사실은 모두 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"axe 위반은 A 6건, B 24건\", \"생성 시간 중앙값은 A 65초, B 40초\" — 대상·단위·중앙값 기준이 유지됨"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"시각적 품질은 평가하지 않았습니다.\" — 1회 실행과 미평가 한계가 유지되고 과장이 덜어짐"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"조건별로 화면 12개를 1회씩 생성해 비교했습니다.\" — 실행 횟수 조건과 평가 범위 한계가 유지됨"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "\"axe 위반은\" — 도구 이름 axe가 유지됨"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "\"**다듬은 문장**\" 아래에 다듬은 본문을 주고, 바꾼 점은 메모로 따로 정리함"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 16518,
+        "wallMs": 18069,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 2876,
+          "cacheReadInputTokens": 906,
+          "outputTokens": 1984,
+          "thinkingTokens": 486
+        },
+        "costUsd": 0.0628772,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "id": "readme-long-repetition",
+  "condition": "B0",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "npm install",
+      "cp .env.example .env",
+      "npm start",
+      "SLACK_BOT_TOKEN",
+      "CHECKIN_CHANNEL_ID",
+      "CHECKIN_TIME",
+      "09:30"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:29:15.843Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "슬랙 봇",
+          "status": "kept",
+          "evidence": "받은 답변을 지정한 채널에 모아서 게시하는 슬랙 봇입니다."
+        },
+        {
+          "item": "매일 정해진 시간에 체크인 질문 발송",
+          "status": "kept",
+          "evidence": "- 매일 정해진 시간에 팀원에게 체크인 질문을 보냅니다."
+        },
+        {
+          "item": "답변을 지정 채널에 모아 게시",
+          "status": "kept",
+          "evidence": "- 답변은 지정한 채널에 모아서 게시합니다."
+        },
+        {
+          "item": "주말·공휴일 미발송",
+          "status": "kept",
+          "evidence": "- 주말과 공휴일에는 질문을 보내지 않습니다."
+        },
+        {
+          "item": "공휴일은 한국 기준만 지원",
+          "status": "kept",
+          "evidence": "단, 공휴일 목록은 한국 기준만 지원합니다."
+        },
+        {
+          "item": "Node.js 20 이상",
+          "status": "kept",
+          "evidence": "Node.js 20 이상이 필요합니다."
+        },
+        {
+          "item": "설치 명령 세 줄",
+          "status": "kept",
+          "evidence": "npm install\ncp .env.example .env\nnpm start"
+        },
+        {
+          "item": "SLACK_BOT_TOKEN·CHECKIN_CHANNEL_ID 필요",
+          "status": "kept",
+          "evidence": "`.env`에 `SLACK_BOT_TOKEN`과 `CHECKIN_CHANNEL_ID`를 넣어야 합니다."
+        },
+        {
+          "item": "CHECKIN_TIME 기본값 09:30",
+          "status": "kept",
+          "evidence": "질문 시간은 `CHECKIN_TIME`(기본값 `09:30`)으로 바꿀 수 있습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "생산성 향상 등 효과를 확인된 사실로 단정",
+          "status": "ok",
+          "evidence": "생산성 관련 문장이 삭제됨. 남은 문장은 \"팀원들은 채널에서 서로의 진행 상황을 한눈에 볼 수 있습니다.\"로 원문에 있던 내용임"
+        },
+        {
+          "item": "리마인더·통계·다른 국가 공휴일 등 새 기능 추가",
+          "status": "ok",
+          "evidence": "주요 기능 목록은 원문의 세 가지 기능만 담고 있음"
+        },
+        {
+          "item": "명령·환경 변수 이름 변경",
+          "status": "ok",
+          "evidence": "`SLACK_BOT_TOKEN`, `CHECKIN_CHANNEL_ID`, `CHECKIN_TIME`과 명령 세 줄이 원문과 같음"
+        },
+        {
+          "item": "공휴일 한국 기준 한계 삭제",
+          "status": "ok",
+          "evidence": "단, 공휴일 목록은 한국 기준만 지원합니다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "\"팀원들은 채널에서 서로의 진행 상황을 한눈에 볼 수 있습니다.\" — 원문에 있던 내용이며 새로 만든 사실은 없음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "홍보성 섹션(왜 체크인봇인가?, 마치며)만 삭제됐고, 기능·설치 정보는 모두 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "Node.js 20 이상이 필요합니다. / (기본값 `09:30`)"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"생산성 향상에 중요한 역할\", \"새로운 기준이 될 것\" 같은 단정 표현이 제거됨. 확정된 기능 서술은 그대로임"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "주말과 공휴일에는 질문을 보내지 않습니다. 단, 공휴일 목록은 한국 기준만 지원합니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "```bash\nnpm install\ncp .env.example .env\nnpm start\n```"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "마크다운 결과만 돌려줬고, 설치·설정 섹션은 원문과 같음"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 12212,
+        "wallMs": 13269,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1869,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1646,
+          "thinkingTokens": 80
+        },
+        "costUsd": 0.048376,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

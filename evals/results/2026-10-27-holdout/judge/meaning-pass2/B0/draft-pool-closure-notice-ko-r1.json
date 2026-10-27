@@ -1,0 +1,174 @@
+{
+  "id": "draft-pool-closure-notice-ko",
+  "condition": "B0",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [
+      "한빛구민체육센터",
+      "02-000-0000"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:59:06.867Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "시설명과 휴관 사유",
+          "status": "kept",
+          "evidence": "# 한빛구민체육센터 실내수영장 휴관 안내 / 여과 설비를 교체하는 공사로 실내수영장을 휴관합니다."
+        },
+        {
+          "item": "휴관 기간 예정 및 연장 가능",
+          "status": "kept",
+          "evidence": "2026년 11월 16일(월) ~ 12월 13일(일) 예정 / 공사 진행 상황에 따라 기간이 연장될 수 있습니다."
+        },
+        {
+          "item": "연장 여부 12월 4일까지 홈페이지 재공지",
+          "status": "kept",
+          "evidence": "연장 여부는 12월 4일까지 홈페이지에 다시 안내합니다."
+        },
+        {
+          "item": "헬스장·다목적실 정상 운영",
+          "status": "kept",
+          "evidence": "같은 건물의 헬스장과 다목적실 프로그램은 정상 운영합니다."
+        },
+        {
+          "item": "세 가지 선택지",
+          "status": "kept",
+          "evidence": "1. 남은 일수만큼 환불 2. 재개장 후 같은 강습으로 이월 3. 같은 기간 헬스장 이용권으로 전환"
+        },
+        {
+          "item": "신청 기한과 방법",
+          "status": "kept",
+          "evidence": "기한: 11월 13일(금) 18시까지 / 방법: 1층 안내데스크 방문 또는 홈페이지 마이페이지"
+        },
+        {
+          "item": "미선택 시 이월 처리",
+          "status": "kept",
+          "evidence": "기한까지 선택하지 않으면 2번(재개장 후 같은 강습으로 이월)으로 처리합니다."
+        },
+        {
+          "item": "자유수영 월 이용권 동일 적용",
+          "status": "kept",
+          "evidence": "자유수영 월 이용권을 가지신 분도 같은 방식으로 처리합니다."
+        },
+        {
+          "item": "인근 수영장 제휴 협의 중",
+          "status": "kept",
+          "evidence": "휴관 중 이용할 수 있도록 인근 수영장과 제휴를 협의 중입니다."
+        },
+        {
+          "item": "문의 번호와 운영 시간",
+          "status": "kept",
+          "evidence": "안내데스크 02-000-0000 (평일 9~18시)"
+        }
+      ],
+      "must_not": [
+        {
+          "item": "재개장일을 확정된 날짜처럼 쓰기",
+          "status": "ok",
+          "evidence": "2026년 11월 16일(월) ~ 12월 13일(일) 예정"
+        },
+        {
+          "item": "제휴 수영장 이름 지어내기/확정처럼 쓰기",
+          "status": "ok",
+          "evidence": "인근 수영장과 제휴를 협의 중입니다."
+        },
+        {
+          "item": "재개장 후 강습료 변경 여부 언급",
+          "status": "ok",
+          "evidence": "결과에 강습료 관련 언급 없음"
+        },
+        {
+          "item": "담당 부서 번호·이메일·담당자·환불 수수료·처리 기간 추가",
+          "status": "ok",
+          "evidence": "문의는 \"안내데스크 02-000-0000 (평일 9~18시)\"만 있음"
+        },
+        {
+          "item": "선택지 수 또는 기본 처리 변경",
+          "status": "ok",
+          "evidence": "세 가지 선택지와 \"2번(재개장 후 같은 강습으로 이월)으로 처리합니다.\""
+        },
+        {
+          "item": "자유수영 적용·헬스장 정상 운영 누락",
+          "status": "ok",
+          "evidence": "두 정보 모두 본문에 있음"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "problem",
+          "evidence": "\"확정되면 홈페이지에 안내합니다.\" — 원문은 제휴에 대해 확정 전에는 '협의 중'이라고만 쓰라고 했는데, 원문에 없는 추가 공지 약속을 본문에 넣었다. 메모에서도 밝히지 않았다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 핵심 정보가 모두 본문에 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "날짜·시각·번호가 원문과 같음"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "'예정', '연장될 수 있습니다', '협의 중'이 유지됨"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"기한까지 선택하지 않으면 2번(재개장 후 같은 강습으로 이월)으로 처리합니다.\""
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "\"한빛구민체육센터\", \"02-000-0000\", \"마이페이지\" 그대로"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "홈페이지용 휴관 안내문 본문과 메모를 제공함"
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "본문에 원문에 없는 약속 \"확정되면 홈페이지에 안내합니다.\"를 추가함. 원문은 제휴가 확정되기 전에는 '협의 중'이라고만 쓰라고 지시했음."
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 18097,
+        "wallMs": 19127,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 331,
+          "cacheReadInputTokens": 4727,
+          "outputTokens": 2289,
+          "thinkingTokens": 476
+        },
+        "costUsd": 0.04938139999999999,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

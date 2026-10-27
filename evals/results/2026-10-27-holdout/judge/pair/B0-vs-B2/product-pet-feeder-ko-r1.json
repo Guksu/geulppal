@@ -1,0 +1,151 @@
+{
+  "id": "product-pet-feeder-ko",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:03:49.960Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 같은 순서로 문단을 나눴습니다(용량·앱 → 정전 → 걸림 방지 → 가격). X의 \"가격은 129,000원입니다\"와 Y의 같은 문장처럼 핵심 정보를 찾기 쉬운 정도도 비슷합니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "X는 도입문 \"냥냥밥상 S2는 4L 사료통과 전용 앱을 갖춘 자동급식기입니다.\" 바로 뒤에 \"사료통이 4L라서\"가 이어져 4L와 앱 정보가 반복됩니다. Y는 \"4L 사료통을 갖춘 자동급식기입니다. 하루 60g을 먹는 고양이 기준으로…\"로 한 번에 이어 반복이 없습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X의 \"사료가 걸리지 않도록 회전판을 걸림 방지 설계로 만들었습니다\"는 '걸리지'와 '걸림'이 겹쳐 어색합니다. Y의 \"걸림 방지 회전판을 적용해 사료가 막히는 일을 줄였습니다\"는 매끄럽게 읽힙니다. 첫 문단도 Y 쪽이 더 자연스럽게 이어집니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 상세페이지에 맞는 존댓말 안내문입니다. Y의 \"별도로 구매해 주세요\"는 고객에게 하는 안내 말투이고, X의 \"별도로 구매해야 합니다\"도 무난합니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "X는 \"#\" 마크다운 제목을 넣었고, Y는 제목을 \"앱으로 관리하는 고양이 자동급식기\"로 새로 지었습니다. 둘 다 작은 수정입니다. 편집 메모 분량도 비슷합니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 과장 문구를 빼고 사실 정보를 보존했으며, 이유를 적은 편집 메모도 달았습니다. 차이는 문장 완성도에서 납니다. X는 도입문 바로 뒤에 4L 정보가 반복되고 \\\"걸리지 않도록…걸림 방지\\\"처럼 같은 말이 겹쳐 어색합니다. Y는 첫 문단을 자연스럽게 합쳤고 걸림 방지 문장도 매끄럽습니다. 차이가 크지는 않지만 상세페이지 독자에게는 Y가 더 읽기 좋습니다.",
+        "meaning_concerns": "Y의 \\\"정전이 되면 D형 건전지 3개로 최대 72시간\\\"은 원문의 '넣어 두면'이라는 조건을 흐리게 만듭니다. 건전지가 이미 들어 있는 것처럼 읽힐 수 있지만, 뒤에 \\\"별도로 구매해 주세요\\\"가 있어 오해는 크지 않습니다. Y는 \\\"막히는 일이 없습니다\\\"를 \\\"줄였습니다\\\"로 낮췄고 X는 \\\"걸림 방지 설계\\\"로 바꿨습니다. 둘 다 원문의 모순을 고친 수정이고, 그 이유를 메모에 밝혔습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 17148,
+          "wallMs": 17983,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2693,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1808,
+            "thinkingTokens": 363
+          },
+          "costUsd": 0.0580316,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "둘 다 용량·앱 설정 → 정전 대비 → 걸림 방지 → 가격·할인 순서로 문단을 나눴습니다. 확인이 필요한 부분도 둘 다 구분선 아래 목록으로 따로 모아 두어, 필요한 정보를 찾기 쉽기는 비슷합니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "Y는 첫 문장 \"4L 사료통과 전용 앱을 갖춘 자동급식기입니다\"와 바로 다음 문장 \"사료통이 4L라서\"에서 4L를 두 번 말합니다. \"사료가 걸리지 않도록 회전판을 걸림 방지 설계로\"도 같은 뜻이 겹칩니다. X는 \"냥냥밥상 S2는 4L 사료통을 갖춘 자동급식기입니다\" 한 번으로 정리해 반복이 없습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"걸림 방지 회전판을 적용해 사료가 막히는 일을 줄였습니다. 다만…\"은 자연스럽게 이어집니다. Y는 \"정전에 대비해 … 넣어 두면\"과 \"다만 건전지로 작동하는 동안에는\"으로 조건과 제약의 관계가 더 분명합니다. 둘 다 흐름이 끊기는 곳은 없습니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 상세페이지에 맞는 '~습니다'체를 유지했습니다. X의 \"건전지는 별도로 구매해 주세요\"는 고객에게 직접 안내하는 말투이고, Y의 \"별도로 구매해야 합니다\"는 원문에 가깝습니다. 어느 쪽도 어색하지 않습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "Y는 원문의 \"넣어 두면\"과 할인 조건 괄호 표기를 그대로 두어 덜 바꿨습니다. X는 \"D형 건전지 3개로 최대 72시간 동안\"으로 줄이면서 건전지를 미리 넣어 둬야 한다는 조건을 뺐습니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 근거 없는 과장 문구를 빼고, 사실 정보를 같은 순서로 정리했으며, 뺀 문구를 따로 알려 줍니다. X는 4L 소개가 겹치지 않아 조금 더 간결합니다. 하지만 정전 대비 문장에서 건전지를 미리 넣어 둬야 한다는 조건을 흐렸습니다. 구매자는 건전지를 넣지 않아도 정전 때 작동한다고 오해할 수 있습니다. Y는 4L 소개가 한 번 겹치고 걸림 방지 문장이 조금 장황하지만, 원문의 조건을 정확히 지켰습니다. 차이는 작지만 쇼핑몰 독자에게는 사용 조건이 정확한 쪽이 더 중요하므로 Y를 조금 더 낫게 봅니다.",
+        "meaning_concerns": "X는 원문의 \"D형 건전지 3개를 넣어 두면\"을 \"D형 건전지 3개로\"로 바꿨습니다. 그래서 건전지를 미리 넣어 둬야 정전 때 작동한다는 조건이 약해졌습니다. X의 \"막히는 일을 줄였습니다\"는 원문보다 약한 주장이지만, 뒤의 12mm 조건과 맞으므로 문제로 보지 않았습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 21075,
+          "wallMs": 21993,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2694,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2343,
+            "thinkingTokens": 599
+          },
+          "costUsd": 0.06873960000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

@@ -1,0 +1,151 @@
+{
+  "id": "noop-publisher-submission-guide-ko",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:03:47.661Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 \"순서대로 있어서 투고자가 찾는 내용을 바로 볼 수 있습니다\"라고 해서 원문의 정보 배열이 독자에게 주는 효과를 짚습니다. X는 \"구체성:\" \"대조 문장:\" 같은 항목 이름으로 나눠 평가해서, 사용자가 판단 근거를 찾기는 둘 다 쉽습니다. 다만 Y의 확인 사항이 투고자가 실제로 가장 많이 찾을 정보(8주 뒤 연락이 없을 때)를 겨눠서 더 쓸모 있습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 판정 뒤에 근거를 몇 줄 붙였을 뿐 과장은 없습니다. X의 \"투고자가 추가로 물어볼 일이 적습니다\"와 Y의 \"투고자가 궁금해할 점을 이미 짚었습니다\"는 비슷한 수준입니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y는 판정, 근거, 확인 사항 하나 순서로 자연스럽게 이어집니다. X는 굵은 항목명을 단 평가 목록 뒤에 다시 확인 사항 목록이 붙어서 점검표처럼 읽힙니다. \"받을 수 없는 경우(전원 회신 불가, 검토 지연)\"라는 표현도 조금 어색합니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y는 \"\"한 편 한 편 성실하게\"는 다소 힘이 들어간 표현입니다. 그래도 … 출판사의 말투로 읽혀서 두었습니다\"라고 해서, 원문 작성자의 말투를 일부러 지켰다는 판단을 보여 줍니다. X는 어조가 일관되다고만 평가합니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "둘 다 원문을 고치지 않았고, 정보를 마음대로 채워 넣지도 않았습니다. Y는 확인 사항을 하나만 냈고 \"정하신 방침이 있을 때만 넣으면 됩니다\"라고 선을 그었습니다. X의 두 번째 제안인 \"연락처를 약력에 넣어 달라고 할지\"는 원문이 메일 투고 방식이라 필요성이 약한 편입니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "원문이 이미 잘 쓰여 있어서 둘 다 그대로 두라고 한 판단은 맞습니다. 그래서 코멘트의 질로 갈렸습니다. Y는 원문이 좋은 이유를 투고자 입장에서 설명합니다. 힘이 들어간 표현을 일부러 남긴 이유도 밝혀서 원문의 말투를 존중했다는 점이 드러납니다. 확인 사항은 8주가 지나도 연락이 없을 때 어떻게 봐야 하는지 하나로, 실제로 문의가 가장 많이 들어올 만한 빈틈입니다. X의 묶음 파일 제안도 쓸모는 있습니다. 하지만 연락처 제안은 필요성이 약하고, 굵은 항목명을 단 목록이 이어져 점검표 느낌이 납니다. 차이는 크지 않지만 Y가 조금 낫습니다.",
+        "meaning_concerns": "두 결과 모두 원문을 바꾸지 않아서 의미가 달라진 곳은 없습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 20855,
+          "wallMs": 21716,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2223,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2004,
+            "thinkingTokens": 516
+          },
+          "costUsd": 0.05819160000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "둘 다 결론을 첫 줄에 두었습니다. X는 \"고칠 곳이 없어서 그대로 두시면 됩니다.\", Y는 \"고칠 곳이 없어서 그대로 두셔도 됩니다.\"입니다. 둘 다 근거와 확인할 점을 따로 나눠 적었습니다. Y의 굵은 표제(\"**구체성:**\", \"**어조:**\")는 훑어보기는 쉽지만, 짧은 답에서 찾기 쉬운 정도는 비슷합니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 평가가 구체적이고 과장이 없습니다. X는 \"한 편 한 편 성실하게\"를 짚고 두기로 한 이유를 설명했습니다. Y는 \"도입이나 맺음의 빈 문장, 근거 없는 수식이 없습니다\"라고 정리했습니다. 반복도 없습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 \"투고자가 궁금해할 점을 이미 짚었습니다\"처럼 말로 풀어 자연스럽게 이어집니다. Y는 \"**대조 문장:**\" 같은 분석용 표제로 나뉘어 있어 조금 끊겨 읽힙니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "요청 말투가 편합니다(\"한번 봐 주고\"). X의 평이한 설명이 여기에 더 잘 맞습니다. Y의 \"대조 문장\", \"구체성\" 같은 평가 용어나 \"`합니다`체\" 같은 코드 표기는 출판사 담당자에게 조금 딱딱하게 느껴집니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "둘 다 원문을 고치지 않았고, 정보 문제는 \"정하신 방침이 있을 때만 넣으면 됩니다\"(X), \"제가 임의로 채워 넣지 않았습니다\"(Y)처럼 제안으로만 남겼습니다. X의 8주 무응답 안내 제안과 Y의 파일 묶음·연락처 제안은 모두 실용적입니다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 원문이 이미 잘 쓰였다고 맞게 판단했습니다. 고치지 않은 근거를 구체적으로 들었고, 정보 공백은 직접 채우지 않고 확인할 점으로 남겼습니다. X는 말투가 더 자연스럽고 요청자에게 잘 맞습니다. Y는 확인할 점을 하나 더 들었지만 표제 형식이 조금 딱딱합니다. X의 8주 관련 제안은 원문의 \\\"먼저 연락드립니다\\\"에서 어느 정도 유추할 수 있는 내용입니다. Y의 두 제안은 원문에 실제로 없는 정보를 짚습니다. 기준별로 엇갈리고 차이도 작습니다.",
+        "meaning_concerns": "Y가 \\\"받을 수 없는 경우(전원 회신 불가, 검토 지연)\\\"라고 쓴 부분은 표현이 조금 부정확합니다. 원문은 이를 '받을 수 없는 경우'로 쓰지 않았습니다. 다만 원문을 바꾼 것은 아니어서 의미 왜곡은 아닙니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 18096,
+          "wallMs": 18965,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2222,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1911,
+            "thinkingTokens": 435
+          },
+          "costUsd": 0.0563236,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

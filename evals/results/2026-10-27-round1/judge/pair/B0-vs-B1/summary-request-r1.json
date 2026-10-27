@@ -1,0 +1,151 @@
+{
+  "id": "summary-request",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B1",
+    "from": "2026-10-27-round1",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:36:55.638Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B1",
+      "verdict": "Y",
+      "winner": "B1",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 맨 위에 \"[10/21 결제 개편 주간 회의]\"를 남겨 채널에서 어느 회의 요약인지 바로 알 수 있습니다. X는 이 제목 없이 \"- 간편결제 오류율은 지난주 1.8%로…\"부터 시작해 회의 날짜와 맥락이 빠집니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 과장이나 반복이 없습니다. 본문 네 항목도 거의 같습니다(\"부분 환불 자동화는 개발을 마쳤고 QA가 남았습니다.\" 등)."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "차이는 X의 \"지난주 1.8%로\"와 Y의 \"1.8%로… 다만 지난주는\"뿐입니다. 둘 다 자연스럽게 읽힙니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "팀 채널 공지라면 Y처럼 회의명과 날짜 제목을 두고 그 아래 불릿을 붙이는 형식이 더 맞습니다. 존댓말 톤은 두 결과가 같습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "두 결과 모두 원문 네 항목을 거의 그대로 옮겼고 축약 정도도 같습니다. Y의 제목 한 줄은 원문에 있던 것이라 형식을 새로 더한 것이 아닙니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과의 본문 네 항목은 사실상 같습니다. 차이는 Y가 원문의 회의 제목 \\\"[10/21 결제 개편 주간 회의]\\\"를 남겼다는 점 하나입니다. 팀 채널에 올리는 글이라 어느 회의의 요약인지 밝히는 편이 독자에게 실제로 도움이 되므로 Y가 조금 낫다고 봅니다. 다만 두 결과 모두 항목마다 두 문장씩 거의 그대로 옮겨서, '3~4줄 요약'이라는 요청에 비하면 덜 줄인 편입니다.",
+        "meaning_concerns": "의미가 달라진 곳은 없습니다. X는 \\\"지난주 1.8%\\\"라고 시점을 앞에 두었고, Y는 \\\"지난주는 프로모션이 없어\\\"라고 원문 구조를 따랐습니다. 둘 다 원문 내용과 맞습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14991,
+          "wallMs": 15918,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1504,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1491,
+            "thinkingTokens": 480
+          },
+          "costUsd": 0.0421796,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B1",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 \"[10/21 결제 개편 주간 회의]\" 제목을 남겨 채널 독자가 어느 회의 요약인지 바로 압니다. Y는 \"- 간편결제 오류율은 지난주 1.8%로…\"로 바로 시작해 회의 정보가 없습니다. 차이는 작습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 \"B카드 결제가 불가합니다. 다른 카드와 간편결제는 영향이 없고, CS팀이 10/30까지 앱 공지를 올립니다.\"처럼 같은 문장을 쓰고, 과장이나 반복이 없습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X는 \"1.8%로 전주(2.4%)보다 낮아졌습니다. 다만 지난주는 프로모션이 없어\", Y는 \"지난주 1.8%로… 다만 프로모션이 없어\"라고 썼습니다. 둘 다 자연스럽게 이어집니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 '~습니다'체 글머리표로 써서 팀 채널 공지에 맞습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Y는 제목을 빼서 4줄 요청에 더 맞습니다. X는 맥락을 남겼지만 한 줄이 늘었습니다. 둘 다 원문 문장을 거의 그대로 옮겨 실제로 줄어든 양은 비슷합니다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "본문 네 항목이 사실상 같습니다. 차이는 X가 회의 제목 줄을 남긴 것뿐입니다. 이 줄은 맥락을 주는 대신 줄 수를 늘려 장단점이 상쇄됩니다. 둘 다 원문 문장을 거의 그대로 옮겨 압축이 약하다는 아쉬움도 같습니다.",
+        "meaning_concerns": "두 결과 모두 원문과 의미가 달라진 곳은 없습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15386,
+          "wallMs": 16234,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1503,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1686,
+            "thinkingTokens": 403
+          },
+          "costUsd": 0.046071600000000004,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

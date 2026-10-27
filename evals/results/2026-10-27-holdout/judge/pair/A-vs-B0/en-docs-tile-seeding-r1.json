@@ -1,0 +1,151 @@
+{
+  "id": "en-docs-tile-seeding",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:02:19.864Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X turns the options into a bulleted list (\"- `--workers` sets the number of worker processes (default: 4).\", \"- `--force` re-renders existing tiles...\"), so readers can find each option at a glance. Y keeps them in prose paragraphs (\"`geotile seed` uses 4 worker processes by default. Change this with `--workers`.\"), which is clear but slower to scan."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both cut the opening filler, the repeated definition (\"In other words...\") and the \"In conclusion\" paragraph. X keeps one leftover line, \"Users don't wait for tiles to load.\", which says little. Y removes it entirely. The difference is small."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y keeps the original's lead-in to the command, \"To seed tiles, run:\", and its paragraphs connect naturally. In X, the command appears straight after the definition with no lead-in, and \"Run it again;\" drops the condition \"If the process stops\", so the sentence feels abrupt."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y keeps the original's prose documentation style and tone (\"Existing tiles are skipped by default. `--force` overwrites them, but...\"). X changes the format to a list, which shifts the feel of the original document somewhat."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X makes an unrequested format change (bulleted list) and drops \"yet\" from \"cannot be resumed after interruption yet\". It flags both changes, but the second one changes the meaning. Y removes only the bloat and keeps \"cannot be resumed after interruption yet\" as it was."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "Both did what was asked: they cut the filler intro, the repeated definition and the closing paragraph. X's list format makes the options easier to find, but X also made changes that weren't needed. It dropped \"yet\", which changes the meaning, and dropped the \"If the process stops\" condition. It also kept one leftover filler sentence, \"Users don't wait for tiles to load.\" Y removed only the bloat and kept the original's structure, tone and meaning, which matches a request to \"tighten up\". That makes Y the better result overall.",
+        "meaning_concerns": "X changed \"Seeding cannot be resumed after interruption yet\" to \"cannot be resumed after interruption\", dropping \"yet\". This removes the hint that resume support is planned (X does flag it in its notes). X also removed the condition \"If the process stops\". Y has no meaning changes."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 12266,
+          "wallMs": 14402,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2369,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1218,
+            "thinkingTokens": 235
+          },
+          "costUsd": 0.0436396,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y puts each option in its own bullet (\"- `--workers` sets the number of worker processes (default: 4).\", \"- `--force` re-renders existing tiles...\"), so readers can scan for them. X keeps the options in paragraphs, which still read clearly: \"`geotile seed` uses 4 worker processes by default. Change this with `--workers`.\""
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove \"It is important to note...\", \"In today's fast-paced world...\", the \"In other words\" restatement, and the \"In conclusion\" paragraph. Y keeps a short benefit line, \"Users don't wait for tiles to load.\", which is not inflated."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X keeps the lead-in \"To seed tiles, run:\" before the command, so the text moves naturally from the definition to the command. In Y the command follows the definition with no transition. Y's bullets read fine on their own."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X keeps the doc's original prose style and the sentence \"Seeding cannot be resumed after interruption yet.\" unchanged. Y changes the format to a list and cuts \"storage\" from \"The S3 backend\", so it moves further from the original wording."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "The request was only to tighten the section. X cuts filler and makes no structural changes. Y also turns the paragraphs into a list and deletes \"yet\", which the request didn't ask for, though Y says so itself: \"If resume support is planned, you may want to keep it.\""
+          }
+        ],
+        "verdict": "X",
+        "reason": "Both versions cut the bloat you'd expect to cut: the opening filler, the repeated definition, and the conclusion. X keeps the original prose and voice and only cuts. Y's option list is easier to scan, but you asked for tightening, not a new structure. Y also deletes \"yet\", which changes what the doc says about future plans. Y does flag both changes, which partly offsets this, but X does what was asked more closely and keeps the meaning intact. X is better overall.",
+        "meaning_concerns": "Y deleted \"yet\" from \"Seeding cannot be resumed after interruption yet\". Without it, the doc no longer hints that resume support may come later. Y points this out, but the change is still unnecessary. Y also shortened \"S3 storage backend\" to \"S3 backend\", which is minor. I found no meaning changes in X."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 13615,
+          "wallMs": 14573,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2368,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1326,
+            "thinkingTokens": 376
+          },
+          "costUsd": 0.0457916,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

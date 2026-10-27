@@ -1,0 +1,99 @@
+{
+  "id": "review-only",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:29:56.226Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "진단만 요청한 범위",
+          "status": "kept",
+          "evidence": "\"문제점은 다음과 같습니다.\" 뒤로 1~7번 진단 항목만 있고 수정문은 없음"
+        }
+      ],
+      "must_not": [
+        {
+          "item": "완성문이나 고쳐 쓴 문장을 제시",
+          "status": "ok",
+          "evidence": "결과 전체에 고쳐 쓴 문장이나 예시 수정문이 없음. 예: \"셋째 문장은 \"그 가치는 혁신적\"이라고만 해서 설명이 아니라 재진술에 그칩니다.\""
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "\"시간 절약인지, 비용 절감인지, 새로운 기능인지 불분명합니다.\" 이 부분은 모호하다는 점을 짚는 질문형 예시일 뿐, 서비스 A의 사실로 단정한 것이 아님"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "\"근거 없는 수식어의 남발\", \"같은 말의 반복\", \"정보 부재\" 등 원문의 주요 문제를 다룸"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"특히 \"혁신적\"은 첫 문장과 셋째 문장에 중복되고, \"가치\"는 둘째·셋째 문장에서 겹칩니다.\" 원문과 일치함"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "원문 내용의 상태나 확실성을 바꾼 진술이 없음"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "원문에 조건이나 예외가 없고, 결과에도 이를 바꾼 내용이 없음"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "\"혁신적이고 강력한\", \"놀라운 가치\" 모두 원문 표현을 그대로 인용함"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요청 \"문제점만 짚어줘. 수정문은 아직 쓰지 마.\"에 맞게 진단 목록만 제시함"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 9926,
+        "wallMs": 10690,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1349,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1017,
+          "thinkingTokens": 133
+        },
+        "costUsd": 0.031636,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

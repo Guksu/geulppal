@@ -1,0 +1,65 @@
+{
+  "id": "remove-ai-tone-short",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": true,
+  "prompt": "이 글 AI 티 좀 빼줘\n\n결론적으로, 꾸준한 기록은 성장의 핵심 열쇠라고 할 수 있습니다. 작은 습관이 모여 큰 변화를 만들어냅니다.",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": true,
+  "selectedBy": "Skill",
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": true,
+    "top3": [
+      "geulppal:26.0",
+      "claude-api:0.0",
+      "code-review:0.0"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [
+    {
+      "name": "Skill",
+      "input": "{\"skill\":\"geulppal\"}"
+    }
+  ],
+  "permissionDenials": [],
+  "durationMs": 2713,
+  "wallMs": 3769,
+  "usage": {
+    "inputTokens": 4,
+    "cacheCreationInputTokens": 8880,
+    "cacheReadInputTokens": 13605,
+    "outputTokens": 110,
+    "thinkingTokens": 0
+  },
+  "costUsd": 0.037988499999999994,
+  "error": null
+}

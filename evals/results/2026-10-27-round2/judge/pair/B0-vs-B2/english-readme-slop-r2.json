@@ -1,0 +1,151 @@
+{
+  "id": "english-readme-slop",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:41:51.984Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Both keep the command and the limitations in the same order, but X ends with a non-README paragraph, \"I cut the opening paragraph and the closing line...\", which gets in the reader's way. Y ends cleanly at the limitations."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "Both removed the hype sentences (\"In today's fast-paced...\" and \"supercharge your productivity!\"). X then adds a meta explanation that repeats what was changed: \"I kept both commands and all the limitations.\""
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X splits the original sentence into short ones, \"It compares key names only. It never reads or uploads secret values.\", which reads choppier. Y keeps the natural single sentence: \"It does not read or upload secret values; only key names are compared.\""
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "X's first-person editor's note, \"I cut the opening paragraph...\", does not belong in a README. Y keeps the README genre and the original wording throughout."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X rewrote a sentence that was already fine and added an explanation nobody asked for. Y made only the necessary cuts, deleting the hype and \"To get started, simply run:\" and \"Note that\", and left everything else as written."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "Both made the same core edits: they cut the hype opening and closing and kept the command and the limitations. X, however, puts a note to the requester inside the README (\"I cut the opening paragraph... I kept both commands...\"), so the result can't be used as-is. The note also wrongly says there are two commands. X also rewrote a good sentence into choppy short ones. Y is clean and changes only what was needed.",
+        "meaning_concerns": "X changed \"does not read\" to \"never reads\", which makes the guarantee slightly stronger than the original. X's note says \"both commands\", but there is only one command; `--fix` is a flag."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14513,
+          "wallMs": 15329,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1090,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1326,
+            "thinkingTokens": 130
+          },
+          "costUsd": 0.0355676,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "두 결과 모두 설명, 명령, `--fix` 조건이 같은 순서로 놓여 있습니다. 다만 Y는 끝에 \"I cut the opening paragraph and the closing line...\"이라는 문서와 무관한 문단이 붙어 있어서, README 독자가 이것을 섹션 내용으로 오해할 수 있습니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "두 결과 모두 \"In today's fast-paced development landscape...\"와 \"supercharge your productivity!\"를 지웠습니다. 그런데 Y는 \"They only praised the tool and added no facts. I kept both commands and all the limitations.\"라는 메타 설명을 새로 넣어서, 독자에게 필요 없는 문장이 다시 생겼습니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 원문의 \"It does not read or upload secret values; only key names are compared.\"를 한 문장으로 유지해서 자연스럽게 이어집니다. Y는 이 문장을 \"It compares key names only. It never reads or uploads secret values.\" 두 개의 짧은 문장으로 쪼개서 앞 문장과 내용이 일부 겹치고 리듬도 끊깁니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X는 README 섹션 형식만 유지합니다. Y의 마지막 문단 \"I cut the opening paragraph...\"는 1인칭 편집 보고로, README라는 장르에 맞지 않습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 필요한 부분만 지우고(\"To get started, simply run:\", \"Note that\") 나머지는 원문 문장을 그대로 썼습니다. Y는 멀쩡하던 문장을 다시 썼고 요청하지 않은 설명 문단까지 추가했습니다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과는 같은 부분을 지웠고 명령어와 제약 조건도 똑같이 유지했습니다. 하지만 Y는 README 본문에 편집 메모를 넣었고, 이미 괜찮던 문장을 굳이 짧은 두 문장으로 나눴습니다. X는 요청대로 꼭 필요한 만큼만 줄여서 섹션을 바로 쓸 수 있는 상태로 남겼습니다.",
+        "meaning_concerns": "Y는 원문의 \"does not read\"를 \"never reads\"로 바꿔 주장의 강도를 조금 높였습니다. Y의 메모에 있는 \"both commands\"는 실제로는 명령 하나(`npx envsync check`)와 플래그 하나(`--fix`)를 가리키므로 표현이 조금 부정확합니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 13889,
+          "wallMs": 14735,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1092,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1371,
+            "thinkingTokens": 131
+          },
+          "costUsd": 0.036483600000000005,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

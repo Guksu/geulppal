@@ -1,0 +1,151 @@
+{
+  "id": "draft-pool-closure-notice-ko",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:03:06.973Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 소제목을 \"수영 강습 및 자유수영 월 이용권 이용자 안내\"로 달아, 자유수영 이용권 소지자도 자기에게 해당하는 항목임을 바로 알 수 있다. Y는 소제목이 \"11월 수영 강습 등록자 안내\"여서 자유수영 이용자는 본문 중간의 \"자유수영 월 이용권을 가지고 계신 분도 같은 방식으로 처리합니다\"까지 읽어야 자기가 대상임을 안다. 대신 Y는 \"**휴관 기간: …**\"을 굵게 처리해 휴관 기간은 눈에 잘 띈다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 과장된 표현이 없고, 끝인사는 \"이용에 불편을 드려 죄송합니다.\" 한 줄로 같다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X는 \"공사 진행 상황에 따라 기간이 연장될 수 있습니다.\"와 정상 운영 안내를 문단으로 나눴고, Y는 이를 한 문단으로 묶었다. 어느 쪽도 읽다가 막히는 곳이 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "두 결과 모두 공공기관 공지에 맞는 존댓말을 쓴다(\"안내하겠습니다\", \"처리합니다\"). Y가 제목에서 \"한빛구민체육센터\"를 뺐지만 첫 문장에 넣었으므로 문제가 되지 않는다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "두 결과 모두 미정 사항(강습료 변경)은 언급하지 않았고, 제휴는 \"협의 중\"이라고만 썼다. 원문에 없는 내용을 덧붙이지도 않았다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 정리 내용을 정확하게 공지문으로 옮겼고, 미정 사항도 요청한 대로 처리해 품질 차이가 작습니다. 차이는 소제목 하나입니다. X는 소제목에 자유수영 월 이용권 소지자를 함께 넣어, 해당 독자가 자기 안내를 바로 찾을 수 있습니다. Y는 소제목이 강습 등록자만 가리켜 자유수영 이용자가 이 항목을 건너뛸 수 있습니다. Y는 휴관 기간을 굵게 표시해 눈에 잘 띄지만, 처리 방법과 신청 기한을 놓칠 때의 불이익이 더 크므로 X가 조금 낫다고 판단했습니다.",
+        "meaning_concerns": "자유수영 이용권 소지자에게도 미선택 시 처리를 \"같은 강습으로 이월\"이라고 표현한 것은 원문 표현을 그대로 따른 것입니다. 자유수영에는 맞지 않을 수 있는 표현이지만 의미가 달라진 것은 아닙니다. 두 결과 모두 같은 표현을 썼습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14076,
+          "wallMs": 14964,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2246,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1514,
+            "thinkingTokens": 282
+          },
+          "costUsd": 0.0485756,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 소제목을 \"수영 강습 및 자유수영 월 이용권 이용자 안내\"로 달고, 첫 문장도 \"11월 수영 강습 등록자와 자유수영 월 이용권 소지자는…\"으로 시작한다. 그래서 자유수영 이용자가 소제목만 훑어봐도 자기 항목을 찾을 수 있다. X는 소제목이 \"11월 수영 강습 등록자 안내\"이고, \"자유수영 월 이용권을 가지고 계신 분도 같은 방식으로 처리합니다\"가 목록 뒤에 따로 있어 자유수영 이용자가 놓치기 쉽다. Y는 \"## 휴관 기간\" 소제목도 따로 두었고, X는 기간을 굵은 글씨로 강조해 둘 다 기간은 찾기 쉽다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 글 모두 과장이 없다. 맺음말은 \"이용에 불편을 드려 죄송합니다.\" 한 줄로 같다. Y의 \"2번(재개장 후 같은 강습으로 이월)\"은 목록 내용을 한 번 더 적었지만, 이렇게 해 두면 독자가 위로 돌아가 확인하지 않아도 되므로 군더더기로 보기는 어렵다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X는 \"…아래 기간 동안 휴관합니다.\" 다음에 굵은 글씨로 기간을 적어 글이 자연스럽게 이어진다. Y는 소제목으로 내용을 나누었지만 문단 사이 연결이 어색한 곳은 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "두 글 모두 \"휴관합니다\", \"안내합니다/안내하겠습니다\"처럼 공공기관 공지에 맞는 정중한 존댓말을 쓴다. 홈페이지 공지에 맞는 형식이라는 점에서도 차이가 없다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "두 글 모두 원문에 없는 내용을 덧붙이지 않았고, 미정인 강습료 변경도 빼고 썼다. 구조도 거의 같다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과는 구조와 문장이 거의 같다. 차이는 자유수영 월 이용권 소지자 안내의 위치다. Y는 이 내용을 소제목과 첫 문장에 넣어 해당 독자가 바로 찾을 수 있다. X는 목록 뒤 별도 문장에 두어 눈에 덜 띈다. 나머지 기준에서는 우열이 없으므로 Y를 조금 우세로 판정한다.",
+        "meaning_concerns": "의미가 달라진 곳은 없다. Y는 소제목에서 \"11월\"을 뺐지만 본문에 \"11월 수영 강습 등록자\"라고 적어 정보는 그대로 남아 있다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15858,
+          "wallMs": 16692,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2246,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1641,
+            "thinkingTokens": 281
+          },
+          "costUsd": 0.05111560000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

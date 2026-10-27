@@ -1,0 +1,103 @@
+{
+  "id": "en-docs-tile-seeding",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:54:18.308Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": false,
+    "skillBodyInjected": false,
+    "skillBodyMatchesInstalled": null,
+    "listedGeulppal": false,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "Can you tighten up this section of our docs? It feels bloated.\n\n## Seeding the tile cache\n\nIt is important to note that seeding is a crucial step that plays a vital role in ensuring a smooth experience for your users. In today's fast-paced world, nobody wants to wait for map tiles to load. Seeding pre-renders tiles ahead of time so that they are served from the cache instead of being rendered on demand. In other words, seeding means rendering tiles before users request them.\n\nTo seed tiles, run the following command:\n\n    geotile seed --layer basemap --zoom 0-14 --bbox 126.76,37.41,127.18,37.70\n\nThe `--zoom` option takes a range of zoom levels. The `--bbox` option takes the bounding box in the order `minLon,minLat,maxLon,maxLat`. If `--bbox` is omitted, the layer's full extent is used, which can take a very long time for global layers.\n\nBy default, `geotile seed` uses 4 worker processes. You can change this with `--workers`. Please be aware that each worker uses roughly 600 MB of memory. This figure was measured on our reference setup (raster layers, 256px tiles, PNG output) and may be considerably higher for vector layers with many features.\n\nExisting tiles are skipped by default. To overwrite them, pass `--force`. Note that `--force` does not delete tiles outside the bounding box; it only re-renders tiles inside it.\n\n### Limitations\n\nThere are a number of limitations that you should be aware of:\n\n- Seeding vector layers above zoom 16 is not supported.\n- Seeding cannot be resumed after interruption yet. If the process stops, you need to run it again; already rendered tiles will be skipped unless `--force` is set.\n- The S3 storage backend is experimental for seeding and has only been tested with AWS S3, not with S3-compatible services such as MinIO.\n\nIn conclusion, seeding is a powerful feature that can dramatically improve the performance of your map application. By following the steps above, you will be well on your way to delivering a blazing-fast map experience.",
+  "output": "Here's a tightened version. I cut the filler intro and the closing paragraph, and I merged the repeated definition of seeding. All the technical details are still there.\n\n```markdown\n## Seeding the tile cache\n\nSeeding pre-renders tiles so they're served from the cache instead of being rendered on demand. Users don't wait for tiles to load.\n\n    geotile seed --layer basemap --zoom 0-14 --bbox 126.76,37.41,127.18,37.70\n\n- `--zoom` takes a range of zoom levels.\n- `--bbox` takes `minLon,minLat,maxLon,maxLat`. If omitted, the layer's full extent is used, which can take a very long time for global layers.\n- `--workers` sets the number of worker processes (default: 4). Each worker uses roughly 600 MB of memory, measured on our reference setup (raster layers, 256px tiles, PNG output). Vector layers with many features may use considerably more.\n- `--force` re-renders existing tiles, which are skipped by default. It only re-renders tiles inside the bounding box and doesn't delete tiles outside it.\n\n### Limitations\n\n- Seeding vector layers above zoom 16 is not supported.\n- Seeding cannot be resumed after interruption. Run it again; already rendered tiles are skipped unless `--force` is set.\n- The S3 backend is experimental for seeding. It has only been tested with AWS S3, not S3-compatible services such as MinIO.\n```\n\nChanges to check:\n- **Options as a list:** I turned the option paragraphs into a bulleted list so they're easier to scan. If you prefer prose, that's easy to revert.\n- **Dropped \"yet\":** I removed it from \"cannot be resumed after interruption yet\". If resume support is planned, you may want to keep it.\n- **Cut sentences:** I removed \"It is important to note…\", \"In today's fast-paced world…\", \"In other words…\", \"Please be aware…\" and the \"In conclusion\" paragraph. They added no information.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 6139,
+  "wallMs": 7018,
+  "numTurns": 1,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 5087,
+    "cacheReadInputTokens": 3846,
+    "outputTokens": 794,
+    "thinkingTokens": 136
+  },
+  "costUsd": 0.028676600000000003,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": null
+}

@@ -1,0 +1,151 @@
+{
+  "id": "blog-half-marathon-retro-ko",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:02:41.450Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "X",
+      "winner": "A",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 수정본 앞에 \"**고친 곳**\" 목록을 두고 항목마다 \"줄이 사람 수일 수는 없어서 바꿨어요\"처럼 이유를 붙였다. 바꾸지 않은 제안은 \"**참고로 짚어 둘 것** (바꾸지는 않았어요)\"로 따로 묶었다. Y는 끝에 \"고친 곳은 이렇다\"로 정리했지만 고친 곳과 그대로 둔 곳이 문단으로 이어져 구분이 덜 된다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "원문의 '먹-' 겹침을 X는 \"처음 먹어 보는 건 먹지 말 것\"으로 없앴다. Y는 \"대회에서는 처음 먹는 건 아무것도 먹지 말 것\"으로 조사만 바꿔 겹침이 남았다. '잃은' 반복은 둘 다 고쳤다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Y의 \"줄에서 날린 거라\"는 X의 \"줄에서 나간 거라\"보다 자연스럽다. 반대로 X는 \"줄에 일곱 명이 서 있었다\"로 비문 느낌을 없앴고 Y는 \"줄이 일곱 명이었다\"를 그대로 뒀다. 서로 한 곳씩 주고받는다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 본문의 반말 회고체와 농담(\"라면 하나 끓이는 시간\", \"우기기로 했다\")을 그대로 지켰다. Y가 \"줄이 일곱 명이었다\"를 남겨 구어체를 조금 더 살렸지만 X의 수정도 말투를 해치지 않는다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "X는 고친 곳이 하나 더 많지만 모두 요청한 '어색한 데'에 해당하고, \"문제는\" 반복은 \"의도한 리듬이면 그대로 두세요\"라며 손대지 않았다. Y는 \"배운 것 몇 가지\" 뒤에 빈 줄을 넣는 형식 변경을 했다. 이유는 적었지만 요청 범위를 살짝 넘었다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 오타를 똑같이 고쳤고, 라면 비유의 시점 어긋남도 고치지 않고 짚기만 했다. 차이는 어색한 문장 처리다. 원문에서 가장 걸리는 \"처음 먹는 건 아무것도 먹지 말 것\"을 X는 자연스럽게 고쳤고 Y는 겹침을 남겼다. Y의 \"날린\"이 X의 \"나간\"보다 낫지만, 요청의 핵심인 어색한 곳 다듬기와 수정 내역의 구분에서 X가 조금 앞선다.",
+        "meaning_concerns": "X는 \"아무것도\"를 빼면서 강조가 조금 약해졌지만 뜻은 같다. Y의 \"날린\"과 X의 \"나간\"도 원래 뜻을 지킨다. 사실관계가 달라진 곳은 없다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 28194,
+          "wallMs": 29928,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 4042,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 3184,
+            "thinkingTokens": 587
+          },
+          "costUsd": 0.0963436,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "Y",
+      "winner": "A",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 맨 앞에 \"**고친 곳**\" 목록을 두고 \"**수정본**\", \"**참고로 짚어 둘 것**\"으로 나눠서 바로 찾을 수 있다. X는 수정본 뒤에 \"고친 곳은 이렇다.\"를 덧붙여서 구분이 덜 뚜렷하다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "Y는 \"대회에서는 처음 먹어 보는 건 먹지 말 것\"으로 '먹는/먹지' 반복을 없앴다. 또 \"문제는\"이 두 번 나온다는 점도 짚었다. X는 \"대회에서는 처음 먹는 건 아무것도 먹지 말 것\"이라 반복이 남았다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X의 \"처음 먹는 건 아무것도 먹지 말 것\"은 여전히 걸린다. Y의 \"처음 먹어 보는 건 먹지 말 것\"은 자연스럽게 읽힌다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X의 \"화장실 줄에서 날린 거라\"는 작성자의 구어체 말투와 잘 맞는다. Y의 \"나간 거라\"와 \"줄에 일곱 명이 서 있었다\"는 원문의 투박한 맛을 조금 지운다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Y는 요청 범위를 살짝 넘어 \"줄이 일곱 명이었다\"를 손질했다. X는 요청하지 않은 빈 줄을 넣었다(\"빈 줄을 넣었다\"). 둘 다 작은 추가 개입이 있다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 오타는 똑같이 고쳤다. 가장 어색한 문장 \"처음 먹는 건 아무것도 먹지 말 것\"을 실제로 매끄럽게 만든 쪽은 Y이고, X는 반복을 그대로 남겼다. Y는 \"줄에 일곱 명이 서 있었다\", \"나간 거라\"에서 말투를 조금 덜 살렸다. 그래도 핵심 어색함을 해결했고 수정 내역도 찾기 쉬워서 Y가 조금 낫다.",
+        "meaning_concerns": "의미가 달라진 곳은 없다. 두 결과 모두 \"15km 지점\"이 17km·18.5km와 맞지 않는다는 점을 원문을 바꾸지 않고 메모로만 남겼다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19613,
+          "wallMs": 20650,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 4043,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2067,
+            "thinkingTokens": 585
+          },
+          "costUsd": 0.0740116,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "A"
+}

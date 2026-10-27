@@ -1,0 +1,151 @@
+{
+  "id": "column-preventive-maintenance-ko",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:02:41.523Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 사후 정비 문제 → 시범 운영·수치 → 비교 한계 → 야간 출동 → 도장 라인 계획 순서로 문단 구성과 수치 위치가 같다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 '변화는 더 이상 선택이 아닌 필수' 일반론, 마지막 구호, 반복되던 '예방정비는 비용을 줄입니다' 계열 문장을 모두 삭제했다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "원문의 '결국 예방정비로 전환하는 것이…' 문장을 빼면서 Y는 '그래서 올해 1월부터 프레스 라인 3대에…'로 인과를 되살렸지만, X는 '올해 1월부터 이 3대에…'로 지시어만 이었다. Y는 '실제로 올해 상반기 야간 긴급 출동은 5회로'를 남겨 근거 연결이 자연스럽고, X는 '실제로'를 빼 두 문장이 나열처럼 읽힌다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 '~습니다'체 사보 어투를 유지했고, 도장 라인 계획으로 끝나는 마무리도 같다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "본문 수정 폭은 비슷하다(X는 '프레스 라인 3대'→'이 3대', Y는 '이 방식은' 삭제·'그래서' 추가). 메모에서 Y는 '정지 1시간당 손실액이나 출동 1회당 비용 같은 수치가 필요'하다는 점과 '센서 이상 신호를 발견했을 때 누구에게 알릴지' 같은 대안을 제시해 작성자에게 더 쓸모 있다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "본문은 거의 같고, 둘 다 늘어지는 일반론·구호·반복 단정을 적절히 걷어냈다. Y는 삭제된 연결 문장 자리에 '그래서'를 넣고 '실제로'를 남겨 문단 사이 인과가 자연스럽다. 메모도 단정 문장을 살리는 데 필요한 수치와 마지막 문단 대안을 구체적으로 제시해 조금 더 낫다. 차이는 크지 않다.",
+        "meaning_concerns": "의미 왜곡은 발견되지 않았다. 두 결과 모두 '예방정비가 비용 절감에 효과적이라는 점은 분명합니다'를 삭제했는데, 원문이 스스로 밝힌 비교의 한계와 맞지 않는 단정을 걷어낸 것이라 사실 왜곡은 아니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 25818,
+          "wallMs": 27345,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3469,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2781,
+            "thinkingTokens": 436
+          },
+          "costUsd": 0.08369960000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 \"우리 공장은 지금까지…사후 정비 방식을 써 왔습니다\"로 바로 시작하고 수치·단서·계획을 같은 순서로 배치해 찾기 쉬움이 동일하다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"변화는 더 이상 선택이 아닌 필수\"와 \"새로운 패러다임을 향해\" 같은 일반론·구호, 반복되던 \"예방정비는 비용을 줄입니다\"류 문장을 모두 제거했다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X는 \"그래서 올해 1월부터 프레스 라인 3대에\"로 인과를 이어 삭제된 연결문의 공백을 메우고, Y는 \"올해 1월부터 이 3대에\"로 지시어 연결과 반복 회피를 했다. X는 \"실제로 올해 상반기\"를 남겼고 Y는 뺐다. 효과가 엇비슷하다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 원문의 \"~습니다\" 사보 문체를 그대로 유지했다. X의 \"고장 나기 전까지는\"과 Y의 \"이 방식은 고장이 나기 전까지는\"의 차이는 사소하다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "두 결과 모두 원문 문장을 대부분 그대로 두고 필요한 삭제만 했다. 메모는 X가 \"정지 1시간당 손실액이나 출동 1회당 비용 같은 수치가 필요합니다\"처럼 실용적 대안을 주고, Y는 \"네 번 나오던 것\"이라고 썼는데 원문에는 다섯 번 나와 약간 부정확하다. 큰 차이는 아니다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과는 같은 부분을 빼고 거의 같은 본문을 남겼다. 차이는 X의 \"그래서\"와 Y의 \"이 3대에\" 같은 연결어 한두 곳, 그리고 메모의 성격(X는 대안 제시, Y는 삭제 이유 설명)뿐이라 어느 쪽도 독자에게 분명히 더 낫지 않다.",
+        "meaning_concerns": "본문 의미 변화는 없다. Y의 메모에 비용 절감 단정이 \"네 번\" 나왔다고 적혀 있으나 원문에는 다섯 번 나온다(사소함)."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 22404,
+          "wallMs": 23299,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3469,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2222,
+            "thinkingTokens": 427
+          },
+          "costUsd": 0.0725196,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

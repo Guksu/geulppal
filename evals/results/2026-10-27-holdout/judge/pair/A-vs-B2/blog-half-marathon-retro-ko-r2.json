@@ -1,0 +1,151 @@
+{
+  "id": "blog-half-marathon-retro-ko",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:02:31.053Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 본문을 깨끗하게 그대로 둔 뒤 끝에 \"고친 곳은 … 이렇게 세 군데예요\"라고 한 줄로 정리해서 바로 복사해 쓰기 쉽다. X는 본문 안에 \"**맞췄다**\", \"**며칠**\" 같은 굵은 표시를 넣어 두었다. 블로그에 올리려면 이 표시를 다시 지워야 한다. X의 \"바꾼 곳\" 목록 자체는 알아보기 쉽다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 본문에 과장이나 반복을 새로 넣지 않았다. X의 앞말 \"말투는 건드리지 않았어요\"와 \"'문제는 …'이 두 번 나오는데, 리듬감이 있어서 그대로 뒀어요\" 같은 설명이 조금 더 길지만, 쓸데없는 말로 볼 정도는 아니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "Y의 \"줄에 일곱 명이 서 있었다\"는 원문의 \"줄이 일곱 명이었다\"에서 주어와 서술어가 어긋난 부분을 자연스럽게 고쳤다. X의 \"처음 먹어 보는 건\"은 흐름에 큰 차이를 만들지 않는다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "X는 \"못 넘었다\"를 \"못 맞췄다\"로 바꿨다. 그런데 '2시간 10분 벽을 못 넘었다'는 러너들이 흔히 쓰는 표현이고, 원문 작성자의 말투에 가깝다. Y는 이 표현을 그대로 살렸다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "요청은 '오타나 어색한 데만'이었다. X는 맞춤법 말고도 \"못 맞췄다\", \"먹어 보는\"처럼 꼭 필요하지 않은 곳까지 고쳤다. Y는 맞춤법 두 곳과 실제로 어색한 한 곳만 고쳤다. 15km 비유는 두 결과 모두 고치지 않고 확인해 보라고만 했다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 '몇일→며칠', '시작됬다→시작됐다'를 고쳤다. 15km와 17km·18.5km가 맞지 않는 점도 둘 다 고치지 않고 확인해 보라고만 해서 적절했다. 차이는 손댄 범위에서 난다. Y는 실제로 어색했던 \\\"줄이 일곱 명이었다\\\"만 더 고쳤다. X는 러너다운 표현인 \\\"못 넘었다\\\"와 원래 문제없던 \\\"처음 먹는 건\\\"까지 바꿨다. 게다가 본문에 굵은 표시를 넣어서 블로그에 그대로 붙여 넣기도 어렵다. '오타나 어색한 데만, 말투는 그대로'라는 요청에는 Y가 더 맞다.",
+        "meaning_concerns": "X가 \\\"못 넘었다\\\"를 \\\"못 맞췄다\\\"로 바꾸면서 '벽을 넘지 못했다'는 느낌이 '목표를 맞추지 못했다'로 조금 달라졌다. 다만 X가 이 수정을 알리면서 원래 표현으로 되돌려도 된다고 적어 두었다. 사실이 바뀐 곳은 없다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 17693,
+          "wallMs": 19930,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3783,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1806,
+            "thinkingTokens": 418
+          },
+          "costUsd": 0.06671160000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 본문을 바로 보여 주고 끝에 \"고친 곳은 `몇일`→`며칠`, `시작됬다`→`시작됐다`...\"라고 짧게 정리했다. Y는 \"오타는 두 군데였고...\"라는 안내문을 앞에 두고, 본문에 \"**며칠**\", \"**시작됐다**\"처럼 굵은 글씨를 섞어서 바로 옮겨 쓰기가 불편하다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 본문에 내용을 덧붙이거나 과장하지 않았다. Y의 \"'문제는 …'이 두 번 나오는데, 리듬감이 있어서 그대로 뒀어요\" 같은 부가 설명은 장황하지만 본문을 부풀리지는 않는다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"줄에 일곱 명이 서 있었다\"와 Y의 \"처음 먹어 보는 건\"은 둘 다 문장 흐름을 조금 다듬었고, 흐름을 해친 곳은 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "Y는 \"못 넘었다\"를 \"못 맞췄다\"로 바꿨는데, 원문의 \"2시간 10분은 못 넘었다\"는 러너들이 흔히 쓰는 관용 표현이라 작성자의 말투가 담겨 있다. X는 이 부분을 그대로 두었다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 맞춤법 두 곳과 \"줄에 일곱 명이 서 있었다\"만 고쳤다. Y는 \"못 맞췄다\"처럼 필요 없는 수정을 했고, 본문 곳곳에 굵은 글씨를 넣었으며, 제목까지 \"**첫 하프마라톤...**\"으로 굵게 바꿨다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "둘 다 맞춤법을 고쳤고 15km 불일치를 짚었다. X는 요청 범위 안에서 최소한으로 고쳐 블로그에 바로 쓸 수 있다. Y는 \"못 넘었다→못 맞췄다\"처럼 필요 없는 수정으로 말투와 관용적 의미를 건드렸고, 본문에 굵은 글씨를 넣어 복사해 쓰기 어렵게 만들었다.",
+        "meaning_concerns": "Y가 \"못 넘었다\"를 \"못 맞췄다\"로 바꿔, 원래 '2시간 10분 벽을 못 깼다'는 관용적 뜻의 결이 달라졌다. X의 \"줄에 일곱 명이 서 있었다\"는 의미 변화가 없다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19432,
+          "wallMs": 20239,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3784,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2065,
+            "thinkingTokens": 364
+          },
+          "costUsd": 0.07189960000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

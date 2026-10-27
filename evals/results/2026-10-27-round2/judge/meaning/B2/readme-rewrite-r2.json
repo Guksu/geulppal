@@ -1,0 +1,124 @@
+{
+  "id": "readme-rewrite",
+  "condition": "B2",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:40:06.921Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "태그 검색",
+          "status": "kept",
+          "evidence": "노트함은 메모에 태그를 붙여 태그로 검색하고"
+        },
+        {
+          "item": "CSV 내보내기",
+          "status": "kept",
+          "evidence": "메모를 CSV로 내보낼 수 있는 도구입니다."
+        },
+        {
+          "item": "기기에만 저장",
+          "status": "kept",
+          "evidence": "메모는 기기에만 저장되며"
+        },
+        {
+          "item": "기기 간 동기화 미지원",
+          "status": "kept",
+          "evidence": "기기 간 동기화는 지원하지 않습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "클라우드 기능 추가",
+          "status": "ok",
+          "evidence": "메모는 기기에만 저장되며 기기 간 동기화는 지원하지 않습니다."
+        },
+        {
+          "item": "생산성 향상을 측정된 사실처럼 쓰기",
+          "status": "ok",
+          "evidence": "원문의 '생산성의 새로운 기준을 제시합니다'가 빠졌고, 생산성 관련 주장이 없음"
+        },
+        {
+          "item": "수정 이유를 본문에 섞기",
+          "status": "ok",
+          "evidence": "결과는 본문 두 문장뿐이며 수정 설명이 없음"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "노트함은 메모에 태그를 붙여 태그로 검색하고, 메모를 CSV로 내보낼 수 있는 도구입니다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "기능 세 가지와 저장 방식 제한이 모두 남아 있음. 빠진 것은 근거 없는 수식어 '생산성의 새로운 기준'뿐"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "수치 없음"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "'내보낼 수 있는', '지원하지 않습니다' 모두 원문과 같은 확실성"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "기기 간 동기화는 지원하지 않습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "'노트함', 'CSV' 그대로 유지"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "메모 없이 본문만 돌려줌"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 9057,
+        "wallMs": 10027,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 328,
+          "cacheReadInputTokens": 3001,
+          "outputTokens": 965,
+          "thinkingTokens": 55
+        },
+        "costUsd": 0.022532200000000002,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

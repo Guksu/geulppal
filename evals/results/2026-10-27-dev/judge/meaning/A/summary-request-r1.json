@@ -1,0 +1,144 @@
+{
+  "id": "summary-request",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:30:11.278Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "간편결제 오류율 1.8%(전주 2.4%)",
+          "status": "kept",
+          "evidence": "지난주 1.8%로 전주(2.4%)보다 낮아졌으나"
+        },
+        {
+          "item": "결제 건수가 평소 70%라 개선 효과로 보기 이르다는 단서",
+          "status": "kept",
+          "evidence": "프로모션이 없어 결제 건수가 평소의 70% 수준이었던 만큼 개선 효과로 보기는 이르다."
+        },
+        {
+          "item": "11/2 02:00~06:00 B카드 결제 불가",
+          "status": "kept",
+          "evidence": "11/2(토) 02:00~06:00 B카드 결제 불가"
+        },
+        {
+          "item": "다른 카드·간편결제는 영향 없음",
+          "status": "kept",
+          "evidence": "(다른 카드·간편결제는 영향 없음)"
+        },
+        {
+          "item": "CS팀 10/30까지 앱 공지",
+          "status": "kept",
+          "evidence": "CS팀이 10/30까지 앱 공지 게시 예정."
+        },
+        {
+          "item": "부분 환불 자동화 개발 완료·QA 남음",
+          "status": "kept",
+          "evidence": "개발 완료, QA 진행 예정."
+        },
+        {
+          "item": "배포일 미정(다음 회의에서 결정)",
+          "status": "kept",
+          "evidence": "배포일은 QA 결과를 보고 다음 회의에서 결정."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "오류율 감소를 개선 효과로 단정",
+          "status": "ok",
+          "evidence": "개선 효과로 보기는 이르다."
+        },
+        {
+          "item": "환불 자동화 배포 확정 또는 배포일 창작",
+          "status": "ok",
+          "evidence": "배포일은 QA 결과를 보고 다음 회의에서 결정."
+        },
+        {
+          "item": "점검 날짜·시간 변경",
+          "status": "ok",
+          "evidence": "11/2(토) 02:00~06:00"
+        },
+        {
+          "item": "요청한 3~4줄을 크게 넘기기",
+          "status": "ok",
+          "evidence": "제목 1줄과 항목 4줄로 구성되어 크게 넘기지 않음"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "원문에 없는 사실·수치 추가 없음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "네 개 안건의 핵심이 모두 포함됨"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "지난주 1.8%로 전주(2.4%)보다 낮아졌으나 ... 평소의 70% 수준"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"개선 효과로 보기는 이르다\" — 원문의 '의견이 있었다'가 빠졌지만 더 신중한 쪽의 단서라 결론 확정으로 바뀌지 않음. 'QA 진행 예정'도 'QA가 남아 있다'와 같은 뜻"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "(다른 카드·간편결제는 영향 없음) / 배포일은 QA 결과를 보고"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "B카드, CS팀, 날짜·시간 표기 유지"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요약 형식, 4개 항목으로 3~4줄 요청 범위 안"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 14109,
+        "wallMs": 15046,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1452,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1634,
+          "thinkingTokens": 369
+        },
+        "costUsd": 0.044800000000000006,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

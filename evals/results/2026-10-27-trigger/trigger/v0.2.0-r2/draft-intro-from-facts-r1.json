@@ -1,0 +1,69 @@
+{
+  "id": "draft-intro-from-facts",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": true,
+  "prompt": "다음 내용으로 사이드 프로젝트 소개글 써줘. 이름은 장보기노트, 기능은 장보기 목록 공유랑 품목별 가격 기록이야. 마트 갈 때마다 뭘 샀는지 기억이 안 나서 만들었어.",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": true,
+  "selectedBy": "Skill",
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": true,
+    "top3": [
+      "geulppal:21.3",
+      "claude-api:0.0",
+      "code-review:0.0"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [
+    {
+      "name": "Skill",
+      "input": "{\"skill\":\"geulppal\"}"
+    },
+    {
+      "name": "Read",
+      "input": "{\"file_path\":\"<tmp>\"}"
+    }
+  ],
+  "permissionDenials": [],
+  "durationMs": 8166,
+  "wallMs": 9006,
+  "usage": {
+    "inputTokens": 6,
+    "cacheCreationInputTokens": 11159,
+    "cacheReadInputTokens": 26996,
+    "outputTokens": 775,
+    "thinkingTokens": 234
+  },
+  "costUsd": 0.055097600000000004,
+  "error": null
+}

@@ -1,0 +1,162 @@
+{
+  "id": "personal-blog-voice",
+  "condition": "B2",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "18분",
+      "11분"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:39:43.533Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "반말 1인칭 말투",
+          "status": "kept",
+          "evidence": "솔직히 말하면 나는 모노레포가 싫다."
+        },
+        {
+          "item": "싫다에서 싫었다로 고쳐 말하는 유머",
+          "status": "kept",
+          "evidence": "솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다."
+        },
+        {
+          "item": "도입 때 반대표",
+          "status": "kept",
+          "evidence": "처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다."
+        },
+        {
+          "item": "첫 달 CI 평균 18분",
+          "status": "kept",
+          "evidence": "실제로 첫 달에는 CI가 평균 18분까지 늘어났다."
+        },
+        {
+          "item": "세 달쯤 지나 생긴 변화",
+          "status": "kept",
+          "evidence": "그런데 세 달쯤 지나자 이상한 일이 생겼다."
+        },
+        {
+          "item": "공통 컴포넌트 수정 시 쓰는 쪽 테스트가 깨져 배포 전에 문제를 앎",
+          "status": "kept",
+          "evidence": "공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 예전에는 배포하고 나서야 알았던 문제를 배포 전에 알게 됐다."
+        },
+        {
+          "item": "배포 후 발견되는 문제가 줄었다는 작성자의 관찰",
+          "status": "kept",
+          "evidence": "배포 후 장애가 줄었다는 것은 정말 큰 변화였다."
+        },
+        {
+          "item": "캐시 설정 변경 후 약 11분",
+          "status": "kept",
+          "evidence": "캐시 설정을 바꿔서 지금은 11분 정도인데"
+        },
+        {
+          "item": "다음 글 예고와 '아마도'의 여운",
+          "status": "kept",
+          "evidence": "이건 다음 글에서 이야기하겠다. 아마도."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "합니다체 등 다른 말투로 변경",
+          "status": "ok",
+          "evidence": "그것이 모노레포의 진짜 장점이었다."
+        },
+        {
+          "item": "유머·여운 삭제",
+          "status": "ok",
+          "evidence": "그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다. / 아마도."
+        },
+        {
+          "item": "장애 감소를 수치나 일반적인 효과로 확대",
+          "status": "ok",
+          "evidence": "배포 후 장애가 줄었다는 것은 정말 큰 변화였다."
+        },
+        {
+          "item": "모노레포 일반론 추가",
+          "status": "ok",
+          "evidence": "추가된 문장 없음. 원문 문장 일부를 합치거나 삭제만 함."
+        },
+        {
+          "item": "18분·11분 수치 변경",
+          "status": "ok",
+          "evidence": "그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "새 문장이나 수치 없음. \"예전에는 배포하고 나서야 알았던 문제를 배포 전에 알게 됐다.\"는 원문 두 문장을 합친 것."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "삭제된 \"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\"와 \"배포 전에 문제를 알 수 있다는 것,\"은 앞뒤 문장과 겹치는 반복이고, 같은 내용이 결과에 남아 있음."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"첫 달에는 CI가 평균 18분까지\", \"지금은 11분 정도\" 그대로임."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"배포 후 장애가 줄었다는 것은 정말 큰 변화였다.\" 개인 경험으로 남아 있고 일반 사실로 넓히지 않음. \"그것이 모노레포의 진짜 장점이었다.\"에서 '그것'이 가리키는 대상이 '배포 전에 문제를 아는 것'에서 바로 앞 문장(장애 감소)으로 흐려졌지만, 같은 원인과 결과를 말하므로 의미가 바뀌었다고 보지 않음."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"공통 컴포넌트를 고치면\" 조건과 \"아마도.\"의 유보가 그대로 남아 있음."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "인용문 \"거봐, 내 말이 맞지\"와 고유 표기(CI)가 그대로임."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "반복이 있는 둘째 문단만 줄였고, 첫째·셋째 문단과 말투는 원문과 같음."
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 18782,
+        "wallMs": 19619,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1654,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 2300,
+          "thinkingTokens": 503
+        },
+        "costUsd": 0.059736000000000004,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

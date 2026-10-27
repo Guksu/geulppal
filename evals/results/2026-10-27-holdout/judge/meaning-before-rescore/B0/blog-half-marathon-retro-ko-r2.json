@@ -1,0 +1,173 @@
+{
+  "id": "blog-half-marathon-retro-ko",
+  "condition": "B0",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:56:13.756Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "반말 블로그 문체와 자조적인 유머",
+          "status": "kept",
+          "evidence": "\"이 숫자를 보고 처음엔 좀 억울했는데, 기록증을 냉장고에 붙여 놓고 며칠 지나니까 그냥 웃기다.\""
+        },
+        {
+          "item": "라면 비유",
+          "status": "kept",
+          "evidence": "\"4분이면 라면 하나 끓이는 시간이다. 그 라면을 15km 지점에서 끓인 셈이다.\""
+        },
+        {
+          "item": "포기/화장실 대조와 설명",
+          "status": "kept",
+          "evidence": "\"포기하고 싶었던 게 아니라 화장실에 가고 싶었다. 이 둘은 생각보다 많이 다르다. 포기하고 싶을 땐 다리가 멈추는데, 화장실이 급할 땐 다리가 오히려 빨라진다.\""
+        },
+        {
+          "item": "기록 2:14:51, 목표 2:10, 차이 4:51",
+          "status": "kept",
+          "evidence": "\"첫 하프마라톤, 2시간 14분 51초\" / \"목표였던 2시간 10분은 못 넘었다. 4분 51초.\""
+        },
+        {
+          "item": "15km까지 6분 페이스, 2시간 7분 생각",
+          "status": "kept",
+          "evidence": "\"킬로미터당 6분 페이스를 시계 보면서 꼬박꼬박 지켰고, 이대로면 2시간 7분도 되겠다는 생각까지 했다.\""
+        },
+        {
+          "item": "이온음료 두 컵, 평소 물만, 17km 복통",
+          "status": "kept",
+          "evidence": "\"급수대에서 이온음료를 두 컵 연달아 마셨는데, 평소 연습 때는 물만 마셨다는 걸\" / \"17km부터 배가 꾸르륵거리기 시작했다.\""
+        },
+        {
+          "item": "18.5km 화장실 하나, 줄 일곱 명",
+          "status": "kept",
+          "evidence": "\"화장실이 18.5km에 하나밖에 없었고 거기 줄이 일곱 명이었다는 거다.\""
+        },
+        {
+          "item": "배운 점 두 가지",
+          "status": "kept",
+          "evidence": "\"대회에서 처음 먹는 건 아무것도 먹지 말 것.\" / \"그리고 페이스는 생각보다 정직하다.\""
+        },
+        {
+          "item": "3개월 주 3회 훈련",
+          "status": "kept",
+          "evidence": "\"3개월 동안 주 3회, 한 번도 안 빼먹고 뛴 게\""
+        },
+        {
+          "item": "다음 목표 내년 봄 2시간 5분, 참가 신청 아직 안 함",
+          "status": "kept",
+          "evidence": "\"다음 목표는 내년 봄 대회에서 2시간 5분.\" / \"사실 아직 참가 신청도 안 했다.\""
+        },
+        {
+          "item": "맞춤법 오류 바로잡기",
+          "status": "kept",
+          "evidence": "\"며칠 지나니까\" / \"문제는 그 생각을 한 직후에 시작됐다.\""
+        }
+      ],
+      "must_not": [
+        {
+          "item": "존댓말이나 보고서체로 바꾸기",
+          "status": "ok",
+          "evidence": "본문은 반말 그대로 유지: \"신청 열리는 날 알람부터 맞춰 놔야겠다.\" (존댓말은 메모에만 있음)"
+        },
+        {
+          "item": "농담·개인적 표현 삭제/밋밋하게",
+          "status": "ok",
+          "evidence": "\"헛되지 않았다는 증거라고 우기기로 했다.\""
+        },
+        {
+          "item": "참가 신청을 이미 한 것처럼 쓰기",
+          "status": "ok",
+          "evidence": "\"사실 아직 참가 신청도 안 했다.\""
+        },
+        {
+          "item": "수치 바꾸기",
+          "status": "ok",
+          "evidence": "모든 수치(2시간 14분 51초, 15km, 17km, 18.5km, 일곱 명, 주 3회 등) 원문과 동일"
+        },
+        {
+          "item": "소제목·글머리표 새로 넣기",
+          "status": "ok",
+          "evidence": "본문 구조 원문과 동일, \"배운 것 몇 가지.\" 형식 유지"
+        },
+        {
+          "item": "원문에 없는 교훈·응원·다짐 덧붙이기",
+          "status": "ok",
+          "evidence": "본문 마지막 문장 \"신청 열리는 날 알람부터 맞춰 놔야겠다.\"로 원문과 동일하게 끝남"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "본문에 새 사실 없음. \"후반에 잃은 시간은 대부분 화장실 줄 때문이라\"는 원문과 같은 뜻"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "본문이 원문 전 문장을 유지"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"4분 51초.\", \"18.5km\" 등 수치 그대로"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"후반에 잃은 시간은 대부분 화장실 줄 때문이라\" — '대부분' 한정 유지, 계획/미신청 상태 유지"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"평소 연습 때는 물만 마셨다는 걸 그때는 까맣게 잊고 있었다.\" 조건·부정 유지"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "제목 \"첫 하프마라톤, 2시간 14분 51초\" 그대로"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "오타·어색한 곳만 고침: \"고친 곳은 세 군데입니다\"; 나머지 제안은 메모로만 남기고 본문에 반영하지 않음"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 16810,
+        "wallMs": 19367,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 3191,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 2185,
+          "thinkingTokens": 77
+        },
+        "costUsd": 0.069732,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

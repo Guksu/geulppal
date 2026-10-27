@@ -1,0 +1,139 @@
+{
+  "id": "already-good-intro",
+  "condition": "B0",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:27:32.969Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "퇴근길 지하철에서 읽은 책 기록",
+          "status": "kept",
+          "evidence": "퇴근길 지하철에서 읽은 책을 짧게 기록하는 블로그입니다."
+        },
+        {
+          "item": "다 읽지 못해도 밑줄 그은 문장과 생각을 적음",
+          "status": "kept",
+          "evidence": "한 권을 다 읽지 못해도 그날 밑줄 그은 문장 하나와 떠오른 생각을 적습니다."
+        },
+        {
+          "item": "서평과 일기 사이라는 대조",
+          "status": "kept",
+          "evidence": "서평이라고 하기엔 짧고, 일기라고 하기엔 책 이야기가 많습니다."
+        },
+        {
+          "item": "2024년 3월부터",
+          "status": "kept",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "item": "일주일에 두세 번",
+          "status": "kept",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "item": "작성자의 말투",
+          "status": "kept",
+          "evidence": "원문과 한 글자도 다르지 않게 그대로 돌려줌: \"퇴근길 지하철에서 읽은 책을 짧게 기록하는 블로그입니다.\""
+        }
+      ],
+      "must_not": [
+        {
+          "item": "필요 없는 대규모 재작성",
+          "status": "ok",
+          "evidence": "본문이 원문과 동일함"
+        },
+        {
+          "item": "새 경험·감상·독자 수 추가",
+          "status": "ok",
+          "evidence": "본문이 원문과 동일하며 추가 내용 없음"
+        },
+        {
+          "item": "서평·일기 대조 삭제",
+          "status": "ok",
+          "evidence": "서평이라고 하기엔 짧고, 일기라고 하기엔 책 이야기가 많습니다."
+        },
+        {
+          "item": "홍보 문구 추가",
+          "status": "ok",
+          "evidence": "본문이 원문과 동일하며 홍보 문구 없음"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "본문이 원문과 동일함"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 네 문장이 모두 그대로 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "2024년 3월부터 일주일에 두세 번 올리고 있습니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"올리고 있습니다\" 진행 상태가 유지됨"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "한 권을 다 읽지 못해도 그날 밑줄 그은 문장 하나와 떠오른 생각을 적습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "코드나 고유 표기 없음, 수치 그대로 유지"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "고칠 곳이 없어서 그대로 돌려드립니다. — 고칠 게 없으면 그대로 돌려달라는 요청에 맞음"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 9395,
+        "wallMs": 11085,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 2627,
+          "cacheReadInputTokens": 906,
+          "outputTokens": 1188,
+          "thinkingTokens": 22
+        },
+        "costUsd": 0.0449652,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "id": "diagnose-youth-rent-press-release-ko",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:59:19.141Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "신청 마감일이 11월 28일과 11월 30일로 다르게 적혀 있다는 문제를 짚기",
+          "status": "kept",
+          "evidence": "\"신청 마감일이 서로 다릅니다.** 3문단은 11월 28일까지, 마지막 문장은 11월 30일까지입니다. 어느 쪽이 맞는지 확인이 필요합니다.\""
+        },
+        {
+          "item": "진단에서 원문 사실을 언급할 때 수치와 조건을 바꿔 말하지 않기",
+          "status": "kept",
+          "evidence": "\"월 최대 20만 원, 300명 규모 사업으로\", \"만 19~34세를 언제 기준으로 보는지\", \"초과 신청 시 선정 기준이 소득순뿐입니다.\" 수치와 조건이 원문과 같다."
+        },
+        {
+          "item": "요청 범위대로 문제 지적과 그 이유만 제시하기",
+          "status": "kept",
+          "evidence": "결과 전체가 항목별 문제 지적과 이유로 되어 있고, 고친 문장이나 수정본은 없다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "수정본 전체나 고친 문장, 대체 문구를 써 주기",
+          "status": "ok",
+          "evidence": "\"확정 인원인지 계획 인원인지 정해서 쓰세요.\" 같은 방향 제시만 있고 대체 문장은 없다."
+        },
+        {
+          "item": "두 마감일 가운데 어느 쪽이 맞는지 임의로 정하기",
+          "status": "ok",
+          "evidence": "\"어느 쪽이 맞는지 확인이 필요합니다.\""
+        },
+        {
+          "item": "'현금이 아니라 임대인 계좌로 지급' 대조나 제외 조건을 불필요한 표현이라며 삭제하라고 권하기",
+          "status": "ok",
+          "evidence": "\"'지급하는 것이 아니라 … 지급된다'는 능동과 피동이 섞여 호응이 어색합니다.\" 호응 문제만 지적했고, 제외 조건은 위치만 문제 삼았다. 삭제는 권하지 않았다."
+        },
+        {
+          "item": "'약 300명 예정'을 확정 수치로 바꾸라고 권하기",
+          "status": "ok",
+          "evidence": "\"확정 인원인지 계획 인원인지 정해서 쓰세요.\" 확정 수치로 바꾸라고 단정해서 권하지는 않았다."
+        },
+        {
+          "item": "원문에 없는 사실(예산 규모, 선정 발표일 등)을 전제로 진단하기",
+          "status": "ok",
+          "evidence": "\"선정 발표일과 첫 지급 시기가 없습니다.\" 발표일이 원문에 없다는 점을 지적했을 뿐, 특정 날짜를 전제하지 않았다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "problem",
+          "evidence": "\"11월 28일은 토요일이니, 마감 시각도 따로 적어야 하는지 보세요.\" 원문에는 연도가 없는데 요일을 사실처럼 단정하고 그 위에 진단을 얹었다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "날짜 불일치, 과장 표현, 반복된 결론, 인용 주체 문제를 모두 짚었다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"월 최대 20만 원, 300명 규모 사업으로\" 원문 수치의 대상과 단위가 그대로다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"'약 300명'과 '예정'이 겹쳐 이중으로 불확실합니다.\" 원문의 '예정' 상태를 그대로 인식했다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"제외 조건이 지급 방식 문장 뒤에 '단,'으로 붙어 있습니다.\" 조건을 없애지 않고 위치만 지적했다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "\"구청장 이름(○○○)과 연락처(02-000-1234)가 자리표시자 상태입니다.\" 원문 표기를 그대로 옮겼다."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "진단 목록만 있고 수정본은 없다."
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "new_facts: 원문에 연도가 없는데도 '11월 28일은 토요일'이라고 단정하고, 그 전제에서 마감 시각을 따로 적으라는 진단을 덧붙였다."
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 27286,
+        "wallMs": 28142,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 328,
+          "cacheReadInputTokens": 5249,
+          "outputTokens": 2991,
+          "thinkingTokens": 1302
+        },
+        "costUsd": 0.06350180000000001,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

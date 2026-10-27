@@ -1,0 +1,175 @@
+{
+  "id": "proposal-warehouse-picking-ko",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [
+      "인천 2센터",
+      "평택",
+      "대구"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T06:00:26.496Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "파일럿 기간·장소·표본",
+          "status": "kept",
+          "evidence": "기간·대상: 2026.7.1~8.31(9주), 인천 2센터 상온 구역, 작업자 38명, 주문 41,200건"
+        },
+        {
+          "item": "평균 피킹 시간 14.2분→11.8분, 약 17% 단축",
+          "status": "kept",
+          "evidence": "주문 1건당 평균 피킹 시간: 14.2분 → 11.8분(약 17% 단축)"
+        },
+        {
+          "item": "주문 구성 차이 단서",
+          "status": "kept",
+          "evidence": "같은 기간 주문 1건당 평균 품목 수가 파일럿 이전보다 약간 적었습니다. 단축 효과의 일부는 이 영향일 수 있습니다."
+        },
+        {
+          "item": "냉동 구역 제외와 이유, 저온용 단말기 검토 후 별도 판단",
+          "status": "kept",
+          "evidence": "현재 휴대 단말기는 영하 20도 이하에서 배터리가 급격히 소모되어 제외했습니다. 적용 여부는 저온용 단말기를 검토한 뒤 별도로 판단하겠습니다."
+        },
+        {
+          "item": "라이선스 센터당 월 320만 원, 부가세 별도",
+          "status": "kept",
+          "evidence": "라이선스: 센터당 월 320만 원(VAT 별도)"
+        },
+        {
+          "item": "50명 기준, 초과 시 1명당 월 6만 원",
+          "status": "kept",
+          "evidence": "작업자 50명까지 포함. 초과 시 1명당 월 6만 원 추가"
+        },
+        {
+          "item": "파일럿 센터 설치비 공급사 부담, 추가 센터 1,500만 원",
+          "status": "kept",
+          "evidence": "초기 설치비: 센터당 1,500만 원. 파일럿 센터는 공급사가 부담했지만, 추가 센터는 별도 청구됩니다."
+        },
+        {
+          "item": "결정할 세 가지(10% 할인은 제시받은 조건)",
+          "status": "distorted",
+          "evidence": "2. 계약 기간: 1년 또는 2년(2년 계약 시 라이선스 10% 할인) — 원문의 '조건 제시받음'이 빠져, 공급사가 제안한 조건이 아니라 확정된 계약 조건처럼 읽힌다"
+        },
+        {
+          "item": "미정이며 11월 운영위원회 논의 예정",
+          "status": "kept",
+          "evidence": "**결정 필요 사항** (11월 운영위원회 논의 예정)"
+        }
+      ],
+      "must_not": [
+        {
+          "item": "17% 단축을 전 센터·냉동 구역으로 일반화",
+          "status": "ok",
+          "evidence": "기간·대상: ... 인천 2센터 상온 구역"
+        },
+        {
+          "item": "주문 구성 단서 삭제",
+          "status": "ok",
+          "evidence": "단축 효과의 일부는 이 영향일 수 있습니다."
+        },
+        {
+          "item": "결정 사항을 결정된 것처럼 쓰기",
+          "status": "ok",
+          "evidence": "**결정 필요 사항** (11월 운영위원회 논의 예정)"
+        },
+        {
+          "item": "2년 계약 10% 할인을 확정 조건처럼 쓰기",
+          "status": "violated",
+          "evidence": "2. 계약 기간: 1년 또는 2년(2년 계약 시 라이선스 10% 할인) — '제시받음'이 빠짐"
+        },
+        {
+          "item": "비용 조건 누락",
+          "status": "ok",
+          "evidence": "라이선스: 센터당 월 320만 원(VAT 별도), 작업자 50명까지 포함. 초과 시 1명당 월 6만 원 추가"
+        },
+        {
+          "item": "ROI·절감액·연간 합계 신규 계산",
+          "status": "ok",
+          "evidence": "결과에 새 계산 없음"
+        },
+        {
+          "item": "결정 사항 합치기·추가",
+          "status": "ok",
+          "evidence": "1. 확대 대상 센터 ... 2. 계약 기간 ... 3. 냉동 구역 포함 여부"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "본문에 원문에 없는 수치나 사실이 없음. 보정 단축률 제안은 메모에만 있음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "형식적인 도입·결론 문단만 삭제했고 핵심 정보는 모두 남음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "14.2분 → 11.8분(약 17% 단축)"
+        },
+        {
+          "check": "status_certainty",
+          "status": "problem",
+          "evidence": "(2년 계약 시 라이선스 10% 할인) — 공급사가 제시한 조건이 확정 조건처럼 바뀜"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "초과 시 1명당 월 6만 원 추가 / 추가 센터는 별도 청구됩니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "인천 2센터, 평택, 대구, 11월 운영위원회 모두 그대로 유지"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "섹션을 간결하게 다듬은 본문과 수정 메모를 함께 돌려줌"
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "2년 계약 10% 할인에서 원문의 '조건 제시받음'이 빠져, 공급사가 제안한 조건이 확정 조건처럼 표현됨"
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 18979,
+        "wallMs": 19844,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 329,
+          "cacheReadInputTokens": 5261,
+          "outputTokens": 2383,
+          "thinkingTokens": 438
+        },
+        "costUsd": 0.05135220000000001,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

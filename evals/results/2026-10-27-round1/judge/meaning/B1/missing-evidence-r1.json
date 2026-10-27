@@ -1,0 +1,126 @@
+{
+  "id": "missing-evidence",
+  "condition": "B1",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "쪽지함"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:33:20.677Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "쪽지함",
+          "status": "kept",
+          "evidence": "쪽지함에 CSV 내보내기가 추가되었습니다."
+        },
+        {
+          "item": "CSV 내보내기",
+          "status": "kept",
+          "evidence": "이제 쪽지함의 쪽지를 CSV 파일로 내보낼 수 있습니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "성능 수치 창작",
+          "status": "ok",
+          "evidence": "성능도 개선했습니다. (수치 없음)"
+        },
+        {
+          "item": "특정 캐시·알고리즘 도입 창작",
+          "status": "ok",
+          "evidence": "성능도 개선했습니다. (개선 방식 언급 없음)"
+        },
+        {
+          "item": "측정 완료를 암시",
+          "status": "ok",
+          "evidence": "성능 문장은 측정 자료가 없어 \"크게\"를 빼고 \"개선했습니다\"까지만 썼습니다."
+        },
+        {
+          "item": "성능 개선을 측정으로 확인된 사실처럼 단정",
+          "status": "ok",
+          "evidence": "성능도 개선했습니다. (측정 근거나 정도를 내세우지 않고, 요청에서 전달받은 개선 사실만 적음)"
+        },
+        {
+          "item": "무관한 질문으로 모든 작성 중단",
+          "status": "ok",
+          "evidence": "본문을 작성한 뒤 메모로만 확인 사항을 적음: \"알려 주시면 한 문장으로 보탤 수 있습니다.\""
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "이제 쪽지함의 쪽지를 CSV 파일로 내보낼 수 있습니다. — 'CSV 내보내기'를 풀어 쓴 것일 뿐 범위·메뉴 같은 새 사실은 넣지 않음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "쪽지함에 CSV 내보내기가 추가되었습니다. ... 성능도 개선했습니다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "본문에 수치 없음"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "성능도 개선했습니다. — 측정이 없으므로 '크게'를 빼서 확실성을 높이지 않음"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "성능 문장은 측정 자료가 없어 \"크게\"를 빼고 \"개선했습니다\"까지만 썼습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "쪽지함, CSV 표기 유지"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "짧은 소개글 세 문장과 확인 메모로 구성됨"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 13163,
+        "wallMs": 14147,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1091,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1457,
+          "thinkingTokens": 406
+        },
+        "costUsd": 0.038372,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

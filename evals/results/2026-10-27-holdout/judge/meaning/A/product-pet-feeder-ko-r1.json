@@ -1,0 +1,172 @@
+{
+  "id": "product-pet-feeder-ko",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "냥냥밥상 S2",
+      "Wi-Fi"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:57:46.249Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "제품명 냥냥밥상 S2",
+          "status": "kept",
+          "evidence": "# 냥냥밥상 S2 — 반려묘를 위한 자동급식기"
+        },
+        {
+          "item": "4L 사료통, 하루 60g 기준 약 3주",
+          "status": "kept",
+          "evidence": "## 3주 동안 채우지 않아도 되는 대용량 4L 사료통\n하루 60g을 먹는 고양이 기준으로 약 3주 동안 사료를 다시 채우지 않아도 됩니다."
+        },
+        {
+          "item": "전용 앱(iOS, Android)에서 하루 최대 8회 설정",
+          "status": "kept",
+          "evidence": "급식 시간과 양은 전용 앱(iOS, Android)에서 하루 최대 8회까지 설정할 수 있습니다."
+        },
+        {
+          "item": "D형 건전지 3개로 정전 시 최대 72시간 예약 급식",
+          "status": "kept",
+          "evidence": "D형 건전지 3개를 넣어 두면 정전 시 최대 72시간 동안 예약 급식이 이어집니다."
+        },
+        {
+          "item": "건전지 작동 중에는 Wi-Fi가 꺼져 앱 알림과 원격 급식을 쓸 수 없다는 제한",
+          "status": "kept",
+          "evidence": "건전지로 작동하는 동안에는 Wi-Fi가 꺼져 앱 알림과 원격 급식을 사용할 수 없습니다."
+        },
+        {
+          "item": "건전지 별도 구매",
+          "status": "kept",
+          "evidence": "건전지는 별도 구매해야 합니다."
+        },
+        {
+          "item": "걸림 방지 회전판 설계",
+          "status": "kept",
+          "evidence": "걸림 방지 회전판이 사료가 막히는 일을 줄여 줍니다."
+        },
+        {
+          "item": "지름 12mm를 넘는 사료는 걸릴 수 있어 권장하지 않는다는 예외",
+          "status": "kept",
+          "evidence": "지름 12mm를 넘는 큰 알갱이 사료는 걸릴 수 있어 권장하지 않습니다."
+        },
+        {
+          "item": "가격 129,000원",
+          "status": "kept",
+          "evidence": "**129,000원**"
+        },
+        {
+          "item": "정기배송 신청 시 첫 3개월 사료 값 10% 할인, 본체는 할인 대상 아님",
+          "status": "kept",
+          "evidence": "사료 정기배송을 함께 신청하시면 **첫 3개월 동안 사료 값 10% 할인**을 받으실 수 있습니다.\n(급식기 본체 가격은 할인 대상이 아닙니다.)"
+        }
+      ],
+      "must_not": [
+        {
+          "item": "원문의 홍보 주장('수의사들도 인정한' 등)을 더 강하게 만들거나 구체적인 근거처럼 바꾸기",
+          "status": "ok",
+          "evidence": "본문에서 '수의사들도 인정', '전 세계 집사들이 열광' 등은 삭제됨. 메모: \"근거를 확인할 수 없는 표현을 뺐습니다.\""
+        },
+        {
+          "item": "인증, 판매량, 수상, 후기, 전문가 추천 같은 새 근거를 만들어 넣기",
+          "status": "ok",
+          "evidence": "본문에 새 근거 없음. 메모의 \"○○ 동물병원 수의사 ○○○ 추천\", \"누적 판매 ○만 대\"는 자료가 있을 때 쓰라는 빈칸 예시일 뿐 본문에 넣지 않음"
+        },
+        {
+          "item": "12mm 예외를 빼서 '사료가 막히지 않는다'를 조건 없는 주장으로 만들기",
+          "status": "ok",
+          "evidence": "지름 12mm를 넘는 큰 알갱이 사료는 걸릴 수 있어 권장하지 않습니다."
+        },
+        {
+          "item": "건전지 작동 시 기능 제한, 건전지 별도 구매, 본체 할인 제외 조건을 빼기",
+          "status": "ok",
+          "evidence": "세 조건 모두 \"알아두세요\" 박스와 가격 부분에 남아 있음"
+        },
+        {
+          "item": "할인 대상이나 기간을 넓히거나 바꾸기",
+          "status": "ok",
+          "evidence": "첫 3개월 동안 사료 값 10% 할인 ... (급식기 본체 가격은 할인 대상이 아닙니다.)"
+        },
+        {
+          "item": "하루 60g 기준이라는 조건 없이 '3주'만 쓰기",
+          "status": "ok",
+          "evidence": "제목에는 '3주'만 있지만 바로 아래 본문에 \"하루 60g을 먹는 고양이 기준으로 약 3주\"로 조건을 밝힘"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "본문에 원문에 없는 사실·수치·근거 없음. 메모의 예시는 빈칸 형태의 제안일 뿐임"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "사양·조건·예외·가격·할인 정보가 모두 남아 있음. 빠진 것은 근거 없는 홍보 문구뿐임"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "4L, 60g, 약 3주, 8회, 3개, 72시간, 12mm, 129,000원, 3개월, 10% 모두 대상이 같게 유지됨"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "\"걸림 방지 회전판이 사료가 막히는 일을 줄여 줍니다.\" — 원문 바로 뒤의 12mm 예외와 맞추려고 절대 표현을 누그러뜨렸고, 메모에서도 밝힘. 근거 없는 수식어를 덜어낸 것으로 손상이 아님"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "건전지 작동 시 Wi-Fi 꺼짐, 건전지 별도 구매, 12mm 예외, 본체 할인 제외가 모두 유지됨"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "냥냥밥상 S2, iOS, Android, Wi-Fi, D형 건전지 표기 유지"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "요청대로 상세페이지 소개글을 다듬어 돌려줬고, 바꾼 내용은 메모로 따로 정리함"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 24904,
+        "wallMs": 25789,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 2851,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 3077,
+          "thinkingTokens": 777
+        },
+        "costUsd": 0.084852,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

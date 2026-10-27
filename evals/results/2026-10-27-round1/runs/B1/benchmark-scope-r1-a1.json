@@ -1,0 +1,104 @@
+{
+  "id": "benchmark-scope",
+  "condition": "B1",
+  "rep": 1,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:32:19.610Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "geulppal",
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": true,
+    "skillBodyInjected": true,
+    "skillBodyMatchesInstalled": true,
+    "listedGeulppal": true,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "/geulppal 비교 보고서 문장을 간결하게 다듬어줘.\n\nA가 압도적으로 뛰어났습니다. 각 조건에서 화면 12개를 만들었고 axe 위반 합계는 B가 24건, A가 6건이었습니다. 생성 시간 중앙값은 B 40초, A 65초였습니다. 조건별 한 번씩 실행했습니다. 시각적 품질은 평가하지 않았습니다.",
+  "output": "A는 axe 위반이 B보다 적었지만 생성 시간은 더 길었습니다. 각 조건에서 화면 12개를 만들었고, axe 위반 합계는 A가 6건, B가 24건이었습니다. 생성 시간 중앙값은 A가 65초, B가 40초였습니다. 조건별로 한 번씩만 실행했고 시각적 품질은 평가하지 않았습니다.\n\n\"A가 압도적으로 뛰어났습니다\"는 뺐습니다. 이 수치로 말할 수 있는 것은 axe 위반 수의 차이이고, 생성 시간은 B가 더 짧았습니다. 조건별로 한 번씩만 실행해서 \"압도적\"이라고 하기에도 근거가 약합니다. 종합 우위를 주장하려면 그 근거가 될 다른 지표가 필요합니다.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 7038,
+  "wallMs": 8110,
+  "numTurns": 1,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 8900,
+    "cacheReadInputTokens": 3846,
+    "outputTokens": 762,
+    "thinkingTokens": 456
+  },
+  "costUsd": 0.0436086,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": null
+}

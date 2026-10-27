@@ -1,0 +1,151 @@
+{
+  "id": "blog-half-marathon-retro-ko",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:02:35.309Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "X는 \"고친 곳은 세 군데입니다\"에 이어 확인할 점을 목록으로 붙였고, Y는 \"---\" 구분선 뒤에 \"고친 곳은 ... 이렇게 세 군데예요\"라고 정리했다. 둘 다 수정 사항을 찾기 쉽다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "X는 \"화장실 줄에서 잃은 거라\"를 \"화장실 줄 때문이라\"로 바꿔 \"잃은\"이 두 번 나오는 반복을 없앴다. Y는 이 반복을 그대로 뒀다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Y의 \"줄에 일곱 명이 서 있었다\"는 원문 \"줄이 일곱 명이었다\"의 어색한 호응을 풀었다. X의 \"화장실 줄 때문이라\"도 자연스럽게 읽힌다. 각자 다른 곳을 다듬었고 정도는 비슷하다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Y의 \"서 있었다\"는 원문의 입말 느낌을 조금 덜어냈다. X의 \"때문이라\"는 \"잃은 시간은 ... 잃은 거라\"로 되받는 원문의 말맛을 조금 덜어냈다. 둘 다 말투를 크게 해치지는 않았다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "둘 다 오타 두 개 외에 한 곳만 더 고쳤다. 의도일 수 있는 표현(\"15km 지점\", X는 \"못 넘었다\"도)은 본문을 바꾸지 않고 메모로만 남겼다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 오타 두 개를 고쳤고, 그 밖에 비슷한 크기의 수정을 한 곳씩 했다. X는 \"잃은\" 반복을 없앴고, Y는 \"줄이 일곱 명이었다\"의 호응을 다듬었다. 둘 다 \"15km 지점\"의 어긋남을 본문은 그대로 둔 채 메모로 알렸다. X는 \"넘다\"의 방향 모호성을 하나 더 짚었고, Y는 구분선으로 본문과 메모를 깔끔하게 나눴다. 차이가 사소해 어느 쪽도 분명히 낫지 않다.",
+        "meaning_concerns": "없음. 두 결과 모두 원문의 사실과 의미를 그대로 유지했다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 20304,
+          "wallMs": 22859,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3557,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2055,
+            "thinkingTokens": 492
+          },
+          "costUsd": 0.0698836,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 본문 끝에 \"---\"를 두고 \"고친 곳은 ...\"을 따로 적어 블로그 본문과 편집 메모가 분명히 나뉜다. Y는 \"신청 열리는 날 알람부터 맞춰 놔야겠다.\" 바로 뒤에 \"고친 곳은 세 군데입니다\"가 구분 없이 이어진다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 과장이나 반복을 새로 넣지 않았다. Y가 \"잃은 시간은 대부분 화장실 줄 때문이라\"로 반복을 줄였지만, 원문의 반복은 의도적인 구어체 리듬이라 실질적인 개선으로 보기 어렵다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"줄에 일곱 명이 서 있었다\"와 Y의 \"화장실 줄 때문이라\" 모두 자연스럽게 읽힌다. 고친 범위가 작아 흐름에는 차이가 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "X는 \"줄이 일곱 명이었다\"라는 구어를 다듬었고, Y는 \"줄에서 잃은 거라\"라는 말맛을 덜어냈다. 둘 다 말투를 조금 건드렸지만 정도는 비슷하다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "양쪽 모두 맞춤법 외에 한 곳씩만 더 고쳤다. Y는 \"'못 넘었다'는 ... 방향이 헷갈릴 수 있습니다\"처럼 쓸모 있는 지적을 고치지 않고 확인 요청으로만 남겨 절제했다. X도 15km 비유를 \"그대로 뒀어요\"라고 처리했다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과는 같은 맞춤법 오류를 고치고 15km 비유가 앞뒤와 어긋나는 점을 똑같이 짚었다. 그 밖에 고친 곳도 각각 한 곳씩으로 비슷하다. Y는 '못 넘었다'의 모호함을 추가로 지적했다는 장점이 있지만, 본문과 메모 사이에 구분이 없고 원문의 구어적 반복을 굳이 고쳤다. X는 메모를 깔끔하게 분리했다. 장단점이 서로 상쇄되어 어느 쪽도 분명히 낫지 않다.",
+        "meaning_concerns": "Y가 '화장실 줄에서 잃은 거라'를 '화장실 줄 때문이라'로 바꾸면서 시간을 잃은 장소를 말하던 문장이 원인을 말하는 문장으로 미세하게 바뀌었다. 문맥상 큰 문제는 없다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 20733,
+          "wallMs": 21572,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 3557,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2154,
+            "thinkingTokens": 627
+          },
+          "costUsd": 0.0718636,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "tie"
+}

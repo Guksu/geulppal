@@ -1,0 +1,165 @@
+{
+  "id": "proposal-cost-exceptions",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:25:31.792Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "도입은 검토 단계",
+          "status": "distorted",
+          "evidence": "\"챗봇 도입을 추진하고자 함\" — 원문 \"챗봇 도입을 적극적으로 검토하고 있습니다\"의 검토 단계가 추진 의사로 바뀜"
+        },
+        {
+          "item": "3개월(7~9월) 문의 4,812건 중 배송 조회 1,930건(약 40%)",
+          "status": "kept",
+          "evidence": "\"최근 3개월(7~9월) 접수된 고객 문의 4,812건 중 배송 조회 문의가 1,930건(약 40%)\""
+        },
+        {
+          "item": "송장 번호가 등록된 주문의 배송 조회만 처리",
+          "status": "kept",
+          "evidence": "\"챗봇 처리 대상: 송장 번호가 등록된 주문의 배송 조회\""
+        },
+        {
+          "item": "반품·교환은 상담원 처리",
+          "status": "kept",
+          "evidence": "\"상담원 처리 유지: 반품·교환 등 그 외 문의\""
+        },
+        {
+          "item": "월 120만 원·사용자 수 무관·VAT 별도",
+          "status": "kept",
+          "evidence": "\"비용: 월 120만 원 (A사 견적 기준, 사용자 수 무관, VAT 별도)\""
+        },
+        {
+          "item": "비용은 A사 견적 기준",
+          "status": "kept",
+          "evidence": "\"A사 견적 기준\""
+        },
+        {
+          "item": "업체 미결정과 B사 견적 다음 주 예정",
+          "status": "kept",
+          "evidence": "\"업체 선정: A사·B사 2개 업체 비교 중이며, B사 견적은 다음 주 수령 예정\""
+        },
+        {
+          "item": "초기 연동 약 3주 예상",
+          "status": "kept",
+          "evidence": "\"초기 연동 개발: 약 3주\""
+        },
+        {
+          "item": "업무 부담 감소는 기대이며 시범 운영 후 측정 계획",
+          "status": "kept",
+          "evidence": "\"상담원 업무 부담 감소 기대\", \"실제 감소 폭은 시범 운영 후 측정하여\""
+        }
+      ],
+      "must_not": [
+        {
+          "item": "도입 확정으로 변경",
+          "status": "violated",
+          "evidence": "\"챗봇 도입을 추진하고자 함\" — 검토 중이던 도입이 추진 의사로 표현됨"
+        },
+        {
+          "item": "업무 부담 감소를 확정 효과나 새 수치로 쓰기",
+          "status": "ok",
+          "evidence": "\"상담원 업무 부담 감소 기대\""
+        },
+        {
+          "item": "40%를 자동화율이나 처리율로 바꾸기",
+          "status": "ok",
+          "evidence": "\"배송 조회 문의가 1,930건(약 40%)\""
+        },
+        {
+          "item": "VAT 별도·A사 기준 삭제",
+          "status": "ok",
+          "evidence": "\"(A사 견적 기준, 사용자 수 무관, VAT 별도)\""
+        },
+        {
+          "item": "3주를 확정 일정으로 단정",
+          "status": "ok",
+          "evidence": "\"초기 연동 개발: 약 3주\""
+        },
+        {
+          "item": "새 수치 추가",
+          "status": "ok",
+          "evidence": "본문에는 새 수치가 없음. \"연 1,440만 원\"은 확인 사항에서 원문에 없는 계산값이라 넣지 않았다고 밝힘"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "problem",
+          "evidence": "\"반복적인 배송 조회 문의를 자동화해 응답 속도를 높이고\", \"견적 수령 후 비용과 업체를 확정함\", \"본 운영 여부 판단에 반영\", \"단일 유형 중 비중이 큼\" — 원문에 없는 효과·절차·비교 평가"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "핵심 수치·조건·범위가 모두 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "\"4,812건 중 배송 조회 문의가 1,930건(약 40%)\", \"월 120만 원\""
+        },
+        {
+          "check": "status_certainty",
+          "status": "problem",
+          "evidence": "\"챗봇 도입을 추진하고자 함\" — 원문의 \"검토하고 있습니다\"가 추진 의사로 강해짐"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "\"송장 번호가 등록된 주문의 배송 조회\", \"VAT 별도\", \"A사 견적 기준\""
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "\"A사·B사\", \"7~9월\" 같은 고유 표기가 유지됨"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "결재용 수정본을 내놓았고, 바꾼 점과 확인할 점을 따로 나눠 덧붙임"
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "도입 상태 변경: 원문의 '검토하고 있습니다'가 '도입을 추진하고자 함'으로 바뀌어 검토 단계가 추진 의사로 강해짐",
+        "새 사실 추가: 원문에 없는 '응답 속도를 높이고'라는 효과와 '견적 수령 후 비용과 업체를 확정함', '본 운영 여부 판단에 반영'이라는 절차, '단일 유형 중 비중이 큼'이라는 비교 평가가 추가됨"
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 24073,
+        "wallMs": 24889,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 2481,
+          "cacheReadInputTokens": 2340,
+          "outputTokens": 2863,
+          "thinkingTokens": 930
+        },
+        "costUsd": 0.07758400000000001,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

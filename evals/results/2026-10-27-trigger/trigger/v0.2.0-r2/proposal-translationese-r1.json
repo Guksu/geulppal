@@ -1,0 +1,73 @@
+{
+  "id": "proposal-translationese",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": true,
+  "prompt": "기획서 초안 문장이 번역투 같아. 자연스럽게 고쳐줘\n\n본 기능에 대한 도입을 통해 사용자의 편의성 증대가 가능할 것으로 판단됩니다. 이에 대한 검토의 진행을 요청드립니다.",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": true,
+  "selectedBy": "Skill",
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": true,
+    "top3": [
+      "geulppal:66.3",
+      "claude-api:0.0",
+      "code-review:0.0"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [
+    {
+      "name": "Skill",
+      "input": "{\"skill\":\"geulppal\"}"
+    },
+    {
+      "name": "Read",
+      "input": "{\"file_path\":\"<tmp>\"}"
+    },
+    {
+      "name": "Read",
+      "input": "{\"file_path\":\"<tmp>\"}"
+    }
+  ],
+  "permissionDenials": [],
+  "durationMs": 7276,
+  "wallMs": 8267,
+  "usage": {
+    "inputTokens": 6,
+    "cacheCreationInputTokens": 14441,
+    "cacheReadInputTokens": 26979,
+    "outputTokens": 678,
+    "thinkingTokens": 408
+  },
+  "costUsd": 0.0672539,
+  "error": null
+}

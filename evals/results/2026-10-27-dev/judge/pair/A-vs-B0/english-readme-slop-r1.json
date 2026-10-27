@@ -1,0 +1,150 @@
+{
+  "id": "english-readme-slop",
+  "rep": 1,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:27:03.373Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Both have the same order: description, then the command, then the `--fix` limitations. X ends with a \"**What I cut:**\" paragraph, so README readers have to read past editing notes. Y ends at \"ignores files other than `.env` and `.env.example`.\""
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "Both remove \"fast-paced development landscape\" and \"supercharge your productivity\". X then brings that text back by quoting it in its note (\"which had no technical content\"), which adds more words that don't help the reader."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X keeps the original single sentence, \"It does not read or upload secret values; only key names are compared.\" Y splits it into two short sentences, \"It compares key names only. It never reads or uploads secret values.\" That reads a little choppier."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "The genre is README. X's first-person note \"What I cut: ... I also dropped\" is a message to the editor, not README text. Y stays in README voice throughout."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X adds an editing summary nobody asked for to the result. Y makes a few unnecessary wording changes (\"Use\" to \"Add\", \"does not read\" to \"never reads\"), but these are smaller than adding a whole meta paragraph."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "Both versions meet the request: they cut the opening and closing marketing paragraphs and filler phrases, and they keep the command and both `--fix` limitations. X keeps the original sentences more faithfully. However, it puts a \"What I cut\" note inside the README section, which would have to be removed before publishing. Y's sentence split and wording changes are minor, and it reads as a finished README section on its own.",
+        "meaning_concerns": "Y changes \"does not read or upload\" to \"never reads or uploads\". This is a slightly stronger guarantee than the original, but the meaning is almost the same. No meaning changes in X."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 11325,
+          "wallMs": 12191,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1163,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1105,
+            "thinkingTokens": 228
+          },
+          "costUsd": 0.0317316,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "README 본문의 구성은 두 결과가 같다(설명 → 명령 → `--fix` 제한). 다만 Y는 끝에 \"**What I cut:** ...\" 문단을 덧붙였다. 이 문단을 그대로 붙여 넣으면 README 독자가 문서와 상관없는 편집 메모까지 읽어야 한다. X는 \"`--fix` never removes keys...\"에서 바로 끝난다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "둘 다 \"fast-paced development landscape\", \"supercharge your productivity\" 같은 홍보 문단을 지웠다. 그런데 Y의 메모는 \"The command, the key-names-only guarantee, and both `--fix` limitations are unchanged.\"처럼 본문에 이미 있는 내용을 다시 늘어놓는다."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X는 \"It compares key names only. It never reads or uploads secret values.\"처럼 짧은 문장 두 개로 쪼개서 조금 끊겨 읽힌다. Y는 원문의 \"It does not read or upload secret values; only key names are compared.\"를 그대로 두어 한 문장으로 자연스럽게 이어진다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "요청한 결과물은 README 섹션이다. X는 끝까지 README 문체를 유지한다. Y는 \"What I cut:\"처럼 1인칭 편집자 메모가 섞여 있어 장르가 맞지 않는다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Y는 본문에서 원문 문장을 더 많이 살렸지만(\"Use `--fix`\", 비밀값 관련 문장) 요청하지 않은 설명 문단을 붙였다. X는 형식은 더하지 않았으나 \"Use\"를 \"Add\"로, 비밀값 관련 문장을 두 문장으로 바꾸는 등 꼭 필요하지 않은 수정을 했다. 서로 상쇄된다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "두 결과 모두 홍보 문단과 \"To get started, simply run:\", \"Note that\"을 지웠고, 명령어와 `--fix`의 두 제한은 그대로 남겼습니다. README 본문만 보면 Y가 원문 문장을 더 많이 살려 조금 더 매끄럽게 읽힙니다. 하지만 Y는 결과물 안에 \"What I cut\" 편집 메모를 넣었습니다. 사용자가 이 결과를 README에 그대로 붙이면 독자와 상관없는 내용이 문서에 들어가고, 이 메모는 압축하라는 요청의 취지와도 어긋납니다. X는 문장이 조금 끊기는 대신 바로 쓸 수 있는 깔끔한 섹션을 내놓았으므로 X가 약간 낫다고 판단합니다.",
+        "meaning_concerns": "X는 \"does not read\"를 \"never reads\"로 바꿔 부정의 강도가 약간 세졌습니다. 의미가 크게 달라지지는 않습니다. Y에서는 의미가 달라진 곳을 찾지 못했습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 16003,
+          "wallMs": 16826,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1163,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1666,
+            "thinkingTokens": 403
+          },
+          "costUsd": 0.042951600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

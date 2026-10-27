@@ -1,0 +1,151 @@
+{
+  "id": "personal-blog-voice",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:42:54.266Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 2단락에서 \"예전에는 배포하고 나서야 알았던 문제를 배포 전에 알게 됐다\" → \"배포 후 장애가 줄었다\" → \"진짜 장점\"의 흐름이 같아 핵심을 찾는 데 차이가 없다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "X는 \"배포 전에 알게 됐다\" 바로 뒤에 \"배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\"를 남겨 같은 내용을 다시 말한다. Y는 \"그것이 모노레포의 진짜 장점이었다.\"로 줄여 반복을 없앴다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Y의 \"정말 큰 변화였다. 그것이 모노레포의 진짜 장점이었다.\"는 지시어로 자연스럽게 이어진다. X의 \"…큰 변화였다. 배포 전에 문제를 알 수 있다는 것, 그것이…\"도 어색하지 않다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 \"솔직히 말하면\", \"거봐, 내 말이 맞지\", \"아마도.\" 등 구어체 말투를 그대로 유지했다. X는 원문의 \"~것, 그것이\" 강조 구문을 살렸지만 이 구문은 반복을 만드는 부분이기도 하다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 원문의 \"배포 전에 문제를 알 수 있다는 것, 그것이…\" 문장을 남겨 덜 고쳤다. 다만 남긴 문장이 요청한 반복 제거의 대상이라 큰 이점은 아니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "요청은 반복만 줄이고 말투는 유지하는 것이다. 두 결과 모두 말투는 지켰고 \\\"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\\\"를 지우는 것까지는 같다. 그러나 X는 \\\"배포 전에 알게 됐다\\\" 직후에 \\\"배포 전에 문제를 알 수 있다는 것, 그것이…\\\"를 남겨 같은 단락 안의 반복이 그대로 남아 있다. Y는 이 반복까지 정리했고 문장 연결도 자연스러워 요청에 더 잘 맞는다.",
+        "meaning_concerns": "Y에서 \\\"그것이 모노레포의 진짜 장점이었다\\\"의 \\\"그것\\\"이 바로 앞 문장의 '배포 후 장애 감소'를 가리키는 것으로 읽힐 수 있다. 원문에서 진짜 장점은 '배포 전에 문제를 알 수 있다는 것'이었으므로 강조점이 약간 옮겨졌다. 둘은 같은 인과 관계 안에 있어 영향은 작다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 25834,
+          "wallMs": 26671,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1798,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2915,
+            "thinkingTokens": 535
+          },
+          "costUsd": 0.07301160000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 \"배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\"로 글의 핵심 주장을 분명히 남긴다. X의 \"그것이 모노레포의 진짜 장점이었다.\"는 무엇이 장점인지 앞 문장에 기대야 하고, 그 대상도 바뀌었다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "X는 Y에 남은 \"배포 전에 문제를 알 수 있다는 것,\"까지 지웠다. 이 구절은 앞의 \"배포 전에 알게 됐다\"와 겹치므로 X 쪽 반복이 더 적다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "\"배포 후 장애가 줄었다는 것은 정말 큰 변화였다. 그것이 모노레포의 진짜 장점이었다.\"(X)도, Y의 원문 유지 문장도 자연스럽게 이어진다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y는 글쓴이가 요점을 다시 짚는 \"배포 전에 문제를 알 수 있다는 것, 그것이...\"를 지켰다. \"말투는 건드리지 마\"라는 요청에 더 맞다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "두 결과 모두 \"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\"를 지우고 두 문장을 합쳤다. X는 여기에 더해 마무리 강조문까지 줄였고, Y는 그 문장을 그대로 두었다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과는 중복 문장을 똑같이 줄였고, 차이는 마지막 강조 구절을 남겼는지뿐이다. X는 반복을 조금 더 줄였다. 하지만 그 과정에서 \"그것\"이 가리키는 대상이 \"배포 후 장애가 줄었다는 것\"으로 바뀌었고, 글쓴이가 요점을 다시 짚는 수사도 사라졌다. 말투를 건드리지 말라는 요청까지 고려하면 Y가 조금 낫다.",
+        "meaning_concerns": "X에서는 \"배포 전에 문제를 알 수 있다는 것,\"이 빠졌다. 그래서 \"그것이 모노레포의 진짜 장점이었다\"의 \"그것\"이 \"배포 후 장애가 줄었다는 것\"을 가리키게 되었다. 원문에서 진짜 장점은 '배포 전 발견'이었는데 X에서는 '배포 후 장애 감소'로 조금 바뀌었다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 22112,
+          "wallMs": 22932,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1799,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2257,
+            "thinkingTokens": 597
+          },
+          "costUsd": 0.059859600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

@@ -1,0 +1,151 @@
+{
+  "id": "polite-email-noop",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-round2",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:42:35.754Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "X는 맨 앞에 \"고칠 곳이 없어서 그대로 둡니다.\"를, Y는 맨 뒤에 \"어색한 곳이 없어 원문을 그대로 두었습니다.\"를 두었다. 어느 쪽이든 판단 결과와 이메일 본문을 바로 찾을 수 있다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "두 결과 모두 본문을 \"안녕하세요, 수정한 제안서를 첨부합니다. … 감사합니다.\" 그대로 두었다. 과장이나 반복은 생기지 않았다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "본문 문장이 원문과 같아서 흐름도 같다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "두 결과 모두 원문의 정중한 업무 메일 말투를 그대로 지켰다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "둘 다 본문을 고치지 않았다. 덧붙인 것도 그대로 둔 이유를 밝히는 짧은 문장 하나뿐이다. 이 문장이 앞에 오느냐 뒤에 오느냐만 다르다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "요청은 괜찮으면 그대로 두고 어색한 곳만 고쳐 달라는 것이었다. 원문은 이미 자연스러운 업무 메일이다. 두 결과 모두 본문을 바꾸지 않았고, 그대로 두었다는 짧은 안내만 붙였다. 안내 문장이 앞에 있느냐 뒤에 있느냐만 다를 뿐, 독자에게 미치는 효과는 같다.",
+        "meaning_concerns": "없음"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 7295,
+          "wallMs": 8142,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 823,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 771,
+            "thinkingTokens": 26
+          },
+          "costUsd": 0.0223316,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과 모두 원문 이메일 \"안녕하세요, 수정한 제안서를 첨부합니다. …\"를 그대로 싣고, 고치지 않았다는 안내 한 줄을 붙였다. X는 안내(\"어색한 곳이 없어 원문을 그대로 두었습니다.\")를 뒤에, Y는 안내(\"고칠 곳이 없어서 그대로 둡니다.\")를 앞에 두었다. 위치만 다를 뿐 독자가 찾기 쉬운 정도는 비슷하다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 과장이나 반복이 없고, 안내도 한 문장으로 짧다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "본문이 원문과 같아서 흐름에 차이가 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 원문의 격식체 업무 이메일 말투를 그대로 유지했다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "요청이 \"괜찮으면 그대로 두고\"였고, 두 결과 모두 본문을 바꾸지 않았다. 덧붙인 안내 문장도 둘 다 짧은 한 줄이다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 원문을 한 글자도 바꾸지 않았고, 수정이 필요 없다는 짧은 안내만 붙였다. 다른 점은 안내 문장이 본문 앞에 있느냐 뒤에 있느냐뿐이다. 이 차이는 독자에게 거의 영향을 주지 않으므로 무승부로 판정한다.",
+        "meaning_concerns": "없음. 두 결과 모두 원문 의미를 그대로 보존했다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 10096,
+          "wallMs": 10941,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 823,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 825,
+            "thinkingTokens": 62
+          },
+          "costUsd": 0.0234116,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "tie"
+}

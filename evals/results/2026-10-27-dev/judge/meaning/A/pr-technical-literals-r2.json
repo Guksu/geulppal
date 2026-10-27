@@ -1,0 +1,145 @@
+{
+  "id": "pr-technical-literals",
+  "condition": "A",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [
+      "retryCount",
+      "npm test -- retry.test.ts",
+      "(docs/retry.md#retry-count)"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:29:18.644Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "retryCount",
+          "status": "kept",
+          "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+        },
+        {
+          "item": "0일 때 재시도하지 않음",
+          "status": "kept",
+          "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+        },
+        {
+          "item": "코드 블록 전체",
+          "status": "kept",
+          "evidence": "```sh\nnpm test -- retry.test.ts\n```"
+        },
+        {
+          "item": "8개 통과",
+          "status": "kept",
+          "evidence": "위 테스트 8개가 모두 통과했습니다."
+        },
+        {
+          "item": "전체 테스트 미실행",
+          "status": "kept",
+          "evidence": "전체 테스트 스위트는 실행하지 않았습니다."
+        },
+        {
+          "item": "docs/retry.md#retry-count",
+          "status": "kept",
+          "evidence": "자세한 내용은 [설명](docs/retry.md#retry-count)을 참고해 주세요."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "전체 테스트 통과로 확대",
+          "status": "ok",
+          "evidence": "전체 테스트 스위트는 실행하지 않았습니다."
+        },
+        {
+          "item": "명령 변경",
+          "status": "ok",
+          "evidence": "npm test -- retry.test.ts"
+        },
+        {
+          "item": "링크 대상 변경",
+          "status": "ok",
+          "evidence": "[설명](docs/retry.md#retry-count)"
+        },
+        {
+          "item": "새 홍보성 서명 추가",
+          "status": "ok",
+          "evidence": "홍보성 문구나 서명 없음. 원문의 \"이번 개선은 매우 혁신적입니다\"는 삭제됨."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "problem",
+          "evidence": "\"위 테스트 8개가 모두 통과했습니다.\" — 원문은 \"위 테스트 8개가 통과했습니다\"이며 '모두'(실패·건너뜀 없이 전부 통과)는 원문에 없는 주장이다. 작성자도 메모에서 \"실패나 건너뛴 테스트가 있었다면 빼 주세요\"라며 확인되지 않은 내용임을 인정했지만 본문에 그대로 넣었다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "핵심 변경, 검증 명령, 8개 통과, 전체 테스트 미실행, 링크가 모두 남아 있음."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "위 테스트 8개가 모두 통과했습니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "problem",
+          "evidence": "\"위 테스트 8개가 모두 통과했습니다.\" — '모두'를 넣어 실패·건너뜀이 없었다는 쪽으로 검증 결과 주장을 강화했다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "전체 테스트 스위트는 실행하지 않았습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "`retryCount`, npm test -- retry.test.ts, docs/retry.md#retry-count 모두 그대로임."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "PR 본문 문장을 다듬고 코드와 링크를 유지함."
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "본문에 '모두'를 넣어 \"위 테스트 8개가 모두 통과했습니다\"로 바꿨다. 원문에 없는 '실패·건너뜀 없음'이라는 주장을 더한 것이다. 메모에서 그렇다고 밝혔지만 본문에는 그대로 남아 있다."
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 17009,
+        "wallMs": 17849,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1230,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1982,
+          "thinkingTokens": 639
+        },
+        "costUsd": 0.049984,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

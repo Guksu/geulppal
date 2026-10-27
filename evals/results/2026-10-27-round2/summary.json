@@ -1,0 +1,61 @@
+{
+  "name": "2026-10-27-round2",
+  "conditions": {
+    "B2": {
+      "attempts": 38,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 38,
+      "referenceReads": 19,
+      "meaning": {
+        "judged": 38,
+        "pass": 36,
+        "fail": 2,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 5122.5,
+        "medianInput": 20593.5,
+        "medianOutput": 496,
+        "costUsd": 2.0068471999999997
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-B2": {
+      "total": 38,
+      "judged": 27,
+      "excluded": 11,
+      "leftWins": 2,
+      "rightWins": 13,
+      "tie": 5,
+      "bothInadequate": 0,
+      "inconsistent": 7,
+      "cases": {
+        "A": 2,
+        "B2": 9,
+        "mixed": 0,
+        "none": 8
+      }
+    },
+    "B0-vs-B2": {
+      "total": 38,
+      "judged": 35,
+      "excluded": 3,
+      "leftWins": 3,
+      "rightWins": 11,
+      "tie": 10,
+      "bothInadequate": 0,
+      "inconsistent": 11,
+      "cases": {
+        "B0": 3,
+        "B2": 9,
+        "mixed": 0,
+        "none": 7
+      }
+    }
+  },
+  "judgeCalls": 162
+}

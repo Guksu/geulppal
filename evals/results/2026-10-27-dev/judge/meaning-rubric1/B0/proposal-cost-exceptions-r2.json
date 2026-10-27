@@ -1,0 +1,162 @@
+{
+  "id": "proposal-cost-exceptions",
+  "condition": "B0",
+  "rep": 2,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [],
+    "missing": [],
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:25:11.774Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "도입은 검토 단계",
+          "status": "kept",
+          "evidence": "저희 팀은 이 문의를 효율적으로 처리해 고객 만족도를 높이기 위해 챗봇 도입을 검토하고 있습니다."
+        },
+        {
+          "item": "3개월(7~9월) 문의 4,812건 중 배송 조회 1,930건(약 40%)",
+          "status": "kept",
+          "evidence": "지난 3개월(7~9월) 접수된 문의 4,812건 중 1,930건(약 40%)이 배송 조회 문의였습니다."
+        },
+        {
+          "item": "송장 번호가 등록된 주문의 배송 조회만 처리",
+          "status": "kept",
+          "evidence": "챗봇은 송장 번호가 등록된 주문의 배송 조회만 처리할 수 있습니다."
+        },
+        {
+          "item": "반품·교환은 상담원 처리",
+          "status": "kept",
+          "evidence": "반품·교환 문의는 기존처럼 상담원이 처리합니다."
+        },
+        {
+          "item": "월 120만 원·사용자 수 무관·VAT 별도",
+          "status": "kept",
+          "evidence": "비용은 A사 견적 기준 월 120만 원(사용자 수 무관, VAT 별도)이며"
+        },
+        {
+          "item": "비용은 A사 견적 기준",
+          "status": "kept",
+          "evidence": "비용은 A사 견적 기준 월 120만 원"
+        },
+        {
+          "item": "업체 미결정과 B사 견적 다음 주 예정",
+          "status": "kept",
+          "evidence": "솔루션 업체는 두 곳 중 아직 정하지 않았고, B사 견적은 다음 주에 받을 예정입니다."
+        },
+        {
+          "item": "초기 연동 약 3주 예상",
+          "status": "kept",
+          "evidence": "초기 연동 개발에는 약 3주가 필요할 것으로 예상합니다."
+        },
+        {
+          "item": "업무 부담 감소는 기대이며 시범 운영 후 측정 계획",
+          "status": "kept",
+          "evidence": "도입하면 상담원의 업무 부담이 줄어들 것으로 기대하지만, 실제 감소 폭은 시범 운영 후 측정할 계획입니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "도입 확정으로 변경",
+          "status": "ok",
+          "evidence": "챗봇 도입을 검토하고 있습니다."
+        },
+        {
+          "item": "업무 부담 감소를 확정 효과나 새 수치로 쓰기",
+          "status": "ok",
+          "evidence": "줄어들 것으로 기대하지만, 실제 감소 폭은 시범 운영 후 측정할 계획입니다."
+        },
+        {
+          "item": "40%를 자동화율이나 처리율로 바꾸기",
+          "status": "ok",
+          "evidence": "1,930건(약 40%)이 배송 조회 문의였습니다."
+        },
+        {
+          "item": "VAT 별도·A사 기준 삭제",
+          "status": "ok",
+          "evidence": "A사 견적 기준 월 120만 원(사용자 수 무관, VAT 별도)"
+        },
+        {
+          "item": "3주를 확정 일정으로 단정",
+          "status": "ok",
+          "evidence": "약 3주가 필요할 것으로 예상합니다."
+        },
+        {
+          "item": "새 수치 추가",
+          "status": "ok",
+          "evidence": "결과의 수치는 4,812건, 1,930건, 약 40%, 120만 원, 약 3주로 모두 원문에 있음"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "\"약 3주\"가 A사 기준인지 두 업체 공통인지는 원문에 없습니다. — 편집 메모이며 새 사실을 만들지 않음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 핵심 정보(검토 단계, 수치, 처리 범위, 비용 조건, 업체 미결정, 측정 계획)가 모두 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "지난 3개월(7~9월) 접수된 문의 4,812건 중 1,930건(약 40%)이 배송 조회 문의였습니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "줄어들 것으로 기대하지만 / 예상합니다 / 검토하고 있습니다"
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "송장 번호가 등록된 주문의 배송 조회만 처리할 수 있습니다. / VAT 별도"
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "A사, B사, 7~9월 표기가 원문과 같음"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "다듬은 본문을 돌려주었고, 끝에 붙인 편집 메모는 다듬기 요청 범위 안에 있음"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 16017,
+        "wallMs": 16815,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1936,
+          "cacheReadInputTokens": 2340,
+          "outputTokens": 2053,
+          "thinkingTokens": 324
+        },
+        "costUsd": 0.057024000000000005,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "summary-request",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": false
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": false,
+  "reason": "두 결과가 모두 의미 보존을 통과하지 않아 품질 비교에서 제외"
+}

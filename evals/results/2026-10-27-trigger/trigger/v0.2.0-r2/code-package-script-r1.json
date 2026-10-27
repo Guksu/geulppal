@@ -1,0 +1,73 @@
+{
+  "id": "code-package-script",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": false,
+  "prompt": "package.json scripts에 eslint 실행하는 lint 명령 추가해줘",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": false,
+  "selectedBy": null,
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": false,
+    "top3": [
+      "fewer-permission-prompts:4.6",
+      "keybindings-help:4.6",
+      "update-config:4.6"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [
+    {
+      "name": "Read",
+      "input": "{\"file_path\":\"<tmp>\"}"
+    },
+    {
+      "name": "Glob",
+      "input": "{\"pattern\":\"{eslint.config.*,.eslintrc*}\"}"
+    },
+    {
+      "name": "Edit",
+      "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"    \\\"test\\\": \\\"node --test\\\"\",\"new_string\":\"    \\\"test\\\": \\\"node --test\\\",\\n    \\\"lint\\\": \\\"eslint .\\\"\"}"
+    }
+  ],
+  "permissionDenials": [],
+  "durationMs": 8510,
+  "wallMs": 9407,
+  "usage": {
+    "inputTokens": 6,
+    "cacheCreationInputTokens": 5216,
+    "cacheReadInputTokens": 22956,
+    "outputTokens": 477,
+    "thinkingTokens": 0
+  },
+  "costUsd": 0.0279416,
+  "error": null
+}

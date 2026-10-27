@@ -1,0 +1,60 @@
+{
+  "id": "convert-json-yaml",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": false,
+  "prompt": "아래 JSON을 YAML로 바꿔줘\n\n{\"name\": \"demo\", \"port\": 8080, \"debug\": false}",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": false,
+  "selectedBy": null,
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": false,
+    "top3": [
+      "update-config:10.1",
+      "plugin-authoring:5.6",
+      "fewer-permission-prompts:4.6"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [],
+  "permissionDenials": [],
+  "durationMs": 1374,
+  "wallMs": 2186,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 4711,
+    "cacheReadInputTokens": 4430,
+    "outputTokens": 24,
+    "thinkingTokens": 0
+  },
+  "costUsd": 0.019531,
+  "error": null
+}

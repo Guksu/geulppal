@@ -1,0 +1,151 @@
+{
+  "id": "en-docs-tile-seeding",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:02:55.385Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the same structure: command, options, workers, `--force`, Limitations. X wraps the result in a ```markdown block. Y gives it directly. Neither choice makes information easier or harder to find."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both cut the \"It is important to note… crucial step\" intro, the \"In other words\" restatement, the \"In conclusion…\" closing and \"There are a number of limitations…\". The definition sentences are equally concise: X has \"Seeding pre-renders tiles so they are served from the cache…\" and Y has \"Seeding renders tiles before users request them, so they are served…\""
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X: \"`geotile seed` uses 4 worker processes by default; change this with `--workers`. Each worker uses roughly 600 MB of memory, measured on our reference setup (...)\" puts the related facts in one flow. Y splits them into short sentences: \"Change this with `--workers`. Each worker uses roughly 600 MB of memory. We measured this on our reference setup.\" Y's \"Run the command again. Already rendered tiles are skipped…\" is also choppier than X's \"Run it again; already rendered tiles are skipped…\""
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Both keep the doc's direct, plain voice and use the same imperative style (\"To seed tiles, run:\"). Neither adds a mismatched register."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "Y keeps the original \"Seeding vector layers above zoom 16 is not supported\" and \"in the order `minLon,minLat,maxLon,maxLat`\". X rewrites the first as \"Vector layers cannot be seeded above zoom 16\", which is an unnecessary change that slightly shifts the meaning. X's code-block wrapper and word-count note are extra, but harmless."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "Both versions cut the same bloat (the empty intro, the repeated definition, the limitations lead-in and the closing paragraph) and keep every technical detail. X reads more smoothly in the workers paragraph and the resume limitation, where Y uses a run of short sentences. Y is more restrained: it keeps the original \"is not supported\" wording, while X rewrote it as \"cannot be seeded\" and slightly changed the meaning. Each version is better on a different criterion and the differences are small, so neither is clearly better.",
+        "meaning_concerns": "X changed \"Seeding vector layers above zoom 16 is not supported\" to \"Vector layers cannot be seeded above zoom 16.\" \"Not supported\" can mean \"may work but isn't guaranteed,\" while \"cannot\" says it's impossible, so the limitation now reads stronger than before. X also says the edit takes the section \"from about 330 words to about 190.\" Those figures are rough estimates. No meaning changes were found in Y."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19590,
+          "wallMs": 20458,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2510,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2080,
+            "thinkingTokens": 699
+          },
+          "costUsd": 0.0620076,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "Y",
+      "winner": "A",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the same structure: definition, command, option explanations, workers/memory, `--force`, then the Limitations list. Neither adds or removes a section that would change how easy anything is to find. For example, X has \"Pass `--force` to overwrite them\" and Y has \"`--force` overwrites them\" in the same place."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove the \"crucial step / fast-paced world\" opening, the \"In other words\" restatement, the closing \"In conclusion\" paragraph and the Limitations lead-in. The remaining definitions are equally lean: X's \"Seeding renders tiles before users request them, so they are served from the cache\" and Y's \"Seeding pre-renders tiles so they are served from the cache.\""
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X sometimes breaks the text into short sentences: \"Each worker uses roughly 600 MB of memory. We measured this on our reference setup (...). Vector layers ... may use considerably more.\" and \"Run the command again. Already rendered tiles are skipped...\" Y joins related points, as in \"Each worker uses roughly 600 MB of memory, measured on our reference setup (...)\" and \"Run it again; already rendered tiles are skipped\", so it reads more smoothly."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Both keep the original's plain technical-docs tone and its \"we\" voice (\"our reference setup\"). Neither introduces a new style."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X's change notes are long, with five bold-labeled bullets (\"**Intro:** ... **Conclusion:** ... **Kept as is:** ...\") and add more around the doc than needed. Y explains its changes in one sentence plus two items worth checking. One of them, \"I kept 'yet' on the resume limitation, since it signals the limitation may go away\", is a judgment call the writer can actually use. Y also wraps the doc in a code block, which makes it easy to copy."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "X and Y cut almost the same material and keep the same technical facts, so the edited doc text barely differs. Y comes out slightly ahead for two reasons. First, it joins related points instead of breaking them into short sentences (the memory figure and the rerun-after-interruption item), so it reads more smoothly. Second, its change notes are short and flag one choice the writer may want to decide on (keeping \"yet\"). X's sentence splitting and its long bolded change list are minor drawbacks by comparison.",
+        "meaning_concerns": "I found no meaningful change in meaning in either version. Y's word count (\"about 330 words to about 190\") is a rough estimate, but it does not affect the doc itself."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 14203,
+          "wallMs": 15054,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2509,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1481,
+            "thinkingTokens": 425
+          },
+          "costUsd": 0.0500196,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": false,
+  "result": "inconsistent"
+}

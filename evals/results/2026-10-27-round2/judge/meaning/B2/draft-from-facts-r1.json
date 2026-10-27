@@ -1,0 +1,138 @@
+{
+  "id": "draft-from-facts",
+  "condition": "B2",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": false,
+  "exact": {
+    "checked": [
+      "쪽지함"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:39:18.939Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "쪽지함",
+          "status": "kept",
+          "evidence": "쪽지함은 태그 검색과 CSV 내보내기를 지원하는 메모 도구입니다."
+        },
+        {
+          "item": "태그 검색",
+          "status": "kept",
+          "evidence": "쪽지함은 태그 검색과 CSV 내보내기를 지원하는 메모 도구입니다."
+        },
+        {
+          "item": "CSV 내보내기",
+          "status": "kept",
+          "evidence": "모아 둔 메모는 CSV로 내보낼 수 있습니다."
+        },
+        {
+          "item": "찾기 불편해서 만들었음",
+          "status": "kept",
+          "evidence": "메모가 여기저기 흩어져 있어서 필요한 걸 찾기 불편했습니다."
+        },
+        {
+          "item": "사용하며 수정할 계획",
+          "status": "kept",
+          "evidence": "앞으로는 제가 직접 쓰면서 불편한 점이 보이면 고쳐 나갈 예정입니다."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "개발 기간 창작",
+          "status": "ok",
+          "evidence": "개발 기간 언급 없음"
+        },
+        {
+          "item": "사용자 수 창작",
+          "status": "ok",
+          "evidence": "출시 시점, 사용자 수, 저장 방식은 제공해 주신 사실에 없어서 뺐습니다."
+        },
+        {
+          "item": "이미 공개 출시했다고 단정",
+          "status": "ok",
+          "evidence": "출시 관련 서술 없음"
+        },
+        {
+          "item": "원문에 없는 실패담·감정·저장 기능 추가",
+          "status": "violated",
+          "evidence": "그래서 메모를 한곳에 모으고 태그로 찾을 수 있게 만들었습니다. 모아 둔 메모는 CSV로 내보낼 수 있습니다."
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "problem",
+          "evidence": "그래서 메모를 한곳에 모으고 태그로 찾을 수 있게 만들었습니다. — 원문 기능은 태그 검색과 CSV 내보내기뿐인데, 메모를 한곳에 모아 두는 수집·저장 기능을 덧붙였다. 원문은 저장 방식을 제공하지 않는다고 했다."
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "이름, 기능 두 가지, 만든 이유, 업데이트 계획이 모두 들어 있다."
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "수치 없음"
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "앞으로는 제가 직접 쓰면서 불편한 점이 보이면 고쳐 나갈 예정입니다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "'불편한 점이 보이면'은 직접 쓰면서 수정한다는 원래 뜻 안에 있다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "쪽지함, CSV 표기가 그대로다."
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "짧은 소개글에 만든 이유와 업데이트 계획을 넣고, 메모는 본문과 따로 붙였다."
+        }
+      ],
+      "verdict": "fail",
+      "fail_reasons": [
+        "본문의 '메모를 한곳에 모으고', '모아 둔 메모'는 원문에 없는 수집·저장 기능을 덧붙인 것이다. 원문은 저장 방식을 제공하지 않는다고 했으므로 새 사실을 만든 것이고, '저장 기능 추가' 금지에도 걸린다."
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 15237,
+        "wallMs": 16492,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1032,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1755,
+          "thinkingTokens": 446
+        },
+        "costUsd": 0.04386,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}

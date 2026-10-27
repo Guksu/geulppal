@@ -1,0 +1,150 @@
+{
+  "id": "pr-body-mixed-terms",
+  "rep": 2,
+  "left": {
+    "condition": "A",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "at": "2026-10-27T05:28:20.088Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "A",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "X는 \"**Debounce 적용** (`SearchInput`)\", \"**Race condition 수정**\"처럼 항목 앞에 굵은 라벨을 달고, \"⚠️ E2E\", \"⚠️ Safari\"로 미실행 항목을 표시했습니다. 리뷰어가 변경 항목과 위험 요소를 훑어서 바로 찾을 수 있습니다. Y는 원문의 문장형 목록을 그대로 두어 상대적으로 눈에 덜 띕니다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"획기적으로 개선\"과 \"훨씬 더 쾌적한 검색 경험\"을 지우고, 개요를 \"race condition을 수정합니다\"처럼 구체적인 문제 서술로 바꿨습니다. 과장을 덜어낸 정도는 비슷합니다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"입력 후 300ms 동안 추가 입력이 없을 때만 요청합니다. 타이핑 중 요청이 매 입력마다 나가던 문제를 해결합니다.\"와 Y의 \"`SearchInput`에 300ms debounce를 적용했습니다. 타이핑 중 불필요한 API 요청이 발생하던 문제를 해결합니다.\"는 둘 다 자연스럽게 읽힙니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y는 원문의 평서형 PR 문체를 유지하면서 \"진행하였습니다\"를 \"리팩토링했습니다\"로 다듬었고, \"리뷰 부탁드립니다.\"라는 작성자의 마무리도 남겼습니다. X는 ✅·⚠️ 이모지와 굵은 라벨을 더해 원문보다 템플릿 같은 느낌이 강해졌습니다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "X는 본문에 \"<무엇을 왜 바꿨는지 한 줄로 적어 주세요…>\"라는 자리표시자를 넣어 본문을 미완성 상태로 만들었습니다. 원문에 없던 \"## 리뷰 요청\" 섹션(\"AbortController로 취소된 요청이 에러 처리나 로딩 상태에 영향을 주지 않는지\", \"Safari에서 동작을 확인해 주세요\")도 추정해서 추가했습니다. Y는 \"내용을 지어내지 않았습니다\"라고 밝히고, 제안은 본문 밖의 메모로만 남겼습니다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "X는 라벨과 경고 표시 덕분에 리뷰어가 항목을 찾기는 더 쉽습니다. 하지만 PR 본문에 자리표시자를 남겨 그대로 올릴 수 없는 상태가 됐습니다. 원문 작성자가 하지 않은 리뷰 중점 항목과 Safari 확인 요청을 추정해 넣은 것도 본문 내용을 바꾸는 수정입니다. 메모에서 이 점을 밝혔더라도 마찬가지입니다. Y는 과장을 지우고 개요를 구체화해 요청을 충족했습니다. 원문 구조와 말투는 지켰고, 빠진 `useSearch` 설명은 본문 밖 메모로 안내했습니다. 원문이 이미 짧고 구조가 잡혀 있었으므로, 덜 바꾼 Y가 리뷰어에게 내보내기 더 알맞은 결과입니다.",
+        "meaning_concerns": "X의 \"가능하시다면 Safari에서 동작을 확인해 주세요\"는 원문의 \"Safari에서는 아직 확인하지 못했습니다\"를 리뷰어에게 확인을 요청하는 문장으로 바꿨습니다. \"AbortController로 취소된 요청이 에러 처리나 로딩 상태에 영향을 주지 않는지\"도 원문에 없는 추정입니다. X는 이를 메모에서 밝혔습니다. Y는 '기타' 섹션 제목을 없앴지만 의미 변화는 없습니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 19747,
+          "wallMs": 20515,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2545,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2064,
+            "thinkingTokens": 449
+          },
+          "costUsd": 0.0619676,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B0",
+      "Y": "A",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "Y",
+            "evidence": "Y는 \"**Debounce 적용** (`SearchInput`)\", \"**Race condition 수정**\"처럼 항목마다 굵은 라벨을 달고, \"⚠️ E2E\", \"⚠️ Safari\"로 미확인 항목을 표시해 훑어보기 쉽다. X는 원문 목록 구조를 그대로 두어 무난하지만 눈에 띄는 단서는 없다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"획기적으로 개선\"과 \"훨씬 더 쾌적한 검색 경험\"을 지우고, 개요를 실제로 고치는 문제로 바꿨다(X \"불필요한 API 요청이 나가는 문제와 ... race condition을 수정합니다\", Y \"불필요한 API 요청을 줄이고 ... race condition을 수정합니다\")."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"300ms debounce를 적용했습니다. 타이핑 중 불필요한 API 요청이 발생하던 문제를 해결합니다.\"와 Y의 \"입력 후 300ms 동안 추가 입력이 없을 때만 요청합니다. 타이핑 중 요청이 매 입력마다 나가던 문제를 해결합니다.\" 모두 자연스럽게 이어진다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X는 원문의 평서형 존댓말과 단순한 목록 형식을 유지했다. Y는 \"✅\", \"⚠️\" 이모지와 굵은 라벨을 넣고 테스트 항목을 \"12개 테스트 모두 통과\"처럼 명사형으로 끝내, 원문 작성자의 문체에서 더 멀어졌다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "Y는 원문에 없던 \"## 리뷰 요청\" 섹션을 만들고 \"취소된 요청이 에러 처리나 로딩 상태에 영향을 주지 않는지 중점적으로 봐 주세요\", \"Safari에서 동작을 확인해 주세요\"처럼 작성자가 하지 않은 요청을 추정해 넣었다. 본문에도 \"<무엇을 왜 바꿨는지 한 줄로 적어 주세요...>\" 자리표시자를 남겨 그대로 올릴 수 없다. X는 본문에 \"`useSearch` hook을 리팩토링했습니다.\"를 그대로 두고, 보충할 내용은 본문 밖 메모로만 제안했다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "과장을 걷어내고 개요를 구체적인 문제로 바꾼 점은 둘이 같습니다. Y는 굵은 라벨과 이모지 덕분에 훑어보기는 더 쉽습니다. 하지만 작성자가 말하지 않은 리뷰 중점 항목과 Safari 확인 요청을 지어 넣었고, 본문 안에 자리표시자를 남겨 그대로 올릴 수 없습니다. X는 원문 구조와 말투를 지키면서 필요한 부분만 고쳤습니다. 빠진 리팩토링 설명은 본문을 건드리지 않고 메모로만 제안했습니다. 그래서 리뷰어가 바로 읽을 PR 본문으로는 X가 더 적절합니다.",
+        "meaning_concerns": "Y의 '리뷰 요청' 섹션은 원문에 없는 작성자의 의도를 만들어 낸 것입니다. 추정이라고 밝히긴 했지만 본문에 들어가 있습니다. Y가 debounce를 \"300ms 동안 추가 입력이 없을 때만 요청\"으로 풀어 쓴 것은 기술적으로 맞는 설명이지만, 원문에 없던 설명이 늘어난 것입니다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 16785,
+          "wallMs": 17591,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2543,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1778,
+            "thinkingTokens": 273
+          },
+          "costUsd": 0.05623160000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

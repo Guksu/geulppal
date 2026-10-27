@@ -1,0 +1,60 @@
+{
+  "id": "info-node-fetch",
+  "label": "v0.2.0-r2",
+  "rep": 1,
+  "expect": false,
+  "prompt": "Node.js 22에서 fetch가 기본으로 내장돼 있어?",
+  "status": "ok",
+  "resultSubtype": "success",
+  "selected": false,
+  "selectedBy": null,
+  "otherSkillCalls": [],
+  "listedGeulppal": true,
+  "proxy": {
+    "selected": false,
+    "top3": [
+      "claude-api:0.0",
+      "code-review:0.0",
+      "dataviz:0.0"
+    ],
+    "listedSkills": [
+      "geulppal",
+      "dataviz",
+      "update-config",
+      "keybindings-help",
+      "code-review",
+      "simplify",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "plugin-authoring",
+      "init",
+      "security-review"
+    ]
+  },
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "cli": "2.1.311",
+  "sessionIdIsNew": true,
+  "toolCalls": [],
+  "permissionDenials": [],
+  "durationMs": 4112,
+  "wallMs": 4951,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 4688,
+    "cacheReadInputTokens": 4430,
+    "outputTokens": 431,
+    "thinkingTokens": 0
+  },
+  "costUsd": 0.023509000000000002,
+  "error": null
+}

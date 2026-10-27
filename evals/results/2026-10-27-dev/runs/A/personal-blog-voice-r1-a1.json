@@ -1,0 +1,103 @@
+{
+  "id": "personal-blog-voice",
+  "condition": "A",
+  "rep": 1,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:22:34.694Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": false,
+    "skillBodyInjected": false,
+    "skillBodyMatchesInstalled": null,
+    "listedGeulppal": false,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "내 블로그 글인데 반복되는 부분만 좀 줄여줘. 말투는 건드리지 마.\n\n솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다. 처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다. 빌드가 느려질 거라고 생각했고, 실제로 첫 달에는 CI가 평균 18분까지 늘어났다. 그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다.\n\n그런데 세 달쯤 지나자 이상한 일이 생겼다. 공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다. 결과적으로 배포 후에 발견되는 문제가 줄어들었다. 배포 후 장애가 줄었다는 것은 정말 큰 변화였다. 배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\n\n그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데, 이건 다음 글에서 이야기하겠다. 아마도.",
+  "output": "첫 문단과 마지막 문단은 그대로 두고, 둘째 문단에서 \"배포 전에 알게 됐다\"는 내용이 계속 되풀이되는 부분만 줄였습니다.\n\n---\n\n솔직히 말하면 나는 모노레포가 싫다. 아니, 싫었다. 처음 회사에서 모노레포를 도입한다고 했을 때 나는 반대표를 던졌다. 빌드가 느려질 거라고 생각했고, 실제로 첫 달에는 CI가 평균 18분까지 늘어났다. 그때 나는 \"거봐, 내 말이 맞지\"라는 표정으로 매일 출근했다.\n\n그런데 세 달쯤 지나자 이상한 일이 생겼다. 공통 컴포넌트를 고치면 쓰는 쪽 테스트가 같이 깨져서, 예전에는 배포하고 나서야 알았던 문제들을 배포 전에 알게 됐다. 배포 후 장애가 줄었다는 것은 정말 큰 변화였다. 그것이 모노레포의 진짜 장점이었다.\n\n그래도 CI 18분은 여전히 싫다. 캐시 설정을 바꿔서 지금은 11분 정도인데, 이건 다음 글에서 이야기하겠다. 아마도.\n\n---\n\n바꾼 내용은 이렇습니다.\n- \"배포 전에 문제를 알게 됐다\"와 \"예전에는 배포하고 나서야 알았던 문제들이다\"를 한 문장으로 합쳤습니다.\n- \"결과적으로 배포 후에 발견되는 문제가 줄어들었다\"는 바로 뒤의 \"배포 후 장애가 줄었다\"와 같은 말이라 뺐습니다.\n- 마지막 문장은 \"배포 전에 문제를 알 수 있다는 것\"을 되풀이하지 않고 \"그것이\"로 이었습니다.\n\n\"정말 큰 변화였다\"는 글쓴이 말투라고 보고 남겼습니다.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 7495,
+  "wallMs": 8547,
+  "numTurns": 1,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 4901,
+    "cacheReadInputTokens": 3846,
+    "outputTokens": 1140,
+    "thinkingTokens": 431
+  },
+  "costUsd": 0.0313926,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": null
+}

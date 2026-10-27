@@ -1,0 +1,151 @@
+{
+  "id": "summarize-music-festival-minutes-ko",
+  "rep": 2,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:05:07.350Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "Y",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "둘 다 '**일정**', '**예산**', '**입장료**', '**자원봉사자**', '**다음 회의**'처럼 굵은 글씨 항목 5개로 나눠, 단톡방에서 원하는 정보를 찾기 쉽다. 번호 목록(X)과 글머리표 목록(Y)의 차이는 찾기 쉬움에 거의 영향이 없다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "Y의 '총 1억 2천만 원 중 4천만 원은 시 보조금으로 충당할 계획입니다'는 X의 '총예산안은 1억 2천만 원입니다. 이 중 시 보조금 4천만 원은…'보다 한 문장 짧게 같은 내용을 담는다. Y의 '무료 유지에 전원 동의.', '80명 모집' 같은 체언 종결도 군더더기를 줄인다. 과장은 두 결과 모두 없다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 '잠정 결정했습니다', '전원 동의했습니다'처럼 모든 문장을 존댓말 종결로 통일해 자연스럽게 읽힌다. Y는 '잠정 결정.' 뒤에 '…논의합니다'가 오는 식으로 명사형 종결과 존댓말이 한 항목 안에 섞여 있어 조금 덜 매끄럽다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "단톡방에 올리는 짧은 공유글에는 Y의 '무료 유지에 전원 동의.', '80명 모집, 공고는 2027년 2월 게시 예정.'처럼 간결한 메모 투가 잘 맞는다. 회의록 원문의 '~함' 투와도 거리가 가깝다. X는 완전한 문장으로 다듬어져 있지만 단톡방 공지로는 조금 길게 느껴진다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "원문은 '일부 좌석 유료화(지정석만)를 다시 검토하자는 의견이 있었음'인데, X는 이를 '다시 검토하기로 했고'로 바꿔 의견을 결정처럼 보이게 만들었다. Y는 '다시 검토하자는 의견이 있었고'로 원문 뜻을 그대로 지켰다. Y는 '무대 2개→1개, 16팀→10팀 내외'로 축소 전 숫자도 남겨, 얼마나 줄어드는지 독자가 바로 알 수 있다."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "두 결과 모두 5개 항목으로 '5줄 이내' 요청에 맞췄고 핵심 사실도 빠짐없이 담았지만, Y가 조금 더 낫다. X는 존댓말 종결이 고르게 이어져 문장 흐름이 약간 더 매끄럽다. 그러나 Y는 같은 내용을 더 짧게 전달해 단톡방 공유글에 더 잘 맞는다. 또 Y는 '2개→1개, 16팀→10팀'처럼 축소 폭을 그대로 보여 준다. 무엇보다 Y는 텐트 견적에 따른 유료화 재검토를 원문대로 '의견'으로 전달했고, X는 이를 '검토하기로 했다'는 결정처럼 바꿨다. 이 의미 차이 때문에 Y를 고른다.",
+        "meaning_concerns": "X는 입장료 항목에서 원문의 '다시 검토하자는 의견이 있었음'을 '다시 검토하기로 했고'로 옮겨, 위원 일부의 의견을 위원회가 합의한 결정처럼 읽히게 만들었다. Y에서는 의미가 달라진 곳을 찾지 못했다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 20361,
+          "wallMs": 21164,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2186,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1888,
+            "thinkingTokens": 420
+          },
+          "costUsd": 0.0555756,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "X",
+      "winner": "B2",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "X",
+            "evidence": "둘 다 굵은 항목명 5개로 정리해 찾기 쉽다. X는 \"무대 2개→1개, 16팀→10팀 내외\"로 무엇이 얼마나 줄어드는지 한눈에 보이지만, Y는 \"무대 1개·공연팀 10팀 내외의 축소안\"이라 원래 규모를 알 수 없다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "X는 \"2027년 5월 22~23일(토·일)\", \"80명 모집, 공고는 2027년 2월 게시 예정\"처럼 압축했다. Y는 \"총예산안은 1억 2천만 원입니다. 이 중 시 보조금 4천만 원은 …\"처럼 문장을 나눠 조금 더 길다. 차이는 크지 않다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "Y는 \"잠정 결정했습니다\", \"전원 동의했습니다\"로 끝까지 존댓말이라 매끄럽다. X는 \"잠정 결정.\" 뒤에 \"논의합니다.\"가 오는 등 명사형과 존댓말이 섞였다. 다만 단톡방 공지에서 크게 거슬리는 정도는 아니다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 단톡방 공지에 맞는 짧은 존댓말이다. X의 명사형 종결(\"전원 동의.\")은 채팅 요약에 자연스럽고, Y의 일관된 \"~습니다\"는 조금 더 공식적이다. 어느 쪽이 더 맞다고 보기 어렵다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 원문 \"다시 검토하자는 의견이 있었음\"을 \"다시 검토하자는 의견이 있었고\"로 그대로 옮겼다. Y는 \"다시 검토하기로 했고\"로 바꿔 의견을 결정처럼 만들었다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "구성과 분량은 비슷하다. X는 축소안 규모를 \\\"2개→1개, 16팀→10팀\\\"으로 보여 주고, 지정석 유료화가 '의견'에 그쳤다는 원문 뉘앙스를 지켰다. Y는 존댓말이 일관되지만, 유료화 재검토를 \\\"검토하기로 했고\\\"라고 써 결정 수준을 높였고 원래 규모 정보를 뺐다. 그래서 X가 조금 낫다. 둘 다 항목마다 여러 문장이라 화면에서는 5줄을 넘지만, 정도가 같아 판정에는 반영하지 않았다.",
+        "meaning_concerns": "Y는 입장료 항목의 원문 \\\"다시 검토하자는 의견이 있었음\\\"을 \\\"다시 검토하기로 했고\\\"로 바꿔 결정처럼 전달한다. Y의 예산 항목은 축소 전 규모(무대 2개, 16팀)를 빠뜨렸다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 21120,
+          "wallMs": 22036,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2184,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2168,
+            "thinkingTokens": 479
+          },
+          "costUsd": 0.0611596,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B2"
+}

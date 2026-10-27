@@ -1,0 +1,104 @@
+{
+  "id": "diagnose-youth-rent-press-release-ko",
+  "condition": "B2",
+  "rep": 2,
+  "attempt": 1,
+  "status": "ok",
+  "started": "2026-10-27T05:55:10.118Z",
+  "sessionIdIsNew": true,
+  "model": {
+    "requested": "claude-sonnet-5-5",
+    "init": "claude-sonnet-5-5",
+    "responses": [
+      "claude-sonnet-5-5"
+    ],
+    "usage": [
+      "claude-sonnet-5-5"
+    ]
+  },
+  "effort": "high",
+  "cli": "2.1.311",
+  "environment": {
+    "envNames": [
+      "ANTHROPIC_BASE_URL",
+      "CLAUDE_CONFIG_DIR",
+      "CURL_CA_BUNDLE",
+      "HOME",
+      "HTTPS_PROXY",
+      "NODE_EXTRA_CA_CERTS",
+      "NODE_OPTIONS",
+      "NO_PROXY",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE",
+      "TERM",
+      "https_proxy",
+      "no_proxy"
+    ],
+    "tools": [
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill"
+    ],
+    "mcpServers": [],
+    "plugins": [
+      "cc-plugin-agents-md@builtin",
+      "cc-plugin-telemetry@builtin",
+      "cc-plugin-plugin-authoring@builtin"
+    ],
+    "skills": [
+      "geulppal",
+      "deep-research",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "plugin-authoring"
+    ],
+    "permissionMode": "dontAsk",
+    "apiKeySource": "none"
+  },
+  "skill": {
+    "commandExpanded": true,
+    "skillBodyInjected": true,
+    "skillBodyMatchesInstalled": true,
+    "listedGeulppal": true,
+    "skillToolCalls": [],
+    "referenceReads": [],
+    "systemPromptHash": "8d09644e832b91d65668f1495eb04983cb20d1cc6de356d0dcfdf5a043718e22"
+  },
+  "prompt": "/geulppal 구청 보도자료 초안이야. 문제 있는 부분만 짚어 줘. 고친 문장이나 수정본은 쓰지 마. 고치는 건 내가 할게.\n\n푸른구, 청년 월세 지원으로 청년 주거 문제 획기적 해결 나선다\n\n푸른구(구청장 ○○○)는 청년들의 주거 안정을 위하여 '푸른 청년 월세 지원 사업'을 시행한다고 밝혔다. 이번 사업은 청년 주거 문제를 획기적으로 해결할 수 있는 전환점이 될 것으로 기대된다.\n\n지원 대상은 푸른구에 주민등록을 둔 만 19세~34세 무주택 청년 가운데 기준 중위소득 60% 이하인 1인 가구이다. 선정된 청년에게는 월 최대 20만 원을 최대 12개월간 지원한다. 지원금은 청년에게 현금으로 지급하는 것이 아니라 임대인 계좌로 직접 지급된다. 단, 임대보증금이 5천만 원을 넘거나 월세가 60만 원을 넘는 주택에 사는 경우는 지원 대상에서 제외된다.\n\n신청 기간은 11월 3일부터 11월 28일까지이며, 구청 누리집을 통하여 온라인으로 신청할 수 있다. 선정 인원은 약 300명으로 예정되어 있으며, 신청자가 이를 초과할 경우 소득이 낮은 순서로 선정할 계획이다.\n\n구 관계자는 \"이번 사업을 통하여 청년들이 주거비 부담에서 벗어나 꿈을 향해 나아갈 수 있기를 바란다\"라고 밝혔다. 이번 사업은 청년 주거 문제를 근본적으로 해결하는 데 있어서 크게 기여할 것이며, 청년들의 삶의 질 향상에 획기적인 변화를 가져올 것이다.\n\n자세한 사항은 구청 누리집 공고문을 참고하거나 청년정책과(02-000-1234)로 문의하면 된다. 신청은 11월 30일까지 받는다.",
+  "output": "**사실 오류**\n- **신청 마감일이 서로 다릅니다.** 3문단은 \"11월 28일까지\"이고 마지막 문장은 \"11월 30일까지\"입니다. 어느 쪽이 맞는지 확인해야 합니다. 공고문과도 대조하세요.\n\n**근거 없는 과장**\n- **\"획기적\"이 제목, 1문단, 4문단에 나옵니다.** 선정 인원이 약 300명, 지원이 월 최대 20만 원씩 12개월인 사업입니다. 이 규모로 \"획기적 해결\", \"근본적으로 해결\", \"획기적인 변화\"를 주장하기는 어렵습니다.\n- **4문단 마지막 문장은 근거 없는 단정입니다.** \"크게 기여할 것이며\", \"가져올 것이다\"는 효과를 확정해 말합니다. 인용문 밖이라 구의 공식 주장으로 읽힙니다. 1문단의 \"전환점이 될 것으로 기대된다\"도 누가 기대하는지 없습니다.\n- **같은 결론이 1문단과 4문단에서 반복됩니다.** 두 곳 모두 \"청년 주거 문제 해결\"이라는 새 정보 없는 평가입니다.\n\n**구성**\n- **제목과 첫 문단에 독자가 알아야 할 정보가 없습니다.** 대상, 금액, 신청 기간이 모두 3문단 이후에 나옵니다. 앞부분은 사업 이름과 의의만 전합니다.\n- **인용문은 어느 사업에나 붙일 수 있는 말입니다.** \"주거비 부담에서 벗어나 꿈을 향해\"는 이 사업의 내용을 전달하지 않습니다. 실제 발언이면 그대로 두되, 발언자가 \"구 관계자\"라는 점은 확인하세요.\n\n**표현**\n- **\"~하는 데 있어서\"는 번역투입니다.** 4문단의 \"해결하는 데 있어서\"가 해당합니다.\n- **\"통하여\"가 반복됩니다.** \"이번 사업을 통하여\"와 \"누리집을 통하여\"가 같은 단락 근처에 있습니다.\n- **\"청년 주거 문제\"가 네 번 나옵니다.** 제목, 1문단, 4문단 두 번입니다.\n- **\"예정되어 있으며\"와 \"선정할 계획이다\"가 이어집니다.** 같은 문장 안에서 어조가 겹칩니다.\n\n**빠진 정보일 수 있는 부분**\n- **만 19~34세의 나이 기준일이 없습니다.** 신청일인지 공고일인지 알 수 없습니다.\n- **선정 결과 발표 시기와 지급 시작 시점이 없습니다.** 해당 정보가 있으면 넣을지 판단하세요.\n\n**문제없는 부분**\n- 지원금이 현금이 아니라 임대인 계좌로 나간다는 대조는 실제 정책 차이입니다. 그대로 두는 게 맞습니다.\n- 보증금 5천만 원, 월세 60만 원 제외 조건은 명확합니다.",
+  "outputHadLocalPath": false,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 19742,
+  "wallMs": 20565,
+  "numTurns": 1,
+  "usage": {
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 10187,
+    "cacheReadInputTokens": 3846,
+    "outputTokens": 2445,
+    "thinkingTokens": 1352
+  },
+  "costUsd": 0.0655866,
+  "permissionDenials": [],
+  "toolCalls": [],
+  "error": null
+}

@@ -1,0 +1,151 @@
+{
+  "id": "en-docs-tile-seeding",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B2",
+    "from": "2026-10-27-holdout",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": false,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T06:03:20.869Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B2",
+      "verdict": "X",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "두 결과의 구조와 순서가 같다. 명령어, 옵션 설명, 워커 수, `--force`, 제한 사항 목록이 같은 위치에 있다(\"To seed tiles, run:\", \"### Limitations\")."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "둘 다 \"It is important to note... crucial step... vital role\", \"In other words, seeding means...\", \"blazing-fast map experience\"를 지우고 \"Seeding pre-renders tiles so they are served from the cache instead of being rendered on demand.\" 한 문장만 남겼다."
+          },
+          {
+            "criterion": "flow",
+            "better": "X",
+            "evidence": "X는 \"Each worker uses roughly 600 MB of memory, measured on our reference setup (...)\"와 \"`--force` overwrites them, but it only re-renders tiles inside the bounding box and does not delete tiles outside it.\"처럼 관련된 내용을 한 문장으로 잇는다. Y는 \"Each worker uses roughly 600 MB of memory. We measured this on our reference setup\"와 \"`--force` only re-renders tiles inside the bounding box. It does not delete tiles outside it.\"처럼 짧은 문장으로 끊었다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "둘 다 기술 문서다운 담백한 어조다. Y는 \"You can change this with `--workers`\"로 원문 표현을 더 많이 살렸고, X는 \"Change this with `--workers`\"로 더 간결하다. 의미 있는 차이는 없다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X의 설명 \"I cut the opening filler, the restatement of what seeding means, and the closing summary\"는 실제 변경과 맞는다. Y의 설명은 결론만 언급하고 도입부를 지운 사실을 빠뜨렸으며, Y가 원문의 한 문장을 둘로 나눈 것(\"Pass `--force` to overwrite them. `--force` only re-renders...\")은 꼭 필요한 수정이 아니다. 다만 Y의 벤치마크 수치 제안은 유용하다."
+          }
+        ],
+        "verdict": "X",
+        "reason": "본문의 압축 정도와 보존된 사실은 거의 같다. X는 600 MB 측정 조건과 `--force` 동작을 한 문장 안에서 자연스럽게 이어 쓴 반면, Y는 같은 내용을 짧은 문장으로 쪼개 조금 끊겨 읽힌다. X의 편집 설명도 실제 삭제 내용과 정확히 맞는다. 차이는 크지 않지만 흐름 면에서 X가 조금 낫다.",
+        "meaning_concerns": "의미가 달라진 곳은 찾지 못했다. 두 결과 모두 `--force`가 범위 밖 타일을 지우지 않는다는 점, 측정 조건, 벡터 레이어에서 메모리를 더 쓸 수 있다는 점을 보존했다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 21307,
+          "wallMs": 22324,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2253,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2199,
+            "thinkingTokens": 582
+          },
+          "costUsd": 0.0623316,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B2",
+      "Y": "B0",
+      "verdict": "Y",
+      "winner": "B0",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "Both keep the command, options, defaults and limitations in the same order. X's \"Pass `--force` to overwrite them.\" and Y's \"`--force` overwrites them\" are equally easy to find."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "same",
+            "evidence": "Both remove \"It is important to note…\", \"In today's fast-paced world…\", \"In other words…\" and \"In conclusion…\"."
+          },
+          {
+            "criterion": "flow",
+            "better": "Y",
+            "evidence": "X splits linked points into short sentences: \"Each worker uses roughly 600 MB of memory. We measured this on our reference setup…\" and \"`--force` only re-renders tiles inside the bounding box. It does not delete tiles outside it.\" Y joins them: \"…600 MB of memory, measured on our reference setup…\" and \"`--force` overwrites them, but it only re-renders tiles inside the bounding box and does not delete tiles outside it.\""
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "same",
+            "evidence": "Both use a concise, neutral tone suited to technical docs. X's note (\"If you have benchmark numbers, add them back…\") and Y's note (\"The command, options, 600 MB figure … are unchanged.\") are both appropriate."
+          },
+          {
+            "criterion": "restraint",
+            "better": "same",
+            "evidence": "Neither adds unrequested formatting, and both keep the measurement conditions (\"raster layers, 256px tiles, PNG output\") and all three limitations as they were."
+          }
+        ],
+        "verdict": "Y",
+        "reason": "The two results remove the same filler and keep nearly all of the same content. The only real difference is flow. X breaks the 600 MB measurement conditions and the --force caveat into separate short sentences, which reads choppily. Y joins them into single sentences that flow more naturally. The gap is small, but Y is slightly better.",
+        "meaning_concerns": "None found. Both keep the original's meaning for --force (it re-renders only tiles inside the bounding box and deletes nothing outside it), the 600 MB figure, its measurement conditions, and the S3 testing scope."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 16598,
+          "wallMs": 17403,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 2253,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1861,
+            "thinkingTokens": 394
+          },
+          "costUsd": 0.055571600000000006,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "B0"
+}

@@ -1,0 +1,151 @@
+{
+  "id": "personal-blog-voice",
+  "rep": 1,
+  "left": {
+    "condition": "B0",
+    "from": "2026-10-27-dev",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "right": {
+    "condition": "B1",
+    "from": "2026-10-27-round1",
+    "attempt": 1,
+    "meaningPass": true
+  },
+  "reusedBaseline": true,
+  "judged": true,
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "eb37a42574276e477aef6847f4ea5d39cf4399cffeb75dc96820ad0a7fd43126",
+    "at": "2026-10-27T05:35:37.130Z"
+  },
+  "judgments": [
+    {
+      "order": "o1",
+      "X": "B0",
+      "Y": "B1",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "짧은 세 문단 구성이 그대로이고, 핵심인 \"배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다\"의 위치도 두 결과가 같다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "X",
+            "evidence": "두 결과 모두 중복 문장 \"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\"를 지웠다. X는 여기에 더해 \"예전에는 배포하고 나서야 알았던 문제를 배포 전에 알게 됐다\"로 두 문장을 합쳐서 바로 이어지던 '배포 전/문제' 반복을 한 번 더 줄였다. Y에는 \"배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다.\"가 그대로 남아 있다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 합친 문장은 매끄럽지만 조금 길어졌다. Y는 원문처럼 짧은 덧붙임 문장으로 리듬을 살렸다. 어느 쪽이 더 낫다고 하기 어렵다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "Y",
+            "evidence": "Y는 원문의 짧은 덧붙임 문장 \"예전에는 배포하고 나서야 알았던 문제들이다.\"를 남겨서 말투를 건드리지 말라는 요청에 더 가깝다. X는 이 문장을 앞 문장에 흡수해서 말투가 조금 바뀌었다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "Y",
+            "evidence": "Y는 확실한 중복 문장 하나만 지웠다. X는 문장 구조를 하나 더 손댔다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 가장 확실한 중복 문장인 \\\"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\\\"를 지웠고, 나머지 글은 원문 그대로 두었다. 차이는 X가 \\\"배포 전에 문제를 알게 됐다. 예전에는…문제들이다.\\\" 두 문장을 하나로 합쳤다는 점 하나다. 이렇게 합치면 반복은 조금 더 줄지만, 원문의 짧은 덧붙임 리듬이 사라져서 말투를 건드리지 말라는 요청과는 조금 부딪친다. 기준별로 장단점이 엇갈리고 차이도 작아서 어느 쪽이 분명히 낫다고 보기 어렵다.",
+        "meaning_concerns": "의미가 달라진 곳은 없다. X의 합친 문장도 원래 두 문장이 담은 정보를 그대로 갖고 있다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 15729,
+          "wallMs": 16586,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1826,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 1634,
+            "thinkingTokens": 528
+          },
+          "costUsd": 0.04761560000000001,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "order": "o2",
+      "X": "B1",
+      "Y": "B0",
+      "verdict": "tie",
+      "winner": "tie",
+      "answer": {
+        "criteria": [
+          {
+            "criterion": "findability",
+            "better": "same",
+            "evidence": "짧은 세 문단 구성이 같고, 핵심인 \"배포 전에 문제를 알 수 있다는 것, 그것이 모노레포의 진짜 장점이었다.\"가 두 결과에서 같은 자리에 있다."
+          },
+          {
+            "criterion": "inflation_repetition",
+            "better": "Y",
+            "evidence": "둘 다 \"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\"를 지웠다. Y는 여기에 더해 \"배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다.\"를 \"예전에는 배포하고 나서야 알았던 문제를 배포 전에 알게 됐다\"로 합쳐 겹치던 '문제' 언급을 하나 더 줄였다."
+          },
+          {
+            "criterion": "flow",
+            "better": "same",
+            "evidence": "X의 \"...배포 전에 문제를 알게 됐다. 예전에는 배포하고 나서야 알았던 문제들이다.\"는 덧붙이는 리듬이 자연스럽다. Y의 합친 문장도 길지만 매끄럽게 읽힌다. 어느 쪽에도 끊기는 곳이 없다."
+          },
+          {
+            "criterion": "fit_voice",
+            "better": "X",
+            "evidence": "X는 원문의 짧은 덧붙임 문장 \"예전에는 배포하고 나서야 알았던 문제들이다.\"를 그대로 둬서 말투를 건드리지 말라는 요청에 더 충실하다. Y는 이 문장을 앞 문장에 흡수해 리듬이 조금 바뀌었다."
+          },
+          {
+            "criterion": "restraint",
+            "better": "X",
+            "evidence": "X는 확실히 중복인 문장 하나만 지웠다. Y는 반복이라기보다 대비를 위한 덧붙임까지 재구성했다."
+          }
+        ],
+        "verdict": "tie",
+        "reason": "두 결과 모두 가장 분명한 중복 문장(\\\"결과적으로 배포 후에 발견되는 문제가 줄어들었다.\\\")을 지웠다. 남은 차이는 Y가 짧은 문장 두 개를 합친 것 하나다. 반복을 더 줄인 쪽은 Y이고, 말투와 절제 면에서는 X가 낫다. 기준이 엇갈리고 차이도 작아서 어느 쪽도 분명히 낫지 않다.",
+        "meaning_concerns": "의미가 달라진 곳은 없다. Y가 문장을 합치면서도 예전과 지금의 대비, 배포 전에 발견했다는 내용은 모두 남아 있다."
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "ok": true,
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 21478,
+          "wallMs": 22319,
+          "usage": {
+            "inputTokens": 2,
+            "cacheCreationInputTokens": 1826,
+            "cacheReadInputTokens": 1598,
+            "outputTokens": 2159,
+            "thinkingTokens": 470
+          },
+          "costUsd": 0.0581156,
+          "models": [
+            "claude-opus-5-5"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "consistent": true,
+  "result": "tie"
+}

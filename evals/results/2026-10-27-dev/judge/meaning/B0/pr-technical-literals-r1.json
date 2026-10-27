@@ -1,0 +1,143 @@
+{
+  "id": "pr-technical-literals",
+  "condition": "B0",
+  "rep": 1,
+  "attempt": 1,
+  "runStatus": "ok",
+  "judged": true,
+  "pass": true,
+  "exact": {
+    "checked": [
+      "retryCount",
+      "npm test -- retry.test.ts",
+      "(docs/retry.md#retry-count)"
+    ],
+    "missing": [],
+    "applicable": true,
+    "pass": true
+  },
+  "judge": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "cli": "2.1.311 (Claude Code)",
+    "rubricSha256": "d4c4bc677690a8195bf74be86ba414e65c18a05ca0e6db7746a53cd66109d0bd",
+    "at": "2026-10-27T05:28:44.866Z",
+    "answer": {
+      "preserve": [
+        {
+          "item": "retryCount",
+          "status": "kept",
+          "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+        },
+        {
+          "item": "0일 때 재시도하지 않음",
+          "status": "kept",
+          "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+        },
+        {
+          "item": "코드 블록 전체",
+          "status": "kept",
+          "evidence": "```sh\nnpm test -- retry.test.ts\n```"
+        },
+        {
+          "item": "8개 통과",
+          "status": "kept",
+          "evidence": "위 테스트 8개가 통과했습니다."
+        },
+        {
+          "item": "전체 테스트 미실행",
+          "status": "kept",
+          "evidence": "전체 테스트는 실행하지 않았습니다."
+        },
+        {
+          "item": "docs/retry.md#retry-count",
+          "status": "kept",
+          "evidence": "자세한 내용은 [설명](docs/retry.md#retry-count)을 참고해 주세요."
+        }
+      ],
+      "must_not": [
+        {
+          "item": "전체 테스트 통과로 확대",
+          "status": "ok",
+          "evidence": "위 테스트 8개가 통과했습니다. 전체 테스트는 실행하지 않았습니다."
+        },
+        {
+          "item": "명령 변경",
+          "status": "ok",
+          "evidence": "npm test -- retry.test.ts"
+        },
+        {
+          "item": "링크 대상 변경",
+          "status": "ok",
+          "evidence": "[설명](docs/retry.md#retry-count)"
+        },
+        {
+          "item": "새 홍보성 서명 추가",
+          "status": "ok",
+          "evidence": "본문에 홍보성 문구나 서명이 없고 \"매우 혁신적입니다\"는 삭제됨"
+        }
+      ],
+      "general": [
+        {
+          "check": "new_facts",
+          "status": "ok",
+          "evidence": "\"자세한 내용은 [설명](docs/retry.md#retry-count)을 참고해 주세요.\"는 링크 안내일 뿐 새로운 사실이 아님. 수정 전 동작은 메모에서만 언급하고 본문에 넣지 않음"
+        },
+        {
+          "check": "omission",
+          "status": "ok",
+          "evidence": "원문의 근거 없는 수식어 \"매우 혁신적입니다\"만 덜어냈고 나머지 핵심 정보는 모두 남아 있음"
+        },
+        {
+          "check": "number_scope",
+          "status": "ok",
+          "evidence": "위 테스트 8개가 통과했습니다."
+        },
+        {
+          "check": "status_certainty",
+          "status": "ok",
+          "evidence": "전체 테스트는 실행하지 않았습니다."
+        },
+        {
+          "check": "conditions",
+          "status": "ok",
+          "evidence": "`retryCount`가 0일 때 재시도하지 않도록 수정했습니다."
+        },
+        {
+          "check": "literals",
+          "status": "ok",
+          "evidence": "npm test -- retry.test.ts / [설명](docs/retry.md#retry-count)"
+        },
+        {
+          "check": "scope",
+          "status": "ok",
+          "evidence": "PR 본문 문장을 다듬었고 코드와 링크를 유지함. 메모는 본문과 구분되어 있음"
+        }
+      ],
+      "verdict": "pass",
+      "fail_reasons": []
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 9302,
+        "wallMs": 10172,
+        "usage": {
+          "inputTokens": 2,
+          "cacheCreationInputTokens": 1140,
+          "cacheReadInputTokens": 2480,
+          "outputTokens": 1188,
+          "thinkingTokens": 60
+        },
+        "costUsd": 0.033384,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "error": null
+      }
+    ]
+  }
+}
