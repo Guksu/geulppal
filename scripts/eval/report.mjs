@@ -75,10 +75,10 @@ lines.push('', `시스템 프롬프트(실행 폴더 경로를 지운 것)의 �
 // 정확성
 const meaningByCondition = {}
 // 원문 없이 쓴 사례(작업 폴더 자료가 있는 사례)는 의미 보존 대신 근거 판정(evals/judge/draft-claims.md)을 한다
-const drafting = conditions.some((condition) => records.list(`judge/meaning/${condition}`).some((judged) => judged.judge?.kind === 'draft-claims'))
+const drafting = conditions.some((condition) => records.list(`judge/meaning/${condition}`).some((judged) => ['draft-claims', 'draft-memo-claims'].includes(judged.judge?.kind)))
 const CHECK = drafting ? '근거 판정' : '의미 보존'
 lines.push(`## 정확성: ${CHECK}`, '', drafting
-  ? '원문 없이 쓴 글이다. 판정 모델이 작업 폴더의 코드와 메모를 읽고 결과의 구체적인 주장마다 근거를 찾는다. 근거와 어긋나는 주장(contradicted)이나 근거를 찾지 못한 구체적 주장(unsupported)이 하나라도 있으면 실패다. 근거를 찾지 못했다는 것이 틀렸다는 뜻은 아니다. 분모는 성공한 실행 중 판정한 실행이다.'
+  ? '원문 없이 쓴 글이다. 판정 모델이 작성자가 받은 자료(작업 폴더의 코드나 메모)를 읽고 결과의 구체적인 주장마다 근거를 찾는다. 근거와 어긋나는 주장(contradicted)이나 근거를 찾지 못한 구체적 주장(unsupported)이 하나라도 있으면 실패다. 근거를 찾지 못했다는 것이 틀렸다는 뜻은 아니다. 분모는 성공한 실행 중 판정한 실행이다.'
   : '판정 모델의 의미 보존 검사와 문자열 검사(`exact`)를 모두 통과해야 통과다. 분모는 성공한 실행 중 판정한 실행이다.', '', '| 조건 | 판정한 실행 | 통과 | 실패 | 그중 문자열 누락 | 판정 못 함 | 실행 실패로 제외 |', '|---|---|---|---|---|---|---|')
 for (const condition of conditions) {
   const judged = listJson(`judge/meaning/${condition}`)

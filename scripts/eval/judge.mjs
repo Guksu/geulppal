@@ -12,7 +12,8 @@
  * 판정 기록은 records.json의 judge/meaning/·judge/pair/ 항목으로 묶인다(lib/records.mjs).
  * --pass 2: 같은 결과를 한 번 더 판정해 judge/meaning-pass2/에 쓴다(판정자 일치도 확인용). 품질 비교 대상은 1차 판정으로 정한다.
  * --left-from: 왼쪽 조건의 결과를 다른 결과 폴더에서 가져온다(입력·모델·환경·설정이 같은 기준선을 재사용할 때). 재사용 사실은 판정 기록에 남는다.
- * 초안 사례(`fixture`가 있는 사례)의 의미 판정은 evals/judge/draft-claims.md를 쓴다. 판정자도 같은 작업 폴더를 받아 Read·Glob·Grep으로 근거를 확인한다.
+ * 초안 사례(`task: draft`)는 의미 보존 대신 근거 판정을 한다. 작업 폴더 자료(`fixture`)가 있으면 evals/judge/draft-claims.md를 쓰고,
+ * 판정자도 같은 작업 폴더를 받아 Read·Glob·Grep으로 근거를 확인한다. 메모만 있으면 evals/judge/draft-memo-claims.md를 쓴다.
  * --reference-pass: 품질 비교에서 실행하지 않은 기준 조건(사람 원문 H)은 의미 판정 결과와 상관없이 비교에 넣는다(초안 사례의 사람 README처럼 코드만으로 확인할 수 없는 내용을 담은 기준글).
  */
 import { existsSync, readFileSync } from 'node:fs'
@@ -71,6 +72,9 @@ const exactCheck = (item, output) => {
   if (item.task === 'noop-check' && checked.length > 0 && missing.length === checked.length) return { checked, missing, applicable: false, pass: true }
   return { checked, missing, applicable: true, pass: missing.length === 0 }
 }
+
+// 원문 없이 쓴 사례: 작업 폴더 자료가 있거나(draft-readme) 메모로 쓰는 사례(draft-memo). evals/cases.json의 초기 draft 사례는 의미 보존으로 판정한다
+const isDraftCase = (item) => Boolean(item.fixture) || item.variant === 'memo'
 
 const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<<<${label} 끝>>>`
 
@@ -196,6 +200,7 @@ if (mode === 'meaning') {
   const condition = options.condition
   const rubric = readFileSync(join(ROOT, 'evals/judge/meaning.md'), 'utf8')
   const claimsRubric = readFileSync(join(ROOT, 'evals/judge/draft-claims.md'), 'utf8')
+  const memoClaimsRubric = readFileSync(join(ROOT, 'evals/judge/draft-memo-claims.md'), 'utf8')
   const cases = casesById(casesFileOf(options.out, condition))
   const fixtureDirs = {}
   for (const item of Object.values(cases)) if (item.fixture) fixtureDirs[item.id] = ensureFixture(item.fixture)
@@ -214,7 +219,7 @@ if (mode === 'meaning') {
     }
     const output = outputOf(options.out, record)
     const exact = exactCheck(item, output)
-    const draft = Boolean(item.fixture)
+    const draft = isDraftCase(item)
     const prompt = draft
       ? [
           block('요청', item.request),
@@ -231,10 +236,10 @@ if (mode === 'meaning') {
           `## 금지 변경\n\n${item.must_not.map((line) => `- ${line}`).join('\n')}`,
           item.notes ? `## 참고\n\n${item.notes}` : '',
         ].filter(Boolean).join('\n\n')
-    const usedRubric = draft ? claimsRubric : rubric
+    const usedRubric = draft ? (item.fixture ? claimsRubric : memoClaimsRubric) : rubric
     const judged = await callJudge({ prompt, rubric: usedRubric, schema: draft ? CLAIMS_SCHEMA : MEANING_SCHEMA, fixtureDir: fixtureDirs[item.id] })
     const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass : null
-    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(usedRubric), kind: draft ? 'draft-claims' : 'meaning', answer: judged.answer, attempts: judged.attempts } })
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
     console.log(`의미 ${condition} ${record.id} r${record.rep} — ${judged.answer ? judged.answer.verdict : '판정 실패'}${exact.pass ? '' : `, 문자열 누락 ${exact.missing.length}`}`)
     return null
   })
@@ -251,6 +256,7 @@ if (mode === 'pair') {
   const editRubric = readFileSync(join(ROOT, 'evals/judge/quality.md'), 'utf8')
   // 원문 없이 새로 쓴 사례는 따로 만든 지침으로 비교한다
   const draftRubric = readFileSync(join(ROOT, 'evals/judge/draft-quality.md'), 'utf8')
+  const memoDraftRubric = readFileSync(join(ROOT, 'evals/judge/draft-memo-quality.md'), 'utf8')
   const cases = casesById(casesFileOf(rightFrom, right))
   const meaningOf = (name, condition, record) => recordsOf(name).get(`judge/meaning/${condition}/${record.id}-r${record.rep}`)
   const leftRuns = Object.fromEntries(latestRuns(leftFrom, left).map((record) => [`${record.id}-r${record.rep}`, record]))
@@ -283,7 +289,7 @@ if (mode === 'pair') {
     if (complete && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
     jobs.push(async () => {
       const item = cases[rightRecord.id]
-      const rubric = item.fixture ? draftRubric : editRubric
+      const rubric = isDraftCase(item) ? (item.fixture ? draftRubric : memoDraftRubric) : editRubric
       const leftText = outputOf(leftFrom, leftRecord)
       const rightText = outputOf(rightFrom, rightRecord)
       // o1: X=왼쪽, Y=오른쪽 / o2: X=오른쪽, Y=왼쪽
@@ -293,8 +299,8 @@ if (mode === 'pair') {
       ]
       const judgments = []
       for (const order of orders) {
-        const source = item.fixture ? item.input || '(입력 글 없음. 작성자는 작업 폴더의 저장소 코드를 보고 썼다)' : item.input
-        const prompt = [block('요청', item.request), block(item.fixture ? '메모' : '원문', source), block('결과 X', order.xText), block('결과 Y', order.yText)].join('\n\n')
+        const source = isDraftCase(item) ? item.input || '(입력 글 없음. 작성자는 작업 폴더의 저장소 코드를 보고 썼다)' : item.input
+        const prompt = [block('요청', item.request), block(isDraftCase(item) ? '메모' : '원문', source), block('결과 X', order.xText), block('결과 Y', order.yText)].join('\n\n')
         const judged = await callJudge({ prompt, rubric, schema: PAIR_SCHEMA })
         const verdict = judged.answer?.verdict ?? null
         const winner = verdict === 'X' ? order.X : verdict === 'Y' ? order.Y : verdict

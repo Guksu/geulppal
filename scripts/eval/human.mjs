@@ -16,7 +16,8 @@
  */
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ROOT, cliVersion, makeSandbox, parseArgs, parseStream, pool, readJson, runClaude, scrub, sha256, usageOf, writeJson } from './lib/common.mjs'
+import { ROOT, cliVersion, parseArgs, pool, readJson, sha256, usageOf, writeJson } from './lib/common.mjs'
+import { callIsolated as callIsolatedBase } from './lib/isolated.mjs'
 import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
@@ -65,38 +66,7 @@ const CHECK_SCHEMA = {
 const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<<<${label} 끝>>>`
 const specOf = (sourceId) => spec.cases.find((item) => item.source === sourceId)
 
-/** 도구 없는 새 세션 한 번 */
-const callIsolated = async ({ prompt, model, systemPrompt, schema }) => {
-  const box = makeSandbox()
-  const args = [
-    '-p', prompt,
-    '--output-format', 'stream-json', '--verbose',
-    '--model', model,
-    '--effort', options.effort,
-    '--tools', '',
-    '--setting-sources', 'project',
-    '--strict-mcp-config',
-    '--no-session-persistence',
-    ...(systemPrompt ? ['--system-prompt', systemPrompt] : []),
-    ...(schema ? ['--json-schema', JSON.stringify(schema)] : []),
-  ]
-  const run = await runClaude({ claude: options.claude, args, cwd: box.work, env: box.env, timeoutMs: 15 * 60 * 1000 })
-  box.cleanup()
-  const stream = parseStream(run.stdout)
-  return {
-    text: typeof stream.result?.result === 'string' ? stream.result.result : '',
-    structured: stream.result?.structured_output ?? null,
-    meta: {
-      model: model,
-      responses: Object.keys(stream.result?.modelUsage ?? {}),
-      exitCode: run.code,
-      durationMs: stream.result?.duration_ms ?? null,
-      usage: usageOf(stream.result),
-      costUsd: stream.result?.total_cost_usd ?? null,
-      error: stream.result && !stream.result.is_error ? null : scrub((stream.result?.result ?? run.stderr ?? '').slice(-500)),
-    },
-  }
-}
+const callIsolated = (call) => callIsolatedBase({ claude: options.claude, effort: options.effort, ...call })
 
 if (mode === 'slop') {
   const rubric = readFileSync(join(ROOT, 'evals/judge/slop-check.md'), 'utf8')

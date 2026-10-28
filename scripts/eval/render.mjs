@@ -75,7 +75,8 @@ const quote = (text) => (text.trim() ? showLinks(text.trimEnd()).split('\n').map
 const cell = (text) => String(text).replace(/\|/g, '\\|').replace(/\n+/g, ' ')
 
 // 원문 없이 쓴 사례(작업 폴더 자료가 있는 사례)는 의미 보존 대신 근거 판정을 한다
-const drafting = cases.some((item) => item.fixture)
+const isDraftCase = (item) => Boolean(item.fixture) || item.variant === 'memo'
+const drafting = cases.some(isDraftCase)
 const CHECK = drafting ? '근거 판정' : '의미 보존'
 const meaningBadge = (record, meaning) => {
   if (!record) return '실행 기록 없음'
@@ -105,13 +106,13 @@ for (const item of cases) {
     '',
     quote(item.request),
     '',
-    ...(item.fixture
-      ? ['## 메모', '', item.input ? quote(item.input) : '> (없음)', '', `작성 모델은 작업 폴더에서 \`${item.fixture.repo}\` 커밋 \`${item.fixture.commit.slice(0, 7)}\`의 코드(${item.fixture.paths.map((path) => `\`${path}\``).join(', ')}, README·설명 문서 제외)를 읽고 README를 파일로 썼습니다.`]
+    ...(isDraftCase(item)
+      ? ['## 메모', '', item.input ? quote(item.input) : '> (없음)', ...(item.fixture ? ['', `작성 모델은 작업 폴더에서 \`${item.fixture.repo}\` 커밋 \`${item.fixture.commit.slice(0, 7)}\`의 코드(${item.fixture.paths.map((path) => `\`${path}\``).join(', ')}, README·설명 문서 제외)를 읽고 README를 파일로 썼습니다.`] : [])]
       : ['## 원문', '', quote(item.input)]),
     '',
     '<details><summary>평가 기준 (작성 모델에는 보여 주지 않음)</summary>',
     '',
-    item.fixture ? '**다뤄야 할 내용** (통과 조건에는 넣지 않음)' : '**남아야 할 것**',
+    isDraftCase(item) ? '**다뤄야 할 내용** (통과 조건에는 넣지 않음)' : '**남아야 할 것**',
     '',
     ...item.must_preserve.map((line) => `- ${line}`),
     '',

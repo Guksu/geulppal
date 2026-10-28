@@ -85,9 +85,10 @@ checkCases('evals/holdout/cases.json')
 checkCases('evals/human/cases.json')
 checkCases('evals/human-readme/cases.json')
 checkCases('evals/draft-readme/cases.json')
+checkCases('evals/draft-memo/cases.json')
 // 사람이 쓴 글 사례 — 원문 출처와 이용 조건, 작성 시점, polish 입력이 원문 그대로인지, 개인 연락처가 없는지
 const LICENSES = ['공공누리 제1유형(출처표시)', 'Apache-2.0', 'MIT', 'CC-BY-4.0']
-for (const dir of ['evals/human', 'evals/human-readme', 'evals/draft-readme']) {
+for (const dir of ['evals/human', 'evals/human-readme', 'evals/draft-readme', 'evals/draft-memo']) {
   if (!existsSync(join(ROOT, dir, 'sources.json'))) continue
   const sources = readJson(join(ROOT, dir, 'sources.json'))
   const textOf = Object.fromEntries(sources.map((source) => [source.id, source.text]))
@@ -106,7 +107,7 @@ for (const dir of ['evals/human', 'evals/human-readme', 'evals/draft-readme']) {
     if (!textOf[item.source]) errors.push(`${dir}/cases.json ${item.id}: 원문 ${item.source} 없음`)
     if (item.variant === 'polish' && item.input !== textOf[item.source]) errors.push(`${dir}/cases.json ${item.id}: polish 입력이 원문과 다름`)
     // 초안 사례는 개선을 마친 뒤 처음 보는 확인용 묶음(holdout)을 따로 둔다
-    const splits = dir === 'evals/draft-readme' ? ['dev', 'test', 'holdout', 'holdout2'] : ['dev', 'test']
+    const splits = dir.startsWith('evals/draft-') ? ['dev', 'test', 'holdout', 'holdout2'] : ['dev', 'test']
     if (!splits.includes(item.split)) errors.push(`${dir}/cases.json ${item.id}: split은 ${splits.join('·')} 중 하나`)
   }
 }
@@ -115,7 +116,7 @@ const triggerIds = [...trigger.should, ...trigger.should_not].map((q) => q.id)
 if (new Set(triggerIds).size !== triggerIds.length) errors.push('evals/trigger/queries.json: id 중복')
 if (trigger.should.length < 8 || trigger.should_not.length < 6) errors.push('evals/trigger/queries.json: should 8개·should_not 6개 이상 필요')
 for (const query of [...trigger.should, ...trigger.should_not]) if (/\/geulppal|geulppal|글빨/.test(query.prompt)) errors.push(`트리거 요청 ${query.id}: 스킬 이름을 직접 언급함`)
-for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md', 'evals/judge/draft-claims.md', 'evals/judge/draft-quality.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
+for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md', 'evals/judge/draft-claims.md', 'evals/judge/draft-quality.md', 'evals/judge/memo-check.md', 'evals/judge/draft-memo-claims.md', 'evals/judge/draft-memo-quality.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
 
 // 스킬과 스냅샷
 checkSkill(join(ROOT, 'skills/geulppal'))
@@ -132,7 +133,7 @@ const matching = Object.entries(hashes).filter(([, value]) => value.treeSha256 =
 notes.push(`skills/geulppal 해시 ${current.slice(0, 12)} — 같은 스냅샷: ${matching.join(', ') || '없음'}`)
 
 // 문서 링크
-for (const file of ['README.md', 'README.ko.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'evals/human/README.md', 'evals/human-readme/README.md', 'evals/draft-readme/README.md', 'research/findings.md', 'research/korean-sources.md']) {
+for (const file of ['README.md', 'README.ko.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'evals/human/README.md', 'evals/human-readme/README.md', 'evals/draft-readme/README.md', 'evals/draft-memo/README.md', 'research/findings.md', 'research/korean-sources.md']) {
   if (existsSync(join(ROOT, file))) checkLinks(file)
 }
 for (const file of walk(join(ROOT, 'evals/results')).filter((f) => f.endsWith('.md'))) checkLinks(relative(ROOT, file))
