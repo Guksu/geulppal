@@ -1,0 +1,94 @@
+{
+  "name": "2026-10-28-draft-readme",
+  "conditions": {
+    "A": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 16,
+        "pass": 7,
+        "fail": 9,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 40654.5,
+        "medianInput": 104236,
+        "medianOutput": 5368,
+        "costUsd": 2.6740506
+      }
+    },
+    "C": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 16,
+      "meaning": {
+        "judged": 16,
+        "pass": 13,
+        "fail": 3,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 40716,
+        "medianInput": 141158,
+        "medianOutput": 5649,
+        "costUsd": 3.2633387
+      }
+    },
+    "H": {
+      "reference": true,
+      "records": 16,
+      "meaning": {
+        "judged": 8,
+        "pass": 0,
+        "fail": 8,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-C": {
+      "total": 16,
+      "judged": 6,
+      "excluded": 10,
+      "leftWins": 3,
+      "rightWins": 1,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "A": 3,
+        "C": 1,
+        "mixed": 0,
+        "none": 4
+      }
+    },
+    "H-vs-C": {
+      "total": 16,
+      "judged": 13,
+      "excluded": 3,
+      "leftWins": 0,
+      "rightWins": 13,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 0,
+      "cases": {
+        "H": 0,
+        "C": 8,
+        "mixed": 0,
+        "none": 0
+      }
+    }
+  },
+  "judgeCalls": 78
+}

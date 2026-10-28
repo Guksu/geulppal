@@ -199,7 +199,9 @@ if (mode === 'meaning') {
   const cases = casesById(casesFileOf(options.out, condition))
   const fixtureDirs = {}
   for (const item of Object.values(cases)) if (item.fixture) fixtureDirs[item.id] = ensureFixture(item.fixture)
-  const jobs = latestRuns(options.out, condition).map((record) => async () => {
+  // --rep N: 그 회차만 판정한다(사람 원문 H처럼 회차마다 같은 글일 때)
+  const targets = latestRuns(options.out, condition).filter((record) => !options.rep || record.rep === Number(options.rep))
+  const jobs = targets.map((record) => async () => {
     const key = `${options.pass === '2' ? 'judge/meaning-pass2' : 'judge/meaning'}/${condition}/${record.id}-r${record.rep}`
     const previous = out.get(key)
     // --force: 판정 지침을 고친 뒤 같은 결과를 다시 판정할 때
@@ -246,7 +248,9 @@ if (mode === 'pair') {
   const right = options.right
   const leftFrom = options['left-from'] ?? options.out
   const rightFrom = options['right-from'] ?? options.out
-  const rubric = readFileSync(join(ROOT, 'evals/judge/quality.md'), 'utf8')
+  const editRubric = readFileSync(join(ROOT, 'evals/judge/quality.md'), 'utf8')
+  // 원문 없이 새로 쓴 사례는 따로 만든 지침으로 비교한다
+  const draftRubric = readFileSync(join(ROOT, 'evals/judge/draft-quality.md'), 'utf8')
   const cases = casesById(casesFileOf(rightFrom, right))
   const meaningOf = (name, condition, record) => recordsOf(name).get(`judge/meaning/${condition}/${record.id}-r${record.rep}`)
   const leftRuns = Object.fromEntries(latestRuns(leftFrom, left).map((record) => [`${record.id}-r${record.rep}`, record]))
@@ -279,6 +283,7 @@ if (mode === 'pair') {
     if (complete && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
     jobs.push(async () => {
       const item = cases[rightRecord.id]
+      const rubric = item.fixture ? draftRubric : editRubric
       const leftText = outputOf(leftFrom, leftRecord)
       const rightText = outputOf(rightFrom, rightRecord)
       // o1: X=왼쪽, Y=오른쪽 / o2: X=오른쪽, Y=왼쪽

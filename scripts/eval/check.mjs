@@ -113,7 +113,7 @@ const triggerIds = [...trigger.should, ...trigger.should_not].map((q) => q.id)
 if (new Set(triggerIds).size !== triggerIds.length) errors.push('evals/trigger/queries.json: id 중복')
 if (trigger.should.length < 8 || trigger.should_not.length < 6) errors.push('evals/trigger/queries.json: should 8개·should_not 6개 이상 필요')
 for (const query of [...trigger.should, ...trigger.should_not]) if (/\/geulppal|geulppal|글빨/.test(query.prompt)) errors.push(`트리거 요청 ${query.id}: 스킬 이름을 직접 언급함`)
-for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md', 'evals/judge/draft-claims.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
+for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md', 'evals/judge/draft-claims.md', 'evals/judge/draft-quality.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
 
 // 스킬과 스냅샷
 checkSkill(join(ROOT, 'skills/geulppal'))

@@ -4,29 +4,64 @@
  *
  *   node scripts/eval/rating.mjs build --page <html 경로>     # 쌍 고르기 → evals/runs/rating/pairs.json(정답 포함, 커밋하지 않음)과 평가 페이지
  *   node scripts/eval/rating.mjs score --ratings <json 경로>   # 받은 평가 집계 → evals/results/2026-10-27-human-rating/
+ *   --set draft-readme                                       # README 초안 사례(evals/draft-readme)로 같은 일을 할 때
  *
- * 두 결과가 모두 의미 보존을 통과한 쌍만 쓴다. 사례마다 쌍 하나(회차는 고정된 난수로 고른다), 좌우 순서도 고정된 난수로 정한다.
- * 페이지에는 쌍 번호·요청·원문·결과 두 개만 넣는다. 어느 쪽이 어떤 조건인지는 pairs.json에만 있고, 평가가 끝난 뒤 공개한다.
+ * 두 결과가 모두 의미 보존(초안은 근거 판정)을 통과한 쌍만 쓴다. 초안 사례의 사람 README(H)는 판정하지 않으므로 통과로 본다.
+ * 사례마다 쌍 하나(회차는 고정된 난수로 고른다), 좌우 순서도 고정된 난수로 정한다.
+ * 페이지에는 쌍 번호·요청·원문(초안은 메모)·결과 두 개만 넣는다. 어느 쪽이 어떤 조건인지는 pairs.json에만 있고, 평가가 끝난 뒤 공개한다.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { ROOT, parseArgs, readJson, sha256, writeJson } from './lib/common.mjs'
 import { openRecords } from './lib/records.mjs'
 
-const options = parseArgs(process.argv.slice(2), {})
+const options = parseArgs(process.argv.slice(2), { set: 'human' })
 const mode = options._[0]
-const PAIRS_FILE = join(ROOT, 'evals/runs/rating/pairs.json')
-const cases = readJson(join(ROOT, 'evals/human/cases.json'))
-const byId = Object.fromEntries(cases.map((item) => [item.id, item]))
 
 // 0.3.0 결과: 개발용은 2라운드 후보(C2, 같은 스킬), 확인용은 고정 후 실행(C)
-const RUNS = { human: '2026-10-27-human', dev: '2026-10-27-human-r2', test: '2026-10-27-human-final' }
-const zeroThree = (item) => (item.split === 'dev' ? { run: RUNS.dev, condition: 'C2' } : { run: RUNS.test, condition: 'C' })
-const GROUPS = [
-  { key: 'A-vs-0.3.0', left: { run: RUNS.human, condition: 'A' }, filter: () => true, max: 99 },
-  { key: 'H-vs-0.3.0', left: { run: RUNS.human, condition: 'H' }, filter: (item) => item.variant === 'deslop', max: 99 },
-  { key: 'B-vs-0.3.0', left: { run: RUNS.human, condition: 'B' }, filter: (item) => item.split === 'test', max: 4 },
-]
+const HUMAN_RUNS = { human: '2026-10-27-human', dev: '2026-10-27-human-r2', test: '2026-10-27-human-final' }
+const DRAFT_RUN = '2026-10-28-draft-readme'
+const SETS = {
+  human: {
+    cases: 'evals/human/cases.json',
+    pairsFile: 'evals/runs/rating/pairs.json',
+    results: 'evals/results/2026-10-27-human-rating',
+    storeKey: 'geulppal-blind',
+    title: '글빨 블라인드 비교',
+    lede: '같은 요청을 받은 두 결과를 읽고, 요청한 사람이 그대로 쓸 글로 어느 쪽이 나은지 골라 주세요. 사실과 조건은 판정 모델이 이미 확인했으니 읽기 좋은지, 요청과 말투에 맞는지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 원문인지는 알려 드리지 않습니다.',
+    right: (item) => (item.split === 'dev' ? { run: HUMAN_RUNS.dev, condition: 'C2' } : { run: HUMAN_RUNS.test, condition: 'C' }),
+    groups: [
+      { key: 'A-vs-0.3.0', left: { run: HUMAN_RUNS.human, condition: 'A' }, filter: () => true, max: 99 },
+      { key: 'H-vs-0.3.0', left: { run: HUMAN_RUNS.human, condition: 'H' }, filter: (item) => item.variant === 'deslop', max: 99 },
+      { key: 'B-vs-0.3.0', left: { run: HUMAN_RUNS.human, condition: 'B' }, filter: (item) => item.split === 'test', max: 4 },
+    ],
+  },
+  'draft-readme': {
+    cases: 'evals/draft-readme/cases.json',
+    pairsFile: 'evals/runs/rating/draft-readme-pairs.json',
+    results: 'evals/results/2026-10-28-draft-readme-rating',
+    storeKey: 'geulppal-blind-draft-readme',
+    title: '글빨 README 초안 블라인드 비교',
+    lede: '저장소 코드를 보고 README를 처음부터 써 달라는 요청에 나온 두 결과입니다. 저장소에 그대로 올릴 README로 어느 쪽이 나은지 골라 주세요. 코드와 맞는지는 판정 모델이 따로 확인했으니, 처음 보는 사람이 무엇인지·어떻게 쓰는지 빨리 알 수 있는지, 읽기 좋은지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 README인지는 알려 드리지 않습니다.',
+    context: '작성자는 저장소 코드(README와 설명 문서는 뺌)만 보고 썼습니다.',
+    referencePass: true,
+    right: () => ({ run: DRAFT_RUN, condition: 'C' }),
+    groups: [
+      { key: 'A-vs-0.3.0', left: { run: DRAFT_RUN, condition: 'A' }, filter: () => true, max: 99 },
+      { key: 'H-vs-0.3.0', left: { run: DRAFT_RUN, condition: 'H' }, filter: () => true, max: 99 },
+    ],
+  },
+}
+const SET = SETS[options.set]
+if (!SET) {
+  console.error(`--set은 ${Object.keys(SETS).join('·')} 중 하나`)
+  process.exit(1)
+}
+const PAIRS_FILE = join(ROOT, SET.pairsFile)
+const cases = readJson(join(ROOT, SET.cases))
+const byId = Object.fromEntries(cases.map((item) => [item.id, item]))
+const GROUPS = SET.groups
+const zeroThree = SET.right
 
 // 고정된 난수(mulberry32) — 같은 입력이면 같은 쌍·같은 좌우 순서
 const seeded = (text) => {
@@ -60,7 +95,9 @@ const latestRun = (run, condition, id, rep) =>
     .filter((name) => name.startsWith(`${id}-r${rep}-a`))
     .map((name) => recordsOf(run).get(`runs/${condition}/${name}`))
     .sort((a, b) => b.attempt - a.attempt)[0] ?? null
-const passed = (run, condition, id, rep) => recordsOf(run).get(`judge/meaning/${condition}/${id}-r${rep}`)?.pass === true
+// 초안 사례의 사람 README(H, 실행하지 않은 기준 조건)는 근거 판정을 하지 않으므로 통과로 본다
+const passed = (run, condition, id, rep) =>
+  (SET.referencePass && recordsOf(run).get(`manifest/${condition}`)?.model === null) || recordsOf(run).get(`judge/meaning/${condition}/${id}-r${rep}`)?.pass === true
 // 같은 쌍을 판정 모델이 비교한 기록이 있으면 함께 둔다(사람 판정과 맞춰 보기용)
 const modelJudgment = (left, right, id, rep) => {
   for (const run of [right.run, left.run]) {
@@ -110,10 +147,22 @@ if (mode === 'build') {
   mkdirSync(dirname(PAIRS_FILE), { recursive: true })
   writeJson(PAIRS_FILE, { builtAt: new Date().toISOString(), pairs })
 
-  const page = pairs.map((pair) => ({ id: pair.id, request: byId[pair.case].request, input: byId[pair.case].input, texts: pair.texts }))
+  const page = pairs.map((pair) => ({
+    id: pair.id,
+    request: byId[pair.case].request,
+    input: byId[pair.case].input,
+    texts: pair.texts,
+    ...(byId[pair.case].task === 'draft' ? { kind: 'draft', context: SET.context } : {}),
+  }))
   const json = JSON.stringify(page).replace(/</g, '\\u003c')
   const template = readFileSync(join(ROOT, 'scripts/eval/rating-page.html'), 'utf8')
-  writeFileSync(options.page, template.replace('/*PAIRS*/[]', json))
+  const html = template
+    .replace('{{TITLE}}', SET.title)
+    .replace('{{HEADING}}', SET.title)
+    .replace('{{LEDE}}', SET.lede)
+    .replace("/*STORE_KEY*/'geulppal-blind'", JSON.stringify(SET.storeKey))
+    .replace('/*PAIRS*/[]', () => json)
+  writeFileSync(options.page, html)
   const count = pairs.reduce((acc, pair) => ({ ...acc, [pair.group]: (acc[pair.group] ?? 0) + 1 }), {})
   console.log(`쌍 ${pairs.length}개 ${JSON.stringify(count)} → ${options.page}`)
 }
@@ -125,7 +174,7 @@ if (mode === 'score') {
   }
   const { pairs } = readJson(PAIRS_FILE)
   const ratings = readJson(options.ratings)
-  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', H: '사람 원문' }
+  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', H: options.set === 'human' ? '사람 원문' : '사람 README' }
   const rows = []
   const tally = {}
   for (const pair of pairs) {
@@ -139,7 +188,7 @@ if (mode === 'score') {
     tally[pair.group][human ?? '미평가'] = (tally[pair.group][human ?? '미평가'] ?? 0) + 1
     rows.push({ id: pair.id, group: pair.group, case: pair.case, rep: pair.rep, human, model, note: rating?.note ?? '' })
   }
-  const outDir = join(ROOT, 'evals/results/2026-10-27-human-rating')
+  const outDir = join(ROOT, SET.results)
   mkdirSync(outDir, { recursive: true })
   writeJson(join(outDir, 'pairs.json'), { pairs: pairs.map(({ texts, ...rest }) => rest), ratings: rows })
   const names = (value) => label[value] ?? { same: '비슷함', neither: '둘 다 별로', tie: '차이 없음', inconsistent: '엇갈림', both_inadequate: '둘 다 부적절' }[value] ?? value ?? '-'
