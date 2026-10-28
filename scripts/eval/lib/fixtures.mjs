@@ -7,7 +7,7 @@
  * 같은 사례면 같은 파일이 나오도록 파일 목록과 내용으로 만든 해시를 사례에 적어 두고 확인한다.
  */
 import { execFileSync } from 'node:child_process'
-import { cpSync, existsSync, mkdirSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { join, relative, sep } from 'node:path'
 import { ROOT, sha256, treeHash } from './common.mjs'
 
@@ -62,4 +62,27 @@ export const installFixture = (work, dir) => cpSync(dir, work, { recursive: true
 export const fixtureStats = (dir) => {
   const files = walk(dir)
   return { files: files.length, bytes: files.reduce((sum, file) => sum + statSync(file).size, 0) }
+}
+
+/** 작업 폴더의 파일 해시 목록(.claude 제외) — 실행 전후를 비교해 작성 모델이 쓴 파일을 찾는다 */
+export const snapshot = (work) =>
+  Object.fromEntries(
+    walk(work)
+      .map((file) => relative(work, file).split(sep).join('/'))
+      .filter((rel) => !rel.startsWith('.claude/'))
+      .map((rel) => [rel, sha256(readFileSync(join(work, rel)))]),
+  )
+
+/** 실행 뒤 새로 생기거나 바뀐 파일 */
+export const changedFiles = (work, before) =>
+  Object.entries(snapshot(work))
+    .filter(([rel, hash]) => before[rel] !== hash)
+    .map(([rel]) => ({ path: rel, isNew: !(rel in before), chars: readFileSync(join(work, rel), 'utf8').length }))
+    .sort((a, b) => a.path.localeCompare(b.path))
+
+/** 결과로 볼 파일 — 바뀐 마크다운이 하나면 그것, 여럿이면 최상위 README.md, 그다음 최상위 README*.md */
+export const pickDeliverable = (files) => {
+  const markdown = files.filter((file) => /\.(md|mdx|markdown)$/i.test(file.path))
+  if (markdown.length === 1) return markdown[0]
+  return markdown.find((file) => file.path === 'README.md') ?? markdown.find((file) => /^README[^/]*\.md$/i.test(file.path)) ?? null
 }

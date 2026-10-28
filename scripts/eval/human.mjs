@@ -6,6 +6,7 @@
  *   node scripts/eval/human.mjs build                          # evals/human/cases.json 만들기
  *   node scripts/eval/human.mjs reference --out <이름>          # 사람 원문을 조건 H의 실행 기록으로 넣기
  *   --dir evals/human-readme                                   # 다른 자료 묶음(README 등)에 같은 명령을 쓸 때
+ *   (초안 사례 evals/draft-readme 등은 draft.mjs build로 만들고, reference만 이 스크립트로 넣는다)
  *
  * 원문 하나로 사례 두 개를 만든다.
  * - polish: 사람이 쓴 원문을 그대로 주고 다듬어 달라고 한다. 필요 없는 수정과 말투 손상을 본다.
@@ -200,7 +201,9 @@ if (mode === 'reference') {
   records.put('manifest/H', {
     condition: 'H',
     skill: null,
-    invocation: '실행하지 않음. 사람이 쓴 원문을 결과로 둔 기준 조건(polish는 입력과 같은 글, deslop은 부풀리기 전 원문)',
+    invocation: cases.some((item) => item.variant === 'draft')
+      ? '실행하지 않음. 같은 커밋에서 사람이 쓴 글을 결과로 둔 기준 조건(작성 모델에게는 주지 않음)'
+      : '실행하지 않음. 사람이 쓴 원문을 결과로 둔 기준 조건(polish는 입력과 같은 글, deslop은 부풀리기 전 원문)',
     model: null,
     effort: null,
     cli: null,
