@@ -1,0 +1,61 @@
+{
+  "name": "2026-10-28-draft-memo-g1",
+  "conditions": {
+    "G1": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 8,
+      "meaning": {
+        "judged": 8,
+        "pass": 6,
+        "fail": 2,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 28628,
+        "medianInput": 38982.5,
+        "medianOutput": 3531.5,
+        "costUsd": 0.9125827999999999
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-G1": {
+      "total": 8,
+      "judged": 1,
+      "excluded": 7,
+      "leftWins": 0,
+      "rightWins": 0,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "A": 0,
+        "G1": 0,
+        "mixed": 0,
+        "none": 4
+      }
+    },
+    "F-vs-G1": {
+      "total": 8,
+      "judged": 5,
+      "excluded": 3,
+      "leftWins": 0,
+      "rightWins": 2,
+      "tie": 2,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "F": 0,
+        "G1": 1,
+        "mixed": 0,
+        "none": 3
+      }
+    }
+  },
+  "judgeCalls": 20
+}
