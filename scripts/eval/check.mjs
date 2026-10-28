@@ -134,6 +134,11 @@ for (const file of walk(join(ROOT, 'evals/results')).filter((f) => f.endsWith('.
 // 실행 결과 묶음
 for (const name of existsSync(join(ROOT, 'evals/results')) ? readdirSync(join(ROOT, 'evals/results')).filter((n) => statSync(join(ROOT, 'evals/results', n)).isDirectory() && n !== 'cases') : []) {
   const file = join(ROOT, 'evals/results', name, 'records.json')
+  // 사람 블라인드 비교 결과(rating.mjs score)는 실행 기록이 아니라 평가표와 집계만 둔다
+  if (name.endsWith('-rating')) {
+    if (!existsSync(join(ROOT, 'evals/results', name, 'pairs.json'))) errors.push(`evals/results/${name}: pairs.json 없음`)
+    continue
+  }
   if (!existsSync(file)) {
     errors.push(`evals/results/${name}: records.json 없음`)
     continue
