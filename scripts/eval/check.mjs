@@ -156,7 +156,7 @@ for (const name of existsSync(join(ROOT, 'evals/results')) ? readdirSync(join(RO
 }
 
 // 공개 결과의 로컬 경로·인증 정보·계정 사용량 정보
-const LEAK = [/\/Users\/[A-Za-z]/, /\/home\/[a-z]+\//, /\/tmp\/run-/, /sk-ant-[A-Za-z0-9]/, /CLAUDE_CODE_OAUTH_TOKEN=/, /ANTHROPIC_API_KEY=/, /hit your (?:session|usage|weekly) limit/i, /rate_limit_info/]
+const LEAK = [/\/Users\/[A-Za-z]/, /\/home\/[a-z]+\//, /\/tmp\/run-/, /sk-ant-[A-Za-z0-9]/, /CLAUDE_CODE_OAUTH_TOKEN=/, /ANTHROPIC_API_KEY=/, /hit your [\w -]*limit/i, /rate_limit_info/]
 for (const file of walk(join(ROOT, 'evals/results'))) {
   const text = readFileSync(file, 'utf8')
   for (const pattern of LEAK) if (pattern.test(text)) errors.push(`${relative(ROOT, file)}: 공개하면 안 되는 문자열(${pattern})`)

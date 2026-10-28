@@ -20,7 +20,9 @@ const mode = options._[0]
 
 // 0.3.0 결과: 개발용은 2라운드 후보(C2, 같은 스킬), 확인용은 고정 후 실행(C)
 const HUMAN_RUNS = { human: '2026-10-27-human', dev: '2026-10-27-human-r2', test: '2026-10-27-human-final' }
-const DRAFT_RUN = '2026-10-28-draft-readme'
+// README 초안: 확인용(test)의 글빨 없음·0.3.0은 기준선 실행, 새 확인용(holdout)과 0.4.0·사람 README는 최종 실행에 있다
+const DRAFT_RUNS = { baseline: '2026-10-28-draft-readme', final: '2026-10-28-draft-readme-final' }
+const draftRun = (item) => (item.split === 'holdout' ? DRAFT_RUNS.final : DRAFT_RUNS.baseline)
 const SETS = {
   human: {
     cases: 'evals/human/cases.json',
@@ -45,10 +47,11 @@ const SETS = {
     lede: '저장소 코드를 보고 README를 처음부터 써 달라는 요청에 나온 두 결과입니다. 저장소에 그대로 올릴 README로 어느 쪽이 나은지 골라 주세요. 코드와 맞는지는 판정 모델이 따로 확인했으니, 처음 보는 사람이 무엇인지·어떻게 쓰는지 빨리 알 수 있는지, 읽기 좋은지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 README인지는 알려 드리지 않습니다.',
     context: '작성자는 저장소 코드(README와 설명 문서는 뺌)만 보고 썼습니다.',
     referencePass: true,
-    right: () => ({ run: DRAFT_RUN, condition: 'C' }),
+    right: () => ({ run: DRAFT_RUNS.final, condition: 'E' }),
     groups: [
-      { key: 'A-vs-0.3.0', left: { run: DRAFT_RUN, condition: 'A' }, filter: () => true, max: 99 },
-      { key: 'H-vs-0.3.0', left: { run: DRAFT_RUN, condition: 'H' }, filter: () => true, max: 99 },
+      { key: 'A-vs-0.4.0', left: (item) => ({ run: draftRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 },
+      { key: 'H-vs-0.4.0', left: { run: DRAFT_RUNS.final, condition: 'H' }, filter: (item) => item.split !== 'dev', max: 99 },
+      { key: 'C-vs-0.4.0', left: (item) => ({ run: draftRun(item), condition: 'C' }), filter: (item) => item.split !== 'dev', max: 4 },
     ],
   },
 }
@@ -118,14 +121,15 @@ if (mode === 'build') {
     const chosen = []
     for (const item of cases.filter(group.filter)) {
       const right = zeroThree(item)
-      const reps = [1, 2].filter((rep) => passed(group.left.run, group.left.condition, item.id, rep) && passed(right.run, right.condition, item.id, rep))
+      const left = typeof group.left === 'function' ? group.left(item) : group.left
+      const reps = [1, 2].filter((rep) => passed(left.run, left.condition, item.id, rep) && passed(right.run, right.condition, item.id, rep))
       if (!reps.length) continue
       const rep = reps[Math.floor(random() * reps.length)]
-      chosen.push({ item, rep, right })
+      chosen.push({ item, rep, right, left })
     }
     // 그룹 안에서 고를 수가 넘으면 고정된 난수 순서로 자른다
-    for (const { item, rep, right } of shuffle(chosen, random).slice(0, group.max)) {
-      const leftText = latestRun(group.left.run, group.left.condition, item.id, rep).output
+    for (const { item, rep, right, left } of shuffle(chosen, random).slice(0, group.max)) {
+      const leftText = latestRun(left.run, left.condition, item.id, rep).output
       const rightText = latestRun(right.run, right.condition, item.id, rep).output
       const swap = seeded(`${group.key}:${item.id}:${rep}`)() < 0.5
       pairs.push({
@@ -134,9 +138,9 @@ if (mode === 'build') {
         rep,
         variant: item.variant,
         split: item.split,
-        sides: swap ? [{ ...right }, { ...group.left }] : [{ ...group.left }, { ...right }],
+        sides: swap ? [{ ...right }, { ...left }] : [{ ...left }, { ...right }],
         texts: swap ? [rightText, leftText] : [leftText, rightText],
-        model: modelJudgment(group.left, right, item.id, rep),
+        model: modelJudgment(left, right, item.id, rep),
       })
     }
   }
@@ -174,7 +178,7 @@ if (mode === 'score') {
   }
   const { pairs } = readJson(PAIRS_FILE)
   const ratings = readJson(options.ratings)
-  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', H: options.set === 'human' ? '사람 원문' : '사람 README' }
+  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', H: options.set === 'human' ? '사람 원문' : '사람 README' }
   const rows = []
   const tally = {}
   for (const pair of pairs) {
@@ -182,7 +186,7 @@ if (mode === 'score') {
     const pick = rating?.choice
     const winner = pick === 'x' ? pair.sides[0].condition : pick === 'y' ? pair.sides[1].condition : pick ?? null
     const norm = (c) => (c === 'C2' ? 'C' : c)
-    const human = winner && ['A', 'B', 'C', 'C2', 'H'].includes(winner) ? norm(winner) : winner
+    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'H'].includes(winner) ? norm(winner) : winner
     const model = pair.model ? (['tie', 'both_inadequate', 'inconsistent'].includes(pair.model.result) ? pair.model.result : norm(pair.model.result)) : null
     tally[pair.group] ??= {}
     tally[pair.group][human ?? '미평가'] = (tally[pair.group][human ?? '미평가'] ?? 0) + 1

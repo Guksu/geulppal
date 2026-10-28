@@ -21,11 +21,11 @@ if (!options.name || !options.cases || !options.conds) {
   process.exit(1)
 }
 
-const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', D1: '0.3.1 후보', D: '0.3.1 후보', H: '사람 원문' }
+const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', D1: '0.3.1 후보', D: '0.3.1 후보', E1: '0.4.0-r1 후보', E2: '0.4.0-r2 후보', E: '글빨 0.4.0', H: '사람 원문' }
 const TASKS = { rewrite: '수정', draft: '새 글 작성', diagnose: '진단만', summarize: '요약', 'noop-check': '고칠 게 없으면 그대로' }
 const LANGUAGES = { ko: '한국어', en: '영어', 'ko-en': '한영 혼용' }
 const label = (condition) => LABELS[condition] ?? condition
-const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', D1: '0.3.1후보', D: '0.3.1후보', H: '사람' }
+const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', D1: '0.3.1후보', D: '0.3.1후보', H: '사람', E1: '0.4.0-r1', E2: '0.4.0-r2', E: '0.4.0' }
 const short = (condition) => SHORT[condition] ?? condition
 
 const cases = readJson(join(ROOT, options.cases)).filter((item) => !options.split || item.split === options.split)
@@ -74,11 +74,14 @@ const showLinks = (text) => {
 const quote = (text) => (text.trim() ? showLinks(text.trimEnd()).split('\n').map((line) => (line ? `> ${line}` : '>')).join('\n') : '> (빈 출력)')
 const cell = (text) => String(text).replace(/\|/g, '\\|').replace(/\n+/g, ' ')
 
+// 원문 없이 쓴 사례(작업 폴더 자료가 있는 사례)는 의미 보존 대신 근거 판정을 한다
+const drafting = cases.some((item) => item.fixture)
+const CHECK = drafting ? '근거 판정' : '의미 보존'
 const meaningBadge = (record, meaning) => {
   if (!record) return '실행 기록 없음'
   if (record.status !== 'ok') return `✗ 실행 실패(${record.status})`
   if (!meaning?.judged) return '판정 없음'
-  return meaning.pass ? '○ 의미 보존 통과' : '✗ 의미 보존 실패'
+  return meaning.pass ? `○ ${CHECK} 통과` : `✗ ${CHECK} 실패`
 }
 const failReasons = (meaning) => [
   ...(meaning?.judge?.answer?.fail_reasons ?? []),
@@ -86,7 +89,7 @@ const failReasons = (meaning) => [
 ]
 const pairResult = (pair, record) => {
   if (!record) return '-'
-  if (!record.judged) return '비교 안 함(의미 보존 실패)'
+  if (!record.judged) return `비교 안 함(${CHECK} 실패)`
   return { [pair.left]: `${label(pair.left)} 우세`, [pair.right]: `${label(pair.right)} 우세`, tie: '차이 없음', both_inadequate: '둘 다 부적절', inconsistent: '순서를 바꾸면 판정이 바뀜' }[record.result] ?? record.result
 }
 
@@ -102,13 +105,13 @@ for (const item of cases) {
     '',
     quote(item.request),
     '',
-    '## 원문',
-    '',
-    quote(item.input),
+    ...(item.fixture
+      ? ['## 메모', '', item.input ? quote(item.input) : '> (없음)', '', `작성 모델은 작업 폴더에서 \`${item.fixture.repo}\` 커밋 \`${item.fixture.commit.slice(0, 7)}\`의 코드(${item.fixture.paths.map((path) => `\`${path}\``).join(', ')}, README·설명 문서 제외)를 읽고 README를 파일로 썼습니다.`]
+      : ['## 원문', '', quote(item.input)]),
     '',
     '<details><summary>평가 기준 (작성 모델에는 보여 주지 않음)</summary>',
     '',
-    '**남아야 할 것**',
+    item.fixture ? '**다뤄야 할 내용** (통과 조건에는 넣지 않음)' : '**남아야 할 것**',
     '',
     ...item.must_preserve.map((line) => `- ${line}`),
     '',
@@ -131,12 +134,12 @@ for (const item of cases) {
       if (meaning?.pass) meaningCells[i].pass++
       lines.push(`### ${label(condition)} — ${meaningBadge(record, meaning)}`, '', record ? quote(record.output) : '> (실행 기록 없음)', '')
       const reasons = meaning?.judged && !meaning.pass ? failReasons(meaning) : []
-      if (reasons.length) lines.push('**의미 보존 실패 이유(판정 모델)**', '', ...reasons.map((reason) => `- ${cell(reason)}`), '')
+      if (reasons.length) lines.push(`**${CHECK} 실패 이유(판정 모델)**`, '', ...reasons.map((reason) => `- ${cell(reason)}`), '')
     })
   }
   const pairCells = []
   if (pairs.length) {
-    lines.push('## 품질 비교', '', '두 결과가 모두 의미 보존을 통과했을 때만 비교했습니다. 판정 모델에는 어느 쪽이 글빨인지 알려 주지 않았고, 순서를 바꿔 두 번 판정했습니다.', '', '| 회차 | 비교 | 결과 |', '|---|---|---|')
+    lines.push('## 품질 비교', '', `두 결과가 모두 ${CHECK}을 통과했을 때만 비교했습니다. 판정 모델에는 어느 쪽이 글빨인지 알려 주지 않았고, 순서를 바꿔 두 번 판정했습니다.`, '', '| 회차 | 비교 | 결과 |', '|---|---|---|')
     const details = []
     for (const pair of pairs) {
       const results = []
@@ -174,14 +177,14 @@ const header = [
   '[← 벤치마크 개요](../../README.md)',
   '',
   ...(options.intro ? [String(options.intro), ''] : []),
-  `사례 이름을 누르면 요청, 원문, 조건별 결과, 판정 이유를 볼 수 있습니다. 의미 보존 칸은 조건마다 통과한 회차 수입니다(${conds.map(({ condition }) => label(condition)).join(' · ')}).`,
+  `사례 이름을 누르면 요청, ${drafting ? '메모' : '원문'}, 조건별 결과, 판정 이유를 볼 수 있습니다. ${CHECK} 칸은 조건마다 통과한 회차 수입니다(${conds.map(({ condition }) => label(condition)).join(' · ')}).`,
   '',
-  `| 사례 | 작업 | 의미 보존 통과<br>(${conds.map(({ condition }) => short(condition)).join(' · ')}) |${pairs.map((pair) => ` ${short(pair.left)} vs ${short(pair.right)} |`).join('')}`,
+  `| 사례 | 작업 | ${CHECK} 통과<br>(${conds.map(({ condition }) => short(condition)).join(' · ')}) |${pairs.map((pair) => ` ${short(pair.left)} vs ${short(pair.right)} |`).join('')}`,
   `|---|---|---|${pairs.map(() => '---|').join('')}`,
   ...index.map(({ item, meaningCells, pairCells }) =>
     `| [\`${item.id}\`](${item.id}.md)<br>${cell(item.genre)} | ${TASKS[item.task] ?? item.task} | ${meaningCells.map((c) => `${c.pass}/${c.total}`).join(' · ')} |${pairCells.map((c) => ` ${c} |`).join('')}`,
   ),
-  ...(pairs.length ? ['', '품질 비교 칸은 회차별 결과입니다. 이름이 적힌 쪽이 우세, `같음`은 차이 없음, `엇갈림`은 순서를 바꾸면 판정이 바뀐 경우, `제외`는 한쪽 이상이 의미 보존에 실패해 비교하지 않은 경우입니다.'] : []),
+  ...(pairs.length ? ['', '품질 비교 칸은 회차별 결과입니다. 이름이 적힌 쪽이 우세, `같음`은 차이 없음, `엇갈림`은 순서를 바꾸면 판정이 바뀐 경우, `제외`는 한쪽 이상이 ' + CHECK + '에 실패해 비교하지 않은 경우입니다.'] : []),
   '',
   '자동으로 만든 페이지입니다. 판정은 모두 모델(`claude-opus-5-5`)이 했고 사람의 평가가 아닙니다.',
 ]

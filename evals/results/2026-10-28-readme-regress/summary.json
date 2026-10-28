@@ -1,0 +1,30 @@
+{
+  "name": "2026-10-28-readme-regress",
+  "conditions": {
+    "E": {
+      "attempts": 45,
+      "failures": {
+        "error": 13
+      },
+      "retries": 13,
+      "skillInjected": 45,
+      "referenceReads": 31,
+      "meaning": {
+        "judged": 32,
+        "pass": 31,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 13904,
+        "medianInput": 39088,
+        "medianOutput": 1877,
+        "costUsd": 3.2710915000000007
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 32
+}
