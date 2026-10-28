@@ -276,6 +276,88 @@
           "^\\.github/"
         ]
       }
+    },
+    {
+      "id": "hangul-js",
+      "split": "holdout2",
+      "repo": "e-/Hangul.js",
+      "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$",
+          "^hangul\\.min\\.js$",
+          "^\\.travis\\.yml$"
+        ]
+      }
+    },
+    {
+      "id": "kobert",
+      "split": "holdout2",
+      "repo": "SKTBrain/KoBERT",
+      "commit": "47a69af87928fc24e20f571fe10c3cc9dd9af9a3",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "\\.md$",
+          "^imgs/",
+          "^logs/",
+          "^\\.github/"
+        ]
+      }
+    },
+    {
+      "id": "g2pk",
+      "split": "holdout2",
+      "repo": "Kyubyong/g2pK",
+      "commit": "3bb9d5afc5159220d5d16492aca7a58f121b6073",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-sentry",
+      "split": "holdout2",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/common/sentry/LICENSE",
+      "reference": {
+        "path": "packages/common/sentry/README.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/common/sentry"
+        ],
+        "strip": "packages/common/sentry",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
     }
   ],
   "cases": [
@@ -423,6 +505,50 @@
         "설치 방법",
         "모델과 토크나이저를 불러오는 사용 예",
         "의존 라이브러리 버전 요구 사항"
+      ]
+    },
+    {
+      "id": "hangul-js-readme",
+      "source": "hangul-js",
+      "request": "이 라이브러리 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "한글 자모를 분리·조합하는 라이브러리라는 점",
+        "설치·불러오는 방법",
+        "주요 함수와 사용 예"
+      ]
+    },
+    {
+      "id": "kobert-readme",
+      "source": "kobert",
+      "request": "이 저장소의 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "설치 방법",
+        "모델과 토크나이저를 불러오는 사용 예",
+        "의존 라이브러리 요구 사항"
+      ]
+    },
+    {
+      "id": "g2pk-readme",
+      "source": "g2pk",
+      "request": "이 파이썬 패키지의 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "한국어 문장을 발음대로 바꾸는 패키지라는 점",
+        "설치 방법",
+        "사용 예와 옵션"
+      ]
+    },
+    {
+      "id": "toss-sentry-readme",
+      "source": "toss-sentry",
+      "request": "이 패키지 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "브라우저와 Node.js에서 쓰는 Sentry 모듈이라는 점",
+        "초기화와 사용 예",
+        "설치 방법"
       ]
     }
   ]

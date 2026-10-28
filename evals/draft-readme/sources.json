@@ -482,5 +482,165 @@
     },
     "chars": 5776,
     "text": "# KoBERT-Transformers\n\n`KoBERT` & `DistilKoBERT` on 🤗 Huggingface Transformers 🤗\n\nKoBERT 모델은 [공식 레포](https://github.com/SKTBrain/KoBERT)의 것과 동일합니다. 본 레포는 **Huggingface tokenizer의 모든 API를 지원**하기 위해서 제작되었습니다.\n\n## 🚨 중요! 🚨\n\n### 🙏 TL;DR\n\n1. `transformers` 는 `v3.0` 이상을 반드시 설치!\n2. `tokenizer`는 본 레포의 `kobert_transformers/tokenization_kobert.py`를 사용!\n\n### 1. Tokenizer 호환\n\n`Huggingface Transformers`가 `v2.9.0`부터 tokenization 관련 API가 일부 변경되었습니다. 이에 맞춰 기존의 `tokenization_kobert.py`를 상위 버전에 맞게 수정하였습니다.\n\n### 2. Embedding의 padding_idx 이슈\n\n이전부터 `BertModel`의 `BertEmbeddings`에서 `padding_idx=0`으로 **Hard-coding**되어 있었습니다. (아래 코드 참고)\n\n```python\nclass BertEmbeddings(nn.Module):\n    def __init__(self, config):\n        super().__init__()\n        self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size, padding_idx=0)\n        self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)\n        self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size)\n```\n\n그러나 Sentencepiece의 경우 기본값으로 `pad_token_id=1`, `unk_token_id=0`으로 설정이 되어 있고 (이는 KoBERT도 동일), 이를 그대로 사용하는 BertModel의 경우 원치 않은 결과를 가져올 수 있습니다.\n\nHuggingface에서도 최근에 해당 이슈를 인지하여 이를 수정하여 `v2.9.0`에 반영하였습니다. ([관련 PR #3793](https://github.com/huggingface/transformers/pull/3793)) config에 `pad_token_id=1` 을 추가 가능하여 이를 해결할 수 있게 하였습니다.\n\n```python\nclass BertEmbeddings(nn.Module):\n    def __init__(self, config):\n        super().__init__()\n        self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size, padding_idx=config.pad_token_id)\n        self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)\n        self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size)\n```\n\n그러나 `v.2.9.0`에서 `DistilBERT`, `ALBERT` 등에는 이 이슈가 해결되지 않아 직접 PR을 올려 처리하였고 ([관련 PR #3965](https://github.com/huggingface/transformers/pull/3965)), **`v2.9.1`에 최종적으로 반영되어 배포되었습니다.**\n\n아래는 이전과 현재 버전의 차이점을 보여주는 코드입니다.\n\n```python\n# Transformers v2.7.0\n>>> from transformers import BertModel, DistilBertModel\n>>> model = BertModel.from_pretrained(\"monologg/kobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=0)\n>>> model = DistilBertModel.from_pretrained(\"monologg/distilkobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=0)\n\n\n### Transformers v2.9.1\n>>> from transformers import BertModel, DistilBertModel\n>>> model = BertModel.from_pretrained(\"monologg/kobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=1)\n>>> model = DistilBertModel.from_pretrained(\"monologg/distilkobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=1)\n```\n\n## KoBERT / DistilKoBERT on 🤗 Transformers 🤗\n\n### Dependencies\n\n- torch>=1.1.0\n- transformers>=3,<5\n\n### How to Use\n\n```python\n>>> from transformers import BertModel, DistilBertModel\n>>> bert_model = BertModel.from_pretrained('monologg/kobert')\n>>> distilbert_model = DistilBertModel.from_pretrained('monologg/distilkobert')\n```\n\n**Tokenizer를 사용하려면, [`kobert_transformers/tokenization_kobert.py`](https://github.com/monologg/KoBERT-Transformers/blob/master/kobert_transformers/tokenization_kobert.py) 파일을 복사한 후, `KoBertTokenizer`를 임포트하면 됩니다.**\n\n- KoBERT와 DistilKoBERT 모두 동일한 토크나이저를 사용합니다.\n- **기존 KoBERT의 경우 Special Token이 제대로 분리되지 않는 이슈**가 있어서 해당 부분을 수정하여 반영하였습니다. ([Issue link](https://github.com/SKTBrain/KoBERT/issues/11))\n\n```python\n>>> from tokenization_kobert import KoBertTokenizer\n>>> tokenizer = KoBertTokenizer.from_pretrained('monologg/kobert') # monologg/distilkobert도 동일\n>>> tokenizer.tokenize(\"[CLS] 한국어 모델을 공유합니다. [SEP]\")\n>>> ['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]']\n>>> tokenizer.convert_tokens_to_ids(['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]'])\n>>> [2, 4958, 6855, 2046, 7088, 1050, 7843, 54, 3]\n```\n\n## Kobert-Transformers (Pip library)\n\n[![PyPI](https://img.shields.io/pypi/v/kobert-transformers)](https://pypi.org/project/kobert-transformers/)\n[![license](https://img.shields.io/badge/license-Apache%202.0-red)](https://github.com/monologg/DistilKoBERT/blob/master/LICENSE)\n[![Downloads](https://pepy.tech/badge/kobert-transformers)](https://pepy.tech/project/kobert-transformers)\n\n- `tokenization_kobert.py`를 랩핑한 파이썬 라이브러리\n- KoBERT, DistilKoBERT를 Huggingface Transformers 라이브러리 형태로 제공\n- `v0.5.1`에서는 `transformers v3.0` 이상으로 기본 설치합니다. (`transformers v4.0` 까지는 이슈 없이 사용 가능)\n\n### Install Kobert-Transformers\n\n```bash\npip3 install kobert-transformers\n```\n\n### How to Use\n\n```python\n>>> import torch\n>>> from kobert_transformers import get_kobert_model, get_distilkobert_model\n>>> model = get_kobert_model()\n>>> model.eval()\n>>> input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]])\n>>> attention_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]])\n>>> token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]])\n>>> sequence_output, pooled_output = model(input_ids, attention_mask, token_type_ids)\n>>> sequence_output[0]\ntensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],\n        [-0.2478,  0.2420,  0.2552,  ..., -0.4877, -0.0727,  0.0754],\n        [-0.2472,  0.2420,  0.2561,  ..., -0.4874, -0.0733,  0.0765]],\n       grad_fn=<SelectBackward>)\n```\n\n```python\n>>> from kobert_transformers import get_tokenizer\n>>> tokenizer = get_tokenizer()\n>>> tokenizer.tokenize(\"[CLS] 한국어 모델을 공유합니다. [SEP]\")\n['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]']\n>>> tokenizer.convert_tokens_to_ids(['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]'])\n[2, 4958, 6855, 2046, 7088, 1050, 7843, 54, 3]\n```\n\n## Reference\n\n- [KoBERT](https://github.com/SKTBrain/KoBERT)\n- [DistilKoBERT](https://github.com/monologg/DistilKoBERT)\n- [Huggingface Transformers](https://github.com/huggingface/transformers)\n"
+  },
+  {
+    "id": "hangul-js",
+    "split": "holdout2",
+    "repo": "e-/Hangul.js",
+    "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+    "committed": "2020-08-13",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/e-/Hangul.js/blob/376441b577b1d0d6553866a48784faaa0bf9229b/README.md",
+    "license": "MIT",
+    "license_file": "licenses/e-_Hangul.js.txt",
+    "reference_path": "README.md",
+    "readme_last_edit": "2020-07-19",
+    "authors_of_file": [
+      "Jaemin Jo",
+      "SehyeongLee",
+      "Uyeong",
+      "atomDevelop",
+      "camou",
+      "gongdo"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "e-/Hangul.js",
+      "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^hangul\\.min\\.js$",
+        "^\\.travis\\.yml$"
+      ],
+      "sha256": "ccef080fdf08fb8e1ebf67d950c575850b0e686ae9a41fc9a6b5cb78abea9bb1",
+      "files": 13,
+      "bytes": 140472
+    },
+    "chars": 4877,
+    "text": "[![Build Status](https://travis-ci.org/e-/Hangul.js.svg?branch=master)](https://travis-ci.org/e-/Hangul.js)\n\n# Hangul.js\n\n> Hangul.js는 한글로 이루어진 문장의 자음과 모음을 분리하는 자바스크립트 라이브러리입니다. 자모 분리 또는 초성 검색에 사용할 수 있습니다.\n\n## 설치 및 사용방법\n\n### node.js \n\n```bash\nnpm install hangul-js\n```\n```js\nconst Hangul = require('hangul-js');\n```\n\n### TypeScript\n\n```bash\nnpm install hangul-js\n```\n```js\nimport * as Hangul from 'hangul-js';\n```\n\n### 일반 웹 페이지\n\n웹 페이지에서 사용하려면 hangul.js 파일을 `<script>`태그를 이용하여 삽입합니다. AMD 패턴으로 불러올 수도 있습니다.\n```html\n<script src=\"hangul.js\" type=\"text/javascript\"></script>\n\n<!-- or from CDN -->\n<script src=\"https://unpkg.com/hangul-js\" type=\"text/javascript\"></script>\n```\n자바스크립트 코드에서 전역에 노출된 Hangul이라는 객체를 통해 접근할 수 있습니다.\n```js\nHangul // window.Hangul\n```\n\n## 명세\n\n### Hangul.disassemble (alias `Hangul.d`)\n`Hangul.disassemble(str:string, grouped:boolean = false)`은 문자열 `str`에 있는 한글을 자음/모음으로 분리하여 문자들의 배열로 돌려줍니다. 이 때 한글이 아닌 문자는 그대로 반환됩니다. `Hangul.d`처럼 짧은 이름으로 사용할 수도 있습니다.\n\n```js\nHangul.disassemble('가나다'); // ['ㄱ','ㅏ','ㄴ','ㅏ','ㄷ','ㅏ']\n\nHangul.disassemble('ab가c'); // ['a','b','ㄱ','ㅏ','c']\n\nHangul.disassemble('ab@!23X.'); // ['a','b','@','!','2','3','X','.']\n```\n\n같은 홑낱자로 이루어진 겹낱자는 분리되지 않습니다.\n\n```js\nHangul.disassemble('ㄲ'); // ['ㄲ']\n```\n\n다른 홑낱자로 이루어진 겹낱자는 분리됩니다.\n\n```js\nHangul.disassemble('ㄳ'); // ['ㄱ','ㅅ']\n\nHangul.disassemble('ㅚ'); // ['ㅗ','ㅣ']\n```\n\n추가적으로 `grouped` 옵션을 `true`로 설정하여 문자열의 각 글자별로 따로 분리할 수 있습니다.\n\n```js\nHangul.d('매드캣MK2', true); \n// [['ㅁ', 'ㅐ'], ['ㄷ', 'ㅡ'], ['ㅋ', 'ㅐ', 'ㅅ'], ['M'], ['K'], ['2']]\n```\n\n윈도우에서 두벌식 키보드로 주어진 문자열을 입력할 때 누르는 키들의 배열이라고 생각하면 쉽습니다.\n\n### Hangul.assemble (alias `Hangul.a`)\n\n`Hangul.assemble(arr:string[])`는 한글 자음/모음들의 배열 `arr`을 인자로 받아 이를 조합한 문자열을 돌려줍니다. 이 때 한글이 아닌 문자는 그대로 반환됩니다. `Hangul.a`처럼 짧은 이름으로 사용할 수도 있습니다.\n\n```js\nHangul.assemble(['ㄱ','ㅏ','ㄴ','ㅏ','ㄷ','ㅏ']); // '가나다'\n\nHangul.assemble(['a','b','ㄱ','ㅏ','c']); // 'ab가c'\n\nHangul.assemble(['a','b','@','!','2','3','X','.']); // 'ab@!23X.'\n```\n\n이 경우에도 두벌식 키보드에서 주어진 키들을 누를 때 만들어지는 문자열을 돌려준다고 생각하면 쉽습니다.\n\n```js\nHangul.assemble(['ㅗ','ㅐ']); // 'ㅙ'\n\nHangul.assemble(['ㄹ','ㅂ','ㅅ']); // 'ㄼㅅ'\n```\n\n`Hangul.disassemble` 함수와 역함수 관계가 아님에 주의하세요.\n\n```js\nHangul.a(Hangul.d('옽ㅏ')); // '오타' ('옽ㅏ' 가 아님)\n```\n\n### Hangul.search\n\n`Hangul.search(a:string, b:string)`는 문자열 `a`가 문자열 `b`를 포함하는지 검사합니다. 이때 포함관계는 '두벌식 키보드 기준으로 a문자열을 입력할 때 누르는 키들의 배열이 b문자열을 입력할 때 누르는 키들의 배열을 포함한다'로 정의합니다. 반환값이 0보다 크거나 같다면 포함합니다.\n\n```js\nHangul.search('달걀','닭'); // 0\n\nHangul.search('달걀','알'); // -1\n```\n\n`indexOf`함수와 다릅니다.\n\n```js\nlet a = '도우미'\n  , b = '도움';\n  \na.indexOf(b); // -1\n\nHangul.search(a, b); // 0\n```\n\n실제 사용할 때에는 하나의 단어를 여러개의 문자열과 비교하므로 `Hangul.Searcher`를 사용하는게 편합니다. 내부적으로 한번만 자모 분리를 수행하므로 효율적입니다.\n\n```js\nlet searcher = new Hangul.Searcher('닭');\n\nsearcher.search('달걀'); // 0\nsearcher.search('달구지'); // 0\nsearcher.search('달무리'); // -1\n```\n\n### Hangul.rangeSearch\n\n`Hangul.rangeSearch(a:string, b:string)`는 `a` 문자열에서 `b` 문자열을 모두 찾고 일치하는 범위를 `a` 문자열 상의 인덱스로 돌려줍니다. 만약 `b` 문자열을 찾지 못했다면 빈 배열을 돌려줍니다. 검색 시스템에서 일치하는 부분을 강조하려고 할 때 유용합니다.\n\n```js\nlet a = '간장공장공장장',\n    b = '공장';\n\nHangul.rangeSearch(a, b); // [[2, 3], [4, 5]]\n```\n\n### 기타 한글 관련 함수\n\n이하 함수들은 인자로 문자를 받습니다. 자바스크립트에서는 문자 타입이 없으므로 문자열로 대체합니다. 길이가 2 이상인 문자열의 경우 첫 한글자에 대해 판단합니다.\n\n#### Hangul.isComplete(c)\n\n주어진 문자가 완성된 한글인지 아닌지 판단합니다. 완성된 한글이란 유니코드로 '가'(0xAC00) ~ '힣'(0xD7A3) 사이에 있는 문자를 말합니다. 'ㄱ', 'ㅙ' 등은 완성된 한글이 아닙니다.\n`Hangul.isCompleteAll(str)` 형태로 `str`의 모든 문자가 완성된 한글인지 판단할 수 있습니다.\n\n#### Hangul.isConsonant(c)\n\n주어진 문자가 자음인지 판단합니다. \n`Hangul.isCosonantAll(str)` 형태로 `str`의 모든 문자가 자음인지 판단할 수 있습니다.\n\n#### Hangul.isVowel(c)\n\n주어진 문자가 모음인지 판단합니다.\n`Hangul.isVowelAll(str)` 형태로 `str`의 모든 문자가 모음인지 판단할 수 있습니다.\n\n#### Hangul.isCho(c)\n\n주어진 문자가 초성으로 쓰일 수 있는지 판단합니다. 'ㄲ'은 초성으로 쓰일 수 있지만 'ㄳ'는 초성으로 쓰일 수 없습니다.\n`Hangul.isChoAll(str)` 형태로 `str`의 모든 문자가 초성인지 판단할 수 있습니다.\n\n#### Hangul.isJong(c)\n\n주어진 문자가 종성으로 쓰일 수 있는지 판단합니다. 'ㄲ'은 종성으로 쓰일 수 있지만 'ㄸ'는 종성으로 쓰일 수 없습니다.\n`Hangul.isJongAll(str)` 형태로 `str`의 모든 문자가 종성인지 판단할 수 있습니다.\n\n#### Hangul.endsWithConsonant(c)\n\n주어진 문자가 자음으로 끝나는지 판단합니다. 받침이 있거나 자음 하나가 인자로 주어지면 `true`를 아닌 경우 `false`를 반환합니다. 한글이 아닌 경우는 `false`를 반환합니다. 은/는 이/가 구분에 사용할 수 있습니다.\n\n#### Hangul.endsWith(c, t)\n\n주어진 문자가 t(타겟)으로 끝나는지 판단합니다. t로 끝나면 `true`를 아닌 경우 `false`를 반환합니다. 로/으로 구분에 사용할 수 있습니다.\n\n## 예제\n\n[여기](http://e-.github.io/Hangul.js/examples/stronger.html)에 주어진 문장에서 예사소리(ㄱ, ㄷ, ㅂ, ㅅ, ㅈ)와 거센소리(ㅋ, ㅌ, ㅍ, ㅊ)를 된소리(ㄲ, ㄸ, ㅃ, ㅆ, ㅉ)로 바꾸는 예제가 준비되어 있습니다.\n\n핵심 코드는 다음과 같습니다.\n\n```js\nlet input = '아버지가 방에 들어가신다'\n\nfunction stronger(x){\n  if(x == 'ㄱ' || x == 'ㅋ') return 'ㄲ';\n  if(x == 'ㄷ' || x == 'ㅌ') return 'ㄸ';\n  if(x == 'ㅂ' || x == 'ㅍ') return 'ㅃ';\n  if(x == 'ㅅ') return 'ㅆ';\n  if(x == 'ㅈ' || x == 'ㅊ') return 'ㅉ';\n  return x;\n}\n\nconsole.log(Hangul.a(Hangul.d(input).map(stronger))); \n// 아뻐찌까 빵에 뜰어까씬따\n```\n\n## 테스트 및 기여\n\n코드를 수정하셨다면 꼭 `grunt` 명령어를 통해 테스트를 수행해 주세요. 현재 마스터 브랜치에 있는 코드의 테스트 결과는 [https://e-.github.io/Hangul.js/test/](https://e-.github.io/Hangul.js/test/)에서 보실 수 있습니다.\n"
+  },
+  {
+    "id": "kobert",
+    "split": "holdout2",
+    "repo": "SKTBrain/KoBERT",
+    "commit": "47a69af87928fc24e20f571fe10c3cc9dd9af9a3",
+    "committed": "2022-08-10",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/SKTBrain/KoBERT/blob/47a69af87928fc24e20f571fe10c3cc9dd9af9a3/README.md",
+    "license": "Apache-2.0",
+    "license_file": "licenses/SKTBrain_KoBERT.txt",
+    "reference_path": "README.md",
+    "readme_last_edit": "2022-02-26",
+    "authors_of_file": [
+      "BM-K",
+      "Bage",
+      "Heewon Jeon(gogamza)",
+      "Young-Seob Jeong",
+      "gogamza",
+      "haven-jeon",
+      "monologg",
+      "seujung"
+    ],
+    "excerpt": {
+      "modifications": [
+        "전자우편 주소 생략"
+      ]
+    },
+    "fixture": {
+      "repo": "SKTBrain/KoBERT",
+      "commit": "47a69af87928fc24e20f571fe10c3cc9dd9af9a3",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "\\.md$",
+        "^imgs/",
+        "^logs/",
+        "^\\.github/"
+      ],
+      "sha256": "3b8bb1439407ce58ef937d7c040c3efde97d3c877ee95fbe2354bce657831f7a",
+      "files": 17,
+      "bytes": 55786
+    },
+    "chars": 8874,
+    "text": "# KoBERT\n\n* [KoBERT](#kobert)\n  * [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)\n    * [Why'?'](#why)\n    * [Training Environment](#training-environment)\n    * [Requirements](#requirements)\n    * [How to install](#how-to-install)\n  * [How to use](#how-to-use)\n    * [Using with PyTorch](#using-with-pytorch)\n    * [Using with ONNX](#using-with-onnx)\n    * [Using with MXNet-Gluon](#using-with-mxnet-gluon)\n    * [Tokenizer](#tokenizer)\n  * [Subtasks](#subtasks)\n    * [Naver Sentiment Analysis](#naver-sentiment-analysis)\n    * [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)\n    * [Korean Sentence BERT](#korean-sentence-bert)\n  * [Release](#release)\n  * [Contacts](#contacts)\n  * [License](#license)\n\n---\n\n## Korean BERT pre-trained cased (KoBERT)\n\n### Why'?'\n\n* 구글 [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md)의 한국어 성능 한계\n\n### Training Environment\n\n* Architecture\n\n```python\npredefined_args = {\n        'attention_cell': 'multi_head',\n        'num_layers': 12,\n        'units': 768,\n        'hidden_size': 3072,\n        'max_length': 512,\n        'num_heads': 12,\n        'scaled': True,\n        'dropout': 0.1,\n        'use_residual': True,\n        'embed_size': 768,\n        'embed_dropout': 0.1,\n        'token_type_vocab_size': 2,\n        'word_embed': None,\n    }\n```\n\n* 학습셋\n\n| 데이터      | 문장 | 단어 |\n| ----------- | ---- | ---- |\n| 한국어 위키 | 5M   | 54M  |\n\n* 학습 환경\n  * V100 GPU x 32, Horovod(with InfiniBand)\n\n![2019-04-29 텐서보드 로그](imgs/2019-04-29_TensorBoard.png)\n\n* 사전(Vocabulary)\n  * 크기 : 8,002\n  * 한글 위키 기반으로 학습한 토크나이저(SentencePiece)\n  * Less number of parameters(92M < 110M )\n\n### Requirements\n\n* see [requirements.txt](https://github.com/SKTBrain/KoBERT/blob/master/requirements.txt)\n\n### How to install\n\n* Install KoBERT as a python package\n\n  ```sh\n  pip install git+https://(전자우편 주소 생략)/SKTBrain/KoBERT.git@master\n  ```\n\n* If you want to modify source codes, please clone this repository\n\n  ```sh\n  git clone https://github.com/SKTBrain/KoBERT.git\n  cd KoBERT\n  pip install -r requirements.txt\n  ```\n\n---\n\n## How to use\n\n### Using with PyTorch\n\n*Huggingface transformers API가 편하신 분은 [여기](kobert_hf)를 참고하세요.*\n\n```python\n>>> import torch\n>>> from kobert import get_pytorch_kobert_model\n>>> input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]])\n>>> input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]])\n>>> token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]])\n>>> model, vocab  = get_pytorch_kobert_model()\n>>> sequence_output, pooled_output = model(input_ids, input_mask, token_type_ids)\n>>> pooled_output.shape\ntorch.Size([2, 768])\n>>> vocab\nVocab(size=8002, unk=\"[UNK]\", reserved=\"['[MASK]', '[SEP]', '[CLS]']\")\n>>> # Last Encoding Layer\n>>> sequence_output[0]\ntensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],\n        [-0.2478,  0.2420,  0.2552,  ..., -0.4877, -0.0727,  0.0754],\n        [-0.2472,  0.2420,  0.2561,  ..., -0.4874, -0.0733,  0.0765]],\n       grad_fn=<SelectBackward>)\n```\n\n`model`은 디폴트로 `eval()`모드로 리턴됨, 따라서 학습 용도로 사용시 `model.train()`명령을 통해 학습 모드로 변경할 필요가 있다.\n\n* Naver Sentiment Analysis Fine-Tuning with pytorch\n  * Colab에서 [런타임] - [런타임 유형 변경] - 하드웨어 가속기(GPU) 사용을 권장합니다.\n  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_pytorch_kobert.ipynb)\n\n### Using with ONNX\n\n```python\n>>> import onnxruntime\n>>> import numpy as np\n>>> from kobert import get_onnx_kobert_model\n>>> onnx_path = get_onnx_kobert_model()\n>>> sess = onnxruntime.InferenceSession(onnx_path)\n>>> input_ids = [[31, 51, 99], [15, 5, 0]]\n>>> input_mask = [[1, 1, 1], [1, 1, 0]]\n>>> token_type_ids = [[0, 0, 1], [0, 1, 0]]\n>>> len_seq = len(input_ids[0])\n>>> pred_onnx = sess.run(None, {'input_ids':np.array(input_ids),\n>>>                             'token_type_ids':np.array(token_type_ids),\n>>>                             'input_mask':np.array(input_mask),\n>>>                             'position_ids':np.array(range(len_seq))})\n>>> # Last Encoding Layer\n>>> pred_onnx[-2][0]\narray([[-0.24610452,  0.24282141,  0.25895312, ..., -0.48613444,\n        -0.07305173,  0.07560554],\n       [-0.24783179,  0.24200465,  0.25520486, ..., -0.4877185 ,\n        -0.0727044 ,  0.07536091],\n       [-0.24721591,  0.24196623,  0.2560626 , ..., -0.48743123,\n        -0.07326943,  0.07650235]], dtype=float32)\n```\n\n_ONNX 컨버팅은 [soeque1](https://github.com/soeque1)께서 도움을 주셨습니다._\n\n### Using with MXNet-Gluon\n\n```python\n>>> import mxnet as mx\n>>> from kobert import get_mxnet_kobert_model\n>>> input_id = mx.nd.array([[31, 51, 99], [15, 5, 0]])\n>>> input_mask = mx.nd.array([[1, 1, 1], [1, 1, 0]])\n>>> token_type_ids = mx.nd.array([[0, 0, 1], [0, 1, 0]])\n>>> model, vocab = get_mxnet_kobert_model(use_decoder=False, use_classifier=False)\n>>> encoder_layer, pooled_output = model(input_id, token_type_ids)\n>>> pooled_output.shape\n(2, 768)\n>>> vocab\nVocab(size=8002, unk=\"[UNK]\", reserved=\"['[MASK]', '[SEP]', '[CLS]']\")\n>>> # Last Encoding Layer\n>>> encoder_layer[0]\n[[-0.24610372  0.24282135  0.2589539  ... -0.48613444 -0.07305248\n   0.07560539]\n [-0.24783105  0.242005    0.25520545 ... -0.48771808 -0.07270523\n   0.07536077]\n [-0.24721491  0.241966    0.25606337 ... -0.48743105 -0.07327032\n   0.07650219]]\n<NDArray 3x768 @cpu(0)>\n```\n\n* Naver Sentiment Analysis Fine-Tuning with MXNet\n  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_gluon_kobert.ipynb)\n\n### Tokenizer\n\n* Pretrained [Sentencepiece](https://github.com/google/sentencepiece) tokenizer\n\n```python\n>>> from gluonnlp.data import SentencepieceTokenizer\n>>> from kobert import get_tokenizer\n>>> tok_path = get_tokenizer()\n>>> sp  = SentencepieceTokenizer(tok_path)\n>>> sp('한국어 모델을 공유합니다.')\n['▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.']\n```\n\n---\n\n## Subtasks\n\n### Naver Sentiment Analysis\n\n* Dataset : <https://github.com/e9t/nsmc>\n\n| Model                                                                                               | Accuracy                                                        |\n| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |\n| [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md) | 0.875                                                           |\n| KoBERT                                                                                              | **[0.901](logs/bert_naver_small_512_news_simple_20190624.txt)** |\n| [KoGPT2](https://github.com/SKT-AI/KoGPT2)                                                          | 0.899                                                           |\n\n### KoBERT와 CRF로 만든 한국어 객체명인식기\n\n* <https://github.com/eagle705/pytorch-bert-crf-ner>\n\n```text\n문장을 입력하세요:  SKTBrain에서 KoBERT 모델을 공개해준 덕분에 BERT-CRF 기반 객체명인식기를 쉽게 개발할 수 있었다.\nlen: 40, input_token:['[CLS]', '▁SK', 'T', 'B', 'ra', 'in', '에서', '▁K', 'o', 'B', 'ER', 'T', '▁모델', '을', '▁공개', '해', '준', '▁덕분에', '▁B', 'ER', 'T', '-', 'C', 'R', 'F', '▁기반', '▁', '객', '체', '명', '인', '식', '기를', '▁쉽게', '▁개발', '할', '▁수', '▁있었다', '.', '[SEP]']\nlen: 40, pred_ner_tag:['[CLS]', 'B-ORG', 'I-ORG', 'I-ORG', 'I-ORG', 'I-ORG', 'O', 'B-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'O', 'O', 'O', 'O', 'O', 'O', 'B-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', '[SEP]']\ndecoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개해준 덕분에 <BERT-CRF:POH> 기반 객체명인식기를 쉽게 개발할 수 있었다.[SEP]\n```\n\n### Korean Sentence BERT\n\n* <https://github.com/BM-K/KoSentenceBERT-SKT>\n\n|Model|Cosine Pearson|Cosine Spearman|Euclidean Pearson|Euclidean Spearman|Manhattan Pearson|Manhattan Spearman|Dot Pearson|Dot Spearman|\n|:------------------------:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|\n|NLl|65.05|68.48|68.81|68.18|68.90|68.20|65.22|66.81|\n|STS|**80.42**|**79.64**|**77.93**|77.43|**77.92**|77.44|**76.56**|**75.83**|\n|STS + NLI|78.81|78.47|77.68|**77.78**|77.71|**77.83**|75.75|75.22|\n---\n\n## Release\n\n* v0.2.3\n  * support `onnx 1.8.0`\n* v0.2.2\n  * fix `No module named 'kobert.utils'`\n* v0.2.1\n  * guide default 'import statements'\n* v0.2\n  * download large files from `aws s3`\n  * rename functions\n* v0.1.2\n  * Guaranteed compatibility with higher versions of transformers\n  * fix pad token index id\n* v0.1.1\n  * 사전(vocabulary)과 토크나이저 통합\n* v0.1\n  * 초기 모델 릴리즈\n\n## Contacts\n\n`KoBERT` 관련 이슈는 [이곳](https://github.com/SKTBrain/KoBERT/issues)에 등록해 주시기 바랍니다.\n\n## License\n\n`KoBERT`는 `Apache-2.0` 라이선스 하에 공개되어 있습니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요. 라이선스 전문은 `LICENSE` 파일에서 확인하실 수 있습니다.\n"
+  },
+  {
+    "id": "g2pk",
+    "split": "holdout2",
+    "repo": "Kyubyong/g2pK",
+    "commit": "3bb9d5afc5159220d5d16492aca7a58f121b6073",
+    "committed": "2020-08-04",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/Kyubyong/g2pK/blob/3bb9d5afc5159220d5d16492aca7a58f121b6073/README.md",
+    "license": "Apache-2.0",
+    "license_file": "licenses/Kyubyong_g2pK.txt",
+    "reference_path": "README.md",
+    "readme_last_edit": "2020-08-04",
+    "authors_of_file": [
+      "Huffon",
+      "Kyubyong Park",
+      "kyubyong park"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "Kyubyong/g2pK",
+      "commit": "3bb9d5afc5159220d5d16492aca7a58f121b6073",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$"
+      ],
+      "sha256": "ef4278f9ece91ab9d4246f2e233640e467384a0ddbe352165c921be158ded7b9",
+      "files": 14,
+      "bytes": 67785
+    },
+    "chars": 4907,
+    "text": "[![image](https://img.shields.io/pypi/v/g2pk.svg)](https://pypi.org/project/g2pk/)\n[![image](https://img.shields.io/pypi/l/g2pk.svg)](https://pypi.org/project/g2pk/)\n[![image](https://img.shields.io/pypi/pyversions/g2pk.svg)](https://pypi.org/project/g2pk/)\n\n# g2pK: g2p module for Korean\n\ng2p means a task that converts graphemes to phonemes. Hangul, the main script for Korean, is phonetic, but the pronunciation rules are notoriously complicated.\nSo it is never easy to learn how to read a text in Korean. That's why g2p is necessary in various nlp tasks like TTS.\n. There's a open source g2p library for Korean, [KoG2P](https://github.com/scarletcho/KoG2P). It is \nsimple and works well, but I think we need a better one. Please read through the following section (main features and usage)\nto understand the philosophy of g2pK and how to use g2pK. We know it is not perfect in present. \nThat's one of the reasons your contributions are more than welcome.\n\n## Requirements\n* python >= 3.6\n* jamo\n* [python-mecab-ko](https://github.com/jonghwanhyeon/python-mecab-ko)\n* konlpy\n* nltk\n\n## Installation\n```\npip install g2pk\n```\n\n## Main features & Usage\n* Returns text as it is pronounced, keeping punctuations.\n```\n>>> from g2pk import G2p\n>>> g2p = G2p()\n>>> g2p(\"어제는 날씨가 맑았는데, 오늘은 흐리다.\")\n어제는 날씨가 말간는데, 오느른 흐리다.\n```\n* Determines pronunciation seeing context, thanks to Mecab, a morphological analyzer.\nIn the following example, note that the first and second 신고 are pronounced differently.\n```\n>>> g2p(\"신을 신고 얼른 동사무소에 가서 혼인 신고 해라\")\n시늘 신꼬 얼른 동사무소에 가서 호닌 신고 해라\n```\n* Returns two types of results, that is, prescriptive (default) and descriptive (with the option `descriptive=True`) pronunciation.\nFor example,  josa 의 is pronounced 의 in principle, but in real life, it is often pronounced 에.\nAlso, 계 is much more often pronounced 게. \n```\n>>> sent = \"나의 친구는 계산이 아주 빠르다\"\n>>> g2p(sent)\n나의 친구는 계사니 아주 빠르다\n>>> g2p(sent, descriptive=True)\n나에 친구는 게사니 아주 빠르다\n```\n* This distinction becomes more obvious if you set `group_vowels=True`.\nIn contemporary colloquial speech, some vowels are hard to distinguish from each other.\nFor example, in the example below, the vowel ㅒ is normalized to ㅖ.\n```\n>>> sent = \"저는 예전에 그 얘기를 들은 적이 있습니다\"\n>>> g2p(sent)\n저느 녜저네 그 얘기를 드른 저기 읻씀니다\n>>> g2p(sent, group_vowels=True)\n저느 녜저네 그 예기를 드른 저기 읻씀니다\n```\n* By default, it returns the standard Korean script, where letters are assembled to form a syllable.\n If you set `to_syl=False`,  however, it returns Hangul letters or jamo. This can be useful for many applications like speech synthesis.\n\\*Depending on the font you are using, the two results below may look the same, but actually they are not.\n```\n>>> sent = \"어제는 날씨가 맑았는데, 오늘은 흐리다.\"\n>>> g2p(sent)\n어제는 날씨가 말간는데, 오느른 흐리다.\n>>> g2p(sent, to_syl=False)\n어제는 날씨가 말간는데, 오느른 흐리다.\n```\n* English words in alphabets are converted into Hangul. \nThis is possible due to [cmu pronouncing dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict).\n```\n>>> sent = \"그 사람은 좀, old school 같아\"\n>>> g2p(sent)\n그 사라믄 좀, 올드 스쿨 가타\n```\n* Arabic numbers are spelled out to their context.\n Note that the first 12 is pronounced 열두, whereas the second 12 is pronounced 십이.\n```\n>>> sent = \"지금 시각은 12시 12분입니다\"\n>>> g2p(sent)\n지금 시가그 녈두시 시비부님니다\n```\n* It is natural that rules can NOT cover every single case. Add special idioms to `idioms.txt`.\n* If you set `verbose=True`, you will see the conversion processes with relevant information.\n```\n>>> sent = \"학교에 갔다 와서, 엄마가 해 주신 밥을 먹었다.\"\n>>> g2p(sent, verbose=True)\n학교에 갔다 와서, 엄마가 해 주신 밥을 먹었다. -> 학꾜에 갔다 와서, 엄마가 해 주신 밥을 먹었다.\n 제23항　받침 'ㄱ(ㄲ, ㅋ, ㄳ, ㄺ), ㄷ(ㅅ, ㅆ, ㅈ, ㅊ, ㅌ), ㅂ(ㅍ, ㄼ, ㄿ, ㅄ)' 뒤에 연결되는 'ㄱ, ㄷ, ㅂ, ㅅ, ㅈ'은 된소리로 발음한다.\n-> 국밥[국빱], 깎다[깍따], 넑받이[넉빠지], 삯돈[삭똔]\n-> 닭장[닥짱], 칡범[칙뻠], 뻗대다[뻗때다], 옷고름[옫꼬름]\n-> 있던[읻떤], 꽂고[꼳꼬], 꽃다발[꼳따발], 낯설다[낟썰다]\n-> 밭갈이[받까리], 솥전[솓쩐], 곱돌[곱똘], 덮개[덥깨]\n-> 옆집[엽찝], 넓죽하다[넙쭈카다], 읊조리다[읍쪼리다], 값지다[갑찌다] \n학꾜에 갔다 와서, 엄마가 해 주신 밥을 먹었다. -> 학꾜에 갇따 와서, 엄마가 해 주신 밥을 먹얻따.\n 제9항　받침 'ㄲ, ㅋ', 'ㅅ, ㅆ, ㅈ, ㅊ, ㅌ', 'ㅍ'은 어말 또는 자음 앞에서 각각 대표음 [ㄱ, ㄷ, ㅂ]으로 발음한다.\n-> 닦다[닥따], 키읔[키윽], 키읔과[키윽꽈], 옷[옫]\n-> 웃다[욷따], 있다[읻따], 젖[젇], 빚다[빋따]\n-> 꽃[꼳], 쫓다[쫃따], 솥[솓], 뱉다[밷따]\n-> 앞[압], 덮다[덥따]\n제23항　받침 'ㄱ(ㄲ, ㅋ, ㄳ, ㄺ), ㄷ(ㅅ, ㅆ, ㅈ, ㅊ, ㅌ), ㅂ(ㅍ, ㄼ, ㄿ, ㅄ)' 뒤에 연결되는 'ㄱ, ㄷ, ㅂ, ㅅ, ㅈ'은 된소리로 발음한다.\n-> 국밥[국빱], 깎다[깍따], 넑받이[넉빠지], 삯돈[삭똔]\n-> 닭장[닥짱], 칡범[칙뻠], 뻗대다[뻗때다], 옷고름[옫꼬름]\n-> 있던[읻떤], 꽂고[꼳꼬], 꽃다발[꼳따발], 낯설다[낟썰다]\n-> 밭갈이[받까리], 솥전[솓쩐], 곱돌[곱똘], 덮개[덥깨]\n-> 옆집[엽찝], 넓죽하다[넙쭈카다], 읊조리다[읍쪼리다], 값지다[갑찌다] \n학꾜에 갇따 와서, 엄마가 해 주신 밥을 먹얻따. -> 학꾜에 갇따 와서, 엄마가 해 주신 바블 머걷따.\n 제13항　홑받침이나 쌍받침이 모음으로 시작된 조사나 어미, 접미사와 결합되는 경우에는, 제 음가대로 뒤 음절 첫소리로 옮겨 발음한다.\n-> 깎아[까까], 옷이[오시], 있어[이써], 낮이[나지]\n-> 꽂아[꼬자], 꽃을[꼬츨], 쫓아[쪼차], 밭에[바테]\n-> 앞으로[아프로], 덮이다[더피다] \n```\n\n\n## References\n\nIf you use our software for research, please cite:\n\n```\n@misc{park2019g2pk,\n  author = {Park, Kyubyong},\n  title = {g2pK},\n  year = {2019},\n  publisher = {GitHub},\n  journal = {GitHub repository},\n  howpublished = {\\url{https://github.com/Kyubyong/g2pk}}\n}\n```\n"
+  },
+  {
+    "id": "toss-sentry",
+    "split": "holdout2",
+    "repo": "toss/slash",
+    "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+    "committed": "2022-11-24",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/common/sentry/README.md",
+    "license": "MIT",
+    "license_file": "licenses/toss_slash.txt",
+    "reference_path": "packages/common/sentry/README.md",
+    "readme_last_edit": "2022-10-20",
+    "authors_of_file": [
+      "changyoung",
+      "hyesung oh",
+      "seokju-na"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/sentry"
+      ],
+      "strip": "packages/common/sentry",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "e0abec0530cc812086096f3a90a34026fbc342fb54c1c040bbbf2b6668451537",
+      "files": 22,
+      "bytes": 9578
+    },
+    "chars": 1858,
+    "text": "# @toss/sentry\n\n브라우저와 Node.js 모두에서 사용할 수 있는 Sentry 모듈입니다.\n\n## 사용 방법\n\n```tsx\nimport { Sentry } from '@toss/sentry';\n\nSentry.init(...);\nSentry.captureException(...);\n```\n\n- 일반 React 앱: `@toss/sentry` 를 사용하세요.\n- Next.js 앱: `@toss/sentry/nextjs`를 사용하세요.\n\n<details>\n  <summary><b>왜 일반 앱과 Next.js 앱을 구분해야 하나요?</b></summary>\n  <br />\n  <ul>\n    <li>일반 서버의 `@sentry/node`는 에러를 그루핑할 때 요청 기준이 아닌 Node.js 프로세스 기준으로 그루핑합니다. (수동으로 <a href=\"https://docs.sentry.io/platforms/node/guides/express/\">Sentry.Handlers.requestHandler</a>를 사용해야 함)</li>\n    <li>`@sentry/nextjs`는 서버 에러를 그루핑할 때 Next.js로 들어온 요청을 기준으로 그루핑합니다.</li>\n  </ul>\n</details>\n\n## 패키지의 목적\n\n일반적으로 `@sentry/node`는 Node.js 서버를 위해 만들어져 있어서, 각종 Node.js API를 사용합니다. 반대로 `@sentry/browser`는 브라우저를 위해 만들어져 있어서, 각종 브라우저 API를 사용합니다.\n\n제공하는 API의 모습은 같아도 내부 구현이 다르기 때문에, 각 플랫폼에 맞는 패키지를 사용해야 합니다.\n\n`@toss/sentry`는 [Import conditions](https://nodejs.org/api/packages.html#community-conditions-definitions)를 이용하여 서버에서 사용하는 경우 서버용 `@sentry/node`, 브라우저에서 사용하는 경우 브라우저용 `@sentry/browser` 를 반환합니다. 그래서 import를 분기하지 않고도 쉽게 플랫폼에 맞는 Sentry를 사용할 수 있습니다.\n\n## 추가 최적화: 브라우저의 경우\n\n`@toss/sentry`를 브라우저에서 사용하는 경우 Sentry의 [Lazy-loading](https://docs.sentry.io/platforms/javascript/install/lazy-load-sentry/) 기능에 의존합니다.\n\nLazy loading 스크립트가 없는 곳에서 `@toss/sentry` 를 사용하게 되면 에러가 발생하므로, 반드시 스크립트를 추가해주시기 바랍니다.\n\n## 테스트하기\n\n`@toss/sentry/testing` 모듈로 테스트할 수 있습니다.\n\n```tsx\nimport Sentry from '@toss/sentry';\nimport { useFakeSentry } from '@toss/sentry/testing';\nimport waitFor from 'wait-for-expect';\n\nbeforeAll(() => {\n  useFakeSentry();\n});\n\ndescribe('Sentry는', () => {\n  beforeEach(() => {\n    Sentry.init({\n      dsn: FAKE_DSN,\n    });\n  });\n\n  it('captureException할 수 있다.', async () => {\n    await Sentry.captureException(new Error('hello'));\n\n    await waitFor(() => {\n      expect(sentryServer.reports()).toHaveLength(1);\n    });\n  });\n});\n```\n"
   }
 ]

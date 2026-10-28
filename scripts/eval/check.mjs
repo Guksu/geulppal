@@ -106,7 +106,7 @@ for (const dir of ['evals/human', 'evals/human-readme', 'evals/draft-readme']) {
     if (!textOf[item.source]) errors.push(`${dir}/cases.json ${item.id}: 원문 ${item.source} 없음`)
     if (item.variant === 'polish' && item.input !== textOf[item.source]) errors.push(`${dir}/cases.json ${item.id}: polish 입력이 원문과 다름`)
     // 초안 사례는 개선을 마친 뒤 처음 보는 확인용 묶음(holdout)을 따로 둔다
-    const splits = dir === 'evals/draft-readme' ? ['dev', 'test', 'holdout'] : ['dev', 'test']
+    const splits = dir === 'evals/draft-readme' ? ['dev', 'test', 'holdout', 'holdout2'] : ['dev', 'test']
     if (!splits.includes(item.split)) errors.push(`${dir}/cases.json ${item.id}: split은 ${splits.join('·')} 중 하나`)
   }
 }

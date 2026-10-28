@@ -500,5 +500,159 @@
     },
     "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
     "reference": "kobert-transformers"
+  },
+  {
+    "id": "hangul-js-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout2",
+    "source": "hangul-js",
+    "origin": "human:https://github.com/e-/Hangul.js/blob/376441b577b1d0d6553866a48784faaa0bf9229b/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 라이브러리 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "한글 자모를 분리·조합하는 라이브러리라는 점",
+      "설치·불러오는 방법",
+      "주요 함수와 사용 예"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "e-/Hangul.js",
+      "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^hangul\\.min\\.js$",
+        "^\\.travis\\.yml$"
+      ],
+      "sha256": "ccef080fdf08fb8e1ebf67d950c575850b0e686ae9a41fc9a6b5cb78abea9bb1"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "hangul-js"
+  },
+  {
+    "id": "kobert-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout2",
+    "source": "kobert",
+    "origin": "human:https://github.com/SKTBrain/KoBERT/blob/47a69af87928fc24e20f571fe10c3cc9dd9af9a3/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 저장소의 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "설치 방법",
+      "모델과 토크나이저를 불러오는 사용 예",
+      "의존 라이브러리 요구 사항"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "SKTBrain/KoBERT",
+      "commit": "47a69af87928fc24e20f571fe10c3cc9dd9af9a3",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "\\.md$",
+        "^imgs/",
+        "^logs/",
+        "^\\.github/"
+      ],
+      "sha256": "3b8bb1439407ce58ef937d7c040c3efde97d3c877ee95fbe2354bce657831f7a"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "kobert"
+  },
+  {
+    "id": "g2pk-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout2",
+    "source": "g2pk",
+    "origin": "human:https://github.com/Kyubyong/g2pK/blob/3bb9d5afc5159220d5d16492aca7a58f121b6073/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 파이썬 패키지의 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "한국어 문장을 발음대로 바꾸는 패키지라는 점",
+      "설치 방법",
+      "사용 예와 옵션"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "Kyubyong/g2pK",
+      "commit": "3bb9d5afc5159220d5d16492aca7a58f121b6073",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$"
+      ],
+      "sha256": "ef4278f9ece91ab9d4246f2e233640e467384a0ddbe352165c921be158ded7b9"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "g2pk"
+  },
+  {
+    "id": "toss-sentry-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout2",
+    "source": "toss-sentry",
+    "origin": "human:https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/common/sentry/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "브라우저와 Node.js에서 쓰는 Sentry 모듈이라는 점",
+      "초기화와 사용 예",
+      "설치 방법"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/sentry"
+      ],
+      "strip": "packages/common/sentry",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "e0abec0530cc812086096f3a90a34026fbc342fb54c1c040bbbf2b6668451537"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "toss-sentry"
   }
 ]
