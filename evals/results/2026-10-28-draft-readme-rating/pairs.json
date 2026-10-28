@@ -1,0 +1,580 @@
+{
+  "pairs": [
+    {
+      "group": "C-vs-0.4.0",
+      "case": "toss-storage-readme",
+      "rep": 2,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "E",
+        "judgments": [
+          "E",
+          "E"
+        ]
+      },
+      "id": "p01"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "toss-storage-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": null,
+      "id": "p02"
+    },
+    {
+      "group": "C-vs-0.4.0",
+      "case": "kobert-transformers-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "inconsistent",
+        "judgments": [
+          "C",
+          "tie"
+        ]
+      },
+      "id": "p03"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "koelectra-readme",
+      "rep": 2,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        }
+      ],
+      "model": null,
+      "id": "p04"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "toss-scroll-animation-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        }
+      ],
+      "model": null,
+      "id": "p05"
+    },
+    {
+      "group": "A-vs-0.4.0",
+      "case": "open-korean-text-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "inconsistent",
+        "judgments": [
+          "tie",
+          "E"
+        ]
+      },
+      "id": "p06"
+    },
+    {
+      "group": "A-vs-0.4.0",
+      "case": "kobert-transformers-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "inconsistent",
+        "judgments": [
+          "A",
+          "tie"
+        ]
+      },
+      "id": "p07"
+    },
+    {
+      "group": "A-vs-0.4.0",
+      "case": "toss-hangul-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "E",
+        "judgments": [
+          "E",
+          "E"
+        ]
+      },
+      "id": "p08"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "kobert-transformers-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        }
+      ],
+      "model": null,
+      "id": "p09"
+    },
+    {
+      "group": "C-vs-0.4.0",
+      "case": "open-korean-text-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "E",
+        "judgments": [
+          "E",
+          "E"
+        ]
+      },
+      "id": "p10"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "toss-use-query-param-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": null,
+      "id": "p11"
+    },
+    {
+      "group": "A-vs-0.4.0",
+      "case": "toss-use-query-param-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "inconsistent",
+        "judgments": [
+          "E",
+          "tie"
+        ]
+      },
+      "id": "p12"
+    },
+    {
+      "group": "A-vs-0.4.0",
+      "case": "toss-scroll-animation-readme",
+      "rep": 2,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "E",
+        "judgments": [
+          "E",
+          "E"
+        ]
+      },
+      "id": "p13"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "open-korean-text-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": null,
+      "id": "p14"
+    },
+    {
+      "group": "A-vs-0.4.0",
+      "case": "toss-use-funnel-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "E",
+        "judgments": [
+          "E",
+          "E"
+        ]
+      },
+      "id": "p15"
+    },
+    {
+      "group": "C-vs-0.4.0",
+      "case": "toss-use-query-param-readme",
+      "rep": 2,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-readme-final",
+        "result": "E",
+        "judgments": [
+          "E",
+          "E"
+        ]
+      },
+      "id": "p16"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "toss-hangul-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        }
+      ],
+      "model": null,
+      "id": "p17"
+    },
+    {
+      "group": "H-vs-0.4.0",
+      "case": "toss-use-funnel-readme",
+      "rep": 1,
+      "variant": "draft",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "E"
+        },
+        {
+          "run": "2026-10-28-draft-readme-final",
+          "condition": "H"
+        }
+      ],
+      "model": null,
+      "id": "p18"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "p01",
+      "group": "C-vs-0.4.0",
+      "case": "toss-storage-readme",
+      "rep": 2,
+      "human": "same",
+      "model": "E",
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "group": "H-vs-0.4.0",
+      "case": "toss-storage-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "group": "C-vs-0.4.0",
+      "case": "kobert-transformers-readme",
+      "rep": 1,
+      "human": "E",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "group": "H-vs-0.4.0",
+      "case": "koelectra-readme",
+      "rep": 2,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "group": "H-vs-0.4.0",
+      "case": "toss-scroll-animation-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "group": "A-vs-0.4.0",
+      "case": "open-korean-text-readme",
+      "rep": 1,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "group": "A-vs-0.4.0",
+      "case": "kobert-transformers-readme",
+      "rep": 1,
+      "human": "E",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "group": "A-vs-0.4.0",
+      "case": "toss-hangul-readme",
+      "rep": 1,
+      "human": "E",
+      "model": "E",
+      "note": ""
+    },
+    {
+      "id": "p09",
+      "group": "H-vs-0.4.0",
+      "case": "kobert-transformers-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p10",
+      "group": "C-vs-0.4.0",
+      "case": "open-korean-text-readme",
+      "rep": 1,
+      "human": "C",
+      "model": "E",
+      "note": ""
+    },
+    {
+      "id": "p11",
+      "group": "H-vs-0.4.0",
+      "case": "toss-use-query-param-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p12",
+      "group": "A-vs-0.4.0",
+      "case": "toss-use-query-param-readme",
+      "rep": 1,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p13",
+      "group": "A-vs-0.4.0",
+      "case": "toss-scroll-animation-readme",
+      "rep": 2,
+      "human": "E",
+      "model": "E",
+      "note": ""
+    },
+    {
+      "id": "p14",
+      "group": "H-vs-0.4.0",
+      "case": "open-korean-text-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p15",
+      "group": "A-vs-0.4.0",
+      "case": "toss-use-funnel-readme",
+      "rep": 1,
+      "human": "same",
+      "model": "E",
+      "note": ""
+    },
+    {
+      "id": "p16",
+      "group": "C-vs-0.4.0",
+      "case": "toss-use-query-param-readme",
+      "rep": 2,
+      "human": "same",
+      "model": "E",
+      "note": ""
+    },
+    {
+      "id": "p17",
+      "group": "H-vs-0.4.0",
+      "case": "toss-hangul-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p18",
+      "group": "H-vs-0.4.0",
+      "case": "toss-use-funnel-readme",
+      "rep": 1,
+      "human": "E",
+      "model": null,
+      "note": ""
+    }
+  ]
+}
