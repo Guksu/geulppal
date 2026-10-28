@@ -10,9 +10,11 @@
 | [`holdout/cases.json`](holdout/cases.json) | 사례 12개 | 최종 후보를 고정한 뒤 별도 세션이 만들었다. 만드는 쪽에는 문서 종류와 평가할 능력만 알려 줬다([생성 기록](holdout/generation.json)) |
 | [`human/`](human/README.md) | 2024년 이전에 사람이 쓴 공개 글 10편으로 만든 사례 18개(개발용 9개, 확인용 9개) | 원문은 공공누리 제1유형 정책브리핑 기사. 다듬기(polish)와 AI 티 빼기(deslop) 두 종류 |
 | [`human-readme/`](human-readme/README.md) | ChatGPT 공개 전에 사람이 쓴 오픈소스 README 8편으로 만든 사례 16개(개발용 8개, 확인용 8개) | Apache-2.0·MIT·CC-BY-4.0 원문과 라이선스 사본 |
+| [`draft-readme/`](draft-readme/README.md) | 원문 없이 저장소 코드(일부는 메모도)만 보고 README를 쓰는 사례 13개(개발용 4개, 확인용 4개, 새 확인용 5개) | 2022-11-30 이전 커밋의 공개 저장소 코드. 같은 커밋의 사람 README를 기준 조건 H로 둔다 |
 | [`trigger/queries.json`](trigger/queries.json) | 써야 하는 요청 12개, 쓰지 말아야 하는 요청 10개 | 자동 선택 평가용. 스킬 설명을 읽은 사람이 썼다 |
 | [`judge/meaning.md`](judge/meaning.md), [`judge/quality.md`](judge/quality.md) | 판정 지침 | 판정 모델의 시스템 프롬프트로 그대로 쓴다 |
 | [`judge/slop-check.md`](judge/slop-check.md) | 부풀린 글 검수 지침 | deslop 입력이 원문의 사실을 그대로 담았는지 확인한다 |
+| [`judge/draft-claims.md`](judge/draft-claims.md), [`judge/draft-quality.md`](judge/draft-quality.md) | 원문 없이 쓴 글의 근거 판정·품질 비교 지침 | 근거 판정에서는 판정 모델도 작업 폴더를 Read·Glob·Grep으로 읽는다 |
 | [`CHANGELOG.md`](CHANGELOG.md) | 사례·기준 변경 이력 | |
 | [`snapshots/`](snapshots/) | 평가한 스킬 버전의 사본과 해시 | |
 
@@ -26,7 +28,7 @@
 | 요청 | `request` + 빈 줄 + `input` | 같은 내용 앞에 `/geulppal ` |
 | 그 밖의 조건 | 같음 | 같음 |
 
-두 조건에 공통으로 적용한 조건이다.
+두 조건에 공통으로 적용한 조건이다. 원문 없이 쓰는 사례(`draft-readme/`)만 다르다. 작업 폴더에 저장소 코드를 넣고, 작성 모델이 README를 파일로 쓸 수 있게 `Write`·`Edit`를 더해 `--permission-mode acceptEdits`(작업 폴더 안에서만 쓰기 허용)로 실행한다. 작성 모델이 쓴 마크다운 파일을 결과로 판정한다.
 
 - `claude -p`, `--output-format stream-json --verbose`, `--model claude-sonnet-5-5`, `--effort high`, `--setting-sources project`, `--strict-mcp-config`, `--permission-mode dontAsk`, `--tools Read,Glob,Grep,Skill`, `--allowedTools "Read Glob Grep Skill"`, 실행마다 새 `--session-id`
 - 실행마다 임시 `HOME`·`CLAUDE_CONFIG_DIR`·작업 폴더를 새로 만든다. 사용자 설정, 전역 스킬, 계정 동기화 스킬·플러그인, MCP, 이전 대화와 메모리가 들어오지 않는다. 사용자의 전역 설정 파일은 수정하지 않는다
@@ -89,7 +91,14 @@ node scripts/eval/judge.mjs pair --out <이름> --left H --right A
 
 # 다른 자료 묶음에는 --dir을 준다(예: --dir evals/human-readme)
 
-# 사람 블라인드 비교 페이지 만들기와 집계
+# 원문 없이 쓰는 사례: 작업 폴더 자료(저장소 코드)·기준 README·사례 만들기 → 실행 → 근거 판정 → 품질 비교
+node scripts/eval/draft.mjs build --dir evals/draft-readme
+node scripts/eval/run.mjs --out <이름> --condition A --skill none --cases evals/draft-readme/cases.json --reps 2
+node scripts/eval/human.mjs reference --dir evals/draft-readme --out <이름>
+node scripts/eval/judge.mjs meaning --out <이름> --condition A          # 사례에 fixture가 있으면 근거 판정(draft-claims.md)
+node scripts/eval/judge.mjs pair --out <이름> --left H --right A --reference-pass   # 판정하지 않은 사람 글도 비교에 넣기
+
+# 사람 블라인드 비교 페이지 만들기와 집계(README 초안은 --set draft-readme)
 node scripts/eval/rating.mjs build --page <html 경로>
 node scripts/eval/rating.mjs score --ratings <받은 평가 json>
 

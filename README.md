@@ -1,10 +1,10 @@
 # geulppal · 글빨
 
-A Claude skill that cuts hype, repetition and translationese from documents while keeping facts, numbers, conditions and the author's voice. It focuses on Korean writing such as READMEs, PR descriptions, proposals, introductions and emails, and also works on English text.
+A Claude skill that cuts hype, repetition and translationese when Claude writes or edits documents. When you give it only code or notes and ask it to write, it sticks to facts found in that material; when it edits, it keeps facts, numbers, conditions and the author's voice. It focuses on Korean writing such as READMEs, PR descriptions, proposals, introductions and emails, and also works on English text.
 
-I built it because every time I edited a README, I had to strip out the same modifiers and filler again.
+I built it because every time I asked Claude to write a README or a report, I had to strip out the same modifiers and filler again.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md)
 
 > **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
 >
@@ -16,19 +16,32 @@ This is an illustrative example, not a benchmark result. The skill keeps numbers
 
 Claude Code was run with and without geulppal on the same requests, model and settings. Each version was frozen before it was checked on unseen cases, and each case ran twice per condition. A different model from the writer judged the results.
 
-| Results that kept facts, conditions and status | Without geulppal | geulppal 0.2 | geulppal 0.3 |
+**Writing from scratch**: Claude got only the code of a public repository from before 2022 (README removed) and the request "write a Korean README for this package". The judge model read the same code and checked that every command, function, number and link in the result was backed by it.
+
+| README drafts | Without geulppal | geulppal 0.3 | geulppal 0.4 |
 |---|---|---|---|
-| 16 human-written README cases (open-source projects, 2018–2022) | 20/32 | 30/32 | 31/32 |
-| 9 human-written cases (public posts from 2018–2022) | 8/18 | 16/18 | 16/18 |
-| 12 model-written documents | 12/24 | 18/24 | (not used as unseen cases) |
+| Only claims backed by the code (4 unseen cases) | 3/8 | 6/8 | 7/8 |
+| Only claims backed by the code (5 cases added after 0.4 was frozen) | 9/10 | 9/10 | 6/10 |
+| Quality comparison against 0.4 (the 9 cases above) | 0 to 5 | 1 to 5 | |
+
+- Without geulppal, READMEs often described behavior opposite to the code (a function that returns the lowest-scored candidates first was described as "highest first") or added external links and supported platforms that the code did not show.
+- 0.3 was accurate but sometimes left out usage examples for the features it listed, or why the package exists. 0.4 adds guidance for writing from scratch, and the judge model picked it more often.
+- On the 5 cases added later, 0.4 still added external links that were not in the code (`date-fns.org`), so it passed fewer evidence checks. That is the next thing to fix.
+
+**Editing**: Claude was asked to polish human-written and model-written text.
+
+| Results that kept facts, conditions and status | Without geulppal | geulppal 0.2 | geulppal 0.3 | geulppal 0.4 |
+|---|---|---|---|---|
+| 16 human-written README cases (open-source projects, 2018–2022) | 20/32 | 30/32 | 31/32 | 31/32 |
+| 9 human-written cases (public posts from 2018–2022) | 8/18 | 16/18 | 16/18 | (not run) |
+| 12 model-written documents | 12/24 | 18/24 | (not used as unseen cases) | (not run) |
 
 - Without geulppal, Claude often added promises or experiences that were not in the original. It also often turned hearsay ("it is said to be possible") into a plain statement ("it is possible").
-- Version 0.3 was revised using Korean writing guides and human-written texts. On the human-written cases it did no better than 0.2. The condition-widening error seen in 0.2 (`해외에 계셔서` "because you are abroad" → `해외 체류 등으로` "because you are abroad or similar") did not appear with 0.3, but 0.3 was revised after seeing that case.
-- 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online").
-- On the README cases the judge model preferred geulppal 0.3 over no skill 16 to 2. It also almost always preferred an edited version over the human-written original, so this does not show that the text reads better.
-- With geulppal 0.3, a run cost about 2.2 to 2.5 times as much as without it (human-written posts and READMEs).
+- 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online"). 0.4 did not change the editing guidance.
+- The judge model almost always preferred model output over the human-written original or README, so its quality comparisons do not show that the text reads better. In a blind comparison by the repository owner, 16 of 22 pairs of edited posts were rated "about the same".
+- With geulppal, a run cost about 1.5 times as much as without it for README drafts, and about 2.2 to 2.5 times for editing.
 
-These are model judgments on a small sample, not human evaluation. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
+These are model judgments on a small sample. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 
 ## Installation
 
@@ -56,11 +69,13 @@ Only the three files in `skills/geulppal/` (about 25 KB) are installed. The eval
 
 After installing, ask Claude:
 
+> /geulppal Write a README for this repository.
+
 > /geulppal Tighten README.md. Keep the install commands and the known limitations.
 
 > /geulppal Write a short project introduction from the facts below. Start with why I built it.
 
-When you ask for text to paste, it returns only the finished text. It adds a short note only when something needs your input, such as a fact that was missing from the original.
+When you ask for text to paste, it returns only the finished text. It adds a short note only when something needs your input, such as a fact missing from the material (whether the package is published, the unit of a number).
 
 Claude can also pick the skill without `/geulppal`, for requests like "polish this README" or "make it sound less like AI". The skill description was revised after seeing these requests, so this is not an independent result. [Selection results](evals/results/2026-10-27-trigger/trigger-v0.2.1.md) (in Korean)
 
@@ -71,7 +86,7 @@ Claude can also pick the skill without `/geulppal`, for requests like "polish th
 
 ## What's inside
 
-- [SKILL.md](skills/geulppal/SKILL.md): meaning preservation, editing decisions, Korean and English style, output format
+- [SKILL.md](skills/geulppal/SKILL.md): writing from scratch, meaning preservation, editing decisions, Korean and English style, output format
 - [Document types](skills/geulppal/references/document-types.md): READMEs, PRs, proposals, introductions and emails
 - [Editing examples](skills/geulppal/references/editing-examples.md): sentences to change and sentences to keep
 - [Research notes](research/findings.md): past README edits, public skills and writing guides behind the rules
