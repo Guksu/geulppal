@@ -17,6 +17,7 @@ import {
   ROOT, cliVersion, fileHash, findTranscript, installSkill, makeSandbox, newSessionId, parseArgs, parseStream, pool,
   readJson, readTranscript, runClaude, scrub, skillEvidence, treeHash, usageOf,
 } from './lib/common.mjs'
+import { ensureFixture, fixtureHash, fixtureKey, installFixture } from './lib/fixtures.mjs'
 import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
@@ -50,7 +51,18 @@ const reps = Number(options.reps)
 const repStart = Number(options['rep-start'])
 const version = cliVersion(options.claude)
 
-const promptOf = (item) => `${skillDir ? '/geulppal ' : ''}${item.request}\n\n${item.input}`
+const promptOf = (item) => `${skillDir ? '/geulppal ' : ''}${item.request}${item.input ? `\n\n${item.input}` : ''}`
+
+// 초안 사례는 작업 폴더에 저장소 코드 등을 넣는다(lib/fixtures.mjs). 사례에 적힌 해시와 다르면 실행하지 않는다
+const fixtureDirs = {}
+for (const item of cases.filter((c) => c.fixture)) {
+  const dir = ensureFixture(item.fixture)
+  if (item.fixture.sha256 && fixtureHash(dir) !== item.fixture.sha256) {
+    console.error(`${item.id}: 작업 폴더 자료의 해시가 사례와 다르다`)
+    process.exit(1)
+  }
+  fixtureDirs[item.id] = dir
+}
 
 const baseArgs = (sessionId) => [
   '--output-format', 'stream-json', '--verbose',
@@ -89,6 +101,7 @@ const attemptsOf = (condition, id, rep) =>
 const runOne = async (item, rep, attempt) => {
   const box = makeSandbox()
   installSkill(box.work, skillDir)
+  if (fixtureDirs[item.id]) installFixture(box.work, fixtureDirs[item.id])
   const sessionId = newSessionId()
   const prompt = promptOf(item)
   const args = ['-p', prompt, ...baseArgs(sessionId)]
@@ -138,6 +151,7 @@ const runOne = async (item, rep, attempt) => {
     },
     skill: evidence,
     prompt,
+    ...(item.fixture ? { fixture: { key: fixtureKey(item.fixture), sha256: item.fixture.sha256 ?? null } } : {}),
     output: scrub(output),
     outputHadLocalPath: scrub(output) !== output,
     exitCode: run.code,

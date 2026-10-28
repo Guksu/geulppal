@@ -12,10 +12,13 @@
  * 판정 기록은 records.json의 judge/meaning/·judge/pair/ 항목으로 묶인다(lib/records.mjs).
  * --pass 2: 같은 결과를 한 번 더 판정해 judge/meaning-pass2/에 쓴다(판정자 일치도 확인용). 품질 비교 대상은 1차 판정으로 정한다.
  * --left-from: 왼쪽 조건의 결과를 다른 결과 폴더에서 가져온다(입력·모델·환경·설정이 같은 기준선을 재사용할 때). 재사용 사실은 판정 기록에 남는다.
+ * 초안 사례(`fixture`가 있는 사례)의 의미 판정은 evals/judge/draft-claims.md를 쓴다. 판정자도 같은 작업 폴더를 받아 Read·Glob·Grep으로 근거를 확인한다.
+ * --reference-pass: 품질 비교에서 실행하지 않은 기준 조건(사람 원문 H)은 의미 판정 결과와 상관없이 비교에 넣는다(초안 사례의 사람 README처럼 코드만으로 확인할 수 없는 내용을 담은 기준글).
  */
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { ROOT, cliVersion, makeSandbox, parseArgs, parseStream, pool, readJson, runClaude, scrub, sha256, usageOf } from './lib/common.mjs'
+import { ensureFixture, installFixture } from './lib/fixtures.mjs'
 import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
@@ -96,6 +99,32 @@ const MEANING_SCHEMA = {
   additionalProperties: false,
 }
 
+const CLAIMS_SCHEMA = {
+  type: 'object',
+  properties: {
+    claims: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          claim: { type: 'string' },
+          kind: { type: 'string', enum: ['command', 'api', 'option', 'version', 'platform', 'dependency', 'number', 'feature', 'limitation', 'license', 'link', 'other'] },
+          status: { type: 'string', enum: ['supported', 'unsupported', 'contradicted'] },
+          evidence: { type: 'string' },
+        },
+        required: ['claim', 'kind', 'status', 'evidence'],
+        additionalProperties: false,
+      },
+    },
+    coverage: { type: 'array', items: { type: 'object', properties: { item: { type: 'string' }, status: { type: 'string', enum: ['present', 'absent'] }, evidence: { type: 'string' } }, required: ['item', 'status', 'evidence'], additionalProperties: false } },
+    must_not: { type: 'array', items: { type: 'object', properties: { item: { type: 'string' }, status: { type: 'string', enum: ['ok', 'violated'] }, evidence: { type: 'string' } }, required: ['item', 'status', 'evidence'], additionalProperties: false } },
+    verdict: { type: 'string', enum: ['pass', 'fail'] },
+    fail_reasons: { type: 'array', items: { type: 'string' } },
+  },
+  required: ['claims', 'coverage', 'must_not', 'verdict', 'fail_reasons'],
+  additionalProperties: false,
+}
+
 const PAIR_SCHEMA = {
   type: 'object',
   properties: {
@@ -120,12 +149,13 @@ const PAIR_SCHEMA = {
   additionalProperties: false,
 }
 
-const judgeArgs = ({ prompt, rubric, schema }) => [
+const JUDGE_TOOLS = ['Read', 'Glob', 'Grep']
+const judgeArgs = ({ prompt, rubric, schema, tools }) => [
   '-p', prompt,
   '--output-format', 'stream-json', '--verbose',
   '--model', options.model,
   '--effort', options.effort,
-  '--tools', '',
+  ...(tools ? ['--tools', JUDGE_TOOLS.join(','), '--allowedTools', JUDGE_TOOLS.join(' '), '--permission-mode', 'dontAsk'] : ['--tools', '']),
   '--setting-sources', 'project',
   '--strict-mcp-config',
   '--no-session-persistence',
@@ -134,11 +164,12 @@ const judgeArgs = ({ prompt, rubric, schema }) => [
 ]
 
 /** 판정 호출 — 구조화된 답이 없으면 두 번까지 다시 부르고 시도 수를 남긴다 */
-const callJudge = async ({ prompt, rubric, schema }) => {
+const callJudge = async ({ prompt, rubric, schema, fixtureDir }) => {
   const attempts = []
   for (let attempt = 1; attempt <= 3; attempt++) {
     const box = makeSandbox()
-    const run = await runClaude({ claude: options.claude, args: judgeArgs({ prompt, rubric, schema }), cwd: box.work, env: box.env, timeoutMs: Number(options['timeout-min']) * 60 * 1000 })
+    if (fixtureDir) installFixture(box.work, fixtureDir)
+    const run = await runClaude({ claude: options.claude, args: judgeArgs({ prompt, rubric, schema, tools: Boolean(fixtureDir) }), cwd: box.work, env: box.env, timeoutMs: Number(options['timeout-min']) * 60 * 1000 })
     box.cleanup()
     const stream = parseStream(run.stdout)
     const answer = stream.result?.structured_output ?? null
@@ -164,7 +195,10 @@ const judgeMeta = (rubric) => ({ model: options.model, effort: options.effort, c
 if (mode === 'meaning') {
   const condition = options.condition
   const rubric = readFileSync(join(ROOT, 'evals/judge/meaning.md'), 'utf8')
+  const claimsRubric = readFileSync(join(ROOT, 'evals/judge/draft-claims.md'), 'utf8')
   const cases = casesById(casesFileOf(options.out, condition))
+  const fixtureDirs = {}
+  for (const item of Object.values(cases)) if (item.fixture) fixtureDirs[item.id] = ensureFixture(item.fixture)
   const jobs = latestRuns(options.out, condition).map((record) => async () => {
     const key = `${options.pass === '2' ? 'judge/meaning-pass2' : 'judge/meaning'}/${condition}/${record.id}-r${record.rep}`
     const previous = out.get(key)
@@ -178,17 +212,27 @@ if (mode === 'meaning') {
     }
     const output = outputOf(options.out, record)
     const exact = exactCheck(item, output)
-    const prompt = [
-      block('요청', item.request),
-      block('원문', item.input),
-      block('결과', output),
-      `## 보존 항목\n\n${item.must_preserve.map((line) => `- ${line}`).join('\n')}`,
-      `## 금지 변경\n\n${item.must_not.map((line) => `- ${line}`).join('\n')}`,
-      item.notes ? `## 참고\n\n${item.notes}` : '',
-    ].filter(Boolean).join('\n\n')
-    const judged = await callJudge({ prompt, rubric, schema: MEANING_SCHEMA })
+    const draft = Boolean(item.fixture)
+    const prompt = draft
+      ? [
+          block('요청', item.request),
+          block('메모', item.input || '(없음)'),
+          block('결과', output),
+          `## 다뤄야 할 내용\n\n${item.must_preserve.map((line) => `- ${line}`).join('\n')}`,
+          `## 금지 변경\n\n${item.must_not.map((line) => `- ${line}`).join('\n')}`,
+        ].join('\n\n')
+      : [
+          block('요청', item.request),
+          block('원문', item.input),
+          block('결과', output),
+          `## 보존 항목\n\n${item.must_preserve.map((line) => `- ${line}`).join('\n')}`,
+          `## 금지 변경\n\n${item.must_not.map((line) => `- ${line}`).join('\n')}`,
+          item.notes ? `## 참고\n\n${item.notes}` : '',
+        ].filter(Boolean).join('\n\n')
+    const usedRubric = draft ? claimsRubric : rubric
+    const judged = await callJudge({ prompt, rubric: usedRubric, schema: draft ? CLAIMS_SCHEMA : MEANING_SCHEMA, fixtureDir: fixtureDirs[item.id] })
     const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass : null
-    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(rubric), answer: judged.answer, attempts: judged.attempts } })
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(usedRubric), kind: draft ? 'draft-claims' : 'meaning', answer: judged.answer, attempts: judged.attempts } })
     console.log(`의미 ${condition} ${record.id} r${record.rep} — ${judged.answer ? judged.answer.verdict : '판정 실패'}${exact.pass ? '' : `, 문자열 누락 ${exact.missing.length}`}`)
     return null
   })
@@ -216,7 +260,9 @@ if (mode === 'pair') {
     if (!leftRecord) continue
     const leftMeaning = meaningOf(leftFrom, left, leftRecord)
     const rightMeaning = meaningOf(rightFrom, right, rightRecord)
-    const eligible = leftMeaning?.pass === true && rightMeaning?.pass === true
+    // --reference-pass: 실행하지 않은 기준 조건(model이 없는 조건)은 의미 판정과 상관없이 비교한다
+    const isReference = (name, condition) => options['reference-pass'] && manifestOf(name, condition)?.model === null
+    const eligible = (isReference(leftFrom, left) || leftMeaning?.pass === true) && (isReference(rightFrom, right) || rightMeaning?.pass === true)
     const base = {
       id: rightRecord.id,
       rep: rightRecord.rep,
@@ -242,7 +288,8 @@ if (mode === 'pair') {
       ]
       const judgments = []
       for (const order of orders) {
-        const prompt = [block('요청', item.request), block('원문', item.input), block('결과 X', order.xText), block('결과 Y', order.yText)].join('\n\n')
+        const source = item.fixture ? item.input || '(입력 글 없음. 작성자는 작업 폴더의 저장소 코드를 보고 썼다)' : item.input
+        const prompt = [block('요청', item.request), block(item.fixture ? '메모' : '원문', source), block('결과 X', order.xText), block('결과 Y', order.yText)].join('\n\n')
         const judged = await callJudge({ prompt, rubric, schema: PAIR_SCHEMA })
         const verdict = judged.answer?.verdict ?? null
         const winner = verdict === 'X' ? order.X : verdict === 'Y' ? order.Y : verdict
