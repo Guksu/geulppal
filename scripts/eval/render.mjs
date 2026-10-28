@@ -21,11 +21,11 @@ if (!options.name || !options.cases || !options.conds) {
   process.exit(1)
 }
 
-const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', D1: '0.3.1 후보', D: '0.3.1 후보', E1: '0.4.0-r1 후보', E2: '0.4.0-r2 후보', E: '글빨 0.4.0', H: '사람 원문' }
+const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', D1: '0.3.1 후보', D: '0.3.1 후보', E1: '0.4.0-r1 후보', E2: '0.4.0-r2 후보', E: '글빨 0.4.0', F1: '0.4.1-r1 후보', F: '글빨 0.4.1', H: '사람 원문' }
 const TASKS = { rewrite: '수정', draft: '새 글 작성', diagnose: '진단만', summarize: '요약', 'noop-check': '고칠 게 없으면 그대로' }
 const LANGUAGES = { ko: '한국어', en: '영어', 'ko-en': '한영 혼용' }
 const label = (condition) => LABELS[condition] ?? condition
-const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', D1: '0.3.1후보', D: '0.3.1후보', H: '사람', E1: '0.4.0-r1', E2: '0.4.0-r2', E: '0.4.0' }
+const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', D1: '0.3.1후보', D: '0.3.1후보', H: '사람', E1: '0.4.0-r1', E2: '0.4.0-r2', E: '0.4.0', F1: '0.4.1-r1', F: '0.4.1' }
 const short = (condition) => SHORT[condition] ?? condition
 
 const cases = readJson(join(ROOT, options.cases)).filter((item) => !options.split || item.split === options.split)
