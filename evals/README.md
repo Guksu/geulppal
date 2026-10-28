@@ -9,6 +9,7 @@
 | [`cases.json`](cases.json) | 사례 19개(초기 12개 + 보충 7개) | 개발·회귀용. 9개는 스킬 예문과 같은 상황을 다루고, 모두 스킬을 읽은 사람이 썼다 |
 | [`holdout/cases.json`](holdout/cases.json) | 사례 12개 | 최종 후보를 고정한 뒤 별도 세션이 만들었다. 만드는 쪽에는 문서 종류와 평가할 능력만 알려 줬다([생성 기록](holdout/generation.json)) |
 | [`human/`](human/README.md) | 2024년 이전에 사람이 쓴 공개 글 10편으로 만든 사례 18개(개발용 9개, 확인용 9개) | 원문은 공공누리 제1유형 정책브리핑 기사. 다듬기(polish)와 AI 티 빼기(deslop) 두 종류 |
+| [`human-readme/`](human-readme/README.md) | ChatGPT 공개 전에 사람이 쓴 오픈소스 README 8편으로 만든 사례 16개(개발용 8개, 확인용 8개) | Apache-2.0·MIT·CC-BY-4.0 원문과 라이선스 사본 |
 | [`trigger/queries.json`](trigger/queries.json) | 써야 하는 요청 12개, 쓰지 말아야 하는 요청 10개 | 자동 선택 평가용. 스킬 설명을 읽은 사람이 썼다 |
 | [`judge/meaning.md`](judge/meaning.md), [`judge/quality.md`](judge/quality.md) | 판정 지침 | 판정 모델의 시스템 프롬프트로 그대로 쓴다 |
 | [`judge/slop-check.md`](judge/slop-check.md) | 부풀린 글 검수 지침 | deslop 입력이 원문의 사실을 그대로 담았는지 확인한다 |
@@ -85,6 +86,12 @@ node scripts/eval/human.mjs build
 node scripts/eval/run.mjs --out <이름> --condition A --skill none --cases evals/human/cases.json --reps 2
 node scripts/eval/human.mjs reference --out <이름>
 node scripts/eval/judge.mjs pair --out <이름> --left H --right A
+
+# 다른 자료 묶음에는 --dir을 준다(예: --dir evals/human-readme)
+
+# 사람 블라인드 비교 페이지 만들기와 집계
+node scripts/eval/rating.mjs build --page <html 경로>
+node scripts/eval/rating.mjs score --ratings <받은 평가 json>
 
 # 경로 지우기 규칙을 고친 뒤 공개 기록의 output을 원본 로그로 다시 만들기
 node scripts/eval/records.mjs rescrub --out <이름>

@@ -4,7 +4,7 @@ A Claude skill that cuts hype, repetition and translationese from documents whil
 
 I built it because every time I edited a README, I had to strip out the same modifiers and filler again.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation report](evals/results/REPORT.md) · [Second report](evals/results/REPORT-human.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md)
 
 > **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
 >
@@ -18,14 +18,15 @@ Claude Code was run with and without geulppal on the same requests, model and se
 
 | Results that kept facts, conditions and status | Without geulppal | geulppal 0.2 | geulppal 0.3 |
 |---|---|---|---|
+| 16 human-written README cases (open-source projects, 2018–2022) | 20/32 | 30/32 | 31/32 |
 | 9 human-written cases (public posts from 2018–2022) | 8/18 | 16/18 | 16/18 |
 | 12 model-written documents | 12/24 | 18/24 | (not used as unseen cases) |
 
 - Without geulppal, Claude often added promises or experiences that were not in the original. It also often turned hearsay ("it is said to be possible") into a plain statement ("it is possible").
 - Version 0.3 was revised using Korean writing guides and human-written texts. On the human-written cases it did no better than 0.2. The condition-widening error seen in 0.2 (`해외에 계셔서` "because you are abroad" → `해외 체류 등으로` "because you are abroad or similar") did not appear with 0.3, but 0.3 was revised after seeing that case.
 - 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online").
-- Whether the text reads better could not be confirmed. The judge model almost always preferred an edited version over the human-written original.
-- With geulppal 0.3, a run cost about 2.2 times as much as without it (human-written cases).
+- On the README cases the judge model preferred geulppal 0.3 over no skill 16 to 2. It also almost always preferred an edited version over the human-written original, so this does not show that the text reads better.
+- With geulppal 0.3, a run cost about 2.2 to 2.5 times as much as without it (human-written posts and READMEs).
 
 These are model judgments on a small sample, not human evaluation. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 
