@@ -4,7 +4,7 @@ A Claude skill that cuts hype, repetition and translationese when Claude writes 
 
 I built it because every time I asked Claude to write a README or a report, I had to strip out the same modifiers and filler again.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md)
 
 > **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
 >
@@ -30,6 +30,16 @@ Claude Code was run with and without geulppal on the same requests, model and se
 - 0.3 was accurate but sometimes left out usage examples for the features it listed, or why the package exists. 0.4 adds guidance for writing from scratch. In a blind comparison, the repository owner picked the 0.4.0 README over the human-written README from the same commit 8 to 0.
 - 0.4.0 sometimes linked to dependency docs that the code never mentions (`date-fns.org`). 0.4.1 only links to addresses found in the material. On the cases written after this fix, 0.4.0 added no such links either, so the difference was not confirmed there, and the judge model slightly preferred 0.4.0 on quality.
 
+When Claude got only a memo and was asked for a press release, notice, report or proposal (13 memos taken from policy news articles published 2018–2022), the gap was larger.
+
+| Documents written from memos | Without geulppal | geulppal 0.4.1 |
+|---|---|---|
+| Only claims backed by the memo: 8 dev and unseen cases | 5/16 | 15/16 |
+| Same: 5 cases unseen until the end | 4/10 | 9/10 |
+| Judge model quality comparison | 0 to 6 | |
+
+- Without geulppal, Claude often wrote planned actions from the memo (`권고·지도할 계획` "plans to recommend and guide") as if they had happened, or added expected benefits that the memo did not mention.
+
 **Editing**: Claude was asked to polish human-written and model-written text.
 
 | Results that kept facts, conditions and status | Without geulppal | geulppal 0.2 | geulppal 0.3 | geulppal 0.4 |
@@ -41,7 +51,7 @@ Claude Code was run with and without geulppal on the same requests, model and se
 - Without geulppal, Claude often added promises or experiences that were not in the original. It also often turned hearsay ("it is said to be possible") into a plain statement ("it is possible").
 - 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online"). 0.4 did not change the editing guidance.
 - The judge model almost always preferred the edited text over the human-written original. In a blind comparison by the repository owner, 16 of 22 pairs of edited posts were rated "about the same". For editing, geulppal's effect is on accuracy; it does not show that the text reads better.
-- With geulppal, a run cost about 1.5 to 1.7 times as much as without it for README drafts, and about 2.2 to 2.5 times for editing.
+- With geulppal, a run cost about 1.5 to 1.7 times as much as without it for README drafts, about 2 times for documents written from memos, and about 2.2 to 2.5 times for editing.
 
 The samples are small, and the blind comparisons had a single rater. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 

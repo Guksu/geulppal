@@ -23,6 +23,8 @@ const HUMAN_RUNS = { human: '2026-10-27-human', dev: '2026-10-27-human-r2', test
 // README 초안: 확인용(test)의 글빨 없음·0.3.0은 기준선 실행, 새 확인용(holdout)과 0.4.0·사람 README는 최종 실행에 있다
 const DRAFT_RUNS = { baseline: '2026-10-28-draft-readme', final: '2026-10-28-draft-readme-final' }
 const draftRun = (item) => (item.split === 'holdout' ? DRAFT_RUNS.final : DRAFT_RUNS.baseline)
+// 메모 업무 글: 확인용은 기준선 실행, 새 확인용은 최종 실행. 0.4.1(F)과 비교한다
+const memoRun = (item) => (item.split === 'holdout' ? '2026-10-28-draft-memo-final' : '2026-10-28-draft-memo')
 const SETS = {
   human: {
     cases: 'evals/human/cases.json',
@@ -52,6 +54,21 @@ const SETS = {
       { key: 'A-vs-0.4.0', left: (item) => ({ run: draftRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 },
       { key: 'H-vs-0.4.0', left: { run: DRAFT_RUNS.final, condition: 'H' }, filter: (item) => item.split !== 'dev', max: 99 },
       { key: 'C-vs-0.4.0', left: (item) => ({ run: draftRun(item), condition: 'C' }), filter: (item) => item.split !== 'dev', max: 4 },
+    ],
+  },
+  'draft-memo': {
+    cases: 'evals/draft-memo/cases.json',
+    pairsFile: 'evals/runs/rating/draft-memo-pairs.json',
+    results: 'evals/results/2026-10-28-draft-memo-rating',
+    storeKey: 'geulppal-blind-draft-memo',
+    title: '글빨 메모 업무 글 블라인드 비교',
+    lede: '메모만 주고 보도자료·안내문·보고서·기획서를 써 달라는 요청에 나온 두 결과입니다. 요청한 사람이 그대로 쓸 글로 어느 쪽이 나은지 골라 주세요. 메모와 맞는지는 판정 모델이 따로 확인했으니, 받는 사람이 필요한 것을 빨리 찾을 수 있는지, 문서 종류에 맞는지, 읽기 좋은지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 기사인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 메모만 받았습니다.',
+    referencePass: true,
+    right: (item) => ({ run: memoRun(item), condition: 'F' }),
+    groups: [
+      { key: 'A-vs-0.4.1', left: (item) => ({ run: memoRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 },
+      { key: 'H-vs-0.4.1', left: (item) => ({ run: memoRun(item), condition: 'H' }), filter: (item) => item.split !== 'dev' && item.genre === '보도자료', max: 99 },
     ],
   },
 }
@@ -178,7 +195,7 @@ if (mode === 'score') {
   }
   const { pairs } = readJson(PAIRS_FILE)
   const ratings = readJson(options.ratings)
-  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', H: options.set === 'human' ? '사람 원문' : '사람 README' }
+  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사' }[options.set] }
   const rows = []
   const tally = {}
   for (const pair of pairs) {
@@ -186,7 +203,7 @@ if (mode === 'score') {
     const pick = rating?.choice
     const winner = pick === 'x' ? pair.sides[0].condition : pick === 'y' ? pair.sides[1].condition : pick ?? null
     const norm = (c) => (c === 'C2' ? 'C' : c)
-    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'H'].includes(winner) ? norm(winner) : winner
+    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'H'].includes(winner) ? norm(winner) : winner
     const model = pair.model ? (['tie', 'both_inadequate', 'inconsistent'].includes(pair.model.result) ? pair.model.result : norm(pair.model.result)) : null
     tally[pair.group] ??= {}
     tally[pair.group][human ?? '미평가'] = (tally[pair.group][human ?? '미평가'] ?? 0) + 1
