@@ -1,0 +1,741 @@
+{
+  "pairs": [
+    {
+      "group": "A-vs-0.3.0",
+      "case": "entry-quarantine-2022-polish",
+      "rep": 1,
+      "variant": "polish",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "C",
+        "judgments": [
+          "C",
+          "C"
+        ]
+      },
+      "id": "p01"
+    },
+    {
+      "group": "B-vs-0.3.0",
+      "case": "entry-quarantine-2022-deslop",
+      "rep": 2,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "B"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "C",
+        "judgments": [
+          "C",
+          "C"
+        ]
+      },
+      "id": "p02"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "doc24-review-2021-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-r2",
+        "result": "H",
+        "judgments": [
+          "H",
+          "H"
+        ]
+      },
+      "id": "p03"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "dmz-center-2022-deslop",
+      "rep": 2,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "C",
+        "judgments": [
+          "C",
+          "C"
+        ]
+      },
+      "id": "p04"
+    },
+    {
+      "group": "B-vs-0.3.0",
+      "case": "tour-flight-2021-polish",
+      "rep": 2,
+      "variant": "polish",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "B"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "tie",
+        "judgments": [
+          "tie",
+          "tie"
+        ]
+      },
+      "id": "p05"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "reporter-recruit-2020-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "A",
+        "judgments": [
+          "A",
+          "A"
+        ]
+      },
+      "id": "p06"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "scholarship-news-2021-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-r2",
+        "result": "C2",
+        "judgments": [
+          "C2",
+          "C2"
+        ]
+      },
+      "id": "p07"
+    },
+    {
+      "group": "B-vs-0.3.0",
+      "case": "support-fund-qa-2021-polish",
+      "rep": 2,
+      "variant": "polish",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "B"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "inconsistent",
+        "judgments": [
+          "C",
+          "B"
+        ]
+      },
+      "id": "p08"
+    },
+    {
+      "group": "B-vs-0.3.0",
+      "case": "dmz-center-2022-polish",
+      "rep": 1,
+      "variant": "polish",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "B"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "inconsistent",
+        "judgments": [
+          "tie",
+          "C"
+        ]
+      },
+      "id": "p09"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "support-fund-qa-2021-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "inconsistent",
+        "judgments": [
+          "A",
+          "C"
+        ]
+      },
+      "id": "p10"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "olympics-home-2022-polish",
+      "rep": 1,
+      "variant": "polish",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        }
+      ],
+      "model": null,
+      "id": "p11"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "support-fund-qa-2021-polish",
+      "rep": 2,
+      "variant": "polish",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "A",
+        "judgments": [
+          "A",
+          "A"
+        ]
+      },
+      "id": "p12"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "entry-quarantine-2022-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "C",
+        "judgments": [
+          "C",
+          "C"
+        ]
+      },
+      "id": "p13"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "scholarship-news-2021-deslop",
+      "rep": 2,
+      "variant": "deslop",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        }
+      ],
+      "model": null,
+      "id": "p14"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "reporter-recruit-2020-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "H",
+        "judgments": [
+          "H",
+          "H"
+        ]
+      },
+      "id": "p15"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "reporter-recruit-2020-polish",
+      "rep": 1,
+      "variant": "polish",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "C",
+        "judgments": [
+          "C",
+          "C"
+        ]
+      },
+      "id": "p16"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "entry-quarantine-2022-deslop",
+      "rep": 2,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "inconsistent",
+        "judgments": [
+          "A",
+          "C"
+        ]
+      },
+      "id": "p17"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "scholarship-news-2021-polish",
+      "rep": 2,
+      "variant": "polish",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        }
+      ],
+      "model": null,
+      "id": "p18"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "doc24-review-2021-polish",
+      "rep": 2,
+      "variant": "polish",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        }
+      ],
+      "model": null,
+      "id": "p19"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "support-fund-qa-2021-deslop",
+      "rep": 2,
+      "variant": "deslop",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-27-human-final",
+          "condition": "C"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-final",
+        "result": "C",
+        "judgments": [
+          "C",
+          "C"
+        ]
+      },
+      "id": "p20"
+    },
+    {
+      "group": "H-vs-0.3.0",
+      "case": "relief-fund-2020-deslop",
+      "rep": 1,
+      "variant": "deslop",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-27-human-r2",
+        "result": "inconsistent",
+        "judgments": [
+          "H",
+          "C2"
+        ]
+      },
+      "id": "p21"
+    },
+    {
+      "group": "A-vs-0.3.0",
+      "case": "hangang-water-2018-polish",
+      "rep": 2,
+      "variant": "polish",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-27-human-r2",
+          "condition": "C2"
+        },
+        {
+          "run": "2026-10-27-human",
+          "condition": "A"
+        }
+      ],
+      "model": null,
+      "id": "p22"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "p01",
+      "group": "A-vs-0.3.0",
+      "case": "entry-quarantine-2022-polish",
+      "rep": 1,
+      "human": "same",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "group": "B-vs-0.3.0",
+      "case": "entry-quarantine-2022-deslop",
+      "rep": 2,
+      "human": "B",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "group": "H-vs-0.3.0",
+      "case": "doc24-review-2021-deslop",
+      "rep": 1,
+      "human": "H",
+      "model": "H",
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "group": "H-vs-0.3.0",
+      "case": "dmz-center-2022-deslop",
+      "rep": 2,
+      "human": "C",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "group": "B-vs-0.3.0",
+      "case": "tour-flight-2021-polish",
+      "rep": 2,
+      "human": "C",
+      "model": "tie",
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "group": "A-vs-0.3.0",
+      "case": "reporter-recruit-2020-deslop",
+      "rep": 1,
+      "human": "C",
+      "model": "A",
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "group": "H-vs-0.3.0",
+      "case": "scholarship-news-2021-deslop",
+      "rep": 1,
+      "human": "C",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "group": "B-vs-0.3.0",
+      "case": "support-fund-qa-2021-polish",
+      "rep": 2,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p09",
+      "group": "B-vs-0.3.0",
+      "case": "dmz-center-2022-polish",
+      "rep": 1,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p10",
+      "group": "A-vs-0.3.0",
+      "case": "support-fund-qa-2021-deslop",
+      "rep": 1,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p11",
+      "group": "A-vs-0.3.0",
+      "case": "olympics-home-2022-polish",
+      "rep": 1,
+      "human": "same",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p12",
+      "group": "A-vs-0.3.0",
+      "case": "support-fund-qa-2021-polish",
+      "rep": 2,
+      "human": "same",
+      "model": "A",
+      "note": ""
+    },
+    {
+      "id": "p13",
+      "group": "H-vs-0.3.0",
+      "case": "entry-quarantine-2022-deslop",
+      "rep": 1,
+      "human": "same",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p14",
+      "group": "A-vs-0.3.0",
+      "case": "scholarship-news-2021-deslop",
+      "rep": 2,
+      "human": "same",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p15",
+      "group": "H-vs-0.3.0",
+      "case": "reporter-recruit-2020-deslop",
+      "rep": 1,
+      "human": "same",
+      "model": "H",
+      "note": ""
+    },
+    {
+      "id": "p16",
+      "group": "A-vs-0.3.0",
+      "case": "reporter-recruit-2020-polish",
+      "rep": 1,
+      "human": "same",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p17",
+      "group": "A-vs-0.3.0",
+      "case": "entry-quarantine-2022-deslop",
+      "rep": 2,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p18",
+      "group": "A-vs-0.3.0",
+      "case": "scholarship-news-2021-polish",
+      "rep": 2,
+      "human": "same",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p19",
+      "group": "A-vs-0.3.0",
+      "case": "doc24-review-2021-polish",
+      "rep": 2,
+      "human": "same",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p20",
+      "group": "H-vs-0.3.0",
+      "case": "support-fund-qa-2021-deslop",
+      "rep": 2,
+      "human": "same",
+      "model": "C",
+      "note": ""
+    },
+    {
+      "id": "p21",
+      "group": "H-vs-0.3.0",
+      "case": "relief-fund-2020-deslop",
+      "rep": 1,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p22",
+      "group": "A-vs-0.3.0",
+      "case": "hangang-water-2018-polish",
+      "rep": 2,
+      "human": "same",
+      "model": null,
+      "note": ""
+    }
+  ]
+}
