@@ -306,5 +306,181 @@
     },
     "chars": 12673,
     "text": "[한국어](./README.md) | [English](./README_EN.md)\n\n# KoELECTRA\n\n<p float=\"left\" align=\"center\">\n    <img width=\"900\" src=\"https://user-images.githubusercontent.com/28896432/80024445-0f444e00-851a-11ea-9137-9da2abfd553d.png\" />  \n</p>\n\n[ELECTRA](https://openreview.net/pdf?id=r1xMH1BtvB)는 `Replaced Token Detection`, 즉 generator에서 나온 token을 보고 discriminator에서 \"real\" token인지 \"fake\" token인지 판별하는 방법으로 학습을 합니다. 이 방법은 모든 input token에 대해 학습할 수 있다는 장점을 가지며, BERT 등과 비교했을 때 더 좋은 성능을 보였습니다.\n\nKoELECTRA는 **34GB의 한국어 text**로 학습하였고, 이를 통해 나온 `KoELECTRA-Base`와 `KoELECTRA-Small` 두 가지 모델을 배포하게 되었습니다.\n\n또한 KoELECTRA는 **Wordpiece 사용**, **모델 s3 업로드** 등을 통해 OS 상관없이 `Transformers` 라이브러리만 설치하면 곧바로 사용할 수 있습니다.\n\n## Download Link\n\n| Model                |                                                                     Discriminator |                                                                 Generator |                                                                                                         Tensorflow-v1 |\n| -------------------- | --------------------------------------------------------------------------------: | ------------------------------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------: |\n| `KoELECTRA-Base-v1`  |     [Discriminator](https://huggingface.co/monologg/koelectra-base-discriminator) |     [Generator](https://huggingface.co/monologg/koelectra-base-generator) |      [Tensorflow-v1](https://huggingface.co/monologg/koelectra-base-discriminator/blob/tfv1/koelectra-base-v1.tar.gz) |\n| `KoELECTRA-Small-v1` |    [Discriminator](https://huggingface.co/monologg/koelectra-small-discriminator) |    [Generator](https://huggingface.co/monologg/koelectra-small-generator) |    [Tensorflow-v1](https://huggingface.co/monologg/koelectra-small-discriminator/blob/tfv1/koelectra-small-v1.tar.gz) |\n| `KoELECTRA-Base-v2`  |  [Discriminator](https://huggingface.co/monologg/koelectra-base-v2-discriminator) |  [Generator](https://huggingface.co/monologg/koelectra-base-v2-generator) |   [Tensorflow-v1](https://huggingface.co/monologg/koelectra-base-v2-discriminator/blob/tfv1/koelectra-base-v2.tar.gz) |\n| `KoELECTRA-Small-v2` | [Discriminator](https://huggingface.co/monologg/koelectra-small-v2-discriminator) | [Generator](https://huggingface.co/monologg/koelectra-small-v2-generator) | [Tensorflow-v1](https://huggingface.co/monologg/koelectra-small-v2-discriminator/blob/tfv1/koelectra-small-v2.tar.gz) |\n| `KoELECTRA-Base-v3`  |  [Discriminator](https://huggingface.co/monologg/koelectra-base-v3-discriminator) |  [Generator](https://huggingface.co/monologg/koelectra-base-v3-generator) |   [Tensorflow-v1](https://huggingface.co/monologg/koelectra-base-v3-discriminator/blob/tfv1/koelectra-base-v3.tar.gz) |\n| `KoELECTRA-Small-v3` | [Discriminator](https://huggingface.co/monologg/koelectra-small-v3-discriminator) | [Generator](https://huggingface.co/monologg/koelectra-small-v3-generator) | [Tensorflow-v1](https://huggingface.co/monologg/koelectra-small-v3-discriminator/blob/tfv1/koelectra-small-v3.tar.gz) |\n\n## About KoELECTRA\n\n|                   |               | Layers | Embedding Size | Hidden Size | # heads |\n| ----------------- | ------------: | -----: | -------------: | ----------: | ------: |\n| `KoELECTRA-Base`  | Discriminator |     12 |            768 |         768 |      12 |\n|                   |     Generator |     12 |            768 |         256 |       4 |\n| `KoELECTRA-Small` | Discriminator |     12 |            128 |         256 |       4 |\n|                   |     Generator |     12 |            128 |         256 |       4 |\n\n### Vocabulary\n\n- 이번 프로젝트의 가장 큰 목적은 **Transformers 라이브러리만 있으면 모델을 곧바로 사용 가능하게 만드는 것**이었고, 이에 Sentencepiece, Mecab을 사용하지 않고 원 논문과 코드에서 사용한 `Wordpiece`를 사용하였습니다.\n- 자세한 내용은 [[Wordpiece Vocabulary]](./docs/wordpiece_vocab.md) 참고\n\n|     | Vocab Len | do_lower_case |\n| --- | --------: | ------------: |\n| v1  |     32200 |         False |\n| v2  |     32200 |         False |\n| v3  |     35000 |         False |\n\n### Data\n\n- `v1`, `v2`의 경우 **약 14G Corpus** (2.6B tokens)를 사용했습니다. (뉴스, 위키, 나무위키)\n- `v3`의 경우 **약 20G의 모두의 말뭉치**를 추가적으로 사용했습니다. (신문, 문어, 구어, 메신저, 웹)\n\n### Pretraining Details\n\n| Model        | Batch Size | Train Steps |   LR | Max Seq Len | Generator Size | Train Time |\n| :----------- | ---------: | ----------: | ---: | ----------: | -------------: | ---------: |\n| `Base v1,2`  |        256 |        700K | 2e-4 |         512 |           0.33 |         7d |\n| `Base v3`    |        256 |        1.5M | 2e-4 |         512 |           0.33 |        14d |\n| `Small v1,2` |        512 |        300K | 5e-4 |         512 |            1.0 |         3d |\n| `Small v3`   |        512 |        800K | 5e-4 |         512 |            1.0 |         7d |\n\n- `KoELECTRA-Small` 모델의 경우 원 논문에서의 `ELECTRA-Small++`와 **동일한 옵션**을 사용하였습니다.\n\n  - 이는 공식 ELECTRA에서 배포한 Small 모델과 설정이 동일합니다.\n  - 또한 `KoELECTRA-Base`와는 달리, Generator와 Discriminator의 모델 사이즈(=`generator_hidden_size`)가 동일합니다.\n\n- `Batch size`와 `Train steps`을 제외하고는 **원 논문의 Hyperparameter와 동일**하게 가져갔습니다.\n\n  - 다른 hyperparameter를 변경하여 돌려봤지만 원 논문과 동일하게 가져간 것이 성능이 가장 좋았습니다.\n\n- **TPU v3-8**을 이용하여 학습하였고, GCP에서의 TPU 사용법은 [[Using TPU for Pretraining]](./docs/tpu_training.md)에 정리하였습니다.\n\n## KoELECTRA on 🤗 Transformers 🤗\n\n- `Transformers v2.8.0`부터 `ElectraModel`을 공식 지원합니다.\n\n- **Huggingface S3**에 모델이 이미 업로드되어 있어서, **모델을 직접 다운로드할 필요 없이** 곧바로 사용할 수 있습니다.\n\n- `ElectraModel`은 `pooled_output`을 리턴하지 않는 것을 제외하고 `BertModel`과 유사합니다.\n\n- ELECTRA는 finetuning시에 `discriminator`를 사용합니다.\n\n### 1. Pytorch Model & Tokenizer\n\n```python\nfrom transformers import ElectraModel, ElectraTokenizer\n\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-base-discriminator\")  # KoELECTRA-Base\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-small-discriminator\")  # KoELECTRA-Small\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-base-v2-discriminator\")  # KoELECTRA-Base-v2\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-small-v2-discriminator\")  # KoELECTRA-Small-v2\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-base-v3-discriminator\")  # KoELECTRA-Base-v3\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-small-v3-discriminator\")  # KoELECTRA-Small-v3\n```\n\n### 2. Tensorflow v2 Model\n\n```python\nfrom transformers import TFElectraModel\n\nmodel = TFElectraModel.from_pretrained(\"monologg/koelectra-base-v3-discriminator\", from_pt=True)\n```\n\n### 3. Tokenizer Example\n\n```python\n>>> from transformers import ElectraTokenizer\n>>> tokenizer = ElectraTokenizer.from_pretrained(\"monologg/koelectra-base-v3-discriminator\")\n>>> tokenizer.tokenize(\"[CLS] 한국어 ELECTRA를 공유합니다. [SEP]\")\n['[CLS]', '한국어', 'EL', '##EC', '##TRA', '##를', '공유', '##합니다', '.', '[SEP]']\n>>> tokenizer.convert_tokens_to_ids(['[CLS]', '한국어', 'EL', '##EC', '##TRA', '##를', '공유', '##합니다', '.', '[SEP]'])\n[2, 11229, 29173, 13352, 25541, 4110, 7824, 17788, 18, 3]\n```\n\n## Result on Subtask\n\n**config의 세팅을 그대로 하여 돌린 결과이며, hyperparameter tuning을 추가적으로 할 시 더 좋은 성능이 나올 수 있습니다.**\n\n코드 및 자세한 내용은 [[Finetuning]](./finetune/README.md) 참고\n\n### Base Model\n\n|                       | **NSMC**<br/>(acc) | **Naver NER**<br/>(F1) | **PAWS**<br/>(acc) | **KorNLI**<br/>(acc) | **KorSTS**<br/>(spearman) | **Question Pair**<br/>(acc) | **KorQuaD (Dev)**<br/>(EM/F1) | **Korean-Hate-Speech (Dev)**<br/>(F1) |\n| :-------------------- | :----------------: | :--------------------: | :----------------: | :------------------: | :-----------------------: | :-------------------------: | :---------------------------: | :-----------------------------------: |\n| KoBERT                |       89.59        |         87.92          |       81.25        |        79.62         |           81.59           |            94.85            |         51.75 / 79.15         |                 66.21                 |\n| XLM-Roberta-Base      |       89.03        |         86.65          |       82.80        |        80.23         |           78.45           |            93.80            |         64.70 / 88.94         |                 64.06                 |\n| HanBERT               |       90.06        |         87.70          |       82.95        |        80.32         |           82.73           |            94.72            |         78.74 / 92.02         |               **68.32**               |\n| KoELECTRA-Base        |       90.33        |         87.18          |       81.70        |        80.64         |           82.00           |            93.54            |         60.86 / 89.28         |                 66.09                 |\n| KoELECTRA-Base-v2     |       89.56        |         87.16          |       80.70        |        80.72         |           82.30           |            94.85            |         84.01 / 92.40         |                 67.45                 |\n| **KoELECTRA-Base-v3** |     **90.63**      |       **88.11**        |     **84.45**      |      **82.24**       |         **85.53**         |          **95.25**          |       **84.83 / 93.45**       |                 67.61                 |\n\n### Small Model\n\n|                        | **NSMC**<br/>(acc) | **Naver NER**<br/>(F1) | **PAWS**<br/>(acc) | **KorNLI**<br/>(acc) | **KorSTS**<br/>(spearman) | **Question Pair**<br/>(acc) | **KorQuaD (Dev)**<br/>(EM/F1) | **Korean-Hate-Speech (Dev)**<br/>(F1) |\n| :--------------------- | :----------------: | :--------------------: | :----------------: | :------------------: | :-----------------------: | :-------------------------: | :---------------------------: | :-----------------------------------: |\n| DistilKoBERT           |       88.60        |         84.65          |       60.50        |        72.00         |           72.59           |            92.48            |         54.40 / 77.97         |                 60.72                 |\n| KoELECTRA-Small        |       88.83        |         84.38          |       73.10        |        76.45         |           76.56           |            93.01            |         58.04 / 86.76         |                 63.03                 |\n| KoELECTRA-Small-v2     |       88.83        |         85.00          |       72.35        |        78.14         |           77.84           |            93.27            |         81.43 / 90.46         |                 60.14                 |\n| **KoELECTRA-Small-v3** |     **89.36**      |       **85.40**        |     **77.45**      |      **78.60**       |         **80.79**         |          **94.85**          |       **82.11 / 91.13**       |               **63.07**               |\n\n## Updates\n\n**April 27, 2020**\n\n- 2개의 Subtask (`KorSTS`, `QuestionPair`)에 대해 추가적으로 finetuning을 진행하였고, 기존 5개의 Subtask에 대해서도 결과를 업데이트하였습니다.\n\n**June 3, 2020**\n\n- [EnlipleAI PLM](https://github.com/enlipleai/kor_pratrain_LM)에서 사용된 vocabulary를 이용하여 `KoELECTRA-v2`를 제작하였습니다. Base 모델과 Small 모델 모두 `KorQuaD`에서 성능 향상을 보였습니다.\n\n**October 9, 2020**\n\n- `모두의 말뭉치`를 추가적으로 사용하여 `KoELECTRA-v3`를 제작하였습니다. Vocab도 `Mecab`과 `Wordpiece`를 이용하여 새로 제작하였습니다.\n- `Huggingface Transformers`의 `ElectraForSequenceClassification` 공식 지원 등을 고려하여 기존 Subtask 결과를 새로 Update하였습니다. 또한 [Korean-Hate-Speech](https://github.com/kocohub/korean-hate-speech)의 결과도 추가했습니다.\n\n```python\nfrom transformers import ElectraModel, ElectraTokenizer\n\nmodel = ElectraModel.from_pretrained(\"monologg/koelectra-base-v3-discriminator\")\ntokenizer = ElectraTokenizer.from_pretrained(\"monologg/koelectra-base-v3-discriminator\")\n```\n\n**May 26, 2021**\n\n- `torch<=1.4` 에서 로딩이 되지 않는 이슈 해결 (모델 수정 후 재업로드 완료) ([Related Issue](https://github.com/pytorch/pytorch/issues/48915))\n- huggingface hub에 `tensorflow v2` 모델 업로드 (`tf_model.h5`)\n\n**Oct 20, 2021**\n\n- `tf_model.h5`에서 바로 로딩하는 부분이 여러 이슈가 존재하여 제거 (`from_pt=True`로 로딩하는 것으로 되돌림)\n\n## Acknowledgement\n\nKoELECTRA은 **Tensorflow Research Cloud (TFRC)** 프로그램의 Cloud TPU 지원으로 제작되었습니다. 또한 `KoELECTRA-v3`는 **모두의 말뭉치**의 도움으로 제작되었습니다.\n\n## Citation\n\n이 코드를 연구용으로 사용하는 경우 아래와 같이 인용해주세요.\n\n```bibtex\n@misc{park2020koelectra,\n  author = {Park, Jangwon},\n  title = {KoELECTRA: Pretrained ELECTRA Model for Korean},\n  year = {2020},\n  publisher = {GitHub},\n  journal = {GitHub repository},\n  howpublished = {\\url{https://github.com/monologg/KoELECTRA}}\n}\n```\n\n## Reference\n\n- [ELECTRA](https://github.com/google-research/electra)\n- [Huggingface Transformers](https://github.com/huggingface/transformers)\n- [Tensorflow Research Cloud](https://www.tensorflow.org/tfrc?hl=ko)\n- [Chinese ELECTRA](https://github.com/ymcui/Chinese-ELECTRA/blob/master/README_EN.md)\n- [Enliple AI Korean PLM](https://github.com/enlipleai/kor_pratrain_LM)\n- [모두의 말뭉치](https://corpus.korean.go.kr/)\n"
+  },
+  {
+    "id": "toss-date",
+    "split": "holdout",
+    "repo": "toss/slash",
+    "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+    "committed": "2022-11-24",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/common/date/README.ko.md",
+    "license": "MIT",
+    "license_file": "licenses/toss_slash.txt",
+    "reference_path": "packages/common/date/README.ko.md",
+    "readme_last_edit": "2022-10-28",
+    "authors_of_file": [
+      "Hoseung"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/date"
+      ],
+      "strip": "packages/common/date",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "be5bab99d5893983692363ca79f19c41121609efa8e2e7962b7f1ecd04586734",
+      "files": 12,
+      "bytes": 14541
+    },
+    "chars": 68,
+    "text": "# @toss/date\n\nDate 연산 유틸들을 제공하는 라이브러리입니다.\n\n`date-fns` 라이브러리에 기반합니다.\n"
+  },
+  {
+    "id": "toss-use-funnel",
+    "split": "holdout",
+    "repo": "toss/slash",
+    "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+    "committed": "2022-11-24",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/react/use-funnel/README.md",
+    "license": "MIT",
+    "license_file": "licenses/toss_slash.txt",
+    "reference_path": "packages/react/use-funnel/README.md",
+    "readme_last_edit": "2022-10-08",
+    "authors_of_file": [
+      "changyoung"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/use-funnel"
+      ],
+      "strip": "packages/react/use-funnel",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "a59419749b465b96c7ce30dfc29a4be4db56f11c7a601c43209ec66fdbdb7428",
+      "files": 15,
+      "bytes": 24188
+    },
+    "chars": 2618,
+    "text": "# useFunnel\n\n선언적이고 명시적으로 퍼널 스텝을 관리하고, 퍼널에 대한 상태의 흐름을 명확하게 파악할 수 있도록 만든 퍼널 컨트롤러입니다.\n\n## 목차\n\n- [초기 설정](#initialize)\n- [퍼널 스텝 정의하기](#start)\n- [Best Practice](#bestPractice)\n- [API](#api)\n\n---\n\n<a name=\"initialize\"></a>\n\n## 초기 설정\n\nuseFunnel을 사용하여 사용할 퍼널 스텝 리스트를 입력해주세요.\n\n```javascript\nconst [퍼널, setStep] = useFunnel(['스텝1', '스텝2', '스텝3'] as const)\n```\n\n> 정확한 타입 추론을 위해 반드시 스텝 리스트는 as const와 같이 const assertion을 통해 객체를 리터럴로 사용해주세요.\n\n---\n\n<a name=\"start\"></a>\n\n## 퍼널 정의하기\n\nuseFunnel은 전달받은 스텝 리스트로 타이핑된 2개의 아이템이 튜플로 리턴됩니다.\n\n- 첫 번째 아이템은 퍼널 컴포넌트입니다.\n  - 어떤 스텝을 보여줄지 Conditional Rendering을 수행하는 역할을 합니다.\n  - 하위 프로퍼티인 `Step`에 있는 컴포넌트는 스텝을 나타내는 컴포넌트입니다.\n- 두 번째 아이템은 스텝을 변경할 수 있는 함수입니다.\n\n정의된 각 퍼널 스텝은 `funnel-step`이라는 이름의 쿼리 파라미터와 스텝의 이름이 매칭될 경우 렌더링됩니다.\n\n```javascript\n\nconst [퍼널, setStep] = useFunnel(['이름입력', '주민번호입력', '완료'] as const)\n\nreturn (\n  <퍼널>\n    <퍼널.Step name=\"이름입력\">\n      <이름입력스텝 /> // ?funnel-step=이름입력스텝 일 때 렌더\n    </퍼널.Step>\n\n    <퍼널.Step name=\"주민번호입력\">\n      <주민번호입력스텝 /> // ?funnel-step=주민번호입력스텝 일 때 렌더\n    </퍼널.Step>\n\n    <퍼널.Step name=\"완료\">\n      <퍼널완료스텝 /> // ?funnel-step=퍼널완료스텝 일 때 렌더\n    </퍼널.Step>\n  </퍼널>\n)\n\n```\n\n---\n\n<a name=\"bestPractice\"></a>\n\n## Best Practice\n\n- useFunnel.withState을 사용해주세요. useFunnel를 useState과 함께 직접 사용하면 까다로운 상태 동기화 이슈를 만나게 돼요.\n- 스텝의 전환을 useFunnel을 사용하는 곳에 보이도록 해주세요. setStep을 prop으로 컴포넌트 안으로 주입하여 Imperative하게 스텝을 전환하는 로직은 지양하는게 좋습니다.\n- 퍼널의 상태 관리를 useFunnel을 사용하는 곳에서 해주세요. 퍼널에서 사용하는 상태의 흐름을 한 곳에서 명확하게 파악하기 쉬울거에요!\n\n```javascript\nconst KyoboLifeFunnel = () => {\n  const [Funnel, state, setState] = useFunnel(['아파트여부', '지역선택', '완료'] as const).withState<{\n    propertyType?: '빌라' | '아파트';\n    address?: string;\n  }>({});\n\n  const 상담신청 = useLoanApplicationCallback();\n\n  return (\n    <Funnel>\n      <Funnel.Step name=\"아파트여부\">\n        <아파트여부스텝 지역선택으로가기={() => setState(prev => ({...prev, step: '지역선택', isApartment: true})} />\n      </Funnel.Step>\n      <Funnel.Step name=\"지역선택\">\n        <지역선택스텝 지역선택완료={(지역정보) => setState(prev => ({...prev, step: '완료', region: 지역정보})} />\n      </Funnel.Step>\n      <Funnel.Step name=\"완료\">\n        <완료스텝 신청={() => 상담신청(state)} />\n      </Funnel.Step>\n    </Funnel>\n  );\n};\n```\n\n---\n\n<a name=\"api\"></a>\n\n## API\n\n### `useFunnel<Step[]>(steps, options)`\n\n#### `steps`\n\n- `Step[]` 타입\n- 해당 퍼널에서 사용할 스텝 리스트의 객체 리터럴을 받습니다.\n\n#### `options`\n\n- `stepQueryKey`\n  - `string` 타입\n  - Optional\n  - 현재 스텝을 query string에 어떻게 나타낼지 정합니다.\n  - 기본값은 `funnel-step`입니다.\n- `initialStep`\n  - `Step` 타입\n  - `stepQueryKey`에 해당하는 query string이 없을 경우, 기본적으로 진입하게 되는 스텝입니다.\n  - Optional\n- `onStepChange`\n  - `((step: Step) => void)` 타입\n  - Optional\n  - 스텝이 변경될 때마다 전달된 콜백이 호출됩니다.\n"
+  },
+  {
+    "id": "toss-use-query-param",
+    "split": "holdout",
+    "repo": "toss/slash",
+    "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+    "committed": "2022-11-24",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/react/use-query-param/README.md",
+    "license": "MIT",
+    "license_file": "licenses/toss_slash.txt",
+    "reference_path": "packages/react/use-query-param/README.md",
+    "readme_last_edit": "2022-10-08",
+    "authors_of_file": [
+      "changyoung"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/use-query-param"
+      ],
+      "strip": "packages/react/use-query-param",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "622c7f285d3661ac8e7e277af6df8ef693f24a26163e8547d2ae16c82909fe95",
+      "files": 21,
+      "bytes": 13156
+    },
+    "chars": 1280,
+    "text": "# useQueryParam\n\n@toss/use-query-param는 쿼리 파라미터 값을 가져오는데 도움이 되는 라이브러리입니다.\n\n## 설치\n\n```shell\nyarn add @toss/use-query-param\n```\n\n## API\n\n### `useQueryParam(name, option)`\n\n```typescript\nuseQueryParam(name, option);\n```\n\n| option   | 설명                             | 필수 여부 |\n| -------- | -------------------------------- | --------- |\n| suspense | suspense를 사용할 때 사용합니다. | x         |\n| parser   | 형변환을 할 때 사용합니다.       | x         |\n\n`suspense:true`를 추가하지 않을 경우 next/router의 Router가 준비되지 않아 초기에 undefined를 리턴할 수 있습니다.\n\n#### 사용 예시\n\n```typescript\nconst type = useQueryParam('type');\n// suspense\nconst type = useQueryParam('type', { suspense: true });\n// suspense, parser\nconst type = useQueryParam('type', { suspense: true, parser: Number });\n```\n\n- https://toss.im/page?type=c -> 'c'\n- https://toss.im/page -> undefined\n\n### `useQueryParams()`\n\n```typescript\nuseQueryParams<T extends { [key: string]: string } = { [key: string]: string }>(): Partial<T>\n```\n\n#### 사용 예시\n\n```typescript\n// 한 개\nconst { foo } = useQueryParams<{ foo: string }>();\n\n// 다수\nconst { foo, toss } = useQueryParams<{ foo: string; toss: string }>();\n```\n\n- `https://toss.im/page -> undefined`\n- `https://toss.im/page?foo=bar -> { foo: bar }`\n- `https://toss.im/page?foo=bar&toss=core -> { foo: bar, toss: core }`\n"
+  },
+  {
+    "id": "toss-scroll-animation",
+    "split": "holdout",
+    "repo": "toss/slash",
+    "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+    "committed": "2022-11-24",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/react/scroll-animation/README.md",
+    "license": "MIT",
+    "license_file": "licenses/toss_slash.txt",
+    "reference_path": "packages/react/scroll-animation/README.md",
+    "readme_last_edit": "2022-10-08",
+    "authors_of_file": [
+      "changyoung"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/scroll-animation"
+      ],
+      "strip": "packages/react/scroll-animation",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "ed5f98fbe382acbbe0d6c8115792a8e918e77bf553a62fc6354dac242548a5bd",
+      "files": 26,
+      "bytes": 15820
+    },
+    "chars": 955,
+    "text": "# Scroll Animation Package\n\n스크롤 애니메이션을 구현하는데 도움이 되는 유틸과 미리 정의된 애니메이션을 담은 패키지입니다.\n\n## 사용법\n\n1. 스크롤 관련 컨텍스트 주입을 위해 스크롤 애니메이션을 사용하고자 하는 영역을 `<ScrollProgressController>`로 감싸줍니다. `App.tsx`에 두어도 되지만, 이 컴포넌트는 scroll 이벤트를 핸들링하므로 필요한 화면에서만 사용하는 것을 권장합니다.\n2. `useScrollProgress()` 훅을 이용해 애니메이션을 구현할 요소를 연결하고 progress 값에 따라 애니메이션을 구현하세요.\n\n코드 예제는 스토리북을 참고하세요.\n\n## 설정값\n\n### triggerHook\n\nref 요소가 뷰포트에 얼마나 등장했을 때 progress가 시작될지 0과 1사이의 숫자로 결정합니다.\n\n아래와 같은 alias를 사용할 수 있습니다.\n\n- onEnter: 화면에 등장하기 시작할 때 (triggerHook = 1)\n- onCenter: 화면 중앙에 ref 요소의 상단이 등장했을 때 (triggerHook = 0.5)\n- onLeave: 화면에서 벗어나기 시작할 때 (triggerHook = 0)\n\n### duration\n\ntrigger가 시작된 후로부터 progress가 얼마동안 진행될지 결정합니다.\n\ne.g.\n\n- (progress = 200 혹은 200px): 200px를 스크롤 할 때까지\n- (progress = 200%): ref 요소의 2배 크기 만큼 스크롤 할 때까지\n- (progress = 150vh): window 높이의 1.5배만큼 스크롤 할 때까지\n\n## 미리 정의된 애니메이션\n\n### ScrollRevealAnimation\n\n요소가 화면의 40%~60% 영역을 지나는 동안 아래 애니메이션을 재생합니다.\n\n- opacity가 0에서 1로 변화\n- translateY가 100에서 0으로 변화\n"
+  },
+  {
+    "id": "kobert-transformers",
+    "split": "holdout",
+    "repo": "monologg/KoBERT-Transformers",
+    "commit": "4e0a00e5e4884848fe4daeccf3698a28ebcfe449",
+    "committed": "2021-06-16",
+    "committed_before": "2022-11-30",
+    "url": "https://github.com/monologg/KoBERT-Transformers/blob/4e0a00e5e4884848fe4daeccf3698a28ebcfe449/README.md",
+    "license": "Apache-2.0",
+    "license_file": "licenses/monologg_KoBERT-Transformers.txt",
+    "reference_path": "README.md",
+    "readme_last_edit": "2021-06-16",
+    "authors_of_file": [
+      "Jangwon Park",
+      "monologg"
+    ],
+    "excerpt": {
+      "modifications": []
+    },
+    "fixture": {
+      "repo": "monologg/KoBERT-Transformers",
+      "commit": "4e0a00e5e4884848fe4daeccf3698a28ebcfe449",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^\\.github/"
+      ],
+      "sha256": "b7a72dc0aafbbf74f337dea0d685246eb12ffb50401261d2e2cbf9924b1db59d",
+      "files": 17,
+      "bytes": 28675
+    },
+    "chars": 5776,
+    "text": "# KoBERT-Transformers\n\n`KoBERT` & `DistilKoBERT` on 🤗 Huggingface Transformers 🤗\n\nKoBERT 모델은 [공식 레포](https://github.com/SKTBrain/KoBERT)의 것과 동일합니다. 본 레포는 **Huggingface tokenizer의 모든 API를 지원**하기 위해서 제작되었습니다.\n\n## 🚨 중요! 🚨\n\n### 🙏 TL;DR\n\n1. `transformers` 는 `v3.0` 이상을 반드시 설치!\n2. `tokenizer`는 본 레포의 `kobert_transformers/tokenization_kobert.py`를 사용!\n\n### 1. Tokenizer 호환\n\n`Huggingface Transformers`가 `v2.9.0`부터 tokenization 관련 API가 일부 변경되었습니다. 이에 맞춰 기존의 `tokenization_kobert.py`를 상위 버전에 맞게 수정하였습니다.\n\n### 2. Embedding의 padding_idx 이슈\n\n이전부터 `BertModel`의 `BertEmbeddings`에서 `padding_idx=0`으로 **Hard-coding**되어 있었습니다. (아래 코드 참고)\n\n```python\nclass BertEmbeddings(nn.Module):\n    def __init__(self, config):\n        super().__init__()\n        self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size, padding_idx=0)\n        self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)\n        self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size)\n```\n\n그러나 Sentencepiece의 경우 기본값으로 `pad_token_id=1`, `unk_token_id=0`으로 설정이 되어 있고 (이는 KoBERT도 동일), 이를 그대로 사용하는 BertModel의 경우 원치 않은 결과를 가져올 수 있습니다.\n\nHuggingface에서도 최근에 해당 이슈를 인지하여 이를 수정하여 `v2.9.0`에 반영하였습니다. ([관련 PR #3793](https://github.com/huggingface/transformers/pull/3793)) config에 `pad_token_id=1` 을 추가 가능하여 이를 해결할 수 있게 하였습니다.\n\n```python\nclass BertEmbeddings(nn.Module):\n    def __init__(self, config):\n        super().__init__()\n        self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size, padding_idx=config.pad_token_id)\n        self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)\n        self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size)\n```\n\n그러나 `v.2.9.0`에서 `DistilBERT`, `ALBERT` 등에는 이 이슈가 해결되지 않아 직접 PR을 올려 처리하였고 ([관련 PR #3965](https://github.com/huggingface/transformers/pull/3965)), **`v2.9.1`에 최종적으로 반영되어 배포되었습니다.**\n\n아래는 이전과 현재 버전의 차이점을 보여주는 코드입니다.\n\n```python\n# Transformers v2.7.0\n>>> from transformers import BertModel, DistilBertModel\n>>> model = BertModel.from_pretrained(\"monologg/kobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=0)\n>>> model = DistilBertModel.from_pretrained(\"monologg/distilkobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=0)\n\n\n### Transformers v2.9.1\n>>> from transformers import BertModel, DistilBertModel\n>>> model = BertModel.from_pretrained(\"monologg/kobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=1)\n>>> model = DistilBertModel.from_pretrained(\"monologg/distilkobert\")\n>>> model.embeddings.word_embeddings\nEmbedding(8002, 768, padding_idx=1)\n```\n\n## KoBERT / DistilKoBERT on 🤗 Transformers 🤗\n\n### Dependencies\n\n- torch>=1.1.0\n- transformers>=3,<5\n\n### How to Use\n\n```python\n>>> from transformers import BertModel, DistilBertModel\n>>> bert_model = BertModel.from_pretrained('monologg/kobert')\n>>> distilbert_model = DistilBertModel.from_pretrained('monologg/distilkobert')\n```\n\n**Tokenizer를 사용하려면, [`kobert_transformers/tokenization_kobert.py`](https://github.com/monologg/KoBERT-Transformers/blob/master/kobert_transformers/tokenization_kobert.py) 파일을 복사한 후, `KoBertTokenizer`를 임포트하면 됩니다.**\n\n- KoBERT와 DistilKoBERT 모두 동일한 토크나이저를 사용합니다.\n- **기존 KoBERT의 경우 Special Token이 제대로 분리되지 않는 이슈**가 있어서 해당 부분을 수정하여 반영하였습니다. ([Issue link](https://github.com/SKTBrain/KoBERT/issues/11))\n\n```python\n>>> from tokenization_kobert import KoBertTokenizer\n>>> tokenizer = KoBertTokenizer.from_pretrained('monologg/kobert') # monologg/distilkobert도 동일\n>>> tokenizer.tokenize(\"[CLS] 한국어 모델을 공유합니다. [SEP]\")\n>>> ['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]']\n>>> tokenizer.convert_tokens_to_ids(['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]'])\n>>> [2, 4958, 6855, 2046, 7088, 1050, 7843, 54, 3]\n```\n\n## Kobert-Transformers (Pip library)\n\n[![PyPI](https://img.shields.io/pypi/v/kobert-transformers)](https://pypi.org/project/kobert-transformers/)\n[![license](https://img.shields.io/badge/license-Apache%202.0-red)](https://github.com/monologg/DistilKoBERT/blob/master/LICENSE)\n[![Downloads](https://pepy.tech/badge/kobert-transformers)](https://pepy.tech/project/kobert-transformers)\n\n- `tokenization_kobert.py`를 랩핑한 파이썬 라이브러리\n- KoBERT, DistilKoBERT를 Huggingface Transformers 라이브러리 형태로 제공\n- `v0.5.1`에서는 `transformers v3.0` 이상으로 기본 설치합니다. (`transformers v4.0` 까지는 이슈 없이 사용 가능)\n\n### Install Kobert-Transformers\n\n```bash\npip3 install kobert-transformers\n```\n\n### How to Use\n\n```python\n>>> import torch\n>>> from kobert_transformers import get_kobert_model, get_distilkobert_model\n>>> model = get_kobert_model()\n>>> model.eval()\n>>> input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]])\n>>> attention_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]])\n>>> token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]])\n>>> sequence_output, pooled_output = model(input_ids, attention_mask, token_type_ids)\n>>> sequence_output[0]\ntensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],\n        [-0.2478,  0.2420,  0.2552,  ..., -0.4877, -0.0727,  0.0754],\n        [-0.2472,  0.2420,  0.2561,  ..., -0.4874, -0.0733,  0.0765]],\n       grad_fn=<SelectBackward>)\n```\n\n```python\n>>> from kobert_transformers import get_tokenizer\n>>> tokenizer = get_tokenizer()\n>>> tokenizer.tokenize(\"[CLS] 한국어 모델을 공유합니다. [SEP]\")\n['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]']\n>>> tokenizer.convert_tokens_to_ids(['[CLS]', '▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.', '[SEP]'])\n[2, 4958, 6855, 2046, 7088, 1050, 7843, 54, 3]\n```\n\n## Reference\n\n- [KoBERT](https://github.com/SKTBrain/KoBERT)\n- [DistilKoBERT](https://github.com/monologg/DistilKoBERT)\n- [Huggingface Transformers](https://github.com/huggingface/transformers)\n"
   }
 ]

@@ -43,6 +43,13 @@ node scripts/eval/judge.mjs pair --out <이름> --left H --right C --reference-p
 | `toss-hangul-readme` | toss/slash (`packages/common/hangul`) | 2022-10-13 | MIT | 없음 | 확인용 |
 | `open-korean-text-readme` | open-korean-text/open-korean-text | 2018-07-31 | Apache-2.0 | 없음 | 확인용 |
 | `koelectra-readme` | monologg/KoELECTRA (`finetune`, `pretrain`) | 2021-11-02 | Apache-2.0 | 있음 | 확인용 |
+| `toss-date-readme` | toss/slash (`packages/common/date`) | 2022-10-28 | MIT | 없음 | 새 확인용 |
+| `toss-use-funnel-readme` | toss/slash (`packages/react/use-funnel`) | 2022-10-08 | MIT | 없음 | 새 확인용 |
+| `toss-use-query-param-readme` | toss/slash (`packages/react/use-query-param`) | 2022-10-08 | MIT | 없음 | 새 확인용 |
+| `toss-scroll-animation-readme` | toss/slash (`packages/react/scroll-animation`) | 2022-10-08 | MIT | 없음 | 새 확인용 |
+| `kobert-transformers-readme` | monologg/KoBERT-Transformers | 2021-06-16 | Apache-2.0 | 없음 | 새 확인용 |
+
+개발용 4개로 스킬을 고쳤다. 확인용 4개는 기준선 실행에서 결과와 판정 이유를 이미 읽었으므로, 개선을 마친 뒤 처음 보는 사례 5개(새 확인용, `split: holdout`)를 따로 만들었다. 새 확인용 사례는 0.4.0 후보를 만든 뒤에 추가했고 어떤 조건으로도 미리 실행하지 않았다.
 
 커밋, 꺼낸 경로와 뺀 파일, 기준 README 주소는 [`sources.json`](sources.json)에 있다. 각 저장소의 라이선스 사본은 [`licenses/`](licenses/)에 그대로 두었다. 기준 README의 저작권은 각 저장소의 저작권자에게 있고, 각 라이선스 조건에 따라 평가 자료로 쓴다. Korpora는 한국어 부분(1–192줄)만 기준으로 쓴다.
 

@@ -310,5 +310,195 @@
     },
     "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
     "reference": "koelectra"
+  },
+  {
+    "id": "toss-date-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout",
+    "source": "toss-date",
+    "origin": "human:https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/common/date/README.ko.md",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "날짜 연산 함수를 제공하는 패키지라는 점",
+      "주요 함수와 사용 예",
+      "설치 방법"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/date"
+      ],
+      "strip": "packages/common/date",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "be5bab99d5893983692363ca79f19c41121609efa8e2e7962b7f1ecd04586734"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "toss-date"
+  },
+  {
+    "id": "toss-use-funnel-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout",
+    "source": "toss-use-funnel",
+    "origin": "human:https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/react/use-funnel/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "퍼널 스텝을 관리하는 훅이라는 점",
+      "처음 설정하고 스텝을 정의하는 예",
+      "API"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/use-funnel"
+      ],
+      "strip": "packages/react/use-funnel",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "a59419749b465b96c7ce30dfc29a4be4db56f11c7a601c43209ec66fdbdb7428"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "toss-use-funnel"
+  },
+  {
+    "id": "toss-use-query-param-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout",
+    "source": "toss-use-query-param",
+    "origin": "human:https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/react/use-query-param/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지 README 써 줘. 한국어로.",
+    "input": "",
+    "must_preserve": [
+      "쿼리 파라미터 값을 다루는 훅이라는 점",
+      "설치 방법",
+      "사용 예"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/use-query-param"
+      ],
+      "strip": "packages/react/use-query-param",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "622c7f285d3661ac8e7e277af6df8ef693f24a26163e8547d2ae16c82909fe95"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "toss-use-query-param"
+  },
+  {
+    "id": "toss-scroll-animation-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout",
+    "source": "toss-scroll-animation",
+    "origin": "human:https://github.com/toss/slash/blob/7ca31c3fc5a5affa6b133467dbfd726a0b31cf00/packages/react/scroll-animation/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지의 한국어 README를 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "스크롤 진행에 따라 애니메이션을 구현하는 패키지라는 점",
+      "감싸는 컴포넌트와 훅을 쓰는 순서",
+      "설정값"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/scroll-animation"
+      ],
+      "strip": "packages/react/scroll-animation",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "ed5f98fbe382acbbe0d6c8115792a8e918e77bf553a62fc6354dac242548a5bd"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "toss-scroll-animation"
+  },
+  {
+    "id": "kobert-transformers-readme",
+    "task": "draft",
+    "variant": "draft",
+    "genre": "README 초안",
+    "language": "ko",
+    "split": "holdout",
+    "source": "kobert-transformers",
+    "origin": "human:https://github.com/monologg/KoBERT-Transformers/blob/4e0a00e5e4884848fe4daeccf3698a28ebcfe449/README.md",
+    "overlaps_skill_examples": false,
+    "request": "이 저장소의 README를 한국어로 써 줘.",
+    "input": "",
+    "must_preserve": [
+      "설치 방법",
+      "모델과 토크나이저를 불러오는 사용 예",
+      "의존 라이브러리 버전 요구 사항"
+    ],
+    "must_not": [
+      "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+      "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+      "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+    ],
+    "exact": [],
+    "fixture": {
+      "repo": "monologg/KoBERT-Transformers",
+      "commit": "4e0a00e5e4884848fe4daeccf3698a28ebcfe449",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^\\.github/"
+      ],
+      "sha256": "b7a72dc0aafbbf74f337dea0d685246eb12ffb50401261d2e2cbf9924b1db59d"
+    },
+    "notes": "원문 없이 새로 쓰는 사례. must_preserve는 독자에게 필요한 내용(다뤄야 할 내용)이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-claims.md로 본다.",
+    "reference": "kobert-transformers"
   }
 ]

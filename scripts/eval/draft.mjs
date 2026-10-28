@@ -104,5 +104,6 @@ const cases = spec.cases.map((item) => {
   }
 })
 writeJson(join(DIR, 'cases.json'), cases)
-console.log(`사례 ${cases.length}개 → ${SET}/cases.json (dev ${cases.filter((c) => c.split === 'dev').length}, test ${cases.filter((c) => c.split === 'test').length})`)
+const splitCounts = cases.reduce((acc, c) => ({ ...acc, [c.split]: (acc[c.split] ?? 0) + 1 }), {})
+console.log(`사례 ${cases.length}개 → ${SET}/cases.json (${Object.entries(splitCounts).map(([k, v]) => `${k} ${v}`).join(', ')})`)
 if (!existsSync(join(DIR, 'README.md'))) console.log(`${SET}/README.md가 아직 없다`)
