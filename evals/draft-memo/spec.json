@@ -1,0 +1,243 @@
+{
+  "about": "원문 없이 메모로 보도자료·안내문·보고서·기획서를 쓰는 사례. 대한민국 정책브리핑 정책뉴스(2018~2022, 공공누리 제1유형)에서 담당자가 처음 가졌을 법한 사실 메모를 별도 세션이 뽑고, 판정 모델이 기사와 대조해 검수한다. 작성 모델은 요청과 메모만 받는다. 보도자료 사례는 같은 기사를 기준 조건 H로 둔다.",
+  "genre": "메모로 쓰는 업무 글",
+  "cutoff": "2023년 이전 게시 글",
+  "common_must_not": [
+    "메모에 없는 사실·수치·날짜·기관·인물·발언·효과·계획을 사실처럼 쓰기",
+    "메모의 수치·날짜·대상·조건을 바꾸거나 범위를 넓히거나 좁히기",
+    "계획·검토·예정을 확정·완료로 바꾸거나 반대로 바꾸기, 누가 한 말인지 바꾸기"
+  ],
+  "sources": [
+    {
+      "id": "ramsar-2018",
+      "newsId": "148855057",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148855057"
+    },
+    {
+      "id": "vaccine-leave-2021",
+      "newsId": "148885537",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148885537"
+    },
+    {
+      "id": "ghg-2022",
+      "newsId": "148902954",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148902954"
+    },
+    {
+      "id": "fintech-sandbox-2019",
+      "newsId": "148863180",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148863180"
+    },
+    {
+      "id": "meister-college-2020",
+      "newsId": "148880278",
+      "split": "test",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148880278"
+    },
+    {
+      "id": "tower-crane-2019",
+      "newsId": "148863103",
+      "split": "test",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148863103"
+    },
+    {
+      "id": "relief-fund-2021",
+      "newsId": "148885522",
+      "split": "test",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148885522"
+    },
+    {
+      "id": "daycare-fraud-2018",
+      "newsId": "148855036",
+      "split": "test",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148855036"
+    },
+    {
+      "id": "korean-curriculum-2020",
+      "newsId": "148880265",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148880265"
+    },
+    {
+      "id": "avian-flu-2020",
+      "newsId": "148880280",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148880280"
+    },
+    {
+      "id": "tour-guide-2022",
+      "newsId": "148902946",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148902946"
+    },
+    {
+      "id": "smart-factory-2022",
+      "newsId": "148902953",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148902953"
+    },
+    {
+      "id": "insurance-deferral-2022",
+      "newsId": "148902958",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148902958"
+    }
+  ],
+  "cases": [
+    {
+      "id": "ramsar-press",
+      "source": "ramsar-2018",
+      "genre": "보도자료",
+      "request": "아래 메모로 환경부 보도자료를 써 줘.",
+      "must_cover": [
+        "인증받은 국내 4곳과 인증 장소·날짜",
+        "전 세계 인증 규모",
+        "람사르습지 도시 인증의 의미나 혜택(메모에 있는 만큼)",
+        "문의처"
+      ]
+    },
+    {
+      "id": "vaccine-leave-notice",
+      "source": "vaccine-leave-2021",
+      "genre": "안내문",
+      "request": "아래 메모로 국민에게 알리는 백신 휴가 안내문을 써 줘.",
+      "must_cover": [
+        "시행일",
+        "휴가 일수와 조건",
+        "공무원·민간 기업 적용 방식",
+        "문의처"
+      ]
+    },
+    {
+      "id": "ghg-report",
+      "source": "ghg-2022",
+      "genre": "보고서",
+      "request": "아래 메모로 장관께 올릴 한 쪽짜리 결과 보고서를 써 줘.",
+      "must_cover": [
+        "지난해 잠정 배출량과 전년·정점 대비 증감",
+        "잠정치의 성격",
+        "증가 요인",
+        "향후 과제(메모에 있는 만큼)"
+      ]
+    },
+    {
+      "id": "fintech-sandbox-brief",
+      "source": "fintech-sandbox-2019",
+      "genre": "보고서",
+      "request": "아래 메모로 이번 혁신금융서비스 추가 지정 결과를 정리한 내부 보고서를 써 줘.",
+      "must_cover": [
+        "추가 지정 건수와 누적 건수",
+        "서비스별 내용",
+        "출시 시기(메모에 있는 만큼)"
+      ]
+    },
+    {
+      "id": "meister-college-press",
+      "source": "meister-college-2020",
+      "genre": "보도자료",
+      "request": "아래 메모로 교육부 보도자료를 써 줘.",
+      "must_cover": [
+        "시범사업 일정",
+        "마이스터대의 내용",
+        "운영 방식과 협력 체계",
+        "본격 도입 시기"
+      ]
+    },
+    {
+      "id": "tower-crane-notice",
+      "source": "tower-crane-2019",
+      "genre": "안내문",
+      "request": "아래 메모로 건설업계에 알리는 안내문을 써 줘.",
+      "must_cover": [
+        "실기시험 도입",
+        "소형 타워크레인 규격 기준",
+        "그 밖의 안전 강화 조치",
+        "문의처"
+      ]
+    },
+    {
+      "id": "relief-fund-report",
+      "source": "relief-fund-2021",
+      "genre": "보고서",
+      "request": "아래 메모로 회의 결과 보고서를 써 줘.",
+      "must_cover": [
+        "지급 목표 시점과 금액·비율",
+        "우선 지급 대상",
+        "회의 개최 정보"
+      ]
+    },
+    {
+      "id": "daycare-fraud-plan",
+      "source": "daycare-fraud-2018",
+      "genre": "기획서",
+      "request": "아래 메모로 관리강화 방안을 정리한 정책 기획서를 써 줘.",
+      "must_cover": [
+        "명단 공표 기준",
+        "형사처벌과 평가인증 방안",
+        "점검 계획(메모에 있는 만큼)"
+      ]
+    },
+    {
+      "id": "korean-curriculum-press",
+      "source": "korean-curriculum-2020",
+      "genre": "보도자료",
+      "request": "아래 메모로 문화체육관광부·국립국어원 보도자료를 써 줘.",
+      "must_cover": [
+        "제정·고시 사실과 날짜",
+        "교육과정의 구성",
+        "활용 계획"
+      ]
+    },
+    {
+      "id": "avian-flu-notice",
+      "source": "avian-flu-2020",
+      "genre": "안내문",
+      "request": "아래 메모로 가금농가에 보낼 안내문을 써 줘.",
+      "must_cover": [
+        "신고 대상과 방법",
+        "소독 지원 내용",
+        "검출 현황(메모에 있는 만큼)",
+        "당부 사항"
+      ]
+    },
+    {
+      "id": "tour-guide-notice",
+      "source": "tour-guide-2022",
+      "genre": "안내문",
+      "request": "아래 메모로 관광통역안내사에게 보낼 고용보험 안내문을 써 줘.",
+      "must_cover": [
+        "시행일",
+        "적용 대상과 조건",
+        "보험료 부담과 혜택(메모에 있는 만큼)",
+        "문의처"
+      ]
+    },
+    {
+      "id": "smart-factory-press",
+      "source": "smart-factory-2022",
+      "genre": "보도자료",
+      "request": "아래 메모로 중소벤처기업부 보도자료를 써 줘.",
+      "must_cover": [
+        "지원 규모와 사업 구분",
+        "신청 기간과 방법",
+        "모집 대상"
+      ]
+    },
+    {
+      "id": "insurance-deferral-notice",
+      "source": "insurance-deferral-2022",
+      "genre": "안내문",
+      "request": "아래 메모로 사업주에게 보낼 보험료 납부기한 연장 안내문을 써 줘.",
+      "must_cover": [
+        "연장 대상 보험료와 기간",
+        "대상 사업장",
+        "신청이 필요한 경우",
+        "문의처"
+      ]
+    }
+  ]
+}

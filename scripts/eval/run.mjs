@@ -11,12 +11,13 @@
  * 원본 로그(스트림·대화 기록·stderr)는 evals/runs/<이름>/에 쓴다(커밋 제외).
  * 같은 사례·회차의 기록이 있으면 건너뛴다. --retry-failed를 주면 실패한 회차를 새 시도(a2, a3…)로 다시 돌린다.
  */
-import { copyFileSync, mkdirSync, writeFileSync } from 'node:fs'
-import { join, relative, resolve } from 'node:path'
+import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, join, relative, resolve } from 'node:path'
 import {
   ROOT, cliVersion, fileHash, findTranscript, installSkill, makeSandbox, newSessionId, parseArgs, parseStream, pool,
   readJson, readTranscript, runClaude, scrub, skillEvidence, treeHash, usageOf,
 } from './lib/common.mjs'
+import { changedFiles, ensureFixture, fixtureHash, fixtureKey, installFixture, pickDeliverable, snapshot } from './lib/fixtures.mjs'
 import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
@@ -35,6 +36,10 @@ if (!options.out || !options.condition || !options.skill) {
 }
 
 const WRITER_TOOLS = ['Read', 'Glob', 'Grep', 'Skill']
+// 초안 사례(작업 폴더 자료가 있는 사례)는 사용자가 저장소에서 "README를 써 줘"라고 하는 상황이다. 파일을 쓸 수 있게 하고,
+// 쓰기는 acceptEdits 모드로 작업 폴더 안에서만 자동 허용한다(밖은 묻는 단계에서 거절됨). 쓴 파일을 결과로 본다
+const DRAFT_TOOLS = [...WRITER_TOOLS, 'Write', 'Edit']
+const toolsOf = (item) => (item?.fixture ? DRAFT_TOOLS : WRITER_TOOLS)
 const skillDir = options.skill === 'none' ? null : resolve(options.skill)
 const casesFile = resolve(options.cases)
 const allCases = readJson(casesFile)
@@ -50,17 +55,28 @@ const reps = Number(options.reps)
 const repStart = Number(options['rep-start'])
 const version = cliVersion(options.claude)
 
-const promptOf = (item) => `${skillDir ? '/geulppal ' : ''}${item.request}\n\n${item.input}`
+const promptOf = (item) => `${skillDir ? '/geulppal ' : ''}${item.request}${item.input ? `\n\n${item.input}` : ''}`
 
-const baseArgs = (sessionId) => [
+// 초안 사례는 작업 폴더에 저장소 코드 등을 넣는다(lib/fixtures.mjs). 사례에 적힌 해시와 다르면 실행하지 않는다
+const fixtureDirs = {}
+for (const item of cases.filter((c) => c.fixture)) {
+  const dir = ensureFixture(item.fixture)
+  if (item.fixture.sha256 && fixtureHash(dir) !== item.fixture.sha256) {
+    console.error(`${item.id}: 작업 폴더 자료의 해시가 사례와 다르다`)
+    process.exit(1)
+  }
+  fixtureDirs[item.id] = dir
+}
+
+const baseArgs = (sessionId, item) => [
   '--output-format', 'stream-json', '--verbose',
   '--model', options.model,
   '--effort', options.effort,
   '--session-id', sessionId,
   '--setting-sources', 'project',
   '--strict-mcp-config',
-  '--permission-mode', 'dontAsk',
-  '--tools', WRITER_TOOLS.join(','),
+  '--permission-mode', item?.fixture ? 'acceptEdits' : 'dontAsk',
+  '--tools', toolsOf(item).join(','),
   '--allowedTools', WRITER_TOOLS.join(' '),
 ]
 
@@ -72,8 +88,8 @@ records.put(`manifest/${options.condition}`, {
   model: options.model,
   effort: options.effort,
   cli: version,
-  args: [...baseArgs('<새 UUID>'), '-p', '<프롬프트>'].map(String),
-  tools: WRITER_TOOLS,
+  args: [...baseArgs('<새 UUID>', cases[0]), '-p', '<프롬프트>'].map(String),
+  tools: toolsOf(cases[0]),
   casesFile: casesFile.replace(`${ROOT}/`, ''),
   casesSha256: fileHash(casesFile),
   updated: new Date().toISOString(),
@@ -89,16 +105,22 @@ const attemptsOf = (condition, id, rep) =>
 const runOne = async (item, rep, attempt) => {
   const box = makeSandbox()
   installSkill(box.work, skillDir)
+  if (fixtureDirs[item.id]) installFixture(box.work, fixtureDirs[item.id])
+  const before = fixtureDirs[item.id] ? snapshot(box.work) : null
   const sessionId = newSessionId()
   const prompt = promptOf(item)
-  const args = ['-p', prompt, ...baseArgs(sessionId)]
+  const args = ['-p', prompt, ...baseArgs(sessionId, item)]
   const started = new Date().toISOString()
   const run = await runClaude({ claude: options.claude, args, cwd: box.work, env: box.env, timeoutMs: Number(options['timeout-min']) * 60 * 1000 })
   const stream = parseStream(run.stdout)
   const transcriptFile = findTranscript(box.config, sessionId)
   const transcript = transcriptFile ? readTranscript(transcriptFile) : []
   const evidence = skillEvidence({ transcript, skillDir, toolUses: stream.toolUses, base: box.base })
-  const output = typeof stream.result?.result === 'string' ? stream.result.result : ''
+  const reply = typeof stream.result?.result === 'string' ? stream.result.result : ''
+  // 초안 사례는 작업 폴더에 새로 쓰거나 고친 파일이 결과다. 파일을 쓰지 않았으면 마지막 답을 결과로 본다
+  const files = before ? changedFiles(box.work, before) : []
+  const deliverable = before ? pickDeliverable(files) : null
+  const output = deliverable ? readFileSync(join(box.work, deliverable.path), 'utf8') : reply
 
   // 원본 로그 — 커밋하지 않는다
   const raw = join(rawDir, options.condition, `${item.id}-r${rep}-a${attempt}`)
@@ -106,6 +128,13 @@ const runOne = async (item, rep, attempt) => {
   writeFileSync(join(raw, 'stream.jsonl'), run.stdout)
   writeFileSync(join(raw, 'stderr.txt'), run.stderr)
   writeFileSync(join(raw, 'output.txt'), output)
+  if (before) {
+    writeFileSync(join(raw, 'reply.txt'), reply)
+    for (const file of files) {
+      mkdirSync(dirname(join(raw, 'files', file.path)), { recursive: true })
+      copyFileSync(join(box.work, file.path), join(raw, 'files', file.path))
+    }
+  }
   if (transcriptFile) copyFileSync(transcriptFile, join(raw, 'transcript.jsonl'))
   // 계정 사용량(rate limit)은 공개 기록에 넣지 않고 원본 로그에만 둔다
   writeFileSync(join(raw, 'rate-limit.json'), JSON.stringify(stream.rateLimits.at(-1) ?? null))
@@ -138,6 +167,8 @@ const runOne = async (item, rep, attempt) => {
     },
     skill: evidence,
     prompt,
+    ...(item.fixture ? { fixture: { key: fixtureKey(item.fixture), sha256: item.fixture.sha256 ?? null } } : {}),
+    ...(before ? { deliverable: deliverable ? { kind: 'file', path: deliverable.path } : { kind: 'reply' }, files: files.map(({ path, chars, isNew }) => ({ path, chars, isNew })), reply: scrub(reply) } : {}),
     output: scrub(output),
     outputHadLocalPath: scrub(output) !== output,
     exitCode: run.code,

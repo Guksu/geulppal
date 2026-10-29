@@ -6,6 +6,7 @@
  *   node scripts/eval/human.mjs build                          # evals/human/cases.json 만들기
  *   node scripts/eval/human.mjs reference --out <이름>          # 사람 원문을 조건 H의 실행 기록으로 넣기
  *   --dir evals/human-readme                                   # 다른 자료 묶음(README 등)에 같은 명령을 쓸 때
+ *   (초안 사례 evals/draft-readme 등은 draft.mjs build로 만들고, reference만 이 스크립트로 넣는다)
  *
  * 원문 하나로 사례 두 개를 만든다.
  * - polish: 사람이 쓴 원문을 그대로 주고 다듬어 달라고 한다. 필요 없는 수정과 말투 손상을 본다.
@@ -15,7 +16,8 @@
  */
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ROOT, cliVersion, makeSandbox, parseArgs, parseStream, pool, readJson, runClaude, scrub, sha256, usageOf, writeJson } from './lib/common.mjs'
+import { ROOT, cliVersion, parseArgs, pool, readJson, sha256, usageOf, writeJson } from './lib/common.mjs'
+import { callIsolated as callIsolatedBase } from './lib/isolated.mjs'
 import { openRecords, packRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {
@@ -64,38 +66,7 @@ const CHECK_SCHEMA = {
 const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<<<${label} 끝>>>`
 const specOf = (sourceId) => spec.cases.find((item) => item.source === sourceId)
 
-/** 도구 없는 새 세션 한 번 */
-const callIsolated = async ({ prompt, model, systemPrompt, schema }) => {
-  const box = makeSandbox()
-  const args = [
-    '-p', prompt,
-    '--output-format', 'stream-json', '--verbose',
-    '--model', model,
-    '--effort', options.effort,
-    '--tools', '',
-    '--setting-sources', 'project',
-    '--strict-mcp-config',
-    '--no-session-persistence',
-    ...(systemPrompt ? ['--system-prompt', systemPrompt] : []),
-    ...(schema ? ['--json-schema', JSON.stringify(schema)] : []),
-  ]
-  const run = await runClaude({ claude: options.claude, args, cwd: box.work, env: box.env, timeoutMs: 15 * 60 * 1000 })
-  box.cleanup()
-  const stream = parseStream(run.stdout)
-  return {
-    text: typeof stream.result?.result === 'string' ? stream.result.result : '',
-    structured: stream.result?.structured_output ?? null,
-    meta: {
-      model: model,
-      responses: Object.keys(stream.result?.modelUsage ?? {}),
-      exitCode: run.code,
-      durationMs: stream.result?.duration_ms ?? null,
-      usage: usageOf(stream.result),
-      costUsd: stream.result?.total_cost_usd ?? null,
-      error: stream.result && !stream.result.is_error ? null : scrub((stream.result?.result ?? run.stderr ?? '').slice(-500)),
-    },
-  }
-}
+const callIsolated = (call) => callIsolatedBase({ claude: options.claude, effort: options.effort, ...call })
 
 if (mode === 'slop') {
   const rubric = readFileSync(join(ROOT, 'evals/judge/slop-check.md'), 'utf8')
@@ -200,7 +171,9 @@ if (mode === 'reference') {
   records.put('manifest/H', {
     condition: 'H',
     skill: null,
-    invocation: '실행하지 않음. 사람이 쓴 원문을 결과로 둔 기준 조건(polish는 입력과 같은 글, deslop은 부풀리기 전 원문)',
+    invocation: cases.some((item) => item.variant === 'draft')
+      ? '실행하지 않음. 같은 커밋에서 사람이 쓴 글을 결과로 둔 기준 조건(작성 모델에게는 주지 않음)'
+      : '실행하지 않음. 사람이 쓴 원문을 결과로 둔 기준 조건(polish는 입력과 같은 글, deslop은 부풀리기 전 원문)',
     model: null,
     effort: null,
     cli: null,

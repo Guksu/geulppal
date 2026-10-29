@@ -1,0 +1,115 @@
+{
+  "name": "2026-10-28-draft-readme-final",
+  "conditions": {
+    "A": {
+      "attempts": 10,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 10,
+        "pass": 9,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 29580,
+        "medianInput": 71002,
+        "medianOutput": 4309,
+        "costUsd": 1.1468924
+      }
+    },
+    "C": {
+      "attempts": 10,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 10,
+      "referenceReads": 10,
+      "meaning": {
+        "judged": 10,
+        "pass": 9,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 35652,
+        "medianInput": 97126.5,
+        "medianOutput": 4187.5,
+        "costUsd": 1.5043630000000001
+      }
+    },
+    "E": {
+      "attempts": 18,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 18,
+      "referenceReads": 18,
+      "meaning": {
+        "judged": 18,
+        "pass": 13,
+        "fail": 5,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 48070.5,
+        "medianInput": 142803,
+        "medianOutput": 6063,
+        "costUsd": 4.237720899999999
+      }
+    },
+    "H": {
+      "reference": true,
+      "records": 26,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-E": {
+      "total": 18,
+      "judged": 8,
+      "excluded": 10,
+      "leftWins": 0,
+      "rightWins": 5,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 3,
+      "cases": {
+        "A": 0,
+        "E": 4,
+        "mixed": 0,
+        "none": 5
+      }
+    },
+    "C-vs-E": {
+      "total": 18,
+      "judged": 12,
+      "excluded": 6,
+      "leftWins": 1,
+      "rightWins": 5,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 5,
+      "cases": {
+        "C": 0,
+        "E": 3,
+        "mixed": 1,
+        "none": 5
+      }
+    }
+  },
+  "judgeCalls": 78
+}

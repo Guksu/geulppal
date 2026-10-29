@@ -74,7 +74,12 @@ lines.push('', `시스템 프롬프트(실행 폴더 경로를 지운 것)의 �
 
 // 정확성
 const meaningByCondition = {}
-lines.push('## 정확성: 의미 보존', '', '판정 모델의 의미 보존 검사와 문자열 검사(`exact`)를 모두 통과해야 통과다. 분모는 성공한 실행 중 판정한 실행이다.', '', '| 조건 | 판정한 실행 | 통과 | 실패 | 그중 문자열 누락 | 판정 못 함 | 실행 실패로 제외 |', '|---|---|---|---|---|---|---|')
+// 원문 없이 쓴 사례(작업 폴더 자료가 있는 사례)는 의미 보존 대신 근거 판정(evals/judge/draft-claims.md)을 한다
+const drafting = conditions.some((condition) => records.list(`judge/meaning/${condition}`).some((judged) => ['draft-claims', 'draft-memo-claims'].includes(judged.judge?.kind)))
+const CHECK = drafting ? '근거 판정' : '의미 보존'
+lines.push(`## 정확성: ${CHECK}`, '', drafting
+  ? '원문 없이 쓴 글이다. 판정 모델이 작성자가 받은 자료(작업 폴더의 코드나 메모)를 읽고 결과의 구체적인 주장마다 근거를 찾는다. 근거와 어긋나는 주장(contradicted)이나 근거를 찾지 못한 구체적 주장(unsupported)이 하나라도 있으면 실패다. 근거를 찾지 못했다는 것이 틀렸다는 뜻은 아니다. 분모는 성공한 실행 중 판정한 실행이다.'
+  : '판정 모델의 의미 보존 검사와 문자열 검사(`exact`)를 모두 통과해야 통과다. 분모는 성공한 실행 중 판정한 실행이다.', '', '| 조건 | 판정한 실행 | 통과 | 실패 | 그중 문자열 누락 | 판정 못 함 | 실행 실패로 제외 |', '|---|---|---|---|---|---|---|')
 for (const condition of conditions) {
   const judged = listJson(`judge/meaning/${condition}`)
   meaningByCondition[condition] = Object.fromEntries(judged.map((m) => [`${m.id}-r${m.rep}`, m]))
@@ -118,7 +123,7 @@ for (const id of caseIds) {
 lines.push('', '○ 통과 · ✗ 의미 손상 · ✗실행 실행 실패 · ? 판정 못 함. 칸 안의 기호는 회차 순서다.', '')
 
 // 실패 이유
-lines.push('### 의미 보존 실패', '')
+lines.push(`### ${CHECK} 실패`, '')
 let anyFail = false
 for (const condition of conditions) {
   for (const m of Object.values(meaningByCondition[condition]).filter((m) => m.judged && !m.pass)) {
@@ -132,7 +137,7 @@ lines.push('')
 
 // 품질
 const pairDirs = records.dirs('judge/pair')
-if (pairDirs.length) lines.push('## 글의 품질: 쌍 비교', '', '두 결과가 모두 의미 보존을 통과한 쌍만 비교했다. 한 쌍을 순서를 바꿔 두 번 판정하고, 두 판정이 같을 때만 그 결과로 센다. 다르면 "순서 불일치"다.', '')
+if (pairDirs.length) lines.push('## 글의 품질: 쌍 비교', '', `두 결과가 모두 ${CHECK}을 통과한 쌍만 비교했다${drafting ? '(실행하지 않은 사람 글 H는 근거 판정 없이 넣었다)' : ''}. 한 쌍을 순서를 바꿔 두 번 판정하고, 두 판정이 같을 때만 그 결과로 센다. 다르면 "순서 불일치"다.`, '')
 for (const pairDir of pairDirs) {
   const pairs = listJson(`judge/pair/${pairDir}`)
   const [left, right] = pairDir.split('-vs-')
@@ -144,7 +149,7 @@ for (const pairDir of pairDirs) {
   summary.pairs[pairDir] = { total: pairs.length, judged: judged.length, excluded: pairs.length - judged.length, leftWins: count(left), rightWins: count(right), tie: count('tie'), bothInadequate: count('both_inadequate'), inconsistent: count('inconsistent') }
   lines.push(`### ${left} vs ${right}${reused ? ' (기준선 재사용)' : ''}`, '')
   if (reused) lines.push(`재사용: ${[...new Set(pairs.flatMap((p) => [p.left, p.right]).filter((side) => side.from !== options.out).map((side) => `${side.condition} ← \`${side.from}\``))].join(', ')}`, '')
-  lines.push(`쌍(사례 × 회차) ${pairs.length}개 중 비교 ${judged.length}개, 제외 ${pairs.length - judged.length}개(한쪽 이상 의미 보존 실패 또는 실행 실패). 순서를 바꿔도 같은 판정: ${consistentRate}/${judged.length}.`, '')
+  lines.push(`쌍(사례 × 회차) ${pairs.length}개 중 비교 ${judged.length}개, 제외 ${pairs.length - judged.length}개(한쪽 이상 ${CHECK} 실패 또는 실행 실패). 순서를 바꿔도 같은 판정: ${consistentRate}/${judged.length}.`, '')
   lines.push(`| 판정 | 쌍 수 |`, '|---|---|', `| ${left} 우세 | ${count(left)} |`, `| ${right} 우세 | ${count(right)} |`, `| 차이 없음 | ${count('tie')} |`, `| 둘 다 부적절 | ${count('both_inadequate')} |`, `| 순서 불일치 | ${flips} |`, '')
   // 사례 단위
   lines.push('사례 단위(회차를 합친 것, 사례 하나를 한 번만 센다):', '', '| 사례 | 회차별 결과 |', '|---|---|')

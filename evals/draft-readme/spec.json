@@ -1,0 +1,555 @@
+{
+  "about": "원문 없이 README를 처음부터 쓰는 사례. 작성 모델은 작업 폴더의 저장소 코드(일부 사례는 메모도)를 보고 README를 쓴다. 같은 커밋에서 사람이 쓴 README를 기준 조건 H로 둔다.",
+  "genre": "README 초안",
+  "cutoff": "ChatGPT 공개(2022-11-30) 전 커밋",
+  "common_must_not": [
+    "작업 폴더의 코드나 메모로 확인되지 않는 기능·옵션·지원 버전·플랫폼·의존성·성능 수치·벤치마크를 사실처럼 쓰기",
+    "코드에 없는 함수·클래스·명령·설정 키·패키지 이름 쓰기",
+    "메모의 수치나 측정 조건을 바꾸기(원문에 없는 단위나 조건을 붙이는 것 포함)"
+  ],
+  "sources": [
+    {
+      "id": "py-hanspell",
+      "split": "dev",
+      "repo": "ssut/py-hanspell",
+      "commit": "8e993cf46f97f9d665c15633a0fc78ac1b727713",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-ky",
+      "split": "dev",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/common/ky/LICENSE",
+      "reference": {
+        "path": "packages/common/ky/README.ko.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/common/ky"
+        ],
+        "strip": "packages/common/ky",
+        "exclude": [
+          "^README[^/]*\\.md$",
+          "^built/"
+        ]
+      }
+    },
+    {
+      "id": "korpora",
+      "split": "dev",
+      "repo": "ko-nlp/Korpora",
+      "commit": "a2c1ba8489890020467f3d9608c7d103d65ec646",
+      "license": "CC-BY-4.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md",
+        "lines": [
+          1,
+          192
+        ]
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$",
+          "^\\.github/"
+        ]
+      }
+    },
+    {
+      "id": "khaiii",
+      "split": "dev",
+      "repo": "kakao/khaiii",
+      "commit": "328d5a8af456a5941130383354c07d1cd0e47cf5",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "src/main/python",
+          "LICENSE"
+        ],
+        "exclude": []
+      }
+    },
+    {
+      "id": "toss-storage",
+      "split": "test",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/common/storage/LICENSE",
+      "reference": {
+        "path": "packages/common/storage/README.ko.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/common/storage"
+        ],
+        "strip": "packages/common/storage",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-hangul",
+      "split": "test",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/common/hangul/LICENSE",
+      "reference": {
+        "path": "packages/common/hangul/README.ko.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/common/hangul"
+        ],
+        "strip": "packages/common/hangul",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "open-korean-text",
+      "split": "test",
+      "repo": "open-korean-text/open-korean-text",
+      "commit": "95bf003beb3b357fcb16f94d4f595613cf7c5276",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "build.sbt",
+          "pom.xml",
+          "LICENSE",
+          "examples",
+          "src/main/scala",
+          "src/main/java",
+          "src/test/scala",
+          "src/test/java"
+        ],
+        "exclude": []
+      }
+    },
+    {
+      "id": "koelectra",
+      "split": "test",
+      "repo": "monologg/KoELECTRA",
+      "commit": "024fbdd600e653b6e4bdfc64ceec84181b5ce6c4",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "LICENSE",
+          "finetune",
+          "pretrain"
+        ],
+        "exclude": [
+          "\\.md$",
+          "^finetune/data/",
+          "^pretrain/data/"
+        ]
+      }
+    },
+    {
+      "id": "toss-date",
+      "split": "holdout",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/common/date/LICENSE",
+      "reference": {
+        "path": "packages/common/date/README.ko.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/common/date"
+        ],
+        "strip": "packages/common/date",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-use-funnel",
+      "split": "holdout",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/react/use-funnel/LICENSE",
+      "reference": {
+        "path": "packages/react/use-funnel/README.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/react/use-funnel"
+        ],
+        "strip": "packages/react/use-funnel",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-use-query-param",
+      "split": "holdout",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/react/use-query-param/LICENSE",
+      "reference": {
+        "path": "packages/react/use-query-param/README.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/react/use-query-param"
+        ],
+        "strip": "packages/react/use-query-param",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-scroll-animation",
+      "split": "holdout",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/react/scroll-animation/LICENSE",
+      "reference": {
+        "path": "packages/react/scroll-animation/README.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/react/scroll-animation"
+        ],
+        "strip": "packages/react/scroll-animation",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "kobert-transformers",
+      "split": "holdout",
+      "repo": "monologg/KoBERT-Transformers",
+      "commit": "4e0a00e5e4884848fe4daeccf3698a28ebcfe449",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$",
+          "^\\.github/"
+        ]
+      }
+    },
+    {
+      "id": "hangul-js",
+      "split": "holdout2",
+      "repo": "e-/Hangul.js",
+      "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$",
+          "^hangul\\.min\\.js$",
+          "^\\.travis\\.yml$"
+        ]
+      }
+    },
+    {
+      "id": "kobert",
+      "split": "holdout2",
+      "repo": "SKTBrain/KoBERT",
+      "commit": "47a69af87928fc24e20f571fe10c3cc9dd9af9a3",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "\\.md$",
+          "^imgs/",
+          "^logs/",
+          "^\\.github/"
+        ]
+      }
+    },
+    {
+      "id": "g2pk",
+      "split": "holdout2",
+      "repo": "Kyubyong/g2pK",
+      "commit": "3bb9d5afc5159220d5d16492aca7a58f121b6073",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "reference": {
+        "path": "README.md"
+      },
+      "fixture": {
+        "paths": [
+          "."
+        ],
+        "exclude": [
+          "^README\\.md$"
+        ]
+      }
+    },
+    {
+      "id": "toss-sentry",
+      "split": "holdout2",
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "license": "MIT",
+      "license_path": "packages/common/sentry/LICENSE",
+      "reference": {
+        "path": "packages/common/sentry/README.md"
+      },
+      "fixture": {
+        "paths": [
+          "packages/common/sentry"
+        ],
+        "strip": "packages/common/sentry",
+        "exclude": [
+          "^(?!CHANGELOG\\.md$).*\\.md$"
+        ]
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "py-hanspell-readme",
+      "source": "py-hanspell",
+      "request": "이 저장소의 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "설치 방법",
+        "spell_checker.check를 쓰는 기본 사용 예",
+        "검사 결과에 담기는 값",
+        "네이버 맞춤법 검사기를 이용한다는 점"
+      ]
+    },
+    {
+      "id": "toss-ky-readme",
+      "source": "toss-ky",
+      "request": "이 패키지 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "ky를 CJS와 ESM 양쪽에서 쓸 수 있게 한 패키지라는 점",
+        "설치 또는 불러오는 방법",
+        "서버와 브라우저에서 무엇을 쓰는지"
+      ]
+    },
+    {
+      "id": "korpora-readme",
+      "source": "korpora",
+      "request": "이 파이썬 패키지의 README를 써 줘. 한국어로.",
+      "input": "",
+      "must_cover": [
+        "설치 방법",
+        "말뭉치를 내려받고 불러오는 사용 예",
+        "제공하는 말뭉치 목록",
+        "라이선스"
+      ]
+    },
+    {
+      "id": "khaiii-readme",
+      "source": "khaiii",
+      "request": "형태소분석기 khaiii의 README를 써 줘. 저장소에는 파이썬 부분만 넣었어. 코드에 없는 내용은 아래 메모를 참고해.",
+      "input": "- 카카오의 세 번째 형태소분석기. 이름은 Kakao Hangul Analyzer III에서 따옴. 이전 버전은 dha2(Daumkakao Hangul Analyzer 2)\n- 학습 데이터: 국립국어원 21세기 세종계획 최종 성과물을 카카오에서 오류 수정하고 일부 추가. 오류 나는 문장 빼고 약 85만 문장, 천만 어절\n- 알고리즘: CNN. LSTM 같은 RNN은 속도 때문에 뺐음\n- 정확도(F-Score)\n  - v0.3: large(win=3, emb=150) 97.11, base(win=3, emb=30) 95.30\n  - v0.4: base(win=4, emb=35) 94.96, large(win=4, emb=180) 96.71. 띄어쓰기 잘 안 된 입력에 더 강한 대신 세종 코퍼스에서는 조금 떨어짐\n- 속도: 1만 문장(총 903KB, 문장 평균 91) 분석\n  - v0.3: base 약 10.5초, large 약 78.8초\n  - v0.4에서 다시 잼: base 10.8 -> 14.4, large 87.3 -> 165\n- 사용자 사전 두 가지: 기분석 사전(어절 하나를 문맥 상관없이 같은 결과로), 오분석 패치(여러 어절 문맥으로 오분석 바로잡기)\n- 빌드·설치는 위키 문서: https://github.com/kakao/khaiii/wiki/빌드-및-설치\n- 슬랙: https://khaiii.slack.com (가입 요청 https://join-khaiii.herokuapp.com)\n- 라이선스 Apache 2.0, Copyright 2018 Kakao Corp.",
+      "must_cover": [
+        "메모의 정확도 수치와 모델 설정",
+        "메모의 속도 수치와 측정 조건",
+        "빌드·설치 문서 안내",
+        "파이썬에서 분석하는 사용 예",
+        "사용자 사전 두 가지"
+      ]
+    },
+    {
+      "id": "toss-storage-readme",
+      "source": "toss-storage",
+      "request": "이 패키지 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "Web Storage를 쓸 수 없는 환경에서도 에러 없이 쓰게 한다는 점",
+        "기본 사용 예",
+        "typed 사용 예"
+      ]
+    },
+    {
+      "id": "toss-hangul-readme",
+      "source": "toss-hangul",
+      "request": "이 패키지 README 써 줘. 한국어로.",
+      "input": "",
+      "must_cover": [
+        "제공하는 주요 함수와 하는 일",
+        "사용 예"
+      ]
+    },
+    {
+      "id": "open-korean-text-readme",
+      "source": "open-korean-text",
+      "request": "이 라이브러리의 한국어 README를 써 줘.",
+      "input": "",
+      "must_cover": [
+        "정규화·토큰화·어근화·어구 추출 기능",
+        "Scala 또는 Java에서 쓰는 예",
+        "의존성 추가 방법"
+      ]
+    },
+    {
+      "id": "koelectra-readme",
+      "source": "koelectra",
+      "request": "KoELECTRA 저장소의 README를 써 줘. 사전학습 관련 내용은 코드에 없어서 아래 메모로 줄게.",
+      "input": "- ELECTRA: Replaced Token Detection으로 학습. generator가 만든 token을 discriminator가 real/fake로 판별. 모든 input token에 대해 학습할 수 있고, 논문에서 BERT 등보다 성능이 좋았음\n- KoELECTRA: 34GB 한국어 텍스트로 학습. Base, Small 두 가지 배포. v1, v2, v3 있음\n- Wordpiece 사용, 모델은 Hugging Face에 올려 둠. Transformers만 설치하면 바로 사용(Transformers v2.8.0부터 ElectraModel 지원)\n- vocab: v1·v2 32200, v3 35000, do_lower_case 모두 False\n- 데이터: v1·v2 약 14G 코퍼스(2.6B tokens, 뉴스·위키·나무위키), v3는 약 20G 모두의 말뭉치 추가(신문·문어·구어·메신저·웹)\n- 사전학습: TPU v3-8\n  - Base v1,2: batch 256, 700K steps, lr 2e-4, max seq 512, generator size 0.33, 7일\n  - Base v3: batch 256, 1.5M steps, 나머지 같음, 14일\n  - Small v1,2: batch 512, 300K steps, lr 5e-4, max seq 512, generator size 1.0, 3일\n  - Small v3: batch 512, 800K steps, 나머지 같음, 7일\n- Small은 원 논문의 ELECTRA-Small++와 같은 옵션. batch size와 train steps 빼고 원 논문 하이퍼파라미터와 같음",
+      "must_cover": [
+        "메모의 데이터·어휘·사전학습 수치",
+        "Transformers로 모델을 불러오는 사용 예",
+        "파인튜닝 스크립트로 평가하는 태스크"
+      ]
+    },
+    {
+      "id": "toss-date-readme",
+      "source": "toss-date",
+      "request": "이 패키지 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "날짜 연산 함수를 제공하는 패키지라는 점",
+        "주요 함수와 사용 예",
+        "설치 방법"
+      ]
+    },
+    {
+      "id": "toss-use-funnel-readme",
+      "source": "toss-use-funnel",
+      "request": "이 패키지 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "퍼널 스텝을 관리하는 훅이라는 점",
+        "처음 설정하고 스텝을 정의하는 예",
+        "API"
+      ]
+    },
+    {
+      "id": "toss-use-query-param-readme",
+      "source": "toss-use-query-param",
+      "request": "이 패키지 README 써 줘. 한국어로.",
+      "input": "",
+      "must_cover": [
+        "쿼리 파라미터 값을 다루는 훅이라는 점",
+        "설치 방법",
+        "사용 예"
+      ]
+    },
+    {
+      "id": "toss-scroll-animation-readme",
+      "source": "toss-scroll-animation",
+      "request": "이 패키지의 한국어 README를 써 줘.",
+      "input": "",
+      "must_cover": [
+        "스크롤 진행에 따라 애니메이션을 구현하는 패키지라는 점",
+        "감싸는 컴포넌트와 훅을 쓰는 순서",
+        "설정값"
+      ]
+    },
+    {
+      "id": "kobert-transformers-readme",
+      "source": "kobert-transformers",
+      "request": "이 저장소의 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "설치 방법",
+        "모델과 토크나이저를 불러오는 사용 예",
+        "의존 라이브러리 버전 요구 사항"
+      ]
+    },
+    {
+      "id": "hangul-js-readme",
+      "source": "hangul-js",
+      "request": "이 라이브러리 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "한글 자모를 분리·조합하는 라이브러리라는 점",
+        "설치·불러오는 방법",
+        "주요 함수와 사용 예"
+      ]
+    },
+    {
+      "id": "kobert-readme",
+      "source": "kobert",
+      "request": "이 저장소의 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "설치 방법",
+        "모델과 토크나이저를 불러오는 사용 예",
+        "의존 라이브러리 요구 사항"
+      ]
+    },
+    {
+      "id": "g2pk-readme",
+      "source": "g2pk",
+      "request": "이 파이썬 패키지의 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "한국어 문장을 발음대로 바꾸는 패키지라는 점",
+        "설치 방법",
+        "사용 예와 옵션"
+      ]
+    },
+    {
+      "id": "toss-sentry-readme",
+      "source": "toss-sentry",
+      "request": "이 패키지 README를 한국어로 써 줘.",
+      "input": "",
+      "must_cover": [
+        "브라우저와 Node.js에서 쓰는 Sentry 모듈이라는 점",
+        "초기화와 사용 예",
+        "설치 방법"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-<title>글빨 블라인드 비교</title>
+<title>{{TITLE}}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,6 +60,19 @@ section.pair { display: grid; gap: 16px; }
 details.source { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; }
 details.source summary { cursor: pointer; font: 600 13px/1.4 var(--sans); color: var(--muted); }
 .text { white-space: pre-wrap; overflow-wrap: anywhere; font: 400 16px/1.8 var(--serif); margin: 10px 0 0; max-width: 72ch; }
+.md { white-space: normal; font: 400 15px/1.7 var(--sans); }
+.md h1, .md h2, .md h3, .md h4 { font-family: var(--serif); line-height: 1.3; margin: 1.1em 0 .4em; }
+.md h1 { font-size: 22px; } .md h2 { font-size: 19px; } .md h3, .md h4 { font-size: 16px; }
+.md p, .md ul, .md ol, .md pre, .md table, .md blockquote { margin: 0 0 .8em; }
+.md ul, .md ol { padding-left: 1.4em; }
+.md code { font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--pencil-soft); padding: 1px 4px; border-radius: 3px; }
+.md pre { background: var(--paper); border: 1px solid var(--rule); border-radius: 5px; padding: 10px 12px; overflow-x: auto; white-space: pre; }
+.md pre code { background: none; padding: 0; }
+.md table { border-collapse: collapse; display: block; overflow-x: auto; font-size: 14px; }
+.md th, .md td { border: 1px solid var(--rule); padding: 4px 8px; text-align: left; vertical-align: top; }
+.md blockquote { border-left: 3px solid var(--rule); padding-left: 10px; color: var(--muted); }
+.md .img { color: var(--muted); font-size: 13px; }
+.md a { color: var(--pencil); }
 .sheets { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media (max-width: 860px) { .sheets { grid-template-columns: 1fr; } }
 .sheet { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; min-width: 0; }
@@ -88,8 +101,8 @@ textarea { width: 100%; min-height: 64px; resize: vertical; font: 15px/1.5 var(-
 
 <div class="wrap">
   <header>
-    <h1>글빨 블라인드 비교</h1>
-    <p class="lede">같은 요청을 받은 두 결과를 읽고, 요청한 사람이 그대로 쓸 글로 어느 쪽이 나은지 골라 주세요. 사실과 조건은 판정 모델이 이미 확인했으니 읽기 좋은지, 요청과 말투에 맞는지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 원문인지는 알려 드리지 않습니다.</p>
+    <h1>{{HEADING}}</h1>
+    <p class="lede">{{LEDE}}</p>
     <div class="status"><span id="progressText">0 / 0</span><div class="meter" aria-hidden="true"><span id="meter"></span></div><span id="store">저장소 연결 중</span></div>
     <div class="banner" id="banner" hidden></div>
   </header>
@@ -103,20 +116,88 @@ textarea { width: 100%; min-height: 64px; resize: vertical; font: 15px/1.5 var(-
 
 <script>
 const PAIRS = /*PAIRS*/[];
+const STORE_KEY = /*STORE_KEY*/'geulppal-blind';
 const CHOICES = [
   { key: 'x', label: '결과 1이 낫다', kbd: '1' },
   { key: 'y', label: '결과 2가 낫다', kbd: '2' },
   { key: 'same', label: '비슷하다', kbd: '3' },
   { key: 'neither', label: '둘 다 별로다', kbd: '4' },
 ];
-const state = { ratings: {}, index: 0, diff: true, db: null, uid: null, saving: false };
+const state = { ratings: {}, index: 0, diff: true, rendered: true, db: null, uid: null, saving: false };
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const safeId = (s) => String(s).replace(/[^A-Za-z0-9_.~:@+-]/g, '_').slice(0, 120) || 'anon';
 const docId = (pairId) => `${pairId}~${safeId(state.uid || 'anon')}`;
 
-const readLocal = () => { try { return JSON.parse(localStorage.getItem('geulppal-blind') || '{}'); } catch { return {}; } };
-const writeLocal = () => { try { localStorage.setItem('geulppal-blind', JSON.stringify(state.ratings)); } catch {} };
+const readLocal = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
+const writeLocal = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(state.ratings)); } catch {} };
+
+// 초안(README 등)은 마크다운으로 그려 보여 준다. 글 안의 HTML은 실행하지 않고 글자로 보이며, 이미지는 불러오지 않고 설명만 둔다
+const inline = (s) => {
+  const codes = [];
+  let out = esc(s).replace(/`([^`]+)`/g, (_, c) => `\u0000${codes.push(c) - 1}\u0000`);
+  out = out
+    .replace(/\[!\[([^\]]*)\]\([^)]*\)\]\([^)]*\)/g, (_, alt) => `<span class="img">[이미지${alt ? `: ${alt}` : ''}]</span>`)
+    .replace(/!\[([^\]]*)\]\(([^)\s]+)[^)]*\)/g, (_, alt) => `<span class="img">[이미지${alt ? `: ${alt}` : ''}]</span>`)
+    .replace(/\[([^\]]+)\]\(([^)\s]+)[^)]*\)/g, (_, label, href) => (/^(https?:|#)/.test(href.replace(/&amp;/g, '&')) ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>` : `<span>${label}</span>`))
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
+  return out.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${codes[Number(i)]}</code>`);
+};
+function markdown(text) {
+  const lines = text.replace(/\r/g, '').split('\n');
+  const html = [];
+  let i = 0;
+  const cells = (row) => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+  while (i < lines.length) {
+    const line = lines[i];
+    const fence = line.match(/^\s*(`{3,}|~{3,})/);
+    if (fence) {
+      const body = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith(fence[1])) body.push(lines[i++]);
+      i++;
+      html.push(`<pre><code>${esc(body.join('\n'))}</code></pre>`);
+      continue;
+    }
+    const heading = line.match(/^(#{1,6})\s+(.*?)\s*#*\s*$/);
+    if (heading) { const n = Math.min(heading[1].length, 4); html.push(`<h${n}>${inline(heading[2])}</h${n}>`); i++; continue; }
+    if (/^\s*\|.*\|\s*$/.test(line) && /^\s*\|?\s*:?-{2,}/.test(lines[i + 1] || '')) {
+      const head = cells(line);
+      i += 2;
+      const rows = [];
+      while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) rows.push(cells(lines[i++]));
+      html.push(`<table><thead><tr>${head.map((c) => `<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`);
+      continue;
+    }
+    const item = line.match(/^(\s*)([-*+]|\d+[.)])\s+(.*)$/);
+    if (item) {
+      const ordered = /\d/.test(item[2]);
+      const items = [];
+      while (i < lines.length) {
+        const m = lines[i].match(/^(\s*)([-*+]|\d+[.)])\s+(.*)$/);
+        if (m) { items.push(`${m[1].length >= 2 ? '&nbsp;&nbsp;' : ''}${inline(m[3])}`); i++; continue; }
+        if (/^\s{2,}\S/.test(lines[i]) && items.length) { items[items.length - 1] += ` ${inline(lines[i].trim())}`; i++; continue; }
+        break;
+      }
+      html.push(`<${ordered ? 'ol' : 'ul'}>${items.map((x) => `<li>${x}</li>`).join('')}</${ordered ? 'ol' : 'ul'}>`);
+      continue;
+    }
+    if (/^\s*>/.test(line)) {
+      const quote = [];
+      while (i < lines.length && /^\s*>/.test(lines[i])) quote.push(lines[i++].replace(/^\s*>\s?/, ''));
+      html.push(`<blockquote>${inline(quote.join(' '))}</blockquote>`);
+      continue;
+    }
+    if (/^\s*([-*_])(\s*\1){2,}\s*$/.test(line)) { html.push('<hr>'); i++; continue; }
+    if (!line.trim()) { i++; continue; }
+    const para = [];
+    while (i < lines.length && lines[i].trim() && !/^(#{1,6}\s|\s*(`{3,}|~{3,})|\s*([-*+]|\d+[.)])\s|\s*>|\s*\|.*\|\s*$)/.test(lines[i])) para.push(lines[i++]);
+    if (!para.length) para.push(lines[i++]);
+    html.push(`<p>${inline(para.join(' '))}</p>`);
+  }
+  return html.join('\n');
+}
 
 // 원문에 없는 낱말을 표시한다(낱말 단위 최장 공통 부분열)
 const tokens = (s) => s.split(/(\s+)/).filter((t) => t !== '');
@@ -152,15 +233,25 @@ function render() {
   const p = PAIRS[state.index];
   if (!p) { $('pair').innerHTML = '<p>비교할 쌍이 없습니다.</p>'; return; }
   const r = state.ratings[p.id] || {};
+  const draft = p.kind === 'draft';
+  const body = (text) => (draft
+    ? (state.rendered ? `<div class="text md">${markdown(text)}</div>` : `<div class="text">${esc(text)}</div>`)
+    : `<div class="text">${state.diff ? marked(p.input, text) : esc(text)}</div>`);
   const sheet = (n, text) => `
     <article class="sheet${(r.choice === 'x' && n === 1) || (r.choice === 'y' && n === 2) ? ' chosen' : ''}">
       <header><h2>결과 ${n}</h2><span class="count">${text.length.toLocaleString()}자</span></header>
-      <div class="text">${state.diff ? marked(p.input, text) : esc(text)}</div>
+      ${body(text)}
     </article>`;
+  const source = draft
+    ? (p.input ? `<details class="source"><summary>함께 준 메모 보기 (${p.input.length.toLocaleString()}자)</summary><div class="text">${esc(p.input)}</div></details>` : '')
+    : `<details class="source" ${state.index === 0 && !r.choice ? 'open' : ''}><summary>원문 보기 (${p.input.length.toLocaleString()}자)</summary><div class="text">${esc(p.input)}</div></details>`;
+  const tools = draft
+    ? `<label><input type="checkbox" id="rendered" ${state.rendered ? 'checked' : ''}> 마크다운으로 그려 보기</label>`
+    : `<label><input type="checkbox" id="diff" ${state.diff ? 'checked' : ''}> 원문에 없는 낱말 표시</label>`;
   $('pair').innerHTML = `
-    <div><span class="label">${state.index + 1}번 쌍 · 요청</span><p class="request">${esc(p.request)}</p></div>
-    <details class="source" ${state.index === 0 && !r.choice ? 'open' : ''}><summary>원문 보기 (${p.input.length.toLocaleString()}자)</summary><div class="text">${esc(p.input)}</div></details>
-    <div class="tools"><label><input type="checkbox" id="diff" ${state.diff ? 'checked' : ''}> 원문에 없는 낱말 표시</label></div>
+    <div><span class="label">${state.index + 1}번 쌍 · 요청</span><p class="request">${esc(p.request)}</p>${draft && p.context ? `<p class="lede">${esc(p.context)}</p>` : ''}</div>
+    ${source}
+    <div class="tools">${tools}</div>
     <div class="sheets">${sheet(1, p.texts[0])}${sheet(2, p.texts[1])}</div>
     <div class="decide">
       <span class="label">어느 쪽이 나은가요</span>
@@ -215,6 +306,7 @@ document.addEventListener('click', (e) => {
 });
 document.addEventListener('change', (e) => {
   if (e.target.id === 'diff') { state.diff = e.target.checked; render(); }
+  if (e.target.id === 'rendered') { state.rendered = e.target.checked; render(); }
 });
 document.addEventListener('keydown', (e) => {
   if (e.target.matches('textarea, input')) return;

@@ -1,0 +1,61 @@
+{
+  "name": "2026-10-28-draft-readme-e2",
+  "conditions": {
+    "E2": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 8,
+      "meaning": {
+        "judged": 8,
+        "pass": 6,
+        "fail": 2,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 48535,
+        "medianInput": 147527.5,
+        "medianOutput": 6570.5,
+        "costUsd": 1.9640022
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-E2": {
+      "total": 8,
+      "judged": 4,
+      "excluded": 4,
+      "leftWins": 1,
+      "rightWins": 2,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "A": 1,
+        "E2": 2,
+        "mixed": 0,
+        "none": 1
+      }
+    },
+    "C-vs-E2": {
+      "total": 8,
+      "judged": 6,
+      "excluded": 2,
+      "leftWins": 0,
+      "rightWins": 3,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 2,
+      "cases": {
+        "C": 0,
+        "E2": 2,
+        "mixed": 0,
+        "none": 2
+      }
+    }
+  },
+  "judgeCalls": 28
+}

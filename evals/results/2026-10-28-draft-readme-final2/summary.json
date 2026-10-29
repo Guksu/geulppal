@@ -1,0 +1,103 @@
+{
+  "name": "2026-10-28-draft-readme-final2",
+  "conditions": {
+    "A": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 8,
+        "pass": 2,
+        "fail": 6,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 57645,
+        "medianInput": 100377,
+        "medianOutput": 5309,
+        "costUsd": 1.3841992
+      }
+    },
+    "E": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 8,
+      "meaning": {
+        "judged": 8,
+        "pass": 8,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 70856,
+        "medianInput": 227598,
+        "medianOutput": 8879.5,
+        "costUsd": 2.366011
+      }
+    },
+    "F": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 8,
+      "meaning": {
+        "judged": 8,
+        "pass": 8,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 64595.5,
+        "medianInput": 184919.5,
+        "medianOutput": 8363,
+        "costUsd": 2.3122807
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-F": {
+      "total": 8,
+      "judged": 2,
+      "excluded": 6,
+      "leftWins": 0,
+      "rightWins": 2,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 0,
+      "cases": {
+        "A": 0,
+        "F": 2,
+        "mixed": 0,
+        "none": 2
+      }
+    },
+    "E-vs-F": {
+      "total": 8,
+      "judged": 8,
+      "excluded": 0,
+      "leftWins": 3,
+      "rightWins": 0,
+      "tie": 2,
+      "bothInadequate": 0,
+      "inconsistent": 3,
+      "cases": {
+        "E": 3,
+        "F": 0,
+        "mixed": 0,
+        "none": 1
+      }
+    }
+  },
+  "judgeCalls": 44
+}

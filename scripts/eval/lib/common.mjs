@@ -191,6 +191,8 @@ export const scrub = (text) =>
     ? text
         .replace(/(?<![\w.-])\/(?:private\/)?(?:tmp|var\/folders)\/[^\s"'`)\]]*/g, '<tmp>')
         .replace(/(?<![\w.-])\/(?:Users|home)\/[^\s"'`)\]]*/g, '<home>')
+        // 계정 사용량 제한 안내(남은 시간·초기화 시각)는 공개 기록에 남기지 않는다
+        .replace(/You['’]ve hit your [^\n"]*/gi, '<사용량 제한으로 실패>')
     : text
 
 export const usageOf = (result) => {

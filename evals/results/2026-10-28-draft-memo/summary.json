@@ -1,0 +1,94 @@
+{
+  "name": "2026-10-28-draft-memo",
+  "conditions": {
+    "A": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 16,
+        "pass": 5,
+        "fail": 11,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 16735.5,
+        "medianInput": 9590,
+        "medianOutput": 2524,
+        "costUsd": 0.7586316
+      }
+    },
+    "F": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 9,
+      "meaning": {
+        "judged": 16,
+        "pass": 15,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 20927,
+        "medianInput": 37390.5,
+        "medianOutput": 2898,
+        "costUsd": 1.5061687
+      }
+    },
+    "H": {
+      "reference": true,
+      "records": 26,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-F": {
+      "total": 16,
+      "judged": 5,
+      "excluded": 11,
+      "leftWins": 0,
+      "rightWins": 3,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 2,
+      "cases": {
+        "A": 0,
+        "F": 3,
+        "mixed": 0,
+        "none": 5
+      }
+    },
+    "H-vs-F": {
+      "total": 4,
+      "judged": 4,
+      "excluded": 0,
+      "leftWins": 0,
+      "rightWins": 4,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 0,
+      "cases": {
+        "H": 0,
+        "F": 2,
+        "mixed": 0,
+        "none": 0
+      }
+    }
+  },
+  "judgeCalls": 50
+}
