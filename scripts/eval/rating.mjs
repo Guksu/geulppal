@@ -24,6 +24,8 @@ const HUMAN_RUNS = { human: '2026-10-27-human', dev: '2026-10-27-human-r2', test
 const DRAFT_RUNS = { baseline: '2026-10-28-draft-readme', final: '2026-10-28-draft-readme-final' }
 const draftRun = (item) => (item.split === 'holdout' ? DRAFT_RUNS.final : DRAFT_RUNS.baseline)
 // 메모 업무 글: 확인용은 기준선 실행, 새 확인용은 최종 실행. 0.4.1(F)과 비교한다
+// 블로그: 확인용·새 확인용의 0.4.3은 최종 실행, 2차 새 확인용은 2차 최종 실행
+const blogRun = (item) => (item.split === 'holdout2' ? '2026-10-29-draft-blog-final2' : '2026-10-29-draft-blog-final')
 const memoRun = (item) => (item.split === 'holdout' ? '2026-10-28-draft-memo-final' : '2026-10-28-draft-memo')
 const SETS = {
   human: {
@@ -69,6 +71,22 @@ const SETS = {
     groups: [
       { key: 'A-vs-0.4.1', left: (item) => ({ run: memoRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 },
       { key: 'H-vs-0.4.1', left: (item) => ({ run: memoRun(item), condition: 'H' }), filter: (item) => item.split !== 'dev' && item.genre === '보도자료', max: 99 },
+    ],
+  },
+  'draft-blog': {
+    cases: 'evals/draft-blog/cases.json',
+    pairsFile: 'evals/runs/rating/draft-blog-pairs.json',
+    results: 'evals/results/2026-10-29-draft-blog-rating',
+    storeKey: 'geulppal-blind-draft-blog',
+    title: '글빨 블로그·에세이 블라인드 비교',
+    lede: '글쓴이 메모나 한두 줄 설명만 주고 블로그 글·에세이를 써 달라는 요청에 나온 두 결과입니다. 내 이름으로 올릴 글로 어느 쪽이 나은지 골라 주세요. 입력에 없는 경험을 지어냈는지는 판정 모델이 따로 확인했으니, 한 사람의 이야기로 자연스럽게 읽히는지, 말투가 맞는지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 원래 글인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 입력만 받았습니다.',
+    referencePass: true,
+    right: (item) => ({ run: blogRun(item), condition: 'I' }),
+    groups: [
+      { key: 'A-vs-0.4.3', left: (item) => ({ run: item.split === 'test' ? '2026-10-29-draft-blog' : blogRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 },
+      { key: 'F-vs-0.4.3', left: (item) => ({ run: item.split === 'test' ? '2026-10-29-draft-blog' : blogRun(item), condition: 'F' }), filter: (item) => ['test', 'holdout'].includes(item.split), max: 4 },
+      { key: 'H-vs-0.4.3', left: (item) => ({ run: blogRun(item), condition: 'H' }), filter: (item) => item.split !== 'dev' && item.input_kind !== 'brief', max: 6 },
     ],
   },
 }
@@ -195,7 +213,7 @@ if (mode === 'score') {
   }
   const { pairs } = readJson(PAIRS_FILE)
   const ratings = readJson(options.ratings)
-  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사' }[options.set] }
+  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', I: '글빨 0.4.3', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사', 'draft-blog': '사람 글' }[options.set] }
   const rows = []
   const tally = {}
   for (const pair of pairs) {
@@ -203,7 +221,7 @@ if (mode === 'score') {
     const pick = rating?.choice
     const winner = pick === 'x' ? pair.sides[0].condition : pick === 'y' ? pair.sides[1].condition : pick ?? null
     const norm = (c) => (c === 'C2' ? 'C' : c)
-    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'H'].includes(winner) ? norm(winner) : winner
+    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'I', 'H'].includes(winner) ? norm(winner) : winner
     const model = pair.model ? (['tie', 'both_inadequate', 'inconsistent'].includes(pair.model.result) ? pair.model.result : norm(pair.model.result)) : null
     tally[pair.group] ??= {}
     tally[pair.group][human ?? '미평가'] = (tally[pair.group][human ?? '미평가'] ?? 0) + 1
