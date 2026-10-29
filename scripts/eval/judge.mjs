@@ -75,6 +75,12 @@ const exactCheck = (item, output) => {
 
 // 원문 없이 쓴 사례: 작업 폴더 자료가 있거나(draft-readme) 메모로 쓰는 사례(draft-memo). evals/cases.json의 초기 draft 사례는 의미 보존으로 판정한다
 const isDraftCase = (item) => Boolean(item.fixture) || item.variant === 'memo'
+// 사례가 판정 지침을 정해 두었으면(블로그 등 `rubrics: { claims, quality }`) 그것을 쓴다
+const rubricCache = new Map()
+const rubricOf = (path) => {
+  if (!rubricCache.has(path)) rubricCache.set(path, readFileSync(join(ROOT, path), 'utf8'))
+  return rubricCache.get(path)
+}
 
 const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<<<${label} 끝>>>`
 
@@ -236,7 +242,7 @@ if (mode === 'meaning') {
           `## 금지 변경\n\n${item.must_not.map((line) => `- ${line}`).join('\n')}`,
           item.notes ? `## 참고\n\n${item.notes}` : '',
         ].filter(Boolean).join('\n\n')
-    const usedRubric = draft ? (item.fixture ? claimsRubric : memoClaimsRubric) : rubric
+    const usedRubric = draft ? (item.rubrics?.claims ? rubricOf(item.rubrics.claims) : item.fixture ? claimsRubric : memoClaimsRubric) : rubric
     const judged = await callJudge({ prompt, rubric: usedRubric, schema: draft ? CLAIMS_SCHEMA : MEANING_SCHEMA, fixtureDir: fixtureDirs[item.id] })
     const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass : null
     out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
@@ -289,7 +295,7 @@ if (mode === 'pair') {
     if (complete && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
     jobs.push(async () => {
       const item = cases[rightRecord.id]
-      const rubric = isDraftCase(item) ? (item.fixture ? draftRubric : memoDraftRubric) : editRubric
+      const rubric = isDraftCase(item) ? (item.rubrics?.quality ? rubricOf(item.rubrics.quality) : item.fixture ? draftRubric : memoDraftRubric) : editRubric
       const leftText = outputOf(leftFrom, leftRecord)
       const rightText = outputOf(rightFrom, rightRecord)
       // o1: X=왼쪽, Y=오른쪽 / o2: X=오른쪽, Y=왼쪽

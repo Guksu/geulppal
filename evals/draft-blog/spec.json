@@ -1,0 +1,244 @@
+{
+  "about": "원문 없이 글쓴이 메모나 한두 줄 설명으로 블로그 글·에세이를 쓰는 사례. 대한민국 정책브리핑 정책기자마당 체험기(2019~2022, 공공누리 제1유형)에서 글쓴이 메모를 별도 세션이 뽑고, 판정 모델이 원래 글과 대조해 검수한다. 일부 사례는 메모 대신 원래 글에서 옮긴 한두 줄만 주고, 일부는 다른 사람 글을 말투 참고로 함께 준다.",
+  "genre": "블로그 글·에세이",
+  "cutoff": "2023년 이전 게시 글",
+  "memo_request": [
+    "아래 블로그 글을, 글쓴이가 이 글을 쓰기 전에 적어 두었을 법한 메모로 되돌려 줘.",
+    "- 글쓴이가 겪은 일과 순서, 장소·날짜·시간, 만난 사람과 들은 말, 본 것, 제도·절차·수치 정보, 글쓴이가 밝힌 느낌·의견을 빠짐없이 짧은 항목으로 적어.",
+    "- 원래 글의 문장을 그대로 옮기지 말고 짧은 메모체로 써.",
+    "- 원래 글에 없는 경험, 감정, 사실, 해석은 넣지 마. 들은 말은 누구에게 들었는지 적어.",
+    "- 제목, 도입 문장, 마무리 문장 없이 메모만 보내."
+  ],
+  "memo_rubric": "evals/judge/blog-memo-check.md",
+  "rubrics": {
+    "claims": "evals/judge/draft-blog-claims.md",
+    "quality": "evals/judge/draft-blog-quality.md"
+  },
+  "reference_genres": [
+    "블로그 글",
+    "에세이"
+  ],
+  "case_notes": "원문 없이 글쓴이 메모나 한두 줄 설명으로 쓰는 사례. must_preserve는 다뤄야 할 내용이고 판정의 통과 조건에는 넣지 않는다. 근거는 evals/judge/draft-blog-claims.md로 본다.",
+  "common_must_not": [
+    "입력에 없는 경험·장면·대화·감정·깨달음을 글쓴이가 겪은 일처럼 쓰기",
+    "입력의 날짜·수치·장소·사람·순서를 바꾸거나, 들은 말을 직접 겪은 일로 바꾸기",
+    "입력에 없는 제도·절차·효과 정보를 사실처럼 쓰기"
+  ],
+  "sources": [
+    {
+      "id": "voice-phishing-2019",
+      "newsId": "148861032",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148861032"
+    },
+    {
+      "id": "peace-trail-2019",
+      "newsId": "148861169",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148861169"
+    },
+    {
+      "id": "safety-report-2020",
+      "newsId": "148873861",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148873861"
+    },
+    {
+      "id": "entry-log-2020",
+      "newsId": "148873753",
+      "split": "dev",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148873753"
+    },
+    {
+      "id": "weather-station-2021",
+      "newsId": "148894688",
+      "split": "test",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148894688"
+    },
+    {
+      "id": "vaccine-center-2021",
+      "newsId": "148894260",
+      "split": "test",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148894260"
+    },
+    {
+      "id": "library-delivery-2021",
+      "newsId": "148894705",
+      "split": "test",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148894705"
+    },
+    {
+      "id": "school-zone-2020",
+      "newsId": "148873443",
+      "split": "test",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148873443"
+    },
+    {
+      "id": "subway-air-2022",
+      "newsId": "148900983",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148900983"
+    },
+    {
+      "id": "gov24-newbie-2022",
+      "newsId": "148900928",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148900928"
+    },
+    {
+      "id": "movie-popcorn-2022",
+      "newsId": "148901138",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148901138"
+    },
+    {
+      "id": "market-online-2021",
+      "newsId": "148894670",
+      "split": "holdout",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148894670"
+    }
+  ],
+  "cases": [
+    {
+      "id": "voice-phishing-blog",
+      "source": "voice-phishing-2019",
+      "genre": "블로그 글",
+      "request": "아래 메모로 블로그 글을 써 줘.",
+      "must_cover": [
+        "겪은 보이스피싱 시도와 순서",
+        "알아낸 대처 방법(메모에 있는 만큼)",
+        "글쓴이의 느낌"
+      ]
+    },
+    {
+      "id": "peace-trail-blog",
+      "source": "peace-trail-2019",
+      "genre": "블로그 글",
+      "request": "아래 메모로 여행 블로그 글을 써 줘.",
+      "must_cover": [
+        "다녀온 곳과 함께 간 사람",
+        "본 것과 들은 설명",
+        "참가 방법(메모에 있는 만큼)"
+      ]
+    },
+    {
+      "id": "safety-report-blog",
+      "source": "safety-report-2020",
+      "genre": "블로그 글",
+      "request": "아래 메모로 블로그 글을 써 줘.",
+      "must_cover": [
+        "안전신문고로 신고한 경험",
+        "신고 방법",
+        "글쓴이의 생각"
+      ]
+    },
+    {
+      "id": "entry-log-brief",
+      "source": "entry-log-2020",
+      "genre": "블로그 글",
+      "request": "이 이야기로 블로그 글 하나 써 줘.",
+      "input": "얼마 전까지 헬스장 같은 데 들어갈 때 명부에 이름이랑 연락처를 손으로 적었는데, 이제는 QR코드 인증으로 바뀌었어. 다른 사람이 내 정보를 볼 일이 없어서 좋더라.",
+      "must_cover": [
+        "손으로 적던 명부에서 QR코드 인증으로 바뀐 경험",
+        "좋았던 점"
+      ]
+    },
+    {
+      "id": "weather-station-blog",
+      "source": "weather-station-2021",
+      "genre": "블로그 글",
+      "request": "아래 메모로 방문기 블로그 글을 써 줘.",
+      "must_cover": [
+        "방문한 곳과 계기",
+        "본 것과 들은 설명",
+        "관람 정보(메모에 있는 만큼)"
+      ]
+    },
+    {
+      "id": "vaccine-center-essay",
+      "source": "vaccine-center-2021",
+      "genre": "에세이",
+      "request": "아래 메모로 에세이를 써 줘.",
+      "must_cover": [
+        "예방접종센터에서 일한 기간과 일",
+        "기억에 남는 일",
+        "글쓴이의 생각"
+      ]
+    },
+    {
+      "id": "library-delivery-brief",
+      "source": "library-delivery-2021",
+      "genre": "블로그 글",
+      "request": "이 이야기로 블로그 글 하나 써 줘.",
+      "input": "도서관에 갔다가 70세 이상 어르신 등에게 무료택배로 책을 빌려주는 서비스가 있는 걸 봤어. 일흔 중반인 아빠한테 추천해서 같이 회원가입을 했어.",
+      "must_cover": [
+        "무료택배서비스를 알게 된 계기",
+        "아빠와 회원가입한 일"
+      ]
+    },
+    {
+      "id": "school-zone-style",
+      "source": "school-zone-2020",
+      "genre": "블로그 글",
+      "request": "아래 참고 글의 말투로, 메모를 바탕으로 블로그 글을 써 줘.",
+      "style": {
+        "set": "evals/human",
+        "source": "doc24-review-2021"
+      },
+      "must_cover": [
+        "주민 신고제의 내용",
+        "글쓴이가 겪은 일과 생각",
+        "신고 방법(메모에 있는 만큼)"
+      ]
+    },
+    {
+      "id": "subway-air-blog",
+      "source": "subway-air-2022",
+      "genre": "블로그 글",
+      "request": "아래 메모로 블로그 글을 써 줘.",
+      "must_cover": [
+        "지하철에서 본 장치",
+        "알아본 내용",
+        "글쓴이의 생각"
+      ]
+    },
+    {
+      "id": "gov24-newbie-style",
+      "source": "gov24-newbie-2022",
+      "genre": "블로그 글",
+      "request": "아래 참고 글의 말투로, 메모를 바탕으로 블로그 글을 써 줘.",
+      "style": {
+        "set": "evals/human",
+        "source": "relief-fund-2020"
+      },
+      "must_cover": [
+        "정부24를 쓰게 된 계기",
+        "쓴 서비스와 방법",
+        "글쓴이의 느낌"
+      ]
+    },
+    {
+      "id": "movie-popcorn-brief",
+      "source": "movie-popcorn-2022",
+      "genre": "에세이",
+      "request": "이걸로 짧은 에세이를 써 줘.",
+      "input": "거리두기가 풀리고 4월 25일부터 영화관에서 팝콘을 먹을 수 있게 됐어. 1000원짜리 무비 위크 팔찌를 사서 오랜만에 영화관에 갔어.",
+      "must_cover": [
+        "거리두기 해제와 영화관 취식 허용",
+        "무비 위크 팔찌로 영화관에 간 일"
+      ]
+    },
+    {
+      "id": "market-online-blog",
+      "source": "market-online-2021",
+      "genre": "블로그 글",
+      "request": "아래 메모로 블로그 글을 써 줘.",
+      "must_cover": [
+        "온라인 전통시장을 써 본 경험",
+        "이용 방법",
+        "글쓴이의 생각"
+      ]
+    }
+  ],
+  "strip_byline": true
+}

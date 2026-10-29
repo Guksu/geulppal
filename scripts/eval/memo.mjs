@@ -71,10 +71,19 @@ if (mode === 'sources') {
   for (const source of spec.sources) {
     const html = fetchPage(source.url)
     if (!html.includes('공공누리 제1유형')) throw new Error(`${source.id}: 공공누리 제1유형 표시가 없다`)
-    const title = decode((html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '').split('|')[0].replace(/\s*-\s*정책뉴스\s*$/, '').trim())
+    // 제목 끝의 게시판 이름(" - 정책뉴스", " - 정책기자마당" 등)을 뗀다
+    const title = decode((html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '').split('|')[0].replace(/\s+-\s+[^-]+$/, '').trim())
     const published = html.match(/article:published_time" content="([^"]+)"/)?.[1]?.slice(0, 10) ?? null
     let text = articleBody(html)
     const modifications = ['본문 텍스트만 씀(사진·표·사진 설명 제외)']
+    // 기자단 글 끝의 서명과 자기소개는 평가에 쓰지 않는다(spec.strip_byline)
+    if (spec.strip_byline) {
+      const at = [...text.matchAll(/\n\s*(대한민국\s*)?정책기자단\s*[|｜ ]/g)].at(-1)?.index
+      if (at !== undefined) {
+        text = text.slice(0, at).trim()
+        modifications.push('글쓴이 서명·소개 제외')
+      }
+    }
     const masked = text.replace(/[\w.+-]+@[\w-]+\.[\w.]+/g, '(전자우편 주소 생략)')
     if (masked !== text) modifications.push('전자우편 주소 생략')
     text = masked
@@ -84,7 +93,8 @@ if (mode === 'sources') {
   writeJson(sourcesFile, sources)
 }
 
-const MEMO_REQUEST = [
+// 자료 묶음마다 spec.memo_request(줄 배열)와 spec.memo_rubric(판정 지침 경로)으로 바꿀 수 있다. 없으면 정책 기사용 기본값
+const DEFAULT_MEMO_REQUEST = [
   '아래 정책 기사를, 담당자가 이 기사를 쓰기 전에 가지고 있던 업무 메모로 되돌려 줘.',
   '- 기사에 있는 사실(기관, 날짜·요일·시각, 수치와 단위, 대상, 조건·예외, 절차, 장소, 연락처, 발언한 사람과 발언 요지)을 빠짐없이 짧은 항목으로 적어.',
   '- 기사 문장을 그대로 옮기지 말고 짧은 메모체로 써.',
@@ -92,6 +102,7 @@ const MEMO_REQUEST = [
   '- 범위를 정하는 말(만, 등, 모두)과 확실성(예정, 추진, 검토, 계획)은 기사와 같게 둬.',
   '- 제목, 도입 문장, 마무리 문장 없이 메모만 보내.',
 ].join('\n')
+const MEMO_REQUEST = spec.memo_request ? spec.memo_request.join('\n') : DEFAULT_MEMO_REQUEST
 
 const CHECK_SCHEMA = {
   type: 'object',
@@ -109,7 +120,7 @@ const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<
 
 if (mode === 'memo') {
   const sources = readJson(sourcesFile)
-  const rubric = readFileSync(join(ROOT, 'evals/judge/memo-check.md'), 'utf8')
+  const rubric = readFileSync(join(ROOT, spec.memo_rubric ?? 'evals/judge/memo-check.md'), 'utf8')
   const store = existsSync(memoFile) ? readJson(memoFile) : { items: {} }
   store.about = `메모로 쓰는 사례의 입력. 스킬 없는 별도 세션이 기사에서 뽑은 메모와, 판정 모델이 기사와 대조한 검수 결과. scripts/eval/memo.mjs memo --dir ${SET}으로 만든다.`
   store.request = MEMO_REQUEST
@@ -138,6 +149,14 @@ if (mode === 'memo') {
   console.log(`끝: ${Object.keys(store.items).length - failed.length}개 통과${failed.length ? `, 통과 못 함 ${failed.join(', ')}` : ''}`)
 }
 
+const STYLE_HEADER = '[참고 글: 말투와 문단 호흡만 참고. 이 글의 내용은 쓰지 않음]'
+const MEMO_HEADER = '[메모]'
+const styleText = (style) => {
+  const found = readJson(join(ROOT, style.set, 'sources.json')).find((source) => source.id === style.source)
+  if (!found) throw new Error(`참고 글 ${style.set} ${style.source}가 없다`)
+  return found.text.trim()
+}
+
 if (mode === 'build') {
   const sources = readJson(sourcesFile)
   const memo = readJson(memoFile)
@@ -146,8 +165,9 @@ if (mode === 'build') {
   for (const item of spec.cases) {
     const source = sourceOf[item.source]
     if (!source) throw new Error(`spec.json 사례 ${item.id}: 자료 ${item.source}가 없다`)
-    const memoText = memo.items[item.source]?.status === 'ok' ? memo.items[item.source].text : null
-    if (!memoText) {
+    // 사례에 input(주제와 한두 줄 등)이 있으면 메모 대신 그것을 준다. style이 있으면 다른 사람 글을 문체 참고로 앞에 붙인다
+    const memoText = item.input ?? (memo.items[item.source]?.status === 'ok' ? memo.items[item.source].text : null)
+    if (memoText === null || memoText === undefined) {
       console.log(`${item.id}: 검수를 통과한 메모가 없어 만들지 않음`)
       continue
     }
@@ -162,12 +182,15 @@ if (mode === 'build') {
       origin: `human:${source.url}`,
       overlaps_skill_examples: false,
       request: item.request,
-      input: memoText.trim(),
+      input: item.style ? `${STYLE_HEADER}\n${styleText(item.style)}\n\n${MEMO_HEADER}\n${memoText.trim()}` : memoText.trim(),
+      ...(item.style ? { style: item.style } : {}),
+      ...(spec.rubrics ? { rubrics: spec.rubrics } : {}),
+      ...(item.input ? { input_kind: 'brief' } : {}),
       must_preserve: item.must_cover,
       must_not: [...(item.must_not ?? []), ...spec.common_must_not],
       exact: [],
-      notes: '원문 없이 메모로 쓰는 사례. must_preserve는 다뤄야 할 내용이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-memo-claims.md로 본다.',
-      ...(item.genre === '보도자료' ? { reference: source.id } : {}),
+      notes: spec.case_notes ?? '원문 없이 메모로 쓰는 사례. must_preserve는 다뤄야 할 내용이고 판정의 통과 조건에는 넣지 않는다. 사실 근거는 evals/judge/draft-memo-claims.md로 본다.',
+      ...((spec.reference_genres ?? ['보도자료']).includes(item.genre) && !item.input ? { reference: source.id } : {}),
     })
   }
   writeJson(join(DIR, 'cases.json'), cases)
