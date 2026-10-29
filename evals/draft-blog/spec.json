@@ -96,6 +96,30 @@
       "newsId": "148894670",
       "split": "holdout",
       "url": "https://www.korea.kr/news/reporterView.do?newsId=148894670"
+    },
+    {
+      "id": "sea-trash-2019",
+      "newsId": "148861136",
+      "split": "holdout2",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148861136"
+    },
+    {
+      "id": "remote-class-2020",
+      "newsId": "148873716",
+      "split": "holdout2",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148873716"
+    },
+    {
+      "id": "national-park-2021",
+      "newsId": "148894704",
+      "split": "holdout2",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148894704"
+    },
+    {
+      "id": "ev-charging-2022",
+      "newsId": "148900954",
+      "split": "holdout2",
+      "url": "https://www.korea.kr/news/reporterView.do?newsId=148900954"
     }
   ],
   "cases": [
@@ -236,6 +260,54 @@
       "must_cover": [
         "온라인 전통시장을 써 본 경험",
         "이용 방법",
+        "글쓴이의 생각"
+      ]
+    },
+    {
+      "id": "sea-trash-blog",
+      "source": "sea-trash-2019",
+      "genre": "블로그 글",
+      "request": "아래 메모로 블로그 글을 써 줘.",
+      "must_cover": [
+        "바다 쓰레기를 주운 경험",
+        "본 것과 알게 된 정보",
+        "글쓴이의 생각"
+      ]
+    },
+    {
+      "id": "remote-class-brief",
+      "source": "remote-class-2020",
+      "genre": "블로그 글",
+      "request": "이 이야기로 블로그 글 하나 써 줘.",
+      "input": "원격수업 하는 날엔 아이도 나도 아침이 좀 여유로워. 아이 등교가 격일제에서 주 1일제로 바뀌었어.",
+      "must_cover": [
+        "원격수업 날의 여유로운 아침",
+        "등교 방식의 변화"
+      ]
+    },
+    {
+      "id": "national-park-blog",
+      "source": "national-park-2021",
+      "genre": "블로그 글",
+      "request": "아래 메모로 블로그 글을 써 줘.",
+      "must_cover": [
+        "국립공원 산행 경험",
+        "제도와 참여 방법(메모에 있는 만큼)",
+        "글쓴이의 생각"
+      ]
+    },
+    {
+      "id": "ev-charging-style",
+      "source": "ev-charging-2022",
+      "genre": "블로그 글",
+      "request": "아래 참고 글의 말투로, 메모를 바탕으로 블로그 글을 써 줘.",
+      "style": {
+        "set": "evals/human",
+        "source": "tour-flight-2021"
+      },
+      "must_cover": [
+        "전기차를 쓰며 겪은 충전 환경 변화",
+        "QR코드 결제 방법",
         "글쓴이의 생각"
       ]
     }
