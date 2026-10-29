@@ -37,8 +37,10 @@ When Claude got only a memo and was asked for a press release, notice, report or
 | Only claims backed by the memo: 8 dev and unseen cases | 5/16 | 15/16 |
 | Same: 5 cases unseen until the end | 4/10 | 9/10 |
 | Judge model quality comparison | 0 to 6 | |
+| Blind comparison by a person | 1 to 3 (1 about the same) | |
 
 - Without geulppal, Claude often wrote planned actions from the memo (`권고·지도할 계획` "plans to recommend and guide") as if they had happened, or added expected benefits that the memo did not mention.
+- In a blind comparison of press releases against the original human-written articles, the human articles were picked 2 to 1. The judge model picked the geulppal versions instead.
 
 **Editing**: Claude was asked to polish human-written and model-written text.
 
