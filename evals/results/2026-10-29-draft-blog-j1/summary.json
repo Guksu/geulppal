@@ -1,0 +1,77 @@
+{
+  "name": "2026-10-29-draft-blog-j1",
+  "conditions": {
+    "J1": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 24,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 24,
+        "pass": 16,
+        "fail": 8,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 20039.5,
+        "medianInput": 18671,
+        "medianOutput": 2894,
+        "costUsd": 2.0866846
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-J1": {
+      "total": 24,
+      "judged": 4,
+      "excluded": 20,
+      "leftWins": 0,
+      "rightWins": 1,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 3,
+      "cases": {
+        "A": 0,
+        "J1": 1,
+        "mixed": 0,
+        "none": 11
+      }
+    },
+    "I-vs-J1": {
+      "total": 16,
+      "judged": 13,
+      "excluded": 3,
+      "leftWins": 0,
+      "rightWins": 4,
+      "tie": 8,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "I": 0,
+        "J1": 3,
+        "mixed": 0,
+        "none": 5
+      }
+    },
+    "I1-vs-J1": {
+      "total": 8,
+      "judged": 2,
+      "excluded": 6,
+      "leftWins": 0,
+      "rightWins": 0,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "I1": 0,
+        "J1": 0,
+        "mixed": 0,
+        "none": 4
+      }
+    }
+  },
+  "judgeCalls": 62
+}
