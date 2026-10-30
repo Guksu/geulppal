@@ -21,11 +21,11 @@ if (!options.name || !options.cases || !options.conds) {
   process.exit(1)
 }
 
-const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', D1: '0.3.1 후보', D: '0.3.1 후보', E1: '0.4.0-r1 후보', E2: '0.4.0-r2 후보', E: '글빨 0.4.0', F1: '0.4.1-r1 후보', F: '글빨 0.4.1', G1: '0.4.2-r1 후보', G: '0.4.2 후보', I1: '0.4.3-r1 후보', I: '글빨 0.4.3', J1: '0.4.4-r1 후보', J: '0.4.4 후보', H: '사람 원문' }
+const LABELS = { A: '글빨 없음', B0: '글빨 0.1.0', B1: '글빨 0.2.0-r1', B2: '글빨 0.2.0', B: '글빨 0.2.1', C1: '글빨 0.3.0-r1', C2: '글빨 0.3.0-r2', C: '글빨 0.3.0', D1: '0.3.1 후보', D: '0.3.1 후보', E1: '0.4.0-r1 후보', E2: '0.4.0-r2 후보', E: '글빨 0.4.0', F1: '0.4.1-r1 후보', F: '글빨 0.4.1', G1: '0.4.2-r1 후보', G: '0.4.2 후보', I1: '0.4.3-r1 후보', I: '글빨 0.4.3', J1: '0.4.4-r1 후보', J: '0.4.4 후보', K1: '0.4.5-r1 후보', H: '사람 원문' }
 const TASKS = { rewrite: '수정', draft: '새 글 작성', diagnose: '진단만', summarize: '요약', 'noop-check': '고칠 게 없으면 그대로' }
 const LANGUAGES = { ko: '한국어', en: '영어', 'ko-en': '한영 혼용' }
 const label = (condition) => LABELS[condition] ?? condition
-const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', D1: '0.3.1후보', D: '0.3.1후보', H: '사람', E1: '0.4.0-r1', E2: '0.4.0-r2', E: '0.4.0', F1: '0.4.1-r1', F: '0.4.1', G1: '0.4.2-r1', G: '0.4.2후보', I1: '0.4.3-r1', I: '0.4.3', J1: '0.4.4-r1', J: '0.4.4후보' }
+const SHORT = { A: '없음', B0: '0.1.0', B1: '0.2.0-r1', B2: '0.2.0', B: '0.2.1', C1: '0.3.0-r1', C2: '0.3.0-r2', C: '0.3.0', D1: '0.3.1후보', D: '0.3.1후보', H: '사람', E1: '0.4.0-r1', E2: '0.4.0-r2', E: '0.4.0', F1: '0.4.1-r1', F: '0.4.1', G1: '0.4.2-r1', G: '0.4.2후보', I1: '0.4.3-r1', I: '0.4.3', J1: '0.4.4-r1', J: '0.4.4후보', K1: '0.4.5-r1' }
 const short = (condition) => SHORT[condition] ?? condition
 
 const cases = readJson(join(ROOT, options.cases)).filter((item) => !options.split || item.split === options.split)
@@ -77,7 +77,8 @@ const cell = (text) => String(text).replace(/\|/g, '\\|').replace(/\n+/g, ' ')
 // 원문 없이 쓴 사례(작업 폴더 자료가 있는 사례)는 의미 보존 대신 근거 판정을 한다
 const isDraftCase = (item) => Boolean(item.fixture) || ['memo', 'fiction'].includes(item.variant)
 const drafting = cases.some(isDraftCase)
-const CHECK = drafting ? '근거 판정' : '의미 보존'
+// 소설은 지어낸 이야기라 근거 대신 요청 조건을 판정한다
+const CHECK = cases.length && cases.every((item) => item.variant === 'fiction') ? '조건 판정' : drafting ? '근거 판정' : '의미 보존'
 const meaningBadge = (record, meaning) => {
   if (!record) return '실행 기록 없음'
   if (record.status !== 'ok') return `✗ 실행 실패(${record.status})`

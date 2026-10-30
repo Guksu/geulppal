@@ -1,0 +1,66 @@
+{
+  "name": "2026-10-30-draft-fiction",
+  "conditions": {
+    "A": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 16,
+        "pass": 9,
+        "fail": 7,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 32139,
+        "medianInput": 8369,
+        "medianOutput": 3308.5,
+        "costUsd": 0.8969916
+      }
+    },
+    "I": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 16,
+        "pass": 10,
+        "fail": 6,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 33269.5,
+        "medianInput": 15603,
+        "medianOutput": 3864.5,
+        "costUsd": 1.4107856
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-I": {
+      "total": 16,
+      "judged": 7,
+      "excluded": 9,
+      "leftWins": 0,
+      "rightWins": 7,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 0,
+      "cases": {
+        "A": 0,
+        "I": 4,
+        "mixed": 0,
+        "none": 4
+      }
+    }
+  },
+  "judgeCalls": 46
+}

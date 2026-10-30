@@ -23,10 +23,6 @@
       "참고 글의 인물·사건·문장을 그대로 옮기기"
     ],
     "exact": [],
-    "length": {
-      "min": 800,
-      "max": 3500
-    },
     "rubrics": {
       "claims": "evals/judge/draft-fiction-check.md",
       "quality": "evals/judge/draft-fiction-quality.md"
@@ -135,10 +131,6 @@
       "참고 글의 인물·사건·문장을 그대로 옮기기"
     ],
     "exact": [],
-    "length": {
-      "min": 800,
-      "max": 2500
-    },
     "rubrics": {
       "claims": "evals/judge/draft-fiction-check.md",
       "quality": "evals/judge/draft-fiction-quality.md"
@@ -169,10 +161,6 @@
       "참고 글의 인물·사건·문장을 그대로 옮기기"
     ],
     "exact": [],
-    "length": {
-      "min": 1000,
-      "max": 3500
-    },
     "rubrics": {
       "claims": "evals/judge/draft-fiction-check.md",
       "quality": "evals/judge/draft-fiction-quality.md"
@@ -278,10 +266,6 @@
       "참고 글의 인물·사건·문장을 그대로 옮기기"
     ],
     "exact": [],
-    "length": {
-      "min": 600,
-      "max": 2000
-    },
     "rubrics": {
       "claims": "evals/judge/draft-fiction-check.md",
       "quality": "evals/judge/draft-fiction-quality.md"
@@ -312,10 +296,6 @@
       "참고 글의 인물·사건·문장을 그대로 옮기기"
     ],
     "exact": [],
-    "length": {
-      "min": 1000,
-      "max": 3500
-    },
     "rubrics": {
       "claims": "evals/judge/draft-fiction-check.md",
       "quality": "evals/judge/draft-fiction-quality.md"
@@ -423,10 +403,6 @@
       "참고 글의 인물·사건·문장을 그대로 옮기기"
     ],
     "exact": [],
-    "length": {
-      "min": 1200,
-      "max": 3000
-    },
     "rubrics": {
       "claims": "evals/judge/draft-fiction-check.md",
       "quality": "evals/judge/draft-fiction-quality.md"

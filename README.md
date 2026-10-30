@@ -4,7 +4,7 @@ A Claude skill that cuts hype, repetition and translationese when Claude writes 
 
 I built it because every time I asked Claude to write a README or a report, I had to strip out the same modifiers and filler again.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md) · [6th](evals/results/REPORT-draft-blog.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md) · [6th](evals/results/REPORT-draft-blog.md) · [7th](evals/results/REPORT-draft-fiction.md)
 
 > **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
 >
@@ -56,6 +56,18 @@ When Claude got only a writer's memo or one or two lines and was asked for a blo
 - The judge model preferred the other versions on quality, mostly because 0.4.3 split short personal stories into many subheadings and lists.
 - In a blind comparison against the original human-written posts, the human posts were picked 5 to 0 (1 about the same). 0.4.3 no longer invents experiences, but it does not read as well as a person's own account.
 
+When Claude got only one or two lines or a settings memo (some with the opening of a public-domain Korean short story as a style reference) and was asked for a short story, both versions followed the requested conditions about equally often, and the judge model preferred the geulppal stories.
+
+| Short stories | Without geulppal | geulppal 0.4.3 |
+|---|---|---|
+| Kept the requested conditions and settings: 8 unseen cases | 12/16 | 10/16 |
+| Within the requested length (6 cases that asked for one) | 3/12 | 5/12 |
+| Judge model quality comparison | 0 to 10 | |
+
+- The judge model picked 0.4.3 because it showed feelings through actions and objects instead of naming them, and did not close on a moral. There has been no blind comparison by a person yet.
+- When the request set no length and gave only one or two lines, 0.4.3 wrote shorter stories than Claude without geulppal (962 characters excluding spaces on average over 6 cases, against 1,618).
+- Both versions sometimes dropped a requested dialect or copied sentences from the style reference almost word for word.
+
 **Editing**: Claude was asked to polish human-written and model-written text.
 
 | Results that kept facts, conditions and status | Without geulppal | geulppal 0.2 | geulppal 0.3 | geulppal 0.4 |
@@ -67,7 +79,7 @@ When Claude got only a writer's memo or one or two lines and was asked for a blo
 - Without geulppal, Claude often added promises or experiences that were not in the original. It also often turned hearsay ("it is said to be possible") into a plain statement ("it is possible").
 - 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online"). 0.4 did not change the editing guidance.
 - The judge model almost always preferred the edited text over the human-written original. In a blind comparison by the repository owner, 16 of 22 pairs of edited posts were rated "about the same". For editing, geulppal's effect is on accuracy; it does not show that the text reads better.
-- With geulppal, a run cost about 1.5 to 1.7 times as much as without it for README drafts, about 2 times for documents written from memos and for blog posts, and about 2.2 to 2.5 times for editing.
+- With geulppal, a run cost about 1.5 to 1.7 times as much as without it for README drafts, about 2 times for documents written from memos and for blog posts, about 1.5 times for short stories, and about 2.2 to 2.5 times for editing.
 
 The samples are small, and the blind comparisons had a single rater. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 

@@ -26,6 +26,7 @@ const draftRun = (item) => (item.split === 'holdout' ? DRAFT_RUNS.final : DRAFT_
 // 메모 업무 글: 확인용은 기준선 실행, 새 확인용은 최종 실행. 0.4.1(F)과 비교한다
 // 블로그: 확인용·새 확인용의 0.4.3은 최종 실행, 2차 새 확인용은 2차 최종 실행
 const blogRun = (item) => (item.split === 'holdout2' ? '2026-10-29-draft-blog-final2' : '2026-10-29-draft-blog-final')
+const fictionRun = (item) => (item.split === 'holdout' ? '2026-10-30-draft-fiction-final' : '2026-10-30-draft-fiction')
 const memoRun = (item) => (item.split === 'holdout' ? '2026-10-28-draft-memo-final' : '2026-10-28-draft-memo')
 const SETS = {
   human: {
@@ -89,6 +90,19 @@ const SETS = {
       { key: 'H-vs-0.4.3', left: (item) => ({ run: blogRun(item), condition: 'H' }), filter: (item) => item.split !== 'dev' && item.input_kind !== 'brief', max: 6 },
     ],
   },
+  'draft-fiction': {
+    cases: 'evals/draft-fiction/cases.json',
+    pairsFile: 'evals/runs/rating/draft-fiction-pairs.json',
+    results: 'evals/results/2026-10-30-draft-fiction-rating',
+    storeKey: 'geulppal-blind-draft-fiction',
+    title: '글빨 짧은 소설 블라인드 비교',
+    lede: '한두 줄 설명이나 설정 메모로 짧은 소설을 써 달라는 요청에 나온 두 결과입니다. 읽고 싶은 소설로 어느 쪽이 나은지 골라 주세요. 조건을 지켰는지는 판정 모델이 따로 봤지만, 이 비교에는 조건을 못 지킨 결과도 섞여 있습니다. 어느 쪽이 글빨인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 입력만 받았습니다.',
+    // 소설은 품질이 주된 기준이라 조건 판정 결과와 상관없이 쌍을 고른다
+    anyPass: true,
+    right: (item) => ({ run: fictionRun(item), condition: 'I' }),
+    groups: [{ key: 'A-vs-0.4.3', left: (item) => ({ run: fictionRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 }],
+  },
 }
 const SET = SETS[options.set]
 if (!SET) {
@@ -135,6 +149,7 @@ const latestRun = (run, condition, id, rep) =>
     .sort((a, b) => b.attempt - a.attempt)[0] ?? null
 // 초안 사례의 사람 README(H, 실행하지 않은 기준 조건)는 근거 판정을 하지 않으므로 통과로 본다
 const passed = (run, condition, id, rep) =>
+  SET.anyPass ||
   (SET.referencePass && recordsOf(run).get(`manifest/${condition}`)?.model === null) || recordsOf(run).get(`judge/meaning/${condition}/${id}-r${rep}`)?.pass === true
 // 같은 쌍을 판정 모델이 비교한 기록이 있으면 함께 둔다(사람 판정과 맞춰 보기용)
 const modelJudgment = (left, right, id, rep) => {

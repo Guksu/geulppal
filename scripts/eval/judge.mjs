@@ -76,8 +76,10 @@ const exactCheck = (item, output) => {
 // 분량 조건(소설 등 `length: { min, max }`, 글자 수). 완성문 뒤에 `---`로 나눈 사용자용 메모는 세지 않는다
 const lengthCheck = (item, output) => {
   if (!item.length) return null
-  const body = output.split(/\n-{3,}\n/)[0]
-  const chars = body.replace(/\s/g, '').length
+  // 완성문 뒤에 붙은 사용자용 메모(마지막 구분선 뒤의 짧은 글)만 뺀다. 장면 구분선은 본문으로 센다
+  const parts = output.split(/\n-{3,}\n/)
+  if (parts.length > 1 && parts.at(-1).replace(/\s/g, '').length < 150) parts.pop()
+  const chars = parts.join('\n').replace(/\s/g, '').length
   return { chars, min: item.length.min, max: item.length.max, pass: chars >= item.length.min && chars <= item.length.max }
 }
 
@@ -254,7 +256,7 @@ if (mode === 'meaning') {
     const judged = await callJudge({ prompt, rubric: usedRubric, schema: draft ? CLAIMS_SCHEMA : MEANING_SCHEMA, fixtureDir: fixtureDirs[item.id] })
     const length = lengthCheck(item, output)
     const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass && (length?.pass ?? true) : null
-    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, ...(length ? { length } : {}), judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, ...(length ? { length } : {}), judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : item.variant === 'fiction' ? 'draft-fiction-check' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
     console.log(`의미 ${condition} ${record.id} r${record.rep} — ${judged.answer ? judged.answer.verdict : '판정 실패'}${exact.pass ? '' : `, 문자열 누락 ${exact.missing.length}`}`)
     return null
   })
@@ -341,10 +343,13 @@ if (mode === 'rescore') {
       const key = `${folder}/${condition}/${name}`
       const judged = out.get(key)
       if (!judged.judged) continue
-      const exact = exactCheck(cases[judged.id], outputOf(options.out, runs[`${judged.id}-r${judged.rep}`]))
-      const pass = judged.judge.answer.verdict === 'pass' && exact.pass
+      const output = outputOf(options.out, runs[`${judged.id}-r${judged.rep}`])
+      const exact = exactCheck(cases[judged.id], output)
+      const length = lengthCheck(cases[judged.id], output)
+      const pass = judged.judge.answer.verdict === 'pass' && exact.pass && (length?.pass ?? true)
       if (pass !== judged.pass) console.log(`다시 계산 ${folder} ${condition} ${judged.id} r${judged.rep}: ${judged.pass} → ${pass}`)
-      out.put(key, { ...judged, exact, pass, ...(pass !== judged.pass ? { rescored: { from: judged.pass, reason: '문자열 검사 적용 범위 수정' } } : {}) })
+      const { length: _previousLength, ...rest } = judged
+      out.put(key, { ...rest, exact, ...(length ? { length } : {}), pass, ...(pass !== judged.pass ? { rescored: { from: judged.pass, reason: options.reason ?? '문자열 검사 적용 범위 수정' } } : {}) })
     }
   }
   packRecords(options.out)
