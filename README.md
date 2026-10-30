@@ -49,10 +49,12 @@ When Claude got only a writer's memo or one or two lines and was asked for a blo
 | Only experiences found in the input: 12 unseen cases | 6/24 | 10/16 | 22/24 |
 | Same: cases with only one or two lines of input | 0/8 | 0/6 | 8/8 |
 | Judge model quality comparison (against 0.4.3) | 4 to 0 | 3 to 1 | |
+| Blind comparison by a person (against 0.4.3) | 2 to 2 | 0 to 0 (4 about the same) | |
 
 - Without geulppal, each post added on average 2.6 to 5.8 scenes, inner thoughts or realisations that were not in the memo. With 0.4.3 the average was 0.1.
 - Given only one or two lines, 0.4.3 writes a short post from them and asks for the experiences it would need to write more. It invents nothing, but the result is short if you expected a full post.
 - The judge model preferred the other versions on quality, mostly because 0.4.3 split short personal stories into many subheadings and lists.
+- In a blind comparison against the original human-written posts, the human posts were picked 5 to 0 (1 about the same). 0.4.3 no longer invents experiences, but it does not read as well as a person's own account.
 
 **Editing**: Claude was asked to polish human-written and model-written text.
 

@@ -1,0 +1,531 @@
+{
+  "pairs": [
+    {
+      "group": "H-vs-0.4.3",
+      "case": "market-online-blog",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "H",
+        "judgments": [
+          "H",
+          "H"
+        ]
+      },
+      "id": "p01"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "ev-charging-style",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final2",
+        "result": "tie",
+        "judgments": [
+          "tie",
+          "tie"
+        ]
+      },
+      "id": "p02"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "gov24-newbie-style",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "tie",
+        "judgments": [
+          "tie",
+          "tie"
+        ]
+      },
+      "id": "p03"
+    },
+    {
+      "group": "H-vs-0.4.3",
+      "case": "ev-charging-style",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final2",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p04"
+    },
+    {
+      "group": "H-vs-0.4.3",
+      "case": "national-park-blog",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final2",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p05"
+    },
+    {
+      "group": "H-vs-0.4.3",
+      "case": "subway-air-blog",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "H",
+        "judgments": [
+          "H",
+          "H"
+        ]
+      },
+      "id": "p06"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "subway-air-blog",
+      "rep": 2,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "A",
+        "judgments": [
+          "A",
+          "A"
+        ]
+      },
+      "id": "p07"
+    },
+    {
+      "group": "F-vs-0.4.3",
+      "case": "vaccine-center-essay",
+      "rep": 2,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p08"
+    },
+    {
+      "group": "H-vs-0.4.3",
+      "case": "weather-station-blog",
+      "rep": 2,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "inconsistent",
+        "judgments": [
+          "H",
+          "tie"
+        ]
+      },
+      "id": "p09"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "national-park-blog",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final2",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final2",
+        "result": "A",
+        "judgments": [
+          "A",
+          "A"
+        ]
+      },
+      "id": "p10"
+    },
+    {
+      "group": "F-vs-0.4.3",
+      "case": "market-online-blog",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "F"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "tie",
+        "judgments": [
+          "tie",
+          "tie"
+        ]
+      },
+      "id": "p11"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "school-zone-style",
+      "rep": 1,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "A",
+        "judgments": [
+          "A",
+          "A"
+        ]
+      },
+      "id": "p12"
+    },
+    {
+      "group": "H-vs-0.4.3",
+      "case": "gov24-newbie-style",
+      "rep": 2,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "H"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p13"
+    },
+    {
+      "group": "F-vs-0.4.3",
+      "case": "school-zone-style",
+      "rep": 1,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "inconsistent",
+        "judgments": [
+          "tie",
+          "F"
+        ]
+      },
+      "id": "p14"
+    },
+    {
+      "group": "F-vs-0.4.3",
+      "case": "subway-air-blog",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-29-draft-blog-final",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-29-draft-blog-final",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p15"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "p01",
+      "group": "H-vs-0.4.3",
+      "case": "market-online-blog",
+      "rep": 1,
+      "human": "H",
+      "model": "H",
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "group": "A-vs-0.4.3",
+      "case": "ev-charging-style",
+      "rep": 1,
+      "human": "A",
+      "model": "tie",
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "group": "A-vs-0.4.3",
+      "case": "gov24-newbie-style",
+      "rep": 1,
+      "human": "I",
+      "model": "tie",
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "group": "H-vs-0.4.3",
+      "case": "ev-charging-style",
+      "rep": 1,
+      "human": "same",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "group": "H-vs-0.4.3",
+      "case": "national-park-blog",
+      "rep": 1,
+      "human": "H",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "group": "H-vs-0.4.3",
+      "case": "subway-air-blog",
+      "rep": 1,
+      "human": "H",
+      "model": "H",
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "group": "A-vs-0.4.3",
+      "case": "subway-air-blog",
+      "rep": 2,
+      "human": "A",
+      "model": "A",
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "group": "F-vs-0.4.3",
+      "case": "vaccine-center-essay",
+      "rep": 2,
+      "human": "same",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p09",
+      "group": "H-vs-0.4.3",
+      "case": "weather-station-blog",
+      "rep": 2,
+      "human": "H",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p10",
+      "group": "A-vs-0.4.3",
+      "case": "national-park-blog",
+      "rep": 1,
+      "human": "same",
+      "model": "A",
+      "note": ""
+    },
+    {
+      "id": "p11",
+      "group": "F-vs-0.4.3",
+      "case": "market-online-blog",
+      "rep": 1,
+      "human": "same",
+      "model": "tie",
+      "note": ""
+    },
+    {
+      "id": "p12",
+      "group": "A-vs-0.4.3",
+      "case": "school-zone-style",
+      "rep": 1,
+      "human": "I",
+      "model": "A",
+      "note": ""
+    },
+    {
+      "id": "p13",
+      "group": "H-vs-0.4.3",
+      "case": "gov24-newbie-style",
+      "rep": 2,
+      "human": "H",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p14",
+      "group": "F-vs-0.4.3",
+      "case": "school-zone-style",
+      "rep": 1,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p15",
+      "group": "F-vs-0.4.3",
+      "case": "subway-air-blog",
+      "rep": 1,
+      "human": "same",
+      "model": "F",
+      "note": ""
+    }
+  ]
+}
