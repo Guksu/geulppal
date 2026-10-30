@@ -75,7 +75,7 @@ const quote = (text) => (text.trim() ? showLinks(text.trimEnd()).split('\n').map
 const cell = (text) => String(text).replace(/\|/g, '\\|').replace(/\n+/g, ' ')
 
 // 원문 없이 쓴 사례(작업 폴더 자료가 있는 사례)는 의미 보존 대신 근거 판정을 한다
-const isDraftCase = (item) => Boolean(item.fixture) || item.variant === 'memo'
+const isDraftCase = (item) => Boolean(item.fixture) || ['memo', 'fiction'].includes(item.variant)
 const drafting = cases.some(isDraftCase)
 const CHECK = drafting ? '근거 판정' : '의미 보존'
 const meaningBadge = (record, meaning) => {
@@ -87,6 +87,7 @@ const meaningBadge = (record, meaning) => {
 const failReasons = (meaning) => [
   ...(meaning?.judge?.answer?.fail_reasons ?? []),
   ...(meaning?.exact?.applicable !== false && meaning?.exact?.missing?.length ? [`글자 그대로 남아야 할 문자열이 빠짐: ${meaning.exact.missing.map((s) => `\`${s}\``).join(', ')}`] : []),
+  ...(meaning?.length && !meaning.length.pass ? [`분량 ${meaning.length.chars}자(공백 제외)가 요청 범위 ${meaning.length.min}~${meaning.length.max}자를 벗어남`] : []),
 ]
 const pairResult = (pair, record) => {
   if (!record) return '-'

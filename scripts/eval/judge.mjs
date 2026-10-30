@@ -73,8 +73,16 @@ const exactCheck = (item, output) => {
   return { checked, missing, applicable: true, pass: missing.length === 0 }
 }
 
+// 분량 조건(소설 등 `length: { min, max }`, 글자 수). 완성문 뒤에 `---`로 나눈 사용자용 메모는 세지 않는다
+const lengthCheck = (item, output) => {
+  if (!item.length) return null
+  const body = output.split(/\n-{3,}\n/)[0]
+  const chars = body.replace(/\s/g, '').length
+  return { chars, min: item.length.min, max: item.length.max, pass: chars >= item.length.min && chars <= item.length.max }
+}
+
 // 원문 없이 쓴 사례: 작업 폴더 자료가 있거나(draft-readme) 메모로 쓰는 사례(draft-memo). evals/cases.json의 초기 draft 사례는 의미 보존으로 판정한다
-const isDraftCase = (item) => Boolean(item.fixture) || item.variant === 'memo'
+const isDraftCase = (item) => Boolean(item.fixture) || ['memo', 'fiction'].includes(item.variant)
 // 사례가 판정 지침을 정해 두었으면(블로그 등 `rubrics: { claims, quality }`) 그것을 쓴다
 const rubricCache = new Map()
 const rubricOf = (path) => {
@@ -244,8 +252,9 @@ if (mode === 'meaning') {
         ].filter(Boolean).join('\n\n')
     const usedRubric = draft ? (item.rubrics?.claims ? rubricOf(item.rubrics.claims) : item.fixture ? claimsRubric : memoClaimsRubric) : rubric
     const judged = await callJudge({ prompt, rubric: usedRubric, schema: draft ? CLAIMS_SCHEMA : MEANING_SCHEMA, fixtureDir: fixtureDirs[item.id] })
-    const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass : null
-    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
+    const length = lengthCheck(item, output)
+    const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass && (length?.pass ?? true) : null
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, ...(length ? { length } : {}), judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
     console.log(`의미 ${condition} ${record.id} r${record.rep} — ${judged.answer ? judged.answer.verdict : '판정 실패'}${exact.pass ? '' : `, 문자열 누락 ${exact.missing.length}`}`)
     return null
   })
