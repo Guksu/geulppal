@@ -1,0 +1,49 @@
+{
+  "name": "2026-10-31-draft-blog-l1",
+  "conditions": {
+    "I": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 8,
+        "pass": 4,
+        "fail": 4,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 18302,
+        "medianInput": 18971,
+        "medianOutput": 2785.5,
+        "costUsd": 0.6582687999999999
+      }
+    },
+    "L1": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 1,
+      "meaning": {
+        "judged": 8,
+        "pass": 6,
+        "fail": 2,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 18729.5,
+        "medianInput": 19609,
+        "medianOutput": 2799,
+        "costUsd": 0.7038253999999999
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 16
+}

@@ -1,0 +1,61 @@
+{
+  "name": "2026-10-31-draft-fiction-l1",
+  "conditions": {
+    "L1": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 8,
+        "pass": 7,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 40438,
+        "medianInput": 16289,
+        "medianOutput": 4259.5,
+        "costUsd": 0.9126968
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-L1": {
+      "total": 8,
+      "judged": 4,
+      "excluded": 4,
+      "leftWins": 0,
+      "rightWins": 3,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "A": 0,
+        "L1": 2,
+        "mixed": 0,
+        "none": 2
+      }
+    },
+    "I-vs-L1": {
+      "total": 8,
+      "judged": 6,
+      "excluded": 2,
+      "leftWins": 2,
+      "rightWins": 2,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 1,
+      "cases": {
+        "I": 1,
+        "L1": 1,
+        "mixed": 1,
+        "none": 1
+      }
+    }
+  },
+  "judgeCalls": 28
+}

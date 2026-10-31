@@ -1,0 +1,286 @@
+{
+  "pairs": [
+    {
+      "group": "A-vs-0.4.1",
+      "case": "relief-fund-report",
+      "rep": 2,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p01"
+    },
+    {
+      "group": "H-vs-0.4.1",
+      "case": "korean-curriculum-press",
+      "rep": 2,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "F"
+        },
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo-final",
+        "result": "H",
+        "judgments": [
+          "H",
+          "H"
+        ]
+      },
+      "id": "p02"
+    },
+    {
+      "group": "A-vs-0.4.1",
+      "case": "smart-factory-press",
+      "rep": 2,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo-final",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p03"
+    },
+    {
+      "group": "H-vs-0.4.1",
+      "case": "smart-factory-press",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "F"
+        },
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo-final",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p04"
+    },
+    {
+      "group": "A-vs-0.4.1",
+      "case": "meister-college-press",
+      "rep": 1,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p05"
+    },
+    {
+      "group": "H-vs-0.4.1",
+      "case": "meister-college-press",
+      "rep": 1,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "F"
+        },
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "H"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p06"
+    },
+    {
+      "group": "A-vs-0.4.1",
+      "case": "tower-crane-notice",
+      "rep": 2,
+      "variant": "memo",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-memo",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p07"
+    },
+    {
+      "group": "A-vs-0.4.1",
+      "case": "avian-flu-notice",
+      "rep": 1,
+      "variant": "memo",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-28-draft-memo-final",
+          "condition": "F"
+        }
+      ],
+      "model": {
+        "run": "2026-10-28-draft-memo-final",
+        "result": "F",
+        "judgments": [
+          "F",
+          "F"
+        ]
+      },
+      "id": "p08"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "p01",
+      "group": "A-vs-0.4.1",
+      "case": "relief-fund-report",
+      "rep": 2,
+      "human": "A",
+      "model": "F",
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "group": "H-vs-0.4.1",
+      "case": "korean-curriculum-press",
+      "rep": 2,
+      "human": "H",
+      "model": "H",
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "group": "A-vs-0.4.1",
+      "case": "smart-factory-press",
+      "rep": 2,
+      "human": "F",
+      "model": "F",
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "group": "H-vs-0.4.1",
+      "case": "smart-factory-press",
+      "rep": 1,
+      "human": "F",
+      "model": "F",
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "group": "A-vs-0.4.1",
+      "case": "meister-college-press",
+      "rep": 1,
+      "human": "F",
+      "model": "F",
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "group": "H-vs-0.4.1",
+      "case": "meister-college-press",
+      "rep": 1,
+      "human": "H",
+      "model": "F",
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "group": "A-vs-0.4.1",
+      "case": "tower-crane-notice",
+      "rep": 2,
+      "human": "same",
+      "model": "F",
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "group": "A-vs-0.4.1",
+      "case": "avian-flu-notice",
+      "rep": 1,
+      "human": "F",
+      "model": "F",
+      "note": ""
+    }
+  ]
+}

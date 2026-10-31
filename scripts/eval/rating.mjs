@@ -24,6 +24,9 @@ const HUMAN_RUNS = { human: '2026-10-27-human', dev: '2026-10-27-human-r2', test
 const DRAFT_RUNS = { baseline: '2026-10-28-draft-readme', final: '2026-10-28-draft-readme-final' }
 const draftRun = (item) => (item.split === 'holdout' ? DRAFT_RUNS.final : DRAFT_RUNS.baseline)
 // 메모 업무 글: 확인용은 기준선 실행, 새 확인용은 최종 실행. 0.4.1(F)과 비교한다
+// 블로그: 확인용·새 확인용의 0.4.3은 최종 실행, 2차 새 확인용은 2차 최종 실행
+const blogRun = (item) => (item.split === 'holdout2' ? '2026-10-29-draft-blog-final2' : '2026-10-29-draft-blog-final')
+const fictionRun = (item) => (item.split === 'holdout' ? '2026-10-30-draft-fiction-final' : '2026-10-30-draft-fiction')
 const memoRun = (item) => (item.split === 'holdout' ? '2026-10-28-draft-memo-final' : '2026-10-28-draft-memo')
 const SETS = {
   human: {
@@ -71,6 +74,47 @@ const SETS = {
       { key: 'H-vs-0.4.1', left: (item) => ({ run: memoRun(item), condition: 'H' }), filter: (item) => item.split !== 'dev' && item.genre === '보도자료', max: 99 },
     ],
   },
+  'draft-blog': {
+    cases: 'evals/draft-blog/cases.json',
+    pairsFile: 'evals/runs/rating/draft-blog-pairs.json',
+    results: 'evals/results/2026-10-29-draft-blog-rating',
+    storeKey: 'geulppal-blind-draft-blog',
+    title: '글빨 블로그·에세이 블라인드 비교',
+    lede: '글쓴이 메모나 한두 줄 설명만 주고 블로그 글·에세이를 써 달라는 요청에 나온 두 결과입니다. 내 이름으로 올릴 글로 어느 쪽이 나은지 골라 주세요. 입력에 없는 경험을 지어냈는지는 판정 모델이 따로 확인했으니, 한 사람의 이야기로 자연스럽게 읽히는지, 말투가 맞는지를 보면 됩니다. 어느 쪽이 글빨인지, 사람이 쓴 원래 글인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 입력만 받았습니다.',
+    referencePass: true,
+    right: (item) => ({ run: blogRun(item), condition: 'I' }),
+    groups: [
+      { key: 'A-vs-0.4.3', left: (item) => ({ run: item.split === 'test' ? '2026-10-29-draft-blog' : blogRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 },
+      { key: 'F-vs-0.4.3', left: (item) => ({ run: item.split === 'test' ? '2026-10-29-draft-blog' : blogRun(item), condition: 'F' }), filter: (item) => ['test', 'holdout'].includes(item.split), max: 4 },
+      { key: 'H-vs-0.4.3', left: (item) => ({ run: blogRun(item), condition: 'H' }), filter: (item) => item.split !== 'dev' && item.input_kind !== 'brief', max: 6 },
+    ],
+  },
+  'draft-fiction': {
+    cases: 'evals/draft-fiction/cases.json',
+    pairsFile: 'evals/runs/rating/draft-fiction-pairs.json',
+    results: 'evals/results/2026-10-30-draft-fiction-rating',
+    storeKey: 'geulppal-blind-draft-fiction',
+    title: '글빨 짧은 소설 블라인드 비교',
+    lede: '한두 줄 설명이나 설정 메모로 짧은 소설을 써 달라는 요청에 나온 두 결과입니다. 읽고 싶은 소설로 어느 쪽이 나은지 골라 주세요. 조건을 지켰는지는 판정 모델이 따로 봤지만, 이 비교에는 조건을 못 지킨 결과도 섞여 있습니다. 어느 쪽이 글빨인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 입력만 받았습니다.',
+    // 소설은 품질이 주된 기준이라 조건 판정 결과와 상관없이 쌍을 고른다
+    anyPass: true,
+    right: (item) => ({ run: fictionRun(item), condition: 'I' }),
+    groups: [{ key: 'A-vs-0.4.3', left: (item) => ({ run: fictionRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 }],
+  },
+  'draft-fiction-l1': {
+    cases: 'evals/draft-fiction/cases.json',
+    pairsFile: 'evals/runs/rating/draft-fiction-l1-pairs.json',
+    results: 'evals/results/2026-10-31-draft-fiction-l1-rating',
+    storeKey: 'geulppal-blind-draft-fiction-l1',
+    title: '글빨 짧은 소설 블라인드 비교 2',
+    lede: '같은 소설 요청에 나온 두 결과입니다. 요청에 분량이 있으면 그것도 함께 보고, 읽고 싶은 소설로 어느 쪽이 나은지 골라 주세요. 조건을 못 지킨 결과도 섞여 있습니다. 어느 쪽이 어떤 버전인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 입력만 받았습니다.',
+    anyPass: true,
+    right: (item) => ({ run: item.split === 'dev' ? '2026-10-31-draft-fiction-l1' : '2026-10-31-draft-fiction-final2', condition: 'L1' }),
+    groups: [{ key: '0.4.3-vs-0.4.6', left: (item) => ({ run: item.split === 'dev' ? '2026-10-30-draft-fiction' : '2026-10-31-draft-fiction-final2', condition: 'I' }), filter: (item) => ['dev', 'holdout2'].includes(item.split), max: 99 }],
+  },
 }
 const SET = SETS[options.set]
 if (!SET) {
@@ -117,12 +161,16 @@ const latestRun = (run, condition, id, rep) =>
     .sort((a, b) => b.attempt - a.attempt)[0] ?? null
 // 초안 사례의 사람 README(H, 실행하지 않은 기준 조건)는 근거 판정을 하지 않으므로 통과로 본다
 const passed = (run, condition, id, rep) =>
+  SET.anyPass ||
   (SET.referencePass && recordsOf(run).get(`manifest/${condition}`)?.model === null) || recordsOf(run).get(`judge/meaning/${condition}/${id}-r${rep}`)?.pass === true
 // 같은 쌍을 판정 모델이 비교한 기록이 있으면 함께 둔다(사람 판정과 맞춰 보기용)
 const modelJudgment = (left, right, id, rep) => {
   for (const run of [right.run, left.run]) {
-    const record = recordsOf(run).get(`judge/pair/${left.condition}-vs-${right.condition}/${id}-r${rep}`)
-    if (record?.judged) return { run, result: record.result, judgments: record.judgments.map((j) => j.winner) }
+    // 분량을 뺀 보조 비교(judge/pair-nolength)만 있으면 그것을 둔다
+    for (const folder of ['pair', 'pair-nolength']) {
+      const record = recordsOf(run).get(`judge/${folder}/${left.condition}-vs-${right.condition}/${id}-r${rep}`)
+      if (record?.judged) return { run, result: record.result, judgments: record.judgments.map((j) => j.winner), ...(folder === 'pair' ? {} : { lengthIgnored: true }) }
+    }
   }
   return null
 }
@@ -195,7 +243,7 @@ if (mode === 'score') {
   }
   const { pairs } = readJson(PAIRS_FILE)
   const ratings = readJson(options.ratings)
-  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사' }[options.set] }
+  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', I: '글빨 0.4.3', L1: '0.4.6 후보', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사', 'draft-blog': '사람 글' }[options.set] }
   const rows = []
   const tally = {}
   for (const pair of pairs) {
@@ -203,7 +251,7 @@ if (mode === 'score') {
     const pick = rating?.choice
     const winner = pick === 'x' ? pair.sides[0].condition : pick === 'y' ? pair.sides[1].condition : pick ?? null
     const norm = (c) => (c === 'C2' ? 'C' : c)
-    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'H'].includes(winner) ? norm(winner) : winner
+    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'I', 'L1', 'H'].includes(winner) ? norm(winner) : winner
     const model = pair.model ? (['tie', 'both_inadequate', 'inconsistent'].includes(pair.model.result) ? pair.model.result : norm(pair.model.result)) : null
     tally[pair.group] ??= {}
     tally[pair.group][human ?? '미평가'] = (tally[pair.group][human ?? '미평가'] ?? 0) + 1

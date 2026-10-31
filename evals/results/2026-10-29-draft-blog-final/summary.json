@@ -1,0 +1,131 @@
+{
+  "name": "2026-10-29-draft-blog-final",
+  "conditions": {
+    "A": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 8,
+        "pass": 3,
+        "fail": 5,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 13217.5,
+        "medianInput": 9843,
+        "medianOutput": 1874,
+        "costUsd": 0.3231948
+      }
+    },
+    "F": {
+      "attempts": 8,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 8,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 8,
+        "pass": 6,
+        "fail": 2,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 15378.5,
+        "medianInput": 18185,
+        "medianOutput": 2284.5,
+        "costUsd": 0.6012348
+      }
+    },
+    "H": {
+      "reference": true,
+      "records": 24,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      }
+    },
+    "I": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 16,
+        "pass": 15,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 20272.5,
+        "medianInput": 18492,
+        "medianOutput": 3076,
+        "costUsd": 1.3611396
+      }
+    }
+  },
+  "pairs": {
+    "A-vs-I": {
+      "total": 16,
+      "judged": 4,
+      "excluded": 12,
+      "leftWins": 3,
+      "rightWins": 0,
+      "tie": 1,
+      "bothInadequate": 0,
+      "inconsistent": 0,
+      "cases": {
+        "A": 3,
+        "I": 0,
+        "mixed": 0,
+        "none": 5
+      }
+    },
+    "F-vs-I": {
+      "total": 16,
+      "judged": 10,
+      "excluded": 6,
+      "leftWins": 2,
+      "rightWins": 1,
+      "tie": 2,
+      "bothInadequate": 0,
+      "inconsistent": 5,
+      "cases": {
+        "F": 1,
+        "I": 0,
+        "mixed": 1,
+        "none": 6
+      }
+    },
+    "H-vs-I": {
+      "total": 12,
+      "judged": 11,
+      "excluded": 1,
+      "leftWins": 3,
+      "rightWins": 4,
+      "tie": 0,
+      "bothInadequate": 0,
+      "inconsistent": 4,
+      "cases": {
+        "H": 2,
+        "I": 3,
+        "mixed": 0,
+        "none": 1
+      }
+    }
+  },
+  "judgeCalls": 82
+}

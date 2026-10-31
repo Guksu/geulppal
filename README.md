@@ -4,7 +4,7 @@ A Claude skill that cuts hype, repetition and translationese when Claude writes 
 
 I built it because every time I asked Claude to write a README or a report, I had to strip out the same modifiers and filler again.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md) · [6th](evals/results/REPORT-draft-blog.md) · [7th](evals/results/REPORT-draft-fiction.md)
 
 > **Before** NoteBox empowers users to seamlessly leverage tags to unlock effortless note discovery.
 >
@@ -37,8 +37,37 @@ When Claude got only a memo and was asked for a press release, notice, report or
 | Only claims backed by the memo: 8 dev and unseen cases | 5/16 | 15/16 |
 | Same: 5 cases unseen until the end | 4/10 | 9/10 |
 | Judge model quality comparison | 0 to 6 | |
+| Blind comparison by a person | 1 to 3 (1 about the same) | |
 
 - Without geulppal, Claude often wrote planned actions from the memo (`권고·지도할 계획` "plans to recommend and guide") as if they had happened, or added expected benefits that the memo did not mention.
+- In a blind comparison of press releases against the original human-written articles, the human articles were picked 2 to 1. The judge model picked the geulppal versions instead.
+
+When Claude got only a writer's memo or one or two lines and was asked for a blog post or essay (16 first-person posts by policy reporters, 2019–2022), invented experiences were the main problem.
+
+| Blog posts and essays | Without geulppal | geulppal 0.4.1 | geulppal 0.4.3 |
+|---|---|---|---|
+| Only experiences found in the input: 12 unseen cases | 6/24 | 10/16 | 22/24 |
+| Same: cases with only one or two lines of input | 0/8 | 0/6 | 8/8 |
+| Judge model quality comparison (against 0.4.3) | 4 to 0 | 3 to 1 | |
+| Blind comparison by a person (against 0.4.3) | 2 to 2 | 0 to 0 (4 about the same) | |
+
+- Without geulppal, each post added on average 2.6 to 5.8 scenes, inner thoughts or realisations that were not in the memo. With 0.4.3 the average was 0.1.
+- Given only one or two lines, 0.4.3 writes a short post from them and asks for the experiences it would need to write more. It invents nothing, but the result is short if you expected a full post.
+- The judge model preferred the other versions on quality, mostly because 0.4.3 split short personal stories into many subheadings and lists.
+- In a blind comparison against the original human-written posts, the human posts were picked 5 to 0 (1 about the same). 0.4.3 no longer invents experiences, but it does not read as well as a person's own account.
+
+When Claude got only one or two lines or a settings memo (some with the opening of a public-domain Korean short story as a style reference) and was asked for a short story, both versions followed the requested conditions about equally often, and the judge model preferred the geulppal stories.
+
+| Short stories | Without geulppal | geulppal 0.4.3 |
+|---|---|---|
+| Kept the requested conditions and settings: 8 unseen cases | 12/16 | 10/16 |
+| Within the requested length (6 cases that asked for one) | 3/12 | 5/12 |
+| Judge model quality comparison | 0 to 10 | |
+| Blind comparison by a person | 1 to 5 (2 about the same) | |
+
+- The judge model picked 0.4.3 because it showed feelings through actions and objects instead of naming them, and did not close on a moral. The repository owner's blind comparison also favoured 0.4.3.
+- When the request set no length and gave only one or two lines, 0.4.3 wrote shorter stories than Claude without geulppal (962 characters excluding spaces on average over 6 cases, against 1,618).
+- Both versions sometimes dropped a requested dialect or copied sentences from the style reference almost word for word.
 
 **Editing**: Claude was asked to polish human-written and model-written text.
 
@@ -51,7 +80,7 @@ When Claude got only a memo and was asked for a press release, notice, report or
 - Without geulppal, Claude often added promises or experiences that were not in the original. It also often turned hearsay ("it is said to be possible") into a plain statement ("it is possible").
 - 0.3 still sometimes turns a guess into a statement (`가장 어려울 텐데` "probably the hardest" → `가장 어려운 일은` "the hardest is") or narrows a scope (`온라인으로` "online" → `온라인으로만` "only online"). 0.4 did not change the editing guidance.
 - The judge model almost always preferred the edited text over the human-written original. In a blind comparison by the repository owner, 16 of 22 pairs of edited posts were rated "about the same". For editing, geulppal's effect is on accuracy; it does not show that the text reads better.
-- With geulppal, a run cost about 1.5 to 1.7 times as much as without it for README drafts, about 2 times for documents written from memos, and about 2.2 to 2.5 times for editing.
+- With geulppal, a run cost about 1.5 to 1.7 times as much as without it for README drafts, about 2 times for documents written from memos and for blog posts, about 1.5 times for short stories, and about 2.2 to 2.5 times for editing.
 
 The samples are small, and the blind comparisons had a single rater. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 

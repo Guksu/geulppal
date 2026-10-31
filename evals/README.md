@@ -10,13 +10,17 @@
 | [`holdout/cases.json`](holdout/cases.json) | 사례 12개 | 최종 후보를 고정한 뒤 별도 세션이 만들었다. 만드는 쪽에는 문서 종류와 평가할 능력만 알려 줬다([생성 기록](holdout/generation.json)) |
 | [`human/`](human/README.md) | 2024년 이전에 사람이 쓴 공개 글 10편으로 만든 사례 18개(개발용 9개, 확인용 9개) | 원문은 공공누리 제1유형 정책브리핑 기사. 다듬기(polish)와 AI 티 빼기(deslop) 두 종류 |
 | [`human-readme/`](human-readme/README.md) | ChatGPT 공개 전에 사람이 쓴 오픈소스 README 8편으로 만든 사례 16개(개발용 8개, 확인용 8개) | Apache-2.0·MIT·CC-BY-4.0 원문과 라이선스 사본 |
-| [`draft-readme/`](draft-readme/README.md) | 원문 없이 저장소 코드(일부는 메모도)만 보고 README를 쓰는 사례 13개(개발용 4개, 확인용 4개, 새 확인용 5개) | 2022-11-30 이전 커밋의 공개 저장소 코드. 같은 커밋의 사람 README를 기준 조건 H로 둔다 |
+| [`draft-readme/`](draft-readme/README.md) | 원문 없이 저장소 코드(일부는 메모도)만 보고 README를 쓰는 사례 17개(개발용 4개, 확인용 4개, 새 확인용 5개, 2차 새 확인용 4개) | 2022-11-30 이전 커밋의 공개 저장소 코드. 같은 커밋의 사람 README를 기준 조건 H로 둔다 |
 | [`draft-memo/`](draft-memo/README.md) | 요청과 메모만으로 보도자료·안내문·보고서·기획서를 쓰는 사례 13개(개발용 4개, 확인용 4개, 새 확인용 5개) | 2018~2022년 정책브리핑 기사(공공누리 제1유형)에서 뽑고 검수한 메모. 보도자료 사례는 기사를 기준 조건 H로 둔다 |
+| [`draft-blog/`](draft-blog/README.md) | 글쓴이 메모·한두 줄 설명·참고 글+메모로 블로그 글·에세이를 쓰는 사례 16개(개발용 4개, 확인용 4개, 새 확인용 4개, 2차 새 확인용 4개) | 2019~2022년 정책기자마당 체험기(공공누리 제1유형)에서 뽑고 검수한 메모. 원래 글을 기준 조건 H로 둔다 |
+| [`draft-fiction/`](draft-fiction/README.md) | 한두 줄 설명·설정 메모·문체 참고 글+설정 메모로 짧은 소설을 쓰는 사례 17개(개발용 4개, 확인용 4개, 새 확인용 4개, 2차 새 확인용 5개) | 사례는 평가 작성자가 썼다. 문체 참고 글은 저작권이 끝난 근대 단편 발췌. 비교할 사람 글은 없다 |
 | [`trigger/queries.json`](trigger/queries.json) | 써야 하는 요청 12개, 쓰지 말아야 하는 요청 10개 | 자동 선택 평가용. 스킬 설명을 읽은 사람이 썼다 |
 | [`judge/meaning.md`](judge/meaning.md), [`judge/quality.md`](judge/quality.md) | 판정 지침 | 판정 모델의 시스템 프롬프트로 그대로 쓴다 |
 | [`judge/slop-check.md`](judge/slop-check.md) | 부풀린 글 검수 지침 | deslop 입력이 원문의 사실을 그대로 담았는지 확인한다 |
 | [`judge/draft-claims.md`](judge/draft-claims.md), [`judge/draft-quality.md`](judge/draft-quality.md) | 원문 없이 쓴 글의 근거 판정·품질 비교 지침 | 근거 판정에서는 판정 모델도 작업 폴더를 Read·Glob·Grep으로 읽는다 |
 | [`judge/memo-check.md`](judge/memo-check.md), [`judge/draft-memo-claims.md`](judge/draft-memo-claims.md), [`judge/draft-memo-quality.md`](judge/draft-memo-quality.md) | 메모 검수, 메모로 쓴 글의 근거 판정·품질 비교 지침 | 메모가 유일한 근거다 |
+| [`judge/blog-memo-check.md`](judge/blog-memo-check.md), [`judge/draft-blog-claims.md`](judge/draft-blog-claims.md), [`judge/draft-blog-quality.md`](judge/draft-blog-quality.md) | 블로그 메모 검수, 블로그 글의 근거 판정·품질 비교 지침 | 지어낸 장면·속마음·깨달음을 실패로 센다 |
+| [`judge/draft-fiction-check.md`](judge/draft-fiction-check.md), [`judge/draft-fiction-quality.md`](judge/draft-fiction-quality.md) | 소설의 조건 판정·품질 비교 지침 | 지어낸 장면은 문제가 아니고, 요청한 조건과 설정을 지켰는지 본다. 분량은 스크립트가 센다 |
 | [`CHANGELOG.md`](CHANGELOG.md) | 사례·기준 변경 이력 | |
 | [`snapshots/`](snapshots/) | 평가한 스킬 버전의 사본과 해시 | |
 
@@ -105,7 +109,14 @@ node scripts/eval/memo.mjs sources --dir evals/draft-memo
 node scripts/eval/memo.mjs memo --dir evals/draft-memo
 node scripts/eval/memo.mjs build --dir evals/draft-memo
 
-# 사람 블라인드 비교 페이지 만들기와 집계(README 초안은 --set draft-readme, 메모 업무 글은 --set draft-memo)
+# 블로그 사례도 같은 스크립트로 만든다
+node scripts/eval/memo.mjs build --dir evals/draft-blog
+
+# 소설 사례: 문체 참고 글 가져오기 → 사례 만들기(판정은 조건 판정 draft-fiction-check.md + 분량)
+node scripts/eval/fiction.mjs sources --dir evals/draft-fiction
+node scripts/eval/fiction.mjs build --dir evals/draft-fiction
+
+# 사람 블라인드 비교 페이지 만들기와 집계(--set human | draft-readme | draft-memo | draft-blog | draft-fiction)
 node scripts/eval/rating.mjs build --page <html 경로>
 node scripts/eval/rating.mjs score --ratings <받은 평가 json>
 

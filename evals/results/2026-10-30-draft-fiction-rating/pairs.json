@@ -1,0 +1,258 @@
+{
+  "pairs": [
+    {
+      "group": "A-vs-0.4.3",
+      "case": "startup-memo",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "A"
+        }
+      ],
+      "model": null,
+      "id": "p01"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "grandfather-letter-memo",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "A"
+        }
+      ],
+      "model": null,
+      "id": "p02"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "kimchi-two-voices",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-30-draft-fiction-final",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p03"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "island-post-brief",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-30-draft-fiction-final",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p04"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "rider-style",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        }
+      ],
+      "model": null,
+      "id": "p05"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "letter-form",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-30-draft-fiction",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p06"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "vote-ai-brief",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "test",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "A"
+        }
+      ],
+      "model": {
+        "run": "2026-10-30-draft-fiction",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p07"
+    },
+    {
+      "group": "A-vs-0.4.3",
+      "case": "tractor-style",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "holdout",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "A"
+        },
+        {
+          "run": "2026-10-30-draft-fiction-final",
+          "condition": "I"
+        }
+      ],
+      "model": null,
+      "id": "p08"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "p01",
+      "group": "A-vs-0.4.3",
+      "case": "startup-memo",
+      "rep": 2,
+      "human": "I",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "group": "A-vs-0.4.3",
+      "case": "grandfather-letter-memo",
+      "rep": 1,
+      "human": "A",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "group": "A-vs-0.4.3",
+      "case": "kimchi-two-voices",
+      "rep": 2,
+      "human": "same",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "group": "A-vs-0.4.3",
+      "case": "island-post-brief",
+      "rep": 2,
+      "human": "I",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "group": "A-vs-0.4.3",
+      "case": "rider-style",
+      "rep": 1,
+      "human": "I",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "group": "A-vs-0.4.3",
+      "case": "letter-form",
+      "rep": 1,
+      "human": "I",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "group": "A-vs-0.4.3",
+      "case": "vote-ai-brief",
+      "rep": 1,
+      "human": "same",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "group": "A-vs-0.4.3",
+      "case": "tractor-style",
+      "rep": 1,
+      "human": "I",
+      "model": null,
+      "note": ""
+    }
+  ]
+}

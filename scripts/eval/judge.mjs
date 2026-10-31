@@ -73,8 +73,24 @@ const exactCheck = (item, output) => {
   return { checked, missing, applicable: true, pass: missing.length === 0 }
 }
 
+// 분량 조건(소설 등 `length: { min, max }`, 글자 수). 완성문 뒤에 `---`로 나눈 사용자용 메모는 세지 않는다
+const lengthCheck = (item, output) => {
+  if (!item.length) return null
+  // 완성문 뒤에 붙은 사용자용 메모(마지막 구분선 뒤의 짧은 글)만 뺀다. 장면 구분선은 본문으로 센다
+  const parts = output.split(/\n-{3,}\n/)
+  if (parts.length > 1 && parts.at(-1).replace(/\s/g, '').length < 150) parts.pop()
+  const chars = parts.join('\n').replace(/\s/g, '').length
+  return { chars, min: item.length.min, max: item.length.max, pass: chars >= item.length.min && chars <= item.length.max }
+}
+
 // 원문 없이 쓴 사례: 작업 폴더 자료가 있거나(draft-readme) 메모로 쓰는 사례(draft-memo). evals/cases.json의 초기 draft 사례는 의미 보존으로 판정한다
-const isDraftCase = (item) => Boolean(item.fixture) || item.variant === 'memo'
+const isDraftCase = (item) => Boolean(item.fixture) || ['memo', 'fiction'].includes(item.variant)
+// 사례가 판정 지침을 정해 두었으면(블로그 등 `rubrics: { claims, quality }`) 그것을 쓴다
+const rubricCache = new Map()
+const rubricOf = (path) => {
+  if (!rubricCache.has(path)) rubricCache.set(path, readFileSync(join(ROOT, path), 'utf8'))
+  return rubricCache.get(path)
+}
 
 const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<<<${label} 끝>>>`
 
@@ -236,10 +252,11 @@ if (mode === 'meaning') {
           `## 금지 변경\n\n${item.must_not.map((line) => `- ${line}`).join('\n')}`,
           item.notes ? `## 참고\n\n${item.notes}` : '',
         ].filter(Boolean).join('\n\n')
-    const usedRubric = draft ? (item.fixture ? claimsRubric : memoClaimsRubric) : rubric
+    const usedRubric = draft ? (item.rubrics?.claims ? rubricOf(item.rubrics.claims) : item.fixture ? claimsRubric : memoClaimsRubric) : rubric
     const judged = await callJudge({ prompt, rubric: usedRubric, schema: draft ? CLAIMS_SCHEMA : MEANING_SCHEMA, fixtureDir: fixtureDirs[item.id] })
-    const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass : null
-    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
+    const length = lengthCheck(item, output)
+    const pass = judged.answer ? judged.answer.verdict === 'pass' && exact.pass && (length?.pass ?? true) : null
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, runStatus: record.status, judged: Boolean(judged.answer), pass, exact, ...(length ? { length } : {}), judge: { ...judgeMeta(usedRubric), kind: draft ? (item.fixture ? 'draft-claims' : item.variant === 'fiction' ? 'draft-fiction-check' : 'draft-memo-claims') : 'meaning', answer: judged.answer, attempts: judged.attempts } })
     console.log(`의미 ${condition} ${record.id} r${record.rep} — ${judged.answer ? judged.answer.verdict : '판정 실패'}${exact.pass ? '' : `, 문자열 누락 ${exact.missing.length}`}`)
     return null
   })
@@ -260,7 +277,10 @@ if (mode === 'pair') {
   const cases = casesById(casesFileOf(rightFrom, right))
   const meaningOf = (name, condition, record) => recordsOf(name).get(`judge/meaning/${condition}/${record.id}-r${record.rep}`)
   const leftRuns = Object.fromEntries(latestRuns(leftFrom, left).map((record) => [`${record.id}-r${record.rep}`, record]))
-  const pairDir = `judge/pair/${left}-vs-${right}`
+  // --ignore-length: 분량만 못 맞춘 결과도 넣는 보조 비교(소설). 원래 비교와 섞이지 않게 judge/pair-nolength/에 둔다
+  const ignoreLength = Boolean(options['ignore-length'])
+  const passed = (meaning) => (ignoreLength ? meaning?.judge?.answer?.verdict === 'pass' && meaning?.exact?.pass !== false : meaning?.pass === true)
+  const pairDir = `judge/${ignoreLength ? 'pair-nolength' : 'pair'}/${left}-vs-${right}`
   const jobs = []
   for (const rightRecord of latestRuns(rightFrom, right)) {
     const key = `${rightRecord.id}-r${rightRecord.rep}`
@@ -272,7 +292,7 @@ if (mode === 'pair') {
     const rightMeaning = meaningOf(rightFrom, right, rightRecord)
     // --reference-pass: 실행하지 않은 기준 조건(model이 없는 조건)은 의미 판정과 상관없이 비교한다
     const isReference = (name, condition) => options['reference-pass'] && manifestOf(name, condition)?.model === null
-    const eligible = (isReference(leftFrom, left) || leftMeaning?.pass === true) && (isReference(rightFrom, right) || rightMeaning?.pass === true)
+    const eligible = (isReference(leftFrom, left) || passed(leftMeaning)) && (isReference(rightFrom, right) || passed(rightMeaning))
     const base = {
       id: rightRecord.id,
       rep: rightRecord.rep,
@@ -289,7 +309,7 @@ if (mode === 'pair') {
     if (complete && previous.left.attempt === leftRecord.attempt && previous.right.attempt === rightRecord.attempt) continue
     jobs.push(async () => {
       const item = cases[rightRecord.id]
-      const rubric = isDraftCase(item) ? (item.fixture ? draftRubric : memoDraftRubric) : editRubric
+      const rubric = isDraftCase(item) ? (item.rubrics?.quality ? rubricOf(item.rubrics.quality) : item.fixture ? draftRubric : memoDraftRubric) : editRubric
       const leftText = outputOf(leftFrom, leftRecord)
       const rightText = outputOf(rightFrom, rightRecord)
       // o1: X=왼쪽, Y=오른쪽 / o2: X=오른쪽, Y=왼쪽
@@ -326,10 +346,13 @@ if (mode === 'rescore') {
       const key = `${folder}/${condition}/${name}`
       const judged = out.get(key)
       if (!judged.judged) continue
-      const exact = exactCheck(cases[judged.id], outputOf(options.out, runs[`${judged.id}-r${judged.rep}`]))
-      const pass = judged.judge.answer.verdict === 'pass' && exact.pass
+      const output = outputOf(options.out, runs[`${judged.id}-r${judged.rep}`])
+      const exact = exactCheck(cases[judged.id], output)
+      const length = lengthCheck(cases[judged.id], output)
+      const pass = judged.judge.answer.verdict === 'pass' && exact.pass && (length?.pass ?? true)
       if (pass !== judged.pass) console.log(`다시 계산 ${folder} ${condition} ${judged.id} r${judged.rep}: ${judged.pass} → ${pass}`)
-      out.put(key, { ...judged, exact, pass, ...(pass !== judged.pass ? { rescored: { from: judged.pass, reason: '문자열 검사 적용 범위 수정' } } : {}) })
+      const { length: _previousLength, ...rest } = judged
+      out.put(key, { ...rest, exact, ...(length ? { length } : {}), pass, ...(pass !== judged.pass ? { rescored: { from: judged.pass, reason: options.reason ?? '문자열 검사 적용 범위 수정' } } : {}) })
     }
   }
   packRecords(options.out)
