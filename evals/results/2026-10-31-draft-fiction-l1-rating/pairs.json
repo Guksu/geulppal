@@ -1,0 +1,294 @@
+{
+  "pairs": [
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "tangerine-style",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-l1",
+          "condition": "L1"
+        },
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-31-draft-fiction-l1",
+        "result": "tie",
+        "judgments": [
+          "tie",
+          "tie"
+        ]
+      },
+      "id": "p01"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "umbrella-constraint",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-l1",
+          "condition": "L1"
+        },
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-31-draft-fiction-l1",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p02"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "elevator-brief",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "L1"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "I"
+        }
+      ],
+      "model": {
+        "run": "2026-10-31-draft-fiction-final2",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ]
+      },
+      "id": "p03"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "bedding-shop-memo",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-l1",
+          "condition": "L1"
+        }
+      ],
+      "model": null,
+      "id": "p04"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "bakery-closing-memo",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "L1"
+        }
+      ],
+      "model": null,
+      "id": "p05"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "rooster-school-style",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "L1"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "I"
+        }
+      ],
+      "model": null,
+      "id": "p06"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "night-shift-brief",
+      "rep": 2,
+      "variant": "fiction",
+      "split": "dev",
+      "sides": [
+        {
+          "run": "2026-10-30-draft-fiction",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-l1",
+          "condition": "L1"
+        }
+      ],
+      "model": {
+        "run": "2026-10-31-draft-fiction-l1",
+        "result": "inconsistent",
+        "judgments": [
+          "L1",
+          "I"
+        ]
+      },
+      "id": "p07"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "harbor-dialect-memo",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "I"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "L1"
+        }
+      ],
+      "model": {
+        "run": "2026-10-31-draft-fiction-final2",
+        "result": "I",
+        "judgments": [
+          "I",
+          "I"
+        ],
+        "lengthIgnored": true
+      },
+      "id": "p08"
+    },
+    {
+      "group": "0.4.3-vs-0.4.6",
+      "case": "taxi-style",
+      "rep": 1,
+      "variant": "fiction",
+      "split": "holdout2",
+      "sides": [
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "L1"
+        },
+        {
+          "run": "2026-10-31-draft-fiction-final2",
+          "condition": "I"
+        }
+      ],
+      "model": null,
+      "id": "p09"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "p01",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "tangerine-style",
+      "rep": 1,
+      "human": "L1",
+      "model": "tie",
+      "note": ""
+    },
+    {
+      "id": "p02",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "umbrella-constraint",
+      "rep": 1,
+      "human": "I",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p03",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "elevator-brief",
+      "rep": 1,
+      "human": "L1",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p04",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "bedding-shop-memo",
+      "rep": 2,
+      "human": "I",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p05",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "bakery-closing-memo",
+      "rep": 2,
+      "human": "same",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p06",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "rooster-school-style",
+      "rep": 2,
+      "human": "same",
+      "model": null,
+      "note": ""
+    },
+    {
+      "id": "p07",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "night-shift-brief",
+      "rep": 2,
+      "human": "same",
+      "model": "inconsistent",
+      "note": ""
+    },
+    {
+      "id": "p08",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "harbor-dialect-memo",
+      "rep": 1,
+      "human": "same",
+      "model": "I",
+      "note": ""
+    },
+    {
+      "id": "p09",
+      "group": "0.4.3-vs-0.4.6",
+      "case": "taxi-style",
+      "rep": 1,
+      "human": "same",
+      "model": null,
+      "note": ""
+    }
+  ]
+}
