@@ -63,8 +63,9 @@ When Claude got only one or two lines or a settings memo (some with the opening 
 | Kept the requested conditions and settings: 8 unseen cases | 12/16 | 10/16 |
 | Within the requested length (6 cases that asked for one) | 3/12 | 5/12 |
 | Judge model quality comparison | 0 to 10 | |
+| Blind comparison by a person | 1 to 5 (2 about the same) | |
 
-- The judge model picked 0.4.3 because it showed feelings through actions and objects instead of naming them, and did not close on a moral. There has been no blind comparison by a person yet.
+- The judge model picked 0.4.3 because it showed feelings through actions and objects instead of naming them, and did not close on a moral. The repository owner's blind comparison also favoured 0.4.3.
 - When the request set no length and gave only one or two lines, 0.4.3 wrote shorter stories than Claude without geulppal (962 characters excluding spaces on average over 6 cases, against 1,618).
 - Both versions sometimes dropped a requested dialect or copied sentences from the style reference almost word for word.
 
