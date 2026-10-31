@@ -1,0 +1,519 @@
+[
+  {
+    "id": "py-hanspell-failure",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "dev",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드는 입력이 잘못되거나 네트워크·파일 오류가 나면 어떻게 돼? 문제가 될 만한 곳이 있으면 같이 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "ssut/py-hanspell",
+      "commit": "8e993cf46f97f9d665c15633a0fc78ac1b727713",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$"
+      ],
+      "sha256": "fc4624962c858c56dab751d350af8390d4bd0ad5702673f86ab1bc4556b86b91"
+    },
+    "prompt_kind": "failure",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-ky-how",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "dev",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지가 어떻게 동작하는지 설명해 줘. 처음 보는 팀원이 읽을 거야.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/ky"
+      ],
+      "strip": "packages/common/ky",
+      "exclude": [
+        "^README[^/]*\\.md$",
+        "^built/"
+      ],
+      "sha256": "47a2ac82598c975f6bc54e42ed489f2d6b3dd711ba1d5a65d3c2f73f4fffe1b1"
+    },
+    "prompt_kind": "how",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "korpora-review",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "dev",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드 리뷰해 줘. 고칠 점을 중요한 것부터 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "ko-nlp/Korpora",
+      "commit": "a2c1ba8489890020467f3d9608c7d103d65ec646",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^\\.github/"
+      ],
+      "sha256": "e0bc953bf4705f103fd2c8d9ecdc890d28f993d9457a3d499f8e08fe895f0f6c"
+    },
+    "prompt_kind": "review",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-storage-design",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "dev",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "왜 이렇게 설계했을지, 장단점이 뭔지 설명해 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/storage"
+      ],
+      "strip": "packages/common/storage",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "c9c901d56bd3c14571b00892b2d02c8b71dfa7cd7167962d41e72d187bba69b9"
+    },
+    "prompt_kind": "design",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "khaiii-plan",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "dev",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "여기에 테스트를 더 붙이려면 어떤 순서로 하면 좋을지 작업 계획을 써 줘. 코드는 아직 고치지 마.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "kakao/khaiii",
+      "commit": "328d5a8af456a5941130383354c07d1cd0e47cf5",
+      "paths": [
+        "src/main/python",
+        "LICENSE"
+      ],
+      "exclude": [],
+      "sha256": "d91003136c8b54790cdca59be4856590f536237fbde53767cd0939b951c91700"
+    },
+    "prompt_kind": "plan",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-hangul-failure",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "dev",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드는 입력이 잘못되거나 네트워크·파일 오류가 나면 어떻게 돼? 문제가 될 만한 곳이 있으면 같이 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/hangul"
+      ],
+      "strip": "packages/common/hangul",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "f13f18bcbcc9ea0d35660ec716e00c08f61956b08529bd84dd07002b46a5dfa0"
+    },
+    "prompt_kind": "failure",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "koelectra-how",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지가 어떻게 동작하는지 설명해 줘. 처음 보는 팀원이 읽을 거야.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "monologg/KoELECTRA",
+      "commit": "024fbdd600e653b6e4bdfc64ceec84181b5ce6c4",
+      "paths": [
+        "LICENSE",
+        "finetune",
+        "pretrain"
+      ],
+      "exclude": [
+        "\\.md$",
+        "^finetune/data/",
+        "^pretrain/data/"
+      ],
+      "sha256": "cf682a4a0bb22eb85963e347ef37541a235185761d0c2ac52078447056ad81b3"
+    },
+    "prompt_kind": "how",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-date-failure",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드는 입력이 잘못되거나 네트워크·파일 오류가 나면 어떻게 돼? 문제가 될 만한 곳이 있으면 같이 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/date"
+      ],
+      "strip": "packages/common/date",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "be5bab99d5893983692363ca79f19c41121609efa8e2e7962b7f1ecd04586734"
+    },
+    "prompt_kind": "failure",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-use-funnel-design",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "왜 이렇게 설계했을지, 장단점이 뭔지 설명해 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/use-funnel"
+      ],
+      "strip": "packages/react/use-funnel",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "a59419749b465b96c7ce30dfc29a4be4db56f11c7a601c43209ec66fdbdb7428"
+    },
+    "prompt_kind": "design",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-use-query-param-review",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드 리뷰해 줘. 고칠 점을 중요한 것부터 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/use-query-param"
+      ],
+      "strip": "packages/react/use-query-param",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "622c7f285d3661ac8e7e277af6df8ef693f24a26163e8547d2ae16c82909fe95"
+    },
+    "prompt_kind": "review",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "kobert-transformers-plan",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "여기에 테스트를 더 붙이려면 어떤 순서로 하면 좋을지 작업 계획을 써 줘. 코드는 아직 고치지 마.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "monologg/KoBERT-Transformers",
+      "commit": "4e0a00e5e4884848fe4daeccf3698a28ebcfe449",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^\\.github/"
+      ],
+      "sha256": "b7a72dc0aafbbf74f337dea0d685246eb12ffb50401261d2e2cbf9924b1db59d"
+    },
+    "prompt_kind": "plan",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "hangul-js-failure",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드는 입력이 잘못되거나 네트워크·파일 오류가 나면 어떻게 돼? 문제가 될 만한 곳이 있으면 같이 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "e-/Hangul.js",
+      "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^hangul\\.min\\.js$",
+        "^\\.travis\\.yml$"
+      ],
+      "sha256": "ccef080fdf08fb8e1ebf67d950c575850b0e686ae9a41fc9a6b5cb78abea9bb1"
+    },
+    "prompt_kind": "failure",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "g2pk-how",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지가 어떻게 동작하는지 설명해 줘. 처음 보는 팀원이 읽을 거야.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "Kyubyong/g2pK",
+      "commit": "3bb9d5afc5159220d5d16492aca7a58f121b6073",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$"
+      ],
+      "sha256": "ef4278f9ece91ab9d4246f2e233640e467384a0ddbe352165c921be158ded7b9"
+    },
+    "prompt_kind": "how",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-sentry-review",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드 리뷰해 줘. 고칠 점을 중요한 것부터 알려 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/sentry"
+      ],
+      "strip": "packages/common/sentry",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "e0abec0530cc812086096f3a90a34026fbc342fb54c1c040bbbf2b6668451537"
+    },
+    "prompt_kind": "review",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "open-korean-text-design",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "왜 이렇게 설계했을지, 장단점이 뭔지 설명해 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "open-korean-text/open-korean-text",
+      "commit": "95bf003beb3b357fcb16f94d4f595613cf7c5276",
+      "paths": [
+        "build.sbt",
+        "pom.xml",
+        "LICENSE",
+        "examples",
+        "src/main/scala",
+        "src/main/java",
+        "src/test/scala",
+        "src/test/java"
+      ],
+      "exclude": [],
+      "sha256": "47a5489886d1efc1ef35e72606cfb33bfd4288cf9648b4817409b936f4fecfd5"
+    },
+    "prompt_kind": "design",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-scroll-animation-plan",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "test",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "여기에 테스트를 더 붙이려면 어떤 순서로 하면 좋을지 작업 계획을 써 줘. 코드는 아직 고치지 마.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/react/scroll-animation"
+      ],
+      "strip": "packages/react/scroll-animation",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "ed5f98fbe382acbbe0d6c8115792a8e918e77bf553a62fc6354dac242548a5bd"
+    },
+    "prompt_kind": "plan",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  }
+]

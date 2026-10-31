@@ -12,7 +12,7 @@ import { ROOT, readJson, treeHash } from './lib/common.mjs'
 
 const errors = []
 const notes = []
-const TASKS = ['rewrite', 'draft', 'diagnose', 'summarize', 'noop-check']
+const TASKS = ['rewrite', 'draft', 'diagnose', 'summarize', 'noop-check', 'answer']
 
 const checkCases = (file) => {
   const path = join(ROOT, file)
@@ -88,6 +88,8 @@ checkCases('evals/draft-readme/cases.json')
 checkCases('evals/draft-memo/cases.json')
 checkCases('evals/draft-blog/cases.json')
 checkCases('evals/draft-fiction/cases.json')
+checkCases('evals/korean-natural/cases.json')
+checkCases('evals/korean-natural/polish-cases.json')
 // 사람이 쓴 글 사례 — 원문 출처와 이용 조건, 작성 시점, polish 입력이 원문 그대로인지, 개인 연락처가 없는지
 const LICENSES = ['공공누리 제1유형(출처표시)', 'Apache-2.0', 'MIT', 'CC-BY-4.0', '저작권 보호기간 만료(퍼블릭 도메인)']
 for (const dir of ['evals/human', 'evals/human-readme', 'evals/draft-readme', 'evals/draft-memo', 'evals/draft-blog', 'evals/draft-fiction']) {
@@ -119,7 +121,7 @@ const triggerIds = [...trigger.should, ...trigger.should_not].map((q) => q.id)
 if (new Set(triggerIds).size !== triggerIds.length) errors.push('evals/trigger/queries.json: id 중복')
 if (trigger.should.length < 8 || trigger.should_not.length < 6) errors.push('evals/trigger/queries.json: should 8개·should_not 6개 이상 필요')
 for (const query of [...trigger.should, ...trigger.should_not]) if (/\/geulppal|geulppal|글빨/.test(query.prompt)) errors.push(`트리거 요청 ${query.id}: 스킬 이름을 직접 언급함`)
-for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md', 'evals/judge/draft-claims.md', 'evals/judge/draft-quality.md', 'evals/judge/memo-check.md', 'evals/judge/draft-memo-claims.md', 'evals/judge/draft-memo-quality.md', 'evals/judge/blog-memo-check.md', 'evals/judge/draft-blog-claims.md', 'evals/judge/draft-blog-quality.md', 'evals/judge/draft-fiction-check.md', 'evals/judge/draft-fiction-quality.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
+for (const file of ['evals/judge/meaning.md', 'evals/judge/quality.md', 'evals/judge/slop-check.md', 'evals/judge/draft-claims.md', 'evals/judge/draft-quality.md', 'evals/judge/memo-check.md', 'evals/judge/draft-memo-claims.md', 'evals/judge/draft-memo-quality.md', 'evals/judge/blog-memo-check.md', 'evals/judge/draft-blog-claims.md', 'evals/judge/draft-blog-quality.md', 'evals/judge/draft-fiction-check.md', 'evals/judge/draft-fiction-quality.md', 'evals/judge/korean-natural.md']) if (!existsSync(join(ROOT, file))) errors.push(`${file} 없음`)
 
 // 스킬과 스냅샷
 checkSkill(join(ROOT, 'skills/geulppal'))

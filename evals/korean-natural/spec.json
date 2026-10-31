@@ -1,0 +1,29 @@
+{
+  "about": "Claude가 개발 작업 중에 한국어로 쓰는 답변이 한국어 독자에게 바로 읽히는지 보는 사례. 작업 폴더에 공개 저장소 코드를 넣고 개발자가 흔히 하는 질문을 한국어로 한다. 저장소 코드는 README 초안 평가(evals/draft-readme)와 같은 것을 쓴다. 사례는 스킬 0.5.0을 커밋한 뒤, 결과를 보기 전에 썼다.",
+  "fixtures_from": "evals/draft-readme/cases.json",
+  "prompts": {
+    "how": "이 패키지가 어떻게 동작하는지 설명해 줘. 처음 보는 팀원이 읽을 거야.",
+    "failure": "이 코드는 입력이 잘못되거나 네트워크·파일 오류가 나면 어떻게 돼? 문제가 될 만한 곳이 있으면 같이 알려 줘.",
+    "review": "이 코드 리뷰해 줘. 고칠 점을 중요한 것부터 알려 줘.",
+    "design": "왜 이렇게 설계했을지, 장단점이 뭔지 설명해 줘.",
+    "plan": "여기에 테스트를 더 붙이려면 어떤 순서로 하면 좋을지 작업 계획을 써 줘. 코드는 아직 고치지 마."
+  },
+  "cases": [
+    { "id": "py-hanspell-failure", "fixture": "py-hanspell-readme", "prompt": "failure", "split": "dev" },
+    { "id": "toss-ky-how", "fixture": "toss-ky-readme", "prompt": "how", "split": "dev" },
+    { "id": "korpora-review", "fixture": "korpora-readme", "prompt": "review", "split": "dev" },
+    { "id": "toss-storage-design", "fixture": "toss-storage-readme", "prompt": "design", "split": "dev" },
+    { "id": "khaiii-plan", "fixture": "khaiii-readme", "prompt": "plan", "split": "dev" },
+    { "id": "toss-hangul-failure", "fixture": "toss-hangul-readme", "prompt": "failure", "split": "dev" },
+    { "id": "koelectra-how", "fixture": "koelectra-readme", "prompt": "how", "split": "test" },
+    { "id": "toss-date-failure", "fixture": "toss-date-readme", "prompt": "failure", "split": "test" },
+    { "id": "toss-use-funnel-design", "fixture": "toss-use-funnel-readme", "prompt": "design", "split": "test" },
+    { "id": "toss-use-query-param-review", "fixture": "toss-use-query-param-readme", "prompt": "review", "split": "test" },
+    { "id": "kobert-transformers-plan", "fixture": "kobert-transformers-readme", "prompt": "plan", "split": "test" },
+    { "id": "hangul-js-failure", "fixture": "hangul-js-readme", "prompt": "failure", "split": "test" },
+    { "id": "g2pk-how", "fixture": "g2pk-readme", "prompt": "how", "split": "test" },
+    { "id": "toss-sentry-review", "fixture": "toss-sentry-readme", "prompt": "review", "split": "test" },
+    { "id": "open-korean-text-design", "fixture": "open-korean-text-readme", "prompt": "design", "split": "test" },
+    { "id": "toss-scroll-animation-plan", "fixture": "toss-scroll-animation-readme", "prompt": "plan", "split": "test" }
+  ]
+}

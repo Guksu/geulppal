@@ -31,7 +31,7 @@ const options = parseArgs(process.argv.slice(2), {
   cases: null,
 })
 const mode = options._[0]
-if (!['meaning', 'pair', 'rescore'].includes(mode) || !options.out) {
+if (!['meaning', 'pair', 'rescore', 'natural'].includes(mode) || !options.out) {
   console.error('사용법: judge.mjs meaning --out <이름> --condition <조건> | pair --out <이름> --left <조건> --right <조건> [--left-from <이름>] [--right-from <이름>]')
   process.exit(1)
 }
@@ -169,6 +169,32 @@ const PAIR_SCHEMA = {
   additionalProperties: false,
 }
 
+// 한국어 독자가 멈칫할 곳(evals/judge/korean-natural.md)
+const NATURAL_SCHEMA = {
+  type: 'object',
+  properties: {
+    spans: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          quote: { type: 'string' },
+          category: { type: 'string', enum: ['literal', 'coined', 'noun_chain', 'symbol', 'translationese', 'awkward'] },
+          severity: { type: 'string', enum: ['major', 'minor'] },
+          why: { type: 'string' },
+          suggestion: { type: 'string' },
+          occurrences: { type: 'integer' },
+        },
+        required: ['quote', 'category', 'severity', 'why', 'suggestion', 'occurrences'],
+        additionalProperties: false,
+      },
+    },
+    summary: { type: 'string' },
+  },
+  required: ['spans', 'summary'],
+  additionalProperties: false,
+}
+
 const JUDGE_TOOLS = ['Read', 'Glob', 'Grep']
 const judgeArgs = ({ prompt, rubric, schema, tools }) => [
   '-p', prompt,
@@ -261,6 +287,28 @@ if (mode === 'meaning') {
     return null
   })
   console.log(`의미 보존 판정: ${condition} ${jobs.length}건 (판정 모델 ${options.model})`)
+  await pool(jobs, Number(options.concurrency))
+  packRecords(options.out)
+}
+
+if (mode === 'natural') {
+  // 결과 글만 보고 한국어 독자가 멈칫할 곳을 표시한다. 사실 여부는 보지 않는다
+  const condition = options.condition
+  const rubric = readFileSync(join(ROOT, 'evals/judge/korean-natural.md'), 'utf8')
+  const cases = casesById(casesFileOf(options.out, condition))
+  const jobs = latestRuns(options.out, condition).filter((record) => record.status === 'ok').map((record) => async () => {
+    const key = `judge/natural/${condition}/${record.id}-r${record.rep}`
+    const previous = out.get(key)
+    if (previous?.judged && previous.attempt === record.attempt && !options.force) return
+    const item = cases[record.id]
+    const output = outputOf(options.out, record)
+    const prompt = [block('요청', item.request), block('글', output)].join('\n\n')
+    const judged = await callJudge({ prompt, rubric, schema: NATURAL_SCHEMA })
+    const spans = (judged.answer?.spans ?? []).map((span) => ({ ...span, quoteFound: output.includes(span.quote) }))
+    out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, judged: Boolean(judged.answer), spans, summary: judged.answer?.summary ?? null, judge: { ...judgeMeta(rubric), kind: 'korean-natural', attempts: judged.attempts } })
+    console.log(`멈칫 ${condition} ${record.id} r${record.rep} — ${judged.answer ? `${spans.length}곳` : '판정 실패'}`)
+  })
+  console.log(`멈칫할 곳 판정: ${condition} ${jobs.length}건 (판정 모델 ${options.model})`)
   await pool(jobs, Number(options.concurrency))
   packRecords(options.out)
 }
