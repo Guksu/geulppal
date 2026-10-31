@@ -103,6 +103,18 @@ const SETS = {
     right: (item) => ({ run: fictionRun(item), condition: 'I' }),
     groups: [{ key: 'A-vs-0.4.3', left: (item) => ({ run: fictionRun(item), condition: 'A' }), filter: (item) => item.split !== 'dev', max: 99 }],
   },
+  'draft-fiction-l1': {
+    cases: 'evals/draft-fiction/cases.json',
+    pairsFile: 'evals/runs/rating/draft-fiction-l1-pairs.json',
+    results: 'evals/results/2026-10-31-draft-fiction-l1-rating',
+    storeKey: 'geulppal-blind-draft-fiction-l1',
+    title: '글빨 짧은 소설 블라인드 비교 2',
+    lede: '같은 소설 요청에 나온 두 결과입니다. 요청에 분량이 있으면 그것도 함께 보고, 읽고 싶은 소설로 어느 쪽이 나은지 골라 주세요. 조건을 못 지킨 결과도 섞여 있습니다. 어느 쪽이 어떤 버전인지는 알려 드리지 않습니다.',
+    context: '작성자는 요청과 아래 입력만 받았습니다.',
+    anyPass: true,
+    right: (item) => ({ run: item.split === 'dev' ? '2026-10-31-draft-fiction-l1' : '2026-10-31-draft-fiction-final2', condition: 'L1' }),
+    groups: [{ key: '0.4.3-vs-0.4.6', left: (item) => ({ run: item.split === 'dev' ? '2026-10-30-draft-fiction' : '2026-10-31-draft-fiction-final2', condition: 'I' }), filter: (item) => ['dev', 'holdout2'].includes(item.split), max: 99 }],
+  },
 }
 const SET = SETS[options.set]
 if (!SET) {
@@ -154,8 +166,11 @@ const passed = (run, condition, id, rep) =>
 // 같은 쌍을 판정 모델이 비교한 기록이 있으면 함께 둔다(사람 판정과 맞춰 보기용)
 const modelJudgment = (left, right, id, rep) => {
   for (const run of [right.run, left.run]) {
-    const record = recordsOf(run).get(`judge/pair/${left.condition}-vs-${right.condition}/${id}-r${rep}`)
-    if (record?.judged) return { run, result: record.result, judgments: record.judgments.map((j) => j.winner) }
+    // 분량을 뺀 보조 비교(judge/pair-nolength)만 있으면 그것을 둔다
+    for (const folder of ['pair', 'pair-nolength']) {
+      const record = recordsOf(run).get(`judge/${folder}/${left.condition}-vs-${right.condition}/${id}-r${rep}`)
+      if (record?.judged) return { run, result: record.result, judgments: record.judgments.map((j) => j.winner), ...(folder === 'pair' ? {} : { lengthIgnored: true }) }
+    }
   }
   return null
 }
@@ -228,7 +243,7 @@ if (mode === 'score') {
   }
   const { pairs } = readJson(PAIRS_FILE)
   const ratings = readJson(options.ratings)
-  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', I: '글빨 0.4.3', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사', 'draft-blog': '사람 글' }[options.set] }
+  const label = { A: '글빨 없음', B: '글빨 0.2.1', C: '글빨 0.3.0', C2: '글빨 0.3.0', E: '글빨 0.4.0', F: '글빨 0.4.1', I: '글빨 0.4.3', L1: '0.4.6 후보', H: { human: '사람 원문', 'draft-readme': '사람 README', 'draft-memo': '사람 기사', 'draft-blog': '사람 글' }[options.set] }
   const rows = []
   const tally = {}
   for (const pair of pairs) {
@@ -236,7 +251,7 @@ if (mode === 'score') {
     const pick = rating?.choice
     const winner = pick === 'x' ? pair.sides[0].condition : pick === 'y' ? pair.sides[1].condition : pick ?? null
     const norm = (c) => (c === 'C2' ? 'C' : c)
-    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'I', 'H'].includes(winner) ? norm(winner) : winner
+    const human = winner && ['A', 'B', 'C', 'C2', 'E', 'F', 'I', 'L1', 'H'].includes(winner) ? norm(winner) : winner
     const model = pair.model ? (['tie', 'both_inadequate', 'inconsistent'].includes(pair.model.result) ? pair.model.result : norm(pair.model.result)) : null
     tally[pair.group] ??= {}
     tally[pair.group][human ?? '미평가'] = (tally[pair.group][human ?? '미평가'] ?? 0) + 1

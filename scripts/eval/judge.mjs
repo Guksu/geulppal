@@ -277,7 +277,10 @@ if (mode === 'pair') {
   const cases = casesById(casesFileOf(rightFrom, right))
   const meaningOf = (name, condition, record) => recordsOf(name).get(`judge/meaning/${condition}/${record.id}-r${record.rep}`)
   const leftRuns = Object.fromEntries(latestRuns(leftFrom, left).map((record) => [`${record.id}-r${record.rep}`, record]))
-  const pairDir = `judge/pair/${left}-vs-${right}`
+  // --ignore-length: 분량만 못 맞춘 결과도 넣는 보조 비교(소설). 원래 비교와 섞이지 않게 judge/pair-nolength/에 둔다
+  const ignoreLength = Boolean(options['ignore-length'])
+  const passed = (meaning) => (ignoreLength ? meaning?.judge?.answer?.verdict === 'pass' && meaning?.exact?.pass !== false : meaning?.pass === true)
+  const pairDir = `judge/${ignoreLength ? 'pair-nolength' : 'pair'}/${left}-vs-${right}`
   const jobs = []
   for (const rightRecord of latestRuns(rightFrom, right)) {
     const key = `${rightRecord.id}-r${rightRecord.rep}`
@@ -289,7 +292,7 @@ if (mode === 'pair') {
     const rightMeaning = meaningOf(rightFrom, right, rightRecord)
     // --reference-pass: 실행하지 않은 기준 조건(model이 없는 조건)은 의미 판정과 상관없이 비교한다
     const isReference = (name, condition) => options['reference-pass'] && manifestOf(name, condition)?.model === null
-    const eligible = (isReference(leftFrom, left) || leftMeaning?.pass === true) && (isReference(rightFrom, right) || rightMeaning?.pass === true)
+    const eligible = (isReference(leftFrom, left) || passed(leftMeaning)) && (isReference(rightFrom, right) || passed(rightMeaning))
     const base = {
       id: rightRecord.id,
       rep: rightRecord.rep,
