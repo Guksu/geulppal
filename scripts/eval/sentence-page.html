@@ -1,0 +1,108 @@
+<title>{{TITLE}}</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root {
+  --paper: #f3f5f2; --sheet: #fbfcfa; --ink: #1c2320; --muted: #5b6661; --rule: #d5dbd6;
+  --pencil: #2e5c4f; --pencil-soft: #dde9e3; --warn: #8a4b14; --warn-soft: #f6eadb;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131715; --sheet: #1a1f1d; --ink: #e4eae6; --muted: #9aa6a0; --rule: #2d3632;
+    --pencil: #86c6b0; --pencil-soft: #21352e; --warn: #e2a56b; --warn-soft: #3a2a1b;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131715; --sheet: #1a1f1d; --ink: #e4eae6; --muted: #9aa6a0; --rule: #2d3632;
+  --pencil: #86c6b0; --pencil-soft: #21352e; --warn: #e2a56b; --warn-soft: #3a2a1b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.6 var(--sans); }
+main { max-width: 720px; margin: 0 auto; padding: 28px 16px 64px; display: grid; gap: 18px; }
+h1 { font: 600 22px/1.3 var(--sans); margin: 0; }
+.lede { margin: 0; color: var(--muted); }
+.status { font-size: 13px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
+.banner { padding: 10px 12px; border-radius: 6px; background: var(--warn-soft); color: var(--warn); font-size: 14px; white-space: pre-wrap; }
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+li { background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: grid; gap: 10px; }
+.q { font-size: 12px; color: var(--muted); }
+.s { font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+code { font: 13px/1.4 var(--mono); background: var(--pencil-soft); padding: 1px 4px; border-radius: 3px; }
+.btns { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: 500 14px/1 var(--sans); padding: 9px 14px; border-radius: 6px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); cursor: pointer; min-height: 40px; }
+button[aria-pressed="true"] { background: var(--pencil); border-color: var(--pencil); color: var(--sheet); }
+button:focus-visible { outline: 2px solid var(--pencil); outline-offset: 2px; }
+.done { color: var(--pencil); font-weight: 600; }
+</style>
+<main>
+  <header style="display:grid;gap:8px">
+    <h1>{{TITLE}}</h1>
+    <p class="lede">{{LEDE}}</p>
+    <div class="status"><span id="count"></span><span id="store">저장소 연결 중</span></div>
+  </header>
+  <div id="banner" class="banner" hidden></div>
+  <ol id="list"></ol>
+  <div><button id="copy" type="button">결과 복사</button></div>
+</main>
+<script>
+const ITEMS = /*ITEMS*/[];
+const STORE_KEY = /*STORE_KEY*/'geulppal-sentence-check';
+const $ = (id) => document.getElementById(id);
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmt = (t) => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>');
+const state = { picks: {}, db: null, uid: null };
+const readLocal = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
+const writeLocal = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(state.picks)); } catch {} };
+
+function render() {
+  $('list').innerHTML = ITEMS.map((it, i) => `<li>
+    <div class="q">${i + 1}. 질문: ${esc(it.question)}</div>
+    <div class="s">${fmt(it.sentence)}</div>
+    <div class="btns">
+      <button type="button" data-id="${it.id}" data-choice="awkward" aria-pressed="${state.picks[it.id] === 'awkward'}">어색함</button>
+      <button type="button" data-id="${it.id}" data-choice="fine" aria-pressed="${state.picks[it.id] === 'fine'}">괜찮음</button>
+    </div></li>`).join('');
+  const n = ITEMS.filter((it) => state.picks[it.id]).length;
+  $('count').innerHTML = n === ITEMS.length ? `<span class="done">${n}/${ITEMS.length} 끝났습니다. 고맙습니다.</span>` : `${n}/${ITEMS.length}`;
+}
+
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-choice]');
+  if (!btn) return;
+  const { id, choice } = btn.dataset;
+  state.picks[id] = choice;
+  writeLocal();
+  render();
+  if (!state.db) return;
+  try {
+    await state.db.collection('checks').doc(`${id}~${state.uid || 'anon'}`).set({ item: id, choice, rater: state.uid || 'anon', at: new Date().toISOString() });
+    $('store').textContent = '저장됨';
+  } catch (err) {
+    $('store').textContent = `저장하지 못함(${err?.code || '오류'}). 이 브라우저에는 남아 있습니다.`;
+  }
+});
+$('copy').addEventListener('click', async () => {
+  const out = JSON.stringify(ITEMS.filter((it) => state.picks[it.id]).map((it) => ({ item: it.id, choice: state.picks[it.id] })));
+  try { await navigator.clipboard.writeText(out); $('copy').textContent = '복사했습니다'; }
+  catch { $('banner').hidden = false; $('banner').textContent = out; }
+});
+
+state.picks = readLocal();
+render();
+(async () => {
+  const [db, user] = await Promise.all([window.claude?.use?.('db') ?? null, window.claude?.use?.('user') ?? null]);
+  if (!db) { $('store').textContent = '저장소 없음. 끝나면 "결과 복사"로 전달해 주세요.'; return; }
+  state.db = db;
+  try { state.uid = user ? await user.id() : null; } catch { state.uid = null; }
+  $('store').textContent = '저장소에 저장됨';
+  db.collection('checks').where('rater', '==', state.uid || 'anon').onSnapshot((snap) => {
+    for (const d of snap.docs) { const v = d.data(); if (v && v.item) state.picks[v.item] = v.choice; }
+    writeLocal();
+    render();
+  }, () => { $('store').textContent = '저장소 연결 끊김'; });
+})();
+</script>

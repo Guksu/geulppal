@@ -5,19 +5,21 @@
  *   node scripts/eval/natural.mjs build --dir evals/korean-natural                       # spec.json → cases.json
  *   node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A   # 그 답변을 다듬게 하는 사례 → polish-cases.json
  *   node scripts/eval/natural.mjs summary --out <이름> [--conds A,I,N1]                  # 판정 모델이 표시한 곳 집계 → evals/results/<이름>/natural.md
+ *   node scripts/eval/natural.mjs check --out <이름> --condition A --page <html>         # 사람이 1분 안에 확인할 문장 10개(표시한 문장 6, 안 한 문장 4)
+ *   node scripts/eval/natural.mjs check-score --out <이름> --ratings <json>              # 사람 판단과 판정 모델 표시가 맞는지 → evals/results/<이름>-sentence-check/
  *
  * 판정(judge.mjs natural)은 evals/judge/korean-natural.md로, 독자가 멈칫할 표현을 종류·정도와 함께 표시한다.
  * 표시한 곳의 수는 글의 품질 점수나 AI 작성 확률이 아니다. 이 스킬이 고치려는 표현이 남았는지 보는 근거로만 쓴다.
  */
-import { writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ROOT, parseArgs, readJson, writeJson } from './lib/common.mjs'
+import { ROOT, parseArgs, readJson, sha256, writeJson } from './lib/common.mjs'
 import { openRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {})
 const mode = options._[0]
 const usage = '사용법: natural.mjs build --dir <폴더> | polish --dir <폴더> --from <이름> --condition <조건> | summary --out <이름> [--conds A,I]'
-if (!['build', 'polish', 'summary'].includes(mode)) {
+if (!['build', 'polish', 'summary', 'check', 'check-score'].includes(mode)) {
   console.error(usage)
   process.exit(1)
 }
@@ -112,4 +114,95 @@ if (mode === 'summary') {
   }
   writeFileSync(join(ROOT, 'evals/results', options.out, 'natural.md'), lines.join('\n'))
   console.log(lines.slice(0, 6 + conds.length).join('\n'))
+}
+
+// 사람 확인용 문장 고르기: 판정 모델이 표시한 문장과 표시하지 않은 문장을 섞는다
+const CHECK_FILE = join(ROOT, 'evals/runs/rating/sentence-check.json')
+const sentencesOf = (text) => {
+  const out = []
+  let fence = false
+  for (const raw of text.split('\n')) {
+    if (raw.trim().startsWith('```')) { fence = !fence; continue }
+    if (fence || /^\s*(\||#)/.test(raw)) continue
+    const line = raw.replace(/^\s*([-*]|\d+\.)\s+/, '').replace(/\*\*/g, '').trim()
+    for (const sentence of line.split(/(?<=[.!?])\s+/)) if (/[가-힣]/.test(sentence) && sentence.length >= 15 && sentence.length <= 160) out.push(sentence.trim())
+  }
+  return out
+}
+const seeded = (text) => {
+  let a = parseInt(sha256(text).slice(0, 8), 16)
+  return () => {
+    a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+const shuffle = (list, random) => list.map((v) => [random(), v]).sort((x, y) => x[0] - y[0]).map(([, v]) => v)
+
+if (mode === 'check') {
+  const records = openRecords(options.out)
+  const cond = options.condition
+  const cases = Object.fromEntries(readJson(join(ROOT, 'evals/korean-natural/cases.json')).map((c) => [c.id, c]))
+  const random = seeded(`${options.out}:${cond}`)
+  const judged = shuffle(records.list(`judge/natural/${cond}`).filter((r) => r.judged), random)
+  const runOf = (r) => records.get(`runs/${cond}/${r.id}-r${r.rep}-a${r.attempt}`)
+  const flagged = []
+  const used = new Set()
+  const want = ['literal', 'literal', 'literal', 'awkward', ['coined', 'noun_chain'], ['translationese', 'symbol']]
+  for (const cat of want) {
+    const cats = [cat].flat()
+    for (const r of judged) {
+      if (used.has(r.id)) continue
+      const span = r.spans.find((sp) => cats.includes(sp.category) && sp.quoteFound)
+      const sentence = span && sentencesOf(runOf(r).output).find((x) => x.includes(span.quote))
+      if (!sentence) continue
+      flagged.push({ case: r.id, rep: r.rep, sentence, flagged: true, span })
+      used.add(r.id)
+      break
+    }
+  }
+  const clean = []
+  for (const r of judged) {
+    if (clean.length >= 4) break
+    if (used.has(r.id)) continue
+    const candidates = sentencesOf(runOf(r).output).filter((x) => !r.spans.some((sp) => x.includes(sp.quote) || sp.quote.includes(x)))
+    if (!candidates.length) continue
+    clean.push({ case: r.id, rep: r.rep, sentence: candidates[Math.floor(random() * candidates.length)], flagged: false })
+    used.add(r.id)
+  }
+  const items = shuffle([...flagged, ...clean], random).map((it, i) => ({ id: `s${String(i + 1).padStart(2, '0')}`, question: cases[it.case].request, ...it }))
+  mkdirSync(join(ROOT, 'evals/runs/rating'), { recursive: true })
+  writeJson(CHECK_FILE, { run: options.out, condition: cond, items })
+  const page = items.map(({ id, question, sentence }) => ({ id, question, sentence }))
+  const title = '어색한 문장 확인'
+  const lede = 'Claude가 개발 질문에 한국어로 답한 글에서 문장 10개를 뽑았습니다. 문장마다 읽다가 멈칫하면 "어색함", 아니면 "괜찮음"을 눌러 주세요. 1분 정도 걸립니다.'
+  const html = readFileSync(join(ROOT, 'scripts/eval/sentence-page.html'), 'utf8').replaceAll('{{TITLE}}', title).replace('{{LEDE}}', lede).replace('/*ITEMS*/[]', () => JSON.stringify(page).replace(/</g, '\\u003c'))
+  writeFileSync(options.page, html)
+  console.log(`문장 ${items.length}개(표시한 문장 ${flagged.length}, 안 한 문장 ${clean.length}) → ${options.page}`)
+}
+
+if (mode === 'check-score') {
+  const { run, condition, items } = readJson(CHECK_FILE)
+  const ratings = Object.fromEntries(readJson(options.ratings).map((r) => [r.item, r.choice]))
+  const rows = items.map((it) => ({ ...it, human: ratings[it.id] ?? null }))
+  const agree = rows.filter((r) => r.human && (r.human === 'awkward') === r.flagged).length
+  const rated = rows.filter((r) => r.human).length
+  const cell = (t) => String(t ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ')
+  const lines = [
+    '# 어색한 문장 확인', '',
+    `자동 생성 파일이다(\`node scripts/eval/natural.mjs check-score\`). ${run}의 ${condition} 결과에서 판정 모델이 멈칫할 곳으로 표시한 문장과 표시하지 않은 문장을 섞어, 저장소 소유자가 어느 쪽인지 모르는 상태로 "어색함/괜찮음"을 골랐다.`, '',
+    `| | 사람: 어색함 | 사람: 괜찮음 |`, '|---|---|---|',
+    `| 판정 모델이 표시한 문장 | ${rows.filter((r) => r.flagged && r.human === 'awkward').length} | ${rows.filter((r) => r.flagged && r.human === 'fine').length} |`,
+    `| 표시하지 않은 문장 | ${rows.filter((r) => !r.flagged && r.human === 'awkward').length} | ${rows.filter((r) => !r.flagged && r.human === 'fine').length} |`, '',
+    `일치 ${agree}/${rated}.`, '',
+    '| 문장 | 사례 | 판정 모델 | 사람 | 문장 내용 | 판정 모델이 짚은 곳 |', '|---|---|---|---|---|---|',
+    ...rows.map((r) => `| ${r.id} | \`${r.case}\` r${r.rep} | ${r.flagged ? `표시(${r.span.category})` : '표시 안 함'} | ${r.human === 'awkward' ? '어색함' : r.human === 'fine' ? '괜찮음' : '-'} | ${cell(r.sentence)} | ${r.flagged ? cell(r.span.quote) : ''} |`),
+    '',
+  ]
+  const dir = join(ROOT, 'evals/results', `${run}-sentence-check`)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'report.md'), lines.join('\n'))
+  writeJson(join(dir, 'items.json'), rows)
+  console.log(lines.slice(0, 11).join('\n'))
 }

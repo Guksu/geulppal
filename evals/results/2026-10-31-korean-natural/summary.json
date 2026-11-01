@@ -1,0 +1,70 @@
+{
+  "name": "2026-10-31-korean-natural",
+  "conditions": {
+    "A": {
+      "attempts": 32,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 45174.5,
+        "medianInput": 50450.5,
+        "medianOutput": 5295,
+        "costUsd": 4.8792539999999995
+      }
+    },
+    "I": {
+      "attempts": 32,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 32,
+      "referenceReads": 15,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 52183.5,
+        "medianInput": 91969.5,
+        "medianOutput": 5857.5,
+        "costUsd": 6.618762200000001
+      }
+    },
+    "N1": {
+      "attempts": 32,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 32,
+      "referenceReads": 14,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 46381.5,
+        "medianInput": 96960,
+        "medianOutput": 4938.5,
+        "costUsd": 6.276584099999999
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 0
+}
