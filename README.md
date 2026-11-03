@@ -81,6 +81,7 @@ Without `/geulppal`, requests such as "make it sound natural", "fix the translat
 - [Document types](skills/geulppal/references/document-types.md): content rules for writing from scratch, and guidance for READMEs, PRs, proposals, blog posts and emails
 - [Sentence examples](skills/geulppal/references/editing-examples.md): sentences to fix and sentences to leave alone
 - [Research notes](research/findings.md): guidance taken from earlier README edits, public skills and writing resources
+- [Orwell's rules](research/orwell.md): which of the six rules in "Politics and the English Language" carry over to Korean and to Claude's replies (in Korean)
 - [Korean sources](research/korean-sources.md): guidance from the National Institute of Korean Language's special issue on translationese and other sources, and the human-written evaluation texts
 - [Evaluation method](evals/README.md): evaluation cases, judging rules, scripts and how to rerun them
 

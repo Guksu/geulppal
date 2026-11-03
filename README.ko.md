@@ -79,6 +79,7 @@ cd geulppal/skills && zip -r geulppal.zip geulppal
 - [문서별 판단](skills/geulppal/references/document-types.md): 원문 없이 새로 쓸 때의 내용 규칙, README·PR·기획서·블로그·이메일 기준
 - [문장 예시](skills/geulppal/references/editing-examples.md): 고칠 문장과 그대로 둘 문장
 - [조사 기록](research/findings.md): 기존 README 수정, 공개 스킬과 글쓰기 자료에서 채택한 기준
+- [오웰의 글쓰기 원칙 검토](research/orwell.md): 「Politics and the English Language」의 여섯 원칙을 한국어와 Claude 답변에 옮길 수 있는지 대조한 기록
 - [국내 자료 조사](research/korean-sources.md): 국립국어원 『새국어생활』 번역투 특집 등에서 정리한 기준과 사람이 쓴 평가 자료
 - [평가 방법](evals/README.md): 평가 사례, 판정 기준, 실행 스크립트와 다시 돌리는 방법
 
