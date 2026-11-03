@@ -1,6 +1,6 @@
 # geulppal full guide
 
-A short introduction and installation are in the [README](../README.md). This guide covers what geulppal fixes, every install option, how it works, what it does not do, the evaluations, the repository layout and how to contribute.
+A short introduction and installation are in the [README](../README.en.md). This guide covers what geulppal fixes, every install option, how it works, what it does not do, the evaluations, the repository layout and how to contribute.
 
 한국어: [guide.md](guide.md)
 

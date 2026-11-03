@@ -1,55 +1,5 @@
 # 글빨 · geulppal
 
-Claude가 쓴 한국어를 사람들이 평소에 쓰는 한국어로 다듬는 스킬입니다. `조용한 실패`처럼 영어 표현을 낱말대로 옮긴 말, 설명 없이 쓴 이름, 명사만 늘어놓거나 화살표로 대신한 문장을 고칩니다. 사실·수치·조건과 작성자의 말투는 그대로 둡니다.
+한국어 README는 이제 [메인 README](README.md)입니다.
 
-Claude가 한국어로 답할 때마다 영어를 옮긴 듯한 말과 어색한 문장을 다시 고쳐 읽어야 해서 만들었습니다.
-
-[English](README.md) · [설치](#설치) · [상세 안내](docs/guide.md) · [문장 비교](docs/comparisons.md)
-
-| 글빨 없이 쓴 답변 | 글빨 0.5.2로 다듬은 결과 |
-|---|---|
-| 마지막 단어 뒤에 넣을 insert 패치는 조용히 버려집니다. | 마지막 단어 뒤에 넣을 insert 패치는 오류 없이 버려집니다. |
-| 값이 외부에서 바뀌거나 오염되면 타입이 거짓이 됩니다. | 값이 외부에서 바뀌거나 오염되면 타입이 실제 값과 맞지 않게 됩니다. |
-| 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다. | 아래 초안은 소스에서 확인한, 테스트가 없는 부분을 기준으로 썼습니다. |
-| ESM 빌드에서는 esbuild의 `require` 심이 던질 수도 있습니다. | ESM 빌드에서는 esbuild가 넣는 `require` 대체 코드(shim)가 오류를 낼 수도 있습니다. |
-
-Claude Code가 개발 질문에 한국어로 쓴 답변과, 그 답변을 글빨 0.5.2로 다듬은 결과에서 같은 자리를 옮겼습니다. 판정 모델이 어색하다고 표시한 문장입니다. 처음 보는 사례 12개에서 표시된 표현 48개 중 8개는 다듬은 뒤에도 남았고(글빨 없이 다듬으면 18개), 뜻은 24번 중 23번 그대로였습니다. 글빨을 쓰면 다듬는 비용이 약 2배 듭니다. [평가 방법·전체 결과·한계](docs/comparisons.md)
-
-## 설치
-
-**Claude Code** — 프로젝트 폴더의 터미널에서 실행합니다. 모든 프로젝트에서 쓰려면 `-g`를 붙입니다.
-
-```bash
-npx skills add Guksu/geulppal --skill geulppal
-```
-
-**Claude 웹·데스크톱** — `skills/geulppal/` 폴더를 ZIP으로 묶어 업로드합니다.
-
-```bash
-git clone --depth 1 https://github.com/Guksu/geulppal.git
-cd geulppal/skills && zip -r geulppal.zip geulppal
-```
-
-[설치 방법 전체](docs/guide.md#설치) · [업데이트](docs/guide.md#업데이트)
-
-## 첫 요청
-
-Claude의 답을 받은 뒤 이렇게 요청해 보세요.
-
-> /geulppal 방금 쓴 답을 자연스러운 한국어로 다듬어 줘. 내용은 그대로 둬.
-
-Claude가 영어를 옮긴 듯한 말과 어색한 문장을 고친 완성문을 돌려줍니다. 원문에 없는 사실은 보태지 않고, 확인할 것이 있을 때만 짧게 알립니다. "번역투 고쳐줘", "AI 티 빼줘"처럼 요청해도 스킬을 고를 수 있습니다. 영어 글은 `/geulppal`로 직접 불러 주세요.
-
-다 쓴 글을 다듬을 때 효과가 가장 분명했습니다. 처음부터 쓰게 할 때는 사례에 따라 결과가 엇갈렸습니다. 스킬 지침은 한국어로 쓰여 있습니다.
-
-## 앞으로
-
-직접 쓰면서 부족한 부분을 계속 고치겠습니다. 다듬은 뒤에도 어색하게 남은 문장이나 뜻이 바뀐 결과가 있으면 원문·요청·결과를 함께 [이슈](https://github.com/Guksu/geulppal/issues)로 알려 주세요. 평가 사례에 넣어 다음 버전에 반영합니다.
-
-[상세 안내](docs/guide.md) · [문장 비교](docs/comparisons.md) · [벤치마크](evals/results/README.md) · [기여하기](docs/guide.md#기여하기)
-
-[![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
-
-## 라이선스
-
-[MIT](LICENSE) © 2026 Guksu
+[설치](README.md#설치) · [첫 요청](README.md#첫-요청) · [상세 안내](docs/guide.md) · [문장 비교](docs/comparisons.md) · [English](README.en.md)

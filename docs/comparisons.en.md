@@ -1,6 +1,6 @@
 # geulppal sentence comparisons
 
-[README](../README.md) · [Full guide](guide.en.md) · [한국어](comparisons.md)
+[README](../README.en.md) · [Full guide](guide.en.md) · [한국어](comparisons.md)
 
 ## Sentence comparisons
 

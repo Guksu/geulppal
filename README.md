@@ -1,56 +1,55 @@
-# geulppal · 글빨
+# 글빨 · geulppal
 
-A Claude skill that turns the Korean Claude writes into the Korean people actually use. It fixes English expressions translated word for word, such as `조용한 실패` for "silent failure", names used without explanation, and sentences reduced to strings of nouns or arrows. It keeps facts, numbers, conditions and the author's voice.
+Claude가 쓴 한국어를 사람들이 평소에 쓰는 한국어로 다듬는 스킬입니다. `조용한 실패`처럼 영어 표현을 낱말대로 옮긴 말, 설명 없이 쓴 이름, 명사만 늘어놓거나 화살표로 대신한 문장을 고칩니다. 사실·수치·조건과 작성자의 말투는 그대로 둡니다.
 
-I built it because every time Claude answered in Korean, I had to reread and fix phrases that sounded like translated English and sentences that read awkwardly.
+Claude가 한국어로 답할 때마다 영어를 옮긴 듯한 말과 어색한 문장을 다시 고쳐 읽어야 해서 만들었습니다.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Full guide](docs/guide.en.md) · [Sentence comparisons](docs/comparisons.en.md)
+[English](README.en.md) · [설치](#설치) · [상세 안내](docs/guide.md) · [문장 비교](docs/comparisons.md)
 
-| Answer written without geulppal | Polished with geulppal 0.5.2 |
+| 글빨 없이 쓴 답변 | 글빨 0.5.2로 다듬은 결과 |
 |---|---|
-| 마지막 단어 뒤에 넣을 insert 패치는 조용히 버려집니다.<br>("…is silently discarded") | 마지막 단어 뒤에 넣을 insert 패치는 오류 없이 버려집니다.<br>("…is discarded without an error") |
-| 값이 외부에서 바뀌거나 오염되면 타입이 거짓이 됩니다.<br>("…the type becomes a lie") | 값이 외부에서 바뀌거나 오염되면 타입이 실제 값과 맞지 않게 됩니다.<br>("…the type no longer matches the actual value") |
-| 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다.<br>("…based on the test gaps…") | 아래 초안은 소스에서 확인한, 테스트가 없는 부분을 기준으로 썼습니다.<br>("…based on the parts without tests…") |
-| ESM 빌드에서는 esbuild의 `require` 심이 던질 수도 있습니다.<br>("…the `require` shim may throw") | ESM 빌드에서는 esbuild가 넣는 `require` 대체 코드(shim)가 오류를 낼 수도 있습니다.<br>("…the `require` replacement code (shim) that esbuild adds may raise an error") |
+| 마지막 단어 뒤에 넣을 insert 패치는 조용히 버려집니다. | 마지막 단어 뒤에 넣을 insert 패치는 오류 없이 버려집니다. |
+| 값이 외부에서 바뀌거나 오염되면 타입이 거짓이 됩니다. | 값이 외부에서 바뀌거나 오염되면 타입이 실제 값과 맞지 않게 됩니다. |
+| 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다. | 아래 초안은 소스에서 확인한, 테스트가 없는 부분을 기준으로 썼습니다. |
+| ESM 빌드에서는 esbuild의 `require` 심이 던질 수도 있습니다. | ESM 빌드에서는 esbuild가 넣는 `require` 대체 코드(shim)가 오류를 낼 수도 있습니다. |
 
-The same spots, taken from answers Claude Code wrote in Korean to development questions and from those answers polished with geulppal 0.5.2. These are sentences the judge model marked as awkward. On 12 cases written before seeing any results, 8 of 48 marked expressions were still there after polishing (18 without geulppal), and the meaning was kept in 23 of 24 runs. Polishing with geulppal cost about twice as much. [Method, all results and limitations](docs/comparisons.en.md)
+Claude Code가 개발 질문에 한국어로 쓴 답변과, 그 답변을 글빨 0.5.2로 다듬은 결과에서 같은 자리를 옮겼습니다. 판정 모델이 어색하다고 표시한 문장입니다. 처음 보는 사례 12개에서 표시된 표현 48개 중 8개는 다듬은 뒤에도 남았고(글빨 없이 다듬으면 18개), 뜻은 24번 중 23번 그대로였습니다. 글빨을 쓰면 다듬는 비용이 약 2배 듭니다. [평가 방법·전체 결과·한계](docs/comparisons.md)
 
-## Installation
+## 설치
 
-**Claude Code** — run in a terminal in your project folder. Add `-g` to use it in every project.
+**Claude Code** — 프로젝트 폴더의 터미널에서 실행합니다. 모든 프로젝트에서 쓰려면 `-g`를 붙입니다.
 
 ```bash
 npx skills add Guksu/geulppal --skill geulppal
 ```
 
-**Claude on the web or desktop** — zip the `skills/geulppal/` folder and upload it.
+**Claude 웹·데스크톱** — `skills/geulppal/` 폴더를 ZIP으로 묶어 업로드합니다.
 
 ```bash
 git clone --depth 1 https://github.com/Guksu/geulppal.git
 cd geulppal/skills && zip -r geulppal.zip geulppal
 ```
 
-[All install options](docs/guide.en.md#installation) · [Updating](docs/guide.en.md#updating)
+[설치 방법 전체](docs/guide.md#설치) · [업데이트](docs/guide.md#업데이트)
 
-## Try it
+## 첫 요청
 
-After Claude answers, ask:
+Claude의 답을 받은 뒤 이렇게 요청해 보세요.
 
 > /geulppal 방금 쓴 답을 자연스러운 한국어로 다듬어 줘. 내용은 그대로 둬.
-> ("Polish the answer you just wrote into natural Korean. Keep the content.")
 
-Claude returns the finished text with word-for-word translations and awkward sentences fixed. It adds no facts that were not in the original, and leaves a short note only when something needs checking. Requests such as "fix the translationese" or "make it less AI-sounding" can also lead Claude to pick the skill. For English text, call `/geulppal` directly.
+Claude가 영어를 옮긴 듯한 말과 어색한 문장을 고친 완성문을 돌려줍니다. 원문에 없는 사실은 보태지 않고, 확인할 것이 있을 때만 짧게 알립니다. "번역투 고쳐줘", "AI 티 빼줘"처럼 요청해도 스킬을 고를 수 있습니다. 영어 글은 `/geulppal`로 직접 불러 주세요.
 
-The effect was clearest when Claude polished finished text. Results for writing from scratch were mixed. The skill instructions are written in Korean; [English usage notes](docs/guide.en.md#how-it-works) are in the full guide.
+다 쓴 글을 다듬을 때 효과가 가장 분명했습니다. 처음부터 쓰게 할 때는 사례에 따라 결과가 엇갈렸습니다. 스킬 지침은 한국어로 쓰여 있습니다.
 
-## Follow development
+## 앞으로
 
-I use geulppal in my own work and will keep fixing it. If a phrase is still awkward after polishing, or the meaning changed, [open an issue](https://github.com/Guksu/geulppal/issues) with the original, your request and the result. Reports like these become evaluation cases for the next version.
+직접 쓰면서 부족한 부분을 계속 고치겠습니다. 다듬은 뒤에도 어색하게 남은 문장이나 뜻이 바뀐 결과가 있으면 원문·요청·결과를 함께 [이슈](https://github.com/Guksu/geulppal/issues)로 알려 주세요. 평가 사례에 넣어 다음 버전에 반영합니다.
 
-[Full guide](docs/guide.en.md) · [Sentence comparisons](docs/comparisons.en.md) · [Benchmark](evals/results/README.md) (in Korean) · [Contributing](docs/guide.en.md#contributing)
+[상세 안내](docs/guide.md) · [문장 비교](docs/comparisons.md) · [벤치마크](evals/results/README.md) · [기여하기](docs/guide.md#기여하기)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
-## License
+## 라이선스
 
 [MIT](LICENSE) © 2026 Guksu

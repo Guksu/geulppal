@@ -140,7 +140,7 @@ const matching = Object.entries(hashes).filter(([, value]) => value.treeSha256 =
 notes.push(`skills/geulppal 해시 ${current.slice(0, 12)} — 같은 스냅샷: ${matching.join(', ') || '없음'}`)
 
 // 문서 링크
-for (const file of ['README.md', 'README.ko.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'evals/human/README.md', 'evals/human-readme/README.md', 'evals/draft-readme/README.md', 'evals/draft-memo/README.md', 'evals/draft-blog/README.md', 'evals/draft-fiction/README.md', 'research/findings.md', 'research/korean-sources.md']) {
+for (const file of ['README.md', 'README.en.md', 'README.ko.md', 'docs/guide.md', 'docs/guide.en.md', 'docs/comparisons.md', 'docs/comparisons.en.md', 'skills/geulppal/SKILL.md', 'skills/geulppal/references/document-types.md', 'skills/geulppal/references/editing-examples.md', 'evals/README.md', 'evals/human/README.md', 'evals/human-readme/README.md', 'evals/draft-readme/README.md', 'evals/draft-memo/README.md', 'evals/draft-blog/README.md', 'evals/draft-fiction/README.md', 'research/findings.md', 'research/korean-sources.md']) {
   if (existsSync(join(ROOT, file))) checkLinks(file)
 }
 for (const file of walk(join(ROOT, 'evals/results')).filter((f) => f.endsWith('.md'))) checkLinks(relative(ROOT, file))

@@ -1,6 +1,6 @@
 # 글빨 문장 비교
 
-[README](../README.ko.md) · [상세 안내](guide.md) · [English](comparisons.en.md)
+[README](../README.md) · [상세 안내](guide.md) · [English](comparisons.en.md)
 
 ## 문장 비교
 
