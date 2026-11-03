@@ -1,0 +1,95 @@
+{
+  "name": "2026-10-31-korean-natural-holdout",
+  "conditions": {
+    "A": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 44602,
+        "medianInput": 51507.5,
+        "medianOutput": 5280.5,
+        "costUsd": 3.052259999999999
+      }
+    },
+    "I": {
+      "attempts": 16,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 3,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 50199.5,
+        "medianInput": 86300.5,
+        "medianOutput": 5587.5,
+        "costUsd": 4.111548300000001
+      }
+    },
+    "N1": {
+      "attempts": 16,
+      "failures": {
+        "error": 5
+      },
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 1,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 28405,
+        "medianInput": 55363,
+        "medianOutput": 3195.5,
+        "costUsd": 2.0038938
+      }
+    },
+    "N2": {
+      "attempts": 16,
+      "failures": {
+        "error": 16
+      },
+      "retries": 0,
+      "skillInjected": 16,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 765.5,
+        "medianInput": 0,
+        "medianOutput": 0,
+        "costUsd": 0
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 0
+}
