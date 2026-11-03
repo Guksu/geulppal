@@ -4,7 +4,7 @@ A Claude skill that turns Claude's Korean into the Korean people actually use. I
 
 I built it because every time Claude answered in Korean, I had to reread and fix phrases that sounded like translated English and sentences that read awkwardly.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md) · [6th](evals/results/REPORT-draft-blog.md) · [7th](evals/results/REPORT-draft-fiction.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md) · [6th](evals/results/REPORT-draft-blog.md) · [7th](evals/results/REPORT-draft-fiction.md) · [8th](evals/results/REPORT-korean-natural.md)
 
 > **Before** 설정 파일이 없으면 이 함수는 조용히 실패합니다. 환경 변수가 진실의 원천이고, 테스트는 행복한 경로만 다룹니다.
 > ("Without a config file this function fails silently. The environment variables are the source of truth, and the tests cover only the happy path.")
@@ -16,7 +16,19 @@ This is an illustrative example, not a benchmark result. Terms readers already u
 
 ## Evaluation so far
 
-Up to 0.4, the evaluations measured whether geulppal changes the meaning of a text when it edits, and whether it invents content that is not in the material when it writes. They did not measure the Korean wording that 0.5.0 now focuses on (word-for-word translations, unexplained names, awkward sentence structure). None of the 1,318 Korean results from those evaluations contained expressions like `조용한 실패`. A separate evaluation built from real Claude replies is planned.
+**Korean wording (0.5)**: Claude Code was asked common development questions in Korean about public repository code, and a judge model marked the places in each answer where a Korean developer would stumble (word-for-word translations, unexplained names, awkward sentences).
+
+| 8 questions written before seeing any results, 2 runs each | Without geulppal | geulppal 0.5.1 |
+|---|---|---|
+| Polishing an answer written without geulppal: marked expressions still present afterwards | 19/34 | 4/34 |
+| Same polishing: results that kept the meaning | 12/16 | 16/16 |
+| Writing the answer from scratch: marked places | 34 | 36 |
+
+- The effect was clear when Claude polished a finished answer. There is no evidence that it helps when Claude writes the answer from scratch, so the recommended use is to run `/geulppal` on Claude's answer afterwards.
+- 0.5.1 fixed expressions like `조용히 넘어갑니다` ("passes silently"), but it still sometimes turned terms developers use in English into native Korean words (React's effect → `효과`, "effect") or used new figures of speech that are not in its table.
+- The marks come from one judge model; whether people agree with them has not been checked yet. [8th evaluation report](evals/results/REPORT-korean-natural.md) (in Korean)
+
+**Meaning and invented content (up to 0.4)**: These evaluations measured whether geulppal changes the meaning of a text when it edits, and whether it invents content that is not in the material when it writes. None of the 1,318 Korean results from them contained expressions like `조용한 실패`, which is why the evaluation above was built separately.
 
 | What was measured | Without geulppal | With geulppal |
 |---|---|---|
@@ -30,7 +42,7 @@ Up to 0.4, the evaluations measured whether geulppal changes the meaning of a te
 - Without geulppal, Claude often turned hearsay ("it is said to be possible") into a plain statement ("it is possible") or added promises and experiences that were not in the original.
 - In a blind comparison by the repository owner, 16 of 22 pairs of polished texts were rated "about the same". Accuracy improved, but there is no evidence yet that the text reads better.
 - From 0.5.0, the content rules for writing from scratch (reading the code, links, numbers in memos, personal experiences) live in [document types](skills/geulppal/references/document-types.md). The results above come from versions that had these rules in the main file, and were not measured again after the move.
-- With geulppal, a run cost about 1.5 to 2.5 times as much as without it.
+- With geulppal, a run cost about 1.5 to 2.5 times as much as without it. With 0.5.1, polishing a Korean answer cost about 2 times as much, and writing an answer about 1.2 times.
 
 The samples are small, and the blind comparisons had a single rater. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 
@@ -60,7 +72,7 @@ Only the three files in `skills/geulppal/` (about 34 KB) are installed. The eval
 
 After installing, ask Claude something like this:
 
-> /geulppal 방금 한 작업을 한국어로 정리해 줘. ("Summarize what you just did, in Korean.")
+> /geulppal 방금 쓴 답을 자연스러운 한국어로 다듬어 줘. 내용은 그대로 둬. ("Polish the answer you just wrote into natural Korean. Keep the content.")
 
 > /geulppal 이 PR 설명에서 영어를 그대로 옮긴 말과 어색한 문장을 고쳐 줘. ("Fix the word-for-word English and awkward sentences in this PR description.")
 

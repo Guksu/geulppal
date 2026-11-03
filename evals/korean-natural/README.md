@@ -34,3 +34,5 @@ node scripts/eval/judge.mjs natural --out <이름> --condition A
 node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A
 node scripts/eval/natural.mjs summary --out <이름>
 ```
+
+결과는 [8차 평가 보고서](../results/REPORT-korean-natural.md)에 있다. 다 쓴 답을 다듬게 할 때는 효과가 분명했고, 처음부터 쓰게 할 때는 효과를 확인하지 못했다.
