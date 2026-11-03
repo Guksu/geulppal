@@ -16,17 +16,18 @@ This is an illustrative example, not a benchmark result. Terms readers already u
 
 ## Evaluation so far
 
-**Korean wording (0.5)**: Claude Code was asked common development questions in Korean about public repository code, and a judge model marked the places in each answer where a Korean developer would stumble (word-for-word translations, unexplained names, awkward sentences).
+**Korean wording (0.5)**: Claude Code was asked development questions about public repository code, development questions without a repository, and everyday questions, all in Korean. A judge model marked the places in each answer where the reader would stumble (word-for-word translations, unexplained names, awkward sentences).
 
-| 8 questions written before seeing any results, 2 runs each | Without geulppal | geulppal 0.5.1 |
+| 12 cases written before seeing any results | Without geulppal | geulppal 0.5.2 |
 |---|---|---|
-| Polishing an answer written without geulppal: marked expressions still present afterwards | 19/34 | 4/34 |
-| Same polishing: results that kept the meaning | 12/16 | 16/16 |
-| Writing the answer from scratch: marked places | 34 | 36 |
+| Polishing an answer written without geulppal (2 runs): marked expressions still present afterwards | 18/48 | 8/48 |
+| Same polishing: results that kept the meaning | 22/24 | 23/24 |
+| Writing the answer from scratch (1 run): marked places per 1,000 characters | 1.15 | 0.86 |
 
-- The effect was clear when Claude polished a finished answer. There is no evidence that it helps when Claude writes the answer from scratch, so the recommended use is to run `/geulppal` on Claude's answer afterwards.
-- 0.5.1 fixed expressions like `조용히 넘어갑니다` ("passes silently"), but it still sometimes turned terms developers use in English into native Korean words (React's effect → `효과`, "effect") or used new figures of speech that are not in its table.
-- The marks come from one judge model; whether people agree with them has not been checked yet. [8th evaluation report](evals/results/REPORT-korean-natural.md) (in Korean)
+- The effect was clearest when Claude polished a finished answer. On another set of 8 cases, polishing with 0.5.1 fixed 30 of 34 marked expressions and kept the meaning every time; polishing without geulppal left 19 of them and changed the meaning in 4 of 16 results.
+- Results for writing from scratch were mixed: fewer marks on the cases above, but no reduction on the earlier 8 cases. The recommended use is to run `/geulppal` on Claude's answer afterwards.
+- The repository owner rated 10 sentences, a mix of ones the judge marked and ones it did not, without knowing which was which; 7 of 10 agreed with the judge. The judge tended to over-mark translated terms that developers actually use, such as `회귀` (regression).
+- 0.5.0 sometimes translated technical names into native words, such as key → `열쇠` ("key" as in a lock). 0.5.2 adds a separate rule not to translate names, and this did not recur on the cases above. [8th evaluation report](evals/results/REPORT-korean-natural.md) (in Korean)
 
 **Meaning and invented content (up to 0.4)**: These evaluations measured whether geulppal changes the meaning of a text when it edits, and whether it invents content that is not in the material when it writes. None of the 1,318 Korean results from them contained expressions like `조용한 실패`, which is why the evaluation above was built separately.
 
@@ -41,8 +42,8 @@ This is an illustrative example, not a benchmark result. Terms readers already u
 
 - Without geulppal, Claude often turned hearsay ("it is said to be possible") into a plain statement ("it is possible") or added promises and experiences that were not in the original.
 - In a blind comparison by the repository owner, 16 of 22 pairs of polished texts were rated "about the same". Accuracy improved, but there is no evidence yet that the text reads better.
-- From 0.5.0, the content rules for writing from scratch (reading the code, links, numbers in memos, personal experiences) live in [document types](skills/geulppal/references/document-types.md). The results above come from versions that had these rules in the main file, and were not measured again after the move.
-- With geulppal, a run cost about 1.5 to 2.5 times as much as without it. With 0.5.1, polishing a Korean answer cost about 2 times as much, and writing an answer about 1.2 times.
+- From 0.5.0, the content rules for writing from scratch (reading the code, links, numbers in memos, personal experiences) live in [document types](skills/geulppal/references/document-types.md). After the move, 4 README drafts were checked again: 0.5.2 still wrote only claims backed by the code (8/8; 0.4.1 under the same conditions: 7/8). Report and blog drafts were not measured again.
+- With geulppal, a run cost about 1.5 to 2.5 times as much as without it. With 0.5.2, polishing a Korean answer cost about 2 to 2.3 times as much, and writing an answer about 1.2 to 1.8 times.
 
 The samples are small, and the blind comparisons had a single rater. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
 
@@ -80,12 +81,15 @@ After installing, ask Claude something like this:
 
 When you ask for text to paste, you get only the finished text. It adds a short note only when something needs checking, such as a fact missing from the material (whether a package is published, a number without a unit).
 
-Without `/geulppal`, requests such as "make it sound natural", "fix the translationese" or "make it less AI-sounding" can also lead Claude to pick the skill. The automatic selection results below were measured with the 0.2.1 description. The description was revised after seeing these requests, so they are not an independent result, and they were not measured again after the description changed in 0.5.0. [Automatic selection results](evals/results/2026-10-27-trigger/trigger-v0.2.1.md) (in Korean)
+Without `/geulppal`, requests such as "make it sound natural", "fix the translationese" or "make it less AI-sounding" can also lead Claude to pick the skill. The results below were measured with the 0.5 description. The requests were written after the description and were not used to revise it. [Automatic selection results](evals/results/2026-11-03-trigger/trigger-v0.5.2.md) (in Korean)
 
 | Request | Runs that picked the skill |
 |---|---|
-| Writing requests | 23 of 24 |
-| Code, lookup and AI-detection requests | 0 of 20 |
+| Polishing Korean text or fixing awkward wording | 18 of 18 |
+| Polishing an English docs paragraph | 0 of 2 |
+| Bug fixes, development questions, AI-detection and similar requests | 0 of 16 |
+
+To polish English text, call `/geulppal` directly.
 
 ## What's inside
 

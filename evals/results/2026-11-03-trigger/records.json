@@ -1,0 +1,2394 @@
+{
+  "format": "geulppal-eval-records/1",
+  "run": "2026-11-03-trigger",
+  "count": 37,
+  "records": {
+    "manifest/trigger-v0.5.2": {
+      "condition": "trigger-v0.5.2",
+      "kind": "trigger",
+      "skill": {
+        "path": "evals/snapshots/v0.5.2-r1/geulppal",
+        "treeSha256": "7be752c1c246add43cab2f60179a8dd7bcb01970e20e5e46715c66a04a9c520d",
+        "skillMdSha256": "ff0249c6d11e11a47b88f02d46ca3a6154b42fa7b994d68d364d3762cf2d5232"
+      },
+      "invocation": "자연어 요청 그대로(/geulppal 없음), 프로젝트 스킬 .claude/skills/geulppal",
+      "model": "claude-sonnet-5-5",
+      "effort": "high",
+      "cli": "2.1.317 (Claude Code)",
+      "tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Skill",
+        "Edit",
+        "Write"
+      ],
+      "maxBudgetUsd": 1,
+      "queriesFile": "evals/trigger/queries-0.5.json",
+      "queriesSha256": "df4aa6259ef7372be6a5f02b01628824c192646b0582389d0fc663bd73aec873",
+      "updated": "2026-11-03T07:22:05.887Z"
+    },
+    "trigger/v0.5.2/add-lint-script-r1": {
+      "id": "add-lint-script",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "package.json에 lint 스크립트 추가해줘. eslint 쓰고 있어.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "fewer-permission-prompts:4.6",
+          "keybindings-help:4.6",
+          "update-config:4.6"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\"{eslint.config.*,.eslintrc*}\"}"
+        },
+        {
+          "name": "Edit",
+          "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"  \\\"scripts\\\": {}\",\"new_string\":\"  \\\"scripts\\\": {\\n    \\\"lint\\\": \\\"eslint .\\\"\\n  }\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 5583,
+      "wallMs": 6613,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 5288,
+        "cacheReadInputTokens": 23171,
+        "outputTokens": 485,
+        "thinkingTokens": 0
+      },
+      "costUsd": 0.0283311,
+      "error": null
+    },
+    "trigger/v0.5.2/add-lint-script-r2": {
+      "id": "add-lint-script",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "package.json에 lint 스크립트 추가해줘. eslint 쓰고 있어.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "fewer-permission-prompts:4.6",
+          "keybindings-help:4.6",
+          "update-config:4.6"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\"*eslint*\"}"
+        },
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\"{src,lib,app}/**/*.{js,jsx,ts,tsx}\",\"path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Edit",
+          "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"  \\\"scripts\\\": {}\",\"new_string\":\"  \\\"scripts\\\": {\\n    \\\"lint\\\": \\\"eslint .\\\"\\n  }\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 7267,
+      "wallMs": 8115,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 5438,
+        "cacheReadInputTokens": 23286,
+        "outputTokens": 640,
+        "thinkingTokens": 33
+      },
+      "costUsd": 0.0304926,
+      "error": null
+    },
+    "trigger/v0.5.2/ai-tone-korean-r1": {
+      "id": "ai-tone-korean",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "이 글 AI가 쓴 티가 너무 나. 사람이 쓴 것처럼 고쳐줘.\n\n결론부터 말씀드리면, 이번 업데이트의 핵심은 속도입니다. 단순한 개선을 넘어, 사용자 경험의 판도를 바꾸는 변화라고 할 수 있습니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:33.1",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 4254,
+      "wallMs": 5380,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12961,
+        "cacheReadInputTokens": 13762,
+        "outputTokens": 262,
+        "thinkingTokens": 35
+      },
+      "costUsd": 0.0558482,
+      "error": null
+    },
+    "trigger/v0.5.2/ai-tone-korean-r2": {
+      "id": "ai-tone-korean",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "이 글 AI가 쓴 티가 너무 나. 사람이 쓴 것처럼 고쳐줘.\n\n결론부터 말씀드리면, 이번 업데이트의 핵심은 속도입니다. 단순한 개선을 넘어, 사용자 경험의 판도를 바꾸는 변화라고 할 수 있습니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:33.1",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 2935,
+      "wallMs": 3916,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12929,
+        "cacheReadInputTokens": 13762,
+        "outputTokens": 101,
+        "thinkingTokens": 0
+      },
+      "costUsd": 0.0541102,
+      "error": null
+    },
+    "trigger/v0.5.2/answer-translated-feel-r1": {
+      "id": "answer-translated-feel",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "아래 설명이 번역한 것처럼 읽혀. 자연스러운 한국어로 고쳐줘.\n\n이 모듈은 에러를 삼키고 아무것도 반환하지 않는 방식으로 동작하고 있습니다. 이는 디버깅을 어렵게 만드는 요소로 작용합니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:54.4",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 3537,
+      "wallMs": 4583,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12948,
+        "cacheReadInputTokens": 13755,
+        "outputTokens": 148,
+        "thinkingTokens": 29
+      },
+      "costUsd": 0.054655499999999996,
+      "error": null
+    },
+    "trigger/v0.5.2/answer-translated-feel-r2": {
+      "id": "answer-translated-feel",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "아래 설명이 번역한 것처럼 읽혀. 자연스러운 한국어로 고쳐줘.\n\n이 모듈은 에러를 삼키고 아무것도 반환하지 않는 방식으로 동작하고 있습니다. 이는 디버깅을 어렵게 만드는 요소로 작용합니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:54.4",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 3612,
+      "wallMs": 5002,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12969,
+        "cacheReadInputTokens": 13752,
+        "outputTokens": 170,
+        "thinkingTokens": 50
+      },
+      "costUsd": 0.0549592,
+      "error": null
+    },
+    "trigger/v0.5.2/blog-sentence-fix-r1": {
+      "id": "blog-sentence-fix",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "블로그 글인데 문장이 어색한 곳만 고쳐줘. 말투는 그대로 두고.\n\n지난 주말에 처음으로 혼자 캠핑을 갔다. 텐트를 치는 것에 있어서 생각보다 많은 시간이 소요되었다. 그래도 밤하늘을 보는 것은 가치 있는 경험이었다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:71.0",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 3366,
+      "wallMs": 4292,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12997,
+        "cacheReadInputTokens": 13771,
+        "outputTokens": 200,
+        "thinkingTokens": 62
+      },
+      "costUsd": 0.055373099999999995,
+      "error": null
+    },
+    "trigger/v0.5.2/blog-sentence-fix-r2": {
+      "id": "blog-sentence-fix",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "블로그 글인데 문장이 어색한 곳만 고쳐줘. 말투는 그대로 두고.\n\n지난 주말에 처음으로 혼자 캠핑을 갔다. 텐트를 치는 것에 있어서 생각보다 많은 시간이 소요되었다. 그래도 밤하늘을 보는 것은 가치 있는 경험이었다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:71.0",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 3171,
+      "wallMs": 4127,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12975,
+        "cacheReadInputTokens": 13771,
+        "outputTokens": 174,
+        "thinkingTokens": 36
+      },
+      "costUsd": 0.05502509999999999,
+      "error": null
+    },
+    "trigger/v0.5.2/commit-message-awkward-r1": {
+      "id": "commit-message-awkward",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "이 커밋 메시지 어색한 데 좀 다듬어줘: 캐시 무효화 로직의 개선을 수행함 -> 사용자 세션 일관성 보장",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:26.0",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 7428,
+      "wallMs": 8441,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12894,
+        "cacheReadInputTokens": 13701,
+        "outputTokens": 728,
+        "thinkingTokens": 383
+      },
+      "costUsd": 0.0602341,
+      "error": null
+    },
+    "trigger/v0.5.2/commit-message-awkward-r2": {
+      "id": "commit-message-awkward",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "이 커밋 메시지 어색한 데 좀 다듬어줘: 캐시 무효화 로직의 개선을 수행함 -> 사용자 세션 일관성 보장",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:26.0",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 6203,
+      "wallMs": 7226,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12896,
+        "cacheReadInputTokens": 13701,
+        "outputTokens": 550,
+        "thinkingTokens": 359
+      },
+      "costUsd": 0.0584621,
+      "error": null
+    },
+    "trigger/v0.5.2/csv-dedupe-r1": {
+      "id": "csv-dedupe",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "data.csv에서 중복된 행 지워줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "dataviz:7.1",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Write",
+          "input": "{\"file_path\":\"<tmp>\",\"content\":\"id,name\\n1,kim\\n2,lee\\n\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 5196,
+      "wallMs": 6242,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 5160,
+        "cacheReadInputTokens": 23004,
+        "outputTokens": 376,
+        "thinkingTokens": 59
+      },
+      "costUsd": 0.026712400000000004,
+      "error": null
+    },
+    "trigger/v0.5.2/csv-dedupe-r2": {
+      "id": "csv-dedupe",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "data.csv에서 중복된 행 지워줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "dataviz:7.1",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Write",
+          "input": "{\"file_path\":\"<tmp>\",\"content\":\"id,name\\n1,kim\\n2,lee\\n\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 4805,
+      "wallMs": 5863,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 5208,
+        "cacheReadInputTokens": 23014,
+        "outputTokens": 380,
+        "thinkingTokens": 102
+      },
+      "costUsd": 0.0269454,
+      "error": null
+    },
+    "trigger/v0.5.2/detect-ai-r1": {
+      "id": "detect-ai",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "이 글 AI가 쓴 건지 사람이 쓴 건지 판별해줘.\n\n오늘은 비가 와서 우산을 챙겼다. 버스를 놓쳐서 걸어갔다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:18.9",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 6554,
+      "wallMs": 7552,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4854,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 674,
+        "thinkingTokens": 117
+      },
+      "costUsd": 0.026602999999999998,
+      "error": null
+    },
+    "trigger/v0.5.2/detect-ai-r2": {
+      "id": "detect-ai",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "이 글 AI가 쓴 건지 사람이 쓴 건지 판별해줘.\n\n오늘은 비가 와서 우산을 챙겼다. 버스를 놓쳐서 걸어갔다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:18.9",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 6057,
+      "wallMs": 6960,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4854,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 585,
+        "thinkingTokens": 81
+      },
+      "costUsd": 0.025713,
+      "error": null
+    },
+    "trigger/v0.5.2/en-docs-plain-r1": {
+      "id": "en-docs-plain",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "This paragraph reads like marketing copy. Make it plain for our docs.\n\nOur next-generation scheduler seamlessly empowers teams to effortlessly orchestrate jobs at scale. It runs cron jobs and retries failed ones up to three times.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "schedule:17.2",
+          "code-review:10.1",
+          "plugin-authoring:7.1"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 3134,
+      "wallMs": 4201,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4858,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 267,
+        "thinkingTokens": 148
+      },
+      "costUsd": 0.022549,
+      "error": null
+    },
+    "trigger/v0.5.2/en-docs-plain-r2": {
+      "id": "en-docs-plain",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "This paragraph reads like marketing copy. Make it plain for our docs.\n\nOur next-generation scheduler seamlessly empowers teams to effortlessly orchestrate jobs at scale. It runs cron jobs and retries failed ones up to three times.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "schedule:17.2",
+          "code-review:10.1",
+          "plugin-authoring:7.1"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 3357,
+      "wallMs": 4499,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4864,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 257,
+        "thinkingTokens": 138
+      },
+      "costUsd": 0.022473,
+      "error": null
+    },
+    "trigger/v0.5.2/explain-polish-own-r1": {
+      "id": "explain-polish-own",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "아래는 네가 아까 쓴 설명이야. 내용은 그대로 두고 한국어만 자연스럽게 다듬어줘.\n\n이 훅은 상태 업데이트를 배치하며, 언마운트 이후의 setState는 조용히 무시됩니다. 따라서 메모리 누수의 표면적은 작습니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:61.5",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 7296,
+      "wallMs": 8347,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12980,
+        "cacheReadInputTokens": 13760,
+        "outputTokens": 499,
+        "thinkingTokens": 357
+      },
+      "costUsd": 0.058294,
+      "error": null
+    },
+    "trigger/v0.5.2/explain-polish-own-r2": {
+      "id": "explain-polish-own",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "아래는 네가 아까 쓴 설명이야. 내용은 그대로 두고 한국어만 자연스럽게 다듬어줘.\n\n이 훅은 상태 업데이트를 배치하며, 언마운트 이후의 setState는 조용히 무시됩니다. 따라서 메모리 누수의 표면적은 작습니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:61.5",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 6713,
+      "wallMs": 7691,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12953,
+        "cacheReadInputTokens": 13757,
+        "outputTokens": 512,
+        "thinkingTokens": 375
+      },
+      "costUsd": 0.058315700000000005,
+      "error": null
+    },
+    "trigger/v0.5.2/fix-bug-code-r1": {
+      "id": "fix-bug-code",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "src/sum.js의 버그 고쳐줘. 음수가 들어오면 결과가 틀려.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:11.8",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Edit",
+          "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"  return list.filter((n) => n > 0).reduce((a, b) => a + b, 0)\",\"new_string\":\"  return list.reduce((a, b) => a + b, 0)\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 6934,
+      "wallMs": 7956,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 5263,
+        "cacheReadInputTokens": 23074,
+        "outputTokens": 485,
+        "thinkingTokens": 49
+      },
+      "costUsd": 0.0282214,
+      "error": null
+    },
+    "trigger/v0.5.2/fix-bug-code-r2": {
+      "id": "fix-bug-code",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "src/sum.js의 버그 고쳐줘. 음수가 들어오면 결과가 틀려.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:11.8",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Edit",
+          "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"  return list.filter((n) => n > 0).reduce((a, b) => a + b, 0)\",\"new_string\":\"  return list.reduce((a, b) => a + b, 0)\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 6470,
+      "wallMs": 7604,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 5244,
+        "cacheReadInputTokens": 23067,
+        "outputTokens": 550,
+        "thinkingTokens": 36
+      },
+      "costUsd": 0.0287947,
+      "error": null
+    },
+    "trigger/v0.5.2/list-files-r1": {
+      "id": "list-files",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "이 폴더에 어떤 파일이 있는지 알려줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "claude-api:0.0",
+          "code-review:0.0",
+          "dataviz:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\"*\"}"
+        },
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\".*\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 4984,
+      "wallMs": 5977,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 5062,
+        "cacheReadInputTokens": 13668,
+        "outputTokens": 303,
+        "thinkingTokens": 0
+      },
+      "costUsd": 0.024652799999999996,
+      "error": null
+    },
+    "trigger/v0.5.2/list-files-r2": {
+      "id": "list-files",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "이 폴더에 어떤 파일이 있는지 알려줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "claude-api:0.0",
+          "code-review:0.0",
+          "dataviz:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\"*\"}"
+        },
+        {
+          "name": "Glob",
+          "input": "{\"pattern\":\".*\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 3293,
+      "wallMs": 4328,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 5055,
+        "cacheReadInputTokens": 13665,
+        "outputTokens": 260,
+        "thinkingTokens": 0
+      },
+      "costUsd": 0.0241945,
+      "error": null
+    },
+    "trigger/v0.5.2/pr-korean-stiff-r1": {
+      "id": "pr-korean-stiff",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "PR 설명이 너무 딱딱하고 영어 직역 같아. 읽기 좋게 고쳐줘.\n\n본 PR은 결제 모듈에 있어서의 재시도 정책을 도입합니다. 해당 변경은 네트워크 실패에 대한 회복력을 가지고 있습니다. 테스트는 결제 폴더에 대해서만 수행되었습니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:48.2",
+          "code-review:5.6",
+          "claude-api:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 7385,
+      "wallMs": 8354,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 17689,
+        "cacheReadInputTokens": 31172,
+        "outputTokens": 744,
+        "thinkingTokens": 523
+      },
+      "costUsd": 0.08132520000000001,
+      "error": null
+    },
+    "trigger/v0.5.2/pr-korean-stiff-r2": {
+      "id": "pr-korean-stiff",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "PR 설명이 너무 딱딱하고 영어 직역 같아. 읽기 좋게 고쳐줘.\n\n본 PR은 결제 모듈에 있어서의 재시도 정책을 도입합니다. 해당 변경은 네트워크 실패에 대한 회복력을 가지고 있습니다. 테스트는 결제 폴더에 대해서만 수행되었습니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:48.2",
+          "code-review:5.6",
+          "claude-api:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        },
+        {
+          "name": "Grep",
+          "input": "{\"pattern\":\"PR\",\"path\":\"<tmp>\",\"output_mode\":\"content\",\"-n\":true,\"-C\":6}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 5503,
+      "wallMs": 6353,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 13926,
+        "cacheReadInputTokens": 31187,
+        "outputTokens": 407,
+        "thinkingTokens": 64
+      },
+      "costUsd": 0.06290470000000001,
+      "error": null
+    },
+    "trigger/v0.5.2/react-question-r1": {
+      "id": "react-question",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "React에서 useEffect가 개발 모드에서 두 번 실행되는 이유가 뭐야?",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "dataviz:7.1",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 9132,
+      "wallMs": 9982,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4814,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 1243,
+        "thinkingTokens": 61
+      },
+      "costUsd": 0.032133,
+      "error": null
+    },
+    "trigger/v0.5.2/react-question-r2": {
+      "id": "react-question",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "React에서 useEffect가 개발 모드에서 두 번 실행되는 이유가 뭐야?",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "dataviz:7.1",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 10625,
+      "wallMs": 11514,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4817,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 1351,
+        "thinkingTokens": 77
+      },
+      "costUsd": 0.033225000000000005,
+      "error": null
+    },
+    "trigger/v0.5.2/readme-korean-literal-r1": {
+      "id": "readme-korean-literal",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "README.md 한국어 문장이 영어를 그대로 옮긴 것 같아. 자연스럽게 바꿔줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:75.7",
+          "code-review:4.6",
+          "dataviz:4.6"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Edit",
+          "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"큐러너는 작업 큐를 위한 가벼운 러너입니다. 실패한 작업은 조용히 버려지지 않고 재시도 큐로 이동됩니다. 설정 파일이 모든 동작의 단일 출처입니다.\",\"new_string\":\"큐러너는 작업 큐를 처리하는 가벼운 러너입니다. 실패한 작업은 알림 없이 버려지지 않"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 9478,
+      "wallMs": 10673,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 13923,
+        "cacheReadInputTokens": 31208,
+        "outputTokens": 1220,
+        "thinkingTokens": 456
+      },
+      "costUsd": 0.0710248,
+      "error": null
+    },
+    "trigger/v0.5.2/readme-korean-literal-r2": {
+      "id": "readme-korean-literal",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "README.md 한국어 문장이 영어를 그대로 옮긴 것 같아. 자연스럽게 바꿔줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:75.7",
+          "code-review:4.6",
+          "dataviz:4.6"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        },
+        {
+          "name": "Read",
+          "input": "{\"file_path\":\"<tmp>\"}"
+        },
+        {
+          "name": "Edit",
+          "input": "{\"replace_all\":false,\"file_path\":\"<tmp>\",\"old_string\":\"큐러너는 작업 큐를 위한 가벼운 러너입니다. 실패한 작업은 조용히 버려지지 않고 재시도 큐로 이동됩니다. 설정 파일이 모든 동작의 단일 출처입니다.\",\"new_string\":\"큐러너는 작업 큐를 실행하는 가벼운 러너입니다. 작업이 실패해도 알림 없이 버려지지 "
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 8561,
+      "wallMs": 9606,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 13732,
+        "cacheReadInputTokens": 31254,
+        "outputTokens": 1054,
+        "thinkingTokens": 259
+      },
+      "costUsd": 0.0686054,
+      "error": null
+    },
+    "trigger/v0.5.2/regex-help-r1": {
+      "id": "regex-help",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "이메일 주소를 찾는 정규식 하나 만들어줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "claude-api:0.0",
+          "code-review:0.0",
+          "dataviz:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 6429,
+      "wallMs": 7476,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4806,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 852,
+        "thinkingTokens": 59
+      },
+      "costUsd": 0.028191,
+      "error": null
+    },
+    "trigger/v0.5.2/regex-help-r2": {
+      "id": "regex-help",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "이메일 주소를 찾는 정규식 하나 만들어줘.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "claude-api:0.0",
+          "code-review:0.0",
+          "dataviz:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 6781,
+      "wallMs": 7800,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4806,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 864,
+        "thinkingTokens": 55
+      },
+      "costUsd": 0.028311000000000003,
+      "error": null
+    },
+    "trigger/v0.5.2/release-notes-ko-r1": {
+      "id": "release-notes-ko",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "릴리스 노트 문장 좀 자연스럽게 다듬어줘.\n\n- 로그인 플로우의 안정성 향상이 이루어졌습니다\n- 설정 화면에서의 다크 모드 지원이 추가되어졌습니다",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:28.4",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 4038,
+      "wallMs": 5186,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12924,
+        "cacheReadInputTokens": 13728,
+        "outputTokens": 132,
+        "thinkingTokens": 32
+      },
+      "costUsd": 0.0543968,
+      "error": null
+    },
+    "trigger/v0.5.2/release-notes-ko-r2": {
+      "id": "release-notes-ko",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "릴리스 노트 문장 좀 자연스럽게 다듬어줘.\n\n- 로그인 플로우의 안정성 향상이 이루어졌습니다\n- 설정 화면에서의 다크 모드 지원이 추가되어졌습니다",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:28.4",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 4061,
+      "wallMs": 5167,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12922,
+        "cacheReadInputTokens": 13725,
+        "outputTokens": 261,
+        "thinkingTokens": 30
+      },
+      "costUsd": 0.0556785,
+      "error": null
+    },
+    "trigger/v0.5.2/report-mail-stiff-r1": {
+      "id": "report-mail-stiff",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": true,
+      "prompt": "팀장님께 보낼 보고 메일인데 문장이 어색해. 다듬어줘.\n\n금일 배포 건에 대한 진행 상황을 공유드립니다. 롤백 이슈 발생에 따른 원인 분석의 수행이 완료되었으며, 재발 방지를 위한 모니터링 강화가 이루어질 예정입니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:23.7",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        },
+        {
+          "name": "Grep",
+          "input": "{\"pattern\":\"이메일\",\"path\":\"<tmp>\",\"output_mode\":\"content\",\"-C\":8}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 5356,
+      "wallMs": 6290,
+      "usage": {
+        "inputTokens": 6,
+        "cacheCreationInputTokens": 14062,
+        "cacheReadInputTokens": 31162,
+        "outputTokens": 411,
+        "thinkingTokens": 132
+      },
+      "costUsd": 0.06348619999999999,
+      "error": null
+    },
+    "trigger/v0.5.2/report-mail-stiff-r2": {
+      "id": "report-mail-stiff",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": true,
+      "prompt": "팀장님께 보낼 보고 메일인데 문장이 어색해. 다듬어줘.\n\n금일 배포 건에 대한 진행 상황을 공유드립니다. 롤백 이슈 발생에 따른 원인 분석의 수행이 완료되었으며, 재발 방지를 위한 모니터링 강화가 이루어질 예정입니다.",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": true,
+      "selectedBy": "Skill",
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": true,
+        "top3": [
+          "geulppal:23.7",
+          "claude-api:0.0",
+          "code-review:0.0"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [
+        {
+          "name": "Skill",
+          "input": "{\"skill\":\"geulppal\"}"
+        }
+      ],
+      "permissionDenials": [],
+      "durationMs": 4702,
+      "wallMs": 5611,
+      "usage": {
+        "inputTokens": 4,
+        "cacheCreationInputTokens": 12961,
+        "cacheReadInputTokens": 13764,
+        "outputTokens": 446,
+        "thinkingTokens": 319
+      },
+      "costUsd": 0.0576884,
+      "error": null
+    },
+    "trigger/v0.5.2/sql-slow-r1": {
+      "id": "sql-slow",
+      "label": "v0.5.2",
+      "rep": 1,
+      "expect": false,
+      "prompt": "이 SQL이 왜 느린지 분석해줘: SELECT * FROM orders WHERE YEAR(created_at) = 2024;",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "code-review:18.2",
+          "schedule:5.6",
+          "update-config:5.6"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 9524,
+      "wallMs": 10602,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4832,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 1312,
+        "thinkingTokens": 71
+      },
+      "costUsd": 0.032895,
+      "error": null
+    },
+    "trigger/v0.5.2/sql-slow-r2": {
+      "id": "sql-slow",
+      "label": "v0.5.2",
+      "rep": 2,
+      "expect": false,
+      "prompt": "이 SQL이 왜 느린지 분석해줘: SELECT * FROM orders WHERE YEAR(created_at) = 2024;",
+      "status": "ok",
+      "resultSubtype": "success",
+      "selected": false,
+      "selectedBy": null,
+      "otherSkillCalls": [],
+      "listedGeulppal": true,
+      "proxy": {
+        "selected": false,
+        "top3": [
+          "code-review:18.2",
+          "schedule:5.6",
+          "update-config:5.6"
+        ],
+        "listedSkills": [
+          "geulppal",
+          "dataviz",
+          "update-config",
+          "keybindings-help",
+          "code-review",
+          "simplify",
+          "fewer-permission-prompts",
+          "loop",
+          "schedule",
+          "claude-api",
+          "workflow-authoring",
+          "run",
+          "plugin-authoring",
+          "init",
+          "security-review"
+        ]
+      },
+      "model": {
+        "requested": "claude-sonnet-5-5",
+        "init": "claude-sonnet-5-5",
+        "responses": [
+          "claude-sonnet-5-5"
+        ]
+      },
+      "cli": "2.1.317",
+      "sessionIdIsNew": true,
+      "toolCalls": [],
+      "permissionDenials": [],
+      "durationMs": 10977,
+      "wallMs": 11987,
+      "usage": {
+        "inputTokens": 2,
+        "cacheCreationInputTokens": 4829,
+        "cacheReadInputTokens": 4430,
+        "outputTokens": 1556,
+        "thinkingTokens": 51
+      },
+      "costUsd": 0.035323,
+      "error": null
+    }
+  }
+}

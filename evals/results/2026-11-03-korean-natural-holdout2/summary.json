@@ -1,0 +1,70 @@
+{
+  "name": "2026-11-03-korean-natural-holdout2",
+  "conditions": {
+    "A": {
+      "attempts": 12,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 24048,
+        "medianInput": 20055.5,
+        "medianOutput": 2308,
+        "costUsd": 1.1289103999999999
+      }
+    },
+    "N3": {
+      "attempts": 12,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 12,
+      "referenceReads": 5,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 27139.5,
+        "medianInput": 40154.5,
+        "medianOutput": 2606,
+        "costUsd": 1.6968981
+      }
+    },
+    "N4": {
+      "attempts": 12,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 12,
+      "referenceReads": 6,
+      "meaning": {
+        "judged": 0,
+        "pass": 0,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 21163.5,
+        "medianInput": 41588,
+        "medianOutput": 2449.5,
+        "costUsd": 1.9713477
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 0
+}
