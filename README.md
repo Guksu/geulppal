@@ -1,111 +1,55 @@
 # geulppal · 글빨
 
-A Claude skill that turns Claude's Korean into the Korean people actually use. It fixes English expressions translated word for word, such as `조용한 실패` for "silent failure", names coined during a task and used without explanation, explanations written as strings of nouns or arrows, translationese and hype. It keeps facts, numbers, conditions and the author's voice. It focuses on Korean text such as Claude's replies and task reports, READMEs, PR descriptions and commit messages, and can also cut hype and repetition in English text.
+A Claude skill that turns the Korean Claude writes into the Korean people actually use. It fixes English expressions translated word for word, such as `조용한 실패` for "silent failure", names used without explanation, and sentences reduced to strings of nouns or arrows. It keeps facts, numbers, conditions and the author's voice.
 
 I built it because every time Claude answered in Korean, I had to reread and fix phrases that sounded like translated English and sentences that read awkwardly.
 
-[한국어](README.ko.md) · [Installation](#installation) · [Benchmark](evals/results/README.md) · [Evaluation reports](evals/results/REPORT.md): [2nd](evals/results/REPORT-human.md) · [3rd](evals/results/REPORT-readme.md) · [4th](evals/results/REPORT-draft-readme.md) · [5th](evals/results/REPORT-draft-memo.md) · [6th](evals/results/REPORT-draft-blog.md) · [7th](evals/results/REPORT-draft-fiction.md) · [8th](evals/results/REPORT-korean-natural.md)
+[한국어](README.ko.md) · [Installation](#installation) · [Full guide](docs/guide.en.md) · [Sentence comparisons](docs/comparisons.en.md)
 
-> **Before** 설정 파일이 없으면 이 함수는 조용히 실패합니다. 환경 변수가 진실의 원천이고, 테스트는 행복한 경로만 다룹니다.
-> ("Without a config file this function fails silently. The environment variables are the source of truth, and the tests cover only the happy path.")
->
-> **After** 설정 파일이 없으면 이 함수는 오류를 내지 않고 넘어갑니다. 기준이 되는 값은 환경 변수에 있고, 테스트는 문제가 없을 때의 흐름만 다룹니다.
-> (The same content, with each English idiom replaced by the behavior or state it refers to.)
+| Answer written without geulppal | Polished with geulppal 0.5.2 |
+|---|---|
+| 마지막 단어 뒤에 넣을 insert 패치는 조용히 버려집니다.<br>("…is silently discarded") | 마지막 단어 뒤에 넣을 insert 패치는 오류 없이 버려집니다.<br>("…is discarded without an error") |
+| 값이 외부에서 바뀌거나 오염되면 타입이 거짓이 됩니다.<br>("…the type becomes a lie") | 값이 외부에서 바뀌거나 오염되면 타입이 실제 값과 맞지 않게 됩니다.<br>("…the type no longer matches the actual value") |
+| 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다.<br>("…based on the test gaps…") | 아래 초안은 소스에서 확인한, 테스트가 없는 부분을 기준으로 썼습니다.<br>("…based on the parts without tests…") |
+| ESM 빌드에서는 esbuild의 `require` 심이 던질 수도 있습니다.<br>("…the `require` shim may throw") | ESM 빌드에서는 esbuild가 넣는 `require` 대체 코드(shim)가 오류를 낼 수도 있습니다.<br>("…the `require` replacement code (shim) that esbuild adds may raise an error") |
 
-This is an illustrative example, not a benchmark result. Terms readers already use, such as 캐시 (cache), 렌더링 (rendering) or 롤백 (rollback), are not forced into native words. The skill does not turn "under review" into "done", and it does not invent facts to make text sound specific. Sentences that are already natural and accurate stay as they are. It does not detect AI-written text or promise to pass AI detectors.
-
-## Evaluation so far
-
-**Korean wording (0.5)**: Claude Code was asked development questions about public repository code, development questions without a repository, and everyday questions, all in Korean. A judge model marked the places in each answer where the reader would stumble (word-for-word translations, unexplained names, awkward sentences).
-
-| 12 cases written before seeing any results | Without geulppal | geulppal 0.5.2 |
-|---|---|---|
-| Polishing an answer written without geulppal (2 runs): marked expressions still present afterwards | 18/48 | 8/48 |
-| Same polishing: results that kept the meaning | 22/24 | 23/24 |
-| Writing the answer from scratch (1 run): marked places per 1,000 characters | 1.15 | 0.86 |
-
-- The effect was clearest when Claude polished a finished answer. On another set of 8 cases, polishing with 0.5.1 fixed 30 of 34 marked expressions and kept the meaning every time; polishing without geulppal left 19 of them and changed the meaning in 4 of 16 results.
-- Results for writing from scratch were mixed: fewer marks on the cases above, but no reduction on the earlier 8 cases. The recommended use is to run `/geulppal` on Claude's answer afterwards.
-- The repository owner rated 10 sentences, a mix of ones the judge marked and ones it did not, without knowing which was which; 7 of 10 agreed with the judge. The judge tended to over-mark translated terms that developers actually use, such as `회귀` (regression).
-- 0.5.0 sometimes translated technical names into native words, such as key → `열쇠` ("key" as in a lock). 0.5.2 adds a separate rule not to translate names, and this did not recur on the cases above. [8th evaluation report](evals/results/REPORT-korean-natural.md) (in Korean)
-
-**Meaning and invented content (up to 0.4)**: These evaluations measured whether geulppal changes the meaning of a text when it edits, and whether it invents content that is not in the material when it writes. None of the 1,318 Korean results from them contained expressions like `조용한 실패`, which is why the evaluation above was built separately.
-
-| What was measured | Without geulppal | With geulppal |
-|---|---|---|
-| Kept facts and conditions when polishing 16 human-written READMEs | 20/32 | 31/32 (0.3) |
-| Same, when polishing 9 other human-written texts | 8/18 | 16/18 (0.3) |
-| Wrote only claims backed by the code when writing a README from code (4 unseen cases) | 2/8 | 8/8 (0.4.1) |
-| Wrote only claims backed by the memo when writing a work document from a memo (5 unseen cases) | 4/10 | 9/10 (0.4.1) |
-| Wrote only experiences found in the input when writing a blog post (12 unseen cases) | 6/24 | 22/24 (0.4.3) |
-| Kept the requested conditions when writing a short story (8 unseen cases) | 12/16 | 10/16 (0.4.3) |
-
-- Without geulppal, Claude often turned hearsay ("it is said to be possible") into a plain statement ("it is possible") or added promises and experiences that were not in the original.
-- In a blind comparison by the repository owner, 16 of 22 pairs of polished texts were rated "about the same". Accuracy improved, but there is no evidence yet that the text reads better.
-- From 0.5.0, the content rules for writing from scratch (reading the code, links, numbers in memos, personal experiences) live in [document types](skills/geulppal/references/document-types.md). After the move, 4 README drafts were checked again: 0.5.2 still wrote only claims backed by the code (8/8; 0.4.1 under the same conditions: 7/8). Report and blog drafts were not measured again.
-- With geulppal, a run cost about 1.5 to 2.5 times as much as without it. With 0.5.2, polishing a Korean answer cost about 2 to 2.3 times as much, and writing an answer about 1.2 to 1.8 times.
-
-The samples are small, and the blind comparisons had a single rater. [Method, per-case results and limitations](evals/results/README.md) (in Korean)
+The same spots, taken from answers Claude Code wrote in Korean to development questions and from those answers polished with geulppal 0.5.2. These are sentences the judge model marked as awkward. On 12 cases written before seeing any results, 8 of 48 marked expressions were still there after polishing (18 without geulppal), and the meaning was kept in 23 of 24 runs. Polishing with geulppal cost about twice as much. [Method, all results and limitations](docs/comparisons.en.md)
 
 ## Installation
 
-**Claude Code**: copy the skill folder. To use it in every project, put it in your personal skills folder. To use it in one project, put it in that project's `.claude/skills/`.
+**Claude Code** — run in a terminal in your project folder. Add `-g` to use it in every project.
 
 ```bash
-git clone https://github.com/Guksu/geulppal.git
-mkdir -p ~/.claude/skills
-cp -r geulppal/skills/geulppal ~/.claude/skills/geulppal
+npx skills add Guksu/geulppal --skill geulppal
 ```
 
-If you already have a skill with the same name, compare them first.
-
-**Claude web and desktop**: zip the `skills/geulppal/` folder and upload it. The zip must contain `geulppal/SKILL.md`.
+**Claude on the web or desktop** — zip the `skills/geulppal/` folder and upload it.
 
 ```bash
+git clone --depth 1 https://github.com/Guksu/geulppal.git
 cd geulppal/skills && zip -r geulppal.zip geulppal
 ```
 
-[Where Claude Code looks for skills](https://code.claude.com/docs/en/skills) · [Creating a skill zip](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
-
-Only the three files in `skills/geulppal/` (about 34 KB) are installed. The evaluation data and scripts are not.
+[All install options](docs/guide.en.md#installation) · [Updating](docs/guide.en.md#updating)
 
 ## Try it
 
-After installing, ask Claude something like this:
+After Claude answers, ask:
 
-> /geulppal 방금 쓴 답을 자연스러운 한국어로 다듬어 줘. 내용은 그대로 둬. ("Polish the answer you just wrote into natural Korean. Keep the content.")
+> /geulppal 방금 쓴 답을 자연스러운 한국어로 다듬어 줘. 내용은 그대로 둬.
+> ("Polish the answer you just wrote into natural Korean. Keep the content.")
 
-> /geulppal 이 PR 설명에서 영어를 그대로 옮긴 말과 어색한 문장을 고쳐 줘. ("Fix the word-for-word English and awkward sentences in this PR description.")
+Claude returns the finished text with word-for-word translations and awkward sentences fixed. It adds no facts that were not in the original, and leaves a short note only when something needs checking. Requests such as "fix the translationese" or "make it less AI-sounding" can also lead Claude to pick the skill. For English text, call `/geulppal` directly.
 
-> /geulppal 이 저장소의 README를 한국어로 써 줘. ("Write a Korean README for this repository.")
+The effect was clearest when Claude polished finished text. Results for writing from scratch were mixed. The skill instructions are written in Korean; [English usage notes](docs/guide.en.md#how-it-works) are in the full guide.
 
-When you ask for text to paste, you get only the finished text. It adds a short note only when something needs checking, such as a fact missing from the material (whether a package is published, a number without a unit).
+## Follow development
 
-Without `/geulppal`, requests such as "make it sound natural", "fix the translationese" or "make it less AI-sounding" can also lead Claude to pick the skill. The results below were measured with the 0.5 description. The requests were written after the description and were not used to revise it. [Automatic selection results](evals/results/2026-11-03-trigger/trigger-v0.5.2.md) (in Korean)
+I use geulppal in my own work and will keep fixing it. If a phrase is still awkward after polishing, or the meaning changed, [open an issue](https://github.com/Guksu/geulppal/issues) with the original, your request and the result. Reports like these become evaluation cases for the next version.
 
-| Request | Runs that picked the skill |
-|---|---|
-| Polishing Korean text or fixing awkward wording | 18 of 18 |
-| Polishing an English docs paragraph | 0 of 2 |
-| Bug fixes, development questions, AI-detection and similar requests | 0 of 16 |
+[Full guide](docs/guide.en.md) · [Sentence comparisons](docs/comparisons.en.md) · [Benchmark](evals/results/README.md) (in Korean) · [Contributing](docs/guide.en.md#contributing)
 
-To polish English text, call `/geulppal` directly.
-
-## What's inside
-
-- [SKILL.md](skills/geulppal/SKILL.md): where Korean readers stumble (word-for-word translations, unfamiliar names, sentence structure, translationese), hype and repetition, keeping the meaning, and output format
-- [Document types](skills/geulppal/references/document-types.md): content rules for writing from scratch, and guidance for READMEs, PRs, proposals, blog posts and emails
-- [Sentence examples](skills/geulppal/references/editing-examples.md): sentences to fix and sentences to leave alone
-- [Research notes](research/findings.md): guidance taken from earlier README edits, public skills and writing resources
-- [Orwell's rules](research/orwell.md): which of the six rules in "Politics and the English Language" carry over to Korean and to Claude's replies (in Korean)
-- [Korean sources](research/korean-sources.md): guidance from the National Institute of Korean Language's special issue on translationese and other sources, and the human-written evaluation texts
-- [Evaluation method](evals/README.md): evaluation cases, judging rules, scripts and how to rerun them
-
-The skill instructions and evaluation data are written in Korean.
-
-## Feedback
-
-If geulppal leaves an awkward phrase, especially one that reads like English translated word for word, or changes the meaning of your text, please [open an issue](https://github.com/Guksu/geulppal/issues) with the original, your request and the result. Reports like these can be added as evaluation cases.
+[![License: MIT](https://img.shields.io/badge/license-MIT-555555)](LICENSE)
 
 ## License
 
