@@ -302,7 +302,9 @@ if (mode === 'natural') {
     if (previous?.judged && previous.attempt === record.attempt && !options.force) return
     const item = cases[record.id]
     const output = outputOf(options.out, record)
-    const prompt = [block('요청', item.request), block('글', output)].join('\n\n')
+    // 질문에 답하는 사례는 질문(input)과 독자(reader)도 보여 준다. 다듬기 사례의 input은 원문이라 보여 주지 않는다
+    const context = item.task === 'answer' ? [...(item.input ? [block('질문', item.input)] : []), ...(item.reader ? [block('독자', item.reader)] : [])] : []
+    const prompt = [block('요청', item.request), ...context, block('글', output)].join('\n\n')
     const judged = await callJudge({ prompt, rubric, schema: NATURAL_SCHEMA })
     const spans = (judged.answer?.spans ?? []).map((span) => ({ ...span, quoteFound: output.includes(span.quote) }))
     out.put(key, { id: record.id, condition, rep: record.rep, attempt: record.attempt, judged: Boolean(judged.answer), spans, summary: judged.answer?.summary ?? null, judge: { ...judgeMeta(rubric), kind: 'korean-natural', attempts: judged.attempts } })
