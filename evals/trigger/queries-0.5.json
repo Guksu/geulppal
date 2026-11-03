@@ -1,0 +1,108 @@
+{
+  "note": "0.5 설명으로 자동 선택을 보는 요청. 0.5 스킬 설명을 쓴 뒤, 실행 결과를 보기 전에 썼다. 요청에 스킬 이름이나 /geulppal을 넣지 않는다. files는 작업 폴더에 미리 두는 파일이다.",
+  "should": [
+    {
+      "id": "answer-translated-feel",
+      "prompt": "아래 설명이 번역한 것처럼 읽혀. 자연스러운 한국어로 고쳐줘.\n\n이 모듈은 에러를 삼키고 아무것도 반환하지 않는 방식으로 동작하고 있습니다. 이는 디버깅을 어렵게 만드는 요소로 작용합니다.",
+      "files": {}
+    },
+    {
+      "id": "commit-message-awkward",
+      "prompt": "이 커밋 메시지 어색한 데 좀 다듬어줘: 캐시 무효화 로직의 개선을 수행함 -> 사용자 세션 일관성 보장",
+      "files": {}
+    },
+    {
+      "id": "pr-korean-stiff",
+      "prompt": "PR 설명이 너무 딱딱하고 영어 직역 같아. 읽기 좋게 고쳐줘.\n\n본 PR은 결제 모듈에 있어서의 재시도 정책을 도입합니다. 해당 변경은 네트워크 실패에 대한 회복력을 가지고 있습니다. 테스트는 결제 폴더에 대해서만 수행되었습니다.",
+      "files": {}
+    },
+    {
+      "id": "readme-korean-literal",
+      "prompt": "README.md 한국어 문장이 영어를 그대로 옮긴 것 같아. 자연스럽게 바꿔줘.",
+      "files": {
+        "README.md": "# 큐러너\n\n큐러너는 작업 큐를 위한 가벼운 러너입니다. 실패한 작업은 조용히 버려지지 않고 재시도 큐로 이동됩니다. 설정 파일이 모든 동작의 단일 출처입니다.\n\n## 설치\n\n```bash\npip install queuerunner\n```\n"
+      }
+    },
+    {
+      "id": "report-mail-stiff",
+      "prompt": "팀장님께 보낼 보고 메일인데 문장이 어색해. 다듬어줘.\n\n금일 배포 건에 대한 진행 상황을 공유드립니다. 롤백 이슈 발생에 따른 원인 분석의 수행이 완료되었으며, 재발 방지를 위한 모니터링 강화가 이루어질 예정입니다.",
+      "files": {}
+    },
+    {
+      "id": "ai-tone-korean",
+      "prompt": "이 글 AI가 쓴 티가 너무 나. 사람이 쓴 것처럼 고쳐줘.\n\n결론부터 말씀드리면, 이번 업데이트의 핵심은 속도입니다. 단순한 개선을 넘어, 사용자 경험의 판도를 바꾸는 변화라고 할 수 있습니다.",
+      "files": {}
+    },
+    {
+      "id": "release-notes-ko",
+      "prompt": "릴리스 노트 문장 좀 자연스럽게 다듬어줘.\n\n- 로그인 플로우의 안정성 향상이 이루어졌습니다\n- 설정 화면에서의 다크 모드 지원이 추가되어졌습니다",
+      "files": {}
+    },
+    {
+      "id": "blog-sentence-fix",
+      "prompt": "블로그 글인데 문장이 어색한 곳만 고쳐줘. 말투는 그대로 두고.\n\n지난 주말에 처음으로 혼자 캠핑을 갔다. 텐트를 치는 것에 있어서 생각보다 많은 시간이 소요되었다. 그래도 밤하늘을 보는 것은 가치 있는 경험이었다.",
+      "files": {}
+    },
+    {
+      "id": "en-docs-plain",
+      "prompt": "This paragraph reads like marketing copy. Make it plain for our docs.\n\nOur next-generation scheduler seamlessly empowers teams to effortlessly orchestrate jobs at scale. It runs cron jobs and retries failed ones up to three times.",
+      "files": {}
+    },
+    {
+      "id": "explain-polish-own",
+      "prompt": "아래는 네가 아까 쓴 설명이야. 내용은 그대로 두고 한국어만 자연스럽게 다듬어줘.\n\n이 훅은 상태 업데이트를 배치하며, 언마운트 이후의 setState는 조용히 무시됩니다. 따라서 메모리 누수의 표면적은 작습니다.",
+      "files": {}
+    }
+  ],
+  "should_not": [
+    {
+      "id": "fix-bug-code",
+      "prompt": "src/sum.js의 버그 고쳐줘. 음수가 들어오면 결과가 틀려.",
+      "files": {
+        "src/sum.js": "export function sum(list) {\n  return list.filter((n) => n > 0).reduce((a, b) => a + b, 0)\n}\n"
+      }
+    },
+    {
+      "id": "react-question",
+      "prompt": "React에서 useEffect가 개발 모드에서 두 번 실행되는 이유가 뭐야?",
+      "files": {}
+    },
+    {
+      "id": "detect-ai",
+      "prompt": "이 글 AI가 쓴 건지 사람이 쓴 건지 판별해줘.\n\n오늘은 비가 와서 우산을 챙겼다. 버스를 놓쳐서 걸어갔다.",
+      "files": {}
+    },
+    {
+      "id": "add-lint-script",
+      "prompt": "package.json에 lint 스크립트 추가해줘. eslint 쓰고 있어.",
+      "files": {
+        "package.json": "{\n  \"name\": \"demo\",\n  \"version\": \"1.0.0\",\n  \"scripts\": {}\n}\n"
+      }
+    },
+    {
+      "id": "csv-dedupe",
+      "prompt": "data.csv에서 중복된 행 지워줘.",
+      "files": {
+        "data.csv": "id,name\n1,kim\n2,lee\n1,kim\n"
+      }
+    },
+    {
+      "id": "sql-slow",
+      "prompt": "이 SQL이 왜 느린지 분석해줘: SELECT * FROM orders WHERE YEAR(created_at) = 2024;",
+      "files": {}
+    },
+    {
+      "id": "list-files",
+      "prompt": "이 폴더에 어떤 파일이 있는지 알려줘.",
+      "files": {
+        "a.txt": "a\n",
+        "b.txt": "b\n"
+      }
+    },
+    {
+      "id": "regex-help",
+      "prompt": "이메일 주소를 찾는 정규식 하나 만들어줘.",
+      "files": {}
+    }
+  ]
+}

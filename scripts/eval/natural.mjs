@@ -31,8 +31,10 @@ if (mode === 'build') {
   const spec = readJson(join(dir, 'spec.json'))
   const fixtures = Object.fromEntries(readJson(join(ROOT, spec.fixtures_from)).map((item) => [item.id, item.fixture]))
   const cases = spec.cases.map((item) => {
-    if (!fixtures[item.fixture]) throw new Error(`${item.id}: 저장소 코드 ${item.fixture}가 없다`)
-    if (!spec.prompts[item.prompt]) throw new Error(`${item.id}: 질문 ${item.prompt}가 없다`)
+    // 저장소 코드 없이 묻는 질문은 input에 질문을 둔다. reader가 있으면 판정에서 그 독자를 기준으로 본다
+    if (item.fixture && !fixtures[item.fixture]) throw new Error(`${item.id}: 저장소 코드 ${item.fixture}가 없다`)
+    if (!item.fixture && !item.input) throw new Error(`${item.id}: 저장소 코드도 질문도 없다`)
+    if (item.prompt && !spec.prompts[item.prompt]) throw new Error(`${item.id}: 질문 ${item.prompt}가 없다`)
     return {
       id: item.id,
       task: 'answer',
@@ -43,13 +45,14 @@ if (mode === 'build') {
       source: null,
       origin: `authored:${options.dir}/spec.json`,
       overlaps_skill_examples: false,
-      request: spec.prompts[item.prompt],
-      input: '',
-      must_preserve: ['작업 폴더의 코드를 근거로 질문에 답한다'],
+      request: item.request ?? spec.prompts[item.prompt],
+      input: item.input ?? '',
+      must_preserve: [item.fixture ? '작업 폴더의 코드를 근거로 질문에 답한다' : '질문에 답한다'],
       must_not: [],
       exact: [],
-      fixture: fixtures[item.fixture],
-      prompt_kind: item.prompt,
+      ...(item.fixture ? { fixture: fixtures[item.fixture] } : {}),
+      ...(item.reader ? { reader: item.reader } : {}),
+      prompt_kind: item.prompt ?? 'question',
       notes: '판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다.',
     }
   })

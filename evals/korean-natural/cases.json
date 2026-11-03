@@ -774,5 +774,321 @@
     },
     "prompt_kind": "upgrade",
     "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-ky-onboard",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "새로 온 팀원이 이 코드를 처음 고칠 때 알아야 할 것을 정리해 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/ky"
+      ],
+      "strip": "packages/common/ky",
+      "exclude": [
+        "^README[^/]*\\.md$",
+        "^built/"
+      ],
+      "sha256": "47a2ac82598c975f6bc54e42ed489f2d6b3dd711ba1d5a65d3c2f73f4fffe1b1"
+    },
+    "prompt_kind": "onboard",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "khaiii-report",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드를 살펴본 결과를 팀장에게 보고하는 짧은 글로 써 줘. 당장 고칠 것과 나중에 해도 되는 것을 나눠 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "kakao/khaiii",
+      "commit": "328d5a8af456a5941130383354c07d1cd0e47cf5",
+      "paths": [
+        "src/main/python",
+        "LICENSE"
+      ],
+      "exclude": [],
+      "sha256": "d91003136c8b54790cdca59be4856590f536237fbde53767cd0939b951c91700"
+    },
+    "prompt_kind": "report",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-sentry-pr",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지에 테스트를 보강하는 PR을 올린다고 하고 PR 설명을 써 줘. 코드는 고치지 마.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/sentry"
+      ],
+      "strip": "packages/common/sentry",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "e0abec0530cc812086096f3a90a34026fbc342fb54c1c040bbbf2b6668451537"
+    },
+    "prompt_kind": "pr",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "kobert-onboard",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "새로 온 팀원이 이 코드를 처음 고칠 때 알아야 할 것을 정리해 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "SKTBrain/KoBERT",
+      "commit": "47a69af87928fc24e20f571fe10c3cc9dd9af9a3",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "\\.md$",
+        "^imgs/",
+        "^logs/",
+        "^\\.github/"
+      ],
+      "sha256": "3b8bb1439407ce58ef937d7c040c3efde97d3c877ee95fbe2354bce657831f7a"
+    },
+    "prompt_kind": "onboard",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "toss-storage-report",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 코드를 살펴본 결과를 팀장에게 보고하는 짧은 글로 써 줘. 당장 고칠 것과 나중에 해도 되는 것을 나눠 줘.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "toss/slash",
+      "commit": "7ca31c3fc5a5affa6b133467dbfd726a0b31cf00",
+      "paths": [
+        "packages/common/storage"
+      ],
+      "strip": "packages/common/storage",
+      "exclude": [
+        "^(?!CHANGELOG\\.md$).*\\.md$"
+      ],
+      "sha256": "c9c901d56bd3c14571b00892b2d02c8b71dfa7cd7167962d41e72d187bba69b9"
+    },
+    "prompt_kind": "report",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "hangul-js-pr",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "이 패키지에 테스트를 보강하는 PR을 올린다고 하고 PR 설명을 써 줘. 코드는 고치지 마.",
+    "input": "",
+    "must_preserve": [
+      "작업 폴더의 코드를 근거로 질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "fixture": {
+      "repo": "e-/Hangul.js",
+      "commit": "376441b577b1d0d6553866a48784faaa0bf9229b",
+      "paths": [
+        "."
+      ],
+      "exclude": [
+        "^README\\.md$",
+        "^hangul\\.min\\.js$",
+        "^\\.travis\\.yml$"
+      ],
+      "sha256": "ccef080fdf08fb8e1ebf67d950c575850b0e686ae9a41fc9a6b5cb78abea9bb1"
+    },
+    "prompt_kind": "pr",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "git-rebase-question",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 질문에 답해 줘.",
+    "input": "git rebase랑 merge는 각각 언제 써? 팀에서 규칙을 정하려고 해.",
+    "must_preserve": [
+      "질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "prompt_kind": "question",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "db-index-question",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 질문에 답해 줘.",
+    "input": "데이터베이스에 인덱스를 걸었는데 오히려 느려지는 경우도 있어? 왜 그런지 알려 줘.",
+    "must_preserve": [
+      "질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "prompt_kind": "question",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "js-async-question",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 질문에 답해 줘.",
+    "input": "자바스크립트에서 async/await를 쓰면 코드가 병렬로 도는 거야? 헷갈려.",
+    "must_preserve": [
+      "질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "prompt_kind": "question",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "docker-volume-question",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 질문에 답해 줘.",
+    "input": "Docker 볼륨이랑 바인드 마운트는 뭐가 달라? 로컬에서 개발할 때는 뭘 써야 해?",
+    "must_preserve": [
+      "질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "prompt_kind": "question",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "lease-question",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 질문에 답해 줘.",
+    "input": "사회초년생인데 전세랑 월세 중에 뭐가 나은지 어떤 기준으로 판단하면 돼?",
+    "must_preserve": [
+      "질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "reader": "개발자가 아닌 사회초년생. 부동산 용어는 기본적인 것만 안다",
+    "prompt_kind": "question",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
+  },
+  {
+    "id": "workout-question",
+    "task": "answer",
+    "variant": "explain",
+    "genre": "개발 작업 답변",
+    "language": "ko",
+    "split": "holdout2",
+    "source": null,
+    "origin": "authored:evals/korean-natural/spec.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 질문에 답해 줘.",
+    "input": "운동을 처음 시작하는데 일주일에 세 번, 30분씩이면 충분해?",
+    "must_preserve": [
+      "질문에 답한다"
+    ],
+    "must_not": [],
+    "exact": [],
+    "reader": "개발자가 아닌 일반 성인. 운동 용어는 잘 모른다",
+    "prompt_kind": "question",
+    "notes": "판정은 evals/judge/korean-natural.md로 한국어 독자가 멈칫할 표현만 본다. 답의 사실 여부는 이 사례에서 판정하지 않는다."
   }
 ]

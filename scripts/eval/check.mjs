@@ -152,6 +152,11 @@ for (const name of existsSync(join(ROOT, 'evals/results')) ? readdirSync(join(RO
     if (!existsSync(join(ROOT, 'evals/results', name, 'pairs.json'))) errors.push(`evals/results/${name}: pairs.json 없음`)
     continue
   }
+  // 사람 문장 확인 결과(natural.mjs check-score)도 확인한 문장과 집계만 둔다
+  if (name.endsWith('-sentence-check')) {
+    if (!existsSync(join(ROOT, 'evals/results', name, 'items.json'))) errors.push(`evals/results/${name}: items.json 없음`)
+    continue
+  }
   if (!existsSync(file)) {
     errors.push(`evals/results/${name}: records.json 없음`)
     continue

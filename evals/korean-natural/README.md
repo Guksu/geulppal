@@ -35,4 +35,6 @@ node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> 
 node scripts/eval/natural.mjs summary --out <이름>
 ```
 
+소개하기 전에 범위를 넓히려고, 다음 후보(0.5.2)를 만들기 전에 2차 새 확인용 12개(`split: holdout2`)를 더해 커밋했다. 저장소 코드에 새 질문 세 가지(새 팀원 안내 `onboard`, 팀장 보고 `report`, PR 설명 `pr`)를 한 6개와, 저장소 없이 묻는 질문 6개(개발 질문 4개, 개발자가 아닌 사람의 일상 질문 2개)다. 일상 질문에는 `reader`로 독자를 적고, 판정 모델은 그 독자를 기준으로 본다.
+
 결과는 [8차 평가 보고서](../results/REPORT-korean-natural.md)에 있다. 다 쓴 답을 다듬게 할 때는 효과가 분명했고, 처음부터 쓰게 할 때는 효과를 확인하지 못했다.
