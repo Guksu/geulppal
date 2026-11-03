@@ -3,7 +3,7 @@
  * 한국어 자연스러움 사례 — Claude가 개발 작업 중에 한국어로 쓰는 답변이 한국어 독자에게 바로 읽히는지 본다.
  *
  *   node scripts/eval/natural.mjs build --dir evals/korean-natural                       # spec.json → cases.json
- *   node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A   # 그 답변을 다듬게 하는 사례 → polish-cases.json
+ *   node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A [--to <파일>]   # 그 답변을 다듬게 하는 사례 → polish-cases.json
  *   node scripts/eval/natural.mjs summary --out <이름> [--conds A,I,N1]                  # 판정 모델이 표시한 곳 집계 → evals/results/<이름>/natural.md
  *   node scripts/eval/natural.mjs check --out <이름> --condition A --page <html>         # 사람이 1분 안에 확인할 문장 10개(표시한 문장 6, 안 한 문장 4)
  *   node scripts/eval/natural.mjs check-score --out <이름> --ratings <json>              # 사람 판단과 판정 모델 표시가 맞는지 → evals/results/<이름>-sentence-check/
@@ -84,8 +84,9 @@ if (mode === 'polish') {
     exact: [],
     notes: `글빨 없는 Claude(${options.condition})가 쓴 답변을 다듬게 한다. 의미 보존 판정(meaning.md)과 멈칫할 곳 판정(korean-natural.md)을 함께 본다.`,
   }))
-  writeJson(join(dir, 'polish-cases.json'), cases)
-  console.log(`다듬기 사례 ${cases.length}개 → ${options.dir}/polish-cases.json`)
+  const to = options.to ?? 'polish-cases.json'
+  writeJson(join(dir, to), cases)
+  console.log(`다듬기 사례 ${cases.length}개 → ${options.dir}/${to}`)
 }
 
 if (mode === 'summary') {
