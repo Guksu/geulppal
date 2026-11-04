@@ -5,6 +5,7 @@
  *   node scripts/eval/natural.mjs build --dir evals/korean-natural                       # spec.json → cases.json
  *   node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A [--to <파일>]   # 그 답변을 다듬게 하는 사례 → polish-cases.json
  *   node scripts/eval/natural.mjs summary --out <이름> [--conds A,I,N1]                  # 판정 모델이 표시한 곳 집계 → evals/results/<이름>/natural.md
+ *   node scripts/eval/natural.mjs polish-stats --from <답변 이름> --out <다듬기 이름> [--conds A,N4]   # 다듬기 수치를 원시 기록에서 다시 센다
  *   node scripts/eval/natural.mjs check --out <이름> --condition A --page <html>         # 사람이 1분 안에 확인할 문장 10개(표시한 문장 6, 안 한 문장 4)
  *   node scripts/eval/natural.mjs check-score --out <이름> --ratings <json>              # 사람 판단과 판정 모델 표시가 맞는지 → evals/results/<이름>-sentence-check/
  *
@@ -14,17 +15,17 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { ROOT, parseArgs, readJson, sha256, writeJson } from './lib/common.mjs'
+import { polishStats, toPolishCase } from './lib/natural.mjs'
 import { openRecords } from './lib/records.mjs'
 
 const options = parseArgs(process.argv.slice(2), {})
 const mode = options._[0]
-const usage = '사용법: natural.mjs build --dir <폴더> | polish --dir <폴더> --from <이름> --condition <조건> | summary --out <이름> [--conds A,I]'
-if (!['build', 'polish', 'summary', 'check', 'check-score'].includes(mode)) {
+const usage = '사용법: natural.mjs build --dir <폴더> | polish --dir <폴더> --from <이름> --condition <조건> | summary --out <이름> [--conds A,I] | polish-stats --from <답변 이름> --out <다듬기 이름>'
+if (!['build', 'polish', 'summary', 'polish-stats', 'check', 'check-score'].includes(mode)) {
   console.error(usage)
   process.exit(1)
 }
 
-const POLISH_REQUEST = '아래 글은 개발 작업 중에 받은 답변이야. 내용은 그대로 두고 한국어로 자연스럽게 다듬어 줘. 다듬은 글만 줘.'
 
 if (mode === 'build') {
   const dir = join(ROOT, options.dir)
@@ -70,23 +71,7 @@ if (mode === 'polish') {
     if (record.status === 'ok' && (!latest.has(key) || latest.get(key).attempt < record.attempt)) latest.set(key, record)
   }
   // 사례마다 1회차 답변만 쓴다(같은 질문의 두 답을 둘 다 다듬게 하지 않는다)
-  const cases = [...latest.values()].filter((record) => record.rep === 1 && base[record.id]).map((record) => ({
-    id: `${record.id}-polish`,
-    task: 'rewrite',
-    variant: 'polish',
-    genre: '개발 작업 답변 다듬기',
-    language: 'ko',
-    split: base[record.id].split,
-    source: null,
-    origin: `generated:${options.from}/runs/${options.condition}/${record.id}-r1`,
-    overlaps_skill_examples: false,
-    request: POLISH_REQUEST,
-    input: record.output.trim(),
-    must_preserve: ['답변의 사실, 코드 이름, 수치, 조건, 확실성 표시(추측·가능성)를 그대로 둔다'],
-    must_not: ['답변에 없는 사실·권고·평가를 보태기', '코드 블록·식별자·경로 바꾸기'],
-    exact: [],
-    notes: `글빨 없는 Claude(${options.condition})가 쓴 답변을 다듬게 한다. 의미 보존 판정(meaning.md)과 멈칫할 곳 판정(korean-natural.md)을 함께 본다.`,
-  }))
+  const cases = [...latest.values()].filter((record) => record.rep === 1 && base[record.id]).map((record) => toPolishCase(record, base[record.id], { from: options.from, condition: options.condition }))
   const to = options.to ?? 'polish-cases.json'
   writeJson(join(dir, to), cases)
   console.log(`다듬기 사례 ${cases.length}개 → ${options.dir}/${to}`)
@@ -118,6 +103,16 @@ if (mode === 'summary') {
   }
   writeFileSync(join(ROOT, 'evals/results', options.out, 'natural.md'), lines.join('\n'))
   console.log(lines.slice(0, 6 + conds.length).join('\n'))
+}
+
+if (mode === 'polish-stats') {
+  const conds = options.conds ? String(options.conds).split(',') : null
+  const polish = openRecords(options.out)
+  const stats = polishStats(openRecords(options.from), polish, conds ?? polish.dirs('judge/natural'))
+  console.log('| 조건 | 다듬은 결과 | 원문 표시 | 원문 표시가 그대로 남은 경우 | 최종 글 표시 | 뜻 보존 |')
+  console.log('|---|---|---|---|---|---|')
+  for (const [cond, s] of Object.entries(stats)) console.log(`| ${cond} | ${s.runs} | ${s.originalMarks} | ${s.kept}/${s.checked} | ${s.finalMarks} | ${s.meaningPass}/${s.meaningJudged} |`)
+  console.log('\n원문 표시가 그대로 남은 경우의 분모는 원문 표시 수 × 다듬기 회차 수다. 표시한 곳의 수는 품질 점수가 아니다.')
 }
 
 // 사람 확인용 문장 고르기: 판정 모델이 표시한 문장과 표시하지 않은 문장을 섞는다

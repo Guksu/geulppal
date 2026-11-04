@@ -13,7 +13,7 @@ I built it because every time Claude answered in Korean, I had to reread and fix
 | 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다.<br>("…based on the test gaps…") | 아래 초안은 소스에서 확인한, 테스트가 없는 부분을 기준으로 썼습니다.<br>("…based on the parts without tests…") |
 | ESM 빌드에서는 esbuild의 `require` 심이 던질 수도 있습니다.<br>("…the `require` shim may throw") | ESM 빌드에서는 esbuild가 넣는 `require` 대체 코드(shim)가 오류를 낼 수도 있습니다.<br>("…the `require` replacement code (shim) that esbuild adds may raise an error") |
 
-The same spots, taken from answers Claude Code wrote in Korean to development questions and from those answers polished with geulppal 0.5.2. These are sentences the judge model marked as awkward. On 12 cases written before seeing any results, 8 of 48 marked expressions were still there after polishing (18 without geulppal), and the meaning was kept in 23 of 24 runs. Polishing with geulppal cost about twice as much. [Method, all results and limitations](docs/comparisons.en.md)
+The same spots, taken from answers Claude Code wrote in Korean to development questions and from those answers polished with geulppal 0.5.2. These are sentences the judge model marked as awkward. On 12 cases written before seeing any results, each polished twice, the 24 places marked in the originals were still there in 8 of 48 checks (18 without geulppal). Judging the polished text again found 28 marked places (41 without geulppal), and the meaning was kept in 23 of 24 runs (22). The marks come from one judge model, not from people rating readability. Polishing cost about 2.3 times as much and took about 1.7 times as long. [Method, all results and limitations](docs/comparisons.en.md)
 
 ## Installation
 

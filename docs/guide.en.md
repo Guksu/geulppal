@@ -114,11 +114,11 @@ With the 0.5 description, Claude picked the skill in all 18 runs of requests to 
 
 geulppal was compared with and without the skill, using the same requests, model and settings. After freezing each version, it was checked on cases written before seeing any results.
 
-- **Korean wording (0.5):** On 12 unseen cases, Claude polished answers written without geulppal. Of 48 marked expressions, 18 remained after polishing without geulppal and 8 after polishing with 0.5.2. The meaning was kept in 22 of 24 runs without geulppal and 23 of 24 with 0.5.2.
+- **Korean wording (0.5.2, 2026-11-03):** On 12 unseen cases, Claude polished answers written without geulppal, twice each. The 24 places marked in the originals were still present in 18 of 48 checks without geulppal and 8 of 48 with 0.5.2. Judging the polished text again found 41 against 28 marked places, and the meaning was kept in 22 against 23 of 24 runs.
 - **Checking the judge:** When the repository owner rated 10 sentences, 7 agreed with the judge model's marks.
-- **Keeping the meaning (up to 0.4):** When polishing 16 human-written READMEs, results that kept facts and conditions were 20 of 32 without geulppal and 31 of 32 with it.
+- **Keeping the meaning (0.3.0, 2026-10-27):** When polishing 16 human-written READMEs, results that kept facts and conditions were 20 of 32 without geulppal and 31 of 32 with geulppal 0.3.0. This was not measured again with the current version.
 
-Method and full results are in [Sentence comparisons](comparisons.en.md), the [benchmark](../evals/results/README.md) (in Korean) and the [evaluation method](../evals/README.md) (in Korean).
+The current skill is 0.5.3. Unlike 0.5.2, it only clarifies the priority in its instructions so that proposals and promises in the original are not deleted; this change has not been evaluated yet. Method and full results are in [Sentence comparisons](comparisons.en.md), the [benchmark](../evals/results/README.md) (in Korean) and the [evaluation method](../evals/README.md) (in Korean).
 
 ## What's inside
 

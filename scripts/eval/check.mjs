@@ -92,6 +92,7 @@ checkCases('evals/korean-natural/cases.json')
 checkCases('evals/korean-natural/polish-cases.json')
 checkCases('evals/korean-natural/polish-holdout-cases.json')
 checkCases('evals/korean-natural/polish-holdout2-cases.json')
+checkCases('evals/korean-natural/preserve-cases.json')
 // 사람이 쓴 글 사례 — 원문 출처와 이용 조건, 작성 시점, polish 입력이 원문 그대로인지, 개인 연락처가 없는지
 const LICENSES = ['공공누리 제1유형(출처표시)', 'Apache-2.0', 'MIT', 'CC-BY-4.0', '저작권 보호기간 만료(퍼블릭 도메인)']
 for (const dir of ['evals/human', 'evals/human-readme', 'evals/draft-readme', 'evals/draft-memo', 'evals/draft-blog', 'evals/draft-fiction']) {
