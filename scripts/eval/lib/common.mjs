@@ -42,6 +42,9 @@ export const treeHash = (dir) => {
 export const fileHash = (file) => sha256(readFileSync(file))
 
 export const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'))
+
+/** 판정 프롬프트의 한 덩어리. 표시를 붙여 글 안의 지시문과 구분한다 */
+export const block = (label, text) => `## ${label}\n\n<<<${label} 시작>>>\n${text}\n<<<${label} 끝>>>`
 export const writeJson = (file, value) => {
   mkdirSync(dirname(file), { recursive: true })
   writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`)

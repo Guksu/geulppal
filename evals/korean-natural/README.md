@@ -33,8 +33,36 @@ node scripts/eval/run.mjs --out <이름> --condition A --skill none --cases eval
 node scripts/eval/judge.mjs natural --out <이름> --condition A
 node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A
 node scripts/eval/natural.mjs summary --out <이름>
+node scripts/eval/natural.mjs polish-stats --from <답변 이름> --out <다듬기 이름>   # 다듬기 수치를 공개 기록에서 다시 센다
 ```
 
 소개하기 전에 범위를 넓히려고, 다음 후보(0.5.2)를 만들기 전에 2차 새 확인용 12개(`split: holdout2`)를 더해 커밋했다. 저장소 코드에 새 질문 세 가지(새 팀원 안내 `onboard`, 팀장 보고 `report`, PR 설명 `pr`)를 한 6개와, 저장소 없이 묻는 질문 6개(개발 질문 4개, 개발자가 아닌 사람의 일상 질문 2개)다. 일상 질문에는 `reader`로 독자를 적고, 판정 모델은 그 독자를 기준으로 본다.
 
 결과는 [8차 평가 보고서](../results/REPORT-korean-natural.md)에 있다. 다 쓴 답을 다듬게 할 때는 두 새 확인용 묶음 모두에서 효과가 분명했고, 처음부터 쓰게 할 때는 묶음에 따라 엇갈렸다. 2차 새 확인용의 다듬기 사례는 `polish-holdout2-cases.json`이다.
+
+## 다듬기 사례의 독자와 요청 문구 (2026-11-03 고침)
+
+2026-11-03까지 만든 다듬기 사례(`polish-cases.json`, `polish-holdout-cases.json`, `polish-holdout2-cases.json`)는 원래 사례의 `reader`를 옮기지 않았고, 요청 문구가 "아래 글은 개발 작업 중에 받은 답변이야"로 고정돼 있었다. 판정도 질문에 답하는 사례에만 독자를 넘겼다. 이 파일들은 실행한 그대로 두고, 이후에 만드는 다듬기 사례는 독자를 옮기고 개발 답변에 묶이지 않은 요청 문구를 쓴다. 판정은 사례 종류와 상관없이 독자를 넘기고, 다듬기 사례의 원문은 넘기지 않는다.
+
+다시 평가해야 하는 결과:
+
+- `results/2026-11-03-korean-natural-polish2`의 `lease-question-polish`, `workout-question-polish`(조건마다 결과 4개). 독자가 개발자가 아닌데 개발자 독자를 기준으로 판정했다.
+- 질문에 답하는 사례(`2026-11-03-korean-natural-holdout2`)는 처음부터 독자를 넘겼으므로 영향이 없다.
+
+## 원문 보존 확인 사례 (실행 전)
+
+[`preserve-cases.json`](preserve-cases.json)은 0.5.3에서 정리한 지침(원문 작성자의 제안·약속·조건은 남기고, 다듬으면서 새 마무리를 붙이지 않는다)을 확인하는 사례 5개다. 0.5.2의 의미 보존 실패(원문 끝 제안 삭제)를 본 뒤 썼고, 아직 실행하지 않았다.
+
+| 사례 | 확인할 것 |
+|---|---|
+| `offer-kept-polish` | 원문 끝의 제안을 남기고, `할 수 있다`를 `하겠다`로 바꾸지 않는다 |
+| `condition-kept-polish` | 조건이 붙은 끝 제안(로그를 보내 주면)을 남긴다 |
+| `nondev-offer-kept-polish` | 개발자가 아닌 독자에게 쓴 답변에서 말투와 끝 제안을 남긴다. 판정에 독자가 넘어간다 |
+| `no-new-closing-polish` | 마무리가 없는 답변에 새 마무리·추가 제안을 붙이지 않는다 |
+| `already-natural-noop` | 이미 자연스러운 답변을 그대로 둔다 |
+
+## 후속 계획
+
+- **다시 평가**: 0.5.3과 0.5.2, 글빨 없음을 같은 CLI 버전으로 `preserve-cases.json`과 고친 조건의 2차 새 확인용 다듬기 사례(새로 만든 파일)에 실행한다. 의미 보존 판정과 멈칫할 곳 판정, `polish-stats`로 비교한다.
+- **여러 사람의 블라인드 비교**: 최신 버전으로 다듬은 최종 문단과 글빨 없이 다듬은 문단을 한 쌍씩, 3명 이상이 어느 쪽인지 모르는 상태로 "더 자연스러움 / 비슷함"과 "뜻이 바뀜" 여부를 고른다. 한 사람이 1~2분에 끝내도록 쌍은 10개 안팎, 문단은 3~5문장으로 자른다. 평가자 사이 일치도와 판정 모델과의 일치도를 함께 보고한다. 기존 `rating.mjs`와 문장 확인 페이지를 다시 쓸 수 있다.
+- **지침 분량 줄이기**: [`research/lightweight-skill.md`](../../research/lightweight-skill.md)의 실험안. 검증 전에는 스킬에 적용하지 않는다.

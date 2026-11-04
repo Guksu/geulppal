@@ -1,6 +1,6 @@
 # 평가
 
-글빨을 쓰지 않는 Claude Code(A)와 글빨을 쓰는 Claude Code(B)에 같은 요청을 주고 결과를 비교한다. 정확성(의미 보존), 글의 품질, 자동 선택, 시간·비용을 따로 잰다. 결과 요약과 사례별 결과는 [벤치마크 결과](results/README.md), 실패 분석과 개선 과정은 [평가 보고서](results/REPORT.md)에 있다.
+글빨을 쓰지 않는 Claude Code(A)와 글빨을 쓰는 Claude Code(B)에 같은 요청을 주고 결과를 비교한다. 정확성(의미 보존), 글의 품질, 자동 선택, 시간·비용을 따로 잰다. 8차부터는 결과 글에서 한국어 독자가 멈칫할 곳도 잰다. 결과 요약과 사례별 결과는 [벤치마크 결과](results/README.md), 실패 분석과 개선 과정은 [평가 보고서](results/REPORT.md)에 있다.
 
 ## 자료
 
@@ -14,7 +14,7 @@
 | [`draft-memo/`](draft-memo/README.md) | 요청과 메모만으로 보도자료·안내문·보고서·기획서를 쓰는 사례 13개(개발용 4개, 확인용 4개, 새 확인용 5개) | 2018~2022년 정책브리핑 기사(공공누리 제1유형)에서 뽑고 검수한 메모. 보도자료 사례는 기사를 기준 조건 H로 둔다 |
 | [`draft-blog/`](draft-blog/README.md) | 글쓴이 메모·한두 줄 설명·참고 글+메모로 블로그 글·에세이를 쓰는 사례 16개(개발용 4개, 확인용 4개, 새 확인용 4개, 2차 새 확인용 4개) | 2019~2022년 정책기자마당 체험기(공공누리 제1유형)에서 뽑고 검수한 메모. 원래 글을 기준 조건 H로 둔다 |
 | [`draft-fiction/`](draft-fiction/README.md) | 한두 줄 설명·설정 메모·문체 참고 글+설정 메모로 짧은 소설을 쓰는 사례 17개(개발용 4개, 확인용 4개, 새 확인용 4개, 2차 새 확인용 5개) | 사례는 평가 작성자가 썼다. 문체 참고 글은 저작권이 끝난 근대 단편 발췌. 비교할 사람 글은 없다 |
-| [`korean-natural/`](korean-natural/README.md) | 개발 작업 중 질문에 한국어로 답하는 사례 24개(개발용 6개, 확인용 10개, 새 확인용 8개)와, 글빨 없이 쓴 답변을 다듬게 하는 사례(`polish-cases.json` 16개, `polish-holdout-cases.json` 8개) | README 초안 평가와 같은 공개 저장소 코드. 판정은 한국어 독자가 멈칫할 곳만 본다 |
+| [`korean-natural/`](korean-natural/README.md) | 질문에 한국어로 답하는 사례 36개(개발용 6개, 확인용 10개, 새 확인용 8개, 2차 새 확인용 12개), 글빨 없이 쓴 답변을 다듬게 하는 사례(`polish-cases.json` 16개, `polish-holdout-cases.json` 8개, `polish-holdout2-cases.json` 12개), 원문 보존을 확인하는 사례(`preserve-cases.json` 5개, 실행 전) | README 초안 평가와 같은 공개 저장소 코드와 저장소 없는 질문. 판정은 독자가 멈칫할 곳만 본다 |
 | [`trigger/queries.json`](trigger/queries.json) | 써야 하는 요청 12개, 쓰지 말아야 하는 요청 10개 | 자동 선택 평가용. 스킬 설명을 읽은 사람이 썼다 |
 | [`judge/meaning.md`](judge/meaning.md), [`judge/quality.md`](judge/quality.md) | 판정 지침 | 판정 모델의 시스템 프롬프트로 그대로 쓴다 |
 | [`judge/slop-check.md`](judge/slop-check.md) | 부풀린 글 검수 지침 | deslop 입력이 원문의 사실을 그대로 담았는지 확인한다 |
@@ -53,8 +53,9 @@ B 실행은 대화 기록에서 `/geulppal` 명령 펼침과 설치한 `SKILL.md
 2. **품질**: 두 결과가 모두 의미 보존을 통과한 쌍만 비교한다. 판정 모델은 원문·요청과 익명 결과 X·Y를 받는다. 스킬 이름, 조건, 원하는 승자는 받지 않는다. 같은 쌍을 순서를 바꿔 두 번 판정한다. 두 판정이 같을 때만 그 판정으로 세고, 다르면 "순서 불일치"로 센다. 판정은 X 우세·Y 우세·차이 없음·둘 다 부적절 중 하나이고, 근거에 두 결과의 문장을 인용한다.
 3. **자동 선택**: 스킬을 설치한 새 세션에 `/geulppal` 없이 자연어 요청을 준다. Skill 도구로 geulppal을 부르거나 `SKILL.md`를 읽으면 선택으로 센다. 같은 요청에 대해 단어 겹침 대리 지표도 계산하지만 실제 선택과 따로 보고한다.
 4. **시간·비용**: CLI가 보고한 `duration_ms`, 토큰, `total_cost_usd`를 그대로 쓴다. 보고되지 않은 값은 "알 수 없음"으로 둔다.
+5. **멈칫할 곳(8차부터)**: 판정 모델이 결과 글에서 독자가 멈칫할 곳을 종류와 정도로 표시한다([`korean-natural.md`](judge/korean-natural.md)). 사례에 독자(`reader`)가 있으면 질문에 답하는 사례든 다듬기 사례든 판정 모델에 넘긴다. 다듬기 사례의 원문은 넘기지 않는다. 다듬기에서는 원문에서 표시한 문자열이 그대로 남았는지도 센다.
 
-판정 모델은 `claude-opus-5-5`(`--effort high`)이고, 도구 없이 새 세션에서 돌린다. 작성 모델과 다른 모델이지만 같은 회사의 모델이다. 사람의 평가는 하지 않았다.
+판정 모델은 `claude-opus-5-5`(`--effort high`)이고, 도구 없이 새 세션에서 돌린다. 작성 모델과 다른 모델이지만 같은 회사의 모델이다. 1차(2026-10-27)에는 사람의 평가를 하지 않았다. 2·4~7차는 저장소 소유자 한 명의 블라인드 비교(`results/*-rating/`), 8차는 판정 모델의 표시를 문장 10개로 확인한 결과(`results/*-sentence-check/`)를 더했다. 평가자는 모두 한 명이다.
 
 금지어 수, 쉼표 수, 글자 수 감소, AI 탐지기 점수는 품질 점수로 쓰지 않는다. 문자열 검사는 코드·명령·링크 대상처럼 글자 그대로 남아야 하는 부분에만 쓴다.
 
@@ -64,6 +65,7 @@ B 실행은 대화 기록에서 `/geulppal` 명령 펼침과 설치한 `SKILL.md
 
 ```bash
 node scripts/eval/check.mjs                                   # 구조 검사(모델 호출 없음)
+node --test 'scripts/eval/test/*.test.mjs'                    # 회귀 테스트·공개 기록 재집계(모델 호출 없음)
 
 # 작성: 조건마다 따로. 같은 사례·회차 기록이 있으면 건너뛴다(--retry-failed는 실패한 회차를 새 시도로)
 node scripts/eval/run.mjs --out <이름> --condition A  --skill none --reps 2
@@ -117,6 +119,12 @@ node scripts/eval/memo.mjs build --dir evals/draft-blog
 # 소설 사례: 문체 참고 글 가져오기 → 사례 만들기(판정은 조건 판정 draft-fiction-check.md + 분량)
 node scripts/eval/fiction.mjs sources --dir evals/draft-fiction
 node scripts/eval/fiction.mjs build --dir evals/draft-fiction
+
+# 한국어 자연스러움: 사례 만들기 → 실행 → 멈칫할 곳 판정 → 다듬기 사례 → 다듬기 수치 다시 세기
+node scripts/eval/natural.mjs build --dir evals/korean-natural
+node scripts/eval/judge.mjs natural --out <이름> --condition A
+node scripts/eval/natural.mjs polish --dir evals/korean-natural --from <이름> --condition A --to <파일>
+node scripts/eval/natural.mjs polish-stats --from <답변 이름> --out <다듬기 이름>
 
 # 사람 블라인드 비교 페이지 만들기와 집계(--set human | draft-readme | draft-memo | draft-blog | draft-fiction)
 node scripts/eval/rating.mjs build --page <html 경로>

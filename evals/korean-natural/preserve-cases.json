@@ -1,0 +1,134 @@
+[
+  {
+    "id": "offer-kept-polish",
+    "task": "rewrite",
+    "variant": "polish",
+    "genre": "답변 다듬기",
+    "language": "ko",
+    "split": "holdout3",
+    "source": null,
+    "origin": "authored:evals/korean-natural/preserve-cases.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 답변을 내용은 그대로 두고 한국어로 자연스럽게 다듬어 줘. 다듬은 글만 줘.",
+    "input": "이번 마이그레이션은 두 단계로 나눠 진행하는 게 안전합니다. 먼저 새 컬럼을 추가하고, 배포가 끝난 뒤 옛 컬럼을 지웁니다.\n\n지금 코드는 테스트로 덮여 있지 않은 경로가 많아서, 컬럼 이름을 바꾸면 런타임에서야 깨지는 곳이 생길 수 있습니다.\n\n원하시면 두 단계에 맞춘 마이그레이션 스크립트 초안도 만들어 드릴 수 있습니다.",
+    "must_preserve": [
+      "두 단계(새 컬럼 추가 → 배포 뒤 옛 컬럼 삭제)",
+      "테스트가 다루지 않는 경로가 많아 런타임에서 깨질 수 있다(가능성)",
+      "끝의 제안: 마이그레이션 스크립트 초안을 만들어 줄 수 있다(할 수 있다는 강도 그대로)"
+    ],
+    "must_not": [
+      "끝의 제안 지우기",
+      "`만들어 드리겠습니다`처럼 제안을 약속으로 바꾸기",
+      "원문에 없는 마무리·추가 제안 덧붙이기"
+    ],
+    "exact": [
+      "마이그레이션"
+    ],
+    "notes": "원문 작성자의 끝 제안을 남기는지 본다. `테스트로 덮여 있지 않은`(covered)은 다듬을 곳이다."
+  },
+  {
+    "id": "condition-kept-polish",
+    "task": "rewrite",
+    "variant": "polish",
+    "genre": "답변 다듬기",
+    "language": "ko",
+    "split": "holdout3",
+    "source": null,
+    "origin": "authored:evals/korean-natural/preserve-cases.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 답변을 내용은 그대로 두고 한국어로 자연스럽게 다듬어 줘. 다듬은 글만 줘.",
+    "input": "에러 메시지만으로는 원인을 하나로 좁히기 어렵습니다. 커넥션 풀이 마르는 경우와 DNS 조회가 늦어지는 경우가 둘 다 이 메시지를 냅니다.\n\n재현될 때의 서버 로그를 보내 주시면 둘 중 어느 쪽인지 더 좁혀 볼 수 있습니다.",
+    "must_preserve": [
+      "원인을 하나로 좁히기 어렵다",
+      "커넥션 풀 고갈과 DNS 조회 지연 둘 다 같은 메시지를 낸다",
+      "조건이 붙은 제안: 서버 로그를 보내 주면 더 좁혀 볼 수 있다"
+    ],
+    "must_not": [
+      "끝의 조건부 제안 지우기",
+      "조건(로그를 보내 주면)을 빼거나 확정으로 바꾸기"
+    ],
+    "exact": [
+      "DNS"
+    ],
+    "notes": "조건이 붙은 끝 제안을 남기는지 본다. `커넥션 풀이 마르는`(pool exhaustion)은 다듬을 곳이다."
+  },
+  {
+    "id": "nondev-offer-kept-polish",
+    "task": "rewrite",
+    "variant": "polish",
+    "genre": "답변 다듬기",
+    "language": "ko",
+    "split": "holdout3",
+    "source": null,
+    "origin": "authored:evals/korean-natural/preserve-cases.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 답변을 내용은 그대로 두고 한국어로 자연스럽게 다듬어 줘. 다듬은 글만 줘.",
+    "reader": "개발자가 아닌 일반 성인",
+    "input": "3박 4일이면 첫날은 이동에 많이 쓰이니까 무리한 일정을 넣지 않는 게 좋아요. 둘째 날과 셋째 날에 가고 싶은 곳을 몰아 두고, 마지막 날은 공항 가는 길에 들를 수 있는 곳만 넣으세요.\n\n출발 날짜와 숙소 위치를 알려 주시면 하루씩 일정표로 짜 드릴 수 있어요.",
+    "must_preserve": [
+      "첫날은 이동 때문에 일정을 적게",
+      "둘째·셋째 날에 몰아 두기",
+      "마지막 날은 공항 가는 길의 장소만",
+      "끝의 제안: 날짜와 숙소 위치를 알려 주면 일정표로 짜 줄 수 있다"
+    ],
+    "must_not": [
+      "끝의 제안 지우기",
+      "해요체를 합니다체로 바꾸는 등 말투 바꾸기",
+      "원문에 없는 여행 정보 보태기"
+    ],
+    "exact": [],
+    "notes": "개발자가 아닌 독자에게 쓴 답변. 판정에 reader가 넘어가는지와 끝 제안을 남기는지 본다."
+  },
+  {
+    "id": "no-new-closing-polish",
+    "task": "rewrite",
+    "variant": "polish",
+    "genre": "답변 다듬기",
+    "language": "ko",
+    "split": "holdout3",
+    "source": null,
+    "origin": "authored:evals/korean-natural/preserve-cases.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 답변을 내용은 그대로 두고 한국어로 자연스럽게 다듬어 줘. 다듬은 글만 줘.",
+    "input": "이 함수는 입력이 비어 있으면 빈 배열을 리턴하는 대신 null을 리턴합니다. 호출하는 쪽에서 이 케이스를 핸들링하지 않으면 다음 줄의 `.map`에서 터집니다.\n\n가장 작은 수정은 함수 첫 줄에서 빈 입력을 체크하고 빈 배열을 돌려주는 것입니다.",
+    "must_preserve": [
+      "빈 입력이면 null을 돌려준다",
+      "호출하는 쪽이 처리하지 않으면 `.map`에서 오류가 난다",
+      "가장 작은 수정은 첫 줄에서 빈 입력을 확인하고 빈 배열을 돌려주는 것"
+    ],
+    "must_not": [
+      "원문에 없는 마무리 인사·추가 제안·질문 덧붙이기(예: 더 도와드릴까요, 궁금한 점이 있으면)",
+      "`.map` 같은 코드 표기 바꾸기"
+    ],
+    "exact": [
+      "`.map`"
+    ],
+    "notes": "원문에 마무리가 없다. 다듬으면서 새 마무리를 붙이지 않는지 본다."
+  },
+  {
+    "id": "already-natural-noop",
+    "task": "noop-check",
+    "variant": "polish",
+    "genre": "답변 다듬기",
+    "language": "ko",
+    "split": "holdout3",
+    "source": null,
+    "origin": "authored:evals/korean-natural/preserve-cases.json",
+    "overlaps_skill_examples": false,
+    "request": "아래 답변이 어색하면 다듬어 줘. 이미 자연스러우면 그대로 둬. 다듬은 글만 줘.",
+    "input": "테스트가 실패한 이유는 시간대 설정 때문입니다. CI 서버는 UTC로 돌고, 로컬은 한국 시간으로 돌아서 날짜가 하루 어긋납니다. 테스트에서 시간대를 고정하면 두 환경에서 같은 결과가 나옵니다.",
+    "must_preserve": [
+      "실패 원인은 시간대 설정",
+      "CI는 UTC, 로컬은 한국 시간이라 날짜가 하루 어긋남",
+      "시간대를 고정하면 같은 결과"
+    ],
+    "must_not": [
+      "뜻이나 어감을 바꾸는 수정",
+      "원문에 없는 마무리·제안 덧붙이기"
+    ],
+    "exact": [
+      "UTC"
+    ],
+    "notes": "이미 자연스러운 답변이다. 그대로 두는지 본다."
+  }
+]
