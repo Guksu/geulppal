@@ -1,0 +1,70 @@
+{
+  "name": "2026-11-05-korean-natural-polish2-fixed",
+  "conditions": {
+    "A": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 0,
+      "referenceReads": 0,
+      "meaning": {
+        "judged": 24,
+        "pass": 23,
+        "fail": 1,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 9105,
+        "medianInput": 9878,
+        "medianOutput": 1686,
+        "costUsd": 1.0574064
+      }
+    },
+    "N4": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 24,
+      "referenceReads": 4,
+      "meaning": {
+        "judged": 24,
+        "pass": 24,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 16936.5,
+        "medianInput": 20030,
+        "medianOutput": 2845.5,
+        "costUsd": 2.4172382
+      }
+    },
+    "N5": {
+      "attempts": 24,
+      "failures": {},
+      "retries": 0,
+      "skillInjected": 24,
+      "referenceReads": 4,
+      "meaning": {
+        "judged": 24,
+        "pass": 24,
+        "fail": 0,
+        "exactMissing": 0,
+        "notJudged": 0,
+        "excluded": 0
+      },
+      "time": {
+        "medianMs": 15320,
+        "medianInput": 20201,
+        "medianOutput": 2708,
+        "costUsd": 2.4022462
+      }
+    }
+  },
+  "pairs": {},
+  "judgeCalls": 72
+}

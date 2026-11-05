@@ -64,3 +64,31 @@ test('첫 새 확인용 다듬기 수치를 원시 기록에서 다시 센다', 
   assert.deepEqual([stats.N1.kept, stats.N1.checked, stats.N1.finalMarks, stats.N1.meaningPass], [8, 34, 26, 16])
   assert.deepEqual([stats.N3.kept, stats.N3.checked, stats.N3.finalMarks, stats.N3.meaningPass], [4, 34, 24, 16])
 })
+
+test('고친 조건의 2차 다듬기 사례는 같은 입력에 독자와 새 요청 문구를 쓴다', async () => {
+  const { readJson, ROOT } = await import('../lib/common.mjs')
+  const fixed = readJson(`${ROOT}/evals/korean-natural/polish-holdout2-fixed-cases.json`)
+  const old = Object.fromEntries(readJson(`${ROOT}/evals/korean-natural/polish-holdout2-cases.json`).map((item) => [item.id, item]))
+  assert.equal(fixed.length, 12)
+  for (const item of fixed) {
+    assert.equal(item.input, old[item.id].input, item.id)
+    assert.equal(item.request, POLISH_REQUEST, item.id)
+  }
+  const readers = Object.fromEntries(fixed.filter((item) => item.reader).map((item) => [item.id, item.reader]))
+  assert.deepEqual(Object.keys(readers).sort(), ['lease-question-polish', 'workout-question-polish'])
+  assert.match(naturalPrompt(fixed.find((item) => item.id === 'lease-question-polish'), '글'), /## 독자/)
+})
+
+test('고친 조건으로 다시 잰 2차 다듬기 수치를 원시 기록에서 다시 센다', () => {
+  const stats = polishStats(openRecords('2026-11-03-korean-natural-holdout2'), openRecords('2026-11-05-korean-natural-polish2-fixed'), ['A', 'N4', 'N5'])
+  assert.deepEqual([stats.A.kept, stats.A.checked, stats.A.finalMarks, stats.A.meaningPass, stats.A.meaningJudged], [16, 48, 43, 23, 24])
+  assert.deepEqual([stats.N4.kept, stats.N4.checked, stats.N4.finalMarks, stats.N4.meaningPass], [12, 48, 24, 24])
+  assert.deepEqual([stats.N5.kept, stats.N5.checked, stats.N5.finalMarks, stats.N5.meaningPass], [8, 48, 25, 24])
+})
+
+test('원문 보존 사례의 의미 보존 판정 수치가 공개 기록과 맞는다', () => {
+  const records = openRecords('2026-11-05-korean-natural-preserve')
+  const pass = (condition) => records.list(`judge/meaning/${condition}`).filter((r) => r.pass === true).length
+  assert.deepEqual([pass('A'), pass('N4'), pass('N5')], [8, 8, 10])
+})
+
