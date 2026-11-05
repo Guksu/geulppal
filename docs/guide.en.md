@@ -114,11 +114,12 @@ With the 0.5 description, Claude picked the skill in all 18 runs of requests to 
 
 geulppal was compared with and without the skill, using the same requests, model and settings. After freezing each version, it was checked on cases written before seeing any results.
 
-- **Korean wording (0.5.2, 2026-11-03):** On 12 unseen cases, Claude polished answers written without geulppal, twice each. The 24 places marked in the originals were still present in 18 of 48 checks without geulppal and 8 of 48 with 0.5.2. Judging the polished text again found 41 against 28 marked places, and the meaning was kept in 22 against 23 of 24 runs.
+- **Korean wording (0.5.3, 2026-11-05):** On 12 unseen cases, Claude polished answers written without geulppal, twice each. The 24 places marked in the originals were still present in 16 of 48 checks without geulppal, 12 with 0.5.2 and 8 with 0.5.3. Judging the polished text again found 43, 24 and 25 marked places, and the meaning was kept in 23, 24 and 24 of 24 runs.
+- **Keeping the original (0.5.3, 2026-11-05):** Five answers (with a closing proposal or condition, with no closing, or already natural) were polished twice each. The meaning check passed 8 of 10 without geulppal, 8 of 10 with 0.5.2 and 10 of 10 with 0.5.3. Reading the result sentences directly, the strength of a closing proposal ("I can …") was kept in 2, 2 and 6 of 6 cases.
 - **Checking the judge:** When the repository owner rated 10 sentences, 7 agreed with the judge model's marks.
 - **Keeping the meaning (0.3.0, 2026-10-27):** When polishing 16 human-written READMEs, results that kept facts and conditions were 20 of 32 without geulppal and 31 of 32 with geulppal 0.3.0. This was not measured again with the current version.
 
-The current skill is 0.5.3. Unlike 0.5.2, it only clarifies the priority in its instructions so that proposals and promises in the original are not deleted; this change has not been evaluated yet. Method and full results are in [Sentence comparisons](comparisons.en.md), the [benchmark](../evals/results/README.md) (in Korean) and the [evaluation method](../evals/README.md) (in Korean).
+The current skill is 0.5.3. Unlike 0.5.2, it clarifies the priority in its instructions so that proposals and promises in the original are not deleted. Method and full results are in [Sentence comparisons](comparisons.en.md), the [benchmark](../evals/results/README.md) (in Korean) and the [evaluation method](../evals/README.md) (in Korean).
 
 ## What's inside
 

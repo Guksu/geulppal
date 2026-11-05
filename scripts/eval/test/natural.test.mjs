@@ -79,3 +79,16 @@ test('고친 조건의 2차 다듬기 사례는 같은 입력에 독자와 새 �
   assert.match(naturalPrompt(fixed.find((item) => item.id === 'lease-question-polish'), '글'), /## 독자/)
 })
 
+test('고친 조건으로 다시 잰 2차 다듬기 수치를 원시 기록에서 다시 센다', () => {
+  const stats = polishStats(openRecords('2026-11-03-korean-natural-holdout2'), openRecords('2026-11-05-korean-natural-polish2-fixed'), ['A', 'N4', 'N5'])
+  assert.deepEqual([stats.A.kept, stats.A.checked, stats.A.finalMarks, stats.A.meaningPass, stats.A.meaningJudged], [16, 48, 43, 23, 24])
+  assert.deepEqual([stats.N4.kept, stats.N4.checked, stats.N4.finalMarks, stats.N4.meaningPass], [12, 48, 24, 24])
+  assert.deepEqual([stats.N5.kept, stats.N5.checked, stats.N5.finalMarks, stats.N5.meaningPass], [8, 48, 25, 24])
+})
+
+test('원문 보존 사례의 의미 보존 판정 수치가 공개 기록과 맞는다', () => {
+  const records = openRecords('2026-11-05-korean-natural-preserve')
+  const pass = (condition) => records.list(`judge/meaning/${condition}`).filter((r) => r.pass === true).length
+  assert.deepEqual([pass('A'), pass('N4'), pass('N5')], [8, 8, 10])
+})
+

@@ -6,14 +6,14 @@ I built it because every time Claude answered in Korean, I had to reread and fix
 
 [한국어](README.md) · [Installation](#installation) · [Full guide](docs/guide.en.md) · [Sentence comparisons](docs/comparisons.en.md)
 
-| Answer written without geulppal | Polished with geulppal 0.5.2 |
+| Answer written without geulppal | Polished with geulppal 0.5.3 |
 |---|---|
 | 마지막 단어 뒤에 넣을 insert 패치는 조용히 버려집니다.<br>("…is silently discarded") | 마지막 단어 뒤에 넣을 insert 패치는 오류 없이 버려집니다.<br>("…is discarded without an error") |
 | 값이 외부에서 바뀌거나 오염되면 타입이 거짓이 됩니다.<br>("…the type becomes a lie") | 값이 외부에서 바뀌거나 오염되면 타입이 실제 값과 맞지 않게 됩니다.<br>("…the type no longer matches the actual value") |
-| 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다.<br>("…based on the test gaps…") | 아래 초안은 소스에서 확인한, 테스트가 없는 부분을 기준으로 썼습니다.<br>("…based on the parts without tests…") |
-| ESM 빌드에서는 esbuild의 `require` 심이 던질 수도 있습니다.<br>("…the `require` shim may throw") | ESM 빌드에서는 esbuild가 넣는 `require` 대체 코드(shim)가 오류를 낼 수도 있습니다.<br>("…the `require` replacement code (shim) that esbuild adds may raise an error") |
+| 아래 초안은 소스에서 확인한 테스트 공백을 기준으로 썼습니다.<br>("…based on the test gaps…") | 아래 초안은 소스에서 확인한 테스트가 없는 부분을 기준으로 썼습니다.<br>("…based on the parts without tests…") |
+| 구조를 바꾸면 조용히 틀린 결과가 나올 수 있습니다.<br>("…can silently give wrong results") | 구조를 바꾸면 오류 없이 틀린 결과가 나올 수 있습니다.<br>("…can give wrong results without an error") |
 
-The same spots, taken from answers Claude Code wrote in Korean to development questions and from those answers polished with geulppal 0.5.2. These are sentences the judge model marked as awkward. On 12 cases written before seeing any results, each polished twice, the 24 places marked in the originals were still there in 8 of 48 checks (18 without geulppal). Judging the polished text again found 28 marked places (41 without geulppal), and the meaning was kept in 23 of 24 runs (22). The marks come from one judge model, not from people rating readability. Polishing cost about 2.3 times as much and took about 1.7 times as long. [Method, all results and limitations](docs/comparisons.en.md)
+The same spots, taken from answers Claude Code wrote in Korean and from the first run polishing those answers with geulppal 0.5.3. These are sentences the judge model marked as awkward. On 12 cases written before seeing any results, each polished twice, the 24 places marked in the originals were still there in 8 of 48 checks (16 without geulppal). Judging the polished text again found 25 marked places (43 without geulppal), and the meaning was kept in all 24 runs (23). The marks come from one judge model, not from people rating readability. Polishing cost about 2.3 times as much and took about 1.7 times as long. [Method, all results and limitations](docs/comparisons.en.md)
 
 ## Installation
 

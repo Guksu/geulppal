@@ -40,6 +40,29 @@ With the same request but without geulppal, awkward expressions often stayed or 
 
 ## Evaluation summary
 
+### Measured again under the fixed setup (2026-11-05, CLI 2.1.318)
+
+The second set's polishing cases were rebuilt with the reader information and the new request (same inputs), and rerun without geulppal, with 0.5.2 and with 0.5.3. Five cases that check whether the original is kept were run as well.
+
+| Cases written before seeing any results | Without geulppal | 0.5.2 | 0.5.3 |
+|---|---|---|---|
+| Second unseen set, 12 cases × 2 runs, polishing: the 24 marked places in the originals still present | 16/48 | 12/48 | 8/48 |
+| Same polishing: marked places when the polished text was judged again | 43 | 24 | 25 |
+| Same polishing: results that kept the meaning | 23/24 | 24/24 | 24/24 |
+| Keeping the original, 5 cases × 2 runs: passed the meaning check | 8/10 | 8/10 | 10/10 |
+| Same cases: kept the closing proposal or condition | 6/6 | 6/6 | 6/6 |
+| Same cases: kept the strength of the closing proposal ("I can …"), read directly from the results | 2/6 | 2/6 | 6/6 |
+| Same cases: added no new closing to an answer without one | 2/2 | 2/2 | 2/2 |
+| Same cases: left an already natural answer unchanged | 0/2 | 2/2 | 2/2 |
+
+- 0.5.3 neither deleted a closing proposal nor turned "만들어 드릴 수 있습니다" ("I can make it") into "만들어 드리겠습니다" ("I will make it"). Without geulppal and with 0.5.2, the proposals stayed but "can" became "will" in 4 of 6 cases.
+- The meaning check passed one of these, "짜 드릴 수 있어요" ("I can plan it") → "짜 드릴게요" ("I'll plan it") in the answer for a non-developer, so commitment strength was counted by reading the results directly.
+- Last time 0.5.2 deleted the closing proposal in the git rebase answer once. This time neither 0.5.2 nor 0.5.3 did in 2 runs each, so it looks like run-to-run variation.
+- Marks on the polished text were about the same for 0.5.2 and 0.5.3 (24 against 25).
+- Polishing cost 2.27 times as much as without geulppal ($0.044 against $0.100), and the median time was 1.68 times longer (9.1 s against 15.3 s).
+
+### Earlier results (2026-11-03, CLI 2.1.317)
+
 | Cases written before seeing any results | Without geulppal | 0.5.1 | 0.5.2 |
 |---|---|---|---|
 | First unseen set, 8 cases × 2 runs, polishing: the 17 marked places in the originals still present | 19/34 | 4/34 | |
@@ -50,12 +73,6 @@ With the same request but without geulppal, awkward expressions often stayed or 
 | Same polishing: results that kept the meaning | 22/24 | 22/24 | 23/24 |
 | Second unseen set, writing from scratch (1 run): marked places per 1,000 characters | 1.15 | 0.86 | 0.86 |
 
-How these are counted:
-
-- **Still present**: whether each string the judge marked in the polishing input (the first-run answer written without geulppal) appears verbatim in the polished result. The denominator is the number of marks in the originals × 2 polishing runs. A marked expression disappearing does not mean that spot now reads naturally, which is why the marks on the polished text are listed as well.
-- **Marked places when judged again**: the same expression counts once per result. This is not a human readability score or a probability of AI authorship.
-- The numbers can be recounted from the public records with `node scripts/eval/natural.mjs polish-stats --from 2026-11-03-korean-natural-holdout2 --out 2026-11-03-korean-natural-polish2`, and `node --test 'scripts/eval/test/*.test.mjs'` checks them against the values above.
-
 - The effect was clear for polishing finished answers in both case sets.
 - Writing from scratch was mixed: fewer marks on the second set, but no reduction on the first set of 8 (34 marks without geulppal, 36 with 0.5.1).
 - 0.5.0 introduced over-translation of technical terms (key → `열쇠`, feature → `특징`); 0.5.2 adds a separate rule not to translate technical names.
@@ -63,7 +80,13 @@ How these are counted:
 - After moving the content rules for writing from scratch to a reference file, 4 README drafts were checked again: results with only claims backed by the code were 8/8 with 0.5.2 and 7/8 with 0.4.1.
 - Cost (the API list-price estimate the CLI reports) was about 2 to 2.3 times that without geulppal for polishing (2.27 times on the second set) and about 1.2 to 1.8 times for writing. The median polishing time was about 1.5 to 1.7 times longer (9.1 s against 15.6 s on the second set), mostly because reading the skill roughly doubles the input tokens.
 
-More detail (in Korean): [8th evaluation report](../evals/results/REPORT-korean-natural.md) · [Benchmark](../evals/results/README.md) · [Second unseen set, polishing results](../evals/results/2026-11-03-korean-natural-polish2/natural.md) · [Human sentence check](../evals/results/2026-10-31-korean-natural-sentence-check/report.md)
+### How these are counted
+
+- **Still present**: whether each string the judge marked in the polishing input (the first-run answer written without geulppal) appears verbatim in the polished result. The denominator is the number of marks in the originals × 2 polishing runs. A marked expression disappearing does not mean that spot now reads naturally, which is why the marks on the polished text are listed as well.
+- **Marked places when judged again**: the same expression counts once per result. This is not a human readability score or a probability of AI authorship.
+- The numbers can be recounted from the public records with `node scripts/eval/natural.mjs polish-stats --from 2026-11-03-korean-natural-holdout2 --out <polishing run>` (`2026-11-05-korean-natural-polish2-fixed` for the new run, `2026-11-03-korean-natural-polish2` for the earlier one), and `node --test 'scripts/eval/test/*.test.mjs'` checks them against the values above.
+
+More detail (in Korean): [8th evaluation report](../evals/results/REPORT-korean-natural.md) · [Benchmark](../evals/results/README.md) · [Polishing, measured again](../evals/results/2026-11-05-korean-natural-polish2-fixed/natural.md) · [Keeping the original](../evals/results/2026-11-05-korean-natural-preserve/report.md) · [Earlier polishing results](../evals/results/2026-11-03-korean-natural-polish2/natural.md) · [Human sentence check](../evals/results/2026-10-31-korean-natural-sentence-check/report.md)
 
 ## How it was judged
 
@@ -72,9 +95,9 @@ A judge model (`claude-opus-5-5`) read each text and marked the places where the
 ## Limitations
 
 - One judge model made the marks. When the repository owner rated 10 sentences, a mix of ones the judge marked and ones it did not, 7 agreed with the judge. The judge tended to over-mark translated terms that developers actually use, such as `회귀` (regression).
-- The case sets are small (8 and 12). The questions were written by the evaluation author (a model).
+- The case sets are small (8, 12, and 5 for keeping the original). The questions and those 5 cases were written by the evaluation author (a model).
 - Results vary between runs. The same skill also scored differently across CLI versions (0.4.3 on 4 blog cases × 2 runs: 7/8 with 2.1.312, 4/8 with 2.1.314).
 - Only Claude Code with `claude-sonnet-5-5` was evaluated.
 - Report and blog drafts were not measured again for 0.5.
-- In the second set's polishing runs, the two everyday questions (deposit versus rent, exercise) were judged without the reader information, and the polishing request said the text was "an answer received during development work". For each condition, those two cases' 4 results need to be evaluated again under the fixed setup. Leaving them out gives the same direction (still present: 12/36 without geulppal, 4/36 with 0.5.2; meaning kept: 18/20 against 19/20).
-- The meaning check passed some results that turned `써 드릴 수 있습니다` ("I can write it") into `써 드리겠습니다` ("I will write it"). It can miss changes in how strong a commitment is.
+- In the earlier results (2026-11-03), the second set's two everyday questions were judged without the reader information, and the polishing request said the text was "an answer received during development work". The results measured again under the fixed setup are above.
+- The meaning check passed several results that turned "I can" into "I will". It can miss changes in how strong a commitment is, so for the cases that check the original, the result sentences were read directly.
