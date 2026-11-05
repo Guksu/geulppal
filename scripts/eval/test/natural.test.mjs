@@ -64,3 +64,18 @@ test('첫 새 확인용 다듬기 수치를 원시 기록에서 다시 센다', 
   assert.deepEqual([stats.N1.kept, stats.N1.checked, stats.N1.finalMarks, stats.N1.meaningPass], [8, 34, 26, 16])
   assert.deepEqual([stats.N3.kept, stats.N3.checked, stats.N3.finalMarks, stats.N3.meaningPass], [4, 34, 24, 16])
 })
+
+test('고친 조건의 2차 다듬기 사례는 같은 입력에 독자와 새 요청 문구를 쓴다', async () => {
+  const { readJson, ROOT } = await import('../lib/common.mjs')
+  const fixed = readJson(`${ROOT}/evals/korean-natural/polish-holdout2-fixed-cases.json`)
+  const old = Object.fromEntries(readJson(`${ROOT}/evals/korean-natural/polish-holdout2-cases.json`).map((item) => [item.id, item]))
+  assert.equal(fixed.length, 12)
+  for (const item of fixed) {
+    assert.equal(item.input, old[item.id].input, item.id)
+    assert.equal(item.request, POLISH_REQUEST, item.id)
+  }
+  const readers = Object.fromEntries(fixed.filter((item) => item.reader).map((item) => [item.id, item.reader]))
+  assert.deepEqual(Object.keys(readers).sort(), ['lease-question-polish', 'workout-question-polish'])
+  assert.match(naturalPrompt(fixed.find((item) => item.id === 'lease-question-polish'), '글'), /## 독자/)
+})
+
